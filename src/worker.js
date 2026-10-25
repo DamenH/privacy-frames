@@ -23,8 +23,8 @@ self.addEventListener('activate',event=>event.waitUntil((async()=>{
  // manager cannot retain the removed popup flow or obsolete runtime hostname.
  if(upgrading)for(const client of await self.clients.matchAll({type:'window'}))if(isManagerURL(client.url)&&client.url!==new URL('connect.html',BASE).href)await client.navigate(client.url);
 })()));
-function policy(){return "sandbox allow-scripts allow-same-origin allow-forms; default-src 'none'; manifest-src 'self'; script-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src 'none'; worker-src 'none'; form-action 'none'; base-uri 'none'";}
-const headers={'Content-Security-Policy':policy(),'X-DNS-Prefetch-Control':'off','Referrer-Policy':'no-referrer','Cross-Origin-Opener-Policy':'same-origin','Cache-Control':'no-store','Permissions-Policy':'camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=()','X-Content-Type-Options':'nosniff'};
+function policy(){return "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src 'none'; worker-src 'none'; form-action 'none'; base-uri 'none'";}
+const headers={'Content-Security-Policy':policy(),'X-Frame-Options':'DENY','X-DNS-Prefetch-Control':'off','Referrer-Policy':'no-referrer','Cross-Origin-Opener-Policy':'same-origin','Cache-Control':'no-store','Permissions-Policy':'camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=()','X-Content-Type-Options':'nosniff'};
 function response(body,type='text/html',status=200){return new Response(body,{status,headers:{...headers,'Content-Type':type}});}
 async function runtimeIdentity(url){
  const key=applicationIdentity(url,BASE);if(!key)return null;
@@ -43,7 +43,9 @@ function prepared(app){
   for(const attr of n.attrs||[]){if(['src','href','poster'].includes(attr.name))attr.value=alias(app,attr.value,app.source);if(attr.name==='style')attr.value=css(app,attr.value,app.source);}
   if(n.tagName==='style')for(const child of n.childNodes||[])if(child.nodeName==='#text')child.value=css(app,child.value,app.source);
   strip(n);return true;});if(node.content)strip(node.content);}
- strip(head);strip(body);return {head:serialize(head),body:serialize(body),scripts,source:app.source,aliases:app.resources.map(resource=>[resource.url,resourceURL(app,resource.path,BASE).href]),manifestURL:manifestURL(app,BASE).href,serviceWorker:app.preparation?.serviceWorker||null};
+ strip(head);strip(body);
+ const attributes=node=>(node.attrs||[]).filter(attr=>['class','id','style','lang','dir','role','tabindex'].includes(attr.name)||/^(aria-|data-)/.test(attr.name)&&attr.name!=='data-host-ready').map(attr=>({name:attr.name,value:attr.name==='style'?css(app,attr.value,app.source):attr.value}));
+ return {head:serialize(head),body:serialize(body),attributes:{html:attributes(html),body:attributes(body)},scripts,source:app.source,aliases:app.resources.map(resource=>[resource.url,resourceURL(app,resource.path,BASE).href]),manifestURL:manifestURL(app,BASE).href,serviceWorker:app.preparation?.serviceWorker||null};
 }
 async function validatePackage(pkg){
  pkg.manifest=validateManifest(pkg.manifest);const identity=pkg.manifest.id+'-'+(await digest(new TextEncoder().encode(pkg.source)));if(pkg.id!==identity)throw new Error('Installation identity mismatch');if(!Array.isArray(pkg.resources)||pkg.resources.length!==pkg.manifest.resources.length)throw new Error('Incomplete package');let bytes=0;

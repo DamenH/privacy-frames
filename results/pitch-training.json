@@ -7,7 +7,7 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "Completed installation is available through mediated worker readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 221.3 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 220.7 Hz detected",
       "Browser-denied microphone permission is handled without a capture stream",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
       "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
@@ -17,7 +17,7 @@
       "updateDenied": true,
       "script": "http://127.0.0.1:4211/runtime/ywJX53taGnk/pitch-training/sw.js"
     },
-    "frequency": 221.3,
+    "frequency": 220.7,
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",
@@ -67,7 +67,7 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "Completed installation is available through mediated worker readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 1000 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 1000.1 Hz detected",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
       "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
     ],
@@ -76,7 +76,7 @@
       "updateDenied": true,
       "script": "http://127.0.0.1:4211/runtime/ywJX53taGnk/pitch-training/sw.js"
     },
-    "frequency": 1000,
+    "frequency": 1000.1,
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",

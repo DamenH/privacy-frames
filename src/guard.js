@@ -17,6 +17,7 @@ const nativeApply=Reflect.apply;
 // This code is always parser-blocking and precedes all application markup.
 // No native method captured here is published to application code.
 try {
+ if(window.top!==window||window.parent!==window||window.opener!==null)throw new Error('Confined applications require a top-level document without an opener');
  lockdown({evalTaming:'unsafe-eval',errorTaming:'safe',consoleTaming:'safe',overrideTaming:'severe'});
  const apply=Reflect.apply, descriptor=Object.getOwnPropertyDescriptor, define=Object.defineProperty;
  const str=String, array=Array.from;
@@ -196,6 +197,7 @@ try {
   const template=nativeApply(rawCreate,document,['template']);nativeApply(rawHTML,template,[data.head]);
   for(const child of Array.from(template.content.childNodes))nativeApply(rawAppend,trustedHead,[child]);
   nativeApply(rawHTML,trustedBody,[data.body]);
+  for(const [target,attributes]of [[document.documentElement,data.attributes?.html],[trustedBody,data.attributes?.body]])for(const attr of attributes||[])nativeApply(rawAttr,target,[attr.name,attr.value]);
   if(data.manifestURL&&!document.querySelector('link[rel="manifest"]')){const link=nativeApply(rawCreate,document,['link']);nativeApply(rawAttr,link,['rel','manifest']);nativeApply(rawAttr,link,['href',data.manifestURL]);nativeApply(rawAppend,trustedHead,[link]);}
   for(const script of data.scripts){
    await new Promise((resolve,reject)=>{const node=nativeApply(rawCreate,document,['script']);nativeApply(rawAttr,node,['src',script.src]);if(script.type)nativeApply(rawAttr,node,['type',script.type]);node.onload=resolve;node.onerror=()=>reject(new Error('Installed script failed'));nativeApply(rawAppend,trustedHead,[node]);});

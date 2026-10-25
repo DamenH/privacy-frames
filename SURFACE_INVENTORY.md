@@ -11,6 +11,7 @@ before claiming support for a new browser profile.
 | Frame/object/embed/portal creation and references | Creation, parser and insertion checks; protected references; CSP | Direct and real-event hostile probes |
 | Native document parsers, document replacement, Range insertion, Shadow DOM | Synchronous checks or refusal | Hostile probes and unrestricted controls |
 | Custom elements, customized built-ins, unsafe HTML setters, execCommand | Refused | Browser probes |
+| External embedding and opener-based messaging | App response frame-ancestors none/X-Frame-Options DENY; bootstrap checks top-level/no opener | Same-site external embedding attack with a private canary and working unrestricted frame control |
 | Popups, picture-in-picture windows, history traversal and document navigation | Protected methods, Navigation API, CSP sandbox and no opener | Hostile event tests, named-window tests, fault-injected refusal |
 | Workers, shared workers, worklets, ShadowRealm, broadcast channels | Protected constructors/methods and worker-src none | Probes; working unrestricted audio-worklet control |
 | Script/link/meta policy mutation, attribute and Attr routes, rich paste/drop | Protected setters/mutators and insertion; theme-color exception | Hostile probes, Vite/Svelte compatibility test |

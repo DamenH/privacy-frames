@@ -26,7 +26,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   }
   async function open(id){const opened=context.waitForEvent('page');await page.locator(`[data-app="${id}"]`).click();const app=await opened;await app.waitForFunction(()=>window.privacyHost?.mode==='network-isolated');return app;}
   await install(documentURL);const doc=await open('document');await doc.locator('h1').getByText('Ordinary document',{exact:true}).waitFor();
-  assert.equal(await doc.locator('base').count(),0);
+  assert.equal(await doc.locator('base').count(),0);assert.equal(await doc.locator('html').getAttribute('lang'),'en');assert.equal(await doc.locator('body').getAttribute('class'),'imported-document');
   await doc.waitForFunction(()=>document.querySelector('#illustration')?.naturalWidth>0);
   assert.equal(await doc.locator('h1').evaluate(n=>getComputedStyle(n).color),'rgb(169, 199, 255)');
   await doc.locator('#section-link').click();await doc.waitForURL('**#section');assert.equal(new URL(doc.url()).hash,'#section');

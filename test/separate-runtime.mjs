@@ -43,6 +43,24 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
    return await new Promise(resolve=>{const channel=new MessageChannel();channel.port1.onmessage=e=>{channel.port1.close();resolve(e.data.type);};frame.contentWindow.postMessage({type:'pf-connect'},'http://127.0.0.1:4211',[channel.port2]);setTimeout(()=>{channel.port1.close();resolve('no authority');},400);});
   });assert.equal(impersonation,'no authority');await outsider.close();checks.push('A publisher parent cannot authenticate to a real runtime bridge');
   const bridge=manager.frames().find(frame=>frame.url().endsWith('/connect.html'));
+  const custom=await bridge.evaluate(async()=>{
+   const source='https://publisher.test/non-index/app.json',digest=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),byte=>byte.toString(16).padStart(2,'0')).join('');
+   const manifest={format:1,id:'custom-entry',name:'Custom entry',entry:'launch.html',resources:['launch.html','app.js']},resources=[];
+   for(const [path,text]of [['launch.html','<!doctype html><p id="result">Loading</p><script src="./app.js"></script>'],['app.js','document.querySelector("#result").textContent=privacyHost.mode;if(parent!==window)parent.postMessage({type:"embedded-leak",secret:localStorage.getItem("embedding-canary")},"*");']]){const bytes=new TextEncoder().encode(text).buffer;resources.push({path,url:new URL(path,source).href,bytes,sha256:await digest(bytes)});}
+   const pkg={id:manifest.id+'-'+await digest(new TextEncoder().encode(source)),manifest,source,resources};
+   return new Promise(resolve=>{const channel=new MessageChannel();channel.port1.onmessage=e=>resolve(e.data);navigator.serviceWorker.controller.postMessage({operation:'install',payload:pkg},[channel.port2]);});
+  });assert.equal(custom.ok,true);await manager.locator('#refresh-apps').click();await manager.locator('[data-app="custom-entry"]').waitFor();
+  const customURL=await manager.locator('[data-app="custom-entry"]').getAttribute('href');assert(!customURL.includes('launch.html'));
+  const customPage=await context.newPage();const wrong=new URL(customURL);wrong.pathname=wrong.pathname.replace('/custom-entry/','/wrong/');wrong.hash='/reference';await customPage.goto(wrong.href);await customPage.getByText('network-isolated',{exact:true}).waitFor();assert.equal(new URL(customPage.url()).pathname,new URL(customURL).pathname);assert.equal(new URL(customPage.url()).hash,'#/reference');await customPage.evaluate(()=>localStorage.setItem('embedding-canary','private-embedding-canary'));await customPage.close();
+  checks.push('Non-index entry is hidden and a wrong label redirects without losing the app fragment');
+  const attacker=await context.newPage();await attacker.goto('http://127.0.0.1:4212/');
+  const embedding=await attacker.evaluate(async url=>{
+   const received=[];addEventListener('message',event=>received.push(event.data));
+   const control=document.createElement('iframe');control.srcdoc='<script>parent.postMessage({type:"embedding-control"},"*")<\/script>';document.body.append(control);
+   const frame=document.createElement('iframe');frame.src=url;document.body.append(frame);await new Promise(resolve=>setTimeout(resolve,500));
+   return {control:received.some(value=>value?.type==='embedding-control'),leaks:received.filter(value=>value?.type==='embedded-leak')};
+  },customURL);assert.equal(embedding.control,true);assert.deepEqual(embedding.leaks,[]);await attacker.close();
+  checks.push('External embedding cannot run a private-state disclosure script; unrestricted frame control works');
   const installedId=await manager.locator('[data-app="notes"]').getAttribute('data-installation');
   await bridge.evaluate(async id=>{
    const db=await new Promise((resolve,reject)=>{const request=indexedDB.open('privacy-frames-host-v1',2);request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
