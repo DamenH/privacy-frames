@@ -21,7 +21,9 @@ self.addEventListener('activate',event=>event.waitUntil((async()=>{
  await self.clients.claim();
  // Refresh only trusted manager documents after an upgrade, so an old cached
  // manager cannot retain the removed popup flow or obsolete runtime hostname.
- if(upgrading)for(const client of await self.clients.matchAll({type:'window'}))if(isManagerURL(client.url)&&client.url!==new URL('connect.html',BASE).href)await client.navigate(client.url);
+ // Do not await navigation inside activation: the navigation itself waits for
+ // this activation event to finish. clients.navigate queues it in the browser.
+ if(upgrading)for(const client of await self.clients.matchAll({type:'window'}))if(isManagerURL(client.url)&&client.url!==new URL('connect.html',BASE).href)void client.navigate(client.url).catch(error=>console.error('Manager refresh failed',error));
 })()));
 function policy(){return "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src 'none'; worker-src 'none'; form-action 'none'; base-uri 'none'";}
 const headers={'Content-Security-Policy':policy(),'X-Frame-Options':'DENY','X-DNS-Prefetch-Control':'off','Referrer-Policy':'no-referrer','Cross-Origin-Opener-Policy':'same-origin','Cache-Control':'no-store','Permissions-Policy':'camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=()','X-Content-Type-Options':'nosniff'};

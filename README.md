@@ -12,9 +12,11 @@ Use Node 24 or newer. Clone this repository and `DamenH/privacy-frames-apps` as 
 npm ci
 npx playwright install chromium firefox
 npm run build
+npm run build:production
 npm test
 npm run test:pitch
 npm run test:network
+npm run test:upgrade
 npm run test:mobile
 npm run test:storage-policy
 LIVE_ARTICLE=1 npm run test:compatibility

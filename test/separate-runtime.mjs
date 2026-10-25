@@ -22,7 +22,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   assert.match(await launch.getAttribute('href'),/^http:\/\/127\.0\.0\.1:4211\/runtime\/[A-Za-z0-9_-]{11}\/notes\/$/);
   const appOpened=context.waitForEvent('page');await launch.click();const app=await appOpened;
   app.on('pageerror',e=>errors.push(e.message));
-  await app.locator('#note').waitFor();await app.locator('#note').fill('private-local-notes');await app.locator('#save').click();
+  await app.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));await app.locator('#note').fill('private-local-notes');await app.locator('#save').click();
   assert.equal(await app.evaluate(()=>localStorage.getItem('manager-secret')),null);
   assert.equal(await app.evaluate(()=>window.opener),null);
   await app.reload();await app.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));assert.equal(await app.locator('#note').inputValue(),'private-local-notes');

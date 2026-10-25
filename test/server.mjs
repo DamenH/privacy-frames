@@ -5,8 +5,8 @@ import path from 'node:path';
 const root=path.resolve(fileURLToPath(new URL('../dist/',import.meta.url)));
 const publisher=process.env.APPS_DIRECTORY?path.resolve(process.env.APPS_DIRECTORY):fileURLToPath(new URL('../../privacy-frames-apps/apps/',import.meta.url));
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png'};
-export async function servers({separateRuntime=false,productionRoles=process.env.TEST_PRODUCTION_ROLES==='1'}={}){
- const traffic=[],connections=[],servers=[];
+export async function servers({separateRuntime=false,productionRoles=process.env.TEST_PRODUCTION_ROLES==='1',initialManagerDirectory=null}={}){
+ const traffic=[],connections=[],servers=[];let managerDirectory=initialManagerDirectory;
  for(const port of [4210,4211,4212,4213,4214,4215,4216,4217,4218]){
   const server=http.createServer(async(req,res)=>{
    const u=new URL(req.url,'http://local');traffic.push({port,path:req.url,method:req.method});
@@ -31,7 +31,7 @@ export async function servers({separateRuntime=false,productionRoles=process.env
     }
     if(relative.endsWith('/'))relative+='index.html';
     const app=port===4218?'ordinary':port===4217?'playground':port>=4212?['notes','image','resources','adversary'][port-4212]:null;
-    const base=app?path.resolve(publisher,app):productionRoles?path.resolve(fileURLToPath(new URL(port===4211?'../dist-runtime/':'../dist-manager/',import.meta.url))):root;
+    const base=app?path.resolve(publisher,app):port===4210&&managerDirectory?path.resolve(managerDirectory):productionRoles?path.resolve(fileURLToPath(new URL(port===4211?'../dist-runtime/':'../dist-manager/',import.meta.url))):root;
     const filename=path.resolve(base,'.'+relative);
     if(!filename.startsWith(base+path.sep))throw new Error('Invalid path');
     const bytes=await readFile(filename);res.setHeader('Content-Type',types[path.extname(filename)]||'application/octet-stream');res.end(bytes);
@@ -41,5 +41,5 @@ export async function servers({separateRuntime=false,productionRoles=process.env
   server.on('upgrade',(req,socket)=>{traffic.push({port,path:req.url,method:'UPGRADE'});socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n');});
   await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});servers.push(server);
  }
- return {traffic,connections,close:async()=>{await Promise.all(servers.map(s=>new Promise(resolve=>{s.closeAllConnections();s.close(resolve);})));}};
+ return {traffic,connections,setManagerDirectory:directory=>{managerDirectory=directory;},close:async()=>{await Promise.all(servers.map(s=>new Promise(resolve=>{s.closeAllConnections();s.close(resolve);})));}};
 }

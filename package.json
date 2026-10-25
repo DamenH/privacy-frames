@@ -6,6 +6,7 @@
     "build": "node build.mjs && node report.mjs",
     "build:production": "node deployment/build.mjs",
     "test": "node --test test/policy.test.mjs test/build.test.mjs test/import.test.mjs && node test/run.mjs && node test/scoped-storage.mjs && node test/separate-runtime.mjs && node test/website-installation.mjs",
+    "test:upgrade": "node test/upgrade.mjs",
     "test:storage-policy": "node test/storage-policy.mjs",
     "test:mobile": "node test/mobile.mjs",
     "test:compatibility": "node test/compatibility.mjs",

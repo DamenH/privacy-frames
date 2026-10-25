@@ -13,12 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npm run build:production
         env:
           PUBLISHER_URL: ${{ vars.PUBLISHER_URL }}
       - run: node --test test/policy.test.mjs
@@ -46,6 +49,10 @@ jobs:
         if: vars.PAGES_ENABLED == 'true'
         env:
           APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
+      - run: npm run test:upgrade
+        if: vars.PAGES_ENABLED == 'true'
+        env:
+          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
       - name: Provide a virtual audio output for native Firefox playback
         if: vars.PAGES_ENABLED == 'true'
         run: |
@@ -69,8 +76,6 @@ jobs:
         with:
           name: browser-evidence
           path: results/
-      - name: Build the actual manager Pages site
-        run: npm run build:production
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
