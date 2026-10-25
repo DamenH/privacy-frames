@@ -51,6 +51,9 @@ Production configuration is in `deployment/build.mjs`. `MANAGER_URL`, `RUNTIME_U
 
 [REPORT.md](REPORT.md) explains the threat model, architecture, supported features and measurement limits. The library serves it at `report.html`. Live verification uses:
 
+`results/release.json` identifies the current release receipts and successful CI
+run; older deployment receipts remain as historical experiment evidence.
+
 ```sh
 HOST_URL=https://pf.damenh.com/ npm run test:deployed
 ```

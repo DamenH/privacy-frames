@@ -44,10 +44,19 @@ of scope or deferred.
 
 ## Final release checks
 
-- [ ] Commit and publish implementation and example sources; required CI passes.
-- [ ] Verify delivered asset hashes and both entry points against release files.
-- [ ] Reconcile live browser/audio receipts, report and service inventory.
-- [ ] Complete the requirement-by-requirement audit with no required work left.
+- [x] Commit and publish implementation and example sources; required CI passes.
+- [x] Verify delivered asset hashes and both entry points against release files.
+- [x] Reconcile live browser/audio receipts, report and service inventory.
+- [x] Complete the requirement-by-requirement audit with no required work left.
+
+The final audit is recorded in `results/release.json`. It identifies the tested
+implementation and example commits and the successful CI run. Both browsers pass
+11 public installation/execution groups, plus the deployed Pitch Training audio,
+capture and persistence checks. Independent DNS/TCP/STUN controls pass in both
+browsers. All 49 checked public assets match release files. Both earlier entry
+points reach the dedicated manager. Retained hostile-test policy errors were
+inspected as expected enforcement observations, not treated as functional success
+or silently removed.
 
 Browser versions, calibration counts, retained policy observations and actual
 measurements live in `results/`. These gates concern the documented supported

@@ -1,0 +1,30 @@
+[
+  {
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "entry": "github-pages",
+    "canonical": "https://pf.damenh.com/",
+    "interfaceReady": true
+  },
+  {
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "entry": "shared-entry",
+    "canonical": "https://pf.damenh.com/",
+    "interfaceReady": true
+  },
+  {
+    "browser": "firefox",
+    "version": "155.0",
+    "entry": "github-pages",
+    "canonical": "https://pf.damenh.com/",
+    "interfaceReady": true
+  },
+  {
+    "browser": "firefox",
+    "version": "155.0",
+    "entry": "shared-entry",
+    "canonical": "https://pf.damenh.com/",
+    "interfaceReady": true
+  }
+]
