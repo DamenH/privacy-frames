@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-25T15:27:37.674Z",
+  "assets": [
+    {
+      "site": "host",
+      "file": "index.html",
+      "sha256": "31d752cd2182f13f88a44e185e8128151583011c8ed456a771564021e4f9b522"
+    },
+    {
+      "site": "host",
+      "file": "manager.js",
+      "sha256": "efd7f150f7a67411ad6b18da65e087853e9924f6b8e1c0f5cddfc061a28b7391"
+    },
+    {
+      "site": "host",
+      "file": "guard.js",
+      "sha256": "4d6a44ff9078fa9e0af7818de70a8b03ac385bfbaa6a5a2d1d9b18c0eeb71434"
+    },
+    {
+      "site": "host",
+      "file": "sw.js",
+      "sha256": "41a3cda894a1e97ae76529aa4957698ab9789abce5dd7e13fff72f5c5d618ed7"
+    },
+    {
+      "site": "host",
+      "file": "config.json",
+      "sha256": "be7608c33a86194fc3ba00e711208a93f1a1c055082f560df0830aabd30c8fe0"
+    },
+    {
+      "site": "host",
+      "file": "host.css",
+      "sha256": "fe9fce572047c0d11016fb55cf7f73c7e5eea03fdd7a5133d9be0eab4963d458"
+    },
+    {
+      "site": "host",
+      "file": "report.html",
+      "sha256": "d837ca325f34602a7a074ad1b9468d0ac9fe17b05ed9fee7a5ed748547e37830"
+    },
+    {
+      "site": "notes",
+      "file": "app.json",
+      "sha256": "158308b57d678cb28206a4c66b745dc54307baf50f05238fb5004ffa0d78758a"
+    },
+    {
+      "site": "notes",
+      "file": "index.html",
+      "sha256": "e7908d2b9b0ba0c122892aa86f0ff83ec6ec98590d1750c68b68e9a027b37537"
+    },
+    {
+      "site": "notes",
+      "file": "app.css",
+      "sha256": "0fff76060f597aa2570d6c39d69c37d1669205492724180140cd146c9e025d83"
+    },
+    {
+      "site": "notes",
+      "file": "app.js",
+      "sha256": "1cf14de8fae2b96f2ac1a2f5ce8bbfb4da28fe3319a0ada86e1b01d9b7fb0d5e"
+    },
+    {
+      "site": "image",
+      "file": "app.json",
+      "sha256": "d3375a6d64d519b016d8df2aa66ef8374f6ca0b7cdabb37b8062c6300273f671"
+    },
+    {
+      "site": "image",
+      "file": "index.html",
+      "sha256": "ca2cc0b8fc8826df8aec345152d488f4a0af5804b3142dbab7af30e41f63feee"
+    },
+    {
+      "site": "image",
+      "file": "app.css",
+      "sha256": "0fff76060f597aa2570d6c39d69c37d1669205492724180140cd146c9e025d83"
+    },
+    {
+      "site": "image",
+      "file": "app.js",
+      "sha256": "18ef18065df58840dc0198c142143daa66c9940b66fb298ca903aea58979dd57"
+    },
+    {
+      "site": "resources",
+      "file": "app.json",
+      "sha256": "2b117df6d715362b0b0e74a40165839c7e5cbbea6c97efb3c8bd22815d92a8e3"
+    },
+    {
+      "site": "resources",
+      "file": "index.html",
+      "sha256": "1641b864f5bd7f9debc1512532ee72bf01755afb0f788709babdcf72d5f45e13"
+    },
+    {
+      "site": "resources",
+      "file": "app.css",
+      "sha256": "0fff76060f597aa2570d6c39d69c37d1669205492724180140cd146c9e025d83"
+    },
+    {
+      "site": "resources",
+      "file": "app.js",
+      "sha256": "ff950c6d82fbdc41677e424578645e976fab14712fe9356abbff2d7152c88af8"
+    },
+    {
+      "site": "resources",
+      "file": "article.json",
+      "sha256": "0fa17e1669e580e38d5ae6040334c9dd2d0d0abe3b648bfb1e9e382016254839"
+    },
+    {
+      "site": "resources",
+      "file": "cover.svg",
+      "sha256": "251ebf642b1b94fa9f7b9007a9761319a18776fc39e66bf1a311cdb2cca8a75e"
+    },
+    {
+      "site": "adversary",
+      "file": "app.json",
+      "sha256": "029f7b6e83eb378ac2180aadb339123950e241ce9be100aec55c7959e9158dcc"
+    },
+    {
+      "site": "adversary",
+      "file": "index.html",
+      "sha256": "3f5cff8d3e5f5a990448076e4182f16ab9dada8b8e5dd13c563174e0eb53732d"
+    },
+    {
+      "site": "adversary",
+      "file": "app.css",
+      "sha256": "0fff76060f597aa2570d6c39d69c37d1669205492724180140cd146c9e025d83"
+    },
+    {
+      "site": "adversary",
+      "file": "app.js",
+      "sha256": "d60d9ceb23e61b249c8133e4c9b14555e859fa1633fde7bf0f47ab41b5906919"
+    },
+    {
+      "site": "adversary",
+      "file": "worklet.js",
+      "sha256": "3daa827297d3cacbbd4f0860399ab96f1ef0e9d622d39bb952419c7bf8b79226"
+    },
+    {
+      "site": "playground",
+      "file": "app.json",
+      "sha256": "936ecbe556d111c3821550ea16109f87ae8f115e4bd2cdc822449d2e165e27e1"
+    },
+    {
+      "site": "playground",
+      "file": "index.html",
+      "sha256": "6752932f86b8bb3cc9194b06804dac4bbbe05f211676b39984b78197d326c57f"
+    },
+    {
+      "site": "playground",
+      "file": "app.css",
+      "sha256": "92d39fa40419323bd483d640b08fe8aadebe5b0732279d1f34ce2af98c71d847"
+    },
+    {
+      "site": "playground",
+      "file": "app.js",
+      "sha256": "07c126a58fdbe008728333ed8cbdfe249de7bf7dc747ff3194f4a46d42b865ab"
+    }
+  ],
+  "publisherOriginRedirect": {
+    "status": 301,
+    "targetOrigin": "http://pf-apps.damenh.com"
+  }
+}

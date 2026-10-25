@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-25T15:27:37.674Z",
+  "host": "https://damenh.github.io/privacy-frames/",
+  "repositories": [
+    "DamenH/privacy-frames",
+    "DamenH/privacy-frames-apps"
+  ],
+  "user_approved_public_repositories": true,
+  "single_origin_runtime": true,
+  "no_backend": true,
+  "share_updated": true,
+  "dark_compact_interface": true,
+  "editable_playground": true,
+  "local_browser_groups_per_engine": 13,
+  "deployed_groups_per_engine": 10,
+  "real_event_probes_per_engine": 30,
+  "published_assets_matched": 30,
+  "host_workflow": 40206690645,
+  "publisher_workflow": 40206692254,
+  "external_publisher": "https://raw.githubusercontent.com/DamenH/privacy-frames-apps/main/apps/",
+  "optional_publisher_alias": "pf-apps.damenh.com (DNS permission still unavailable; not used by host)"
+}
