@@ -22,9 +22,9 @@ Set `APPS_DIRECTORY=/absolute/path/to/apps` if the publisher repository is elsew
 
 The workflow builds `dist/` and publishes that directory. The service worker is at the project root and controls only that project prefix. No server headers or SPA fallback are required. Unknown virtual runtime paths must remain 404s without the worker.
 
-`PUBLISHER_URL` optionally changes the examples base at build time; its default is `https://pf-apps.damenh.com/`. Each example has an independent manifest and can also be installed through a pasted URL.
+`PUBLISHER_URL` changes the examples base at build time. The live GitHub Pages site uses `https://raw.githubusercontent.com/DamenH/privacy-frames-apps/main/apps/`, so installation needs only the two public repositories and GitHub Pages. The configured custom alias `pf-apps.damenh.com` is awaiting DNS and is not used by the live host. Each example has an independent manifest and can also be installed through a pasted URL.
 
-The publisher needs a different origin. Another repository path on the same `damenh.github.io` hostname does not provide one. The publisher repository uses its own custom domain. Other freely executing code on the host origin must be trusted.
+The publisher needs a different origin. Another repository path on the same `damenh.github.io` hostname does not provide one. Raw GitHub resource URLs provide that separate origin. A custom publisher domain is another option. Other freely executing code on the host origin must be trusted.
 
 The deployment job is enabled by the repository variable `PAGES_ENABLED=true`, after Pages has been configured. The host workflow checks out the publisher fixtures when publishing. A private publisher repository requires a read-only deploy key supplied as `APPS_DEPLOY_KEY`; public publishers require no key.
 
