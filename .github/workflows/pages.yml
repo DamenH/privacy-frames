@@ -19,6 +19,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          PUBLISHER_URL: ${{ vars.PUBLISHER_URL }}
       - run: node --test test/policy.test.mjs
       - uses: actions/checkout@v6
         if: vars.PAGES_ENABLED == 'true'

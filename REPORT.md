@@ -32,7 +32,7 @@ An installed application has a virtual URL under `run/INSTALLATION/`. The servic
 
 The bootstrap establishes restrictions, obtains prepared content from the worker, and then inserts the application markup and loads declared external scripts. The application keeps ordinary JavaScript, asynchronous callbacks, native DOM elements, canvas and fetch. It does not execute inside an emulated widget system or a DOM membrane.
 
-The worker returns resources belonging to that installation, including installed resources requested through their original publisher URLs. Every other runtime HTTP request returns an error. There is no network fallback. POSTs, query-string variants and requests for another installation are not matched as installed resources. Bootstrap resources are cached under a build-specific identity. The library disables navigation preload before declaring readiness.
+The worker returns resources belonging to that installation, including installed resources requested through their original publisher URLs. Every other runtime HTTP request returns an error. There is no network fallback. POSTs, query-string variants and requests for another installation are not matched as installed resources. Bootstrap resources are cached under a build-specific identity covering host code, HTML, CSS, report content, dependency versions and example configuration. A regression test verifies that changing only example URLs invalidates that identity. The library disables navigation preload before declaring readiness.
 
 Service workers can synthesize responses, but are not a general browser firewall. This distinction motivates the separate navigation and execution-context controls. [Service Workers specification](https://www.w3.org/TR/service-workers/)
 

@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node build.mjs && node report.mjs",
-    "test": "node --test test/policy.test.mjs && node test/run.mjs",
+    "test": "node --test test/policy.test.mjs test/build.test.mjs && node test/run.mjs",
     "serve": "node test/serve.mjs",
     "test:deployed": "node test/deployed.mjs"
   },
