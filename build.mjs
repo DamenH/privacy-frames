@@ -4,7 +4,7 @@ import {pathToFileURL} from 'node:url';
 import {build} from 'esbuild';
 import {mkdir,copyFile,writeFile,readFile} from 'node:fs/promises';
 const dist=process.env.BUILD_DIRECTORY?pathToFileURL(resolve(process.env.BUILD_DIRECTORY)+'/'):new URL('./dist/',import.meta.url);await mkdir(dist,{recursive:true});
-const publisher=process.env.PUBLISHER_URL||'https://pf-apps.damenh.com/';
+const publisher=process.env.PUBLISHER_URL||'https://raw.githubusercontent.com/DamenH/privacy-frames-apps/main/apps/';
 const config=process.env.HOST_CONFIG?JSON.parse(await readFile(process.env.HOST_CONFIG,'utf8')):{examples:['notes','image','resources','adversary','playground'].map((id,i)=>({name:['Notes','Image editor','Offline reader','Hostile app','Code playground'][i],url:new URL(id+'/',publisher).href}))};
 const buildHash=createHash('sha256');
 for(const file of ['src/guard.js','src/worker.js','src/manager.js','src/package.js','src/store.js','src/index.html','src/host.css','REPORT.md','report.mjs','package-lock.json'])buildHash.update(await readFile(new URL(file,import.meta.url)));

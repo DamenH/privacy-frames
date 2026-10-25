@@ -13,5 +13,6 @@ test('changing only example configuration invalidates trusted bootstrap cache',a
   assert.notEqual(first,second);
   const config=join(temporary,'config.json');await writeFile(config,JSON.stringify({examples:[]}));
   const third=await build({HOST_CONFIG:config});assert.notEqual(second,third);
+  await build({HOST_CONFIG:'',PUBLISHER_URL:''});const defaults=JSON.parse(await readFile(join(temporary,'config.json'),'utf8'));assert.equal(defaults.examples.length,5);assert(defaults.examples.every(app=>app.url.startsWith('https://raw.githubusercontent.com/DamenH/privacy-frames-apps/main/apps/')));
  }finally{await rm(temporary,{recursive:true,force:true});}
 });
