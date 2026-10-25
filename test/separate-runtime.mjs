@@ -1,24 +1,25 @@
+import {launch} from './browser-profile.mjs';
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import {chromium,firefox} from 'playwright';
 import {servers} from './server.mjs';
 const server=await servers({separateRuntime:true}),results=[];
 try{for(const [name,engine]of Object.entries({chromium,firefox})){
- const browser=await engine.launch(),context=await browser.newContext(),manager=await context.newPage();
+ const browser=await launch(engine),context=await browser.newContext(),manager=await context.newPage();
  const checks=[];let errors=[];
  try{
   manager.on('pageerror',e=>errors.push(e.message));
   await manager.goto('http://127.0.0.1:4210/privacy-frames/');
-  await manager.locator('#connect-runtime').waitFor();
+  await manager.locator('#refresh-apps').waitFor();
   await manager.evaluate(()=>localStorage.setItem('manager-secret','synthetic-manager-canary'));
-  const opened=context.waitForEvent('page');await manager.locator('#connect-runtime').click();const installer=await opened;
-  installer.on('pageerror',e=>errors.push(e.message));
   await manager.getByText('Ready to install.',{exact:true}).waitFor();
-  assert.equal(new URL(installer.url()).hostname,'localhost');
-  checks.push('Top-level cross-site runtime connected without an iframe');
+  const installer=manager.frames().find(frame=>frame.url().endsWith('/connect.html'));
+  assert(installer);assert.equal(context.pages().length,1);
+  assert.equal(new URL(installer.url()).hostname,'127.0.0.1');
+  checks.push('Same-site cross-origin iframe connects without a popup');
   await manager.locator('#app-url').fill('http://127.0.0.1:4212/');await manager.locator('#install button').click();
   const launch=manager.locator('[data-app="notes"]');await launch.waitFor();
-  assert.match(await launch.getAttribute('href'),/^http:\/\/localhost:4211\/runtime\/apps\/notes\/notes-[a-f0-9]{64}\/index.html$/);
+  assert.match(await launch.getAttribute('href'),/^http:\/\/127\.0\.0\.1:4211\/runtime\/[A-Za-z0-9_-]{11}\/notes\/$/);
   const appOpened=context.waitForEvent('page');await launch.click();const app=await appOpened;
   app.on('pageerror',e=>errors.push(e.message));
   await app.locator('#note').waitFor();await app.locator('#note').fill('private-local-notes');await app.locator('#save').click();
@@ -27,13 +28,29 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   await app.reload();await app.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));assert.equal(await app.locator('#note').inputValue(),'private-local-notes');
   checks.push('Readable source-bound URL, scoped persistence and separate manager storage');
   await app.close();await manager.reload();await manager.locator('[data-app="notes"]').waitFor();
-  assert.equal(await manager.locator('iframe').count(),0);
+  assert.equal(await manager.locator('iframe').count(),1);
   const reopened=context.waitForEvent('page');await manager.locator('[data-app="notes"]').click();const offline=await reopened;
   await offline.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));
   await context.setOffline(true);await offline.reload();await offline.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));
   assert.equal(await offline.locator('#note').inputValue(),'private-local-notes');
   await context.setOffline(false);await offline.close();
   checks.push('Cached manager library launches installed application offline');
+  // A genuine same-runtime document embedded by a publisher must not accept
+  // that publisher as its manager, even though it can load the bridge URL.
+  const outsider=await context.newPage();await outsider.goto('http://127.0.0.1:4212/');
+  const impersonation=await outsider.evaluate(async()=>{
+   const frame=document.createElement('iframe');frame.src='http://127.0.0.1:4211/runtime/connect.html';document.body.append(frame);await new Promise(resolve=>frame.onload=resolve);
+   return await new Promise(resolve=>{const channel=new MessageChannel();channel.port1.onmessage=e=>{channel.port1.close();resolve(e.data.type);};frame.contentWindow.postMessage({type:'pf-connect'},'http://127.0.0.1:4211',[channel.port2]);setTimeout(()=>{channel.port1.close();resolve('no authority');},400);});
+  });assert.equal(impersonation,'no authority');await outsider.close();checks.push('A publisher parent cannot authenticate to a real runtime bridge');
+  const bridge=manager.frames().find(frame=>frame.url().endsWith('/connect.html'));
+  const installedId=await manager.locator('[data-app="notes"]').getAttribute('data-installation');
+  await bridge.evaluate(async id=>{
+   const db=await new Promise((resolve,reject)=>{const request=indexedDB.open('privacy-frames-host-v1',2);request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
+   await new Promise((resolve,reject)=>{const tx=db.transaction('apps','readwrite'),store=tx.objectStore('apps'),read=store.get(id);read.onsuccess=()=>store.put({...read.result,id:'collision-'+id.slice(-64)});tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();
+  },installedId);
+  await manager.locator('#app-url').fill('http://127.0.0.1:4212/');await manager.locator('#install button').click();await manager.getByText('Installation refused: Installation alias collision',{exact:true}).waitFor();
+  await bridge.evaluate(async id=>{const db=await new Promise(resolve=>{const request=indexedDB.open('privacy-frames-host-v1',2);request.onsuccess=()=>resolve(request.result);});await new Promise(resolve=>{const tx=db.transaction('apps','readwrite');tx.objectStore('apps').delete('collision-'+id.slice(-64));tx.oncomplete=resolve;});db.close();},installedId);
+  checks.push('A forced 64-bit alias collision refuses installation without overwriting an app');
   assert.deepEqual(errors,[]);results.push({name,version:browser.version(),checks});
  }catch(error){results.push({name,checks,errors,failure:error.stack});throw error;}
  finally{await context.close();await browser.close();}

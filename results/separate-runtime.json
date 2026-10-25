@@ -3,18 +3,22 @@
     "name": "chromium",
     "version": "153.0.8010.12",
     "checks": [
-      "Top-level cross-site runtime connected without an iframe",
+      "Same-site cross-origin iframe connects without a popup",
       "Readable source-bound URL, scoped persistence and separate manager storage",
-      "Cached manager library launches installed application offline"
+      "Cached manager library launches installed application offline",
+      "A publisher parent cannot authenticate to a real runtime bridge",
+      "A forced 64-bit alias collision refuses installation without overwriting an app"
     ]
   },
   {
     "name": "firefox",
     "version": "155.0",
     "checks": [
-      "Top-level cross-site runtime connected without an iframe",
+      "Same-site cross-origin iframe connects without a popup",
       "Readable source-bound URL, scoped persistence and separate manager storage",
-      "Cached manager library launches installed application offline"
+      "Cached manager library launches installed application offline",
+      "A publisher parent cannot authenticate to a real runtime bridge",
+      "A forced 64-bit alias collision refuses installation without overwriting an app"
     ]
   }
 ]

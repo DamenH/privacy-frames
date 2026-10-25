@@ -5,45 +5,60 @@ const $=selector=>document.querySelector(selector);
 const base=new URL('./',location.href);
 let worker;
 let runtimeBase=base;
-let remotePort,remoteWindow,sequence=0,connecting;
+let remotePort,remoteFrame,sequence=0,connecting;
 const pending=new Map();
+function disconnectRuntime(error){
+ remotePort?.close();remotePort=null;connecting=null;
+ for(const request of pending.values()){clearTimeout(request.timer);request.reject(error);}
+ pending.clear();
+}
 function connectRuntime(){
- if(remotePort&&!remoteWindow?.closed)return Promise.resolve();
- if(connecting&&!remoteWindow?.closed)return connecting;
- remoteWindow=window.open(new URL('connect.html',runtimeBase),'privacy-frames-runtime');
- if(!remoteWindow)return Promise.reject(new Error('Allow the runtime window to open, then try again.'));
+ if(remotePort&&remoteFrame?.isConnected)return Promise.resolve();
+ if(connecting)return connecting;
+ remoteFrame?.remove();
+ const frame=document.createElement('iframe');remoteFrame=frame;
+ frame.id='runtime-bridge';frame.title='Application storage';frame.hidden=true;
+ frame.setAttribute('allow','storage-access');
  connecting=new Promise((resolve,reject)=>{
-  const attempts=new Set();
-  const closeAttempts=keep=>{for(const port of attempts)if(port!==keep)port.close();attempts.clear();};
-  const timer=setTimeout(()=>{clearInterval(retry);closeAttempts();connecting=null;reject(new Error('Runtime connection timed out.'));},30000);
-  let sent=false;
-  // Retry the handshake until the trusted window has installed its listener.
-  // A fresh port is transferred per attempt; only the accepted attempt is used.
-  const retry=setInterval(()=>{
-   if(sent)return;
-   const attempt=new MessageChannel();
-   attempts.add(attempt.port1);
-   attempt.port1.onmessage=event=>{
-    if(event.data?.type==='pf-error'){clearInterval(retry);clearTimeout(timer);closeAttempts();connecting=null;reject(new Error(event.data.error));return;}
-    if(event.data?.type!=='pf-ready'||event.data.base!==runtimeBase.href)return;
-    sent=true;clearInterval(retry);clearTimeout(timer);closeAttempts(attempt.port1);remotePort=attempt.port1;
-    remotePort.onmessage=event=>{const request=pending.get(event.data?.id);if(!request)return;pending.delete(event.data.id);clearTimeout(request.timer);event.data.ok?request.resolve(event.data.value):request.reject(new Error(event.data.error));};
-    resolve();
-   };
-   remoteWindow.postMessage({type:'pf-connect'},runtimeBase.origin,[attempt.port2]);
-  },200);
+  const attempts=new Set();let retry,timer,settled=false;
+  const cleanup=keep=>{clearInterval(retry);clearTimeout(timer);for(const port of attempts)if(port!==keep)port.close();attempts.clear();};
+  const failed=error=>{if(settled)return;settled=true;cleanup();disconnectRuntime(error);frame.remove();reject(error);};
+  frame.onerror=()=>failed(new Error('Application storage could not load.'));
+  frame.onload=()=>{
+   if(settled){disconnectRuntime(new Error('Application storage reloaded. Try again.'));return;}
+   clearInterval(retry);for(const port of attempts)port.close();attempts.clear();
+   retry=setInterval(()=>{
+    const attempt=new MessageChannel();attempts.add(attempt.port1);
+    attempt.port1.onmessage=event=>{
+     if(event.data?.type==='pf-storage-required'){
+      frame.hidden=false;frame.className='storage-permission';status('Allow application storage to continue.');return;
+     }
+     if(event.data?.type==='pf-error'){failed(new Error(event.data.error));return;}
+     if(event.data?.type!=='pf-ready'||event.data.base!==runtimeBase.href)return;
+     settled=true;cleanup(attempt.port1);frame.hidden=true;remotePort=attempt.port1;
+     remotePort.onmessage=event=>{const request=pending.get(event.data?.id);if(!request)return;pending.delete(event.data.id);clearTimeout(request.timer);event.data.ok?request.resolve(event.data.value):request.reject(new Error(event.data.error));};
+     remotePort.onmessageerror=()=>disconnectRuntime(new Error('Application storage connection failed.'));
+     resolve();
+    };
+    frame.contentWindow.postMessage({type:'pf-connect'},runtimeBase.origin,[attempt.port2]);
+   },200);
+  };
+  timer=setTimeout(()=>failed(new Error('Application storage connection timed out.')),60000);
+  frame.src=new URL('connect.html',runtimeBase);document.body.append(frame);
  });
  return connecting;
 }
 
 async function initialize(manage=true){
  if(!('serviceWorker' in navigator))throw new Error('This browser does not support service workers.');
+ const initiallyControlled=!!navigator.serviceWorker.controller;
  let registration;
  try{registration=await navigator.serviceWorker.register(new URL('sw.js',base),{scope:base.pathname,updateViaCache:'none'});}
  catch(error){registration=await navigator.serviceWorker.getRegistration(base.pathname);if(!registration?.active)throw error;}
  await navigator.serviceWorker.ready;
  if(registration.navigationPreload)await registration.navigationPreload.disable();
  if(!navigator.serviceWorker.controller)await new Promise(resolve=>navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true}));
+ if(!initiallyControlled){location.reload();await new Promise(()=>{});}
  worker=navigator.serviceWorker.controller;
  navigator.serviceWorker.addEventListener('controllerchange',()=>{worker=navigator.serviceWorker.controller;});
  if(manage){await refresh();status('Ready to install.');}
@@ -107,6 +122,7 @@ $('#refresh-events').addEventListener('click',async()=>{
  try{const events=await request('events');$('#events').textContent=events.length?events.slice(-40).reverse().map(e=>`${e.kind.toUpperCase()}  ${e.method}  ${e.url}`).join('\n'):'No runtime requests recorded.';}
  catch(error){status(error.message,true);}
 });
+$('#refresh-apps').addEventListener('click',async()=>{try{await refresh();status('Ready to install.');}catch(error){status(error.message,true);}});
 
 try{
  const response=await fetch(new URL('config.json',base));if(!response.ok)throw new Error('Host configuration unavailable.');
@@ -122,8 +138,7 @@ try{
  if(runtimeBase.origin!==base.origin||runtimeBase.pathname!==base.pathname){
   await initialize(false);
   try{render(JSON.parse(localStorage.getItem('privacy-frames-library')||'[]'));}catch{render([]);}
-  const connect=node('button','Connect runtime','quiet');connect.type='button';connect.id='connect-runtime';
-  connect.addEventListener('click',async()=>{try{await connectRuntime();await refresh();status('Ready to install.');}catch(error){status(error.message,true);}});
-  $('#status').after(connect);status('Connect runtime to manage applications.');
+  await refresh();status('Ready to install.');
  }else await initialize();
+ $('#refresh-apps').disabled=false;
 }catch(error){status(error.message,true);}

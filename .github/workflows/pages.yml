@@ -34,6 +34,18 @@ jobs:
         if: vars.PAGES_ENABLED == 'true'
         env:
           APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
+      - run: npm run test:storage-policy
+        if: vars.PAGES_ENABLED == 'true'
+        env:
+          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
+      - run: npm run test:mobile
+        if: vars.PAGES_ENABLED == 'true'
+        env:
+          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
+      - run: npm run test:compatibility
+        if: vars.PAGES_ENABLED == 'true'
+        env:
+          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
       - name: Provide a virtual audio output for native Firefox playback
         if: vars.PAGES_ENABLED == 'true'
         run: |
@@ -57,18 +69,12 @@ jobs:
         with:
           name: browser-evidence
           path: results/
-      # The manager must not trust unrelated GitHub project paths as clients.
-      # Pages remains an entry point to its dedicated static origin.
-      - run: npm run build
-        env:
-          MANAGER_URL: https://pf.damenh.com/
-          RUNTIME_URL: https://pf-runtime.damenh.com/
-          MANAGER_ORIGINS: '["https://pf.damenh.com"]'
-          HOST_CONFIG: deployment/config.json
-          PUBLISHER_URL: ${{ vars.PUBLISHER_URL }}
+      - name: Build the actual manager Pages site
+        run: npm run build:production
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: dist-manager
   deploy:
     if: vars.PAGES_ENABLED == 'true'
     needs: build

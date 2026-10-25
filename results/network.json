@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-25T17:53:44.376Z",
+  "date": "2026-10-25T23:41:34.755Z",
   "checks": [
     "Runtime network, cache fetch, speculative links/rules, sockets, RTC and navigation preload refused with zero receiver TCP or STUN UDP traffic",
     "Independent syscall tracing observes real DNS-query sends for the unrestricted control and none for the private marker",
@@ -86,65 +86,65 @@
   },
   "observation": {
     "method": "strace of fresh browser/children network send syscalls; independent HTTP/TCP and STUN UDP receivers",
-    "traceProcesses": 178,
+    "traceProcesses": 166,
     "queryRecords": [
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvo4mm60",
+        "label": "pfrt-control-mvoh1xur",
         "syscall": "sendmmsg",
         "sent": 2
       }

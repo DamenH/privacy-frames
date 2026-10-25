@@ -1,28 +1,10 @@
-import {parse,serialize} from 'parse5';
+import {prepareDocument,cssReferences} from './document.js';
 import {digest,LIMITS,safePath,validateMarkup} from './package.js';
 
 function publicURL(input,base){
  const url=new URL(input,base);url.hash='';
  if(url.username||url.password||!['https:','http:'].includes(url.protocol)||url.protocol==='http:'&&!['localhost','127.0.0.1','[::1]'].includes(url.hostname))throw new Error('Installation requires public HTTPS resources');
  return url;
-}
-// Remove browser installation hints/policy metadata, retaining the executable
-// application and ordinary styles. Application JavaScript bytes are unchanged.
-function prepareHTML(text){
- const ast=parse(text),links=[];let title='';
- function walk(node){
-  node.childNodes=(node.childNodes||[]).filter(child=>{
-   const attr=name=>child.attrs?.find(a=>a.name===name)?.value;
-   if(child.tagName==='title')title=(child.childNodes||[]).map(n=>n.value||'').join('');
-   if(child.tagName==='meta'&&!attr('charset')&&!['viewport','color-scheme','theme-color'].includes(attr('name')?.toLowerCase()))return false;
-   if(child.tagName==='link'&&attr('rel')?.toLowerCase()!=='stylesheet')return false;
-   if(child.tagName==='script'&&attr('src'))links.push(attr('src'));
-   if(child.tagName==='link'&&attr('href'))links.push(attr('href'));
-   if(['img','audio','video','source'].includes(child.tagName)&&attr('src')&&!attr('src').startsWith('data:'))links.push(attr('src'));
-   walk(child);return true;
-  });if(node.content)walk(node.content);
- }
- walk(ast);const html=serialize(ast);validateMarkup(html,{document:true,initial:true});return {html,title,links};
 }
 export async function downloadWebsite(input,{onProgress=()=>{}}={}){
  const source=publicURL(input),scope=new URL('./',source),downloads=new Map(),abort=new AbortController();
@@ -44,8 +26,24 @@ export async function downloadWebsite(input,{onProgress=()=>{}}={}){
  }
  let worker;
  try{
-  const entry=await download(source.href),prepared=prepareHTML(new TextDecoder().decode(entry.bytes));
-  await Promise.all(prepared.links.map(link=>download(new URL(link,source).href)));
+  const entry=await download(source.href),prepared=prepareDocument(new TextDecoder().decode(entry.bytes),source.href);
+  await Promise.all(prepared.links.map(link=>download(link)));
+  let publisherManifest=null;
+  if(prepared.manifestURL){
+   try{
+    const resource=await download(prepared.manifestURL);
+    const value=JSON.parse(new TextDecoder().decode(resource.bytes));
+    if(value&&typeof value==='object'&&!Array.isArray(value))publisherManifest={value,url:resource.url};
+    const icons=(value?.icons||[]).filter(icon=>typeof icon.src==='string').slice(0,8);
+    for(const icon of icons)try{await download(new URL(icon.src,resource.url).href);}catch(error){downloads.delete(new URL(icon.src,resource.url).href);onProgress('Optional icon unavailable: '+error.message);}
+   }catch(error){downloads.delete(prepared.manifestURL);onProgress('Optional manifest unavailable: '+error.message);}
+  }
+  const discovered=new Set();
+  while(true){
+   const pending=(await Promise.all(downloads.values())).filter(item=>/text\/css/i.test(item.contentType)&&!discovered.has(item.url));
+   if(!pending.length)break;
+   for(const item of pending){discovered.add(item.url);await Promise.all(cssReferences(new TextDecoder().decode(item.bytes),item.url).map(url=>download(url)));}
+  }
   let receipt=null,caches=[];
   const scriptURL=new URL('sw.js',scope);let script;
   try{script=await download(scriptURL.href);}catch(error){if(error.status!==404)throw error;downloads.delete(scriptURL.href);}
@@ -82,11 +80,11 @@ export async function downloadWebsite(input,{onProgress=()=>{}}={}){
    try{safePath(path);if(paths.has(path))throw new Error('Duplicate path');}catch{path='resources/'+(await digest(new TextEncoder().encode(item.url)))+'.'+(url.pathname.match(/\.([a-z0-9]{1,8})$/i)?.[1]||'bin');}
    paths.add(path);total+=item.bytes.byteLength;if(total>LIMITS.bytes)throw new Error('Prepared application exceeds size limit');
    let bytes=item.bytes;
-   if(/\.html$/i.test(path)){bytes=new TextEncoder().encode(prepareHTML(new TextDecoder().decode(bytes)).html).buffer;}
+   if(/\.html$/i.test(path)){bytes=new TextEncoder().encode(prepareDocument(new TextDecoder().decode(bytes),item.url).html).buffer;}
    resources.push({...item,path,bytes,sha256:await digest(bytes)});
   }
   const label=(scope.pathname.split('/').filter(Boolean).at(-1)||prepared.title.trim()||source.hostname).toLowerCase().replace(/[^a-z0-9-]/g,'-').slice(0,48)||'application';
   const manifest={format:1,id:label,name:prepared.title.trim().slice(0,100)||label,entry:'index.html',resources:resources.map(r=>r.path)};
-  return {id:label+'-'+await digest(new TextEncoder().encode(source.href)),manifest,source:source.href,resources,size:total,installedAt:new Date().toISOString(),preparation:{profile:'website-v1',serviceWorker:receipt,caches:caches.map(cache=>({name:cache.name,urls:cache.entries.map(entry=>entry.url)})),ended:true}};
+  return {id:label+'-'+await digest(new TextEncoder().encode(source.href)),manifest,source:source.href,resources,publisherManifest,size:total,installedAt:new Date().toISOString(),preparation:{profile:'website-v1',serviceWorker:receipt,caches:caches.map(cache=>({name:cache.name,urls:cache.entries.map(entry=>entry.url)})),ended:true}};
  }finally{sealed=true;worker?.terminate();abort.abort();await Promise.allSettled(downloads.values());}
 }

@@ -12,7 +12,7 @@ The examples include notes, an image editor with access to uploaded pixels, an o
 
 The developer and the entire application may be malicious. This includes its installation code, resources and dependencies. An application may try to send private input through a request, create an unrestricted execution context, navigate away, recover native browser capabilities or access another application's storage. A manifest describes a package; it does not certify its safety.
 
-The browser, host implementation, host dependencies and static hosting origins are trusted. The user chooses what to install and supplies private input only after installation. The manager origin must contain only trusted content. Separate project paths on one GitHub Pages hostname do not create separate origins. The canonical manager therefore uses `pf.damenh.com`, the runtime uses `pf-runtime.damenh.com`, and publishers use other origins. GitHub Pages remains an entry point to the manager.
+The browser, host implementation, host dependencies and static hosting origins are trusted. The user chooses what to install and supplies private input only after installation. The manager origin must contain only trusted content. Separate project paths on one GitHub Pages hostname do not create separate origins. The canonical manager therefore uses `pf.damenh.com`, the runtime uses `pf-apps.damenh.com`, and publishers use other origins. Both trusted sites are hosted on GitHub Pages with configured custom domains.
 
 The target is application-initiated network disclosure during isolated execution. Local display, audio playback and processing user-selected files are intended. Browser defects, malicious extensions, physical side channels, infinite-loop availability attacks, developer tools and deliberate browser-menu exports are outside this demonstration. IFC and selective release of private information are not implemented. All applications on the runtime origin remain subject to confinement, including applications that have not read private input.
 
@@ -28,9 +28,17 @@ The runtime checks paths, markup, resource counts and SHA-256 digests before com
 
 The publisher's worker never becomes the isolated document's native controller. A small compatibility object reports the completed precache installation and provides registration/readiness operations for that installed worker. Alternate registrations, updates, worker messaging and navigation preload changes reject. Publisher fetch handlers and their network fallback do not execute during runtime. This is a defined precache compatibility profile, not a complete implementation of service workers.
 
+## Documents and individual PWAs
+
+Document preparation handles ordinary HTML base URL semantics before removing the base element. It resolves resource references and captures nested CSS imports, CSS images and a fixed image candidate instead of retaining an uncaptured responsive-image list. Runtime still forbids new base elements and does not fetch missing resources. Wikipedia's REST HTML is an independent compatibility example using this same importer, with no publisher-specific adapter or exception. Ordinary navigation links are not recursively installed.
+
+When present and readable, a publisher manifest supplies presentation metadata and supported launch preferences. The host rewrites identity, scope, launch URLs, icon URLs and admitted shortcuts to the local installation. Malformed or unavailable optional metadata falls back to the host's metadata and bundled icons. Manifest and icon routes expose only public installation data; they do not grant worker authority or a general network route. The original manifest cannot introduce file, share or protocol handlers.
+
+Each installed application has its own manifest identity and can be installed separately by supporting browsers. The host service worker remains its native controller. Scope is a navigation boundary, not origin or storage isolation. The trusted bootstrap keeps the generated manifest link attached while loading the application so the browser's native installer can inspect it reliably. The browser-local glyph recognition idea is deferred for further design.
+
 ## Runtime and storage
 
-An application opens at `apps/NAME/SOURCE-ID/ENTRY`. The service worker generates an initial document containing only trusted setup code. If setup fails, no application markup or script is admitted. A direct request to that virtual URL without a controlling worker returns a static 404.
+An application opens at `/<ALIAS>/<NAME>/`, preserving its own hash route. The alias is the first 64 source-digest bits encoded as 11 unpadded base64url characters. The full source identity still governs storage and admission; alias collisions are rejected before commitment. The name is a readable canonical label, not an authority. The service worker generates an initial document containing only trusted setup code. If setup fails, no application markup or script is admitted. A direct request to that virtual URL without a controlling worker returns a static 404.
 
 The application uses native JavaScript, asynchronous callbacks, DOM elements, canvas, Web Audio and fetch. This implementation does not provide a DOM membrane or substitute widget language. Resource mapping preserves installed relative resources, module imports and original root-relative paths. Exact publisher URLs are mapped to local installed URLs for fetch, XHR, cache downloads, prepared HTML/CSS and supported DOM URL setters, without rewriting application JavaScript. Hash routing remains local, including across offline reloads. Uninstalled resources, altered queries and document navigation do not acquire network access.
 
@@ -42,7 +50,7 @@ IndexedDB and Cache Storage factory methods prefix names, including calls recove
 
 ## Management and preventing escape
 
-A trusted top-level runtime window establishes first-party storage and accepts a manager connection only from its real opener and an allowed browser-reported origin. Applications launch without openers. Management messages go through MessagePorts; the runtime worker also checks the browser client and a management role issued for that client when trusted documents load. An application-supplied URL or claimed role is insufficient. A separate top-level window avoids relying on a cross-site iframe's partitioned storage matching a later application window.
+A trusted iframe on the runtime origin accepts a manager connection only from its actual parent window and the configured browser-reported manager origin. The manager sends messages only to its own iframe and the exact runtime origin. Applications launch without openers. Management messages go through MessagePorts; the runtime worker independently checks the browser client and a management role issued for trusted document loads. An application-supplied URL or claimed role is insufficient. The bridge does not proxy arbitrary network requests. The same-site, different-origin deployment allows the bridge and top-level applications to use runtime storage without a connection tab. Storage access and worker control are checked; a browser that denies them cannot silently proceed with a separate, empty installation partition.
 
 An initial CSP response blocks frames, objects and workers. A top-level CSP sandbox also excludes popups and downloads. Trusted setup then checks markup before native parsing and checks context-producing operations synchronously: element creation, HTML setters, parser entry points, templates, Shadow DOM and node insertion. Document replacement, custom-element registration and new script agents are unavailable. A protected Navigation API listener cancels document navigation while allowing native-classified fragment changes. Unsupported navigation enforcement refuses startup.
 
@@ -52,11 +60,15 @@ These controls address routes that service workers alone do not mediate. They fo
 
 ## Evidence and reproducibility
 
-`npm test` covers markup policy, the original five applications, scoped storage, cross-site manager/runtime operation and ordinary PWA preparation. The hostile application has 33 real-event probes and 31 additional direct probes. Ten unrestricted parser/context/agent controls establish that the corresponding operations function outside confinement. Test-only native messaging also checks worker management authorization independently of the application API restrictions.
+The browser launcher restores storage privacy settings that Playwright otherwise relaxes: Chromium storage partitioning and Firefox's standard partitioning policy. A separate cross-site control observes partitioned storage, while the deployment uses same-site origins and tests that iframe installation is visible to top-level execution. Automation defaults alone are not used as evidence of storage compatibility.
+
+`npm test` covers markup policy, the original five applications, scoped storage, same-site cross-origin iframe operation and ordinary PWA preparation. The hostile application has 33 real-event probes and 31 additional direct probes. Ten unrestricted parser/context/agent controls establish that the corresponding operations function outside confinement. Test-only native messaging also checks worker management authorization independently of the application API restrictions.
 
 `npm run test:pitch` installs the original Pitch Training URL in Chromium and Firefox. It independently compares installed executable digests with the publisher's bytes. UI interactions exercise sample playback, a completed exercise, score saving, settings and offline reload. The saved score is read back from IndexedDB, preventing a silent localStorage fallback from passing the database test. Native audio buffers contain nonzero samples and play in a running AudioContext. Chromium captures a generated 220 Hz WAV and detects approximately 220 Hz; Firefox detects its native synthetic input near 1000 Hz. Capture stops when requested. Chromium additionally tests denied microphone permission. Full Chromium is used because its lightweight headless shell does not support capture even in the unrestricted control.
 
 `npm run test:network` uses independent HTTP/TCP and STUN UDP receivers and traces network-send syscalls from fresh test browser process trees. Synthetic DNS labels distinguish private attempts from unrestricted controls. The control must produce actual DNS sends, HTTP arrivals and STUN datagrams before a zero private-marker observation can pass. Raw traces are deleted after extracting the test evidence. This measures the tested routes, not every packet or every possible browser service. Fixed trusted worker-update requests are recorded separately from application requests.
+
+`npm run test:compatibility` checks generic document preparation, inherited manifests, two native Chromium PWA installations, app launch and persistence across a full browser restart. `LIVE_ARTICLE=1` additionally checks the live Wikipedia article and captured images offline in both browsers. Native desktop Chromium installation is distinct from mobile viewport checks; real Android/iOS home-screen installation is not claimed.
 
 The recorded browser versions and receipts are in `results/`. `test/deployed.mjs` repeats installation, launch, storage and hostile probes against the public deployments. Local receiver evidence and deployed browser evidence are reported separately. Public asset verification compares delivered hashes with the release files.
 
@@ -71,7 +83,8 @@ The recorded browser versions and receipts are in `results/`. `test/deployed.mjs
 | Cooperative packages and supported precache PWAs | Installable from a URL; CORS still applies |
 | Publisher service-worker runtime behavior | Replaced by the stated compatibility profile |
 | Frames, popups, new agents, arbitrary navigation and network transports | Refused |
-| Worker updates, OS PWA/share integrations, downloads and custom elements | Outside the supported profile |
+| Individual PWA installation | Host-generated identity, scope, launch URL and local icons; browser installation UI varies |
+| Worker updates, OS share/file/protocol handlers, downloads and custom elements | Outside the supported profile |
 | Fine-grained IFC, selective release, general updates/migrations | Deferred or out of scope |
 
 The main result is useful execution of an independently developed application under a deployable browser-local boundary. Browser APIs evolve, and the operation inventory and measurements must evolve with them. A successful fixture establishes its tested behavior; it does not establish compatibility with every PWA or complete noninterference for JavaScript.

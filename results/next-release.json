@@ -1,0 +1,21 @@
+{
+  "status": "implementation-tested-publication-in-progress",
+  "manager": "https://pf.damenh.com/",
+  "runtime": "https://pf-apps.damenh.com/",
+  "provider": "GitHub Pages",
+  "fixtureCommit": "1f6c2fb",
+  "storagePrivacy": "restored Chromium partitioning and Firefox cookie policy",
+  "glyphIndicator": "deferred",
+  "receipts": [
+    "compatibility.json",
+    "mobile.json",
+    "storage-policy.json",
+    "webkit.json"
+  ],
+  "remaining": [
+    "publish manager and pinned runtime",
+    "cut over manager DNS and HTTPS",
+    "verify live browser and asset receipts",
+    "retire old runtime"
+  ]
+}

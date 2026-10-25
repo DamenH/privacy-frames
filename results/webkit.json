@@ -1,0 +1,1 @@
+{"engine":"webkit","tested":false,"reason":"Installed Playwright WebKit cannot launch: host libraries libevent-2.1-7t64 and libmanette-0.2-0 are unavailable. No WebKit confinement or mobile-device result is claimed."}

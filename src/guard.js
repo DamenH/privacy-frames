@@ -1,6 +1,6 @@
 import 'ses';
 import {validateMarkup,elementAllowed} from './package.js';
-import {applicationIdentity} from './runtime-url.js';
+import {applicationIdentity,publicAlias} from './runtime-url.js';
 import {scopeIndexedDB} from './scoped-idb.js';
 import {scopeCaches} from './scoped-caches.js';
 import {preparedWorker} from './prepared-worker.js';
@@ -125,7 +125,9 @@ try {
  for(const key of ['sharedStorage']){const owner=propertyOwner(window,key);if(owner)accessor(owner,key,{get:deny});}
  // Management state is inaccessible; provide application-scoped Storage-compatible methods.
  const guardURL=new URL(document.currentScript.src);
- const app=applicationIdentity(location.href,new URL('./',guardURL));if(!app)throw new Error('Invalid runtime path');
+ const app=document.currentScript.getAttribute('data-installation');
+ const route=applicationIdentity(location.href,new URL('./',guardURL));
+ if(!app||!(route===app||route===publicAlias(app)))throw new Error('Invalid runtime identity');
  const prefix=`pf:${app}:`;
  const scopedCaches=scopeCaches({prefix,method,apply});
  {const owner=propertyOwner(window,'caches');accessor(owner,'caches',{get:()=>scopedCaches});}
@@ -189,7 +191,12 @@ try {
   resources.install(data.aliases||[]);
   applicationWorker=preparedWorker(data.serviceWorker,{source:data.source,runtime:location.href,fail});
   define(window,'privacyHost',{value:Object.freeze({version:1,application:app,publisher:new NativeURL(data.source).origin,mode:'network-isolated'}),writable:false,configurable:false});
-  nativeApply(rawHTML,trustedHead,[data.head]);nativeApply(rawHTML,trustedBody,[data.body]);
+  // Keep the bootstrap's manifest link continuously attached. Native PWA
+  // installation can inspect it while the asynchronous app content is loading.
+  const template=nativeApply(rawCreate,document,['template']);nativeApply(rawHTML,template,[data.head]);
+  for(const child of Array.from(template.content.childNodes))nativeApply(rawAppend,trustedHead,[child]);
+  nativeApply(rawHTML,trustedBody,[data.body]);
+  if(data.manifestURL&&!document.querySelector('link[rel="manifest"]')){const link=nativeApply(rawCreate,document,['link']);nativeApply(rawAttr,link,['rel','manifest']);nativeApply(rawAttr,link,['href',data.manifestURL]);nativeApply(rawAppend,trustedHead,[link]);}
   for(const script of data.scripts){
    await new Promise((resolve,reject)=>{const node=nativeApply(rawCreate,document,['script']);nativeApply(rawAttr,node,['src',script.src]);if(script.type)nativeApply(rawAttr,node,['type',script.type]);node.onload=resolve;node.onerror=()=>reject(new Error('Installed script failed'));nativeApply(rawAppend,trustedHead,[node]);});
   }

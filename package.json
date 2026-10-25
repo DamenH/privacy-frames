@@ -5,7 +5,10 @@
   "scripts": {
     "build": "node build.mjs && node report.mjs",
     "build:production": "node deployment/build.mjs",
-    "test": "node --test test/policy.test.mjs test/build.test.mjs && node test/run.mjs && node test/scoped-storage.mjs && node test/separate-runtime.mjs && node test/website-installation.mjs",
+    "test": "node --test test/policy.test.mjs test/build.test.mjs test/import.test.mjs && node test/run.mjs && node test/scoped-storage.mjs && node test/separate-runtime.mjs && node test/website-installation.mjs",
+    "test:storage-policy": "node test/storage-policy.mjs",
+    "test:mobile": "node test/mobile.mjs",
+    "test:compatibility": "node test/compatibility.mjs",
     "test:pitch": "node test/pitch-training.mjs",
     "test:network": "node test/network.mjs && NETWORK_BROWSER=firefox node test/network.mjs",
     "serve": "node test/serve.mjs",

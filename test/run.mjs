@@ -1,14 +1,15 @@
+import {launch} from './browser-profile.mjs';
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import {chromium,firefox} from 'playwright';
 import {servers} from './server.mjs';
 const server=await servers();const results={date:new Date().toISOString(),browsers:[]};
 try{for(const [name,engine]of Object.entries({chromium,firefox})){
- const browser=await engine.launch({headless:true});const context=await browser.newContext();const page=await context.newPage();const errors=[];
+ const browser=await launch(engine,{headless:true});const context=await browser.newContext();const page=await context.newPage();const errors=[];
  // Test-only capability captured before setup, to attack the worker's independent
  // client authorization even if the application's JavaScript gate were bypassed.
  await context.addInitScript(()=>{
-  if(!location.pathname.includes('/apps/'))return;
+  if(!/\/[A-Za-z0-9_-]{11}\//.test(location.pathname))return;
   const controller=navigator.serviceWorker.controller,post=ServiceWorker.prototype.postMessage,apply=Reflect.apply;
   Object.defineProperty(window,'__boundaryWorkerProbe',{value:(operation,payload)=>new Promise(resolve=>{const channel=new MessageChannel();channel.port1.onmessage=e=>{channel.port1.close();resolve(e.data);};apply(post,controller,[{operation,payload,claimedClient:'manager'},[channel.port2]]);})});
  });
@@ -92,7 +93,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   const originalNoteURL=await page.locator('[data-app="notes"]').first().getAttribute('href');const active=await launch('notes');await page.locator('#app-url').fill('http://127.0.0.1:4212/');await page.locator('#install button').click();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Close application windows'));await active.close();
   await page.locator('#app-url').fill('http://127.0.0.1:4212/copy/');await page.locator('#install button').click();await page.waitForFunction(()=>document.querySelectorAll('.app-card').length===6);const links=page.locator('[data-app="notes"]');assert.notEqual(await links.nth(0).getAttribute('href'),await links.nth(1).getAttribute('href'));const copyIndex=(await links.nth(0).getAttribute('href'))===originalNoteURL?1:0;const opened=context.waitForEvent('page');await links.nth(copyIndex).click();const copy=await opened;await copy.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));assert.equal(await copy.locator('#note').inputValue(),'');await copy.close();result.checks.push('Open-window update rejected; same declared ID at different source gets isolated storage');
   // Missing enforcement support refuses entry before private input or app scripts.
-  await context.addInitScript(()=>{if(location.pathname.includes('/apps/'))Object.defineProperty(window,'navigation',{value:undefined,configurable:true});});
+  await context.addInitScript(()=>{if(/\/[A-Za-z0-9_-]{11}\//.test(location.pathname))Object.defineProperty(window,'navigation',{value:undefined,configurable:true});});
   const faultPopup=context.waitForEvent('page');await page.locator('[data-app="notes"]').first().click();const refused=await faultPopup;await refused.getByText('Application refused',{exact:true}).waitFor();assert.equal(await refused.locator('#note').count(),0);assert.equal(await refused.evaluate(()=>typeof window.privacyHost),'undefined');await refused.close();result.checks.push('Unavailable Navigation API refuses startup before application input or execution');
   const fresh=await browser.newContext();const uncontrolled=await fresh.newPage();const missing=await uncontrolled.goto(await page.locator('[data-app="notes"]').first().getAttribute('href'));assert.equal(missing.status(),404);assert.equal(await uncontrolled.locator('#note').count(),0);await fresh.close();result.checks.push('Uncontrolled virtual runtime URL serves 404 without application code');
   await page.locator('.observations summary').click();await page.locator('#refresh-events').click();await page.waitForTimeout(100);assert((await page.locator('#events').innerText()).includes('BLOCKED'));

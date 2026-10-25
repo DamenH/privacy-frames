@@ -1,13 +1,14 @@
+import {launch} from './browser-profile.mjs';
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import {chromium,firefox} from 'playwright';
 import {servers} from './server.mjs';
 const server=await servers({separateRuntime:true}),results=[];
 try{for(const [name,engine]of Object.entries({chromium,firefox})){
- const browser=await engine.launch(name==='chromium'?{executablePath:chromium.executablePath()}:{}),context=await browser.newContext(),manager=await context.newPage();
+ const browser=await launch(engine,name==='chromium'?{executablePath:chromium.executablePath()}:{}),context=await browser.newContext(),manager=await context.newPage();
  const checks=[],errors=[];let app;
  try{
-  await manager.goto('http://127.0.0.1:4210/privacy-frames/');await manager.locator('#connect-runtime').waitFor();await manager.locator('#connect-runtime').click();await manager.getByText('Ready to install.',{exact:true}).waitFor();
+  await manager.goto('http://127.0.0.1:4210/privacy-frames/');await manager.locator('#refresh-apps').waitFor();await manager.getByText('Ready to install.',{exact:true}).waitFor();
   await manager.evaluate(()=>{localStorage.setItem('private-manager-data','synthetic-canary');});
   await manager.locator('#app-url').fill('http://127.0.0.1:4218/');await manager.locator('#install button').click();
   await manager.waitForFunction(()=>/^(Installed |Installation refused:)/.test(document.querySelector('#status').textContent));

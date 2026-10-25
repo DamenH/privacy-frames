@@ -1,0 +1,254 @@
+{
+  "date": "2026-10-25T18:18:49.642Z",
+  "assets": [
+    {
+      "site": "manager",
+      "file": "index.html",
+      "sha256": "31d752cd2182f13f88a44e185e8128151583011c8ed456a771564021e4f9b522"
+    },
+    {
+      "site": "manager",
+      "file": "manager.js",
+      "sha256": "ac25b4f98d2926a2c71eccbaf4586bf8d52dc991104bf3b1d862d04ba47673f0"
+    },
+    {
+      "site": "manager",
+      "file": "guard.js",
+      "sha256": "101b8240679a8e7ec4de6e320c11a6fbb607b11ed2be4e820ea81e469dc24b0e"
+    },
+    {
+      "site": "manager",
+      "file": "sw.js",
+      "sha256": "4d439e3d657d13c6baf9ba4fac3ddabb833dfe2381af7a97c0ab7c56c52de36f"
+    },
+    {
+      "site": "manager",
+      "file": "config.json",
+      "sha256": "e6f31c3fa03079fd9631e4d91dfc7e27db82d9f3428834860ad460ac455b7898"
+    },
+    {
+      "site": "manager",
+      "file": "host.css",
+      "sha256": "fe9fce572047c0d11016fb55cf7f73c7e5eea03fdd7a5133d9be0eab4963d458"
+    },
+    {
+      "site": "manager",
+      "file": "report.html",
+      "sha256": "d36fe7d2c49adc170f350de550c09ee41ca46129b823d5c611fc09e880dee275"
+    },
+    {
+      "site": "manager",
+      "file": "connect.html",
+      "sha256": "e2f37851f43cc9ec2e1830e69fd144291128b08dbe04cff05e4fea6aff9ea52d"
+    },
+    {
+      "site": "manager",
+      "file": "connect.js",
+      "sha256": "6946930b692e3c8cd94d13fe7fbf8fb925cd2946c4ce644739bb18a88f46be98"
+    },
+    {
+      "site": "manager",
+      "file": "install-worker.js",
+      "sha256": "e82a104a1f7b004f0e7b055f597a0a82ecef6923e3c2f2e4296f6824a3dd08ba"
+    },
+    {
+      "site": "runtime",
+      "file": "index.html",
+      "sha256": "31d752cd2182f13f88a44e185e8128151583011c8ed456a771564021e4f9b522"
+    },
+    {
+      "site": "runtime",
+      "file": "manager.js",
+      "sha256": "ac25b4f98d2926a2c71eccbaf4586bf8d52dc991104bf3b1d862d04ba47673f0"
+    },
+    {
+      "site": "runtime",
+      "file": "guard.js",
+      "sha256": "101b8240679a8e7ec4de6e320c11a6fbb607b11ed2be4e820ea81e469dc24b0e"
+    },
+    {
+      "site": "runtime",
+      "file": "sw.js",
+      "sha256": "4d439e3d657d13c6baf9ba4fac3ddabb833dfe2381af7a97c0ab7c56c52de36f"
+    },
+    {
+      "site": "runtime",
+      "file": "config.json",
+      "sha256": "e6f31c3fa03079fd9631e4d91dfc7e27db82d9f3428834860ad460ac455b7898"
+    },
+    {
+      "site": "runtime",
+      "file": "host.css",
+      "sha256": "fe9fce572047c0d11016fb55cf7f73c7e5eea03fdd7a5133d9be0eab4963d458"
+    },
+    {
+      "site": "runtime",
+      "file": "report.html",
+      "sha256": "d36fe7d2c49adc170f350de550c09ee41ca46129b823d5c611fc09e880dee275"
+    },
+    {
+      "site": "runtime",
+      "file": "connect.html",
+      "sha256": "e2f37851f43cc9ec2e1830e69fd144291128b08dbe04cff05e4fea6aff9ea52d"
+    },
+    {
+      "site": "runtime",
+      "file": "connect.js",
+      "sha256": "6946930b692e3c8cd94d13fe7fbf8fb925cd2946c4ce644739bb18a88f46be98"
+    },
+    {
+      "site": "runtime",
+      "file": "install-worker.js",
+      "sha256": "e82a104a1f7b004f0e7b055f597a0a82ecef6923e3c2f2e4296f6824a3dd08ba"
+    },
+    {
+      "site": "notes",
+      "file": "app.css",
+      "sha256": "0fff76060f597aa2570d6c39d69c37d1669205492724180140cd146c9e025d83"
+    },
+    {
+      "site": "notes",
+      "file": "app.js",
+      "sha256": "1cf14de8fae2b96f2ac1a2f5ce8bbfb4da28fe3319a0ada86e1b01d9b7fb0d5e"
+    },
+    {
+      "site": "notes",
+      "file": "app.json",
+      "sha256": "158308b57d678cb28206a4c66b745dc54307baf50f05238fb5004ffa0d78758a"
+    },
+    {
+      "site": "notes",
+      "file": "index.html",
+      "sha256": "e7908d2b9b0ba0c122892aa86f0ff83ec6ec98590d1750c68b68e9a027b37537"
+    },
+    {
+      "site": "image",
+      "file": "app.css",
+      "sha256": "0fff76060f597aa2570d6c39d69c37d1669205492724180140cd146c9e025d83"
+    },
+    {
+      "site": "image",
+      "file": "app.js",
+      "sha256": "18ef18065df58840dc0198c142143daa66c9940b66fb298ca903aea58979dd57"
+    },
+    {
+      "site": "image",
+      "file": "app.json",
+      "sha256": "d3375a6d64d519b016d8df2aa66ef8374f6ca0b7cdabb37b8062c6300273f671"
+    },
+    {
+      "site": "image",
+      "file": "index.html",
+      "sha256": "ca2cc0b8fc8826df8aec345152d488f4a0af5804b3142dbab7af30e41f63feee"
+    },
+    {
+      "site": "resources",
+      "file": "app.css",
+      "sha256": "0fff76060f597aa2570d6c39d69c37d1669205492724180140cd146c9e025d83"
+    },
+    {
+      "site": "resources",
+      "file": "app.js",
+      "sha256": "ff950c6d82fbdc41677e424578645e976fab14712fe9356abbff2d7152c88af8"
+    },
+    {
+      "site": "resources",
+      "file": "app.json",
+      "sha256": "2b117df6d715362b0b0e74a40165839c7e5cbbea6c97efb3c8bd22815d92a8e3"
+    },
+    {
+      "site": "resources",
+      "file": "article.json",
+      "sha256": "0fa17e1669e580e38d5ae6040334c9dd2d0d0abe3b648bfb1e9e382016254839"
+    },
+    {
+      "site": "resources",
+      "file": "cover.svg",
+      "sha256": "251ebf642b1b94fa9f7b9007a9761319a18776fc39e66bf1a311cdb2cca8a75e"
+    },
+    {
+      "site": "resources",
+      "file": "index.html",
+      "sha256": "1641b864f5bd7f9debc1512532ee72bf01755afb0f788709babdcf72d5f45e13"
+    },
+    {
+      "site": "adversary",
+      "file": "app.css",
+      "sha256": "0fff76060f597aa2570d6c39d69c37d1669205492724180140cd146c9e025d83"
+    },
+    {
+      "site": "adversary",
+      "file": "app.js",
+      "sha256": "031d069751b498897302011b63f3b9d262c58c1bb9919760c20b9c8e7e74e85e"
+    },
+    {
+      "site": "adversary",
+      "file": "app.json",
+      "sha256": "029f7b6e83eb378ac2180aadb339123950e241ce9be100aec55c7959e9158dcc"
+    },
+    {
+      "site": "adversary",
+      "file": "index.html",
+      "sha256": "3f5cff8d3e5f5a990448076e4182f16ab9dada8b8e5dd13c563174e0eb53732d"
+    },
+    {
+      "site": "adversary",
+      "file": "worklet.js",
+      "sha256": "3daa827297d3cacbbd4f0860399ab96f1ef0e9d622d39bb952419c7bf8b79226"
+    },
+    {
+      "site": "playground",
+      "file": "app.css",
+      "sha256": "92d39fa40419323bd483d640b08fe8aadebe5b0732279d1f34ce2af98c71d847"
+    },
+    {
+      "site": "playground",
+      "file": "app.js",
+      "sha256": "07c126a58fdbe008728333ed8cbdfe249de7bf7dc747ff3194f4a46d42b865ab"
+    },
+    {
+      "site": "playground",
+      "file": "app.json",
+      "sha256": "936ecbe556d111c3821550ea16109f87ae8f115e4bd2cdc822449d2e165e27e1"
+    },
+    {
+      "site": "playground",
+      "file": "index.html",
+      "sha256": "6752932f86b8bb3cc9194b06804dac4bbbe05f211676b39984b78197d326c57f"
+    },
+    {
+      "site": "ordinary",
+      "file": "dependency.js",
+      "sha256": "26036c6b80c0f875d4c7f183b523d70a5755737140a685c9daa61ec8137ebabf"
+    },
+    {
+      "site": "ordinary",
+      "file": "index.html",
+      "sha256": "aba1cbecb8ef55f505e0684a7cfb28cb1f4d8bdfc4e199c31f535b55db222355"
+    },
+    {
+      "site": "ordinary",
+      "file": "main.js",
+      "sha256": "2f976a989103103715526288f99566b04725e391b22ccbd63b828a08c09fe0a4"
+    },
+    {
+      "site": "ordinary",
+      "file": "manifest.webmanifest",
+      "sha256": "e47b57b73bd8ca566e3a1f7e729eaa1700688f975aff37774c57f4615deef6f5"
+    },
+    {
+      "site": "ordinary",
+      "file": "style.css",
+      "sha256": "2457786d48e1c76ce7cbe71ccf5e1fa990d0dea7892b149e600e142bb50b521a"
+    },
+    {
+      "site": "ordinary",
+      "file": "sw.js",
+      "sha256": "b0b89c5c800f042b8425ff7e4ecfeeeb239fe016ee15d66637db7c76ab4894cc"
+    }
+  ],
+  "githubEntry": {
+    "managerURL": "https://pf.damenh.com/",
+    "runtimeURL": "https://pf-runtime.damenh.com/"
+  }
+}

@@ -1,3 +1,4 @@
+import {launch} from './browser-profile.mjs';
 import assert from 'node:assert/strict';
 import dgram from 'node:dgram';
 import {mkdtemp,writeFile,readFile,readdir,rm} from 'node:fs/promises';
@@ -18,11 +19,11 @@ await new Promise(resolve=>udp.bind(4220,'127.0.0.1',resolve));
 const results={date:new Date().toISOString(),checks:[],controls:{},isolated:{}};let browser;
 const token=Date.now().toString(36),privateDomain='pfrt-private-'+token+'.invalid',controlDomain='pfrt-control-'+token+'.invalid';
 try{
- browser=await engine.launch({executablePath:wrapper,env:{...process.env,PF_TRACE_PREFIX:join(directory,'trace')},...(name==='firefox'?{firefoxUserPrefs:{'media.peerconnection.ice.loopback':true}}:{})});
+ browser=await launch(engine,{executablePath:wrapper,env:{...process.env,PF_TRACE_PREFIX:join(directory,'trace')},...(name==='firefox'?{firefoxUserPrefs:{'media.peerconnection.ice.loopback':true}}:{})});
  results.browser=name;
  results.version=browser.version();const context=await browser.newContext(),manager=await context.newPage();
  results.profile={nativeExecutable:engine.executablePath().split('/').slice(-2).join('/'),loopbackRTCEnabledForControl:name==='firefox'};
- await manager.goto('http://127.0.0.1:4210/privacy-frames/');await manager.locator('#connect-runtime').click();await manager.getByText('Ready to install.',{exact:true}).waitFor();
+ await manager.goto('http://127.0.0.1:4210/privacy-frames/');await manager.getByText('Ready to install.',{exact:true}).waitFor();
  await manager.locator('#app-url').fill('http://127.0.0.1:4215/');await manager.locator('#install button').click();await manager.locator('[data-app="adversary"]').waitFor();
  const opened=context.waitForEvent('page');await manager.locator('[data-app="adversary"]').click();const app=await opened;await app.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));
  const trafficStart=server.traffic.length,connectionsStart=server.connections.length;

@@ -1,3 +1,4 @@
+import {launch} from './browser-profile.mjs';
 import assert from 'node:assert/strict';
 import {writeFile,mkdtemp,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
@@ -10,17 +11,17 @@ const frames=44100*4,wav=Buffer.alloc(44+frames*2);wav.write('RIFF',0);wav.write
 const deployed=!!process.env.HOST_URL,hostURL=process.env.HOST_URL||'http://127.0.0.1:4210/privacy-frames/';
 const server=deployed?{traffic:[],close:async()=>{}}:await servers({separateRuntime:true}),results=[];
 try{for(const [name,engine]of Object.entries({chromium,firefox})){
- const browser=await engine.launch(name==='chromium'?{executablePath:chromium.executablePath(),args:['--use-fake-device-for-media-stream',`--use-file-for-fake-audio-capture=${tone}`]}:{firefoxUserPrefs:{'media.navigator.streams.fake':true,'media.navigator.permission.disabled':true}}),context=await browser.newContext(),manager=await context.newPage();
+ const browser=await launch(engine,name==='chromium'?{executablePath:chromium.executablePath(),args:['--use-fake-device-for-media-stream',`--use-file-for-fake-audio-capture=${tone}`]}:{firefoxUserPrefs:{'media.navigator.streams.fake':true,'media.navigator.permission.disabled':true}}),context=await browser.newContext(),manager=await context.newPage();
  let runtimeOrigin;
  const checks=[],errors=[],policyObservations=[];let app;
  try{
-  await manager.goto(hostURL);await manager.locator('#connect-runtime').waitFor();
-  await manager.locator('#connect-runtime').click();await manager.getByText('Ready to install.',{exact:true}).waitFor();
+  await manager.goto(hostURL);await manager.locator('#refresh-apps').waitFor();
+  await manager.getByText('Ready to install.',{exact:true}).waitFor();
   await manager.locator('#app-url').fill('https://damenh.github.io/pitch-training/');await manager.locator('#install button').click();
   await manager.waitForFunction(()=>/^(Installed |Installation refused:)/.test(document.querySelector('#status').textContent),{},{timeout:90000});
   assert.match(await manager.locator('#status').textContent(),/^Installed /);
   const installation=await manager.locator('[data-app="pitch-training"]').getAttribute('data-installation');
-  const installer=context.pages().find(page=>new URL(page.url()).pathname.endsWith('/connect.html'));
+  const installer=manager.frames().find(frame=>new URL(frame.url()).pathname.endsWith('/connect.html'));
   runtimeOrigin=new URL(installer.url()).origin;
   if(name==='chromium')await context.grantPermissions(['microphone'],{origin:runtimeOrigin});
   const executableReceipt=await installer.evaluate(id=>new Promise((resolve,reject)=>{

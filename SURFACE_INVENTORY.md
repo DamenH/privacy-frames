@@ -22,7 +22,9 @@ before claiming support for a new browser profile.
 | Local/session storage, property access, clear and storage events | Namespace views and native event mediation | Cross-app and same-app storage suite; synthetic raw-storage escape regression |
 | IndexedDB, Cache Storage and recovered prototype methods | Factory namespaces, scoped enumeration and native IDB behavior | Cross-app database/cache tests, actual saved-score records |
 | Storage-access handles, legacy filesystem and WebSQL entry points | Refused | Authority probes and implementation checks |
-| Host management | Exact opener/origin handshake and browser-client roles; app URL pinned | Separate-runtime suite and native test-only management attack |
+| Host management | Exact parent/origin iframe handshake and browser-client roles; app URL pinned | Separate-runtime suite and native test-only management attack |
+| Public PWA metadata/icons | Fixed read-only routes; no handler or worker authority | Manifest adaptation tests and native Chromium install/launch |
+| Document base URLs and dependencies | Resolved during preparation, removed before runtime; local aliases | Generic import fixtures and live article offline checks |
 | Publisher installation program | SES compartment, limited broker, disposable worker, explicit completion | Conventional PWA fixture, absent-authority receipt and rejected preparation |
 
 Native browser UI, extensions, browser defects, physical/timing channels and

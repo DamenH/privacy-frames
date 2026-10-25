@@ -1,10 +1,11 @@
+import {launch} from './browser-profile.mjs';
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import {chromium,firefox} from 'playwright';
 import {servers} from './server.mjs';
 const server=await servers(),results=[];
 try{for(const [name,engine]of Object.entries({chromium,firefox})){
- const browser=await engine.launch(),context=await browser.newContext(),manager=await context.newPage();
+ const browser=await launch(engine),context=await browser.newContext(),manager=await context.newPage();
  const checks=[];
  try{
   await manager.goto('http://127.0.0.1:4210/privacy-frames/');await manager.getByText('Ready to install.',{exact:true}).waitFor();

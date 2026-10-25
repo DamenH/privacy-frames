@@ -10,7 +10,7 @@
 </head>
 <body>
  <main>
-  <header><h1>Privacy Frames</h1><a href="./report.html">Report</a></header>
+  <header><h1>Privacy Frames</h1><nav class="header-links"><a href="./report.html">Report</a><a href="https://github.com/DamenH/privacy-frames" target="_blank" rel="noopener noreferrer">GitHub</a></nav></header>
   <form id="install">
    <label for="app-url">Application URL</label>
    <div class="input-row">
@@ -23,7 +23,7 @@
    <h2 id="examples-title">Examples</h2><div id="examples"></div>
   </section>
   <section class="library" aria-labelledby="library-title">
-   <h2 id="library-title">Installed <span id="count">0</span></h2>
+   <div class="library-heading"><h2 id="library-title">Installed <span id="count">0</span></h2><button id="refresh-apps" type="button" class="quiet" disabled>Refresh</button></div>
    <p id="empty">No applications installed.</p><div id="app-list"></div>
   </section>
   <details class="observations">
