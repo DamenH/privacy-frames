@@ -62,7 +62,7 @@ Navigation cancellation does not itself stop hyperlink auditing. Chromium's link
 
 ## Evaluation
 
-Run `npm ci`, `npm run build`, and `npm test` in `app-host`. The browser suite serves the library, runtime and four publishers on distinct loopback origins. A separate receiver records HTTP and WebSocket upgrade attempts. No private user information or Internet collection endpoint is used. The policy tests exercise rejected markup and paths before browser parsing.
+Run `npm ci`, `npm run build`, and `npm test` in `privacy-frames`. The browser suite serves the library, runtime and five publishers on distinct loopback origins. A separate receiver records HTTP and WebSocket upgrade attempts. No private user information or Internet collection endpoint is used. The policy tests exercise rejected markup and paths before browser parsing.
 
 The recorded browser versions are Chromium 153.0.8010.12 and Firefox 155.0. Both run the same bytes for installed and unrestricted applications. The tests exercise real keyboard and pointer interactions, reload, persistent notes, installed image loading and native fetch. The image fixture also checks local file input and exact decoded pixels.
 

@@ -3,3 +3,5 @@ dist/
 .local-deployment.json
 test/apps/
 results/*.png
+
+.share-stage/
