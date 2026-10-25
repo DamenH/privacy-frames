@@ -1,49 +1,58 @@
 # Privacy Frames
 
-A static application host. Paste an application URL, install it, then open the installed copy. The library and runtime use the same origin. There is no application backend, installation iframe or separate runtime deployment.
+A static host for network isolated web applications. Paste an application URL, install it, then open the local copy. The trusted manager and runtime use separate origins. No application backend, request proxy, extension or modified browser is required.
+
+The canonical library is **https://pf.damenh.com/**; installed applications run on **https://pf-runtime.damenh.com/** with their name and source identity in the URL. GitHub Pages is an entry point to the canonical library. Its origin also hosts the original Pitch Training application, so it is not trusted as a management origin.
 
 ## Run locally
 
-Node 24 or newer is recommended. Clone this repository and `DamenH/privacy-frames-apps` as sibling directories:
+Use Node 24 or newer. Clone this repository and `DamenH/privacy-frames-apps` as siblings, then:
 
 ```sh
 npm ci
 npx playwright install chromium firefox
 npm run build
 npm test
+npm run test:pitch
+npm run test:network
 npm run serve
 ```
 
-Open http://127.0.0.1:4210/privacy-frames/. Paste http://127.0.0.1:4212/ to install Notes. Other example applications are on ports 4213–4215; the editable playground is on 4217. The test-only HTTP/TCP receiver uses port 4216. Local servers are development instruments, not deployed runtime dependencies.
+The network suite requires Linux `strace`; it traces only its fresh browser and deletes raw traces. The pitch suite downloads the current public Pitch Training build and uses synthetic audio, with no real microphone input.
 
-Set `APPS_DIRECTORY=/absolute/path/to/apps` if the publisher repository is elsewhere. The local test server deliberately uses a project prefix, matching GitHub Pages behavior.
+Open http://127.0.0.1:4210/privacy-frames/. Notes is at http://127.0.0.1:4212/; Image, Reader and Adversary use 4213–4215; Playground uses 4217 and the no-manifest PWA uses 4218. Receiver port 4216 and runtime port 4211 are test instruments, not deployed dependencies. The automated separate-origin suites use a top-level runtime at `localhost:4211` to exercise cross-site storage behavior. Set `APPS_DIRECTORY` if the fixture repository is elsewhere.
 
-## Deploy to GitHub Pages
+## Install existing applications
 
-The workflow builds `dist/` and publishes that directory. The service worker is at the project root and controls only that project prefix. No server headers or SPA fallback are required. Unknown virtual runtime paths must remain 404s without the worker.
+Paste https://damenh.github.io/pitch-training/ into the library. No Privacy Frames manifest or application source changes are required. The supported website profile collects HTML resources and executes a conventional `sw.js` precache installation in a disposable host worker with limited capabilities. It waits for completion, terminates preparation and starts a fresh isolated document. The publisher never receives native runtime service-worker authority.
 
-`PUBLISHER_URL` optionally changes the examples base at build time. The default and live GitHub Pages site use `https://raw.githubusercontent.com/DamenH/privacy-frames-apps/main/apps/`, so installation needs only the two public repositories and GitHub Pages. The configured custom alias `pf-apps.damenh.com` is awaiting DNS and is not used by the live host. Each example has an independent manifest and can also be installed through a pasted URL.
+Publishers can alternatively provide the explicit `app.json` package convention described in the example repository. Cross-origin installation requires readable CORS responses. Unsupported worker operations reject; runtime never falls back to the network. General PWA compatibility is not assumed.
 
-The publisher needs a different origin. Another repository path on the same `damenh.github.io` hostname does not provide one. Raw GitHub resource URLs provide that separate origin. A custom publisher domain is another option. Other freely executing code on the host origin must be trusted.
-
-The deployment job is enabled by the repository variable `PAGES_ENABLED=true`, after Pages has been configured. The host workflow checks out the publisher fixtures when publishing. A private publisher repository requires a read-only deploy key supplied as `APPS_DEPLOY_KEY`; public publishers require no key.
-
-## Implementation
-
-- `src/manager.js`: library UI and direct worker management, authorized by the browser's client URL.
-- `src/worker.js`: atomic package installation, host assets, runtime responses and cache-or-block application HTTP.
-- `src/guard.js`: trusted pre-execution setup, language hardening, context/navigation/network restrictions and application-scoped storage.
-- `src/package.js`: manifest/resource validation before browser parsing.
-- `test/`: honest app interactions, hostile controls, same-origin management/state attacks and fail-closed entry checks.
-
-Applications currently use the package convention documented in the publisher repository. The discussed explicit, network-enabled installation callback is not implemented by this UI and deployment change.
-
-## Evidence
-
-See [REPORT.md](REPORT.md) for the threat model, measurements and remaining boundaries. The host serves the same report at `report.html`. `results/browser.json` records local browser tests. The deployed share and GitHub Pages checks are retained separately. `test/deployed.mjs` repeats the published installation and execution flow:
+## Build and deploy
 
 ```sh
-HOST_URL=https://damenh.github.io/privacy-frames/ npm run test:deployed
+npm run build:production
+wrangler deploy --config deployment/runtime.jsonc
+wrangler deploy --config deployment/manager.jsonc
 ```
 
-The tests support the admitted application profile, not a universal browser-confinement proof. Browser-menu actions and complete DNS/UDP coverage remain outside the measured guarantee.
+These configurations publish static assets only. The same host code supports a GitHub Pages project path; deploying an actual manager on Pages requires a dedicated origin that serves only trusted host content. The supplied workflow publishes an entry point that forwards to the dedicated manager origin. Unknown virtual app paths must remain 404s without the browser worker; do not enable a server SPA fallback.
+
+Production configuration is in `deployment/build.mjs`. `MANAGER_URL`, `RUNTIME_URL`, `MANAGER_ORIGINS` and `PUBLISHER_URL` also configure individual builds. Only the canonical manager origin belongs in the runtime's production allowlist. Example publishers must use other origins; different paths on one hostname do not isolate them.
+
+## Implementation and evidence
+
+- `src/manager.js`, `src/connect.js`: library and authenticated top-level runtime connection.
+- `src/worker.js`: package validation, management roles, virtual documents and installed-resource request gate.
+- `src/guard.js`: pre-execution setup, context/navigation controls and scoped storage.
+- `src/website.js`, `src/install-worker.js`: public preparation and explicit transition to isolation.
+- `src/prepared-worker.js`: limited completed-precache compatibility interface.
+- `test/`, `results/`: functional, hostile, storage, audio and independently observed network evidence.
+
+[REPORT.md](REPORT.md) explains the threat model, architecture, supported features and measurement limits. The library serves it at `report.html`. Live verification uses:
+
+```sh
+HOST_URL=https://pf.damenh.com/ npm run test:deployed
+```
+
+This is a research demonstration for the documented browser/application profile. IFC and general application updates/migrations remain outside this implementation.

@@ -1,11 +1,17 @@
 import 'ses';
 import {validateMarkup,elementAllowed} from './package.js';
+import {applicationIdentity} from './runtime-url.js';
+import {scopeIndexedDB} from './scoped-idb.js';
+import {scopeCaches} from './scoped-caches.js';
+import {preparedWorker} from './prepared-worker.js';
+import {resourceAliases} from './resource-aliases.js';
 
 // Only this trusted script exists in the initial document. Application content
 // and scripts are loaded from a verified worker response after setup succeeds.
 const rawHTML=Object.getOwnPropertyDescriptor(Element.prototype,'innerHTML').set;
 const rawCreate=Document.prototype.createElement,rawAppend=Node.prototype.appendChild;
 const rawAttr=Element.prototype.setAttribute;
+const rawGetAttr=Element.prototype.getAttribute;
 const trustedHead=document.head,trustedBody=document.body;
 const nativeApply=Reflect.apply;
 // This code is always parser-blocking and precedes all application markup.
@@ -15,10 +21,12 @@ try {
  const apply=Reflect.apply, descriptor=Object.getOwnPropertyDescriptor, define=Object.defineProperty;
  const str=String, array=Array.from;
  const fail=message=>{throw new DOMException(message,'SecurityError')};
+ let applicationWorker=null;
  const deny=()=>fail('Operation prohibited by application host');
  function method(owner,key,replace){const d=descriptor(owner,key);if(!d)return;if(d.value===replace)return; if(!d.configurable&&(!('value'in d)||!d.writable))throw new Error(`Cannot protect ${key}`);define(owner,key,{value:replace,writable:false,configurable:false,enumerable:d.enumerable});}
  function accessor(owner,key,replacement){const d=descriptor(owner,key);if(!d)return;if(!d.configurable)throw new Error(`Cannot protect ${key}`);define(owner,key,{...d,...replacement,configurable:false});}
  function propertyOwner(object,key){for(let p=object;p;p=Object.getPrototypeOf(p))if(Object.hasOwn(p,key))return p;}
+ const resources=resourceAliases({method,accessor,descriptor,apply});
  const prevent=Event.prototype.preventDefault;
  const nativeAdd=EventTarget.prototype.addEventListener;
  const nav=window.navigation;
@@ -62,7 +70,7 @@ try {
  if(globalThis.CustomElementRegistry)for(const key of ['define','initialize','upgrade'])method(CustomElementRegistry.prototype,key,deny);
 
  const create=Document.prototype.createElement, createNS=Document.prototype.createElementNS;
- method(Document.prototype,'createElement',function(name,options){const tag=str(name);elementAllowed(tag);if(options!==undefined)fail('Customized built-in elements are not admitted');if(['script','link','meta'].includes(tag.toLowerCase()))fail('Dynamic policy/resource elements are not admitted');return apply(create,this,[tag])});
+ method(Document.prototype,'createElement',function(name,options){const tag=str(name);elementAllowed(tag);if(options!==undefined)fail('Customized built-in elements are not admitted');if(['script','meta'].includes(tag.toLowerCase()))fail('Dynamic policy/resource elements are not admitted');return apply(create,this,[tag])});
  method(Document.prototype,'createElementNS',function(namespace,name,options){const ns=str(namespace),tag=str(name);elementAllowed(tag);if(!['http://www.w3.org/1999/xhtml','http://www.w3.org/2000/svg','http://www.w3.org/1998/Math/MathML'].includes(ns)||options!==undefined)fail('Unsupported namespace/options');if(['script','link','meta'].includes(tag.toLowerCase()))fail('Dynamic policy/resource elements are not admitted');return apply(createNS,this,[ns,tag])});
  const nodeType=descriptor(Node.prototype,'nodeType').get;
  const first=descriptor(Node.prototype,'firstChild').get,next=descriptor(Node.prototype,'nextSibling').get;
@@ -84,8 +92,8 @@ try {
  for(const ctor of [globalThis.HTMLIFrameElement,globalThis.HTMLFrameElement,globalThis.HTMLObjectElement,globalThis.HTMLEmbedElement])if(ctor){for(const key of ['contentWindow','contentDocument','getSVGDocument']){const d=descriptor(ctor.prototype,key);if(d?.get)accessor(ctor.prototype,key,{get:deny});else if(d?.value)method(ctor.prototype,key,deny);}}
 
  // Reflected properties and Attr objects must not bypass element policy.
- for(const ctor of [globalThis.HTMLLinkElement,globalThis.HTMLMetaElement])if(ctor){
-  for(const key of Object.getOwnPropertyNames(ctor.prototype)){const d=descriptor(ctor.prototype,key);if(d?.set||key==='relList')accessor(ctor.prototype,key,{...(d?.set?{set:deny}:{}),...(key==='relList'?{get:deny}:{})});}
+ for(const ctor of [globalThis.HTMLLinkElement,globalThis.HTMLMetaElement,globalThis.HTMLScriptElement])if(ctor){
+  for(const key of Object.getOwnPropertyNames(ctor.prototype)){const d=descriptor(ctor.prototype,key);if(d?.set||key==='relList')accessor(ctor.prototype,key,{...(d?.set?{set(value){if(ctor===globalThis.HTMLMetaElement&&key==='content'&&apply(rawGetAttr,this,['name'])==='theme-color'&&apply(rawGetAttr,this,['http-equiv'])===null)return apply(d.set,this,[str(value)]);return deny();}}:{}),...(key==='relList'?{get(){const list=apply(d.get,this,[]);return Object.freeze({supports:token=>list.supports(str(token)),contains:token=>list.contains(str(token)),item:index=>list.item(index),get length(){return list.length},get value(){return list.value},toString:()=>list.value,add:deny,remove:deny,toggle:deny,replace:deny,[Symbol.iterator]:()=>list[Symbol.iterator]()});}}:{})});}
  }
 
  const ownerElement=descriptor(Attr.prototype,'ownerElement').get;
@@ -98,28 +106,78 @@ try {
  for(const key of ['WebSocket','WebTransport','RTCPeerConnection','webkitRTCPeerConnection','RTCDataChannel','Worker','SharedWorker','ShadowRealm','BroadcastChannel','EventSource','Notification','PresentationRequest','fetchLater','PendingGetBeacon','PendingPostBeacon','TCPSocket','UDPSocket','WebSocketStream','NDEFReader'])if(key in window)method(window,key,deny);
  for(const key of Object.getOwnPropertyNames(window).filter(k=>/^(RTC|webkitRTC)/.test(k)))method(window,key,deny);
  if(globalThis.Worklet)method(Worklet.prototype,'addModule',deny);
+ // Browser-mediated services are not necessarily ordinary document fetches.
+ // Keep local Web Audio, but exclude remote speech/casting and URL-bearing OS
+ // media artwork. Text-only media metadata used by players remains available.
+ if(globalThis.SpeechSynthesis)method(SpeechSynthesis.prototype,'speak',deny);
+ for(const ctor of [globalThis.SpeechRecognition,globalThis.webkitSpeechRecognition])if(ctor)method(ctor.prototype,'start',deny);
+ if(globalThis.RemotePlayback)for(const key of ['prompt','watchAvailability','cancelWatchAvailability'])method(RemotePlayback.prototype,key,deny);
+ if(globalThis.MediaMetadata&&globalThis.MediaSession){
+  const artwork=descriptor(MediaMetadata.prototype,'artwork'),chapters=descriptor(MediaMetadata.prototype,'chapterInfo'),metadata=descriptor(MediaSession.prototype,'metadata');
+  if(artwork?.set)accessor(MediaMetadata.prototype,'artwork',{set(value){if(array(value).length)deny();return apply(artwork.set,this,[[]]);}});
+  if(metadata?.set)accessor(MediaSession.prototype,'metadata',{set(value){if(value!==null&&(artwork?.get&&apply(artwork.get,value,[]).length||chapters?.get&&apply(chapters.get,value,[]).length))deny();return apply(metadata.set,this,[value]);}});
+ }
  for(const ctor of [globalThis.ServiceWorkerContainer,globalThis.ServiceWorkerRegistration,globalThis.ServiceWorker,globalThis.NavigationPreloadManager])if(ctor)for(const key of ['register','getRegistration','getRegistrations','startMessages','update','unregister','postMessage','enable','disable','setHeaderValue','getState'])method(ctor.prototype,key,deny);
- if(globalThis.Navigator){const owner=propertyOwner(navigator,'serviceWorker');if(owner)accessor(owner,'serviceWorker',{get:deny});for(const key of ['sendBeacon','share','registerProtocolHandler','unregisterProtocolHandler','runAdAuction','joinAdInterestGroup','leaveAdInterestGroup','updateAdInterestGroups','getInterestGroupAdAuctionData','createAuctionNonce','deprecatedReplaceInURN','deprecatedURNToURL'])method(Navigator.prototype,key,deny);}
+ if(globalThis.Navigator){const owner=propertyOwner(navigator,'serviceWorker');if(owner)accessor(owner,'serviceWorker',{get:()=>applicationWorker||deny()});for(const key of ['sendBeacon','share','registerProtocolHandler','unregisterProtocolHandler','runAdAuction','joinAdInterestGroup','leaveAdInterestGroup','updateAdInterestGroups','getInterestGroupAdAuctionData','createAuctionNonce','deprecatedReplaceInURN','deprecatedURNToURL'])method(Navigator.prototype,key,deny);}
  if(globalThis.CredentialsContainer)for(const key of ['get','create','store','preventSilentAccess'])method(CredentialsContainer.prototype,key,deny);
  if(globalThis.Navigator)for(const key of ['presentation','storage']){const owner=propertyOwner(navigator,key);if(owner)accessor(owner,key,{get:deny});}
  if(globalThis.Clipboard)for(const key of ['write','writeText'])method(Clipboard.prototype,key,deny);
- for(const key of ['caches','indexedDB','webkitIndexedDB','mozIndexedDB','msIndexedDB','sharedStorage']){const owner=propertyOwner(window,key);if(owner)accessor(owner,key,{get:deny});}
+ for(const key of ['sharedStorage']){const owner=propertyOwner(window,key);if(owner)accessor(owner,key,{get:deny});}
  // Management state is inaccessible; provide application-scoped Storage-compatible methods.
- const app=location.pathname.split('/run/')[1]?.split('/')[0];if(!app)throw new Error('Invalid runtime path');
+ const guardURL=new URL(document.currentScript.src);
+ const app=applicationIdentity(location.href,new URL('./',guardURL));if(!app)throw new Error('Invalid runtime path');
  const prefix=`pf:${app}:`;
+ const scopedCaches=scopeCaches({prefix,method,apply});
+ {const owner=propertyOwner(window,'caches');accessor(owner,'caches',{get:()=>scopedCaches});}
+ const scopedIDB=scopeIndexedDB({prefix,method,accessor,descriptor,apply,fail});
+ for(const key of ['indexedDB','webkitIndexedDB','mozIndexedDB','msIndexedDB']){const owner=propertyOwner(window,key);if(owner)accessor(owner,key,{get:()=>scopedIDB});}
+ const storageViews=new Map();
  for(const key of ['localStorage','sessionStorage']){
   const owner=propertyOwner(window,key),d=descriptor(owner,key),native=apply(d.get,window,[]);
   const get=Storage.prototype.getItem,set=Storage.prototype.setItem,remove=Storage.prototype.removeItem,keyAt=Storage.prototype.key;
   const length=descriptor(Storage.prototype,'length').get;
   const keys=()=>{const result=[];for(let i=0;i<apply(length,native,[]);i++){const k=apply(keyAt,native,[i]);if(k?.startsWith(prefix))result.push(k.slice(prefix.length));}return result;};
-  const api=Object.freeze({getItem:k=>apply(get,native,[prefix+str(k)]),setItem:(k,v)=>apply(set,native,[prefix+str(k),str(v)]),removeItem:k=>apply(remove,native,[prefix+str(k)]),clear:()=>keys().forEach(k=>apply(remove,native,[prefix+k])),key:i=>keys()[Number(i)]??null});
-  const proxy=new Proxy(Object.create(null),{get:(_,k)=>k==='length'?keys().length:Object.hasOwn(api,k)?api[k]:typeof k==='string'?api.getItem(k):undefined,set:(_,k,v)=>{api.setItem(k,v);return true},deleteProperty:(_,k)=>{api.removeItem(k);return true},ownKeys:keys,getOwnPropertyDescriptor:(_,k)=>keys().includes(k)?{enumerable:true,configurable:true,value:api.getItem(k)}:undefined});
+  const text=value=>{if(typeof value==='symbol')throw new TypeError('Storage strings cannot be symbols');return str(value);};
+  const required=(count,minimum)=>{if(count<minimum)throw new TypeError('Missing required Storage argument');};
+  const api=Object.freeze({
+   getItem:function(k){required(arguments.length,1);return apply(get,native,[prefix+text(k)]);},
+   setItem:function(k,v){required(arguments.length,2);return apply(set,native,[prefix+text(k),text(v)]);},
+   removeItem:function(k){required(arguments.length,1);return apply(remove,native,[prefix+text(k)]);},
+   clear:()=>keys().forEach(k=>apply(remove,native,[prefix+k])),
+   key:function(i){required(arguments.length,1);return keys()[(+i)>>>0]??null;},
+  });
+  const proxy=new Proxy(Object.create(Storage.prototype),{
+   get:(target,k)=>k==='length'?keys().length:Object.hasOwn(api,k)?api[k]:typeof k==='string'&&keys().includes(k)?api.getItem(k):Reflect.get(target,k),
+   set:(_,k,v)=>{if(typeof k!=='string')return false;api.setItem(k,v);return true},
+   deleteProperty:(_,k)=>{if(typeof k==='string')api.removeItem(k);return true},
+   has:(target,k)=>typeof k==='string'&&keys().includes(k)||Reflect.has(target,k),
+   ownKeys:keys,
+   getOwnPropertyDescriptor:(_,k)=>keys().includes(k)?{enumerable:true,configurable:true,writable:true,value:api.getItem(k)}:undefined,
+   defineProperty:(_,k,d)=>{if(typeof k!=='string'||!('value'in d)||d.configurable===false||d.enumerable===false||d.writable===false)return false;api.setItem(k,d.value);return true},
+   preventExtensions:()=>false,setPrototypeOf:()=>false,
+  });
   accessor(owner,key,{get:()=>proxy});
+  storageViews.set(native,proxy);
  }
+ // Storage events carry a native Storage reference independently of the window
+ // getters. Filter before application listeners and mediate every exposed field.
+ if(globalThis.StorageEvent){
+  const eventStorage=descriptor(StorageEvent.prototype,'storageArea').get;
+  const eventKey=descriptor(StorageEvent.prototype,'key').get;
+  const stop=Event.prototype.stopImmediatePropagation;
+  const belongs=event=>{const area=apply(eventStorage,event,[]),key=apply(eventKey,event,[]);return storageViews.has(area)&&typeof key==='string'&&key.startsWith(prefix);};
+  apply(nativeAdd,window,['storage',event=>{if(!belongs(event))apply(stop,event,[])},{capture:true}]);
+  accessor(StorageEvent.prototype,'storageArea',{get(){return storageViews.get(apply(eventStorage,this,[]))??null;}});
+  accessor(StorageEvent.prototype,'key',{get(){const key=apply(eventKey,this,[]);return belongs(this)?key.slice(prefix.length):null;}});
+  for(const key of ['oldValue','newValue','url']){const get=descriptor(StorageEvent.prototype,key).get;accessor(StorageEvent.prototype,key,{get(){return belongs(this)?apply(get,this,[]):key==='url'?'':null;}});}
+ }
+ // Storage Access handles can expose native storage through another API.
+ for(const key of ['requestStorageAccess','requestStorageAccessFor'])method(Document.prototype,key,deny);
+ for(const key of ['requestFileSystem','webkitRequestFileSystem','resolveLocalFileSystemURL','webkitResolveLocalFileSystemURL','openDatabase'])method(window,key,deny);
  for(const key of ['getItem','setItem','removeItem','clear','key'])method(Storage.prototype,key,deny);
  // Policy elements can only be emitted by installation; prevent attribute-based activation.
  for(const name of ['setAttribute','setAttributeNS','toggleAttribute']){
-  const fn=Element.prototype[name];method(Element.prototype,name,function(...args){const tag=apply(local,this,[]).toLowerCase();if(['link','meta','script'].includes(tag))fail('Policy element is immutable');const key=str(args[name==='setAttributeNS'?1:0]).toLowerCase();if(key==='srcdoc'||key==='is'||key.startsWith('on'))fail('Attribute not admitted');return apply(fn,this,args)});
+  const fn=Element.prototype[name];method(Element.prototype,name,function(...args){const tag=apply(local,this,[]).toLowerCase();if(['link','meta','script'].includes(tag))fail('Policy element is immutable');const key=str(args[name==='setAttributeNS'?1:0]).toLowerCase();if(key==='srcdoc'||key==='is'||key.startsWith('on'))fail('Attribute not admitted');if(name!=='toggleAttribute'&&['src','href','poster','xlink:href'].includes(key)){const index=name==='setAttributeNS'?2:1;args[index]=resources.mapURL(args[index]);}return apply(fn,this,args)});
  }
  // Static metadata contains no host authority; applications may inspect it.
 
@@ -128,6 +186,8 @@ try {
  fetch(content).then(r=>{if(!r.ok)throw new Error('Installed content unavailable');return r.json()}).then(async data=>{
   // Markup was independently validated by the worker. No app script executes in this parsing step.
   validateMarkup(data.head,{initial:true});validateMarkup(data.body,{initial:true});
+  resources.install(data.aliases||[]);
+  applicationWorker=preparedWorker(data.serviceWorker,{source:data.source,runtime:location.href,fail});
   define(window,'privacyHost',{value:Object.freeze({version:1,application:app,publisher:new NativeURL(data.source).origin,mode:'network-isolated'}),writable:false,configurable:false});
   nativeApply(rawHTML,trustedHead,[data.head]);nativeApply(rawHTML,trustedBody,[data.body]);
   for(const script of data.scripts){

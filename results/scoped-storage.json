@@ -1,0 +1,24 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "checks": [
+      "Local storage methods, named properties, clear and same-app events; session isolation; foreign events suppressed",
+      "Storage argument errors, string conversion, indexed keys, property descriptors and missing properties match normal use",
+      "Native IndexedDB requests and transactions, prototype calls, visible names, namespace isolation and reload persistence",
+      "Cache names, prototype calls, cross-cache matching and deletion remain scoped",
+      "Native Cache.add network requests remain intercepted by the host worker"
+    ]
+  },
+  {
+    "name": "firefox",
+    "version": "155.0",
+    "checks": [
+      "Local storage methods, named properties, clear and same-app events; session isolation; foreign events suppressed",
+      "Storage argument errors, string conversion, indexed keys, property descriptors and missing properties match normal use",
+      "Native IndexedDB requests and transactions, prototype calls, visible names, namespace isolation and reload persistence",
+      "Cache names, prototype calls, cross-cache matching and deletion remain scoped",
+      "Native Cache.add network requests remain intercepted by the host worker"
+    ]
+  }
+]

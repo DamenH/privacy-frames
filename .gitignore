@@ -1,5 +1,8 @@
 node_modules/
+.wrangler/
 dist/
+dist-manager/
+dist-runtime/
 .local-deployment.json
 test/apps/
 results/*.png

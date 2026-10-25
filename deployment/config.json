@@ -1,0 +1,14 @@
+{
+  "managerURL": "https://pf.damenh.com/",
+  "runtimeURL": "https://pf-runtime.damenh.com/",
+  "managerOrigins": ["https://pf.damenh.com"],
+  "examples": [
+    {"name":"Notes","url":"https://pf-notes.damenh.com/"},
+    {"name":"Image editor","url":"https://pf-image.damenh.com/"},
+    {"name":"Offline reader","url":"https://pf-resources.damenh.com/"},
+    {"name":"Hostile app","url":"https://pf-adversary.damenh.com/"},
+    {"name":"Code playground","url":"https://pf-adversary.damenh.com/playground/"},
+    {"name":"Offline PWA","url":"https://pf-ordinary.damenh.com/"},
+    {"name":"Pitch Training","url":"https://damenh.github.io/pitch-training/"}
+  ]
+}

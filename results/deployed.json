@@ -1,21 +1,22 @@
 {
-  "date": "2026-10-25T14:53:50.752Z",
-  "host": "share.damenh.com",
+  "date": "2026-10-25T18:01:08.359Z",
+  "entry": "https://pf.damenh.com/",
   "browsers": [
     {
       "name": "chromium",
       "version": "153.0.8010.12",
       "checks": [
-        "Compact dark host with no installation iframe",
-        "Five pasted URLs install from external publisher and survive reload",
-        "Same-origin notes, persistence and opener isolation",
-        "Local image input and pixel processing",
-        "Installed native fetch and image loading",
-        "Thirty hostile checks, same-origin host storage and resource isolation",
-        "Editable code playground runs without an iframe and default disclosure is refused",
-        "Host and installed app launch with browser offline",
-        "Direct worker management and diagnostics after offline reload",
-        "Updated report delivered"
+        "Dedicated dark manager, separate runtime and exact production management origin",
+        "Seven pasted URLs install, including ordinary PWA and unchanged Pitch Training, and library metadata survives reload",
+        "Readable app URL, native notes, persistent scoped storage and no opener",
+        "Local image input and exact pixel transformation",
+        "Thirty-three hostile event checks and manager-state isolation",
+        "Editable HTML/CSS/JavaScript runs inside the restricted realm",
+        "No-manifest PWA generated cache content and mediated worker readiness",
+        "Published Pitch Training renders, saves a score and reopens its hash route offline",
+        "Static manager and installed reader launch offline",
+        "Reconnected manager obtains a specific worker-denial diagnostic after reload",
+        "Current standalone report delivered"
       ],
       "errors": [],
       "probes": [
@@ -37,8 +38,11 @@
         "WebRTCBlocked: TypeError",
         "window.openBlocked: SecurityError",
         "service worker authorityBlocked: SecurityError",
-        "CacheStorage authorityBlocked: SecurityError",
-        "IndexedDB authorityBlocked: SecurityError",
+        "Native storage prototype recoveryBlocked: SecurityError",
+        "Storage access handleBlocked: SecurityError",
+        "Remote speech serviceBlocked: SecurityError",
+        "Media artwork URLBlocked: SecurityError",
+        "Existing script property mutationBlocked: SecurityError",
         "history identity spoofBlocked: SecurityError",
         "history replace spoofBlocked: SecurityError",
         "SVG parser mismatchBlocked: Error",
@@ -55,16 +59,17 @@
       "name": "firefox",
       "version": "155.0",
       "checks": [
-        "Compact dark host with no installation iframe",
-        "Five pasted URLs install from external publisher and survive reload",
-        "Same-origin notes, persistence and opener isolation",
-        "Local image input and pixel processing",
-        "Installed native fetch and image loading",
-        "Thirty hostile checks, same-origin host storage and resource isolation",
-        "Editable code playground runs without an iframe and default disclosure is refused",
-        "Host and installed app launch with browser offline",
-        "Direct worker management and diagnostics after offline reload",
-        "Updated report delivered"
+        "Dedicated dark manager, separate runtime and exact production management origin",
+        "Seven pasted URLs install, including ordinary PWA and unchanged Pitch Training, and library metadata survives reload",
+        "Readable app URL, native notes, persistent scoped storage and no opener",
+        "Local image input and exact pixel transformation",
+        "Thirty-three hostile event checks and manager-state isolation",
+        "Editable HTML/CSS/JavaScript runs inside the restricted realm",
+        "No-manifest PWA generated cache content and mediated worker readiness",
+        "Published Pitch Training renders, saves a score and reopens its hash route offline",
+        "Static manager and installed reader launch offline",
+        "Reconnected manager obtains a specific worker-denial diagnostic after reload",
+        "Current standalone report delivered"
       ],
       "errors": [],
       "probes": [
@@ -86,8 +91,11 @@
         "WebRTCBlocked: TypeError",
         "window.openBlocked: SecurityError",
         "service worker authorityBlocked: SecurityError",
-        "CacheStorage authorityBlocked: SecurityError",
-        "IndexedDB authorityBlocked: SecurityError",
+        "Native storage prototype recoveryBlocked: SecurityError",
+        "Storage access handleBlocked: SecurityError",
+        "Remote speech serviceBlocked: SecurityError",
+        "Media artwork URLBlocked: SecurityError",
+        "Existing script property mutationBlocked: SecurityError",
         "history identity spoofBlocked: SecurityError",
         "history replace spoofBlocked: SecurityError",
         "SVG parser mismatchBlocked: Error",
@@ -100,5 +108,6 @@
         "prototype tamperingBlocked: TypeError"
       ]
     }
-  ]
+  ],
+  "manager": "https://pf.damenh.com/"
 }

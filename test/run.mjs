@@ -8,7 +8,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
  // Test-only capability captured before setup, to attack the worker's independent
  // client authorization even if the application's JavaScript gate were bypassed.
  await context.addInitScript(()=>{
-  if(!location.pathname.includes('/run/'))return;
+  if(!location.pathname.includes('/apps/'))return;
   const controller=navigator.serviceWorker.controller,post=ServiceWorker.prototype.postMessage,apply=Reflect.apply;
   Object.defineProperty(window,'__boundaryWorkerProbe',{value:(operation,payload)=>new Promise(resolve=>{const channel=new MessageChannel();channel.port1.onmessage=e=>{channel.port1.close();resolve(e.data);};apply(post,controller,[{operation,payload,claimedClient:'manager'},[channel.port2]]);})});
  });
@@ -23,12 +23,31 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   async function launch(id){const popup=context.waitForEvent('page');await page.locator(`[data-app="${id}"]`).click();const p=await popup;p.on('pageerror',e=>errors.push(`${id}: ${e.message}`));p.on('console',m=>{if(m.type()==='error')errors.push(`${id}: ${m.text()}`)});await p.waitForLoadState();await p.locator('[data-host-ready="true"]').waitFor();await p.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));return p;}
   let app=await launch('notes');assert.equal(await app.evaluate(()=>window.opener),null);await app.locator('#note').fill('A private diagnostic note');await app.locator('#save').click();await app.reload();await app.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));assert.equal(await app.locator('#note').inputValue(),'A private diagnostic note');await app.close();result.checks.push('Native notes editing, per-app persistence, reload, no opener');
   app=await launch('image');const before=await app.evaluate(()=>Array.from(document.querySelector('canvas').getContext('2d').getImageData(0,0,1,1).data));await app.locator('#invert').click();const after=await app.evaluate(()=>Array.from(document.querySelector('canvas').getContext('2d').getImageData(0,0,1,1).data));assert.equal(after[0],255-before[0]);await app.locator('#file').setInputFiles(new URL('./pixels.png',import.meta.url).pathname);await app.waitForFunction(()=>document.querySelector('canvas').width===2);const uploaded=await app.evaluate(()=>Array.from(document.querySelector('canvas').getContext('2d').getImageData(0,0,1,1).data));assert.deepEqual(uploaded,[220,40,90,255]);await app.close();result.checks.push('Local file input, canvas pixel access and transformation');
-  app=await launch('resources');await app.getByText('Article loaded using native fetch.',{exact:true}).waitFor();assert(await app.locator('#illustration').evaluate(img=>img.complete&&img.naturalWidth>0));await app.locator('#external').click();await app.getByText('Uninstalled URL blocked.',{exact:true}).waitFor();await app.close();result.checks.push('Native fetch and installed image, external fetch refused');
+  app=await launch('resources');await app.getByText('Article loaded using native fetch.',{exact:true}).waitFor();assert(await app.locator('#illustration').evaluate(img=>img.complete&&img.naturalWidth>0));
+  const aliases=await app.evaluate(async()=>{
+   const original='http://127.0.0.1:4214/article.json';
+   const fetched=await(await fetch(original)).json();
+   const xhr=await new Promise((resolve,reject)=>{const request=new XMLHttpRequest();request.open('GET',original);request.onload=()=>resolve(JSON.parse(request.responseText));request.onerror=reject;request.send();});
+   const cache=await caches.open('original-urls');await cache.add(original);const cached=await(await cache.match(original)).json();
+   const image=new Image();image.src='http://127.0.0.1:4214/cover.svg';await image.decode();
+   return {same:JSON.stringify(fetched)===JSON.stringify(xhr)&&JSON.stringify(xhr)===JSON.stringify(cached),image:image.naturalWidth>0,localImage:new URL(image.src).origin===location.origin};
+  });assert.deepEqual(aliases,{same:true,image:true,localImage:true});result.checks.push('Original publisher URLs map locally for fetch, XHR, Cache.add and images under runtime-only CSP');
+  await app.locator('#external').click();await app.getByText('Uninstalled URL blocked.',{exact:true}).waitFor();await app.close();result.checks.push('Native fetch and installed image, external fetch refused');
   app=await launch('adversary');
   const hostURL=page.url(),originalAppURL=app.url();
   const appOrigin=await app.evaluate(()=>location.origin);assert.equal(appOrigin,new URL(hostURL).origin);
   const managerCanary='host-private-canary-'+name;
+  await app.evaluate(()=>{window.storageObservations=[];addEventListener('storage',event=>storageObservations.push({key:event.key,value:event.newValue,raw:event.storageArea?.['manager-secret'],keys:Object.keys(event.storageArea||{})}));});
   await page.evaluate(value=>{localStorage.setItem('manager-secret',value);sessionStorage.setItem('manager-session',value);},managerCanary);
+  await app.waitForTimeout(100);assert.deepEqual(await app.evaluate(()=>storageObservations),[],'Manager storage event reached application');
+  const installation=await page.locator('[data-app="adversary"]').getAttribute('data-installation');
+  await page.evaluate(({installation})=>{localStorage.setItem(`pf:${installation}:event-test`,'same-app-value');},{installation});
+  await app.waitForFunction(()=>storageObservations.length===1);
+  assert.deepEqual(await app.evaluate(()=>storageObservations[0]),{key:'event-test',value:'same-app-value',raw:undefined,keys:['event-test']});
+  await page.evaluate(()=>localStorage.clear());
+  await app.waitForTimeout(100);assert.equal(await app.evaluate(()=>storageObservations.length),1,'Native whole-origin clear event reached application');
+  await page.evaluate(value=>localStorage.setItem('manager-secret',value),managerCanary);
+  result.checks.push('Storage events hide foreign namespaces and expose only scoped storage references');
   const raw=await app.evaluate(async()=>{
    const getAttempts=[];
    for(const [object,key]of [[window,'indexedDB'],[window,'caches'],[navigator,'serviceWorker']]){
@@ -38,7 +57,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
     }
    }
    return {local:localStorage.getItem('manager-secret'),session:sessionStorage.getItem('manager-session'),enumerated:Object.keys(localStorage),getAttempts};
-  });assert.equal(raw.local,null);assert.equal(raw.session,null);assert(!raw.enumerated.includes('manager-secret'));assert(raw.getAttempts.length>=3&&raw.getAttempts.every(x=>x.denied));
+  });assert.equal(raw.local,null);assert.equal(raw.session,null);assert(!raw.enumerated.includes('manager-secret'));assert(raw.getAttempts.length>=3&&raw.getAttempts.every(x=>x.key==='serviceWorker'?x.denied:!x.denied));
   await app.evaluate(()=>{localStorage.setItem('manager-secret','attacker-value');localStorage.clear();});
   assert.equal(await page.evaluate(()=>localStorage.getItem('manager-secret')),managerCanary);
   for(const file of ['index.html','manager.js','config.json','report.html','sw.js']){
@@ -73,7 +92,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   const originalNoteURL=await page.locator('[data-app="notes"]').first().getAttribute('href');const active=await launch('notes');await page.locator('#app-url').fill('http://127.0.0.1:4212/');await page.locator('#install button').click();await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('Close application windows'));await active.close();
   await page.locator('#app-url').fill('http://127.0.0.1:4212/copy/');await page.locator('#install button').click();await page.waitForFunction(()=>document.querySelectorAll('.app-card').length===6);const links=page.locator('[data-app="notes"]');assert.notEqual(await links.nth(0).getAttribute('href'),await links.nth(1).getAttribute('href'));const copyIndex=(await links.nth(0).getAttribute('href'))===originalNoteURL?1:0;const opened=context.waitForEvent('page');await links.nth(copyIndex).click();const copy=await opened;await copy.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));assert.equal(await copy.locator('#note').inputValue(),'');await copy.close();result.checks.push('Open-window update rejected; same declared ID at different source gets isolated storage');
   // Missing enforcement support refuses entry before private input or app scripts.
-  await context.addInitScript(()=>{if(location.pathname.includes('/run/'))Object.defineProperty(window,'navigation',{value:undefined,configurable:true});});
+  await context.addInitScript(()=>{if(location.pathname.includes('/apps/'))Object.defineProperty(window,'navigation',{value:undefined,configurable:true});});
   const faultPopup=context.waitForEvent('page');await page.locator('[data-app="notes"]').first().click();const refused=await faultPopup;await refused.getByText('Application refused',{exact:true}).waitFor();assert.equal(await refused.locator('#note').count(),0);assert.equal(await refused.evaluate(()=>typeof window.privacyHost),'undefined');await refused.close();result.checks.push('Unavailable Navigation API refuses startup before application input or execution');
   const fresh=await browser.newContext();const uncontrolled=await fresh.newPage();const missing=await uncontrolled.goto(await page.locator('[data-app="notes"]').first().getAttribute('href'));assert.equal(missing.status(),404);assert.equal(await uncontrolled.locator('#note').count(),0);await fresh.close();result.checks.push('Uncontrolled virtual runtime URL serves 404 without application code');
   await page.locator('.observations summary').click();await page.locator('#refresh-events').click();await page.waitForTimeout(100);assert((await page.locator('#events').innerText()).includes('BLOCKED'));

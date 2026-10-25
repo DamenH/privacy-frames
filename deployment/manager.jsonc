@@ -1,0 +1,13 @@
+{
+  "name": "privacy-frames-manager",
+  "account_id": "80fb1dead4566be76066353bdf826b7e",
+  "compatibility_date": "2026-10-25",
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../dist-manager",
+    "html_handling": "none",
+    "not_found_handling": "none"
+  },
+  "routes": [{ "pattern": "pf.damenh.com", "custom_domain": true }]
+}

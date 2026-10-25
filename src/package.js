@@ -40,12 +40,16 @@ export function validateManifest(m){
  return {format:1,id:m.id,name:m.name,entry:m.entry,resources:paths};
 }
 export async function digest(bytes){return [...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');}
-export async function downloadPackage(input){
+export async function downloadPackage(input,options={}){
  const source=new URL(input);if(!['https:','http:'].includes(source.protocol)||source.username||source.password)throw new Error('Expected an HTTPS application or manifest URL');
  // HTTP is supported only for loopback development.
  if(source.protocol==='http:'&&!['localhost','127.0.0.1','[::1]'].includes(source.hostname))throw new Error('Installation requires HTTPS');
- source.hash='';if(!source.pathname.endsWith('.json'))source.pathname=source.pathname.replace(/\/?$/,'/')+'app.json';
- const response=await fetch(source,{credentials:'omit',redirect:'error',cache:'no-store'});if(!response.ok)throw new Error(`Manifest: HTTP ${response.status}`);
+ source.hash='';const original=source.href,explicit=source.pathname.endsWith('.json');
+ if(/\.html?$/.test(source.pathname))return(await import('./website.js')).downloadWebsite(original,options);
+ if(!explicit)source.pathname=source.pathname.replace(/\/?$/,'/')+'app.json';
+ const response=await fetch(source,{credentials:'omit',redirect:'error',cache:'no-store'});
+ if(response.status===404&&!explicit)return(await import('./website.js')).downloadWebsite(original,options);
+ if(!response.ok)throw new Error(`Manifest: HTTP ${response.status}`);
  const manifest=validateManifest(await response.json());let size=0;
  const resources=[];
  for(const path of manifest.resources){
@@ -56,4 +60,4 @@ export async function downloadPackage(input){
  }
  return {id:manifest.id+'-'+(await digest(new TextEncoder().encode(source.href))),manifest,source:source.href,resources,size,installedAt:new Date().toISOString()};
 }
-export const mime=path=>({html:'text/html',js:'text/javascript',mjs:'text/javascript',css:'text/css',json:'application/json',svg:'image/svg+xml',png:'image/png',jpg:'image/jpeg',webp:'image/webp',txt:'text/plain',woff2:'font/woff2'})[path.split('.').pop()]||'application/octet-stream';
+export const mime=path=>({html:'text/html',js:'text/javascript',mjs:'text/javascript',css:'text/css',json:'application/json',webmanifest:'application/manifest+json',svg:'image/svg+xml',png:'image/png',jpg:'image/jpeg',webp:'image/webp',txt:'text/plain',mp3:'audio/mpeg',wav:'audio/wav',ogg:'audio/ogg',woff2:'font/woff2'})[path.split('.').pop()]||'application/octet-stream';
