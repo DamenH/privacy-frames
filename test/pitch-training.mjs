@@ -29,6 +29,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   for(const resource of executableReceipt){const response=await fetch(resource.url);assert(response.ok);assert.equal(createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex'),resource.sha256,'Published executable bytes were changed');}
   const opened=context.waitForEvent('page');await manager.locator('[data-app="pitch-training"]').click();app=await opened;
   app.on('pageerror',e=>errors.push(e.message));app.on('console',message=>{if(message.type()==='error'){const text=message.text(),url=message.location().url;if(/favicon\.ico(?:$|[?])/.test(url)||/favicon\.ico/.test(text)||/guard\.js/.test(text)&&/Content-Security-Policy/.test(text))policyObservations.push({text,url});else errors.push(text);}});
+  await app.bringToFront();
   await app.getByRole('navigation',{name:'Main',exact:true}).waitFor();
   checks.push('Original public URL installs without a host manifest or application source changes and renders Svelte UI');
   const worker=await app.evaluate(async()=>{const registration=await navigator.serviceWorker.ready;let updateDenied=false;try{await registration.update();}catch(e){updateDenied=e.name==='NotSupportedError';}return{state:registration.active.state,updateDenied,script:registration.active.scriptURL};});
@@ -82,7 +83,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   if(!deployed)checks.push('No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately');
   assert.deepEqual(errors,[]);
   results.push({name,environment:deployed?'deployed':'local',version:browser.version(),checks,worker,frequency,executableReceipt,maintenance:deployed?null:maintenance,policyObservations,errors});
- }catch(error){results.push({name,checks,errors,body:app?await app.locator('body').innerText().catch(()=>null):null,failure:error.stack});throw error;}
+ }catch(error){results.push({name,checks,errors,body:app?await app.locator('body').innerText().catch(()=>null):null,audio:app?await app.evaluate(()=>({buffers:window.audioProbe,captureErrors:window.captureErrors,visibility:document.visibilityState})).catch(()=>null):null,failure:error.stack});throw error;}
  finally{await context.close();await browser.close();}
 }}
 finally{await server.close();await rm(temporary,{recursive:true,force:true});await writeFile(new URL('../results/'+(deployed?'pitch-training-deployed.json':'pitch-training.json'),import.meta.url),JSON.stringify(results,null,2)+'\n');}

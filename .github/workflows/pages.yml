@@ -34,6 +34,14 @@ jobs:
         if: vars.PAGES_ENABLED == 'true'
         env:
           APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
+      - name: Provide a virtual audio output for native Firefox playback
+        if: vars.PAGES_ENABLED == 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pulseaudio pulseaudio-utils
+          pulseaudio --start --exit-idle-time=-1
+          pactl load-module module-null-sink sink_name=privacy_frames_test
+          pactl set-default-sink privacy_frames_test
       - run: npm run test:pitch
         if: vars.PAGES_ENABLED == 'true'
         env:
