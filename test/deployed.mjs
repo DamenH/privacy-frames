@@ -30,5 +30,5 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   if(name==='chromium'){await page.screenshot({path:new URL('../results/desktop.png',import.meta.url).pathname,fullPage:true});await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:new URL('../results/mobile.png',import.meta.url).pathname,fullPage:true});}
  }catch(error){row.failure=error.stack;throw error;}finally{await context.close();await browser.close();}
 }}
-finally{await writeFile(new URL('../results/deployed.json',import.meta.url),JSON.stringify(report,null,2)+'\n');}
+finally{await writeFile(new URL('../results/'+(process.env.EVIDENCE_FILE||'deployed.json'),import.meta.url),JSON.stringify(report,null,2)+'\n');}
 console.log(report.browsers.map(b=>`${b.name}: ${b.checks.length} deployed groups passed`).join('\n'));

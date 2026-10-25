@@ -14,7 +14,7 @@ npm test
 npm run serve
 ```
 
-Open http://127.0.0.1:4210/privacy-frames/. Paste http://127.0.0.1:4212/ to install Notes. Other example applications are on ports 4213–4215. The test-only HTTP/TCP receiver uses port 4216. Local servers are development instruments, not deployed runtime dependencies.
+Open http://127.0.0.1:4210/privacy-frames/. Paste http://127.0.0.1:4212/ to install Notes. Other example applications are on ports 4213–4215; the editable playground is on 4217. The test-only HTTP/TCP receiver uses port 4216. Local servers are development instruments, not deployed runtime dependencies.
 
 Set `APPS_DIRECTORY=/absolute/path/to/apps` if the publisher repository is elsewhere. The local test server deliberately uses a project prefix, matching GitHub Pages behavior.
 
@@ -40,7 +40,7 @@ Applications currently use the package convention documented in the publisher re
 
 ## Evidence
 
-See [REPORT.md](REPORT.md) for the threat model, measurements and remaining boundaries. The host serves the same report at `report.html`. `results/browser.json` records local browser tests. `test/deployed.mjs` repeats the published installation and execution flow:
+See [REPORT.md](REPORT.md) for the threat model, measurements and remaining boundaries. The host serves the same report at `report.html`. `results/browser.json` records local browser tests. The deployed share and GitHub Pages checks are retained separately. `test/deployed.mjs` repeats the published installation and execution flow:
 
 ```sh
 HOST_URL=https://damenh.github.io/privacy-frames/ npm run test:deployed
