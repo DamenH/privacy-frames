@@ -1,0 +1,56 @@
+name: Test and publish host
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: host-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: node --test test/policy.test.mjs
+      - uses: actions/checkout@v6
+        if: vars.PAGES_ENABLED == 'true'
+        with:
+          repository: DamenH/privacy-frames-apps
+          path: test/apps
+          ssh-key: ${{ secrets.APPS_DEPLOY_KEY }}
+      - run: npx playwright install --with-deps chromium firefox
+        if: vars.PAGES_ENABLED == 'true'
+      - run: npm test
+        if: vars.PAGES_ENABLED == 'true'
+        env:
+          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          path: results/
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+  deploy:
+    if: vars.PAGES_ENABLED == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

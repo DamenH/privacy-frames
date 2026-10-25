@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.local-deployment.json
+test/apps/
+results/*.png

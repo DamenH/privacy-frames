@@ -1,0 +1,14 @@
+import {createHash} from 'node:crypto';
+import {build} from 'esbuild';
+import {mkdir,copyFile,writeFile,readFile} from 'node:fs/promises';
+const dist=new URL('./dist/',import.meta.url);await mkdir(dist,{recursive:true});
+const buildHash=createHash('sha256');
+for(const file of ['guard','worker','manager','package','store'])buildHash.update(await readFile(new URL(`./src/${file}.js`,import.meta.url)));
+const buildId=buildHash.digest('hex').slice(0,16);
+for(const name of ['manager','worker','guard'])await build({entryPoints:[new URL(`./src/${name}.js`,import.meta.url).pathname],outfile:new URL(name==='worker'?'sw.js':`${name}.js`,dist).pathname,bundle:true,define:{__BUILD_ID__:JSON.stringify(buildId)},banner:{js:'"use strict";'},format:name==='manager'?'esm':'iife',target:'es2022'});
+for(const name of ['index.html','host.css'])await copyFile(new URL(`./src/${name}`,import.meta.url),new URL(name,dist));
+const publisher=process.env.PUBLISHER_URL||'https://pf-apps.damenh.com/';
+const examples=['notes','image','resources','adversary','playground'].map((id,i)=>({name:['Notes','Image editor','Offline reader','Hostile app','Code playground'][i],url:new URL(id+'/',publisher).href}));
+await writeFile(new URL('config.json',dist),JSON.stringify({examples},null,2));
+await writeFile(new URL('.nojekyll',dist),'');
+console.log('Built one static host in dist/.');
