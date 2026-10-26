@@ -7,16 +7,16 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "Completed installation is available through mediated worker readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 221.3 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 220.7 Hz detected",
       "Browser-denied microphone permission is handled without a capture stream",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation"
     ],
     "worker": {
       "state": "activated",
       "updateDenied": true,
-      "script": "https://pf-runtime.damenh.com/apps/pitch-training/pitch-training-cb0257e77b5a1a7925a6540f3d1a49cbb9511ebd0246f3807acecb7f3db1036f/sw.js"
+      "script": "https://pf-apps.damenh.com/ywJX53taGnk/pitch-training/sw.js"
     },
-    "frequency": 221.3,
+    "frequency": 220.7,
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",
@@ -25,7 +25,7 @@
       },
       {
         "url": "https://damenh.github.io/pitch-training/sw.js",
-        "sha256": "2e793638547bdda6acf3cfa7b3e1de4346cf6251993f9601d118fd60c8d600b2",
+        "sha256": "17b0666bd6544f95104af31518034f980078c5ccb41bd6ebf2255c95ffe38a45",
         "bytes": 3163
       }
     ],
@@ -33,7 +33,27 @@
     "policyObservations": [
       {
         "text": "Failed to load resource: net::ERR_FAILED",
-        "url": "https://pf-runtime.damenh.com/favicon.ico"
+        "url": "https://pf-apps.damenh.com/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "https://pf-apps.damenh.com/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "https://pf-apps.damenh.com/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "https://pf-apps.damenh.com/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "https://pf-apps.damenh.com/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "https://pf-apps.damenh.com/favicon.ico"
       }
     ],
     "errors": []
@@ -52,7 +72,7 @@
     "worker": {
       "state": "activated",
       "updateDenied": true,
-      "script": "https://pf-runtime.damenh.com/apps/pitch-training/pitch-training-cb0257e77b5a1a7925a6540f3d1a49cbb9511ebd0246f3807acecb7f3db1036f/sw.js"
+      "script": "https://pf-apps.damenh.com/ywJX53taGnk/pitch-training/sw.js"
     },
     "frequency": 1000.8,
     "executableReceipt": [
@@ -63,51 +83,51 @@
       },
       {
         "url": "https://damenh.github.io/pitch-training/sw.js",
-        "sha256": "2e793638547bdda6acf3cfa7b3e1de4346cf6251993f9601d118fd60c8d600b2",
+        "sha256": "17b0666bd6544f95104af31518034f980078c5ccb41bd6ebf2255c95ffe38a45",
         "bytes": 3163
       }
     ],
     "maintenance": null,
     "policyObservations": [
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-runtime.damenh.com/guard.js\" line: 8553}]",
-        "url": "https://pf-runtime.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 8553}]",
+        "url": "https://pf-apps.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-runtime.damenh.com/guard.js\" line: 15705}]",
-        "url": "https://pf-runtime.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 15705}]",
+        "url": "https://pf-apps.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-runtime.damenh.com/guard.js\" line: 15711}]",
-        "url": "https://pf-runtime.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 15711}]",
+        "url": "https://pf-apps.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-runtime.damenh.com/guard.js\" line: 11746}]",
-        "url": "https://pf-runtime.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 11746}]",
+        "url": "https://pf-apps.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘https://pf-runtime.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://pf-runtime.damenh.com/sw.js\" line: 8628}]",
-        "url": "https://pf-runtime.damenh.com/sw.js"
+        "text": "[JavaScript Error: \"Failed to load ‘https://pf-apps.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://pf-apps.damenh.com/sw.js\" line: 8691}]",
+        "url": "https://pf-apps.damenh.com/sw.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-runtime.damenh.com/guard.js\" line: 8553}]",
-        "url": "https://pf-runtime.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 8553}]",
+        "url": "https://pf-apps.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-runtime.damenh.com/guard.js\" line: 15705}]",
-        "url": "https://pf-runtime.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 15705}]",
+        "url": "https://pf-apps.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-runtime.damenh.com/guard.js\" line: 15711}]",
-        "url": "https://pf-runtime.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 15711}]",
+        "url": "https://pf-apps.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-runtime.damenh.com/guard.js\" line: 11746}]",
-        "url": "https://pf-runtime.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 11746}]",
+        "url": "https://pf-apps.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘https://pf-runtime.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://pf-runtime.damenh.com/sw.js\" line: 8628}]",
-        "url": "https://pf-runtime.damenh.com/sw.js"
+        "text": "[JavaScript Error: \"Failed to load ‘https://pf-apps.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://pf-apps.damenh.com/sw.js\" line: 8691}]",
+        "url": "https://pf-apps.damenh.com/sw.js"
       }
     ],
     "errors": []

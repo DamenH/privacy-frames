@@ -1,105 +1,125 @@
 {
-  "date": "2026-10-25T18:18:49.642Z",
+  "date": "2026-10-26T00:07:01.332Z",
   "assets": [
     {
       "site": "manager",
       "file": "index.html",
-      "sha256": "31d752cd2182f13f88a44e185e8128151583011c8ed456a771564021e4f9b522"
+      "sha256": "3f02ec4ccb43e74b2b4a877d54399e4992f976117f4708fccf2a57bf5ddc7a81"
     },
     {
       "site": "manager",
       "file": "manager.js",
-      "sha256": "ac25b4f98d2926a2c71eccbaf4586bf8d52dc991104bf3b1d862d04ba47673f0"
+      "sha256": "a7c6cc541861a904dfa12723401075fc590b04be42492b200daf4f0c45420267"
     },
     {
       "site": "manager",
       "file": "guard.js",
-      "sha256": "101b8240679a8e7ec4de6e320c11a6fbb607b11ed2be4e820ea81e469dc24b0e"
+      "sha256": "b6d109dd619f57339b0ce99fe4b6e94795d16493e14c588e9d519ca18d813201"
     },
     {
       "site": "manager",
       "file": "sw.js",
-      "sha256": "4d439e3d657d13c6baf9ba4fac3ddabb833dfe2381af7a97c0ab7c56c52de36f"
+      "sha256": "2879ede9d329d9c3b151c667fe9a6f8474c551e70a96c6462980bc0fafa3ef4c"
     },
     {
       "site": "manager",
       "file": "config.json",
-      "sha256": "e6f31c3fa03079fd9631e4d91dfc7e27db82d9f3428834860ad460ac455b7898"
+      "sha256": "f56ea70fd58ed02c3d581194c65b8c81565fa3f73f953a5de963443fbac14543"
     },
     {
       "site": "manager",
       "file": "host.css",
-      "sha256": "fe9fce572047c0d11016fb55cf7f73c7e5eea03fdd7a5133d9be0eab4963d458"
+      "sha256": "5d2e90bf8cb0ebde0f06096f296d24231da886e58cacdf2a2decfbd1705cf390"
     },
     {
       "site": "manager",
       "file": "report.html",
-      "sha256": "d36fe7d2c49adc170f350de550c09ee41ca46129b823d5c611fc09e880dee275"
+      "sha256": "dac95409be7489a6e1e0aeb047a941e4f58c8ad2e3ef2fa8bf942e7c3f846795"
     },
     {
       "site": "manager",
       "file": "connect.html",
-      "sha256": "e2f37851f43cc9ec2e1830e69fd144291128b08dbe04cff05e4fea6aff9ea52d"
+      "sha256": "7afae8003679f62b9d4e612b1fbbb6ce133ab127778178ae1e6a66fcdcb8fb40"
     },
     {
       "site": "manager",
       "file": "connect.js",
-      "sha256": "6946930b692e3c8cd94d13fe7fbf8fb925cd2946c4ce644739bb18a88f46be98"
+      "sha256": "4b4c6bb566c936ba42a7156b296e580a58a37bacca57cacc4dce31150d02493a"
     },
     {
       "site": "manager",
       "file": "install-worker.js",
       "sha256": "e82a104a1f7b004f0e7b055f597a0a82ecef6923e3c2f2e4296f6824a3dd08ba"
+    },
+    {
+      "site": "manager",
+      "file": "pwa-192.png",
+      "sha256": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa"
+    },
+    {
+      "site": "manager",
+      "file": "pwa-512.png",
+      "sha256": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95"
     },
     {
       "site": "runtime",
       "file": "index.html",
-      "sha256": "31d752cd2182f13f88a44e185e8128151583011c8ed456a771564021e4f9b522"
+      "sha256": "e1686e38679c9e9a7bb1afc980f0fb9efb626df810bd411092edb67532721628"
     },
     {
       "site": "runtime",
       "file": "manager.js",
-      "sha256": "ac25b4f98d2926a2c71eccbaf4586bf8d52dc991104bf3b1d862d04ba47673f0"
+      "sha256": "a7c6cc541861a904dfa12723401075fc590b04be42492b200daf4f0c45420267"
     },
     {
       "site": "runtime",
       "file": "guard.js",
-      "sha256": "101b8240679a8e7ec4de6e320c11a6fbb607b11ed2be4e820ea81e469dc24b0e"
+      "sha256": "b6d109dd619f57339b0ce99fe4b6e94795d16493e14c588e9d519ca18d813201"
     },
     {
       "site": "runtime",
       "file": "sw.js",
-      "sha256": "4d439e3d657d13c6baf9ba4fac3ddabb833dfe2381af7a97c0ab7c56c52de36f"
+      "sha256": "e3d4dddeebb9060f676ade64b941148cb9de79ed361eef41f859e37af30b2fa7"
     },
     {
       "site": "runtime",
       "file": "config.json",
-      "sha256": "e6f31c3fa03079fd9631e4d91dfc7e27db82d9f3428834860ad460ac455b7898"
+      "sha256": "f56ea70fd58ed02c3d581194c65b8c81565fa3f73f953a5de963443fbac14543"
     },
     {
       "site": "runtime",
       "file": "host.css",
-      "sha256": "fe9fce572047c0d11016fb55cf7f73c7e5eea03fdd7a5133d9be0eab4963d458"
+      "sha256": "5d2e90bf8cb0ebde0f06096f296d24231da886e58cacdf2a2decfbd1705cf390"
     },
     {
       "site": "runtime",
       "file": "report.html",
-      "sha256": "d36fe7d2c49adc170f350de550c09ee41ca46129b823d5c611fc09e880dee275"
+      "sha256": "dac95409be7489a6e1e0aeb047a941e4f58c8ad2e3ef2fa8bf942e7c3f846795"
     },
     {
       "site": "runtime",
       "file": "connect.html",
-      "sha256": "e2f37851f43cc9ec2e1830e69fd144291128b08dbe04cff05e4fea6aff9ea52d"
+      "sha256": "7afae8003679f62b9d4e612b1fbbb6ce133ab127778178ae1e6a66fcdcb8fb40"
     },
     {
       "site": "runtime",
       "file": "connect.js",
-      "sha256": "6946930b692e3c8cd94d13fe7fbf8fb925cd2946c4ce644739bb18a88f46be98"
+      "sha256": "4b4c6bb566c936ba42a7156b296e580a58a37bacca57cacc4dce31150d02493a"
     },
     {
       "site": "runtime",
       "file": "install-worker.js",
       "sha256": "e82a104a1f7b004f0e7b055f597a0a82ecef6923e3c2f2e4296f6824a3dd08ba"
+    },
+    {
+      "site": "runtime",
+      "file": "pwa-192.png",
+      "sha256": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa"
+    },
+    {
+      "site": "runtime",
+      "file": "pwa-512.png",
+      "sha256": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95"
     },
     {
       "site": "notes",
@@ -249,6 +269,6 @@
   ],
   "githubEntry": {
     "managerURL": "https://pf.damenh.com/",
-    "runtimeURL": "https://pf-runtime.damenh.com/"
+    "runtimeURL": "https://pf-apps.damenh.com/"
   }
 }

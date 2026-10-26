@@ -29,7 +29,7 @@ export function webManifest(app,base){
   }
   if(shortcuts.length)result.shortcuts=shortcuts;
  }
- if(!result.icons.length)result.icons=[192,512].map(size=>({src:new URL(`pwa-${size}.png`,base).pathname,sizes:`${size}x${size}`,type:'image/png',purpose:'any'}));
+ for(const size of [192,512])if(!result.icons.some(icon=>(icon.sizes||'').split(/\s+/).some(value=>value==='any'||value===`${size}x${size}`)))result.icons.push({src:new URL(`pwa-${size}.png`,base).pathname,sizes:`${size}x${size}`,type:'image/png',purpose:'any'});
  return result;
 }
 export function manifestURL(app,base){return new URL(`${publicAlias(app.id)}/__manifest.webmanifest`,base);}

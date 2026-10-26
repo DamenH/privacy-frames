@@ -1,6 +1,6 @@
 # Next implementation: installation without a connection tab
 
-Status: implementation in progress. Updated 2026-10-26.
+Status: final verification and publication in progress. Updated 2026-10-26.
 
 This plan covers the discussion after the last completed implementation round.
 It is intended to be executable in one autonomous pass, including testing,
@@ -347,6 +347,22 @@ sequence from reaching an external page or escaping via network-enabled
 installation. Storage, delivery, presentation and the recognition claim remain
 design questions. No indicator UI, persistence, protocol or tests are added now.
 
+## Future compatibility work
+
+Inline module bootstraps and JavaScript/Wasm dependency discovery are deferred.
+The existing importer admits external executable scripts and does not run the
+application itself to discover its full dependency graph. A future importer could
+extract inline bootstrap code into installed files while preserving module URL
+semantics, then capture the dependencies required for an offline launch.
+WebAssembly compilation also needs an explicit runtime/CSP compatibility policy.
+
+Confined dedicated workers are a separate future task. Host-controlled setup must
+establish the worker's restrictions before application code runs, and mediate its
+messaging, storage and effects. Simply restoring the native constructors would
+reopen an unrestricted execution context. An independently developed application
+with an inline Wasm bootstrap and possible workers is a useful future test case;
+its private share URL is not published in this repository.
+
 ## Decisions already made for the autonomous pass
 
 No third host origin, extension, backend or runtime request proxy. No additional
@@ -372,21 +388,29 @@ progress updates focused on what was learned and what the next check resolves.
 
 ## Implementation progress (2026-10-26)
 
-The iframe bridge, canonical short routes, generic document adaptation and
-per-application manifests are implemented. Production-role builds pass the
-same-site compatibility checks with browser storage protections restored.
-The Wikipedia document and all 60 captured images render offline in both
-browsers, with no publisher-specific import code. Chromium installs three native
-PWAs, including unchanged Pitch Training; the cold-launch check preserves private
-state offline after browser restart. See `results/compatibility.json`.
+The iframe bridge, short canonical routes, generic document adaptation and
+individual PWA manifests are implemented and deployed on the two GitHub Pages
+custom domains. Both domains have approved certificates and enforce HTTPS.
+The former runtime's Worker domain and DNS address records have been removed;
+DNS returns NXDOMAIN. The service inventory records the new Pages ownership.
 
-`test/browser-profile.mjs` restores Chromium partitioning and Firefox cookie
-partitioning that automation otherwise disables. The cross-site control observes
-separate storage in both browsers (`results/storage-policy.json`). The core,
-scoped-storage, bridge, mobile/permission and compatibility suites pass under that
-profile. WebKit cannot launch with the host's available libraries; its coverage
-is explicitly absent (`results/webkit.json`).
+The browser harness restores storage privacy settings that automation normally
+relaxes. The cross-site control observes separate storage, while the same-site
+iframe supports top-level execution and browser restart. The source tests also
+cover collision refusal, a non-index entry, wrong-label redirects, hostile bridge
+parents, external app embedding and automatic upgrade from the preceding release.
+WebKit cannot launch with the host libraries and remains explicitly unverified.
 
-The runtime DNS CNAME points to GitHub Pages, its certificate is approved and
-HTTPS enforcement is enabled. The manager is not cut over yet. Pinned runtime
-publication, live verification and old-runtime retirement remain unfinished.
+Live Chromium and Firefox checks pass all eight example installations, native
+editing/storage, hostile probes, scoped persistence and offline operation.
+Wikipedia imports through the generic path and all 60 captured images work
+offline. Chromium installs three individual native PWAs, including unchanged
+Pitch Training, and cold-launches an app offline with private state after browser
+restart. Live microphone/audio checks pass in both browsers. A same-site external
+parent receives an unrestricted message control but no private app message.
+
+The last published implementation is `c4a779e`, with successful manager and runtime
+Pages runs `40247194421` and `40247458362`. The final error-message clarification,
+small-icon fallback, future-work notes and full release audit are being published.
+Completion will be recorded in `results/release.json` after that revision's CI and
+live asset checks succeed. No inline/Wasm bootstrap or worker support is added.

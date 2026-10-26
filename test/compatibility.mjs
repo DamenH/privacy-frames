@@ -28,7 +28,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
   await install(documentURL);const doc=await open('document');await doc.locator('h1').getByText('Ordinary document',{exact:true}).waitFor();
   assert.equal(await doc.locator('base').count(),0);assert.equal(await doc.locator('html').getAttribute('lang'),'en');assert.equal(await doc.locator('body').getAttribute('class'),'imported-document');
   await doc.waitForFunction(()=>document.querySelector('#illustration')?.naturalWidth>0);
-  assert.equal(await doc.locator('h1').evaluate(n=>getComputedStyle(n).color),'rgb(169, 199, 255)');
+  await doc.waitForFunction(()=>getComputedStyle(document.querySelector('h1')).color==='rgb(169, 199, 255)');
   await doc.locator('#section-link').click();await doc.waitForURL('**#section');assert.equal(new URL(doc.url()).hash,'#section');
   const manifest=await doc.evaluate(async()=>await(await fetch(document.querySelector('link[rel="manifest"]').href)).json());
   assert.equal(manifest.name,'Generic imported document');assert.equal(manifest.shortcuts.length,1);assert(manifest.start_url.endsWith('/document/#section'));assert.equal(manifest.icons.length,2);
@@ -41,7 +41,7 @@ try{for(const [name,engine]of Object.entries({chromium,firefox})){
    await session.send('PWA.changeAppUserSettings',{manifestId,displayMode:'standalone'});
    row.pwas.push({manifestId,state:await session.send('PWA.getOsAppState',{manifestId})});
   }
-  await context.setOffline(true);await doc.reload();await doc.waitForFunction(()=>document.querySelector('#illustration')?.naturalWidth>0);assert.equal(await doc.locator('h1').evaluate(n=>getComputedStyle(n).color),'rgb(169, 199, 255)');await context.setOffline(false);
+  await context.setOffline(true);await doc.reload();await doc.waitForFunction(()=>document.querySelector('#illustration')?.naturalWidth>0);await doc.waitForFunction(()=>getComputedStyle(document.querySelector('h1')).color==='rgb(169, 199, 255)');await context.setOffline(false);
   console.log(name,'compatibility checkpoint');row.checks.push('Generic base URL, nested CSS, image, fragment and inherited manifest work offline');
   const config=await page.evaluate(async()=>await(await fetch('./config.json')).json());
   const notes=config.examples.find(example=>example.name==='Notes');await install(notes.url);const note=await open('notes');await note.waitForFunction(()=>document.querySelector('#mode')?.textContent.includes('network isolated'));await note.locator('#note').fill('private compatibility state');await note.locator('#save').click();

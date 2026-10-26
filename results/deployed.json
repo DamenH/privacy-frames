@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-25T18:01:08.359Z",
+  "date": "2026-10-26T00:07:01.629Z",
   "entry": "https://pf.damenh.com/",
   "browsers": [
     {
@@ -7,7 +7,7 @@
       "version": "153.0.8010.12",
       "checks": [
         "Dedicated dark manager, separate runtime and exact production management origin",
-        "Seven pasted URLs install, including ordinary PWA and unchanged Pitch Training, and library metadata survives reload",
+        "All example URLs install, including Wikipedia, the ordinary PWA and unchanged Pitch Training, and library metadata survives reload",
         "Readable app URL, native notes, persistent scoped storage and no opener",
         "Local image input and exact pixel transformation",
         "Thirty-three hostile event checks and manager-state isolation",
@@ -60,7 +60,7 @@
       "version": "155.0",
       "checks": [
         "Dedicated dark manager, separate runtime and exact production management origin",
-        "Seven pasted URLs install, including ordinary PWA and unchanged Pitch Training, and library metadata survives reload",
+        "All example URLs install, including Wikipedia, the ordinary PWA and unchanged Pitch Training, and library metadata survives reload",
         "Readable app URL, native notes, persistent scoped storage and no opener",
         "Local image input and exact pixel transformation",
         "Thirty-three hostile event checks and manager-state isolation",

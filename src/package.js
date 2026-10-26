@@ -17,7 +17,7 @@ export function validateMarkup(html,{document=false,initial=false}={}){
    const tag=n.tagName.toLowerCase();
    if(tag==='meta'&&(n.attrs.some(a=>a.name==='http-equiv')||n.attrs.some(a=>a.name==='name'&&!['viewport','color-scheme','theme-color'].includes(a.value.toLowerCase()))))throw new Error('Application response policy must be supplied by the host');
    if(tag==='link'&&n.attrs.find(a=>a.name==='rel')?.value.toLowerCase()!=='stylesheet')throw new Error('Only stylesheet links are admitted');
-   if(tag==='script'&&(!initial||!n.attrs.some(a=>a.name==='src')||n.childNodes?.some(x=>x.value?.trim())))throw new Error('Use packaged external scripts');
+   if(tag==='script'&&(!initial||!n.attrs.some(a=>a.name==='src')||n.childNodes?.some(x=>x.value?.trim())))throw new Error('Inline scripts are not supported yet; reference an external JavaScript file with src');
    for(const a of n.attrs){
     if(a.name.startsWith('on')||['srcdoc','is','manifest'].includes(a.name))throw new Error(`Attribute not admitted: ${a.name}`);
    }

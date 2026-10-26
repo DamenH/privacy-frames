@@ -19,7 +19,7 @@ npm run test:network
 npm run test:upgrade
 npm run test:mobile
 npm run test:storage-policy
-LIVE_ARTICLE=1 npm run test:compatibility
+LIVE_ARTICLE=1 LIVE_PITCH_NATIVE=1 npm run test:compatibility
 npm run serve
 ```
 

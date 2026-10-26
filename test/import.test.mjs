@@ -21,3 +21,26 @@ test('manifest adapts identity, hash launch and presentation without granting ha
  const manifest=webManifest({...app,publisherManifest:{value,url:'https://publisher.test/app/manifest.webmanifest'}},'https://runtime.test/');
  assert.equal(manifest.name,'Publisher name');assert.equal(manifest.id,'/ywJX53taGnk/');assert.equal(manifest.scope,'/ywJX53taGnk/');assert.equal(manifest.start_url,'/ywJX53taGnk/pitch-training/#/reference');assert.equal(manifest.shortcuts.length,1);assert(!('file_handlers'in manifest));assert(!('protocol_handlers'in manifest));assert.equal(manifest.icons.length,2);
 });
+
+test('invalid bases fall back to the document and base targets cannot open new contexts',()=>{
+ const invalid=prepareDocument('<base href="http://[bad"><base href="https://ignored.test/"><link rel="stylesheet" href="sheet.css?theme=dark">','https://publisher.test/docs/index.html');assert.deepEqual(invalid.links,['https://publisher.test/docs/sheet.css?theme=dark']);
+ const target=prepareDocument('<base href="./assets/" target="_blank"><a href="#section">Section</a>','https://publisher.test/docs/index.html');assert(target.html.includes('href="#section"'));assert(!target.html.includes('<base'));assert(!target.html.includes('target="_blank"'));
+});
+
+test('unreadable or malformed optional publisher manifests preserve a valid document installation',async()=>{
+ const {downloadWebsite}=await import('../src/website.js'),nativeFetch=globalThis.fetch;
+ try{for(const failure of ['malformed','unreadable']){
+  const progress=[];globalThis.fetch=async input=>{
+   const url=String(input);if(url.endsWith('/index.html'))return new Response('<!doctype html><title>Fallback document</title><link rel="manifest" href="manifest.webmanifest"><p>Content</p>',{headers:{'content-type':'text/html'}});
+   if(url.endsWith('/manifest.webmanifest')){if(failure==='unreadable')throw new TypeError('Synthetic unreadable metadata');return new Response('{bad json');}
+   return new Response('Missing',{status:404});
+  };
+  const installed=await downloadWebsite('https://publisher.test/demo/index.html',{onProgress:value=>progress.push(value)});assert.equal(installed.publisherManifest,null);assert.equal(installed.manifest.name,'Fallback document');assert.equal(installed.preparation.ended,true);assert(progress.some(value=>value.startsWith('Optional manifest unavailable:')));assert.equal(webManifest(installed,'https://runtime.test/').icons.length,2);
+ }}finally{globalThis.fetch=nativeFetch;}
+});
+
+
+test('a small publisher icon keeps its identity and gains installable fallback sizes',()=>{
+ const source={...app,resources:[{url:'https://publisher.test/app/tiny.png',contentType:'image/png'}],publisherManifest:{url:'https://publisher.test/app/manifest.webmanifest',value:{icons:[{src:'tiny.png',sizes:'16x16',type:'image/png'}]}}};
+ const manifest=webManifest(source,'https://runtime.test/');assert.equal(manifest.icons.length,3);assert(manifest.icons[0].src.includes('/__icon/'));assert(manifest.icons.some(icon=>icon.sizes==='192x192'));assert(manifest.icons.some(icon=>icon.sizes==='512x512'));
+});

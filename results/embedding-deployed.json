@@ -1,0 +1,30 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "policyObservations": [
+      "Framing 'https://pf-apps.damenh.com/' violates the following Content Security Policy directive: \"frame-ancestors 'none'\". The request has been blocked.\n"
+    ],
+    "checks": [
+      "Live app response forbids embedding independently of JavaScript checks",
+      "A private value persists in ordinary top-level confined execution",
+      "Same-site external parent receives the unrestricted control but no private message"
+    ],
+    "host": "https://pf.damenh.com/",
+    "runtime": "https://pf-apps.damenh.com/"
+  },
+  {
+    "name": "firefox",
+    "version": "155.0",
+    "policyObservations": [
+      "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (frame-ancestors) at <unknown> because it violates the following directive: “frame-ancestors 'none'”\" {file: \"chrome://juggler/content/NetworkObserver.js\" line: 414}]"
+    ],
+    "checks": [
+      "Live app response forbids embedding independently of JavaScript checks",
+      "A private value persists in ordinary top-level confined execution",
+      "Same-site external parent receives the unrestricted control but no private message"
+    ],
+    "host": "https://pf.damenh.com/",
+    "runtime": "https://pf-apps.damenh.com/"
+  }
+]

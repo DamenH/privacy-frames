@@ -13,6 +13,8 @@
     "test:pitch": "node test/pitch-training.mjs",
     "test:network": "node test/network.mjs && NETWORK_BROWSER=firefox node test/network.mjs",
     "serve": "node test/serve.mjs",
+    "test:embedding": "node test/embedding.mjs",
+    "test:assets": "node test/assets.mjs",
     "test:deployed": "node test/deployed.mjs"
   },
   "dependencies": {

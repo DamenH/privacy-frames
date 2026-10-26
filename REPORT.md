@@ -85,8 +85,11 @@ The recorded browser versions and receipts are in `results/`. `test/deployed.mjs
 | Cooperative packages and supported precache PWAs | Installable from a URL; CORS still applies |
 | Publisher service-worker runtime behavior | Replaced by the stated compatibility profile |
 | Frames, popups, new agents, arbitrary navigation and network transports | Refused |
+| Inline script blocks and inline event handlers | Not admitted by the current importer |
 | Individual PWA installation | Host-generated identity, scope, launch URL and local icons; browser installation UI varies |
 | Worker updates, OS share/file/protocol handlers, downloads and custom elements | Outside the supported profile |
 | Fine-grained IFC, selective release, general updates/migrations | Deferred or out of scope |
+
+Future compatibility work includes extracting inline module bootstraps into installed resources, discovering JavaScript and Wasm dependencies, and permitting WebAssembly under an explicit runtime policy. Installation network access alone does not provide that dependency discovery. Confined dedicated workers are a separate extension: the host would need to control their startup, messaging, storage and effects before admitting application code. Re-enabling native worker constructors would bypass the current execution-context controls. General application updates and the browser-local recognition indicator also remain deferred.
 
 The main result is useful execution of an independently developed application under a deployable browser-local boundary. Browser APIs evolve, and the operation inventory and measurements must evolve with them. A successful fixture establishes its tested behavior; it does not establish compatibility with every PWA or complete noninterference for JavaScript.
