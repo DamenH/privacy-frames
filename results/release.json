@@ -1,16 +1,16 @@
 {
   "status": "complete",
   "verifiedOn": "2026-10-26",
-  "implementationRevision": "eb62506534c1300dcde0460077703c7ada0b9025",
-  "managerPublicationRevision": "5bdde4bb219d230db17483e010f9d3ba11a7d6e8",
-  "runtimePublicationRevision": "73385153ce18466521c537bc2adf38c3533f39f9",
+  "implementationRevision": "3ed49fb6e3b2e45f695967f35ace8145ebea5c76",
+  "managerPublicationRevision": "3ed49fb6e3b2e45f695967f35ace8145ebea5c76",
+  "runtimePublicationRevision": "9bb8dc78e789b4bfd9fa727570878787acb119c6",
   "hosting": {
     "manager": "https://pf.damenh.com/",
     "runtime": "https://pf-apps.damenh.com/",
     "provider": "GitHub Pages",
     "httpsEnforced": true,
-    "managerRun": 40332458061,
-    "runtimeRun": 40330595465,
+    "managerRun": 40337153972,
+    "runtimeRun": 40337273324,
     "retiredDuplicatePublisher": "pf-resources.damenh.com (NXDOMAIN)"
   },
   "requirements": {
@@ -127,6 +127,20 @@
         "results/embedding-deployed.json",
         "results/pitch-training-deployed.json"
       ]
+    },
+    "uiFollowUp": {
+      "status": "complete",
+      "changes": [
+        "PhotoCraft replaces the pixel editor in the example list",
+        "Open links retain dark text on hover",
+        "Report back link reads \u2190 Privacy Frames"
+      ],
+      "evidence": [
+        "results/ui-update.json",
+        "results/deployed.json",
+        "results/assets.json"
+      ],
+      "openHoverContrast": 14.61450957814215
     }
   },
   "limits": [
@@ -137,7 +151,7 @@
   ],
   "receipts": {
     "assets.json": {
-      "sha256": "cbe7b35a0034a5b5d31b001ac01ad4f307c18689ff4638b170cf77444bcc61e6",
+      "sha256": "517d82ce0eb8260579e2c40acf0831fccd5e68805457442215edefd8883b1d9f",
       "bytes": 8339
     },
     "browser.json": {
@@ -145,8 +159,8 @@
       "bytes": 44377
     },
     "ci.json": {
-      "sha256": "9dc6f25d37e0d40613826b088ee12df85773e0ebb82cce0987a1b91e769b1e6a",
-      "bytes": 1974
+      "sha256": "8a9931d388a635c95d67e38877a8fe9395a3067a88668f284d69aa93d1f1600c",
+      "bytes": 1951
     },
     "compatibility-deployed.json": {
       "sha256": "6018b3b4f3fb0256ee9e7595c45a5274c1cc27b96fe9e5d9d29fcb569f20886a",
@@ -157,7 +171,7 @@
       "bytes": 1121
     },
     "deployed.json": {
-      "sha256": "c7ca3fe381c3bb6e9946b50c7654ca0d51d22cdbe71c6db79d1810853dcf72c9",
+      "sha256": "b511cc1b67943d5aec8e9d3227dc97cf955fa4bd5f851bf5cc24771c63ee57af",
       "bytes": 5226
     },
     "embedding-deployed.json": {
@@ -199,6 +213,10 @@
     "storage-policy.json": {
       "sha256": "108a1fea2f3128bd40eeb6083a480dc31b65620a395cc54a881f24d673a4e480",
       "bytes": 768
+    },
+    "ui-update.json": {
+      "sha256": "76e3f180ec6f3d327b1f5f51dfeea4e711e0d10d32caa0687854b13d7d957ee1",
+      "bytes": 251
     },
     "wasm-deployed.json": {
       "sha256": "06e1517186af479d4c71f2b07277cd0270bac3945816c61beac1a49eabb4b1a9",

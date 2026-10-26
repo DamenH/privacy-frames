@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-26T13:44:09.805Z",
+  "date": "2026-10-26T14:13:52.283Z",
   "entry": "https://pf.damenh.com/",
   "browsers": [
     {
@@ -9,7 +9,7 @@
         "Dedicated dark manager, separate runtime and exact production management origin",
         "All example URLs install, including independently developed applications, and library metadata survives reload",
         "Readable app URL, native notes, persistent scoped storage and no opener",
-        "Local image input and exact pixel transformation",
+        "PhotoCraft renders its canvas and starts offline",
         "Thirty-three hostile event checks and manager-state isolation",
         "Editable HTML/CSS/JavaScript runs inside the restricted realm",
         "Published Pitch Training renders, saves a score and reopens its hash route offline",
@@ -61,7 +61,7 @@
         "Dedicated dark manager, separate runtime and exact production management origin",
         "All example URLs install, including independently developed applications, and library metadata survives reload",
         "Readable app URL, native notes, persistent scoped storage and no opener",
-        "Local image input and exact pixel transformation",
+        "PhotoCraft renders its canvas and starts offline",
         "Thirty-three hostile event checks and manager-state isolation",
         "Editable HTML/CSS/JavaScript runs inside the restricted realm",
         "Published Pitch Training renders, saves a score and reopens its hash route offline",

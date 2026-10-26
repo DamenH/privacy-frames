@@ -1,15 +1,15 @@
 {
-  "date": "2026-10-26T13:44:08.379Z",
+  "date": "2026-10-26T14:13:52.081Z",
   "assets": [
     {
       "site": "manager",
       "file": "config.json",
-      "sha256": "a91ccd17fe5139b56477d38a13a90b0207f03aae6b2154abdb9fd7044ff183f3"
+      "sha256": "1cac3fb86d9584a556cdf7a351c4f25e717c7b39df868e49a5f29448b69f0497"
     },
     {
       "site": "manager",
       "file": "host.css",
-      "sha256": "c1b232495ccde939892c6e23a66beaaca1483da3635e8c6fca4d7f1be0b7c261"
+      "sha256": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e"
     },
     {
       "site": "manager",
@@ -39,17 +39,17 @@
     {
       "site": "manager",
       "file": "report.html",
-      "sha256": "30b1e0dbb497d0f9c5fd7f5f0d175bfa1739c799442fa1583dc3987d76614e3c"
+      "sha256": "f96f1d02796c533e69f5b2acc65424a71b34690701fd1d147100c095e8cf82c7"
     },
     {
       "site": "manager",
       "file": "sw.js",
-      "sha256": "5e9335d43fdc9b06aabbaf67b700fc6debf7bc971a95b73997571320c66d0651"
+      "sha256": "b362b697381c1a06852c57dabe11117cc599f11795c89416020f383209c4dfb0"
     },
     {
       "site": "runtime",
       "file": "config.json",
-      "sha256": "a91ccd17fe5139b56477d38a13a90b0207f03aae6b2154abdb9fd7044ff183f3"
+      "sha256": "1cac3fb86d9584a556cdf7a351c4f25e717c7b39df868e49a5f29448b69f0497"
     },
     {
       "site": "runtime",
@@ -69,7 +69,7 @@
     {
       "site": "runtime",
       "file": "host.css",
-      "sha256": "c1b232495ccde939892c6e23a66beaaca1483da3635e8c6fca4d7f1be0b7c261"
+      "sha256": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e"
     },
     {
       "site": "runtime",
@@ -89,12 +89,12 @@
     {
       "site": "runtime",
       "file": "report.html",
-      "sha256": "30b1e0dbb497d0f9c5fd7f5f0d175bfa1739c799442fa1583dc3987d76614e3c"
+      "sha256": "f96f1d02796c533e69f5b2acc65424a71b34690701fd1d147100c095e8cf82c7"
     },
     {
       "site": "runtime",
       "file": "sw.js",
-      "sha256": "de74b72f19faac65cd5c057559dbd573f694196b40355035a255e21009386a63"
+      "sha256": "f0633c12ada085fad676619ab750f65cde1a4ae427caae1d479d3e686e2d0334"
     },
     {
       "site": "notes",
