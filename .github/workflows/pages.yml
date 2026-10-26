@@ -21,7 +21,12 @@ jobs:
       - run: npm run typecheck
       - run: npm run format:check
       - run: npm run build
+      - name: Use the Ubuntu HTTPS archive for browser dependencies
+        run: |
+          printf '%s\n' 'https://archive.ubuntu.com/ubuntu/' | sudo tee /etc/apt/apt-mirrors.txt > /dev/null
+          printf '%s\n' 'https://security.ubuntu.com/ubuntu/' | sudo tee /etc/apt/apt-mirrors-security.txt > /dev/null
       - run: npx playwright install --with-deps chromium firefox
+        timeout-minutes: 10
       - run: npm test
       - run: npm run test:storage-policy
       - run: npm run test:mobile
