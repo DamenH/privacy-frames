@@ -77,7 +77,7 @@ const html = `<!doctype html>
   </style>
 </head>
 <body>
-  <header><a href="${escapeAttribute(managerURL)}">← Library</a></header>
+  <header><a href="${escapeAttribute(managerURL)}">← Privacy Frames</a></header>
   <main>${await marked.parse(source)}</main>
 </body>
 </html>

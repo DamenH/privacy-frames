@@ -90,23 +90,30 @@ try {
       row.checks.push(
         'Readable app URL, native notes, persistent scoped storage and no opener',
       );
-      app = await launch('image');
-      await app
-        .locator('#file')
-        .setInputFiles(new URL('./pixels.png', import.meta.url).pathname);
-      await app.waitForFunction(() => document.querySelector('canvas').width === 2);
-      await app.locator('#invert').click();
-      assert.deepEqual(
-        await app.evaluate(() =>
-          Array.from(
-            document.querySelector('canvas').getContext('2d').getImageData(0, 0, 1, 1)
-              .data,
-          ),
-        ),
-        [35, 215, 165, 255],
+      const photoCraftLink = page
+        .locator('.app-card')
+        .filter({ has: page.getByRole('heading', { name: 'PhotoCraft', exact: true }) })
+        .getByRole('link', { name: 'Open', exact: true });
+      app = await launch(await photoCraftLink.getAttribute('data-app'), false);
+      await app.waitForFunction(
+        () =>
+          document.querySelector('#photocraft_loading') === null &&
+          document.querySelector('canvas')?.width > 0,
+        {},
+        { timeout: 60000 },
       );
+      await context.setOffline(true);
+      await app.reload();
+      await app.waitForFunction(
+        () =>
+          document.querySelector('#photocraft_loading') === null &&
+          document.querySelector('canvas')?.width > 0,
+        {},
+        { timeout: 60000 },
+      );
+      await context.setOffline(false);
       await app.close();
-      row.checks.push('Local image input and exact pixel transformation');
+      row.checks.push('PhotoCraft renders its canvas and starts offline');
       app = await launch('notes');
       await app
         .getByText('Article loaded using native fetch.', { exact: true })
