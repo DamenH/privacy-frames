@@ -7,7 +7,7 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "Completed installation is available through mediated worker readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 220.7 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 220.8 Hz detected",
       "Browser-denied microphone permission is handled without a capture stream",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
       "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
@@ -17,17 +17,15 @@
       "updateDenied": true,
       "script": "http://127.0.0.1:4211/runtime/ywJX53taGnk/pitch-training/sw.js"
     },
-    "frequency": 220.7,
+    "frequency": 220.8,
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",
-        "sha256": "f2ef5516b4a422788662dbf4bc1fd764745d0b762837ea609fd9b72602d1b9f5",
-        "bytes": 211632
+        "sha256": "f2ef5516b4a422788662dbf4bc1fd764745d0b762837ea609fd9b72602d1b9f5"
       },
       {
         "url": "https://damenh.github.io/pitch-training/sw.js",
-        "sha256": "17b0666bd6544f95104af31518034f980078c5ccb41bd6ebf2255c95ffe38a45",
-        "bytes": 3163
+        "sha256": "17b0666bd6544f95104af31518034f980078c5ccb41bd6ebf2255c95ffe38a45"
       }
     ],
     "maintenance": [],
@@ -80,13 +78,11 @@
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",
-        "sha256": "f2ef5516b4a422788662dbf4bc1fd764745d0b762837ea609fd9b72602d1b9f5",
-        "bytes": 211632
+        "sha256": "f2ef5516b4a422788662dbf4bc1fd764745d0b762837ea609fd9b72602d1b9f5"
       },
       {
         "url": "https://damenh.github.io/pitch-training/sw.js",
-        "sha256": "17b0666bd6544f95104af31518034f980078c5ccb41bd6ebf2255c95ffe38a45",
-        "bytes": 3163
+        "sha256": "17b0666bd6544f95104af31518034f980078c5ccb41bd6ebf2255c95ffe38a45"
       }
     ],
     "maintenance": [
@@ -98,43 +94,43 @@
     ],
     "policyObservations": [
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8553}]",
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15705}]",
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15711}]",
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11746}]",
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8690}]",
+        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8905}]",
         "url": "http://127.0.0.1:4211/runtime/sw.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8553}]",
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15705}]",
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15711}]",
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11746}]",
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8690}]",
+        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8905}]",
         "url": "http://127.0.0.1:4211/runtime/sw.js"
       }
     ],

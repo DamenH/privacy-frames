@@ -1,35 +1,41 @@
-# Reviewed enforcement surface
+# Enforcement surface
 
-This inventory accompanies the tested Chromium and Firefox versions recorded in
-`results/`. It identifies the boundary and its evidence, not a proof that future
-browser APIs are covered. Review new context, transport and native-service APIs
-before claiming support for a new browser profile.
+This inventory maps browser capabilities to their intended controls and evidence.
+The receipts in `results/` identify measured revisions and browser versions.
+Changes to a control require fresh verification of its corresponding routes.
 
-| Surface | Enforcement | Evidence |
+| Surface | Control | Evidence to inspect |
 | --- | --- | --- |
-| Initial application HTML, SVG, MathML, templates | Lexical and parsed admission before native parsing | Policy tests; unrestricted parser controls |
-| Frame/object/embed/portal creation and references | Creation, parser and insertion checks; protected references; CSP | Direct and real-event hostile probes |
-| Native document parsers, document replacement, Range insertion, Shadow DOM | Synchronous checks or refusal | Hostile probes and unrestricted controls |
-| Custom elements, customized built-ins, unsafe HTML setters, execCommand | Refused | Browser probes |
-| External embedding and opener-based messaging | App response frame-ancestors none/X-Frame-Options DENY; bootstrap checks top-level/no opener | Same-site external embedding attack with a private canary and working unrestricted frame control |
-| Popups, picture-in-picture windows, history traversal and document navigation | Protected methods, Navigation API, CSP sandbox and no opener | Hostile event tests, named-window tests, fault-injected refusal |
-| Workers, shared workers, worklets, ShadowRealm, broadcast channels | Protected constructors/methods and worker-src none | Probes; working unrestricted audio-worklet control |
-| Script/link/meta policy mutation, attribute and Attr routes, rich paste/drop | Protected setters/mutators and insertion; theme-color exception | Hostile probes, Vite/Svelte compatibility test |
-| Fetch, XHR, image/CSS/media/font loads, cache downloads | Exact installed-resource aliases; self-only CSP; worker gate | Original-URL alias test; functional examples; independent DNS/HTTP tests |
-| Preconnect, DNS-prefetch, prefetch, prerender, modulepreload, speculation rules | Resource-policy mutation/insertion refused; CSP | Independent DNS tests with unrestricted control |
-| WebSocket, WebTransport, RTC and deferred networking | Protected constructors/prototypes | Hostile tests; full-browser RTC/STUN UDP controls |
-| Speech, remote playback and URL-bearing media artwork | Remote operations/artwork refused; local audio/text metadata retained | Probes; pitch sample playback and capture tests |
-| Service-worker registration, messaging, updates and navigation preload | Native authority refused; supported precache readiness object only | Management attacks; ordinary PWA tests; unsupported-operation tests |
-| Local/session storage, property access, clear and storage events | Namespace views and native event mediation | Cross-app and same-app storage suite; synthetic raw-storage escape regression |
-| IndexedDB, Cache Storage and recovered prototype methods | Factory namespaces, scoped enumeration and native IDB behavior | Cross-app database/cache tests, actual saved-score records |
-| Storage-access handles, legacy filesystem and WebSQL entry points | Refused | Authority probes and implementation checks |
-| Host management | Exact parent/origin iframe handshake and browser-client roles; app URL pinned | Separate-runtime suite and native test-only management attack |
-| Public PWA metadata/icons | Fixed read-only routes; no handler or worker authority | Manifest adaptation tests and native Chromium install/launch |
-| Document base URLs and dependencies | Resolved during preparation, removed before runtime; local aliases | Generic import fixtures and live article offline checks |
-| Publisher installation program | SES compartment, limited broker, disposable worker, explicit completion | Conventional PWA fixture, absent-authority receipt and rejected preparation |
+| Initial HTML, SVG, MathML and templates | Lexical and parsed admission before native parsing | Policy tests and unrestricted parser controls |
+| Initial script and resource declarations | Preparation captures admitted resources; runtime starts scripts only after guard setup | Import tests, ordinary website fixtures and compatibility tests |
+| Dynamic script/link/meta insertion and mutation | Protected creation, setters, attributes, Attr objects and node insertion; narrowly admitted inert metadata operations | Hostile probes and ordinary framework startup |
+| Frames, objects, embeds, portals and references to their contexts | Creation, parser and insertion checks, protected references and CSP | Direct and real-event hostile probes |
+| Native document parsers, document replacement, Range and Shadow DOM | Synchronous checks or refusal | Hostile probes with working unrestricted controls |
+| Custom elements, customized built-ins, unsafe HTML setters and execCommand | Refused | Browser probes |
+| External embedding and opener-based messaging | Application responses deny framing; guard requires top-level execution without an opener | Embedding test with private canary and unrestricted receiver control |
+| Popups, picture-in-picture windows, history traversal and document navigation | Protected methods, Navigation API and CSP sandbox | Real-event and named-window probes; startup refusal when enforcement is absent |
+| Workers, shared workers, worklets, ShadowRealm and broadcast channels | Protected constructors and methods; application worker CSP | Agent probes and unrestricted worklet control |
+| Fetch, XHR, images, CSS, media, fonts and cache downloads | Exact installed-resource aliases, runtime-origin-only CSP and cache-or-block worker | Original publisher URL tests, functional fixtures and independent DNS/HTTP observations |
+| Preconnect, DNS-prefetch, prefetch, prerender and speculation rules | Initial hints handled during preparation; application resource-policy insertion remains refused | Independent DNS controls and hostile insertion probes |
+| WebAssembly | Explicit script policy; imports use the already confined JavaScript environment | Wasm compatibility fixture and network attempts through imported host functions |
+| WebSocket, WebTransport, WebRTC and deferred networking | Protected constructors and prototype methods | Hostile tests with HTTP/TCP and native STUN controls |
+| Speech, remote playback and URL-bearing OS media artwork | Remote operations and artwork refused; local audio and text metadata retained | Transport probes, audio playback and capture tests |
+| Publisher service-worker registration, messaging, updates and navigation preload | Native authority refused; completed precache compatibility interface only | Ordinary PWA preparation, unsupported-operation and management tests |
+| Local/session storage, named properties, enumeration and clear | Per-application views; native prototype methods protected | Cross-application and same-application storage tests |
+| Storage events and storageArea handles | Filter namespace before application listeners; expose scoped views | Native storage event tests and raw-storage escape regression |
+| IndexedDB, Cache Storage and recovered prototype methods | Factory namespaces, scoped enumeration and native transaction behavior | Database/cache isolation and actual saved application records |
+| Alternative storage-access handles, legacy filesystem and WebSQL | Refused | Authority probes and implementation inspection |
+| Host installation metadata and resource bodies | Separate host-owned stores; runtime admission validates metadata and resource integrity | Admission tests, metadata/body separation and resource response tests |
+| Host management | Exact parent/origin iframe handshake plus browser-client management roles | Separate-origin tests and native test-only management attacks |
+| PWA metadata and icons | Fixed read-only public routes; host-generated identity and scope | Manifest adaptation and native desktop installation tests |
+| Document base URLs, CSS and module dependencies | Resolve during public preparation; serve captured resources locally | Generic import fixtures and independent application tests |
+| Publisher installation program | SES compartment, limited broker, disposable native worker and explicit completion | Absent-authority receipt, successful preparation and rejected installation |
 
-Native browser UI, extensions, browser defects, physical/timing channels and
-availability are outside this demonstration. Physical network evidence covers the
-explicit calibrated routes, not all browser-process traffic. Fixed trusted worker
-update requests are kept separate from application traffic. Real browser user
-permissions still govern microphone capture.
+Native browser UI, extensions, browser defects, physical side channels and
+availability are outside the implementation's threat model. Network evidence
+covers calibrated application routes; fixed host service-worker update requests
+are recorded separately. Microphone access still requires browser permission.
+
+A capability is supported only when its enforcement and intended behavior both
+work in the recorded browser profile. New browser APIs need review against this
+inventory before the host claims support for them.

@@ -1,34 +1,43 @@
 {
-  "date": "2026-10-25T23:58:59.492Z",
+  "date": "2026-10-26T13:24:59.340Z",
   "browsers": [
     {
       "name": "chromium",
       "version": "153.0.8010.12",
       "checks": [
-        "Five packages installed from distinct origins",
+        "Four websites installed from distinct origins",
         "Native notes editing, per-app persistence, reload, no opener",
         "Local file input, canvas pixel access and transformation",
         "Original publisher URLs map locally for fetch, XHR, Cache.add and images under runtime-only CSP",
         "Native fetch and installed image, external fetch refused",
         "Storage events hide foreign namespaces and expose only scoped storage references",
-        "Same-origin host storage, resources, prototype getters, management and URL identity protected",
+        "Cross-origin manager and same-runtime host state, resources, prototype getters, management and URL identity protected",
+        "Read-only link token lists retain native behavior without exposing their receiver through mutable browser prototypes",
         "Fetch, XHR, image, CSS, link ping, form, location and socket disclosure attempts produced no marker at HTTP receivers",
         "31 context/authority/tampering probes refused before creating children",
         "Ten unrestricted context/agent creation controls active",
         "Editable HTML/CSS/JS playground blocks default disclosure, runs edited scripts in place and retains context guards; unrestricted control transmits",
         "Incomplete installation refused atomically",
-        "Open-window update rejected; same declared ID at different source gets isolated storage",
+        "Open-window update rejected; identical application labels at different sources get isolated storage",
         "Unavailable Navigation API refuses startup before application input or execution",
         "Uncontrolled virtual runtime URL serves 404 without application code"
       ],
       "errors": [
-        "resources: Connecting to 'https://example.com/not-installed' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
-        "resources: Fetch API cannot load https://example.com/not-installed. Refused to connect because it violates the document's Content Security Policy.",
-        "adversary: Failed to load resource: net::ERR_FAILED",
-        "adversary: Failed to load resource: net::ERR_FAILED",
-        "adversary: Failed to load resource: net::ERR_FAILED",
-        "adversary: Failed to load resource: net::ERR_FAILED",
-        "adversary: Failed to load resource: net::ERR_FAILED",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "notes: Connecting to 'https://example.com/not-installed' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "notes: Fetch API cannot load https://example.com/not-installed. Refused to connect because it violates the document's Content Security Policy.",
+        "adversary: Connecting to 'http://127.0.0.1:4210/privacy-frames/index.html' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "adversary: Fetch API cannot load http://127.0.0.1:4210/privacy-frames/index.html. Refused to connect because it violates the document's Content Security Policy.",
+        "adversary: Connecting to 'http://127.0.0.1:4210/privacy-frames/manager.js' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "adversary: Fetch API cannot load http://127.0.0.1:4210/privacy-frames/manager.js. Refused to connect because it violates the document's Content Security Policy.",
+        "adversary: Connecting to 'http://127.0.0.1:4210/privacy-frames/config.json' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "adversary: Fetch API cannot load http://127.0.0.1:4210/privacy-frames/config.json. Refused to connect because it violates the document's Content Security Policy.",
+        "adversary: Connecting to 'http://127.0.0.1:4210/privacy-frames/report.html' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "adversary: Fetch API cannot load http://127.0.0.1:4210/privacy-frames/report.html. Refused to connect because it violates the document's Content Security Policy.",
+        "adversary: Connecting to 'http://127.0.0.1:4210/privacy-frames/sw.js' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "adversary: Fetch API cannot load http://127.0.0.1:4210/privacy-frames/sw.js. Refused to connect because it violates the document's Content Security Policy.",
         "adversary: Blocked opening 'http://127.0.0.1:4210/privacy-frames/?unexpected-navigation=1' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.",
         "adversary: Connecting to 'http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=fetch' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
         "adversary: Fetch API cannot load http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=fetch. Refused to connect because it violates the document's Content Security Policy.",
@@ -38,17 +47,35 @@
         "adversary: Loading the image 'http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=css' violates the following Content Security Policy directive: \"img-src 'self' data: blob:\". The action has been blocked.",
         "playground: Connecting to 'http://127.0.0.1:4216/disclosure?secret=private-playground-marker' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
         "playground: Fetch API cannot load http://127.0.0.1:4216/disclosure?secret=private-playground-marker. Refused to connect because it violates the document's Content Security Policy.",
-        "playground: Running the JavaScript URL violates the following Content Security Policy directive 'script-src 'self' blob:'. Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.",
+        "playground: Running the JavaScript URL violates the following Content Security Policy directive 'script-src 'self' blob: 'wasm-unsafe-eval''. Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.",
         "Failed to load resource: the server responded with a status of 404 (Not Found)"
       ],
-      "sameOrigin": {
-        "origin": "http://127.0.0.1:4210",
+      "runtimeIsolation": {
+        "origin": "http://127.0.0.1:4211",
         "hostStorageProtected": true,
         "prototypeGetterChecks": 3,
         "hostResourcesDenied": true,
         "workerManagementDenied": true,
         "identitySpoofDenied": true,
         "managerWindowTargetDenied": true
+      },
+      "tokenListIsolation": {
+        "replacedProperties": 6,
+        "receivers": 0,
+        "interceptedProperties": [],
+        "receiverCanMutate": false,
+        "mutationBlocked": true,
+        "behavior": {
+          "supports": true,
+          "contains": true,
+          "item": "stylesheet",
+          "length": 1,
+          "value": "stylesheet",
+          "string": "stylesheet",
+          "tokens": [
+            "stylesheet"
+          ]
+        }
       },
       "uiProbes": [
         "createElement iframeBlocked: Error",
@@ -63,10 +90,10 @@
         "document creationBlocked: SecurityError",
         "document.writeBlocked: SecurityError",
         "Audio workletBlocked: SecurityError",
-        "WorkerBlocked: TypeError",
-        "SharedWorkerBlocked: TypeError",
-        "WebSocketBlocked: TypeError",
-        "WebRTCBlocked: TypeError",
+        "WorkerBlocked: SecurityError",
+        "SharedWorkerBlocked: SecurityError",
+        "WebSocketBlocked: SecurityError",
+        "WebRTCBlocked: SecurityError",
         "window.openBlocked: SecurityError",
         "service worker authorityBlocked: SecurityError",
         "Native storage prototype recoveryBlocked: SecurityError",
@@ -161,25 +188,25 @@
         {
           "name": "Worker",
           "blocked": true,
-          "error": "TypeError",
+          "error": "SecurityError",
           "contexts": 0
         },
         {
           "name": "SharedWorker",
           "blocked": true,
-          "error": "TypeError",
+          "error": "SecurityError",
           "contexts": 0
         },
         {
           "name": "WebSocket",
           "blocked": true,
-          "error": "TypeError",
+          "error": "SecurityError",
           "contexts": 0
         },
         {
           "name": "WebRTC",
           "blocked": true,
-          "error": "TypeError",
+          "error": "SecurityError",
           "contexts": 0
         },
         {
@@ -276,6 +303,31 @@
       "receiver": {
         "httpRequests": 0,
         "tcpConnections": 0
+      },
+      "tokenListControl": {
+        "replacedProperties": 6,
+        "receivers": 8,
+        "interceptedProperties": [
+          "contains",
+          "item",
+          "iterator",
+          "length",
+          "supports",
+          "value"
+        ],
+        "receiverCanMutate": true,
+        "mutationBlocked": false,
+        "behavior": {
+          "supports": true,
+          "contains": true,
+          "item": "stylesheet",
+          "length": 1,
+          "value": "stylesheet",
+          "string": "stylesheet",
+          "tokens": [
+            "stylesheet"
+          ]
+        }
       },
       "controls": [
         {
@@ -347,8 +399,8 @@
         },
         {
           "port": 4216,
-          "path": "/disclosure?value=control-marker-chromium&route=navigation",
-          "method": "GET"
+          "path": "/socket?value=control-marker-chromium",
+          "method": "UPGRADE"
         },
         {
           "port": 4216,
@@ -362,11 +414,6 @@
         },
         {
           "port": 4216,
-          "path": "/socket?value=control-marker-chromium",
-          "method": "UPGRADE"
-        },
-        {
-          "port": 4216,
           "path": "/disclosure?value=control-marker-chromium&route=location",
           "method": "GET"
         }
@@ -376,82 +423,101 @@
       "name": "firefox",
       "version": "155.0",
       "checks": [
-        "Five packages installed from distinct origins",
+        "Four websites installed from distinct origins",
         "Native notes editing, per-app persistence, reload, no opener",
         "Local file input, canvas pixel access and transformation",
         "Original publisher URLs map locally for fetch, XHR, Cache.add and images under runtime-only CSP",
         "Native fetch and installed image, external fetch refused",
         "Storage events hide foreign namespaces and expose only scoped storage references",
-        "Same-origin host storage, resources, prototype getters, management and URL identity protected",
+        "Cross-origin manager and same-runtime host state, resources, prototype getters, management and URL identity protected",
+        "Read-only link token lists retain native behavior without exposing their receiver through mutable browser prototypes",
         "Fetch, XHR, image, CSS, link ping, form, location and socket disclosure attempts produced no marker at HTTP receivers",
         "31 context/authority/tampering probes refused before creating children",
         "Ten unrestricted context/agent creation controls active",
         "Editable HTML/CSS/JS playground blocks default disclosure, runs edited scripts in place and retains context guards; unrestricted control transmits",
         "Incomplete installation refused atomically",
-        "Open-window update rejected; same declared ID at different source gets isolated storage",
+        "Open-window update rejected; identical application labels at different sources get isolated storage",
         "Unavailable Navigation API refuses startup before application input or execution",
         "Uncontrolled virtual runtime URL serves 404 without application code"
       ],
       "errors": [
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 8553}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15705}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15711}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 11746}]",
-        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 8553}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15705}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15711}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 11746}]",
-        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 8553}]",
-        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15705}]",
-        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15711}]",
-        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 11746}]",
-        "image: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "resources: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 8553}]",
-        "resources: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15705}]",
-        "resources: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15711}]",
-        "resources: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 11746}]",
-        "resources: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "resources: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at https://example.com/not-installed because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 16160}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 8553}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15705}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15711}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 11746}]",
-        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/privacy-frames/index.html’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/privacy-frames/manager.js’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/privacy-frames/config.json’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/privacy-frames/report.html’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/privacy-frames/sw.js’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/bwbEOHYp5zk/adversary/app.js\" line: 34}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/bwbEOHYp5zk/adversary/app.js\" line: 35}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=fetch because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 16160}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=xhr because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4210/privacy-frames/bwbEOHYp5zk/adversary/app.js\" line: 49}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (form-action) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=form because it violates the following directive: “form-action 'none'”\" {file: \"http://127.0.0.1:4210/privacy-frames/bwbEOHYp5zk/adversary/app.js\" line: 53}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=image because it violates the following directive: “img-src 'self' data: blob:”\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 16182}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=css because it violates the following directive: “img-src 'self' data: blob:”\" {file: \"http://127.0.0.1:4210/privacy-frames/bwbEOHYp5zk/adversary/\" line: 0}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 8553}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15705}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15711}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 11746}]",
-        "playground: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?secret=private-playground-marker because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 16160}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked an inline script (script-src-elem) from being executed because it violates the following directive: “script-src 'self' blob:”. Consider using a hash ('sha256-7DCA9I+N8CEcxl85+FFBgrexA3CEyhiIkSe9WQlLcME=') or a nonce.\nSource: javascript:window.__jsurlEscape=1;'<h1>e…\" {file: \"http://127.0.0.1:4210/privacy-frames/DLpn7V5zQHE/playground/\" line: 0}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 8553}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15705}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 15711}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob:” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4210/privacy-frames/guard.js\" line: 11746}]",
-        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4210/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4210/privacy-frames/sw.js\" line: 8691}]"
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]",
+        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "image: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at https://example.com/not-installed because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16156}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/index.html because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16156}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/manager.js because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16156}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/config.json because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16156}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/report.html because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16156}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/sw.js because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16156}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 128}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 129}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=fetch because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16156}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=xhr because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 187}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (form-action) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=form because it violates the following directive: “form-action 'none'”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 209}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=image because it violates the following directive: “img-src 'self' data: blob:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16211}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=css because it violates the following directive: “img-src 'self' data: blob:”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/\" line: 0}]",
+        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "playground: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]",
+        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?secret=private-playground-marker because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 16156}]",
+        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked an inline script (script-src-elem) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'”. Consider using a hash ('sha256-7DCA9I+N8CEcxl85+FFBgrexA3CEyhiIkSe9WQlLcME=') or a nonce.\nSource: javascript:window.__jsurlEscape=1;'<h1>e…\" {file: \"http://127.0.0.1:4211/runtime/0vpdLR01oXs/playground/\" line: 0}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]"
       ],
-      "sameOrigin": {
-        "origin": "http://127.0.0.1:4210",
+      "runtimeIsolation": {
+        "origin": "http://127.0.0.1:4211",
         "hostStorageProtected": true,
         "prototypeGetterChecks": 3,
         "hostResourcesDenied": true,
         "workerManagementDenied": true,
         "identitySpoofDenied": true,
         "managerWindowTargetDenied": true
+      },
+      "tokenListIsolation": {
+        "replacedProperties": 6,
+        "receivers": 0,
+        "interceptedProperties": [],
+        "receiverCanMutate": false,
+        "mutationBlocked": true,
+        "behavior": {
+          "supports": true,
+          "contains": true,
+          "item": "stylesheet",
+          "length": 1,
+          "value": "stylesheet",
+          "string": "stylesheet",
+          "tokens": [
+            "stylesheet"
+          ]
+        }
       },
       "uiProbes": [
         "createElement iframeBlocked: Error",
@@ -466,10 +532,10 @@
         "document creationBlocked: SecurityError",
         "document.writeBlocked: SecurityError",
         "Audio workletBlocked: SecurityError",
-        "WorkerBlocked: TypeError",
-        "SharedWorkerBlocked: TypeError",
-        "WebSocketBlocked: TypeError",
-        "WebRTCBlocked: TypeError",
+        "WorkerBlocked: SecurityError",
+        "SharedWorkerBlocked: SecurityError",
+        "WebSocketBlocked: SecurityError",
+        "WebRTCBlocked: SecurityError",
         "window.openBlocked: SecurityError",
         "service worker authorityBlocked: SecurityError",
         "Native storage prototype recoveryBlocked: SecurityError",
@@ -564,25 +630,25 @@
         {
           "name": "Worker",
           "blocked": true,
-          "error": "TypeError",
+          "error": "SecurityError",
           "contexts": 0
         },
         {
           "name": "SharedWorker",
           "blocked": true,
-          "error": "TypeError",
+          "error": "SecurityError",
           "contexts": 0
         },
         {
           "name": "WebSocket",
           "blocked": true,
-          "error": "TypeError",
+          "error": "SecurityError",
           "contexts": 0
         },
         {
           "name": "WebRTC",
           "blocked": true,
-          "error": "TypeError",
+          "error": "SecurityError",
           "contexts": 0
         },
         {
@@ -679,6 +745,31 @@
       "receiver": {
         "httpRequests": 0,
         "tcpConnections": 0
+      },
+      "tokenListControl": {
+        "replacedProperties": 6,
+        "receivers": 8,
+        "interceptedProperties": [
+          "contains",
+          "item",
+          "iterator",
+          "length",
+          "supports",
+          "value"
+        ],
+        "receiverCanMutate": true,
+        "mutationBlocked": false,
+        "behavior": {
+          "supports": true,
+          "contains": true,
+          "item": "stylesheet",
+          "length": 1,
+          "value": "stylesheet",
+          "string": "stylesheet",
+          "tokens": [
+            "stylesheet"
+          ]
+        }
       },
       "controls": [
         {
@@ -755,12 +846,12 @@
         },
         {
           "port": 4216,
-          "path": "/disclosure?value=control-marker-firefox&route=css",
+          "path": "/disclosure?value=control-marker-firefox&route=navigation",
           "method": "GET"
         },
         {
           "port": 4216,
-          "path": "/disclosure?value=control-marker-firefox&route=navigation",
+          "path": "/disclosure?value=control-marker-firefox&route=css",
           "method": "GET"
         }
       ]

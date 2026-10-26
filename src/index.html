@@ -1,36 +1,15 @@
 <!doctype html>
 <html lang="en">
-<head>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width,initial-scale=1">
- <meta name="color-scheme" content="dark">
- <meta name="referrer" content="no-referrer">
- <title>Privacy Frames</title>
- <link rel="stylesheet" href="./host.css">
-</head>
-<body>
- <main>
-  <header><h1>Privacy Frames</h1><nav class="header-links"><a href="./report.html">Report</a><a href="https://github.com/DamenH/privacy-frames" target="_blank" rel="noopener noreferrer">GitHub</a></nav></header>
-  <form id="install">
-   <label for="app-url">Application URL</label>
-   <div class="input-row">
-    <input id="app-url" type="url" placeholder="https://…" required autocomplete="off" spellcheck="false">
-    <button type="submit">Install</button>
-   </div>
-  </form>
-  <p id="status" role="status" aria-live="polite">Starting…</p>
-  <section class="examples-section" aria-labelledby="examples-title">
-   <h2 id="examples-title">Examples</h2><div id="examples"></div>
-  </section>
-  <section class="library" aria-labelledby="library-title">
-   <div class="library-heading"><h2 id="library-title">Installed <span id="count">0</span></h2><button id="refresh-apps" type="button" class="quiet" disabled>Refresh</button></div>
-   <p id="empty">No applications installed.</p><div id="app-list"></div>
-  </section>
-  <details class="observations">
-   <summary>Diagnostics</summary><button id="refresh-events" class="quiet">Refresh</button>
-   <pre id="events">No observations loaded.</pre>
-  </details>
- </main>
- <script type="module" src="./manager.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Privacy Frames</title>
+    <link rel="stylesheet" href="./host.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./manager.js"></script>
+  </body>
 </html>

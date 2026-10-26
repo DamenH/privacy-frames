@@ -1,21 +1,15 @@
 {
   "managerURL": "https://pf.damenh.com/",
   "runtimeURL": "https://pf-apps.damenh.com/",
-  "managerOrigins": [
-    "https://pf.damenh.com"
-  ],
+  "managerOrigins": ["https://pf.damenh.com"],
   "examples": [
     {
-      "name": "Notes",
+      "name": "Notebook",
       "url": "https://pf-notes.damenh.com/"
     },
     {
-      "name": "Image editor",
+      "name": "Pixel editor",
       "url": "https://pf-image.damenh.com/"
-    },
-    {
-      "name": "Offline reader",
-      "url": "https://pf-resources.damenh.com/"
     },
     {
       "name": "Hostile app",
@@ -24,10 +18,6 @@
     {
       "name": "Code playground",
       "url": "https://pf-adversary.damenh.com/playground/"
-    },
-    {
-      "name": "Offline PWA",
-      "url": "https://pf-ordinary.damenh.com/"
     },
     {
       "name": "Pitch Training",

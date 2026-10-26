@@ -13,64 +13,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: npm
       - run: npm ci
+      - run: npm run typecheck
+      - run: npm run format:check
       - run: npm run build
-      - run: npm run build:production
-        env:
-          PUBLISHER_URL: ${{ vars.PUBLISHER_URL }}
-      - run: node --test test/policy.test.mjs
-      - uses: actions/checkout@v6
-        if: vars.PAGES_ENABLED == 'true'
-        with:
-          repository: DamenH/privacy-frames-apps
-          path: test/apps
-          ssh-key: ${{ secrets.APPS_DEPLOY_KEY }}
       - run: npx playwright install --with-deps chromium firefox
-        if: vars.PAGES_ENABLED == 'true'
       - run: npm test
-        if: vars.PAGES_ENABLED == 'true'
-        env:
-          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
       - run: npm run test:storage-policy
-        if: vars.PAGES_ENABLED == 'true'
-        env:
-          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
       - run: npm run test:mobile
-        if: vars.PAGES_ENABLED == 'true'
-        env:
-          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
+      - run: npm run test:wasm
       - run: npm run test:compatibility
-        if: vars.PAGES_ENABLED == 'true'
-        env:
-          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
-      - run: npm run test:upgrade
-        if: vars.PAGES_ENABLED == 'true'
-        env:
-          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
-      - name: Provide a virtual audio output for native Firefox playback
-        if: vars.PAGES_ENABLED == 'true'
+      - name: Provide virtual audio for native Firefox playback
         run: |
           sudo apt-get update
-          sudo apt-get install -y pulseaudio pulseaudio-utils
+          sudo apt-get install -y pulseaudio pulseaudio-utils strace
           pulseaudio --start --exit-idle-time=-1
           pactl load-module module-null-sink sink_name=privacy_frames_test
           pactl set-default-sink privacy_frames_test
       - run: npm run test:pitch
-        if: vars.PAGES_ENABLED == 'true'
-        env:
-          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
-      - run: command -v strace || sudo apt-get install -y strace
-        if: vars.PAGES_ENABLED == 'true'
       - run: npm run test:network
-        if: vars.PAGES_ENABLED == 'true'
-        env:
-          APPS_DIRECTORY: ${{ github.workspace }}/test/apps/apps
       - uses: actions/upload-artifact@v4
         if: always()
         with:

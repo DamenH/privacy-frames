@@ -1,76 +1,109 @@
 # Privacy Frames
 
-A static host for network isolated web applications. Paste an application URL, install it, then open the local copy. The trusted manager and runtime use separate origins. No application backend, request proxy, extension or modified browser is required.
+Install a web application from its URL, then run a local copy with private input.
+Installation can download public resources. During execution, requests receive
+installed resources or fail.
 
-The canonical library is **https://pf.damenh.com/**; installed applications run on **https://pf-apps.damenh.com/** at `/<short-source-id>/<app-name>/`. Both sites are hosted on GitHub Pages using repository custom-domain settings. The manager connects automatically through a trusted iframe; installation needs no connection tab. The shared `damenh.github.io` origin is not a trusted management origin.
+The application library is at **https://pf.damenh.com/**. Installed applications
+run at **https://pf-apps.damenh.com/** using `/<short-source-id>/<app-name>/` URLs.
+Both trusted sites use GitHub Pages. An authenticated iframe connects the library
+to runtime storage automatically.
 
-## Run locally
+## Develop locally
 
-Use Node 24 or newer. Clone this repository and `DamenH/privacy-frames-apps` as siblings, then:
+Use Node 24 or newer:
 
 ```sh
 npm ci
 npx playwright install chromium firefox
 npm run build
-npm run build:production
+npm run typecheck
+npm run format:check
 npm test
-npm run test:pitch
-npm run test:network
-npm run test:upgrade
-npm run test:mobile
-npm run test:storage-policy
-LIVE_ARTICLE=1 LIVE_PITCH_NATIVE=1 npm run test:compatibility
 npm run serve
 ```
 
-The network suite requires Linux `strace`; it traces only its fresh browser and deletes raw traces. The pitch suite downloads the current public Pitch Training build and uses synthetic audio, with no real microphone input.
+Open http://127.0.0.1:4210/privacy-frames/. The local runtime uses port 4211.
+Example publishers and the diagnostic receiver use ports 4212–4218. The local
+server keeps manager, runtime and publisher origins separate, matching the
+production architecture.
 
-Open http://127.0.0.1:4210/privacy-frames/. Notes is at http://127.0.0.1:4212/; Image, Reader and Adversary use 4213–4215; Playground uses 4217 and the no-manifest PWA uses 4218. Receiver port 4216 and runtime port 4211 are test instruments, not deployed dependencies. The separate-origin suites use an iframe at `127.0.0.1:4211`, then launch applications top-level against the same runtime storage. Set `APPS_DIRECTORY` if the fixture repository is elsewhere.
+All implementation and example source lives in this repository. Building creates
+`dist-manager/`, `dist-runtime/` and `dist-examples/`. React and Tailwind provide
+the manager interface; installation, runtime enforcement and examples use
+TypeScript. Prettier defines source formatting.
 
-## Install existing applications
+## Install an application
 
-Paste https://damenh.github.io/pitch-training/ into the library. No Privacy Frames manifest or application source changes are required. The supported website profile collects HTML resources and executes a conventional `sw.js` precache installation in a disposable host worker with limited capabilities. It waits for completion, terminates preparation and starts a fresh isolated document. The publisher never receives native runtime service-worker authority.
+Paste its webpage URL into the library and choose **Install**. Open the installed
+copy from the list. Publishers need readable cross-origin responses through CORS.
+The host discovers resources through standard webpage declarations, supported
+module dependencies and supported service-worker precaching. The total
+installation limit is 100 MiB, with at most 100 resources.
 
-Publishers can alternatively provide the explicit `app.json` package convention described in the example repository. Cross-origin installation requires readable CORS responses. Unsupported worker operations reject; runtime never falls back to the network. Generic document preparation resolves base URLs, nested CSS dependencies and fixed responsive-image choices. It captures supported publisher manifest metadata and generates a local manifest for individual PWA installation. Original JavaScript bytes stay unchanged; general PWA compatibility is not assumed.
+A standard web app manifest can supply names, icons and launch preferences. The
+host generates a local manifest for each installation. There is no host-specific
+publisher manifest or application SDK.
 
-## Build and deploy
+Publisher preparation ends before a fresh confined document starts. Application
+service workers cannot replace the host controller or provide network fallback.
+Missing resources fail during execution. Installation is therefore best suited to
+applications that can work offline.
+
+## Examples and tests
+
+The visible examples emphasize note editing and installed resources, an editable
+code playground and hostile browser probes. Smaller image, precache and document
+fixtures remain focused automated tests. See [examples/README.md](examples/README.md)
+for their source and independent publisher setup.
+
+Pitch Training, Wikipedia and an independently developed Wasm image editor
+exercise the same importer as other applications. The Wasm fixture also checks
+inline modules, preload declarations, relocated dependencies and offline startup.
 
 ```sh
-npm run build:production
-# Outputs: dist-manager/ and dist-runtime/
+npm run test:storage-policy
+npm run test:mobile
+npm run test:compatibility
+npm run test:wasm
+npm run test:pitch
+npm run test:network
+npm run test:embedding
 ```
 
-The host repository's Pages workflow publishes `dist-manager/` at `pf.damenh.com`.
-The `privacy-frames-apps` repository's Pages workflow checks out the pinned host
-revision in `runtime-host-ref.txt`, builds `dist-runtime/`, and publishes it at
-`pf-apps.damenh.com`. Its publisher fixture sources stay on separate origins and
-are not included in that runtime artifact. Configure both custom domains in
-GitHub Pages settings and point their DNS CNAMEs to `damenh.github.io`.
+The network suite requires Linux `strace` and uses independent HTTP/TCP and STUN
+receivers. It traces fresh test browser processes and removes raw traces after
+extracting results. The pitch suite downloads the public Pitch Training build
+and uses synthetic microphone input.
 
-Unknown virtual application paths return static 404s without the browser worker.
-No server-side routing, Cloudflare Worker or SPA fallback is required. The former
-runtime origin is retired; its browser-local installations must be reinstalled.
-Their private data is not automatically transferred or deleted.
-
-Production configuration is in `deployment/build.mjs`. `MANAGER_URL`, `RUNTIME_URL`, `MANAGER_ORIGINS` and `PUBLISHER_URL` also configure individual builds. Only the canonical manager origin belongs in the runtime's production allowlist. Example publishers must use other origins; different paths on one hostname do not isolate them.
-
-## Implementation and evidence
-
-- `src/manager.js`, `src/connect.js`: library and authenticated iframe bridge.
-- `src/worker.js`: package validation, management roles, virtual documents and installed-resource request gate.
-- `src/guard.js`: pre-execution setup, context/navigation controls and scoped storage.
-- `src/website.js`, `src/install-worker.js`: public preparation and explicit transition to isolation.
-- `src/document.js`, `src/pwa.js`: generic document adaptation and per-app manifests.
-- `src/prepared-worker.js`: limited completed-precache compatibility interface.
-- `test/`, `results/`: functional, hostile, storage, audio and independently observed network evidence.
-
-[REPORT.md](REPORT.md) explains the threat model, architecture, supported features and measurement limits. The library serves it at `report.html`. Live verification uses:
-
-`results/release.json` identifies the current release receipts and successful CI
-run; older deployment receipts remain as historical experiment evidence.
+Live deployment checks use:
 
 ```sh
 HOST_URL=https://pf.damenh.com/ npm run test:deployed
+HOST_URL=https://pf.damenh.com/ DOCUMENT_URL=https://pf-ordinary.damenh.com/document/index.html LIVE_ARTICLE=1 LIVE_PITCH_NATIVE=1 npm run test:compatibility
+npm run test:assets
 ```
 
-This is a research demonstration for the documented browser/application profile. IFC and general application updates/migrations remain outside this implementation.
+Test receipts record browser versions and scope in `results/`. Historical
+receipts describe their recorded revisions; current changes need fresh results.
+
+## Deployment
+
+`deployment/config.json` specifies trusted origins and example links. The manager
+Pages workflow publishes `dist-manager/`. The deployment-only
+[DamenH/privacy-frames-apps](https://github.com/DamenH/privacy-frames-apps)
+repository publishes `dist-runtime/` from a pinned revision of this repository.
+Configure `pf.damenh.com` and `pf-apps.damenh.com` in the corresponding GitHub Pages
+settings and point both DNS CNAMEs to `damenh.github.io`.
+
+Examples are untrusted publisher content. Their static deployment configurations
+are under `deployment/examples/`; their assets must stay off both trusted origins.
+Separate paths on a shared hostname do not create origin isolation.
+
+The deployment requires static hosting only. Virtual application URLs return
+static 404s until the browser's host service worker handles them. No server-side
+routing or SPA fallback is used.
+
+[REPORT.md](REPORT.md) explains the threat model and security argument.
+[IMPLEMENTATION.md](IMPLEMENTATION.md) maps the implementation boundaries, and
+[SURFACE_INVENTORY.md](SURFACE_INVENTORY.md) records the enforcement surfaces.

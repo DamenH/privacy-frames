@@ -1,0 +1,18 @@
+{
+  "name": "privacy-frames-ordinary",
+  "account_id": "80fb1dead4566be76066353bdf826b7e",
+  "compatibility_date": "2026-10-25",
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../../dist-examples/ordinary",
+    "html_handling": "none",
+    "not_found_handling": "none",
+  },
+  "routes": [
+    {
+      "pattern": "pf-ordinary.damenh.com",
+      "custom_domain": true,
+    },
+  ],
+}

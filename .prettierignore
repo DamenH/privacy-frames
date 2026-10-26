@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-manager
+dist-runtime
+dist-examples
+out
+results
+package-lock.json

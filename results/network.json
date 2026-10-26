@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-25T23:41:34.755Z",
+  "date": "2026-10-26T13:11:47.966Z",
   "checks": [
     "Runtime network, cache fetch, speculative links/rules, sockets, RTC and navigation preload refused with zero receiver TCP or STUN UDP traffic",
     "Independent syscall tracing observes real DNS-query sends for the unrestricted control and none for the private marker",
@@ -56,17 +56,17 @@
       {
         "name": "WebSocket",
         "refused": true,
-        "error": "TypeError"
+        "error": "SecurityError"
       },
       {
         "name": "WebTransport",
         "refused": true,
-        "error": "TypeError"
+        "error": "SecurityError"
       },
       {
         "name": "WebRTC",
         "refused": true,
-        "error": "TypeError"
+        "error": "SecurityError"
       },
       {
         "name": "navigation preload",
@@ -90,61 +90,61 @@
     "queryRecords": [
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvoh1xur",
+        "label": "pfrt-control-mvp9zw1q",
         "syscall": "sendmmsg",
         "sent": 2
       }
