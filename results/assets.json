@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-26T00:07:01.332Z",
+  "date": "2026-10-26T00:47:01.139Z",
   "assets": [
     {
       "site": "manager",
@@ -9,17 +9,17 @@
     {
       "site": "manager",
       "file": "manager.js",
-      "sha256": "a7c6cc541861a904dfa12723401075fc590b04be42492b200daf4f0c45420267"
+      "sha256": "de17dac3a0eb9c18cbb03bf540c480b7935d2d2baa781068ee5ad2f455e2687c"
     },
     {
       "site": "manager",
       "file": "guard.js",
-      "sha256": "b6d109dd619f57339b0ce99fe4b6e94795d16493e14c588e9d519ca18d813201"
+      "sha256": "dd5630aaf5ef04b6a8b32a0067a03503a2600df7a49fe6e6bb499520f8f44753"
     },
     {
       "site": "manager",
       "file": "sw.js",
-      "sha256": "2879ede9d329d9c3b151c667fe9a6f8474c551e70a96c6462980bc0fafa3ef4c"
+      "sha256": "3c269dbe08e847822db9197d6f2103d1f253bbee6170daf9fcdf4f1d30fce1a3"
     },
     {
       "site": "manager",
@@ -34,7 +34,7 @@
     {
       "site": "manager",
       "file": "report.html",
-      "sha256": "dac95409be7489a6e1e0aeb047a941e4f58c8ad2e3ef2fa8bf942e7c3f846795"
+      "sha256": "20dd36d76bc9d4406d6bdc150213458ca8a4a8ce1d66a1a55634063e448e1526"
     },
     {
       "site": "manager",
@@ -69,17 +69,17 @@
     {
       "site": "runtime",
       "file": "manager.js",
-      "sha256": "a7c6cc541861a904dfa12723401075fc590b04be42492b200daf4f0c45420267"
+      "sha256": "de17dac3a0eb9c18cbb03bf540c480b7935d2d2baa781068ee5ad2f455e2687c"
     },
     {
       "site": "runtime",
       "file": "guard.js",
-      "sha256": "b6d109dd619f57339b0ce99fe4b6e94795d16493e14c588e9d519ca18d813201"
+      "sha256": "dd5630aaf5ef04b6a8b32a0067a03503a2600df7a49fe6e6bb499520f8f44753"
     },
     {
       "site": "runtime",
       "file": "sw.js",
-      "sha256": "e3d4dddeebb9060f676ade64b941148cb9de79ed361eef41f859e37af30b2fa7"
+      "sha256": "972fa1caa06edc0449e622f871094ba20e05afabef62608dcd75af121cac9c47"
     },
     {
       "site": "runtime",
@@ -94,7 +94,7 @@
     {
       "site": "runtime",
       "file": "report.html",
-      "sha256": "dac95409be7489a6e1e0aeb047a941e4f58c8ad2e3ef2fa8bf942e7c3f846795"
+      "sha256": "20dd36d76bc9d4406d6bdc150213458ca8a4a8ce1d66a1a55634063e448e1526"
     },
     {
       "site": "runtime",
@@ -240,6 +240,31 @@
       "site": "ordinary",
       "file": "dependency.js",
       "sha256": "26036c6b80c0f875d4c7f183b523d70a5755737140a685c9daa61ec8137ebabf"
+    },
+    {
+      "site": "ordinary",
+      "file": "document/assets/main.css",
+      "sha256": "683842cfae576aa16cd540c5ee6dd4fcb5262093bd79d7419c88d914c8a0a449"
+    },
+    {
+      "site": "ordinary",
+      "file": "document/assets/square.svg",
+      "sha256": "e1c5474079c937cde5f2c47479797c411912a8d66daa702c73554b8d54cfccd2"
+    },
+    {
+      "site": "ordinary",
+      "file": "document/assets/theme.css",
+      "sha256": "d16486c3e3bc25ae8100452071bbead044b90dec5d1ee0e68691297484a17221"
+    },
+    {
+      "site": "ordinary",
+      "file": "document/index.html",
+      "sha256": "a710a0c7c76e2fa2b3898dbf92d5b1837e9cfd4df30e97950f9823254fed18c7"
+    },
+    {
+      "site": "ordinary",
+      "file": "document/manifest.webmanifest",
+      "sha256": "831a1759cd95b64cc0b74a62c83064738a260ff905346128a27cccda32bc2ce8"
     },
     {
       "site": "ordinary",

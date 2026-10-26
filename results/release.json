@@ -1,129 +1,118 @@
 {
-  "date": "2026-10-25T18:21:41.922Z",
-  "implementationCommit": "f636a5f4131582c4281e85d958ffb331863b10f0",
-  "applicationsCommit": "19b0e257418b84f864ffd3dd9bd21fc5f5c44d66",
-  "ci": {
-    "id": 40220382879,
-    "url": "https://github.com/DamenH/privacy-frames/actions/runs/40220382879",
-    "conclusion": "success"
-  },
-  "manager": "https://pf.damenh.com/",
-  "runtime": "https://pf-runtime.damenh.com/",
-  "report": "https://pf.damenh.com/report.html",
-  "suites": {
-    "browser": [
-      {
-        "browser": "chromium",
-        "version": "153.0.8010.12",
-        "groups": 15,
-        "retainedPolicyObservations": 18
-      },
-      {
-        "browser": "firefox",
-        "version": "155.0",
-        "groups": 15,
-        "retainedPolicyObservations": 50
-      }
-    ],
-    "scoped-storage": [
-      {
-        "browser": "chromium",
-        "version": "153.0.8010.12",
-        "groups": 5
-      },
-      {
-        "browser": "firefox",
-        "version": "155.0",
-        "groups": 5
-      }
-    ],
-    "separate-runtime": [
-      {
-        "browser": "chromium",
-        "version": "153.0.8010.12",
-        "groups": 3
-      },
-      {
-        "browser": "firefox",
-        "version": "155.0",
-        "groups": 3
-      }
-    ],
-    "website-installation": [
-      {
-        "browser": "chromium",
-        "version": "153.0.8010.12",
-        "groups": 4
-      },
-      {
-        "browser": "firefox",
-        "version": "155.0",
-        "groups": 4
-      }
-    ],
-    "pitch-training": [
-      {
-        "browser": "chromium",
-        "version": "153.0.8010.12",
-        "groups": 7
-      },
-      {
-        "browser": "firefox",
-        "version": "155.0",
-        "groups": 6
-      }
-    ],
-    "pitch-training-deployed": [
-      {
-        "browser": "chromium",
-        "version": "153.0.8010.12",
-        "groups": 6
-      },
-      {
-        "browser": "firefox",
-        "version": "155.0",
-        "groups": 5
-      }
-    ],
-    "deployed": [
-      {
-        "browser": "chromium",
-        "version": "153.0.8010.12",
-        "groups": 11
-      },
-      {
-        "browser": "firefox",
-        "version": "155.0",
-        "groups": 11
-      }
-    ],
-    "network": {
-      "browser": "chromium",
-      "version": "153.0.8010.12",
-      "controls": {
-        "httpRequests": 1,
-        "udpDatagrams": 1,
-        "stunDatagrams": 1,
-        "dnsSendCalls": 10
-      },
-      "privateDNS": 0,
-      "privateReceiverTCP": 0,
-      "privateSTUN": 0
+  "status": "complete",
+  "date": "2026-10-26T01:00:07.596667+00:00",
+  "implementationCommit": "e0ab25e08a005df215cc269e2ab9032819df3548",
+  "runtimePublicationCommit": "b99089e7487e9a0b06a9334e20445db964f44bf0",
+  "runtimePinnedHostCommit": "e0ab25e08a005df215cc269e2ab9032819df3548",
+  "ci": [
+    {
+      "repository": "DamenH/privacy-frames",
+      "run": 40249956275,
+      "conclusion": "success",
+      "headSha": "e0ab25e08a005df215cc269e2ab9032819df3548",
+      "status": "completed",
+      "url": "https://github.com/DamenH/privacy-frames/actions/runs/40249956275"
     },
-    "network-firefox": {
-      "browser": "firefox",
-      "version": "155.0",
-      "controls": {
-        "httpRequests": 1,
-        "udpDatagrams": 1,
-        "stunDatagrams": 1,
-        "dnsSendCalls": 10
-      },
-      "privateDNS": 0,
-      "privateReceiverTCP": 0,
-      "privateSTUN": 0
+    {
+      "repository": "DamenH/privacy-frames-apps",
+      "run": 40250354444,
+      "conclusion": "success",
+      "headSha": "b99089e7487e9a0b06a9334e20445db964f44bf0",
+      "status": "completed",
+      "url": "https://github.com/DamenH/privacy-frames-apps/actions/runs/40250354444"
     }
+  ],
+  "hosting": {
+    "provider": "GitHub Pages",
+    "manager": "https://pf.damenh.com/",
+    "runtime": "https://pf-apps.damenh.com/",
+    "customDomainsAndTLS": "hosting.json",
+    "retiredRuntime": "pf-runtime.damenh.com",
+    "retiredRuntimeDNS": "NXDOMAIN",
+    "connection": "authenticated same-site iframe; no installation tab",
+    "applicationURL": "/<64-bit-base64url-alias>/<name>/#<application-route>",
+    "checkedAssets": 58
   },
-  "matchedPublishedAssets": 49,
-  "entryPointsVerified": true
+  "acceptance": {
+    "pagesAndBridge": [
+      "assets.json",
+      "hosting.json",
+      "ci-final/separate-runtime.json",
+      "compatibility-deployed.json"
+    ],
+    "shortURLsAndIdentity": [
+      "ci-final/separate-runtime.json",
+      "deployed.json"
+    ],
+    "genericDocumentInstallation": [
+      "compatibility-deployed.json",
+      "ci-final/website-installation.json"
+    ],
+    "individualPWAs": [
+      "compatibility-deployed.json",
+      "ci-final/compatibility.json"
+    ],
+    "securityAndFunctionality": [
+      "ci-final/browser.json",
+      "ci-final/scoped-storage.json",
+      "ci-final/network.json",
+      "ci-final/network-firefox.json",
+      "embedding-deployed.json",
+      "pitch-training-deployed.json"
+    ],
+    "mobileAndHostUpgrade": [
+      "ci-final/mobile.json",
+      "ci-final/upgrade.json"
+    ],
+    "publicationAndRetirement": [
+      "assets.json",
+      "hosting.json"
+    ]
+  },
+  "scope": {
+    "browsers": [
+      {
+        "name": "chromium",
+        "version": "153.0.8010.12"
+      },
+      {
+        "name": "firefox",
+        "version": "155.0"
+      }
+    ],
+    "publicInstallationsPerBrowser": 8,
+    "nativePWAsVerifiedInChromium": 3,
+    "liveWikipediaImagesOffline": 60,
+    "machineCheckedConfinementProof": false,
+    "realMobileDeviceInstallationVerified": false,
+    "webkitVerified": false,
+    "futureWork": [
+      "inline module bootstraps and JavaScript/Wasm dependency discovery",
+      "explicit WebAssembly runtime policy",
+      "confined application workers",
+      "browser-local glyph recognition design",
+      "general application updates and fine-grained IFC"
+    ]
+  },
+  "receiptSHA256": {
+    "assets.json": "67df6f7b172fb5d335281e23ea633c965481f192bf82ff0f19d24a4723ad3cbc",
+    "deployed.json": "7f3a1c41543b8338c6c1617ece7cc4cfc25d07611637f23c096757c874c1c719",
+    "compatibility-deployed.json": "85bc17b6e2fa7a36788e41d1ddcc0ddafd7b862c91b0796dae01dcbea5a8edde",
+    "embedding-deployed.json": "067f84b6c115eb00beb35de3b5eec76fe59cdc6a223847858b09f8cc988ba8d4",
+    "hosting.json": "28b227d4f3bacbb15af89437b7ed64d1a902e92a462ce58cb4c46765bc798843",
+    "pitch-training-deployed.json": "9ae0f072d83b6ce10aab5febc65599a94b70016585662c10d050b41c00d74afc",
+    "ci-final/provenance.json": "fd270f7cccf7e878fb134a0cac3550993af238e46116384d33f09734ccb97b6d",
+    "ci-final/browser.json": "c0929e8f047bcbc18699383dcea5f68ea7cf4901d4cab74efb0b7f2ee3c0d64f",
+    "ci-final/scoped-storage.json": "f3bed63f01d99f24e3bd59c600e5a796d8185f4ef1749a1fbc5102e524d606c0",
+    "ci-final/separate-runtime.json": "ac8dc98729d5a1da42741da272d52002d88b833c8681a81d8a5ecff9ed484219",
+    "ci-final/website-installation.json": "1dedd045ea275110b24a11e2c7c73eacfb75c36e1fa946e546cd39690cad57c0",
+    "ci-final/mobile.json": "ef7f783041aa3136d44d3ba2112e2a2934266eaeb5ca07dbeff6cd332d0fc010",
+    "ci-final/storage-policy.json": "108a1fea2f3128bd40eeb6083a480dc31b65620a395cc54a881f24d673a4e480",
+    "ci-final/compatibility.json": "572069bcde4e8855de9c741f8c3a5c8977a2dcd82e1b043d150694d16c1aaf5a",
+    "ci-final/upgrade.json": "39558f511769f18d90eca58c93ce0827951905bfafb4ba6187f00206a32afa01",
+    "ci-final/pitch-training.json": "3fb531868dd593fdedc39cf45c5161411cdffeca9bbb483f8632556f59ac7c95",
+    "ci-final/network.json": "588b30e8ae2c98f551dc7fb2769101d8801d4e3fbce501467d6fcb481779a203",
+    "ci-final/network-firefox.json": "2485becce7290be1b1eb15491353ccf11ce122098dd99fdb92fef1cafd757e0a",
+    "webkit.json": "4f5c14299086c04aeaea038b4ff0825abcdc324de05bba6804c13589e63f5fe9"
+  }
 }

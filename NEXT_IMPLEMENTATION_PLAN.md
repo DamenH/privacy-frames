@@ -1,6 +1,6 @@
 # Next implementation: installation without a connection tab
 
-Status: final verification and publication in progress. Updated 2026-10-26.
+Status: completed for the documented browser/application profile. Updated 2026-10-26.
 
 This plan covers the discussion after the last completed implementation round.
 It is intended to be executable in one autonomous pass, including testing,
@@ -86,31 +86,31 @@ management authority based only on a same-origin message, claimed URL or name.
 
 ### 1. Establish actual Pages builds and the iframe feasibility gate
 
-- [ ] Separate manager and runtime artifacts by role. The runtime Pages artifact
+- [x] Separate manager and runtime artifacts by role. The runtime Pages artifact
   contains trusted bootstrap/bridge/runtime assets only. It must not publish the
   unrestricted hostile fixtures or ordinary publisher applications at other paths
   on the runtime origin. Repository co-location does not imply origin safety.
-- [ ] Use the two existing repositories as the two Pages sites: `privacy-frames`
+- [x] Use the two existing repositories as the two Pages sites: `privacy-frames`
   publishes the manager; `privacy-frames-apps` publishes the trusted runtime built
   from the host repository. Host implementation source remains in one place.
   Keep the independent publisher domains working on their existing static hosting.
-- [ ] Make the second workflow consume an explicitly pinned, tested host commit,
+- [x] Make the second workflow consume an explicitly pinned, tested host commit,
   using a workflow input or committed release reference. Record the host and
   fixture revisions in both release artifacts. Do not build runtime from a
   moving `main` while claiming it matches the tested manager release.
-- [ ] Audit reliance on Cloudflare `_headers`, `_redirects`, exact-file routing
+- [x] Audit reliance on Cloudflare `_headers`, `_redirects`, exact-file routing
   and content types. Implement the necessary behavior in portable static files,
   document metadata and service-worker responses. Do not add a Worker routing
   dependency to make Pages appear to work.
-- [ ] Exercise a minimal same-site, cross-origin trusted iframe: service-worker
+- [x] Exercise a minimal same-site, cross-origin trusted iframe: service-worker
   registration/control, IndexedDB, Cache Storage and localStorage written in the
   iframe must be visible to an application launched top-level on that origin.
   Include browser restart, fresh profile and persistence checks.
-- [ ] Run Chromium and Firefox checks, plus WebKit where the local automation
+- [x] Run Chromium and Firefox checks, plus WebKit where the local automation
   supports these APIs. Use a same-site local HTTPS test setup or the actual HTTPS
   domains; different loopback ports alone do not cover all production behavior.
   Retain a separate deliberately cross-site storage-policy test.
-- [ ] Feature-detect relevant storage access behavior. If permission is needed,
+- [x] Feature-detect relevant storage access behavior. If permission is needed,
   present a small trusted in-page permission step with a genuine user gesture.
   A hidden iframe cannot be assumed to have activation. Check the actual storage
   and controller operations after permission; a cookie-access result is not proof
@@ -124,27 +124,27 @@ the origin boundary or silently reinstate a popup to make a test pass.
 
 ### 2. Replace the connection protocol and remove the extra UI
 
-- [ ] Replace `window.open`/`window.opener` coordination in `manager.js` and
+- [x] Replace `window.open`/`window.opener` coordination in `manager.js` and
   `connect.js` with the host-created iframe and authenticated MessageChannels.
   The manager checks the exact frame window and runtime origin; the bridge checks
   the actual parent window and configured manager origin. Use exact target origins.
-- [ ] Restrict embedding to the intended trusted use where the hosting/browser
+- [x] Restrict embedding to the intended trusted use where the hosting/browser
   mechanisms permit it; message authentication remains mandatory independently.
-- [ ] Preserve service-worker management roles bound to genuine browser clients.
+- [x] Preserve service-worker management roles bound to genuine browser clients.
   Recheck role issuance on worker activation, navigation and reconnection. App
   history changes, forged parent messages or a copied bridge URL must not grant
   a management role.
-- [ ] Keep the operation set explicit. The runtime bridge has no reason to fetch
+- [x] Keep the operation set explicit. The runtime bridge has no reason to fetch
   arbitrary publisher URLs: preparation happens on the manager side. Limit its
   network behavior to the trusted bootstrap lifecycle and remove any inherited
   general manager-network exception that the bridge no longer needs.
-- [ ] Handle frame load, readiness, controller replacement, timeouts, rejection,
+- [x] Handle frame load, readiness, controller replacement, timeouts, rejection,
   page restoration and pending-request cancellation. Reuse one connection and
   avoid leaking transferred ports or racing two package commits.
-- [ ] On startup, load the library automatically through the bridge. Retain only
+- [x] On startup, load the library automatically through the bridge. Retain only
   useful user controls: URL, Install, examples, installed apps, Open, Remove and
   optional Refresh. Keep the existing concise dark UI, Report and GitHub links.
-- [ ] Replace tests that click Connect/Refresh and wait for a popup with tests
+- [x] Replace tests that click Connect/Refresh and wait for a popup with tests
   that install from a fresh visit directly. Count pages before/after installation
   to prove that the connection creates no extra tab, including mobile viewports.
 
@@ -154,22 +154,22 @@ cannot list installations, remove them, install packages or invoke preparation.
 
 ### 3. Implement short, source-bound addresses
 
-- [ ] Retain the complete internal identity and existing storage namespace.
+- [x] Retain the complete internal identity and existing storage namespace.
   Derive the public alias from the first 64 digest bits, encoded as unpadded
   base64url: 11 characters. It is an identifier, not a credential or content hash.
-- [ ] Store/resolve the alias uniquely against the full identity. Explicitly
+- [x] Store/resolve the alias uniquely against the full identity. Explicitly
   detect collisions and refuse an ambiguous installation without overwriting
   either app. Test with forced collisions rather than hoping to encounter one.
-- [ ] Use `/<alias>/<readable-name>/` as the canonical entry address. The name is
+- [x] Use `/<alias>/<readable-name>/` as the canonical entry address. The name is
   a canonical label; a missing/incorrect name resolves to the same installation
   and redirects locally to its correct label. The alias determines identity.
-- [ ] Hide the entry filename in the launch address, preserve the app's fragment
+- [x] Hide the entry filename in the launch address, preserve the app's fragment
   verbatim, and adapt resource URL generation, HTML/CSS aliases, module imports,
   bootstrap requests and identity parsing together. Check non-index entry files,
   trailing slashes, query handling and path traversal/encoding variants.
-- [ ] Reserve trusted asset/bridge paths so aliases cannot overlap them. Route
+- [x] Reserve trusted asset/bridge paths so aliases cannot overlap them. Route
   recognition must not allow one app to fetch another's resources or private data.
-- [ ] On a browser with no installed copy or no controller, the remote URL serves
+- [x] On a browser with no installed copy or no controller, the remote URL serves
   no publisher code. Any missing-installation/help handling must be trusted and
   static; never fall back to fetching the publisher or running an unchecked copy.
 
@@ -195,29 +195,29 @@ It returned readable HTML with CORS `*` when inspected. Its `<base>` element
 triggered our context-producing-markup error; that diagnosis does not establish
 that every image or stylesheet is already importable.
 
-- [ ] Parse base URL metadata during public preparation, implement document base
+- [x] Parse base URL metadata during public preparation, implement document base
   resolution, and remove the original base element before runtime admission.
   Keep runtime `base-uri 'none'` and reject dynamic attempts to add/change it.
   Test multiple/invalid bases, base targets and relative/query/fragment references.
-- [ ] Replace the blanket lexical base rejection for prepared source documents
+- [x] Replace the blanket lexical base rejection for prepared source documents
   with parser-aware handling. Keep genuine context-producing markup prohibited,
   including inside templates and alternate parsing routes. Improve refusal
   messages so a metadata issue is not described as a new execution context.
-- [ ] Discover and capture ordinary document dependencies: stylesheets,
+- [x] Discover and capture ordinary document dependencies: stylesheets,
   nested CSS imports/URLs, images and relevant responsive/lazy-image references.
   Avoid recursively installing ordinary navigation hyperlinks or every possible
   responsive image size. Measure the resulting file/byte budgets and make any
   bounded limit changes explicit.
-- [ ] Preserve same-document navigation; external article links remain subject
+- [x] Preserve same-document navigation; external article links remain subject
   to the existing navigation restriction. Fetching arbitrary new articles after
   confinement is not part of this pass.
-- [ ] Keep CORS requirements, credential omission and installation limits.
+- [x] Keep CORS requirements, credential omission and installation limits.
   Diagnose a missing/unreadable dependency by URL and cause. No backend or
   credentialed proxy is introduced to bypass publisher policy.
-- [ ] Add deterministic generic document fixtures with equivalent base/resource
+- [x] Add deterministic generic document fixtures with equivalent base/resource
   behavior, and test the exact live Wikipedia endpoint separately. Exercise
   visible article text, representative images, styles and offline reload.
-- [ ] Add the verified Wikipedia example to the manager. Also verify a small
+- [x] Add the verified Wikipedia example to the manager. Also verify a small
   independently developed application, such as the previously investigated MDN
   Web Storage example, if exposed as another example. Do not attribute an
   original application's lack of persistence to the host without a control.
@@ -229,35 +229,35 @@ article is supported; record any concrete publisher-side blocker honestly.
 
 ### 5. Preserve publisher manifests and support individual PWA installation
 
-- [ ] Read the original manifest link before HTML preparation strips it. Capture
+- [x] Read the original manifest link before HTML preparation strips it. Capture
   its presentation metadata and local icon resources during public installation.
   Resolve its relative URLs against the publisher manifest's actual URL.
-- [ ] Preserve supported name/short name, description, language/direction,
+- [x] Preserve supported name/short name, description, language/direction,
   colours, display preferences and orientation. Adapt launch preferences and
   in-scope shortcuts where they fit the admitted application. Manifest absence,
   malformed JSON and unreadable optional metadata need explicit tested behavior;
   they must not grant new authority or unnecessarily break an otherwise valid app.
-- [ ] Generate a host-owned manifest for each installation, with a stable
+- [x] Generate a host-owned manifest for each installation, with a stable
   `id` based on its alias, scope `/<alias>/`, and a local canonical start URL.
   Keep identity independent of a label change and use publisher start routes only
   when they resolve to an admitted local document/route. Supply fallback metadata
   and suitable host-provided icons for apps without a usable manifest.
-- [ ] Serve the manifest and icons locally through routes available to the
+- [x] Serve the manifest and icons locally through routes available to the
   browser's actual manifest/icon fetches. Those fetches may not carry the same
   client identity as app fetches; do not weaken the entire gate to accommodate
   them. Expose only validated public metadata/assets through narrowly defined
   read-only routes.
-- [ ] Permit the host's generated manifest link in the trusted document policy.
+- [x] Permit the host's generated manifest link in the trusted document policy.
   The imported publisher manifest does not supply arbitrary executable handlers,
   widen network policy or register its own service worker. File/share/protocol
   handlers, push, background sync and automatic app updates remain unsupported.
-- [ ] Keep the host service worker authoritative for every installed PWA. Native
+- [x] Keep the host service worker authoritative for every installed PWA. Native
   application workers remain denied. Verify cold launch and offline startup reach
   the same guarded bootstrap before private state is accessed.
-- [ ] Verify at least two different app identities/manifests/scopes on one runtime
+- [x] Verify at least two different app identities/manifests/scopes on one runtime
   origin, independent local state, matching publisher presentation, and correct
   hash-route launch. PWA scope is not a new security or storage boundary.
-- [ ] Automate Chromium's available installability/installation/launch facilities
+- [x] Automate Chromium's available installability/installation/launch facilities
   where possible and inspect the actual resulting app identity and start URL.
   Separate native installation evidence from manifest inspection. Record WebKit
   automation and real-device coverage accurately; a mobile-sized viewport is not
@@ -269,27 +269,27 @@ support from browser-specific PWA installation UI and support.
 
 ### 6. Run security and functionality acceptance checks
 
-- [ ] Preserve Notes, Image editor, Reader, Adversary, Playground, the ordinary
+- [x] Preserve Notes, Image editor, Reader, Adversary, Playground, the ordinary
   PWA and unchanged Pitch Training. Check rendering, interaction, scoped storage,
   audio, microphone lifecycle, saved scores, hash routes and offline relaunch.
-- [ ] Update hostile fixtures for iframe-message spoofing, manager privilege
+- [x] Update hostile fixtures for iframe-message spoofing, manager privilege
   recovery, manifest/shortcut/icon tricks, alias collisions and cross-app paths.
   Include concurrency: another app may hold private state while a new public
   installation is running.
-- [ ] Preserve tests for new execution contexts, navigation, native transport,
+- [x] Preserve tests for new execution contexts, navigation, native transport,
   service-worker registration, parser/DOM/prototype routes and storage isolation.
   The new trusted iframe must not reopen those surfaces to application code.
-- [ ] Re-run calibrated independent DNS/TCP/STUN observations in Chromium and
+- [x] Re-run calibrated independent DNS/TCP/STUN observations in Chromium and
   Firefox, with working unrestricted controls and synthetic private markers.
   Missing resources and forged management requests must
   fail without producing external DNS or requests derived from private input.
-- [ ] Run the updated build/policy/browser suites, Pitch Training suite, network
+- [x] Run the updated build/policy/browser suites, Pitch Training suite, network
   suites and deployed checks. Add focused bridge, URL, generic document import
   and manifest/PWA tests where current suites cannot establish the new properties.
-- [ ] Test mobile viewports for installation, permission UI, app launch,
+- [x] Test mobile viewports for installation, permission UI, app launch,
   layout and no unexpected tabs. Check service-worker restart, offline use,
   frame failure and interrupted/failed installation without partial admission.
-- [ ] Store new receipts separately from the previous release evidence, including
+- [x] Store new receipts separately from the previous release evidence, including
   browser versions, precise source revisions and supported/unsupported outcomes.
 
 Gate: complete the new requirements with meaningful evidence, not merely renamed
@@ -299,34 +299,34 @@ successful demonstration.
 
 ### 7. Publish on Pages, retire the old runtime and update the report
 
-- [ ] Configure Pages custom domains in GitHub settings/API for the two existing
+- [x] Configure Pages custom domains in GitHub settings/API for the two existing
   public repositories: manager `pf.damenh.com`, runtime `pf-apps.damenh.com`.
   Configure the corresponding DNS CNAMEs to `damenh.github.io` and HTTPS. Custom
   domain settings are authoritative; a generated `CNAME` file alone is insufficient
   for an Actions-based Pages deployment.
-- [ ] Replace the old fixture Pages publishing workflow with the runtime workflow.
+- [x] Replace the old fixture Pages publishing workflow with the runtime workflow.
   Preserve fixture sources and their independent publisher deployments; never
   include their unrestricted HTML/scripts in the trusted runtime Pages artifact.
-- [ ] Publish both pinned artifacts, verify HTTPS and the real Pages deployments,
+- [x] Publish both pinned artifacts, verify HTTPS and the real Pages deployments,
   then run live bridge, app, article, PWA, storage and hostile acceptance checks.
   Audit all delivered asset hashes against the tested artifacts. GitHub's default
   repository URLs should lead to the configured custom domains and must not become
   additional trusted management origins shared with unrelated project pages.
-- [ ] Remove the Cloudflare static-asset routes serving manager/runtime after the
+- [x] Remove the Cloudflare static-asset routes serving manager/runtime after the
   Pages cutover succeeds. Retire the `pf-runtime.damenh.com` domain/route and all
   active configuration/UI references to it. Do not build a legacy bridge,
   compatibility domain or private-data migration mechanism: the user explicitly
   requested retiring it. State that old-origin installations must be reinstalled
   and that existing browser data is not automatically transferred or deleted.
-- [ ] Keep a trusted recovery path for manager site-data/service-worker cache
+- [x] Keep a trusted recovery path for manager site-data/service-worker cache
   changes at the same origin so an older cached manager cannot indefinitely pin
   the obsolete connection flow. Do not expose private data during recovery.
-- [ ] Update README, report/feature matrix, surface inventory, reproducible test
+- [x] Update README, report/feature matrix, surface inventory, reproducible test
   commands, GitHub descriptions/homepage links and service inventory. Describe
   the installation-to-confinement boundary, real Pages hosting, manifest
   adaptation and generic document import in plain terms. Keep proposal drafts and Codex
   logs private and outside the two public repositories.
-- [ ] Publish the implementation/fixture changes and verify the required CI and
+- [x] Publish the implementation/fixture changes and verify the required CI and
   both Pages deployment runs. Record the actual deployment revisions and final
   requirement audit in a fresh release receipt. Keep rollback information for
   the cutover until live checks succeed; retiring the old domain is the final
@@ -386,31 +386,35 @@ progress updates focused on what was learned and what the next check resolves.
 - [PWA installation requirements](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable)
 - [MediaWiki REST API reference](https://www.mediawiki.org/wiki/API:REST_API/Reference/en)
 
-## Implementation progress (2026-10-26)
+## Completion audit (2026-10-26)
 
-The iframe bridge, short canonical routes, generic document adaptation and
-individual PWA manifests are implemented and deployed on the two GitHub Pages
-custom domains. Both domains have approved certificates and enforce HTTPS.
-The former runtime's Worker domain and DNS address records have been removed;
-DNS returns NXDOMAIN. The service inventory records the new Pages ownership.
+All required work in this pass is implemented, published and verified. The exact
+implementation and runtime-publication revisions, successful CI runs, receipt
+hashes and requirement mapping are recorded in `results/release.json`.
 
-The browser harness restores storage privacy settings that automation normally
-relaxes. The cross-site control observes separate storage, while the same-site
-iframe supports top-level execution and browser restart. The source tests also
-cover collision refusal, a non-index entry, wrong-label redirects, hostile bridge
-parents, external app embedding and automatic upgrade from the preceding release.
-WebKit cannot launch with the host libraries and remains explicitly unverified.
+The manager and runtime are actually served by GitHub Pages on their custom
+HTTPS domains. All 58 checked assets match the release source. No unrestricted
+publisher pages are served on either trusted origin. The old runtime's Worker
+domain and DNS address records are removed; DNS returns NXDOMAIN. The central
+service inventory records the new ownership and pinned host revision.
 
-Live Chromium and Firefox checks pass all eight example installations, native
-editing/storage, hostile probes, scoped persistence and offline operation.
-Wikipedia imports through the generic path and all 60 captured images work
-offline. Chromium installs three individual native PWAs, including unchanged
-Pitch Training, and cold-launches an app offline with private state after browser
-restart. Live microphone/audio checks pass in both browsers. A same-site external
-parent receives an unrestricted message control but no private app message.
+The final CI receipts in `results/ci-final/` cover restored browser storage privacy,
+core/hostile/scoped-storage behavior, iframe authentication, alias collisions,
+non-index entries, canonical redirects, external embedding, mobile/permission
+behavior, native PWA installation, manager upgrade, audio and independent
+DNS/TCP/STUN observations. Unrestricted network and messaging controls work;
+private markers do not reach the tested receivers.
 
-The last published implementation is `c4a779e`, with successful manager and runtime
-Pages runs `40247194421` and `40247458362`. The final error-message clarification,
-small-icon fallback, future-work notes and full release audit are being published.
-Completion will be recorded in `results/release.json` after that revision's CI and
-live asset checks succeed. No inline/Wasm bootstrap or worker support is added.
+Live Chromium and Firefox each pass 11 public functionality groups and three
+external-embedding groups. The generic importer loads the Wikipedia article and
+all 60 images offline. Chromium installs three individual native PWAs, including
+unchanged Pitch Training, and cold-launches with private state after browser
+restart. Live audio/microphone checks pass in both browsers. The generic document
+fixture uses a normal static publisher with proper HTML/CSS content types.
+
+The inline-script refusal now explains the limitation directly. Inline/Wasm
+bootstrap support, workers and the glyph indicator remain future work. WebKit
+could not launch with available host libraries and is explicitly unverified;
+mobile viewport checks do not claim real Android/iOS home-screen coverage.
+These results establish the tested profile, not a universal or machine-checked
+confinement proof. Research session logs and private share URLs remain unpublished.
