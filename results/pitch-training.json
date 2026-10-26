@@ -7,7 +7,7 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "Completed installation is available through mediated worker readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 220.8 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 221.3 Hz detected",
       "Browser-denied microphone permission is handled without a capture stream",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
       "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
@@ -17,7 +17,7 @@
       "updateDenied": true,
       "script": "http://127.0.0.1:4211/runtime/ywJX53taGnk/pitch-training/sw.js"
     },
-    "frequency": 220.8,
+    "frequency": 221.3,
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",
@@ -65,7 +65,7 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "Completed installation is available through mediated worker readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 1000.1 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 1000.8 Hz detected",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
       "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
     ],
@@ -74,7 +74,7 @@
       "updateDenied": true,
       "script": "http://127.0.0.1:4211/runtime/ywJX53taGnk/pitch-training/sw.js"
     },
-    "frequency": 1000.1,
+    "frequency": 1000.8,
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",
@@ -110,7 +110,7 @@
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8905}]",
+        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]",
         "url": "http://127.0.0.1:4211/runtime/sw.js"
       },
       {
@@ -130,7 +130,7 @@
         "url": "http://127.0.0.1:4211/runtime/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8905}]",
+        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8907}]",
         "url": "http://127.0.0.1:4211/runtime/sw.js"
       }
     ],

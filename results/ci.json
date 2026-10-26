@@ -1,0 +1,66 @@
+{
+  "run": 40332458061,
+  "revision": "5bdde4bb219d230db17483e010f9d3ba11a7d6e8",
+  "status": "success",
+  "jobs": [
+    {
+      "databaseId": 121605126922,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "databaseId": 121606762063,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "receiptHashes": {
+    "browser": {
+      "sha256": "6624a2005b00146787c2a53eed3c601153d84d2f455695cd86090bd1e2416d42",
+      "bytes": 44377
+    },
+    "scoped-storage": {
+      "sha256": "f3bed63f01d99f24e3bd59c600e5a796d8185f4ef1749a1fbc5102e524d606c0",
+      "bytes": 1258
+    },
+    "separate-runtime": {
+      "sha256": "ac8dc98729d5a1da42741da272d52002d88b833c8681a81d8a5ecff9ed484219",
+      "bytes": 1332
+    },
+    "website-installation": {
+      "sha256": "1dedd045ea275110b24a11e2c7c73eacfb75c36e1fa946e546cd39690cad57c0",
+      "bytes": 1218
+    },
+    "storage-policy": {
+      "sha256": "108a1fea2f3128bd40eeb6083a480dc31b65620a395cc54a881f24d673a4e480",
+      "bytes": 768
+    },
+    "mobile": {
+      "sha256": "ef7f783041aa3136d44d3ba2112e2a2934266eaeb5ca07dbeff6cd332d0fc010",
+      "bytes": 586
+    },
+    "compatibility": {
+      "sha256": "e9dbc01d33c9ad217ccdcaeff9895b808ad6d179097c23fce135ab23c40f9bcc",
+      "bytes": 1121
+    },
+    "pitch-training": {
+      "sha256": "b02737e917e0fb1c62cfda428d7eabb262dd2e3351efce9491b231869ad6b548",
+      "bytes": 7763
+    },
+    "network": {
+      "sha256": "678848249c69a5b7d8775310954f19e08df454be8bebb82f2880a5ae82981c5e",
+      "bytes": 3102
+    },
+    "network-firefox": {
+      "sha256": "515249aab6f8e5e881b8a963c7af2ba207660172ba4bf7ad6e69a3a26a37d73f",
+      "bytes": 3225
+    },
+    "wasm": {
+      "sha256": "c8217eb5550b9637261758b365ed2756078278147dd77b88295ebc54e17a8a6c",
+      "bytes": 722
+    }
+  },
+  "scope": "Downloaded successful CI evidence and checked both core browser suites; full job steps passed."
+}

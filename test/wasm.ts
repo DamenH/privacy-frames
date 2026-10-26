@@ -58,7 +58,9 @@ try {
         }),
       );
       row.checks.push(
-        'Private network marker absent at receiver; native workers remain refused',
+        deployed
+          ? 'Runtime rejects the network attempt and native workers; receiver evidence is measured locally'
+          : 'Private network marker absent at receiver; native workers remain refused',
       );
       await app.close();
       if (process.env.EXTERNAL_WASM_URL) {

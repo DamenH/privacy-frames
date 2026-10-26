@@ -1,0 +1,26 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "host": "https://pf.damenh.com/",
+    "checks": [
+      "Initial inline module, preload Wasm and transitive relocated import execute",
+      "Wasm instantiation and module graph work offline",
+      "Runtime rejects the network attempt and native workers; receiver evidence is measured locally",
+      "Independent Wasm application installs and renders its canvas",
+      "Independent Wasm application starts offline"
+    ]
+  },
+  {
+    "name": "firefox",
+    "version": "155.0",
+    "host": "https://pf.damenh.com/",
+    "checks": [
+      "Initial inline module, preload Wasm and transitive relocated import execute",
+      "Wasm instantiation and module graph work offline",
+      "Runtime rejects the network attempt and native workers; receiver evidence is measured locally",
+      "Independent Wasm application installs and renders its canvas",
+      "Independent Wasm application starts offline"
+    ]
+  }
+]

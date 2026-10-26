@@ -1,10 +1,216 @@
 {
-  "status": "verification-in-progress",
-  "scope": "TypeScript consolidation, webpage-only installation, generic inline/module/Wasm compatibility, 100MiB, report revision",
-  "manager": "https://pf.damenh.com/",
-  "runtime": "https://pf-apps.damenh.com/",
-  "hosting": "GitHub Pages",
-  "sourceRepository": "DamenH/privacy-frames",
-  "runtimePublisher": "DamenH/privacy-frames-apps",
-  "note": "Current local browser tests pass; deployment verification must complete before this release is marked complete."
+  "status": "complete",
+  "verifiedOn": "2026-10-26",
+  "implementationRevision": "eb62506534c1300dcde0460077703c7ada0b9025",
+  "managerPublicationRevision": "5bdde4bb219d230db17483e010f9d3ba11a7d6e8",
+  "runtimePublicationRevision": "73385153ce18466521c537bc2adf38c3533f39f9",
+  "hosting": {
+    "manager": "https://pf.damenh.com/",
+    "runtime": "https://pf-apps.damenh.com/",
+    "provider": "GitHub Pages",
+    "httpsEnforced": true,
+    "managerRun": 40332458061,
+    "runtimeRun": 40330595465,
+    "retiredDuplicatePublisher": "pf-resources.damenh.com (NXDOMAIN)"
+  },
+  "requirements": {
+    "webpageOnlyInstallation": {
+      "status": "complete",
+      "evidence": [
+        "src/installation/import-website.ts",
+        "src/shared/policy.ts",
+        "test/import.test.ts"
+      ],
+      "removed": [
+        "app.json publisher format",
+        "legacy /run and /apps URLs",
+        "combined-origin build",
+        "old upgrade fixture"
+      ]
+    },
+    "codeQuality": {
+      "status": "complete",
+      "language": "TypeScript",
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "ui": "React and Tailwind",
+      "formatting": "Prettier",
+      "checks": [
+        "npm run typecheck",
+        "npm run format:check"
+      ]
+    },
+    "sourceConsolidation": {
+      "status": "complete",
+      "sourceRepository": "DamenH/privacy-frames",
+      "examples": "examples/",
+      "runtimeRepository": "DamenH/privacy-frames-apps",
+      "runtimeRepositoryRole": "deployment-only",
+      "demos": "Notebook merges notes, JSON fetch and installed image; focused native fixtures and hostile playground remain."
+    },
+    "report": {
+      "status": "complete",
+      "words": 1212,
+      "previousWords": 2416,
+      "review": "Unslop audit and sentence-by-sentence review, including paragraph endings",
+      "public": "https://pf.damenh.com/report.html"
+    },
+    "compatibility": {
+      "status": "complete",
+      "installationLimitMiB": 100,
+      "resourceLimit": 100,
+      "features": [
+        "initial inline scripts extracted after trusted setup",
+        "standard preload and modulepreload resource capture",
+        "literal module graph discovery and relocation",
+        "WebAssembly with explicit CSP permission"
+      ],
+      "independentWasmApp": "Installs and renders offline on both deployed browsers without a publisher adapter",
+      "evidence": [
+        "results/wasm.json",
+        "results/wasm-deployed.json",
+        "results/compatibility-deployed.json"
+      ]
+    },
+    "storage": {
+      "status": "complete",
+      "backend": "IndexedDB",
+      "layout": "Separate metadata and resource bodies; metadata queries do not load executable bodies",
+      "evidence": [
+        "src/runtime/storage.ts",
+        "results/scoped-storage.json",
+        "results/separate-runtime.json"
+      ]
+    },
+    "confinementRegressionChecks": {
+      "status": "complete",
+      "unitTests": 41,
+      "browsers": [
+        {
+          "name": "chromium",
+          "version": "153.0.8010.12",
+          "coreGroups": 16,
+          "directProbes": 31,
+          "eventProbes": 33
+        },
+        {
+          "name": "firefox",
+          "version": "155.0",
+          "coreGroups": 16,
+          "directProbes": 31,
+          "eventProbes": 33
+        }
+      ],
+      "network": "Active HTTP/STUN/DNS controls, zero private TCP/UDP/DNS observations on tested routes",
+      "fixes": [
+        "Captured DOMTokenList read methods and getters",
+        "Iteration uses copied token strings, with a working unrestricted receiver-leak control"
+      ],
+      "evidence": [
+        "results/browser.json",
+        "results/network.json",
+        "results/network-firefox.json",
+        "results/ci.json"
+      ]
+    },
+    "deployment": {
+      "status": "complete",
+      "matchedPublicAssets": 54,
+      "publicExamples": 6,
+      "nativeChromiumPWAs": 3,
+      "offlineArticleImages": 60,
+      "evidence": [
+        "results/assets.json",
+        "results/deployed.json",
+        "results/hosting.json",
+        "results/embedding-deployed.json",
+        "results/pitch-training-deployed.json"
+      ]
+    }
+  },
+  "limits": [
+    "Empirical enforcement over the documented browser surface; no machine-checked confinement proof.",
+    "WebKit and real-device mobile PWA installation remain unverified.",
+    "Application workers, updates/migrations, the recognition indicator and IFC remain future work.",
+    "Existing installations require reinstalling; no legacy installation migration was added."
+  ],
+  "receipts": {
+    "assets.json": {
+      "sha256": "cbe7b35a0034a5b5d31b001ac01ad4f307c18689ff4638b170cf77444bcc61e6",
+      "bytes": 8339
+    },
+    "browser.json": {
+      "sha256": "170f7e98588eb1d000c2b6e78c08dc19e6ab08f40070c16253398068c46c6b19",
+      "bytes": 44377
+    },
+    "ci.json": {
+      "sha256": "9dc6f25d37e0d40613826b088ee12df85773e0ebb82cce0987a1b91e769b1e6a",
+      "bytes": 1974
+    },
+    "compatibility-deployed.json": {
+      "sha256": "6018b3b4f3fb0256ee9e7595c45a5274c1cc27b96fe9e5d9d29fcb569f20886a",
+      "bytes": 1863
+    },
+    "compatibility.json": {
+      "sha256": "e9dbc01d33c9ad217ccdcaeff9895b808ad6d179097c23fce135ab23c40f9bcc",
+      "bytes": 1121
+    },
+    "deployed.json": {
+      "sha256": "c7ca3fe381c3bb6e9946b50c7654ca0d51d22cdbe71c6db79d1810853dcf72c9",
+      "bytes": 5226
+    },
+    "embedding-deployed.json": {
+      "sha256": "067f84b6c115eb00beb35de3b5eec76fe59cdc6a223847858b09f8cc988ba8d4",
+      "bytes": 1346
+    },
+    "hosting.json": {
+      "sha256": "4cf8a83b3fa32408b49623d5c703afcf29b686ba3a1e0ea81dc4217d9080e480",
+      "bytes": 826
+    },
+    "mobile.json": {
+      "sha256": "ef7f783041aa3136d44d3ba2112e2a2934266eaeb5ca07dbeff6cd332d0fc010",
+      "bytes": 586
+    },
+    "network-firefox.json": {
+      "sha256": "da858df34ee97a5b58a48e2d9f72bba6a3fbb79b9ffa9be7354da69e09a50f8d",
+      "bytes": 3632
+    },
+    "network.json": {
+      "sha256": "c1d3d0d5fd40b6619bcd0edcc5c49d6386b989a98adb134a03715f537135f3ba",
+      "bytes": 3652
+    },
+    "pitch-training-deployed.json": {
+      "sha256": "b14a354bc430f2159831d486a729ece5f20568c9eccfed7d9f3a18a0372ab059",
+      "bytes": 7370
+    },
+    "pitch-training.json": {
+      "sha256": "762dee4b26230c4ae9deeecae6dca3a872b52a37a4dee844a4d95f5d07afd230",
+      "bytes": 7767
+    },
+    "scoped-storage.json": {
+      "sha256": "f3bed63f01d99f24e3bd59c600e5a796d8185f4ef1749a1fbc5102e524d606c0",
+      "bytes": 1258
+    },
+    "separate-runtime.json": {
+      "sha256": "ac8dc98729d5a1da42741da272d52002d88b833c8681a81d8a5ecff9ed484219",
+      "bytes": 1332
+    },
+    "storage-policy.json": {
+      "sha256": "108a1fea2f3128bd40eeb6083a480dc31b65620a395cc54a881f24d673a4e480",
+      "bytes": 768
+    },
+    "wasm-deployed.json": {
+      "sha256": "06e1517186af479d4c71f2b07277cd0270bac3945816c61beac1a49eabb4b1a9",
+      "bytes": 980
+    },
+    "wasm.json": {
+      "sha256": "e29518f5d35fc9601d586245cb6b23aabf7e8f50e8fcf91ca3f34c0d73ab7e73",
+      "bytes": 968
+    },
+    "website-installation.json": {
+      "sha256": "1dedd045ea275110b24a11e2c7c73eacfb75c36e1fa946e546cd39690cad57c0",
+      "bytes": 1218
+    }
+  }
 }

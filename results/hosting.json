@@ -1,41 +1,35 @@
 {
-  "date": "2026-10-26T00:32:00.481Z",
+  "date": "2026-10-26",
   "sites": [
     {
-      "repository": "privacy-frames",
+      "repository": "DamenH/privacy-frames",
       "hostname": "pf.damenh.com",
-      "cname": [
-        "damenh.github.io"
-      ],
-      "provider": "GitHub.com",
+      "cname": "pf.damenh.com",
       "httpsEnforced": true,
-      "certificate": {
-        "commonName": "pf.damenh.com",
-        "subjectAltName": "DNS:pf.damenh.com",
-        "issuer": "YR1",
-        "expires": "Jan 23 22:52:06 2027 GMT",
-        "sha256": "89:39:89:D8:34:23:32:DA:65:32:2A:5A:65:37:E7:2D:DF:C1:7F:50:D7:93:7A:3E:B3:1F:F2:9C:D2:8C:9C:A0"
-      }
+      "server": "GitHub.com",
+      "certificateNames": [
+        [
+          "DNS",
+          "pf.damenh.com"
+        ]
+      ],
+      "certificateExpiry": "Jan 23 22:52:06 2027 GMT"
     },
     {
-      "repository": "privacy-frames-apps",
+      "repository": "DamenH/privacy-frames-apps",
       "hostname": "pf-apps.damenh.com",
-      "cname": [
-        "damenh.github.io"
-      ],
-      "provider": "GitHub.com",
+      "cname": "pf-apps.damenh.com",
       "httpsEnforced": true,
-      "certificate": {
-        "commonName": "pf-apps.damenh.com",
-        "subjectAltName": "DNS:pf-apps.damenh.com",
-        "issuer": "YR1",
-        "expires": "Jan 23 22:30:08 2027 GMT",
-        "sha256": "E7:F7:9E:40:6C:E6:4C:D3:99:9D:7E:3D:8D:D3:CD:E4:2D:1B:40:82:BD:1F:45:93:EF:DA:E1:4A:01:41:68:8F"
-      }
+      "server": "GitHub.com",
+      "certificateNames": [
+        [
+          "DNS",
+          "pf-apps.damenh.com"
+        ]
+      ],
+      "certificateExpiry": "Jan 23 22:30:08 2027 GMT"
     }
   ],
-  "retiredRuntime": {
-    "hostname": "pf-runtime.damenh.com",
-    "dns": "ENOTFOUND"
-  }
+  "retiredPublisher": "pf-resources.damenh.com",
+  "retiredPublisherDNS": "NXDOMAIN"
 }
