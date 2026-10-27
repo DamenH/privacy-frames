@@ -1,0 +1,21 @@
+{
+  "revision": "b4dbf2e6367929cf216d883eaf90a5167e587253",
+  "recordedAt": "2026-10-27T03:54:59.307760+00:00",
+  "commands": [
+    "npm run build",
+    "npm run typecheck",
+    "npm run format:check",
+    "npm test",
+    "npm run test:network"
+  ],
+  "exitCode": 0,
+  "receipts": {
+    "browser.json": "b6cb60ae2f40fd0be31f01df756365b38cae7b45166252589b5cbe0d8d2fc054",
+    "network.json": "78c5d40fcfa2c9dc64771c9deb3af0c4329c15b70d48d0b4f8360e9ad4edc711",
+    "network-firefox.json": "ec46fc67d7245615a56cc7db4d368170cf012736ce5590099c21112975606eef",
+    "scoped-storage.json": "f3bed63f01d99f24e3bd59c600e5a796d8185f4ef1749a1fbc5102e524d606c0",
+    "separate-runtime.json": "ac8dc98729d5a1da42741da272d52002d88b833c8681a81d8a5ecff9ed484219",
+    "website-installation.json": "1dedd045ea275110b24a11e2c7c73eacfb75c36e1fa946e546cd39690cad57c0"
+  },
+  "responsePolicySha256": "24c7272dcb53b5645ae96afb9da22a11f54daf1f80db929818168fe1f5608a30"
+}

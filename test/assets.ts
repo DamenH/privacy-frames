@@ -16,7 +16,7 @@ async function filesUnder(directory, prefix = '') {
 
 for (const [site, base, directory] of [
   ['manager', 'https://pf.damenh.com/', 'dist-manager'],
-  ['runtime', 'https://pf-apps.damenh.com/', 'dist-runtime'],
+  ['runtime', 'https://apps.pf.damenh.com/', 'dist-runtime'],
 ]) {
   for (const file of (await filesUnder(new URL(directory + '/', root))).filter(
     (file) => !file.startsWith('.'),
@@ -76,7 +76,7 @@ for (const id of ['notes', 'image', 'adversary', 'playground', 'ordinary']) {
     evidence.assets.push({ site: id, file, sha256: sha(bytes) });
   }
 }
-const github = await fetch('https://damenh.github.io/privacy-frames/config.json');
+const github = await fetch('https://privacy-frames.github.io/host/config.json');
 assert.equal(github.status, 200);
 const config = await github.json();
 assert.equal(config.managerURL, 'https://pf.damenh.com/');

@@ -13,6 +13,28 @@ const app = {
   manifest: { id: 'pitch-training', name: 'Pitch Training', entry: 'index.html' },
   resources: [],
 };
+test('initial JSON data blocks stay inert rather than becoming executable resources', () => {
+  const result = prepareDocument(
+    '<script type="application/ld+json">{"name":"Example"}</script><script type="application/json" id="data">{"value":42}</script>',
+    'https://publisher.test/',
+  );
+  assert.equal(result.inlineScripts.length, 0);
+  assert.equal(result.links.length, 0);
+  assert(result.html.includes('application/ld+json'));
+  assert(result.html.includes('"value":42'));
+  assert.throws(() =>
+    prepareDocument(
+      '<script type="application/json" src="x.json"></script>',
+      'https://publisher.test/',
+    ),
+  );
+  assert.throws(() =>
+    prepareDocument(
+      '<script type="speculationrules">{}</script>',
+      'https://publisher.test/',
+    ),
+  );
+});
 test('short alias is source-derived and label does not select identity', () => {
   assert.equal(publicAlias(app.id), 'ywJX53taGnk');
   const url = applicationURL(app, 'https://runtime.test/');

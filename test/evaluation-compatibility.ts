@@ -1,0 +1,403 @@
+import assert from 'node:assert/strict';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { basename } from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { chromium, firefox, type Page } from 'playwright';
+import { launch } from './browser-profile.ts';
+
+const host = process.env.HOST_URL || 'https://pf.damenh.com/';
+const targets = [
+  {
+    id: 'photocraft',
+    url: 'https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/',
+    task: 'Open synthetic image and apply brush stroke',
+  },
+  {
+    id: 'pitch',
+    url: 'https://damenh.github.io/pitch-training/',
+    task: 'Submit an identification exercise and retain history after reload',
+  },
+  {
+    id: 'wikipedia',
+    url: 'https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html',
+    task: 'Read article and navigate to a section offline',
+  },
+  {
+    id: 'squoosh',
+    url: 'https://squoosh.app',
+    task: 'Open synthetic image and change compression settings',
+  },
+  {
+    id: 'excalidraw',
+    url: 'https://excalidraw.com',
+    task: 'Create and modify a drawing',
+  },
+  { id: 'drawio', url: 'https://app.diagrams.net', task: 'Create a diagram' },
+  {
+    id: 'stackedit',
+    url: 'https://stackedit.io/app',
+    task: 'Edit Markdown and observe rendered preview',
+  },
+  {
+    id: 'cyberchef',
+    url: 'https://gchq.github.io/CyberChef/',
+    task: 'Transform synthetic input using To Base64',
+  },
+];
+const revision = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+const output =
+  process.env.EVALUATION_RESULTS || 'results/evaluation/compatibility-original.json';
+const screenshotDirectory = `results/evaluation/screenshots/${basename(output, '.json')}`;
+await mkdir(screenshotDirectory, { recursive: true });
+let controlsFailed = false;
+const receipt = {
+  completed: null as string | null,
+  started: new Date().toISOString(),
+  revision,
+  host,
+  variants: process.env.EVALUATION_URL
+    ? 'Explicit publisher snapshot URL override; see each row URL'
+    : 'original public URLs; no copies or publisher modifications',
+  runnerSha256: createHash('sha256')
+    .update(await readFile(new URL(import.meta.url)))
+    .digest('hex'),
+  results: [] as unknown[],
+};
+function message(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
+async function inspect(page: Page) {
+  return {
+    title: await page.title(),
+    text: (await page.locator('body').innerText()).slice(0, 1800),
+    inputs: await page
+      .locator('input,textarea,[contenteditable=true]')
+      .evaluateAll((es) =>
+        es.map((e) => ({
+          tag: e.tagName,
+          id: e.id,
+          placeholder: e.getAttribute('placeholder'),
+          label: e.getAttribute('aria-label'),
+        })),
+      ),
+  };
+}
+async function task(page: Page, id: string) {
+  if (id === 'pitch') {
+    await page.getByRole('button', { name: 'Play note', exact: true }).click();
+    await page.getByRole('button', { name: 'C', exact: true }).click();
+    await page.getByRole('button', { name: 'Submit answer', exact: true }).click();
+    const history = await page.evaluate(() => {
+      const key = Object.keys(localStorage).find((k) => k.endsWith('history/v1'));
+      return key ? localStorage.getItem(key) : null;
+    });
+    assert(history && JSON.parse(history).length > 0);
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.getByRole('navigation', { name: 'Main', exact: true }).waitFor();
+    assert.equal(
+      await page.evaluate(() => {
+        const key = Object.keys(localStorage).find((k) => k.endsWith('history/v1'));
+        return key ? localStorage.getItem(key) : null;
+      }),
+      history,
+    );
+    return 'Submitted exercise; saved history survives reload';
+  }
+  if (id === 'wikipedia') {
+    await page.getByText('Albert Einstein', { exact: true }).first().waitFor();
+    await page.locator('h2').last().scrollIntoViewIfNeeded();
+    assert(await page.evaluate(() => scrollY > 100));
+    return 'Article visible; scrolled to final document section';
+  }
+  if (id === 'photocraft') {
+    await page.waitForFunction(
+      () =>
+        !document.querySelector('#photocraft_loading') &&
+        (document.querySelector('canvas')?.width || 0) > 0,
+    );
+    const transfer = await page.evaluateHandle(() => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 256;
+      canvas.height = 256;
+      const ctx = canvas.getContext('2d')!;
+      ctx.fillStyle = '#ff0000';
+      ctx.fillRect(0, 0, 256, 256);
+      const raw = atob(canvas.toDataURL().split(',')[1]);
+      const bytes = Uint8Array.from(raw, (c) => c.charCodeAt(0));
+      const data = new DataTransfer();
+      data.items.add(new File([bytes], 'synthetic-red.png', { type: 'image/png' }));
+      return data;
+    });
+    await page
+      .locator('canvas')
+      .first()
+      .dispatchEvent('drop', { dataTransfer: transfer });
+    await page.waitForTimeout(2000);
+    const before = await page.screenshot();
+    await page.mouse.move(570, 350);
+    await page.mouse.down();
+    await page.mouse.move(620, 400, { steps: 12 });
+    await page.mouse.up();
+    await page.waitForTimeout(500);
+    const after = await page.screenshot();
+    const colors = await page.evaluate(
+      async ({ before, after }) => {
+        async function pixel(encoded: string) {
+          const bytes = Uint8Array.from(atob(encoded), (c) => c.charCodeAt(0));
+          const image = await createImageBitmap(new Blob([bytes], { type: 'image/png' }));
+          const canvas = document.createElement('canvas');
+          canvas.width = image.width;
+          canvas.height = image.height;
+          const context = canvas.getContext('2d')!;
+          context.drawImage(image, 0, 0);
+          return Array.from(context.getImageData(580, 360, 1, 1).data);
+        }
+        return { before: await pixel(before), after: await pixel(after) };
+      },
+      { before: before.toString('base64'), after: after.toString('base64') },
+    );
+    assert.deepEqual(colors.before, [255, 0, 0, 255]);
+    assert.deepEqual(colors.after, [0, 0, 0, 255]);
+    return 'Imported synthetic red PNG; brush stroke changes sampled document pixel from red to black';
+  }
+  if (id === 'squoosh') {
+    await page.locator('input[type=file]').setInputFiles({
+      name: 'synthetic.svg',
+      mimeType: 'image/svg+xml',
+      buffer: Buffer.from(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><rect width="256" height="256" fill="red"/></svg>',
+      ),
+    });
+    await page.getByText('Compress', { exact: true }).first().waitFor();
+    const range = page.locator('input[type=range]').first();
+    await range.fill('50');
+    return 'Synthetic image opened; compression range changed';
+  }
+  if (id === 'excalidraw') {
+    await page.locator('canvas').first().waitFor();
+    await page.keyboard.press('Escape');
+    await page.keyboard.press('r');
+    await page.mouse.move(430, 300);
+    await page.mouse.down();
+    await page.mouse.move(650, 450, { steps: 8 });
+    await page.mouse.up();
+    await page.waitForTimeout(800);
+    const drawing = await page.evaluate(() => localStorage.getItem('excalidraw'));
+    assert(drawing && JSON.parse(drawing).length > 0);
+    await page.keyboard.press('v');
+    await page.mouse.click(430, 375);
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(800);
+    const modified = await page.evaluate(() => localStorage.getItem('excalidraw'));
+    assert(modified && JSON.parse(modified)[0].x > JSON.parse(drawing)[0].x);
+    return 'Rectangle created and moved; changed x coordinate persisted in local storage';
+  }
+  if (id === 'drawio') {
+    const device = page.getByText('Device', { exact: true }).first();
+    if (await device.isVisible()) await device.click();
+    const create = page.getByRole('button', { name: 'Create New Diagram', exact: true });
+    if (await create.isVisible()) await create.click();
+    const blank = page.getByText('Blank Diagram', { exact: true }).first();
+    if (await blank.isVisible()) await blank.click();
+    const final = page.getByRole('button', { name: 'Create', exact: true });
+    if (await final.isVisible()) await final.click();
+    await page.locator('.geDiagramContainer').waitFor();
+    const before = await page.locator('.geDiagramContainer svg').innerHTML();
+    await page.mouse.move(36, 292);
+    await page.mouse.down();
+    await page.mouse.move(600, 350, { steps: 12 });
+    await page.mouse.up();
+    await page.waitForTimeout(500);
+    assert.notEqual(await page.locator('.geDiagramContainer svg').innerHTML(), before);
+    assert((await page.locator('.geDiagramContainer svg [fill]').count()) > 0);
+    return 'Dragged rectangle from shape palette into diagram; SVG contents changed';
+  }
+  if (id === 'stackedit') {
+    const editor = page.locator('[contenteditable=true]').first();
+    await page
+      .getByRole('button', { name: 'SKIP', exact: true })
+      .click()
+      .catch(() => {});
+    await editor.waitFor();
+    await editor.fill('# Synthetic evaluation\n\n**Private** local note');
+    await page
+      .locator('.cl-preview-section h1')
+      .getByText('Synthetic evaluation', { exact: true })
+      .waitFor();
+    return 'Markdown edited; preview heading rendered';
+  }
+  if (id === 'cyberchef') {
+    await page.locator('[contenteditable=true]').first().fill('Privacy Frames');
+    await page.locator('#search').fill('To Base64');
+    await page.getByText('To Base64', { exact: true }).first().dblclick();
+    await page.waitForFunction(() =>
+      document
+        .querySelector('[contenteditable=true][aria-readonly=true]')
+        ?.textContent?.includes('UHJpdmFjeSBGcmFtZXM='),
+    );
+    return 'To Base64 produces expected synthetic output';
+  }
+  throw new Error('Missing task');
+}
+for (const [name, engine] of Object.entries({ chromium, firefox })) {
+  const browser = await launch(engine);
+  try {
+    for (const target of targets
+      .filter(
+        (t) => !process.env.EVALUATION_TARGET || t.id === process.env.EVALUATION_TARGET,
+      )
+      .map((t) => ({ ...t, url: process.env.EVALUATION_URL || t.url }))) {
+      const row = {
+        browser: name,
+        version: browser.version(),
+        ...target,
+        standalone: {} as Record<string, unknown>,
+        confined: {} as Record<string, unknown>,
+      };
+      receipt.results.push(row);
+      for (const mode of (process.env.EVALUATION_STANDALONE_ONLY === '1'
+        ? ['standalone']
+        : ['standalone', 'confined']) as ('standalone' | 'confined')[]) {
+        const context = await browser.newContext({
+          viewport: { width: 1280, height: 800 },
+        });
+        context.setDefaultTimeout(12000);
+        const page = await context.newPage();
+        const errors: string[] = [];
+        const failed: string[] = [];
+        page.on('pageerror', (e) => errors.push(e.message));
+        page.on('requestfailed', (r) =>
+          failed.push(`${r.method()} ${r.url()} ${r.failure()?.errorText}`),
+        );
+        page.on('console', (m) => {
+          if (m.type() === 'error') errors.push(m.text());
+        });
+        const state = row[mode];
+        let app = page;
+        try {
+          if (mode === 'standalone') {
+            const response = await page.goto(target.url, {
+              waitUntil: 'domcontentloaded',
+              timeout: 45000,
+            });
+            state.httpStatus = response?.status();
+            if (response)
+              state.entrySha256 = createHash('sha256')
+                .update(await response.body())
+                .digest('hex');
+          } else {
+            await page.goto(host, { waitUntil: 'domcontentloaded' });
+            await page
+              .getByText('Ready to install.', { exact: true })
+              .waitFor({ timeout: 45000 });
+            await page.locator('#app-url').fill(target.url);
+            await page.locator('#install button').click();
+            await page.waitForFunction(
+              () =>
+                /^(Installed |Installation refused:)/.test(
+                  document.querySelector('#status')?.textContent || '',
+                ),
+              {},
+              { timeout: 150000 },
+            );
+            const status = await page.locator('#status').innerText();
+            state.installation = status;
+            if (!status.startsWith('Installed ')) throw new Error(status);
+            const appName = status.slice('Installed '.length, -1);
+            const opened = context.waitForEvent('page');
+            await page
+              .locator('.app-card')
+              .filter({ has: page.getByRole('heading', { name: appName, exact: true }) })
+              .getByRole('link', { name: 'Open', exact: true })
+              .click();
+            app = await opened;
+            app.on('pageerror', (e) => errors.push(e.message));
+            app.on('requestfailed', (r) =>
+              failed.push(`${r.url()} ${r.failure()?.errorText}`),
+            );
+            await app.waitForFunction(
+              () => window.privacyHost?.mode === 'network-isolated',
+              {},
+              { timeout: 30000 },
+            );
+            state.url = app.url();
+          }
+          await app.waitForTimeout(5000);
+          state.inspection = await inspect(app);
+          state.task = await task(app, target.id);
+          state.taskPassed = true;
+          await app.screenshot({
+            path: `${screenshotDirectory}/${name}-${target.id}-${mode}-task.png`,
+          });
+          if (mode === 'confined') {
+            const stored =
+              target.id === 'pitch'
+                ? await app.evaluate(() => {
+                    const key = Object.keys(localStorage).find((k) =>
+                      k.endsWith('history/v1'),
+                    );
+                    return key ? localStorage.getItem(key) : null;
+                  })
+                : null;
+            await context.setOffline(true);
+            await app.reload({ waitUntil: 'domcontentloaded' });
+            await app.waitForFunction(
+              () => window.privacyHost?.mode === 'network-isolated',
+            );
+            if (target.id === 'wikipedia') state.offlineTask = await task(app, target.id);
+            if (target.id === 'photocraft')
+              await app.waitForFunction(
+                () =>
+                  !document.querySelector('#photocraft_loading') &&
+                  (document.querySelector('canvas')?.width || 0) > 0,
+              );
+            if (target.id === 'pitch') {
+              await app.getByRole('navigation', { name: 'Main', exact: true }).waitFor();
+              assert.equal(
+                await app.evaluate(() => {
+                  const key = Object.keys(localStorage).find((k) =>
+                    k.endsWith('history/v1'),
+                  );
+                  return key ? localStorage.getItem(key) : null;
+                }),
+                stored,
+              );
+              state.offlinePersistence = true;
+            }
+            state.offlineInspection = await inspect(app);
+            state.offlineReload = true;
+          }
+        } catch (error) {
+          state.failure = message(error);
+          try {
+            state.inspection = await inspect(app);
+          } catch {}
+        } finally {
+          if (mode === 'standalone' && state.taskPassed !== true) controlsFailed = true;
+          state.errors = errors.slice(0, 30);
+          state.requestFailures = failed.slice(0, 30);
+          try {
+            await app.screenshot({
+              path: `${screenshotDirectory}/${name}-${target.id}-${mode}.png`,
+            });
+          } catch {}
+          await context.close();
+          await writeFile(output, JSON.stringify(receipt, null, 2) + '\n');
+          console.log(
+            name,
+            target.id,
+            mode,
+            state.taskPassed ? 'TASK PASS' : state.failure,
+          );
+        }
+      }
+    }
+  } finally {
+    await browser.close();
+  }
+}
+
+receipt.completed = new Date().toISOString();
+await writeFile(output, JSON.stringify(receipt, null, 2) + '\n');
+if (controlsFailed) process.exitCode = 1;

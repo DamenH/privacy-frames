@@ -63,8 +63,9 @@ export function installNavigationPolicy(tools: PolicyTools) {
       History.prototype,
       key,
       function (this: History, state: unknown, title: unknown, url?: unknown) {
-        if (url !== undefined && url !== null) {
-          const target = new NativeURL(str(url), location.href);
+        const targetURL = url === undefined || url === null ? url : str(url);
+        if (targetURL !== undefined && targetURL !== null) {
+          const target = new NativeURL(targetURL, location.href);
           if (
             target.origin !== initialURL.origin ||
             target.pathname !== initialURL.pathname ||
@@ -72,7 +73,7 @@ export function installNavigationPolicy(tools: PolicyTools) {
           )
             fail('Only fragment history is admitted');
         }
-        return apply(fn, this, [state, str(title), url]);
+        return apply(fn, this, [state, str(title), targetURL]);
       },
     );
   }

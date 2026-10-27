@@ -1,0 +1,84 @@
+{
+  "completed": "2026-10-27T03:41:51.577Z",
+  "started": "2026-10-27T03:41:15.317Z",
+  "revision": "b4dbf2e6367929cf216d883eaf90a5167e587253",
+  "host": "https://pf.damenh.com/",
+  "variants": "Explicit publisher snapshot URL override; see each row URL",
+  "runnerSha256": "b2e102d0fe520454aa6ffbb5b22d462b7ce4ef0124a14396092c787d494826f5",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "stackedit",
+      "url": "http://127.0.0.1:4613/app",
+      "task": "Edit Markdown and observe rendered preview",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "8b8c4211fa6cb5314d6835312618da1635c91af2c0901f4f60a1e345a95536ec",
+        "inspection": {
+          "title": "StackEdit",
+          "text": "Welcome file\n# Welcome to StackEdit!\n\n\nHi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.\n\n\n\n# Files\n\n\nStackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**\n\n\n## Create files and folders\n\n\nThe file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.\n\n\n## Switch to another file\n\n\nAll your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.\n\n\n## Rename a file\n\n\nYou can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.\n\n\n## Delete a file\n\n\nYou can delete the current file by clicking the **Remove** button in the file explorer. The file will be moved into the **Trash** folder and automatically deleted after 7 days of inactivity.\n\n\n## Export a file\n\n\nYou can export the current file by clicking **Export to disk** in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.\n\n\n\n# Synchronization\n\n\nSynchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "PRE",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Markdown edited; preview heading rendered",
+        "taskPassed": true,
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Object"
+        ],
+        "requestFailures": []
+      },
+      "confined": {}
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "stackedit",
+      "url": "http://127.0.0.1:4613/app",
+      "task": "Edit Markdown and observe rendered preview",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "8b8c4211fa6cb5314d6835312618da1635c91af2c0901f4f60a1e345a95536ec",
+        "inspection": {
+          "title": "StackEdit",
+          "text": "Welcome file\n# Welcome to StackEdit!\n\n\nHi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.\n\n\n\n# Files\n\n\nStackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**\n\n\n## Create files and folders\n\n\nThe file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.\n\n\n## Switch to another file\n\n\nAll your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.\n\n\n## Rename a file\n\n\nYou can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.\n\n\n## Delete a file\n\n\nYou can delete the current file by clicking the **Remove** button in the file explorer. The file will be moved into the **Trash** folder and automatically deleted after 7 days of inactivity.\n\n\n## Export a file\n\n\nYou can export the current file by clicking **Export to disk** in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.\n\n\n\n# Synchronization\n\n\nSynchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "PRE",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Markdown edited; preview heading rendered",
+        "taskPassed": true,
+        "errors": [
+          "[JavaScript Error: \"XML Parsing Error: syntax error\nLocation: http://127.0.0.1:4613/conf\nLine Number 1, Column 1:\" {file: \"http://127.0.0.1:4613/conf\" line: 1}]",
+          "Object { body, headers, status }"
+        ],
+        "requestFailures": []
+      },
+      "confined": {}
+    }
+  ]
+}

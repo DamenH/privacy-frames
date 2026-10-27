@@ -4,9 +4,9 @@ Install a web application from its URL, then run a local copy with private input
 Installation can download public resources. During execution, requests receive
 installed resources or fail.
 
-The application library is at **https://pf.damenh.com/**. Installed applications
-run at **https://pf-apps.damenh.com/** using `/<short-source-id>/<app-name>/` URLs.
-Both trusted sites use GitHub Pages. An authenticated iframe connects the library
+The app manager is at **https://pf.damenh.com/**. Installed applications
+run at **https://apps.pf.damenh.com/** using `/<short-source-id>/<app-name>/` URLs.
+Both trusted sites use GitHub Pages. An authenticated iframe connects the manager
 to runtime storage automatically.
 
 ## Develop locally
@@ -28,14 +28,14 @@ Example publishers and the diagnostic receiver use ports 4212–4218. The local
 server keeps manager, runtime and publisher origins separate, matching the
 production architecture.
 
-All implementation and example source lives in this repository. Building creates
+Implementation lives in this repository. Example source lives in [privacy-frames/apps](https://github.com/privacy-frames/apps); the test build checks out the revision in `publisher-source-ref.txt`. Building creates
 `dist-manager/`, `dist-runtime/` and `dist-examples/`. React and Tailwind provide
 the manager interface; installation, runtime enforcement and examples use
 TypeScript. Prettier defines source formatting.
 
 ## Install an application
 
-Paste its webpage URL into the library and choose **Install**. Open the installed
+Paste its webpage URL into the manager and choose **Install**. Open the installed
 copy from the list. Publishers need readable cross-origin responses through CORS.
 The host discovers resources through standard webpage declarations, supported
 module dependencies and supported service-worker precaching. The total
@@ -54,7 +54,7 @@ applications that can work offline.
 
 The visible examples emphasize note editing and installed resources, an editable
 code playground and hostile browser probes. Smaller image, precache and document
-fixtures remain focused automated tests. See [examples/README.md](examples/README.md)
+fixtures remain focused automated tests. See [the publisher repository](https://github.com/privacy-frames/apps)
 for their source and independent publisher setup.
 
 Pitch Training, Wikipedia and an independently developed Wasm image editor
@@ -91,13 +91,12 @@ receipts describe their recorded revisions; current changes need fresh results.
 
 `deployment/config.json` specifies trusted origins and example links. The manager
 Pages workflow publishes `dist-manager/`. The deployment-only
-[DamenH/privacy-frames-apps](https://github.com/DamenH/privacy-frames-apps)
+[privacy-frames/runtime](https://github.com/privacy-frames/runtime)
 repository publishes `dist-runtime/` from a pinned revision of this repository.
-Configure `pf.damenh.com` and `pf-apps.damenh.com` in the corresponding GitHub Pages
-settings and point both DNS CNAMEs to `damenh.github.io`.
+Configure `pf.damenh.com` and `apps.pf.damenh.com` in the corresponding GitHub Pages
+settings and point both DNS CNAMEs to `privacy-frames.github.io`.
 
-Examples are untrusted publisher content. Their static deployment configurations
-are under `deployment/examples/`; their assets must stay off both trusted origins.
+Examples are untrusted publisher content, published at `https://privacy-frames.github.io/apps/`. Their assets must stay off both trusted origins.
 Separate paths on a shared hostname do not create origin isolation.
 
 The deployment requires static hosting only. Virtual application URLs return

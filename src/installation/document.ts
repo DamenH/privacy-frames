@@ -1,5 +1,5 @@
 import { parse, serialize, type DefaultTreeAdapterTypes as Tree } from 'parse5';
-import { validateMarkup } from '../shared/policy.ts';
+import { validateMarkup, isDataScript } from '../shared/policy.ts';
 
 export function cssReferences(text: string, base: string): string[] {
   const urls: string[] = [];
@@ -118,6 +118,10 @@ export function prepareDocument(text: string, documentURL: string) {
         }
       }
       if (child.tagName === 'script') {
+        if (isDataScript(get('type') || '')) {
+          if (get('src')) throw new Error('Data scripts must be inline');
+          return true;
+        }
         if (!get('src')) {
           const type = get('type') || '';
           if (!['', 'module', 'text/javascript', 'application/javascript'].includes(type))

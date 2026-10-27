@@ -4,13 +4,13 @@
 
 The host installs a web application from a URL and runs a local copy against private input. Installation can use the network. Once the application starts, its HTTP requests receive installed resources or fail. There is no network fallback.
 
-The manager is the trusted application library: it accepts URLs, performs installation and launches applications. A separate runtime origin serves the installed copies. Both are static websites hosted on GitHub Pages. Installation, storage and enforcement run in the browser. Applications retain native JavaScript, asynchronous callbacks, DOM elements, canvas, audio and local file processing.
+The manager is the trusted installation interface: it accepts URLs, performs installation and launches applications. A separate runtime origin serves the installed copies. Both are static websites hosted on GitHub Pages. Installation, storage and enforcement run in the browser. Applications retain native JavaScript, asynchronous callbacks, DOM elements, canvas, audio and local file processing.
 
 ## Threat model
 
 The developer and the entire application may be malicious. This includes its installation code, resources and dependencies. An application may try to disclose private input through a request, create an unrestricted execution context, navigate away, recover native browser capabilities or access another application's storage.
 
-The browser, host implementation, host dependencies and static hosting origins are trusted. The user chooses what to install and supplies private input only after installation. The manager origin must contain only trusted content. The manager uses `pf.damenh.com`, the runtime uses `pf-apps.damenh.com`, and publishers use other origins. Separate paths on one hostname would share an origin.
+The browser, host implementation, host dependencies and static hosting origins are trusted. The user chooses what to install and supplies private input only after installation. The manager origin must contain only trusted content. The manager uses `pf.damenh.com`, the runtime uses `apps.pf.damenh.com`, and publishers use other origins. Separate paths on one hostname would share an origin.
 
 The target is application-initiated network disclosure during isolated execution. Local display, audio playback and processing user-selected files are intended. Browser defects, malicious extensions, physical side channels, availability attacks, developer tools and deliberate browser-menu exports are outside this demonstration. All applications on the runtime origin remain subject to confinement, including applications that have not read private input. IFC and selective release of private information remain separate research questions.
 
@@ -32,7 +32,7 @@ Firefox testing exposed a limit of service-worker interception: the browser reso
 
 Application responses forbid [embedding](https://html.spec.whatwg.org/multipage/iframe-embed-object.html), and startup requires a top-level document without an opener. This prevents an external parent from receiving private data through messaging. The [CSP sandbox](https://www.w3.org/TR/CSP/#directive-sandbox) and resource directives also block frames, objects, application workers, popups and downloads. Trusted setup validates markup before native parsing and checks operations that could create new execution contexts, including element creation, HTML setters, templates and node insertion. A protected Navigation API listener cancels document navigation while allowing fragment changes. Browsers without the required navigation enforcement refuse startup.
 
-SES freezes JavaScript intrinsics, and setup captures native methods before application execution. These protect the machinery used by the runtime checks. Additional restrictions cover transports and browser-mediated services that can bypass ordinary HTTP interception, including WebSocket, WebRTC, worklets, remote speech and remote playback. The checked surfaces are recorded in [SURFACE_INVENTORY.md](https://github.com/DamenH/privacy-frames/blob/main/SURFACE_INVENTORY.md).
+SES freezes JavaScript intrinsics, and setup captures native methods before application execution. These protect the machinery used by the runtime checks. Additional restrictions cover transports and browser-mediated services that can bypass ordinary HTTP interception, including WebSocket, WebRTC, worklets, remote speech and remote playback. The checked surfaces are recorded in [SURFACE_INVENTORY.md](https://github.com/privacy-frames/host/blob/main/SURFACE_INVENTORY.md).
 
 ## Storage and management
 
@@ -40,7 +40,7 @@ Local storage, session storage, IndexedDB and Cache Storage expose application-s
 
 A trusted iframe on the runtime origin connects the manager to installation storage. Both endpoints check the actual peer window and browser-reported origin. The runtime worker separately authorizes management messages using a role bound to a trusted browser client. The bridge provides installation operations without exposing a general request proxy.
 
-The manager and runtime use same-site, different-origin domains so iframe installation and top-level execution can share runtime storage. Startup checks storage access and worker control. If the browser denies the necessary access, installation stops rather than using a separate partition that the launched application cannot see.
+The manager and runtime use same-site, different-origin domains so iframe installation and top-level execution can share runtime storage. Startup checks storage access and worker control. Tests verify shared installation state for this same-site deployment. These checks alone do not detect a separate but accessible storage partition; cross-site controls demonstrate that limitation.
 
 ## Compatibility
 

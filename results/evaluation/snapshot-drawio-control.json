@@ -1,0 +1,258 @@
+{
+  "completed": "2026-10-27T03:41:27.256Z",
+  "started": "2026-10-27T03:41:14.181Z",
+  "revision": "b4dbf2e6367929cf216d883eaf90a5167e587253",
+  "host": "https://pf.damenh.com/",
+  "variants": "Explicit publisher snapshot URL override; see each row URL",
+  "runnerSha256": "b2e102d0fe520454aa6ffbb5b22d462b7ce4ef0124a14396092c787d494826f5",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "drawio",
+      "url": "http://127.0.0.1:4612/",
+      "task": "Create a diagram",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "5969a0c4a1196c165cc9a454b96c146371271c155cfb5e3705d8fbb7c9c7601b",
+        "inspection": {
+          "title": "Untitled Diagram - draw.io",
+          "text": "File\nEdit\nView\nArrange\nExtras\nHelp\nShare\nUntitled Diagram\nScratchpad\nDrag elements here\nGeneral\nText\nHeading\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nVertical Container\nHorizontal Container\nList\nItem 1\nItem 2\nItem 3\nList Item\nLabel\nLabel\nSource\nTarget\nMisc\nAdvanced\nBasic\nArrows\nFlowchart\nEntity Relation\nUML\n+\nMore Shapes\nDiagram\nStyle\nView\nGrid\nPage View\nBackground\nChange...\nOptions\nConnection Arrows\nConnection Points\nGuides\nPaper Size\nEdit Data...\nClear Default Style\n\nPage-1",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "geOmniSearch",
+              "placeholder": "Type / to search",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Dragged rectangle from shape palette into diagram; SVG contents changed",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {}
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "drawio",
+      "url": "http://127.0.0.1:4612/",
+      "task": "Create a diagram",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "5969a0c4a1196c165cc9a454b96c146371271c155cfb5e3705d8fbb7c9c7601b",
+        "inspection": {
+          "title": "Untitled Diagram - draw.io",
+          "text": "File\nEdit\nView\nArrange\nExtras\nHelp\nShare\nUntitled Diagram\nScratchpad\nDrag elements here\nGeneral\nText\nHeading\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nVertical Container\nHorizontal Container\nList\nItem 1\nItem 2\nItem 3\nList Item\nLabel\nLabel\nSource\nTarget\nMisc\nAdvanced\nBasic\nArrows\nFlowchart\nEntity Relation\nUML\n+\nMore Shapes\nDiagram\nStyle\nView\nGrid\nPage View\nBackground\nChange...\nOptions\nConnection Arrows\nConnection Points\nGuides\nPaper Size\nEdit Data...\nClear Default Style\n\nPage-1",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "geOmniSearch",
+              "placeholder": "Type / to search",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Dragged rectangle from shape palette into diagram; SVG contents changed",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {}
+    }
+  ]
+}

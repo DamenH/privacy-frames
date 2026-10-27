@@ -85,7 +85,7 @@ for (const role of roles) {
   if (role === 'runtime')
     await writeFile(
       resolve(directory, 'index.html'),
-      '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy Frames applications</title><link rel="stylesheet" href="./host.css"><main><h1>Privacy Frames</h1><a href="https://pf.damenh.com/">Open library</a></main></html>',
+      '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy Frames applications</title><link rel="stylesheet" href="./host.css"><main><h1>Privacy Frames</h1><a href="https://pf.damenh.com/">Open manager</a></main></html>',
     );
   await writeFile(resolve(directory, 'config.json'), JSON.stringify(config, null, 2));
   await writeFile(resolve(directory, '.nojekyll'), '');

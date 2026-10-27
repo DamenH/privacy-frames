@@ -17,7 +17,7 @@ has explicit data validation and a distinct set of capabilities.
 | `src/runtime/storage/` | Application-scoped IndexedDB and Cache Storage interfaces |
 | `src/runtime/storage.ts` | Host-owned installation metadata and resource bodies |
 | `src/shared/` | Shared types, runtime validation, resource limits and URL identity |
-| `examples/` | Ordinary publisher websites and focused hostile fixtures |
+| `publisher-source-ref.txt` | Pinned `privacy-frames/apps` source for ordinary and hostile fixtures |
 | `scripts/` | Static builds for both trusted origins and independent examples |
 | `test/` | Browser behavior, hostile probes and independently observed network tests |
 

@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-27T04:02:04.865Z",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "confined": {
+        "conversions": 1,
+        "fragment": "",
+        "pathname": "/runtime/Gyb-i86JtjE/review/"
+      },
+      "unrestricted": {
+        "conversions": 1,
+        "fragment": "#coercion-1",
+        "pathname": "/review/"
+      },
+      "data": {
+        "value": {
+          "value": 42
+        },
+        "typeBlocked": true,
+        "cloneBlocked": true,
+        "executed": false
+      },
+      "controlMutation": "text/javascript"
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "confined": {
+        "conversions": 1,
+        "fragment": "",
+        "pathname": "/runtime/Gyb-i86JtjE/review/"
+      },
+      "unrestricted": {
+        "conversions": 1,
+        "fragment": "#coercion-1",
+        "pathname": "/review/"
+      },
+      "data": {
+        "value": {
+          "value": 42
+        },
+        "typeBlocked": true,
+        "cloneBlocked": true,
+        "executed": false
+      },
+      "controlMutation": "text/javascript"
+    }
+  ]
+}

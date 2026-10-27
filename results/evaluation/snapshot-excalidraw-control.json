@@ -1,0 +1,52 @@
+{
+  "completed": "2026-10-27T03:40:45.958Z",
+  "started": "2026-10-27T03:40:30.481Z",
+  "revision": "b4dbf2e6367929cf216d883eaf90a5167e587253",
+  "host": "https://pf.damenh.com/",
+  "variants": "Explicit publisher snapshot URL override; see each row URL",
+  "runnerSha256": "b2e102d0fe520454aa6ffbb5b22d462b7ce4ef0124a14396092c787d494826f5",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "excalidraw",
+      "url": "http://127.0.0.1:4611/",
+      "task": "Create and modify a drawing",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "c88e1780d59605c90afcefd07d2e423917eb1454449d93a7b2d7b6aa11bb0f08",
+        "inspection": {
+          "title": "Excalidraw Whiteboard",
+          "text": "Excalidraw\nYour drawings are saved in your browser's storage.\nBrowser storage can be cleared unexpectedly.\nSave your work to a file regularly to avoid losing it.\nOpen\nCtrl+O\nHelp\n?\nLive collaboration...\nSign up\nExport, preferences, languages, ...\nPick a tool & Start drawing!\nTo move canvas, hold Scroll wheel or Space while dragging, or use the hand tool\nShapes\nV\nR\nD\nO\nA\nL\nP\nT\nN\nE\nTry Excalidraw+\n14-day free trial\nCanvas actions\n100%\nShortcuts & help",
+          "inputs": []
+        },
+        "task": "Rectangle created and moved; changed x coordinate persisted in local storage",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {}
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "excalidraw",
+      "url": "http://127.0.0.1:4611/",
+      "task": "Create and modify a drawing",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "c88e1780d59605c90afcefd07d2e423917eb1454449d93a7b2d7b6aa11bb0f08",
+        "inspection": {
+          "title": "Excalidraw Whiteboard",
+          "text": "Excalidraw\nYour drawings are saved in your browser's storage.\nBrowser storage can be cleared unexpectedly.\nSave your work to a file regularly to avoid losing it.\nOpen\nCtrl+O\nHelp\n?\nLive collaboration...\nSign up\nExport, preferences, languages, ...\nPick a tool & Start drawing!\nTo move canvas, hold Scroll wheel or Space while dragging, or use the hand tool\nShapes\nV\nR\nD\nO\nA\nL\nP\nT\nN\nE\nTry Excalidraw+\n14-day free trial\nCanvas actions\n100%\nShortcuts & help",
+          "inputs": []
+        },
+        "task": "Rectangle created and moved; changed x coordinate persisted in local storage",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {}
+    }
+  ]
+}

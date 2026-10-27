@@ -16,10 +16,11 @@
     "test:assets": "node test/assets.ts",
     "test:deployed": "node test/deployed.ts",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write src scripts examples test *.json .github deployment --ignore-unknown",
-    "format:check": "prettier --check src scripts examples test *.json .github deployment --ignore-unknown",
+    "format": "prettier --write src scripts test *.json .github deployment --ignore-unknown",
+    "format:check": "prettier --check src scripts test *.json .github deployment --ignore-unknown",
     "build:examples": "tsx scripts/build-examples.ts",
-    "test:wasm": "node test/wasm.ts"
+    "test:wasm": "node test/wasm.ts",
+    "test:review": "node test/evaluation-review.ts"
   },
   "dependencies": {
     "es-module-lexer": "^3.0.4",

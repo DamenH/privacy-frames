@@ -1,6 +1,6 @@
 {
   "managerURL": "https://pf.damenh.com/",
-  "runtimeURL": "https://pf-apps.damenh.com/",
+  "runtimeURL": "https://apps.pf.damenh.com/",
   "managerOrigins": ["https://pf.damenh.com"],
   "examples": [
     {

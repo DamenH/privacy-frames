@@ -1,0 +1,40 @@
+{
+  "observed": "2026-10-26T15:16:57.233Z",
+  "assets": [
+    {
+      "url": "https://pf.damenh.com/manager.js",
+      "status": 200,
+      "server": "GitHub.com",
+      "bytes": 1188879,
+      "sha256": "9c4451991d8a7e2d9659c2d412fdb9bcfce2f1406901ec045e3e493380bdb223"
+    },
+    {
+      "url": "https://pf.damenh.com/config.json",
+      "status": 200,
+      "server": "GitHub.com",
+      "bytes": 779,
+      "sha256": "1cac3fb86d9584a556cdf7a351c4f25e717c7b39df868e49a5f29448b69f0497"
+    },
+    {
+      "url": "https://pf-apps.damenh.com/sw.js",
+      "status": 200,
+      "server": "GitHub.com",
+      "bytes": 326327,
+      "sha256": "f0633c12ada085fad676619ab750f65cde1a4ae427caae1d479d3e686e2d0334"
+    },
+    {
+      "url": "https://pf-apps.damenh.com/guard.js",
+      "status": 200,
+      "server": "GitHub.com",
+      "bytes": 578119,
+      "sha256": "0591ff655f4c62896c4630597fe7cd85a5250eb18daa972e484f3f775d13904d"
+    },
+    {
+      "url": "https://pf-apps.damenh.com/connect.js",
+      "status": 200,
+      "server": "GitHub.com",
+      "bytes": 6637,
+      "sha256": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce"
+    }
+  ]
+}

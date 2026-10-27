@@ -86,6 +86,13 @@ export async function servers() {
           );
           return;
         }
+        if (port === 4218 && relative === '/review/') {
+          response.setHeader('Content-Type', 'text/html');
+          response.end(
+            '<!doctype html><title>Review</title><script id="data" type="application/json">{"value":42}</script><script type="application/ld+json">window.__dataExecuted=true</script><p>Data document</p>',
+          );
+          return;
+        }
         if (port === 4218 && relative.startsWith('/reject/')) {
           if (relative === '/reject/sw.js') {
             response.setHeader('Content-Type', 'text/javascript');

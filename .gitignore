@@ -9,3 +9,5 @@ results/*.png
 
 .share-stage/
 dist-examples/
+
+publisher-source/

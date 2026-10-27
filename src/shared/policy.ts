@@ -18,6 +18,11 @@ const blockedElements = new Set([
 ]);
 const presentationMetadata = new Set(['viewport', 'color-scheme', 'theme-color']);
 
+/** These script types contain data and never execute as JavaScript. */
+export function isDataScript(type: string): boolean {
+  return ['application/json', 'application/ld+json'].includes(type.trim().toLowerCase());
+}
+
 export function elementAllowed(name: unknown): void {
   const tag = String(name).toLowerCase();
   if (blockedElements.has(tag) || tag.includes(':')) {
@@ -71,6 +76,13 @@ export function validateMarkup(
       }
       if (
         tag === 'script' &&
+        !(
+          initial &&
+          isDataScript(
+            node.attrs.find((attribute) => attribute.name === 'type')?.value || '',
+          ) &&
+          !node.attrs.some((attribute) => attribute.name === 'src')
+        ) &&
         (!initial ||
           !node.attrs.some((attribute) => attribute.name === 'src') ||
           node.childNodes.some(

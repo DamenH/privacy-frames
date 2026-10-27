@@ -20,7 +20,7 @@ export function App() {
         <nav className="header-links flex gap-4 text-xs text-slate-400">
           <a href="./report.html">Report</a>
           <a
-            href="https://github.com/DamenH/privacy-frames"
+            href="https://github.com/privacy-frames/host"
             target="_blank"
             rel="noopener noreferrer"
           >

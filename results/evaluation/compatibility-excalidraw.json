@@ -1,0 +1,92 @@
+{
+  "started": "2026-10-26T15:14:34.816Z",
+  "revision": "b4dbf2e6367929cf216d883eaf90a5167e587253",
+  "host": "https://pf.damenh.com/",
+  "variants": "original public URLs; no copies or publisher modifications",
+  "runnerSha256": "b6742450bdc04fc3faa13fcf15c10eee84d83f47ae3948fb1427fe52c0fd3fce",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "excalidraw",
+      "url": "https://excalidraw.com",
+      "task": "Create and modify a drawing",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "c88e1780d59605c90afcefd07d2e423917eb1454449d93a7b2d7b6aa11bb0f08",
+        "inspection": {
+          "title": "Excalidraw Whiteboard",
+          "text": "Excalidraw\nYour drawings are saved in your browser's storage.\nBrowser storage can be cleared unexpectedly.\nSave your work to a file regularly to avoid losing it.\nOpen\nCtrl+O\nHelp\n?\nLive collaboration...\nSign up\nExport, preferences, languages, ...\nPick a tool & Start drawing!\nTo move canvas, hold Scroll wheel or Space while dragging, or use the hand tool\nShapes\nV\nR\nD\nO\nA\nL\nP\nT\nN\nE\nTry Excalidraw+\n14-day free trial\nCanvas actions\n100%\nShortcuts & help",
+          "inputs": []
+        },
+        "task": "Rectangle created and moved; changed x coordinate persisted in local storage",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installation refused: Failed to fetch",
+        "failure": "Installation refused: Failed to fetch",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: Failed to fetch\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [
+          "Access to fetch at 'https://excalidraw.com/' from origin 'https://pf.damenh.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://excalidraw.com' that is not equal to the supplied origin. Have the server send the header with a valid value.",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "requestFailures": [
+          "GET https://excalidraw.com/ net::ERR_FAILED"
+        ]
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "excalidraw",
+      "url": "https://excalidraw.com",
+      "task": "Create and modify a drawing",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "c88e1780d59605c90afcefd07d2e423917eb1454449d93a7b2d7b6aa11bb0f08",
+        "inspection": {
+          "title": "Excalidraw Whiteboard",
+          "text": "Excalidraw\nYour drawings are saved in your browser's storage.\nBrowser storage can be cleared unexpectedly.\nSave your work to a file regularly to avoid losing it.\nOpen\nCtrl+O\nHelp\n?\nLive collaboration...\nSign up\nExport, preferences, languages, ...\nPick a tool & Start drawing!\nTo move canvas, hold Scroll wheel or Space while dragging, or use the hand tool\nShapes\nV\nR\nD\nO\nA\nL\nP\nT\nN\nE\nTry Excalidraw+\n14-day free trial\nCanvas actions\n100%\nShortcuts & help",
+          "inputs": []
+        },
+        "task": "Rectangle created and moved; changed x coordinate persisted in local storage",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installation refused: NetworkError when attempting to fetch resource.",
+        "failure": "Installation refused: NetworkError when attempting to fetch resource.",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: NetworkError when attempting to fetch resource.\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [
+          "[JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://excalidraw.com/. (Reason: CORS header ‘Access-Control-Allow-Origin’ does not match ‘https://excalidraw.com’).\"]"
+        ],
+        "requestFailures": []
+      }
+    }
+  ]
+}

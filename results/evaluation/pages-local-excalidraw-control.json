@@ -1,0 +1,59 @@
+{
+  "completed": "2026-10-27T04:02:05.556Z",
+  "started": "2026-10-27T04:01:49.716Z",
+  "revision": "b4dbf2e6367929cf216d883eaf90a5167e587253",
+  "host": "https://pf.damenh.com/",
+  "variants": "Explicit publisher snapshot URL override; see each row URL",
+  "runnerSha256": "3dfcb3a0071a37f17ec93fd8da5a7649b036d13b9c240ac5092caf0359bafac4",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "excalidraw",
+      "url": "http://127.0.0.1:4620/apps/excalidraw/",
+      "task": "Create and modify a drawing",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "0cea302da4731913f8e38bbb102b5e43b911f338062808a9efe08fcb6d68f915",
+        "inspection": {
+          "title": "Excalidraw Whiteboard",
+          "text": "Excalidraw\nYour drawings are saved in your browser's storage.\nBrowser storage can be cleared unexpectedly.\nSave your work to a file regularly to avoid losing it.\nOpen\nCtrl+O\nHelp\n?\nLive collaboration...\nSign up\nExport, preferences, languages, ...\nPick a tool & Start drawing!\nTo move canvas, hold Scroll wheel or Space while dragging, or use the hand tool\nShapes\nV\nR\nD\nO\nA\nL\nP\nT\nN\nE\nTry Excalidraw+\n14-day free trial\nCanvas actions\n100%\nShortcuts & help",
+          "inputs": []
+        },
+        "task": "Rectangle created and moved; changed x coordinate persisted in local storage",
+        "taskPassed": true,
+        "errors": [
+          "Failed to load resource: the server responded with a status of 403 ()",
+          "The path of the provided scope ('/') is not under the max scope allowed ('/apps/excalidraw/'). Adjust the scope, move the Service Worker script, or use the Service-Worker-Allowed HTTP header to allow the scope."
+        ],
+        "requestFailures": [
+          "GET https://excalidraw.nyc3.cdn.digitaloceanspaces.com/oss/apps/excalidraw/fonts/Excalifont/Excalifont-Regular-a88b72a24fb54c9f94e3b5fdaa7481c9.woff2 net::ERR_ABORTED"
+        ]
+      },
+      "confined": {}
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "excalidraw",
+      "url": "http://127.0.0.1:4620/apps/excalidraw/",
+      "task": "Create and modify a drawing",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "0cea302da4731913f8e38bbb102b5e43b911f338062808a9efe08fcb6d68f915",
+        "inspection": {
+          "title": "Excalidraw Whiteboard",
+          "text": "Excalidraw\nYour drawings are saved in your browser's storage.\nBrowser storage can be cleared unexpectedly.\nSave your work to a file regularly to avoid losing it.\nOpen\nCtrl+O\nHelp\n?\nLive collaboration...\nSign up\nExport, preferences, languages, ...\nPick a tool & Start drawing!\nTo move canvas, hold Scroll wheel or Space while dragging, or use the hand tool\nShapes\nV\nR\nD\nO\nA\nL\nP\nT\nN\nE\nTry Excalidraw+\n14-day free trial\nCanvas actions\n100%\nShortcuts & help",
+          "inputs": []
+        },
+        "task": "Rectangle created and moved; changed x coordinate persisted in local storage",
+        "taskPassed": true,
+        "errors": [
+          "[JavaScript Error: \"downloadable font: download failed (font-family: \"Excalifont\" style:normal weight:400 width:100 src index:0): status=2147746065 source: https://excalidraw.nyc3.cdn.digitaloceanspaces.com/oss/apps/excalidraw/fonts/Excalifont/Excalifont-Regular-a88b72a24fb54c9f94e3b5fdaa7481c9.woff2\"]"
+        ],
+        "requestFailures": []
+      },
+      "confined": {}
+    }
+  ]
+}

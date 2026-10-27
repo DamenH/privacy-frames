@@ -1,5 +1,5 @@
 import { serialize, type DefaultTreeAdapterTypes as Tree } from 'parse5';
-import { validateMarkup } from '../shared/policy.ts';
+import { validateMarkup, isDataScript } from '../shared/policy.ts';
 import { applicationURL, resourceURL } from '../shared/runtime-url.ts';
 import type { Installation } from '../shared/types.ts';
 import { manifestURL } from './pwa.ts';
@@ -65,6 +65,8 @@ export function prepareRuntimeDocument(
   function strip(node: Tree.ParentNode) {
     node.childNodes = node.childNodes.filter((child) => {
       if (element(child) && child.tagName === 'script') {
+        if (isDataScript(child.attrs.find((attr) => attr.name === 'type')?.value || ''))
+          return true;
         const src = child.attrs.find((attr) => attr.name === 'src')?.value;
         const type = child.attrs.find((attr) => attr.name === 'type')?.value || '';
         if (!src) throw new Error('Missing script resource');
