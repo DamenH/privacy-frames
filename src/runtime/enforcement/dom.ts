@@ -1,10 +1,12 @@
 import { validateMarkup, elementAllowed } from '../../shared/policy.ts';
 import type { PolicyTools } from './native.ts';
+import type { ScriptPolicy } from './scripts.ts';
 
 /** Reject context-producing markup before native parsers or insertion run. */
 export function installDOMPolicy(
   tools: PolicyTools,
   rawGetAttr: typeof Element.prototype.getAttribute,
+  scripts?: ScriptPolicy,
 ) {
   const { apply, descriptor, method, accessor, deny, fail, str } = tools;
   // The read-only relList view must never call publisher-replaceable methods
@@ -26,6 +28,10 @@ export function installDOMPolicy(
       if (d?.set)
         accessor(proto, key, {
           set(value) {
+            if (key === 'innerHTML' && scripts?.isScript(this)) {
+              scripts.text(this, value === null ? '' : str(value));
+              return;
+            }
             return apply(d.set!, this, [textHTML(value)]);
           },
         });
@@ -61,7 +67,7 @@ export function installDOMPolicy(
       const tag = str(name);
       elementAllowed(tag);
       if (options !== undefined) fail('Customized built-in elements are not admitted');
-      if (['script', 'meta'].includes(tag.toLowerCase()))
+      if (tag.toLowerCase() === 'meta' || (tag.toLowerCase() === 'script' && !scripts))
         fail('Dynamic policy/resource elements are not admitted');
       return apply(create, this, [tag]);
     },
@@ -82,7 +88,11 @@ export function installDOMPolicy(
         options !== undefined
       )
         fail('Unsupported namespace/options');
-      if (['script', 'link', 'meta'].includes(tag.toLowerCase()))
+      if (
+        ['link', 'meta'].includes(tag.toLowerCase()) ||
+        (tag.toLowerCase() === 'script' &&
+          (!scripts || ns !== 'http://www.w3.org/1999/xhtml'))
+      )
         fail('Dynamic policy/resource elements are not admitted');
       return apply(createNS, this, [ns, tag]);
     },
@@ -104,7 +114,10 @@ export function installDOMPolicy(
     if (type === 1) {
       const tag = apply(local, node, []);
       elementAllowed(tag);
-      if (['script', 'link', 'meta'].includes(tag.toLowerCase()))
+      if (tag.toLowerCase() === 'script') {
+        if (scripts && scripts.isScript(node)) scripts.prepare(node);
+        else fail('Dynamic script context is not admitted');
+      } else if (['link', 'meta'].includes(tag.toLowerCase()))
         fail('Dynamic policy/resource elements are not admitted');
       if (tag === 'template' && template) inspect(apply(template, node, []));
     }
@@ -120,6 +133,7 @@ export function installDOMPolicy(
     if (typeof fn !== 'function') return;
     method(proto, key, function (this: Element, ...args: unknown[]) {
       for (const i of indices ? indices(args) : args.map((_, i) => i)) inspect(args[i]);
+      if (scripts?.isScript(this)) scripts.prepare(this);
       return apply(fn, this, args);
     });
   }
@@ -155,7 +169,7 @@ export function installDOMPolicy(
   for (const ctor of [
     globalThis.HTMLLinkElement,
     globalThis.HTMLMetaElement,
-    globalThis.HTMLScriptElement,
+    ...(scripts ? [] : [globalThis.HTMLScriptElement]),
   ])
     if (ctor) {
       for (const key of Object.getOwnPropertyNames(ctor.prototype)) {
@@ -230,6 +244,10 @@ export function installDOMPolicy(
     if (d?.set)
       accessor(proto, key, {
         set(value) {
+          if (key === 'textContent' && scripts?.isScript(this)) {
+            scripts.text(this, value === null || value === undefined ? '' : str(value));
+            return;
+          }
           if (apply(nodeType, this, []) === 2) {
             const owner = apply(ownerElement, this, []);
             if (owner) sensitive(owner);
@@ -258,6 +276,7 @@ export function installDOMPolicy(
 export function installResourceAttributePolicy(
   tools: PolicyTools,
   mapURL: (input: unknown) => string,
+  scripts?: ScriptPolicy,
 ) {
   const { apply, descriptor, method, fail, str } = tools;
   const local = descriptor(Element.prototype, 'localName')!.get!;
@@ -266,13 +285,29 @@ export function installResourceAttributePolicy(
     const fn = Reflect.get(Element.prototype, name);
     method(Element.prototype, name, function (this: Element, ...args: unknown[]) {
       const tag = apply(local, this, []).toLowerCase();
-      if (['link', 'meta', 'script'].includes(tag)) fail('Policy element is immutable');
+      if (['link', 'meta'].includes(tag) || (tag === 'script' && !scripts))
+        fail('Policy element is immutable');
       const nameIndex = name === 'setAttributeNS' ? 1 : 0;
       const attributeName = str(args[nameIndex]);
       args[nameIndex] = attributeName;
       const key = attributeName.toLowerCase();
       if (key === 'srcdoc' || key === 'is' || key.startsWith('on'))
         fail('Attribute not admitted');
+      if (scripts?.isScript(this)) {
+        if (name === 'setAttributeNS') {
+          const namespace = args[0] == null ? null : str(args[0]);
+          if (namespace !== null && namespace !== '')
+            fail('Namespaced script attributes are not admitted');
+          args[0] = namespace;
+        }
+        if (name === 'toggleAttribute') {
+          scripts.attribute(this, key, '');
+        } else {
+          const valueIndex = name === 'setAttributeNS' ? 2 : 1;
+          args[valueIndex] = scripts.attribute(this, key, args[valueIndex]);
+        }
+        return apply(fn, this, args);
+      }
       if (
         name !== 'toggleAttribute' &&
         ['src', 'href', 'poster', 'xlink:href'].includes(key)

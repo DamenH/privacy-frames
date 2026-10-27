@@ -1,5 +1,9 @@
 import { serialize, type DefaultTreeAdapterTypes as Tree } from 'parse5';
-import { validateMarkup, isDataScript } from '../shared/policy.ts';
+import {
+  validateMarkup,
+  isDataScript,
+  isExecutableScriptType,
+} from '../shared/policy.ts';
 import { applicationURL, resourceURL } from '../shared/runtime-url.ts';
 import type { Installation } from '../shared/types.ts';
 import { manifestURL } from './pwa.ts';
@@ -77,10 +81,7 @@ export function prepareRuntimeDocument(
             resourceURL(app, item.path, runtime).href === url.href ||
             item.url === original.href,
         );
-        if (
-          !resource ||
-          !['', 'module', 'text/javascript', 'application/javascript'].includes(type)
-        )
+        if (!resource || !isExecutableScriptType(type))
           throw new Error('Script must be installed JavaScript');
         scripts.push({ src: resourceURL(app, resource.path, runtime).href, type });
         return false;
@@ -123,6 +124,7 @@ export function prepareRuntimeDocument(
     attributes: { html: attributes(html), body: attributes(body) },
     scripts,
     source: app.source,
+    documentBase: app.documentBase || app.source,
     aliases: app.resources.map((resource) => [
       resource.url,
       resourceURL(app, resource.path, runtime).href,

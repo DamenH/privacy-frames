@@ -18,6 +18,18 @@ const blockedElements = new Set([
 ]);
 const presentationMetadata = new Set(['viewport', 'color-scheme', 'theme-color']);
 
+/** Executable initial and dynamic script types supported by the host. */
+export function isExecutableScriptType(type: string): boolean {
+  return [
+    '',
+    'module',
+    'text/javascript',
+    'application/javascript',
+    'text/ecmascript',
+    'application/ecmascript',
+  ].includes(type.trim().toLowerCase());
+}
+
 /** These script types contain data and never execute as JavaScript. */
 export function isDataScript(type: string): boolean {
   return ['application/json', 'application/ld+json'].includes(type.trim().toLowerCase());

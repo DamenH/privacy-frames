@@ -1,0 +1,28 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "controlHasNativeRealm": true,
+    "order": [
+      "application-load-listener",
+      "trusted-inline-bootstrap"
+    ],
+    "beforeFallback": false,
+    "batchSawReady": false,
+    "readyAfterReturn": true,
+    "moveBeforeAvailable": true
+  },
+  {
+    "name": "firefox",
+    "version": "155.0",
+    "controlHasNativeRealm": true,
+    "order": [
+      "application-load-listener",
+      "trusted-inline-bootstrap"
+    ],
+    "beforeFallback": false,
+    "batchSawReady": false,
+    "readyAfterReturn": true,
+    "moveBeforeAvailable": true
+  }
+]

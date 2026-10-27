@@ -1,0 +1,284 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "checks": [
+      {
+        "kind": "classic",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      },
+      {
+        "kind": "module",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/module.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      },
+      {
+        "kind": "blob",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "location": "blob:http://127.0.0.1:4211/5471da9f-dd09-4013-9d62-d83298909f5c",
+          "imported": 0
+        }
+      },
+      {
+        "kind": "blob-module",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "location": "blob:http://127.0.0.1:4211/b4701362-7a4a-4e1f-975e-c6356647dfe4",
+          "imported": 13
+        }
+      },
+      {
+        "kind": "directory",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/directory/entry.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 27
+        }
+      }
+    ],
+    "nullOptions": {
+      "kind": "classic",
+      "detached": false,
+      "value": {
+        "bytes": [
+          7,
+          19,
+          42
+        ],
+        "location": "http://127.0.0.1:4344/workers/worker.js",
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "imported": 13
+      }
+    },
+    "iterableTransfer": {
+      "kind": "classic",
+      "detached": true,
+      "value": {
+        "bytes": [
+          7,
+          19,
+          42
+        ],
+        "location": "http://127.0.0.1:4344/workers/worker.js",
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "imported": 13
+      }
+    },
+    "missing": "TypeError",
+    "nested": null,
+    "transferredPort": [
+      "ready",
+      "pong:ping"
+    ],
+    "topLevelAwait": [
+      {
+        "path": "await.js",
+        "result": {
+          "value": 91,
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          }
+        }
+      },
+      {
+        "path": "await-listener.js",
+        "result": {
+          "value": 91,
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          }
+        }
+      }
+    ],
+    "sharedStorage": {
+      "value": "scoped-database-value",
+      "cached": "scoped-cache-value",
+      "names": [
+        "shared-cache"
+      ],
+      "databaseNames": [
+        {
+          "name": "worker-shared",
+          "version": 1
+        }
+      ]
+    },
+    "isolatedStorage": {
+      "value": null,
+      "cached": null,
+      "names": [],
+      "databaseNames": [
+        {
+          "name": "worker-shared",
+          "version": 1
+        }
+      ]
+    },
+    "failed": [
+      {
+        "path": "broken.js",
+        "result": {
+          "error": true,
+          "detached": true
+        }
+      },
+      {
+        "path": "fail-after-listener.js",
+        "result": {
+          "error": true,
+          "detached": true
+        }
+      }
+    ],
+    "recovery": {
+      "sameConstructor": true,
+      "unknownRejected": true,
+      "nativeConstructorCalls": 0,
+      "privateEvents": 0,
+      "getterControl": 1,
+      "host": {
+        "version": 1,
+        "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+        "mode": "network-isolated",
+        "context": "dedicated-worker"
+      }
+    },
+    "network": {
+      "fetchRefused": true,
+      "importsRefused": true
+    },
+    "nativeOptions": {
+      "missing": "TypeError",
+      "null": {
+        "kind": "classic",
+        "detached": false,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": null,
+          "imported": 13
+        }
+      },
+      "iterable": {
+        "kind": "classic",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": null,
+          "imported": 13
+        }
+      }
+    },
+    "nativeTla": [
+      {
+        "path": "await.js",
+        "result": {
+          "value": 91,
+          "host": null
+        }
+      },
+      {
+        "path": "await-listener.js",
+        "result": {
+          "value": 91,
+          "host": null
+        }
+      }
+    ],
+    "nativeRecovery": {
+      "fetchRefused": false,
+      "importsRefused": false
+    },
+    "privateReceiverRequests": 0,
+    "privateReceiverConnections": 0,
+    "activeReceiverControl": true
+  }
+]

@@ -32,6 +32,7 @@ const entries = {
   guard: 'src/runtime/guard.ts',
   connect: 'src/bridge/connect.ts',
   'install-worker': 'src/installation/prepare-worker.ts',
+  'worker-guard': 'src/runtime/contexts/worker-guard.ts',
 };
 const roles = process.env.HOST_ROLE ? [process.env.HOST_ROLE] : ['manager', 'runtime'];
 for (const role of roles) {
@@ -41,7 +42,8 @@ for (const role of roles) {
   await rm(directory, { recursive: true, force: true });
   await mkdir(directory, { recursive: true });
   for (const [name, entry] of Object.entries(entries)) {
-    if (role === 'manager' && ['guard', 'connect'].includes(name)) continue;
+    if (role === 'manager' && ['guard', 'connect', 'worker-guard'].includes(name))
+      continue;
     if (role === 'runtime' && ['manager', 'install-worker'].includes(name)) continue;
     await build({
       entryPoints: [

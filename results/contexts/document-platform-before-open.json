@@ -1,0 +1,46 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "childClient": {
+      "controller": false,
+      "resource": {
+        "controlled": false
+      }
+    },
+    "controlHasNativeRealm": true,
+    "order": [
+      "trusted-load-capture",
+      "trusted-inline-bootstrap"
+    ],
+    "beforeFallback": true,
+    "batchSawReady": true,
+    "readyAfterReturn": true,
+    "moveBeforeAvailable": true
+  },
+  {
+    "name": "firefox",
+    "version": "155.0",
+    "childClient": {
+      "controller": true,
+      "resource": {
+        "controlled": true,
+        "clientId": "d0c8a407-ed71-48c5-a4c6-3bef8248014d",
+        "url": "about:blank",
+        "type": "window"
+      },
+      "clientId": "d0c8a407-ed71-48c5-a4c6-3bef8248014d",
+      "url": "about:blank",
+      "type": "window"
+    },
+    "controlHasNativeRealm": true,
+    "order": [
+      "trusted-load-capture",
+      "trusted-inline-bootstrap"
+    ],
+    "beforeFallback": true,
+    "batchSawReady": true,
+    "readyAfterReturn": true,
+    "moveBeforeAvailable": true
+  }
+]

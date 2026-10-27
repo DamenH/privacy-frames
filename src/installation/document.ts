@@ -1,5 +1,9 @@
 import { parse, serialize, type DefaultTreeAdapterTypes as Tree } from 'parse5';
-import { validateMarkup, isDataScript } from '../shared/policy.ts';
+import {
+  validateMarkup,
+  isDataScript,
+  isExecutableScriptType,
+} from '../shared/policy.ts';
 
 export function cssReferences(text: string, base: string): string[] {
   const urls: string[] = [];
@@ -38,6 +42,7 @@ export function prepareDocument(text: string, documentURL: string) {
   const ast = parse(text),
     links = new Set<string>();
   const inlineScripts: { url: string; code: string }[] = [];
+  const scriptURLs = new Set<string>();
   let title = '',
     base = documentURL,
     baseFound = false,
@@ -122,10 +127,9 @@ export function prepareDocument(text: string, documentURL: string) {
           if (get('src')) throw new Error('Data scripts must be inline');
           return true;
         }
+        if (!isExecutableScriptType(get('type') || ''))
+          throw new Error('Unsupported executable script type');
         if (!get('src')) {
-          const type = get('type') || '';
-          if (!['', 'module', 'text/javascript', 'application/javascript'].includes(type))
-            throw new Error('Unsupported inline script type');
           const url = new URL(`__pf_inline_${crypto.randomUUID()}.js`, base).href;
           const code = child.childNodes
             .map((node) => ('value' in node ? node.value : ''))
@@ -133,7 +137,12 @@ export function prepareDocument(text: string, documentURL: string) {
           inlineScripts.push({ url, code });
           child.childNodes = [];
           child.attrs.push({ name: 'src', value: url });
-        } else add(get('src'));
+          scriptURLs.add(url);
+        } else {
+          const src = get('src')!;
+          scriptURLs.add(new URL(src, base).href);
+          add(src);
+        }
       }
       if (child.tagName === 'link') add(get('href'));
       if (['img', 'audio', 'video', 'source', 'input'].includes(child.tagName)) {
@@ -154,5 +163,13 @@ export function prepareDocument(text: string, documentURL: string) {
   walk(ast);
   const html = serialize(ast);
   validateMarkup(html, { document: true, initial: true });
-  return { html, title, links: [...links], manifestURL, inlineScripts };
+  return {
+    html,
+    title,
+    baseURL: base,
+    links: [...links],
+    manifestURL,
+    inlineScripts,
+    scriptURLs: [...scriptURLs],
+  };
 }

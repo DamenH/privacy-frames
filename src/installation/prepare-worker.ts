@@ -10,6 +10,7 @@ const pending = new Map<
   number,
   { resolve: (response: Response) => void; reject: (error: Error) => void }
 >();
+class UnsupportedPreparationError extends Error {}
 let sequence = 0,
   started = false;
 lockdown({ errorTaming: 'safe', consoleTaming: 'safe' });
@@ -137,7 +138,7 @@ worker.addEventListener('message', async (event: MessageEvent<PreparationRequest
     });
     compartment.evaluate(data.code);
     if (!handlers.get('install')?.length)
-      throw new Error('Worker has no explicit install handler');
+      throw new UnsupportedPreparationError('Worker has no explicit install handler');
     for (const type of ['install', 'activate']) {
       const work: Promise<unknown>[] = [];
       let accepting = true;
@@ -172,6 +173,10 @@ worker.addEventListener('message', async (event: MessageEvent<PreparationRequest
     }
     send({ type: 'prepared', caches });
   } catch (error) {
-    send({ type: 'failed', error: errorMessage(error) });
+    send({
+      type: 'failed',
+      status: error instanceof UnsupportedPreparationError ? 'unsupported' : 'failed',
+      error: errorMessage(error),
+    });
   }
 });

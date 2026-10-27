@@ -1,0 +1,7920 @@
+{
+  "date": "2026-10-27T08:31:52.828Z",
+  "runnerSha256": "58c257d876871f7e92b80d866159010c0d658f6b2e6ed2445f8fdd8069a36f38",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "baseline",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "baseline",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "baseline",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "baseline",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "origin",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "origin",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "origin",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "origin",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "site",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "site",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "site",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "site",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "coop",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "coop",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "coop",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "coop",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "isolated",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "isolated",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "isolated",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "error": "SecurityError: Failed to read a named property 'Array' from 'Window': Blocked a frame with origin \"http://127.0.0.1:4332\" from accessing a cross-origin frame."
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "isolated",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "error": "SecurityError: Failed to read a named property 'Array' from 'Window': Blocked a frame with origin \"http://127.0.0.1:4332\" from accessing a cross-origin frame."
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "baseline",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "baseline",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "baseline",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "baseline",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "origin",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "origin",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "origin",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "origin",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "site",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "site",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "site",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "site",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "coop",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "coop",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "coop",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "coop",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "isolated",
+      "simple": false,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": false,
+        "fn": false,
+        "document": false,
+        "policy": false,
+        "wrapper": false,
+        "parser": {
+          "policy": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        },
+        {
+          "ready": false,
+          "array": false,
+          "fn": false,
+          "wrapper": false
+        }
+      ],
+      "exposedUnprepared": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "isolated",
+      "simple": false,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "array": true,
+        "fn": true,
+        "document": false,
+        "policy": true,
+        "getter": "prepared",
+        "wrapper": true,
+        "parser": {
+          "policy": true,
+          "getter": "prepared",
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "isolated",
+      "simple": true,
+      "route": "location-after-preparation",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "error": "SecurityError: Permission denied to access property \"Array\" on cross-origin object"
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "kind": "isolated",
+      "simple": true,
+      "route": "src-before-insertion",
+      "initial": {
+        "href": "about:blank",
+        "policy": true,
+        "getter": "prepared"
+      },
+      "after": {
+        "error": "SecurityError: Permission denied to access property \"Array\" on cross-origin object"
+      },
+      "observations": [
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        },
+        {
+          "ready": true,
+          "array": true,
+          "fn": true,
+          "wrapper": true
+        }
+      ],
+      "exposedUnprepared": false
+    }
+  ]
+}

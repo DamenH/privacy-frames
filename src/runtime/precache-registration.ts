@@ -22,7 +22,7 @@ interface PrecacheRegistration extends EventTarget {
 }
 
 export interface PrecacheContainer extends EventTarget {
-  readonly controller: PrecacheWorker;
+  readonly controller: PrecacheWorker | null;
   readonly ready: Promise<PrecacheRegistration>;
   register(
     input: string | URL,
@@ -51,7 +51,31 @@ export function preparedWorker(
     !receipt.completed?.includes('install') ||
     !receipt.completed?.includes('activate')
   ) {
-    return null;
+    const unsupported = () =>
+      Promise.reject(
+        new DOMException(
+          'Publisher worker preparation is unavailable',
+          'NotSupportedError',
+        ),
+      );
+    class UnpreparedContainer extends EventTarget implements PrecacheContainer {
+      readonly controller = null;
+      get ready(): Promise<PrecacheRegistration> {
+        return unsupported();
+      }
+      register(): Promise<PrecacheRegistration> {
+        return unsupported();
+      }
+      async getRegistration(): Promise<undefined> {
+        return undefined;
+      }
+      async getRegistrations(): Promise<PrecacheRegistration[]> {
+        return [];
+      }
+      startMessages() {}
+    }
+    Object.freeze(UnpreparedContainer.prototype);
+    return Object.freeze(new UnpreparedContainer());
   }
 
   const original = new URL(receipt.scriptURL);

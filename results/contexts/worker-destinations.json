@@ -1,0 +1,134 @@
+[
+  {
+    "provenance": {
+      "capturedAt": "2026-10-27T08:18:23.744Z",
+      "revision": "596c0be1e4de35e992a762babc89d489bdfb21f9",
+      "dirty": true,
+      "sourceSHA256": "72f51bd3cdbc93738020709d13b53cf65a92057dc6eafea709965b271d852070",
+      "runner": "test/worker-destinations.ts",
+      "runnerSHA256": "720c4e20d503538cdf394561abdada3f047bd5f652379b9362912459bbb67e9f",
+      "publisherRevision": "da0f43b878e153b733ad8f14fdae74fbd0771f34",
+      "artifacts": {
+        "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dist-manager/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+        "dist-manager/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+        "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+        "dist-manager/install-worker.js": "c625d6f916bdd606e8392ffe41cba1fdfac1cf4646132dbc07d261f9879ba3a7",
+        "dist-manager/manager.js": "2dcf4086753ae9ceb8fcc9c639e56b1258b3f6e64d233b5990170c87a0ce6fb8",
+        "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+        "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+        "dist-manager/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+        "dist-manager/sw.js": "4af6006c9e5fc18bc9239d302ebcf3046d1ae64d76f8575d6d7c326ff06a186e",
+        "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dist-runtime/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+        "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+        "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+        "dist-runtime/guard.js": "91a613e1a20962ae57e77d868aa09debcf5a7906df6d874c4bf5318701e73336",
+        "dist-runtime/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+        "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+        "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+        "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+        "dist-runtime/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+        "dist-runtime/sw.js": "9542f468b3c3ed1b19d5db55607109093ab29ac25805517f701882bc03aaa114",
+        "dist-runtime/worker-guard.js": "941b6d8f8e1048cecadc2c1440d5b6d8a22b1d2f8715d6bac2ef86d5acc87139"
+      }
+    },
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "value": {
+      "done": "candidate"
+    },
+    "observations": [
+      {
+        "url": "http://127.0.0.1:4346/parent.js",
+        "destination": "worker",
+        "clientId": "403cfb6a-9865-4915-bffd-92188e60a0f7",
+        "resultingClientId": "24ca5fde-b3f2-4555-9e93-29194f3b2f34"
+      },
+      {
+        "url": "http://127.0.0.1:4346/entry.js",
+        "destination": "script",
+        "clientId": "24ca5fde-b3f2-4555-9e93-29194f3b2f34",
+        "resultingClientId": ""
+      },
+      {
+        "url": "http://127.0.0.1:4346/candidate.js",
+        "destination": "script",
+        "clientId": "24ca5fde-b3f2-4555-9e93-29194f3b2f34",
+        "resultingClientId": ""
+      },
+      {
+        "url": "http://127.0.0.1:4346/candidate.js",
+        "destination": "worker",
+        "clientId": "24ca5fde-b3f2-4555-9e93-29194f3b2f34",
+        "resultingClientId": "fe8cdc0c-727c-4691-b665-aa2164dee320"
+      }
+    ]
+  },
+  {
+    "provenance": {
+      "capturedAt": "2026-10-27T08:18:23.744Z",
+      "revision": "596c0be1e4de35e992a762babc89d489bdfb21f9",
+      "dirty": true,
+      "sourceSHA256": "72f51bd3cdbc93738020709d13b53cf65a92057dc6eafea709965b271d852070",
+      "runner": "test/worker-destinations.ts",
+      "runnerSHA256": "720c4e20d503538cdf394561abdada3f047bd5f652379b9362912459bbb67e9f",
+      "publisherRevision": "da0f43b878e153b733ad8f14fdae74fbd0771f34",
+      "artifacts": {
+        "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dist-manager/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+        "dist-manager/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+        "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+        "dist-manager/install-worker.js": "c625d6f916bdd606e8392ffe41cba1fdfac1cf4646132dbc07d261f9879ba3a7",
+        "dist-manager/manager.js": "2dcf4086753ae9ceb8fcc9c639e56b1258b3f6e64d233b5990170c87a0ce6fb8",
+        "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+        "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+        "dist-manager/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+        "dist-manager/sw.js": "4af6006c9e5fc18bc9239d302ebcf3046d1ae64d76f8575d6d7c326ff06a186e",
+        "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dist-runtime/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+        "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+        "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+        "dist-runtime/guard.js": "91a613e1a20962ae57e77d868aa09debcf5a7906df6d874c4bf5318701e73336",
+        "dist-runtime/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+        "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+        "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+        "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+        "dist-runtime/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+        "dist-runtime/sw.js": "9542f468b3c3ed1b19d5db55607109093ab29ac25805517f701882bc03aaa114",
+        "dist-runtime/worker-guard.js": "941b6d8f8e1048cecadc2c1440d5b6d8a22b1d2f8715d6bac2ef86d5acc87139"
+      }
+    },
+    "name": "firefox",
+    "version": "155.0",
+    "value": {
+      "done": "candidate"
+    },
+    "observations": [
+      {
+        "url": "http://127.0.0.1:4346/parent.js",
+        "destination": "worker",
+        "clientId": "5ec9c734-4896-439b-8475-3a840d906b23",
+        "resultingClientId": "27c9b8b7-a94f-4ea5-bcae-50c3b8a6b48c"
+      },
+      {
+        "url": "http://127.0.0.1:4346/entry.js",
+        "destination": "script",
+        "clientId": "27c9b8b7-a94f-4ea5-bcae-50c3b8a6b48c",
+        "resultingClientId": ""
+      },
+      {
+        "url": "http://127.0.0.1:4346/candidate.js",
+        "destination": "worker",
+        "clientId": "27c9b8b7-a94f-4ea5-bcae-50c3b8a6b48c",
+        "resultingClientId": ""
+      },
+      {
+        "url": "http://127.0.0.1:4346/candidate.js",
+        "destination": "worker",
+        "clientId": "27c9b8b7-a94f-4ea5-bcae-50c3b8a6b48c",
+        "resultingClientId": "07d13767-1682-4b5e-914f-2e39d07c54ea"
+      }
+    ]
+  }
+]

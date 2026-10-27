@@ -1,0 +1,1793 @@
+{
+  "date": "2026-10-27T08:15:23.866Z",
+  "runnerSha256": "8d1296b5ccf187f392841b2e93d4c59050d7063d46b8fbdf8717c6a5099946f9",
+  "results": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "blank-claim",
+      "initial": {
+        "href": "about:blank",
+        "controller": false,
+        "ready": true
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "about:blank"
+      },
+      "historyError": null,
+      "beforeClients": {
+        "sourceId": "f6d7f20f-cb5a-4593-8e75-8096a8866df0",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "f6d7f20f-cb5a-4593-8e75-8096a8866df0",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "parentClaim": {
+        "sourceId": "f6d7f20f-cb5a-4593-8e75-8096a8866df0",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "f6d7f20f-cb5a-4593-8e75-8096a8866df0",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "childProbe": {
+        "controllerBefore": false,
+        "resourceBefore": {
+          "controlled": false
+        },
+        "error": "InvalidStateError: Failed to get a ServiceWorkerRegistration: The document is in an invalid state."
+      },
+      "afterClients": {
+        "sourceId": "f6d7f20f-cb5a-4593-8e75-8096a8866df0",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "f6d7f20f-cb5a-4593-8e75-8096a8866df0",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "traffic": [
+        {
+          "port": 4332,
+          "path": "/child-resource"
+        }
+      ]
+    },
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "open-claim",
+      "initial": {
+        "href": "about:blank",
+        "controller": false,
+        "ready": true
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "http://127.0.0.1:4332/parent"
+      },
+      "historyError": null,
+      "beforeClients": {
+        "sourceId": "14068f29-d6e7-4f71-9f16-5938e6febcc1",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "14068f29-d6e7-4f71-9f16-5938e6febcc1",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "parentClaim": {
+        "sourceId": "14068f29-d6e7-4f71-9f16-5938e6febcc1",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "14068f29-d6e7-4f71-9f16-5938e6febcc1",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "childProbe": {
+        "controllerBefore": false,
+        "resourceBefore": {
+          "controlled": false
+        },
+        "error": "InvalidStateError: Failed to get a ServiceWorkerRegistration: The document is in an invalid state."
+      },
+      "afterClients": {
+        "sourceId": "14068f29-d6e7-4f71-9f16-5938e6febcc1",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "14068f29-d6e7-4f71-9f16-5938e6febcc1",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "traffic": [
+        {
+          "port": 4332,
+          "path": "/child-resource"
+        }
+      ]
+    },
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "open-history-claim",
+      "initial": {
+        "href": "about:blank",
+        "controller": false,
+        "ready": true
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "http://127.0.0.1:4332/app/synthetic-child"
+      },
+      "historyError": null,
+      "beforeClients": {
+        "sourceId": "ea6379c7-9327-46bd-9eae-f2e4920628df",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "ea6379c7-9327-46bd-9eae-f2e4920628df",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "parentClaim": {
+        "sourceId": "ea6379c7-9327-46bd-9eae-f2e4920628df",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "ea6379c7-9327-46bd-9eae-f2e4920628df",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "childProbe": {
+        "controllerBefore": false,
+        "resourceBefore": {
+          "controlled": false
+        },
+        "error": "InvalidStateError: Failed to get a ServiceWorkerRegistration: The document is in an invalid state."
+      },
+      "afterClients": {
+        "sourceId": "ea6379c7-9327-46bd-9eae-f2e4920628df",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "ea6379c7-9327-46bd-9eae-f2e4920628df",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "traffic": [
+        {
+          "port": 4332,
+          "path": "/child-resource"
+        }
+      ]
+    },
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "first-http-navigation",
+      "initial": {
+        "href": "about:blank",
+        "controller": false,
+        "ready": true
+      },
+      "beforeClients": {
+        "sourceId": "6d70568d-64f6-4901-80f9-4e5b083685fc",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "6d70568d-64f6-4901-80f9-4e5b083685fc",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "about:blank"
+      },
+      "after": {
+        "href": "http://127.0.0.1:4332/controlled-child",
+        "arrayRetained": false,
+        "documentRetained": false,
+        "policyRetained": false,
+        "publisher": {
+          "ready": true,
+          "arrayRetained": false,
+          "policyRetained": false,
+          "controller": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        }
+      ],
+      "exposedUnprepared": true,
+      "afterClients": {
+        "sourceId": "6d70568d-64f6-4901-80f9-4e5b083685fc",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "6d70568d-64f6-4901-80f9-4e5b083685fc",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "d41dc36a-76f5-4792-9c68-4f340f107a7c",
+            "url": "http://127.0.0.1:4332/controlled-child",
+            "frameType": "nested"
+          }
+        ],
+        "observations": [
+          {
+            "path": "/controlled-child",
+            "clientId": "",
+            "resultingClientId": "d41dc36a-76f5-4792-9c68-4f340f107a7c",
+            "destination": "iframe"
+          },
+          {
+            "path": "/guard-delay.js",
+            "clientId": "d41dc36a-76f5-4792-9c68-4f340f107a7c",
+            "resultingClientId": "",
+            "clientURL": "http://127.0.0.1:4332/controlled-child",
+            "destination": "script"
+          }
+        ]
+      },
+      "traffic": []
+    },
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "http-after-open",
+      "initial": {
+        "href": "about:blank",
+        "controller": false,
+        "ready": true
+      },
+      "beforeClients": {
+        "sourceId": "bb870e16-8943-49c2-b5ef-5cf2586a9dac",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "bb870e16-8943-49c2-b5ef-5cf2586a9dac",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          }
+        ],
+        "observations": []
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "http://127.0.0.1:4332/parent"
+      },
+      "after": {
+        "href": "http://127.0.0.1:4332/controlled-child",
+        "arrayRetained": false,
+        "documentRetained": false,
+        "policyRetained": false,
+        "publisher": {
+          "ready": true,
+          "arrayRetained": false,
+          "policyRetained": false,
+          "controller": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        }
+      ],
+      "exposedUnprepared": true,
+      "afterClients": {
+        "sourceId": "bb870e16-8943-49c2-b5ef-5cf2586a9dac",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "bb870e16-8943-49c2-b5ef-5cf2586a9dac",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "23cc81c7-d7a5-4cd7-b1ca-f9b805431251",
+            "url": "http://127.0.0.1:4332/controlled-child",
+            "frameType": "nested"
+          }
+        ],
+        "observations": [
+          {
+            "path": "/controlled-child",
+            "clientId": "",
+            "resultingClientId": "23cc81c7-d7a5-4cd7-b1ca-f9b805431251",
+            "destination": "iframe"
+          },
+          {
+            "path": "/guard-delay.js",
+            "clientId": "23cc81c7-d7a5-4cd7-b1ca-f9b805431251",
+            "resultingClientId": "",
+            "clientURL": "http://127.0.0.1:4332/controlled-child",
+            "destination": "script"
+          }
+        ]
+      },
+      "traffic": []
+    },
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "blob-graph",
+      "initial": {
+        "href": "about:blank",
+        "controller": false,
+        "ready": true
+      },
+      "control": "receiver control",
+      "blobValue": {
+        "local": "local blob fetch",
+        "httpRefused": true
+      },
+      "moduleValue": "local module graph",
+      "style": "ready",
+      "sameOriginDOM": true,
+      "policyRetained": true,
+      "traffic": [
+        {
+          "port": 4333,
+          "path": "/unrestricted-control"
+        }
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "kind": "blank-claim",
+      "initial": {
+        "href": "about:blank",
+        "controller": true,
+        "ready": true
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "about:blank"
+      },
+      "historyError": null,
+      "beforeClients": {
+        "sourceId": "d06c0eac-20e7-43ae-b561-27b88c1e6ba8",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "d06c0eac-20e7-43ae-b561-27b88c1e6ba8",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": []
+      },
+      "parentClaim": {
+        "sourceId": "d06c0eac-20e7-43ae-b561-27b88c1e6ba8",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "d06c0eac-20e7-43ae-b561-27b88c1e6ba8",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": []
+      },
+      "childProbe": {
+        "controllerBefore": true,
+        "resourceBefore": {
+          "controlled": true,
+          "clientId": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+          "clientURL": "about:blank"
+        },
+        "claim": {
+          "sourceId": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+          "sourceURL": "about:blank",
+          "clients": [
+            {
+              "id": "d06c0eac-20e7-43ae-b561-27b88c1e6ba8",
+              "url": "http://127.0.0.1:4332/parent",
+              "frameType": "top-level"
+            },
+            {
+              "id": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+              "url": "about:blank",
+              "frameType": "nested"
+            }
+          ],
+          "observations": [
+            {
+              "path": "/child-resource",
+              "clientId": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+              "resultingClientId": "",
+              "clientURL": "about:blank",
+              "destination": ""
+            }
+          ]
+        },
+        "controllerAfter": true,
+        "resourceAfter": {
+          "controlled": true,
+          "clientId": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+          "clientURL": "about:blank"
+        }
+      },
+      "afterClients": {
+        "sourceId": "d06c0eac-20e7-43ae-b561-27b88c1e6ba8",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "d06c0eac-20e7-43ae-b561-27b88c1e6ba8",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": [
+          {
+            "path": "/child-resource",
+            "clientId": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+            "resultingClientId": "",
+            "clientURL": "about:blank",
+            "destination": ""
+          },
+          {
+            "path": "/child-resource",
+            "clientId": "047cad29-7a31-49fb-a834-5d17e34c4f8b",
+            "resultingClientId": "",
+            "clientURL": "about:blank",
+            "destination": ""
+          }
+        ]
+      },
+      "traffic": []
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "kind": "open-claim",
+      "initial": {
+        "href": "about:blank",
+        "controller": true,
+        "ready": true
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "http://127.0.0.1:4332/parent"
+      },
+      "historyError": null,
+      "beforeClients": {
+        "sourceId": "3eea3e4e-d69d-4bcf-a0f3-9b0e7b2fc680",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "3eea3e4e-d69d-4bcf-a0f3-9b0e7b2fc680",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": []
+      },
+      "parentClaim": {
+        "sourceId": "3eea3e4e-d69d-4bcf-a0f3-9b0e7b2fc680",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "3eea3e4e-d69d-4bcf-a0f3-9b0e7b2fc680",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": []
+      },
+      "childProbe": {
+        "controllerBefore": true,
+        "resourceBefore": {
+          "controlled": true,
+          "clientId": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+          "clientURL": "about:blank"
+        },
+        "claim": {
+          "sourceId": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+          "sourceURL": "about:blank",
+          "clients": [
+            {
+              "id": "3eea3e4e-d69d-4bcf-a0f3-9b0e7b2fc680",
+              "url": "http://127.0.0.1:4332/parent",
+              "frameType": "top-level"
+            },
+            {
+              "id": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+              "url": "about:blank",
+              "frameType": "nested"
+            }
+          ],
+          "observations": [
+            {
+              "path": "/child-resource",
+              "clientId": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+              "resultingClientId": "",
+              "clientURL": "about:blank",
+              "destination": ""
+            }
+          ]
+        },
+        "controllerAfter": true,
+        "resourceAfter": {
+          "controlled": true,
+          "clientId": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+          "clientURL": "about:blank"
+        }
+      },
+      "afterClients": {
+        "sourceId": "3eea3e4e-d69d-4bcf-a0f3-9b0e7b2fc680",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "3eea3e4e-d69d-4bcf-a0f3-9b0e7b2fc680",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": [
+          {
+            "path": "/child-resource",
+            "clientId": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+            "resultingClientId": "",
+            "clientURL": "about:blank",
+            "destination": ""
+          },
+          {
+            "path": "/child-resource",
+            "clientId": "8e1a6359-2c0b-41b7-9f43-c24bf6c57b66",
+            "resultingClientId": "",
+            "clientURL": "about:blank",
+            "destination": ""
+          }
+        ]
+      },
+      "traffic": []
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "kind": "open-history-claim",
+      "initial": {
+        "href": "about:blank",
+        "controller": true,
+        "ready": true
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "http://127.0.0.1:4332/app/synthetic-child"
+      },
+      "historyError": null,
+      "beforeClients": {
+        "sourceId": "eb3b0783-960a-4d25-9ad8-ddb51eb9c515",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "eb3b0783-960a-4d25-9ad8-ddb51eb9c515",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": []
+      },
+      "parentClaim": {
+        "sourceId": "eb3b0783-960a-4d25-9ad8-ddb51eb9c515",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "eb3b0783-960a-4d25-9ad8-ddb51eb9c515",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": []
+      },
+      "childProbe": {
+        "controllerBefore": true,
+        "resourceBefore": {
+          "controlled": true,
+          "clientId": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+          "clientURL": "about:blank"
+        },
+        "claim": {
+          "sourceId": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+          "sourceURL": "about:blank",
+          "clients": [
+            {
+              "id": "eb3b0783-960a-4d25-9ad8-ddb51eb9c515",
+              "url": "http://127.0.0.1:4332/parent",
+              "frameType": "top-level"
+            },
+            {
+              "id": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+              "url": "about:blank",
+              "frameType": "nested"
+            }
+          ],
+          "observations": [
+            {
+              "path": "/child-resource",
+              "clientId": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+              "resultingClientId": "",
+              "clientURL": "about:blank",
+              "destination": ""
+            }
+          ]
+        },
+        "controllerAfter": true,
+        "resourceAfter": {
+          "controlled": true,
+          "clientId": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+          "clientURL": "about:blank"
+        }
+      },
+      "afterClients": {
+        "sourceId": "eb3b0783-960a-4d25-9ad8-ddb51eb9c515",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "eb3b0783-960a-4d25-9ad8-ddb51eb9c515",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": [
+          {
+            "path": "/child-resource",
+            "clientId": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+            "resultingClientId": "",
+            "clientURL": "about:blank",
+            "destination": ""
+          },
+          {
+            "path": "/child-resource",
+            "clientId": "761fc4fb-84e0-49aa-b191-bd1a189a80f3",
+            "resultingClientId": "",
+            "clientURL": "about:blank",
+            "destination": ""
+          }
+        ]
+      },
+      "traffic": []
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "kind": "first-http-navigation",
+      "initial": {
+        "href": "about:blank",
+        "controller": true,
+        "ready": true
+      },
+      "beforeClients": {
+        "sourceId": "dbd181ed-e8de-4491-8c17-7950683ceafb",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "dbd181ed-e8de-4491-8c17-7950683ceafb",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "a150ba5d-5d99-463f-bd23-c4046929095b",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": []
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "about:blank"
+      },
+      "after": {
+        "href": "http://127.0.0.1:4332/controlled-child",
+        "arrayRetained": false,
+        "documentRetained": false,
+        "policyRetained": false,
+        "publisher": {
+          "ready": true,
+          "arrayRetained": false,
+          "policyRetained": false,
+          "controller": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        }
+      ],
+      "exposedUnprepared": true,
+      "afterClients": {
+        "sourceId": "dbd181ed-e8de-4491-8c17-7950683ceafb",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "dbd181ed-e8de-4491-8c17-7950683ceafb",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "c01e8999-0b91-4e85-8777-7bc7495ac9a7",
+            "url": "http://127.0.0.1:4332/controlled-child",
+            "frameType": "nested"
+          }
+        ],
+        "observations": [
+          {
+            "path": "/controlled-child",
+            "clientId": "",
+            "resultingClientId": "c01e8999-0b91-4e85-8777-7bc7495ac9a7",
+            "destination": "iframe"
+          },
+          {
+            "path": "/guard-delay.js",
+            "clientId": "c01e8999-0b91-4e85-8777-7bc7495ac9a7",
+            "resultingClientId": "",
+            "clientURL": "http://127.0.0.1:4332/controlled-child",
+            "destination": "script"
+          }
+        ]
+      },
+      "traffic": []
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "kind": "http-after-open",
+      "initial": {
+        "href": "about:blank",
+        "controller": true,
+        "ready": true
+      },
+      "beforeClients": {
+        "sourceId": "3ac0c949-fa89-4639-adae-ef969c91a990",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "3ac0c949-fa89-4639-adae-ef969c91a990",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "b5075721-ce8c-4331-8ade-69a4d408efbd",
+            "url": "about:blank",
+            "frameType": "nested"
+          }
+        ],
+        "observations": []
+      },
+      "retainedBeforeNavigation": {
+        "array": true,
+        "document": true,
+        "ready": true,
+        "href": "http://127.0.0.1:4332/parent"
+      },
+      "after": {
+        "href": "http://127.0.0.1:4332/controlled-child",
+        "arrayRetained": false,
+        "documentRetained": false,
+        "policyRetained": false,
+        "publisher": {
+          "ready": true,
+          "arrayRetained": false,
+          "policyRetained": false,
+          "controller": true
+        }
+      },
+      "observations": [
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": true,
+          "arrayRetained": true,
+          "policyRetained": true
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        },
+        {
+          "ready": false,
+          "arrayRetained": false,
+          "policyRetained": false
+        }
+      ],
+      "exposedUnprepared": true,
+      "afterClients": {
+        "sourceId": "3ac0c949-fa89-4639-adae-ef969c91a990",
+        "sourceURL": "http://127.0.0.1:4332/parent",
+        "clients": [
+          {
+            "id": "3ac0c949-fa89-4639-adae-ef969c91a990",
+            "url": "http://127.0.0.1:4332/parent",
+            "frameType": "top-level"
+          },
+          {
+            "id": "955f38b8-5e5f-49cb-845f-dd44cb3429b5",
+            "url": "http://127.0.0.1:4332/controlled-child",
+            "frameType": "nested"
+          }
+        ],
+        "observations": [
+          {
+            "path": "/controlled-child",
+            "clientId": "",
+            "resultingClientId": "955f38b8-5e5f-49cb-845f-dd44cb3429b5",
+            "destination": "iframe"
+          },
+          {
+            "path": "/guard-delay.js",
+            "clientId": "955f38b8-5e5f-49cb-845f-dd44cb3429b5",
+            "resultingClientId": "",
+            "clientURL": "http://127.0.0.1:4332/controlled-child",
+            "destination": "script"
+          }
+        ]
+      },
+      "traffic": []
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "kind": "blob-graph",
+      "initial": {
+        "href": "about:blank",
+        "controller": true,
+        "ready": true
+      },
+      "control": "receiver control",
+      "blobValue": {
+        "local": "local blob fetch",
+        "httpRefused": true
+      },
+      "moduleValue": "local module graph",
+      "style": "ready",
+      "sameOriginDOM": true,
+      "policyRetained": true,
+      "traffic": [
+        {
+          "port": 4333,
+          "path": "/unrestricted-control"
+        }
+      ]
+    }
+  ]
+}

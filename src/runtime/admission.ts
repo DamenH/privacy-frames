@@ -72,7 +72,28 @@ function preparation(value: unknown): Preparation {
       scope: publicURL(receipt.scope),
     };
   }
-  return { profile: 'website-v1', ended: true, caches, serviceWorker };
+  const inputOutcome = object(input.outcome);
+  let outcome: Preparation['outcome'];
+  if (inputOutcome.status === 'absent') {
+    outcome = { status: 'absent' };
+  } else if (inputOutcome.status === 'completed') {
+    outcome = { status: 'completed', scriptURL: publicURL(inputOutcome.scriptURL) };
+  } else if (inputOutcome.status === 'unsupported' || inputOutcome.status === 'failed') {
+    if (typeof inputOutcome.reason !== 'string' || inputOutcome.reason.length > 2000)
+      throw new Error('Invalid preparation diagnostic');
+    outcome = {
+      status: inputOutcome.status,
+      scriptURL: publicURL(inputOutcome.scriptURL),
+      reason: inputOutcome.reason,
+    };
+  } else throw new Error('Invalid preparation outcome');
+  if (outcome.status === 'completed') {
+    if (!serviceWorker || serviceWorker.scriptURL !== outcome.scriptURL)
+      throw new Error('Completed preparation requires its receipt');
+  } else if (serviceWorker || caches.length) {
+    throw new Error('Uncompleted preparation cannot publish worker authority or caches');
+  }
+  return { profile: 'website-v1', ended: true, caches, serviceWorker, outcome };
 }
 
 export async function admitInstallation(
@@ -138,6 +159,8 @@ export async function admitInstallation(
     id,
     manifest,
     source,
+    documentBase:
+      value.documentBase === undefined ? source : publicURL(value.documentBase),
     resources,
     size,
     publisherManifest,

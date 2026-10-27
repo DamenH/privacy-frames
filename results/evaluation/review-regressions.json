@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-27T04:29:12.941Z",
+  "date": "2026-10-27T08:11:44.630Z",
   "browsers": [
     {
       "name": "chromium",
@@ -27,11 +27,17 @@
           "value": 42
         },
         "typeBlocked": true,
-        "cloneBlocked": true,
+        "cloneBlocked": false,
         "executed": false
       },
       "prepared": "activated",
-      "controlMutation": "text/javascript"
+      "controlMutation": {
+        "type": "speculationrules",
+        "cloneAttached": true,
+        "value": {
+          "value": 42
+        }
+      }
     },
     {
       "name": "firefox",
@@ -59,11 +65,17 @@
           "value": 42
         },
         "typeBlocked": true,
-        "cloneBlocked": true,
+        "cloneBlocked": false,
         "executed": false
       },
       "prepared": "activated",
-      "controlMutation": "text/javascript"
+      "controlMutation": {
+        "type": "speculationrules",
+        "cloneAttached": true,
+        "value": {
+          "value": 42
+        }
+      }
     }
   ]
 }

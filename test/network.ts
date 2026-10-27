@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { chromium, firefox } from 'playwright';
 import { servers } from './server.ts';
+import { testProvenance } from './provenance.ts';
 // Trace only our fresh browser and children; no root privileges or system-wide
 // capture. Retain only synthetic-marker evidence, deleting raw traces afterward.
 const directory = await mkdtemp(join(tmpdir(), 'pf-network-')),
@@ -33,6 +34,7 @@ udp.on('message', (bytes, remote) =>
 );
 await new Promise((resolve) => udp.bind(4220, '127.0.0.1', resolve));
 const results = {
+  provenance: await testProvenance(import.meta.url),
   date: new Date().toISOString(),
   checks: [],
   controls: {},
@@ -135,6 +137,53 @@ try {
         registration.navigationPreload.enable(),
       ),
     );
+    for (const kind of ['classic', 'module', 'nested']) {
+      const address = routeURL('worker-' + kind);
+      const source = `
+        (async () => {
+          const outcomes = [];
+          async function attempt(name, operation) {
+            try { await operation(); outcomes.push({name, refused:false}); }
+            catch (error) { outcomes.push({name, refused:true,error:error.name}); }
+          }
+          await attempt('fetch', () => fetch(${JSON.stringify(address)}));
+          await attempt('dynamic import', () => import(${JSON.stringify(address + '.js')}));
+          await attempt('cache download', async () => {
+            const cache = await caches.open('network-worker');
+            await cache.add(${JSON.stringify(address)});
+          });
+          await attempt('WebSocket', () => new WebSocket('ws://127.0.0.1:4216/private-marker'));
+          postMessage(outcomes);
+        })();
+      `;
+      const body =
+        kind === 'nested'
+          ? `const child=new Worker(URL.createObjectURL(new Blob([${JSON.stringify(source)}],{type:'text/javascript'})));child.onmessage=event=>{postMessage(event.data);child.terminate();};child.onerror=()=>postMessage([{name:'nested startup',refused:false}]);`
+          : source;
+      const blob = URL.createObjectURL(new Blob([body], { type: 'text/javascript' }));
+      const worker = new Worker(blob, { type: kind === 'module' ? 'module' : 'classic' });
+      URL.revokeObjectURL(blob);
+      try {
+        const values = await new Promise((resolve, reject) => {
+          const timer = setTimeout(
+            () => reject(new Error('Worker probe timed out')),
+            15000,
+          );
+          worker.onmessage = (event) => {
+            clearTimeout(timer);
+            resolve(event.data);
+          };
+          worker.onerror = (event) => {
+            clearTimeout(timer);
+            reject(new Error('Worker probe failed: ' + event.message));
+          };
+        });
+        for (const value of values)
+          outcomes.push({ ...value, name: kind + ' worker ' + value.name });
+      } finally {
+        worker.terminate();
+      }
+    }
     return outcomes;
   }, privateDomain);
   await app.waitForTimeout(700);
@@ -160,6 +209,39 @@ try {
   await control.evaluate(async (domain) => {
     await fetch('http://127.0.0.1:4216/control-marker');
     await fetch('http://' + domain + '/control-marker').catch(() => {});
+    const source = `
+      (async () => {
+        await fetch('http://127.0.0.1:4216/control-marker-worker');
+        const fetchAttempt = fetch(${JSON.stringify('http://' + domain.replace('pfrt-control-', 'pfrt-control-worker-') + '/control-marker-worker')}).catch(() => {});
+        const importAttempt = import(${JSON.stringify('http://' + domain.replace('pfrt-control-', 'pfrt-control-module-') + '/control-marker-module.js')}).catch(() => {});
+        await Promise.race([
+          Promise.all([fetchAttempt, importAttempt]),
+          new Promise(resolve => setTimeout(resolve, 2000)),
+        ]);
+        postMessage('worker-control-complete');
+      })();
+    `;
+    const blob = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
+    const worker = new Worker(blob);
+    try {
+      await new Promise((resolve, reject) => {
+        const timer = setTimeout(
+          () => reject(new Error('Worker control timed out')),
+          15000,
+        );
+        worker.onmessage = () => {
+          clearTimeout(timer);
+          resolve();
+        };
+        worker.onerror = (event) => {
+          clearTimeout(timer);
+          reject(new Error(event.message));
+        };
+      });
+    } finally {
+      worker.terminate();
+      URL.revokeObjectURL(blob);
+    }
     const link = document.createElement('link');
     link.rel = 'preconnect';
     link.href = 'http://' + domain;
@@ -176,12 +258,19 @@ try {
     'HTTP control inactive',
   );
   assert(
+    server.traffic.slice(beforeControl).some((x) => x.path === '/control-marker-worker'),
+    'Worker HTTP control inactive',
+  );
+  assert(
     datagrams.some((packet) => packet.stun),
     'STUN UDP receiver control inactive',
   );
   results.controls.httpRequests = server.traffic
     .slice(beforeControl)
     .filter((x) => x.path === '/control-marker').length;
+  results.controls.workerHTTPRequests = server.traffic
+    .slice(beforeControl)
+    .filter((x) => x.path === '/control-marker-worker').length;
   results.controls.udpDatagrams = datagrams.length;
   results.controls.stunDatagrams = datagrams.filter((x) => x.stun).length;
   await control.evaluate(() => controlPeer.close());
@@ -223,6 +312,14 @@ try {
     queryRecords.some((record) => record.phase === 'control' && record.sent > 0),
     'DNS syscall observer control inactive',
   );
+  for (const route of ['worker', 'module'])
+    assert(
+      queryRecords.some(
+        (record) =>
+          record.label === 'pfrt-control-' + route + '-' + token && record.sent > 0,
+      ),
+      route + ' DNS syscall observer control inactive',
+    );
   assert(
     !queryRecords.some((record) => record.phase === 'private'),
     'Private DNS query escaped',

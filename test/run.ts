@@ -298,7 +298,13 @@ try {
             if (!d?.get) continue;
             try {
               const value = Reflect.apply(d.get, object, []);
-              getAttempts.push({ key, denied: false, type: typeof value });
+              getAttempts.push({
+                key,
+                denied: false,
+                type: typeof value,
+                noController:
+                  key === 'serviceWorker' ? value.controller === null : undefined,
+              });
             } catch {
               getAttempts.push({ key, denied: true });
             }
@@ -317,7 +323,7 @@ try {
       assert(
         raw.getAttempts.length >= 3 &&
           raw.getAttempts.every((x) =>
-            x.key === 'serviceWorker' ? x.denied : !x.denied,
+            x.key === 'serviceWorker' ? x.denied || x.noController === true : !x.denied,
           ),
       );
       await app.evaluate(() => {

@@ -1,0 +1,6002 @@
+{
+  "date": "2026-10-27T08:32:49.878Z",
+  "runnerSha256": "4f5ccb15ff33a093f3724ba3158d05f8552639bd690fcf82fda716d02186915d",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": false,
+      "iteration": 0,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "23d7e0f5-b5fa-4d58-b4eb-a5cd3e038f69"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": false,
+      "iteration": 1,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "51fce549-ca29-4009-8989-24bb7203ca53"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": false,
+      "iteration": 2,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "418c4d23-1862-4ad6-994b-b7fbec5864e5"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": false,
+      "iteration": 3,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "a6e183a0-9896-419e-bcd0-9df6f00f09ab"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": false,
+      "iteration": 4,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "65b9098a-c8cf-4300-9fa5-a45561c4041c"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": false,
+      "iteration": 5,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "5c334989-6f39-4f15-8250-04ce3a875fa7"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": false,
+      "iteration": 6,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "7522d7db-2ee7-41d5-8aeb-dc70cb5e105d"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": false,
+      "iteration": 7,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "b74d3cda-02d6-4dee-a82d-db840c707ed8"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "batch": true,
+      "iteration": 0,
+      "preparations": 1,
+      "batchObservation": {
+        "policy": false,
+        "privateStorageReadable": true
+      },
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "11b8c2e5-c0d1-4d2a-a668-c4eedda235dc"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 0,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "5fe9b616-92ae-40a2-83f3-46378acdc722"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 1,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "7f3bc052-0ff5-410e-b479-035de932515b"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 2,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "85eb7fda-9efb-42cd-b776-c05b27adacc1"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 3,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "d8c1f203-f287-43b3-98d2-72f5c20d5199"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 4,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "3e00baf9-1f21-4371-b66b-0bc499bfc637"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 5,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "3edbbda5-fbc0-4248-a792-17a59fac6a82"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 6,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "2cabdbef-8338-4803-94da-a47dea4d1a74"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 7,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "a6f9bf26-d68a-459c-902b-4243a2a277da"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 8,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "646c356b-11d3-4905-824b-d2b32e3436b3"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 9,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "1717a8b7-6079-4419-a8ed-9d1ed54a3c26"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 10,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "860c9d42-6ee9-42ae-8429-3947aa77d3f8"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 11,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "d300d83c-6923-4d4b-9fc5-18e6f7b1e169"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 12,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "fa7e2dc9-1be5-4c19-b46d-164411382ecf"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 13,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "4abb9387-062e-49d9-bb0a-ae6a1622ea9a"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 14,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "d4697610-ce05-4934-b451-ed44beff6529"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 15,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "5a125f1f-2cc1-4ccc-8071-63fd775c14df"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 16,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "6b656af9-5783-47e2-884c-48857ffb7788"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 17,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "70f1a640-4d3c-4b80-bde0-ca59b68d4e86"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 18,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "26bc81b0-acdb-4cff-85f5-4b22c7133872"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 19,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "66ca8e8c-c593-439e-814a-d0bacc504017"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 20,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "c5f153a5-ba88-4b2a-af35-9b012c011b0e"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 21,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "e0e9f247-2f39-4172-8fae-645aac6a7c4b"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 22,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "675c26fd-5032-4a16-8dd4-d85e72624be7"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 23,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "006bc4a1-5421-4bc5-b769-533caa71ed12"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 24,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "4e470688-4ea4-4fe0-864f-15e89f37105a"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 25,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "266af088-f990-47b6-b943-4cdef474408d"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 26,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "d88a5a5e-14c9-4168-b059-c8b12e8ce1e2"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 27,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "8519d2e2-72c7-45b7-98b6-bce2544acca9"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 28,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "d0bc2059-248d-41bd-905a-080ac06d968e"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 29,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "e6e68108-471d-4f93-b6b6-dd8787d22024"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 30,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "bb5e7e33-8cd8-4916-b1e1-d017f3e8fa35"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 31,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "5d04a5e1-5470-447d-9e0a-cc83c8e73d02"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 32,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "e860fb29-a3e1-4da1-a5c1-91d6b4a29e09"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 33,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "e09f866f-f382-4d89-a3a2-3e67a38b9802"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 34,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "26569f07-abfc-46b6-9af6-a77c73ceae04"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 35,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "71c5b741-4cbd-4f27-b89b-2e22db173622"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 36,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "93981d1a-f847-434f-831e-8ce8d83bed62"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 37,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "c3bd7fc3-4900-43bd-8e7c-d50d64c8dea3"
+      },
+      "route": "location",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-location",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 38,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "33569a27-7287-4cff-b1ea-c6ec0edae9bd"
+      },
+      "route": "link",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-link",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": false,
+      "iteration": 39,
+      "preparations": 1,
+      "batchObservation": null,
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "3ed1d92f-76af-4753-9b80-716f5091b2cd"
+      },
+      "route": "form",
+      "events": [
+        {
+          "url": "http://127.0.0.1:4332/receiver-form?",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "batch": true,
+      "iteration": 0,
+      "preparations": 1,
+      "batchObservation": {
+        "policy": false,
+        "privateStorageReadable": true
+      },
+      "observations": [
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        },
+        {
+          "policy": true,
+          "array": true,
+          "privateStorageReadable": false
+        }
+      ],
+      "exposedUnprepared": false,
+      "beforeAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "parser": {
+          "policy": true,
+          "controller": true,
+          "entries": 1
+        },
+        "controller": true,
+        "entries": 1
+      },
+      "resource": {
+        "controlled": true,
+        "clientId": "693fe231-7a93-487d-9a21-40578c575a6d"
+      },
+      "route": "blank",
+      "events": [
+        {
+          "url": "about:blank",
+          "cancelable": true,
+          "hashChange": false
+        }
+      ],
+      "afterAttack": {
+        "arrayRetained": true,
+        "policy": true,
+        "href": "http://127.0.0.1:4332/child"
+      },
+      "requests": [
+        "/delay.js"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,889 @@
+[
+  {
+    "provenance": {
+      "capturedAt": "2026-10-27T08:28:15.688Z",
+      "revision": "596c0be1e4de35e992a762babc89d489bdfb21f9",
+      "dirty": true,
+      "sourceSHA256": "7cf824d81d161a710e4ffbd8de50b391a7cf4f3a17aaf36e59574e216868fabb",
+      "runner": "test/worker-contexts.ts",
+      "runnerSHA256": "ac30ec73203e90140e739399af0ac7861240470ccf6da14b06999b50a5b0f642",
+      "publisherRevision": "da0f43b878e153b733ad8f14fdae74fbd0771f34",
+      "artifacts": {
+        "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dist-manager/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+        "dist-manager/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+        "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+        "dist-manager/install-worker.js": "c625d6f916bdd606e8392ffe41cba1fdfac1cf4646132dbc07d261f9879ba3a7",
+        "dist-manager/manager.js": "2dcf4086753ae9ceb8fcc9c639e56b1258b3f6e64d233b5990170c87a0ce6fb8",
+        "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+        "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+        "dist-manager/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+        "dist-manager/sw.js": "96375c4f54eb3995ea17234b4eb9829a11dc9d82137417005396e2a9ae41f8d4",
+        "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dist-runtime/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+        "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+        "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+        "dist-runtime/guard.js": "91a613e1a20962ae57e77d868aa09debcf5a7906df6d874c4bf5318701e73336",
+        "dist-runtime/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+        "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+        "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+        "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+        "dist-runtime/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+        "dist-runtime/sw.js": "2952d8443c3feead9b7445e8e2a8954f2d5c30e7a61b301ad2ca8b88c54a8df8",
+        "dist-runtime/worker-guard.js": "941b6d8f8e1048cecadc2c1440d5b6d8a22b1d2f8715d6bac2ef86d5acc87139"
+      }
+    },
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "rawWorkers": [
+      {
+        "source": "http://127.0.0.1:4211/runtime/Q4d3hVqxT4Q/workers/scripts/main.js",
+        "refused": true
+      },
+      {
+        "source": "blob:http://127.0.0.1:4211/7a849264-d967-4b38-adf8-adf3c97fbd1d",
+        "refused": true
+      },
+      {
+        "source": "http://127.0.0.1:4211/runtime/sw.js",
+        "refused": true
+      }
+    ],
+    "rawControllerStartupBlocked": true,
+    "checks": [
+      {
+        "kind": "classic",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      },
+      {
+        "kind": "module",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/module.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      },
+      {
+        "kind": "blob",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "location": "blob:http://127.0.0.1:4211/4f4ac277-3be4-4925-89ac-296494dc24d3",
+          "imported": 0
+        }
+      },
+      {
+        "kind": "blob-module",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "location": "blob:http://127.0.0.1:4211/2a590754-4fa0-475c-895d-1d41c961a8b1",
+          "imported": 13
+        }
+      },
+      {
+        "kind": "directory",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/directory/entry.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 27
+        }
+      },
+      {
+        "kind": "meta",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/module.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      }
+    ],
+    "offlineWorkers": [
+      {
+        "kind": "meta",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/module.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      },
+      {
+        "kind": "directory",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/directory/entry.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 27
+        }
+      }
+    ],
+    "nullConstructorOptions": {
+      "kind": "classic",
+      "detached": true,
+      "value": {
+        "bytes": [
+          7,
+          19,
+          42
+        ],
+        "location": "http://127.0.0.1:4344/workers/worker.js",
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "imported": 13
+      }
+    },
+    "nullOptions": {
+      "kind": "classic",
+      "detached": false,
+      "value": {
+        "bytes": [
+          7,
+          19,
+          42
+        ],
+        "location": "http://127.0.0.1:4344/workers/worker.js",
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "imported": 13
+      }
+    },
+    "iterableTransfer": {
+      "kind": "classic",
+      "detached": true,
+      "value": {
+        "bytes": [
+          7,
+          19,
+          42
+        ],
+        "location": "http://127.0.0.1:4344/workers/worker.js",
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "imported": 13
+      }
+    },
+    "missing": "TypeError",
+    "nested": {
+      "nested": {
+        "value": 71,
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "location": "http://127.0.0.1:4344/workers/nested.js",
+        "fetchRefused": true,
+        "importsRefused": true,
+        "recoveryRefused": true,
+        "sameConstructor": true
+      },
+      "host": {
+        "version": 1,
+        "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+        "mode": "network-isolated",
+        "context": "dedicated-worker"
+      }
+    },
+    "transferredPort": [
+      "ready",
+      "pong:ping"
+    ],
+    "topLevelAwait": [
+      {
+        "path": "await.js",
+        "result": {
+          "value": 91,
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          }
+        }
+      },
+      {
+        "path": "await-listener.js",
+        "result": {
+          "value": 91,
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          }
+        }
+      }
+    ],
+    "sharedStorage": {
+      "value": "scoped-database-value",
+      "cached": "scoped-cache-value",
+      "names": [
+        "shared-cache"
+      ],
+      "databaseNames": [
+        {
+          "name": "worker-shared",
+          "version": 1
+        }
+      ]
+    },
+    "isolatedStorage": {
+      "value": null,
+      "cached": null,
+      "names": [],
+      "databaseNames": [
+        {
+          "name": "worker-shared",
+          "version": 1
+        }
+      ]
+    },
+    "failed": [
+      {
+        "path": "broken.js",
+        "result": {
+          "error": true,
+          "detached": true
+        }
+      },
+      {
+        "path": "fail-after-listener.js",
+        "result": {
+          "error": true,
+          "detached": true
+        }
+      }
+    ],
+    "recovery": {
+      "sameConstructor": true,
+      "unknownRejected": true,
+      "nativeConstructorCalls": 0,
+      "privateEvents": 0,
+      "getterControl": 1,
+      "host": {
+        "version": 1,
+        "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+        "mode": "network-isolated",
+        "context": "dedicated-worker"
+      }
+    },
+    "network": {
+      "fetchRefused": true,
+      "importsRefused": true
+    },
+    "nativeOptions": {
+      "missing": "TypeError",
+      "constructorNull": {
+        "kind": "classic",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": null,
+          "imported": 13
+        }
+      },
+      "null": {
+        "kind": "classic",
+        "detached": false,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": null,
+          "imported": 13
+        }
+      },
+      "iterable": {
+        "kind": "classic",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": null,
+          "imported": 13
+        }
+      }
+    },
+    "nativeTla": [
+      {
+        "path": "await.js",
+        "result": {
+          "value": 91,
+          "host": null
+        }
+      },
+      {
+        "path": "await-listener.js",
+        "result": {
+          "value": 91,
+          "host": null
+        }
+      }
+    ],
+    "nativeRecovery": {
+      "fetchRefused": false,
+      "importsRefused": false
+    },
+    "privateReceiverRequests": 0,
+    "privateReceiverConnections": 0,
+    "activeReceiverControl": true
+  },
+  {
+    "provenance": {
+      "capturedAt": "2026-10-27T08:28:15.688Z",
+      "revision": "596c0be1e4de35e992a762babc89d489bdfb21f9",
+      "dirty": true,
+      "sourceSHA256": "7cf824d81d161a710e4ffbd8de50b391a7cf4f3a17aaf36e59574e216868fabb",
+      "runner": "test/worker-contexts.ts",
+      "runnerSHA256": "ac30ec73203e90140e739399af0ac7861240470ccf6da14b06999b50a5b0f642",
+      "publisherRevision": "da0f43b878e153b733ad8f14fdae74fbd0771f34",
+      "artifacts": {
+        "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dist-manager/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+        "dist-manager/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+        "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+        "dist-manager/install-worker.js": "c625d6f916bdd606e8392ffe41cba1fdfac1cf4646132dbc07d261f9879ba3a7",
+        "dist-manager/manager.js": "2dcf4086753ae9ceb8fcc9c639e56b1258b3f6e64d233b5990170c87a0ce6fb8",
+        "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+        "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+        "dist-manager/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+        "dist-manager/sw.js": "96375c4f54eb3995ea17234b4eb9829a11dc9d82137417005396e2a9ae41f8d4",
+        "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dist-runtime/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+        "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+        "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+        "dist-runtime/guard.js": "91a613e1a20962ae57e77d868aa09debcf5a7906df6d874c4bf5318701e73336",
+        "dist-runtime/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+        "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+        "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+        "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+        "dist-runtime/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+        "dist-runtime/sw.js": "2952d8443c3feead9b7445e8e2a8954f2d5c30e7a61b301ad2ca8b88c54a8df8",
+        "dist-runtime/worker-guard.js": "941b6d8f8e1048cecadc2c1440d5b6d8a22b1d2f8715d6bac2ef86d5acc87139"
+      }
+    },
+    "name": "firefox",
+    "version": "155.0",
+    "rawWorkers": [
+      {
+        "source": "http://127.0.0.1:4211/runtime/Q4d3hVqxT4Q/workers/scripts/main.js",
+        "refused": true
+      },
+      {
+        "source": "blob:http://127.0.0.1:4211/a14c2f46-e81f-4124-9542-7d8b0a74b62a",
+        "refused": true
+      },
+      {
+        "source": "http://127.0.0.1:4211/runtime/sw.js",
+        "refused": false,
+        "timeout": true
+      }
+    ],
+    "rawControllerStartupBlocked": true,
+    "checks": [
+      {
+        "kind": "classic",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      },
+      {
+        "kind": "module",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/module.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      },
+      {
+        "kind": "blob",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "location": "blob:http://127.0.0.1:4211/ac9d7f87-302e-4145-965a-5e3ec6c03324",
+          "imported": 0
+        }
+      },
+      {
+        "kind": "blob-module",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "location": "blob:http://127.0.0.1:4211/703d6d8f-d32d-4766-a775-e5caa3f7772f",
+          "imported": 13
+        }
+      },
+      {
+        "kind": "directory",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/directory/entry.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 27
+        }
+      },
+      {
+        "kind": "meta",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/module.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      }
+    ],
+    "offlineWorkers": [
+      {
+        "kind": "meta",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/module.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 13
+        }
+      },
+      {
+        "kind": "directory",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/directory/entry.js",
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          },
+          "imported": 27
+        }
+      }
+    ],
+    "nullConstructorOptions": {
+      "kind": "classic",
+      "detached": true,
+      "value": {
+        "bytes": [
+          7,
+          19,
+          42
+        ],
+        "location": "http://127.0.0.1:4344/workers/worker.js",
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "imported": 13
+      }
+    },
+    "nullOptions": {
+      "kind": "classic",
+      "detached": false,
+      "value": {
+        "bytes": [
+          7,
+          19,
+          42
+        ],
+        "location": "http://127.0.0.1:4344/workers/worker.js",
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "imported": 13
+      }
+    },
+    "iterableTransfer": {
+      "kind": "classic",
+      "detached": true,
+      "value": {
+        "bytes": [
+          7,
+          19,
+          42
+        ],
+        "location": "http://127.0.0.1:4344/workers/worker.js",
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "imported": 13
+      }
+    },
+    "missing": "TypeError",
+    "nested": {
+      "nested": {
+        "value": 71,
+        "host": {
+          "version": 1,
+          "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+          "mode": "network-isolated",
+          "context": "dedicated-worker"
+        },
+        "location": "http://127.0.0.1:4344/workers/nested.js",
+        "fetchRefused": true,
+        "importsRefused": true,
+        "recoveryRefused": true,
+        "sameConstructor": true
+      },
+      "host": {
+        "version": 1,
+        "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+        "mode": "network-isolated",
+        "context": "dedicated-worker"
+      }
+    },
+    "transferredPort": [
+      "ready",
+      "pong:ping"
+    ],
+    "topLevelAwait": [
+      {
+        "path": "await.js",
+        "result": {
+          "value": 91,
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          }
+        }
+      },
+      {
+        "path": "await-listener.js",
+        "result": {
+          "value": 91,
+          "host": {
+            "version": 1,
+            "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          }
+        }
+      }
+    ],
+    "sharedStorage": {
+      "value": "scoped-database-value",
+      "cached": "scoped-cache-value",
+      "names": [
+        "shared-cache"
+      ],
+      "databaseNames": [
+        {
+          "name": "worker-shared",
+          "version": 1
+        }
+      ]
+    },
+    "isolatedStorage": {
+      "value": null,
+      "cached": null,
+      "names": [],
+      "databaseNames": [
+        {
+          "name": "worker-shared",
+          "version": 1
+        }
+      ]
+    },
+    "failed": [
+      {
+        "path": "broken.js",
+        "result": {
+          "error": true,
+          "detached": true
+        }
+      },
+      {
+        "path": "fail-after-listener.js",
+        "result": {
+          "error": true,
+          "detached": true
+        }
+      }
+    ],
+    "recovery": {
+      "sameConstructor": true,
+      "unknownRejected": true,
+      "nativeConstructorCalls": 0,
+      "privateEvents": 0,
+      "getterControl": 1,
+      "host": {
+        "version": 1,
+        "application": "workers-438777855ab14f8481afaeefaeeaf16d866957825a6f428d1f22e00dc720edbf",
+        "mode": "network-isolated",
+        "context": "dedicated-worker"
+      }
+    },
+    "network": {
+      "fetchRefused": true,
+      "importsRefused": true
+    },
+    "nativeOptions": {
+      "missing": "TypeError",
+      "constructorNull": {
+        "kind": "classic",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": null,
+          "imported": 13
+        }
+      },
+      "null": {
+        "kind": "classic",
+        "detached": false,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": null,
+          "imported": 13
+        }
+      },
+      "iterable": {
+        "kind": "classic",
+        "detached": true,
+        "value": {
+          "bytes": [
+            7,
+            19,
+            42
+          ],
+          "location": "http://127.0.0.1:4344/workers/worker.js",
+          "host": null,
+          "imported": 13
+        }
+      }
+    },
+    "nativeTla": [
+      {
+        "path": "await.js",
+        "result": {
+          "value": 91,
+          "host": null
+        }
+      },
+      {
+        "path": "await-listener.js",
+        "result": {
+          "value": 91,
+          "host": null
+        }
+      }
+    ],
+    "nativeRecovery": {
+      "fetchRefused": false,
+      "importsRefused": false
+    },
+    "privateReceiverRequests": 0,
+    "privateReceiverConnections": 0,
+    "activeReceiverControl": true
+  }
+]

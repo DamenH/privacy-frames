@@ -1,5 +1,9 @@
 import type { Installation, PreparedInstallation } from '../shared/types.ts';
 
+export interface StoredInstallation extends Installation {
+  generation: string;
+}
+
 // This schema has no migration path. Metadata queries never load resource bodies.
 const DATABASE = 'privacy-frames-installations';
 const METADATA = 'installations';
@@ -39,12 +43,35 @@ async function read<T>(store: string, key?: IDBValidKey): Promise<T> {
   }
 }
 
-export const getApp = (id: string) => read<Installation | undefined>(METADATA, id);
-export const listApps = () => read<Installation[]>(METADATA);
-export async function getResource(id: string, path: string): Promise<ArrayBuffer> {
-  const bytes = await read<ArrayBuffer | undefined>(BODIES, [id, path]);
-  if (!bytes) throw new Error('Installed resource missing');
-  return bytes;
+export const getApp = (id: string) => read<StoredInstallation | undefined>(METADATA, id);
+export const listApps = () => read<StoredInstallation[]>(METADATA);
+export async function getResource(
+  id: string,
+  path: string,
+  expectedGeneration: string,
+): Promise<ArrayBuffer> {
+  if (typeof expectedGeneration !== 'string' || !expectedGeneration)
+    throw new Error('Installation generation missing; reinstall this application');
+  const database = await openDatabase();
+  try {
+    return await new Promise<ArrayBuffer>((resolve, reject) => {
+      const transaction = database.transaction([METADATA, BODIES], 'readonly');
+      const metadata = transaction.objectStore(METADATA).get(id);
+      const resource = transaction.objectStore(BODIES).get([id, path]);
+      transaction.oncomplete = () => {
+        const installation: StoredInstallation | undefined = metadata.result;
+        const bytes: ArrayBuffer | undefined = resource.result;
+        if (installation?.generation !== expectedGeneration)
+          reject(new Error('Installation generation changed'));
+        else if (!bytes) reject(new Error('Installed resource missing'));
+        else resolve(bytes);
+      };
+      transaction.onerror = () => reject(transaction.error);
+      transaction.onabort = () => reject(transaction.error);
+    });
+  } finally {
+    database.close();
+  }
 }
 
 export async function putApp(app: PreparedInstallation): Promise<void> {
@@ -56,8 +83,9 @@ export async function putApp(app: PreparedInstallation): Promise<void> {
       resources.delete(IDBKeyRange.bound([app.id, ''], [app.id, '\uffff']));
       for (const resource of app.resources)
         resources.put(resource.bytes, [app.id, resource.path]);
-      const metadata: Installation = {
+      const metadata: StoredInstallation = {
         ...app,
+        generation: crypto.randomUUID(),
         resources: app.resources.map(({ bytes: _bytes, ...resource }) => resource),
       };
       transaction.objectStore(METADATA).put(metadata);

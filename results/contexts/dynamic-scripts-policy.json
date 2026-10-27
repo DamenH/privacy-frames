@@ -1,0 +1,114 @@
+{
+  "mode": "isolated script/DOM policy fixture",
+  "date": "2026-10-27T06:45:49.729Z",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "isolated": {
+        "synchronous": [
+          "before",
+          "inline",
+          "after"
+        ],
+        "order": [
+          "before",
+          "inline",
+          "after",
+          "A",
+          "B"
+        ],
+        "loaded": [
+          "a.js",
+          "b.js"
+        ],
+        "module": 47,
+        "blob": 3
+      },
+      "unrestricted": {
+        "synchronous": [
+          "before",
+          "inline",
+          "after"
+        ],
+        "order": [
+          "before",
+          "inline",
+          "after",
+          "A",
+          "B"
+        ],
+        "loaded": [
+          "a.js",
+          "b.js"
+        ],
+        "module": 47,
+        "blob": 3
+      },
+      "blocked": {
+        "source": true,
+        "type": true,
+        "coercions": 1,
+        "checkedType": "text/javascript",
+        "inlineFetchBlocked": true
+      },
+      "privateRequests": 0,
+      "privateConnections": 0,
+      "activeScriptControl": true
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "isolated": {
+        "synchronous": [
+          "before",
+          "inline",
+          "after"
+        ],
+        "order": [
+          "before",
+          "inline",
+          "after",
+          "A",
+          "B"
+        ],
+        "loaded": [
+          "a.js",
+          "b.js"
+        ],
+        "module": 47,
+        "blob": 3
+      },
+      "unrestricted": {
+        "synchronous": [
+          "before",
+          "inline",
+          "after"
+        ],
+        "order": [
+          "before",
+          "inline",
+          "after",
+          "A",
+          "B"
+        ],
+        "loaded": [
+          "a.js",
+          "b.js"
+        ],
+        "module": 47,
+        "blob": 3
+      },
+      "blocked": {
+        "source": true,
+        "type": true,
+        "coercions": 1,
+        "checkedType": "text/javascript",
+        "inlineFetchBlocked": true
+      },
+      "privateRequests": 0,
+      "privateConnections": 0,
+      "activeScriptControl": true
+    }
+  ]
+}

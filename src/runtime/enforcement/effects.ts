@@ -1,11 +1,19 @@
 import type { PolicyTools } from './native.ts';
 
+export interface ContextFactories {
+  Worker?: Function;
+  SharedWorker?: Function;
+}
+
 /** Close effects that do not reliably pass through the HTTP request gate. */
 export function installEffectPolicy(
   tools: PolicyTools,
   getApplicationWorker: () => unknown,
+  contextFactories: ContextFactories = {},
+  target: object = globalThis,
 ) {
   const { apply, descriptor, method, accessor, propertyOwner, deny, array } = tools;
+  const nativeNavigator = typeof navigator === 'object' ? navigator : null;
   // Remove alternate agents/transports, including prototype recovery routes.
   for (const key of [
     'WebSocket',
@@ -28,11 +36,22 @@ export function installEffectPolicy(
     'WebSocketStream',
     'NDEFReader',
   ])
-    if (key in window) method(window, key, deny);
-  for (const key of Object.getOwnPropertyNames(window).filter((k) =>
+    if (key in target) {
+      const owner = propertyOwner(target, key);
+      const replacement =
+        key === 'Worker'
+          ? contextFactories.Worker || deny
+          : key === 'SharedWorker'
+            ? contextFactories.SharedWorker || deny
+            : deny;
+      if (owner) method(owner, key, replacement);
+    }
+  for (const key of Object.getOwnPropertyNames(target).filter((k) =>
     /^(RTC|webkitRTC)/.test(k),
-  ))
-    method(window, key, deny);
+  )) {
+    const owner = propertyOwner(target, key);
+    if (owner) method(owner, key, deny);
+  }
   if (globalThis.Worklet) method(Worklet.prototype, 'addModule', deny);
   // Browser-mediated services are not necessarily ordinary document fetches.
   // Keep local Web Audio, but exclude remote speech/casting and URL-bearing OS
@@ -88,8 +107,8 @@ export function installEffectPolicy(
         'getState',
       ])
         method(ctor.prototype, key, deny);
-  if (globalThis.Navigator) {
-    const owner = propertyOwner(navigator, 'serviceWorker');
+  if (nativeNavigator) {
+    const owner = propertyOwner(nativeNavigator, 'serviceWorker');
     if (owner)
       accessor(owner, 'serviceWorker', { get: () => getApplicationWorker() || deny() });
     for (const key of [
@@ -105,21 +124,23 @@ export function installEffectPolicy(
       'createAuctionNonce',
       'deprecatedReplaceInURN',
       'deprecatedURNToURL',
-    ])
-      method(Navigator.prototype, key, deny);
+    ]) {
+      const owner = propertyOwner(nativeNavigator, key);
+      if (owner) method(owner, key, deny);
+    }
+    // StorageManager exposes origin-wide OPFS; Web Locks expose shared names.
+    for (const key of ['presentation', 'storage', 'locks']) {
+      const owner = propertyOwner(nativeNavigator, key);
+      if (owner) accessor(owner, key, { get: deny });
+    }
   }
   if (globalThis.CredentialsContainer)
     for (const key of ['get', 'create', 'store', 'preventSilentAccess'])
       method(CredentialsContainer.prototype, key, deny);
-  if (globalThis.Navigator)
-    for (const key of ['presentation', 'storage']) {
-      const owner = propertyOwner(navigator, key);
-      if (owner) accessor(owner, key, { get: deny });
-    }
   if (globalThis.Clipboard)
     for (const key of ['write', 'writeText']) method(Clipboard.prototype, key, deny);
   for (const key of ['sharedStorage']) {
-    const owner = propertyOwner(window, key);
+    const owner = propertyOwner(target, key);
     if (owner) accessor(owner, key, { get: deny });
   }
 }

@@ -58,6 +58,7 @@ try {
           resources,
           preparation: {
             profile: 'website-v1',
+            outcome: { status: 'absent' },
             ended: true,
             caches: [],
             serviceWorker: null,

@@ -99,18 +99,54 @@ try {
       );
       await manager.locator('#app-url').fill('http://127.0.0.1:4218/reject/');
       await manager.locator('#install button').click();
+      await manager.locator('[data-app="reject"]').waitFor();
+      assert.match(await manager.locator('#status').textContent(), /^Installed /);
+      assert.equal(await manager.locator('.app-card').count(), 2);
+      assert.equal(manager.workers().length, 0);
+      const bridge = manager
+        .frames()
+        .find((frame) => frame.url().endsWith('/connect.html'));
+      assert(bridge);
+      const discarded = await bridge.evaluate(async () => {
+        const database = await new Promise<IDBDatabase>((resolve, reject) => {
+          const request = indexedDB.open('privacy-frames-installations', 1);
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = () => reject(request.error);
+        });
+        try {
+          const records: unknown = await new Promise((resolve, reject) => {
+            const request = database
+              .transaction('installations')
+              .objectStore('installations')
+              .getAll();
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+          });
+          if (!Array.isArray(records)) throw new Error('Invalid installation records');
+          const record = records.find(
+            (value) => value.source === 'http://127.0.0.1:4218/reject/',
+          );
+          if (!record) throw new Error('Static fallback installation is missing');
+          return record.preparation;
+        } finally {
+          database.close();
+        }
+      });
+      assert.equal(discarded.outcome.status, 'failed');
+      assert.match(discarded.outcome.reason, /Installation deliberately rejected/);
+      assert.equal(discarded.serviceWorker, null);
+      assert.deepEqual(discarded.caches, []);
+      checks.push(
+        'Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches',
+      );
+      await manager.locator('#app-url').fill('http://127.0.0.1:4212/broken/');
+      await manager.locator('#install button').click();
       await manager.waitForFunction(() =>
         document.querySelector('#status').textContent.startsWith('Installation refused:'),
       );
-      assert.match(
-        await manager.locator('#status').textContent(),
-        /Installation deliberately rejected/,
-      );
-      assert.equal(await manager.locator('.app-card').count(), 1);
+      assert.equal(await manager.locator('.app-card').count(), 2);
       assert.equal(manager.workers().length, 0);
-      checks.push(
-        'Rejected install handler terminates preparation and publishes no application',
-      );
+      checks.push('Missing independently declared resources still refuse installation');
       assert.deepEqual(errors, []);
       results.push({ name, version: browser.version(), checks });
     } catch (error) {

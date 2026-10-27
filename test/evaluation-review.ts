@@ -63,7 +63,7 @@ try {
         let typeBlocked = false;
         let cloneBlocked = false;
         try {
-          node.type = 'text/javascript';
+          node.type = 'speculationrules';
         } catch {
           typeBlocked = true;
         }
@@ -82,7 +82,7 @@ try {
       assert.deepEqual(data, {
         value: { value: 42 },
         typeBlocked: true,
-        cloneBlocked: true,
+        cloneBlocked: false,
         executed: false,
       });
       const control = await context.newPage();
@@ -93,11 +93,22 @@ try {
       assert.equal(unrestricted.conversions, 1);
       const controlMutation = await control.evaluate(() => {
         const node = document.querySelector<HTMLScriptElement>('#data')!;
-        node.type = 'text/javascript';
-        document.body.append(node.cloneNode(true));
-        return node.type;
+        node.type = 'speculationrules';
+        const type = node.type;
+        node.type = 'application/json';
+        const clone = node.cloneNode(true) as HTMLScriptElement;
+        document.body.append(clone);
+        return {
+          type,
+          cloneAttached: clone.isConnected,
+          value: JSON.parse(clone.textContent!),
+        };
       });
-      assert.equal(controlMutation, 'text/javascript');
+      assert.deepEqual(controlMutation, {
+        type: 'speculationrules',
+        cloneAttached: true,
+        value: { value: 42 },
+      });
       evidence.browsers.push({
         name,
         version: browser.version(),

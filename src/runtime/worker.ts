@@ -11,8 +11,13 @@ import type { RuntimeEvent } from '../shared/types.ts';
 import { response } from './response-policy.ts';
 import { css, prepareRuntimeDocument } from './document.ts';
 import { admitInstallation } from './admission.ts';
+import { CONTEXT_POLICY_VERSION, ContextRegistry } from './contexts/model.ts';
+import type { WorkerBootstrapMetadata } from './contexts/model.ts';
+import { controllerContextStorage } from './contexts/controller-store.ts';
+import { contextResourceResponse } from './contexts/resources.ts';
 const worker = self as unknown as ServiceWorkerGlobalScope;
 const BASE = new URL('./', worker.location.href);
+const contexts = new ContextRegistry(controllerContextStorage(BASE));
 const trustedFiles = [
   'index.html',
   'host.css',
@@ -21,6 +26,7 @@ const trustedFiles = [
   'pwa-192.png',
   'pwa-512.png',
   'guard.js',
+  'worker-guard.js',
   'connect.html',
   'connect.js',
 ];
@@ -70,12 +76,23 @@ worker.addEventListener('activate', (event) =>
     })(),
   ),
 );
-async function runtimeIdentity(url: string | undefined): Promise<string | null> {
+async function identityFromURL(url: string | undefined): Promise<string | null> {
   if (!url) return null;
   const key = applicationIdentity(url, BASE);
   if (!key) return null;
   const matches = (await listApps()).filter((app) => publicAlias(app.id) === key);
   return matches.length === 1 ? matches[0].id : null;
+}
+async function runtimeIdentity(
+  client: Pick<Client, 'id' | 'url' | 'type'> | undefined | null,
+): Promise<string | null> {
+  if (!client) return null;
+  const bound = await contexts.resolve(client);
+  if (bound) {
+    const app = await getApp(bound.application);
+    return app?.generation === bound.installationGeneration ? bound.application : null;
+  }
+  return client.type === 'window' ? identityFromURL(client.url) : null;
 }
 let managementQueue = Promise.resolve();
 worker.addEventListener('message', (event) => {
@@ -98,9 +115,7 @@ worker.addEventListener('message', (event) => {
       if (operation === 'install') {
         const app = await admitInstallation(payload, BASE);
         const windows = await worker.clients.matchAll({ type: 'window' });
-        if (
-          (await Promise.all(windows.map((c) => runtimeIdentity(c.url)))).includes(app.id)
-        )
+        if ((await Promise.all(windows.map((c) => runtimeIdentity(c)))).includes(app.id))
           throw new Error('Close application windows before replacing an installation');
         for (const stage of app.preparation?.caches || []) {
           if (
@@ -135,11 +150,7 @@ worker.addEventListener('message', (event) => {
       else if (operation === 'remove') {
         if (typeof payload !== 'string') throw new Error('Invalid installation identity');
         const windows = await worker.clients.matchAll({ type: 'window' });
-        if (
-          (await Promise.all(windows.map((c) => runtimeIdentity(c.url)))).includes(
-            payload,
-          )
-        )
+        if ((await Promise.all(windows.map((c) => runtimeIdentity(c)))).includes(payload))
           throw new Error('Close application windows before uninstalling');
         await deleteApp(payload);
         value = true;
@@ -156,12 +167,64 @@ worker.addEventListener('message', (event) => {
 worker.addEventListener('fetch', (event) => {
   event.respondWith(
     (async () => {
-      const req = event.request,
-        url = new URL(req.url),
-        client = event.clientId ? await worker.clients.get(event.clientId) : null;
+      const req = event.request;
+      const url = new URL(req.url);
+      const contextResource = await contextResourceResponse(
+        event,
+        contexts,
+        BASE,
+        undefined,
+        (diagnostic) =>
+          record(
+            'blocked-context-resource:' + JSON.stringify(diagnostic),
+            req.url,
+            req.method,
+          ),
+      );
+      if (contextResource) return contextResource;
+      const boundWorker = event.clientId
+          ? await contexts.resolveWorker(event.clientId)
+          : undefined,
+        client = boundWorker
+          ? { id: event.clientId, url: boundWorker.url, type: 'worker' as const }
+          : event.clientId
+            ? await worker.clients.get(event.clientId)
+            : null;
       // Fragments are application-local routing state, including on reload. They do
       // not select a different installed document or authorize a resource request.
       url.hash = '';
+      // New execution contexts may start only at the controller's bootstrap route.
+      // Their actual creator and reserved client are checked before serving code.
+      if (
+        [
+          'worker',
+          'sharedworker',
+          'audioworklet',
+          'paintworklet',
+          'serviceworker',
+        ].includes(req.destination)
+      ) {
+        const parentApplication = await runtimeIdentity(client);
+        const parentApp = parentApplication ? await getApp(parentApplication) : null;
+        const candidate = parentApp
+          ? new URL('__contexts/', applicationURL(parentApp, BASE))
+          : null;
+        const suffix =
+          candidate &&
+          url.origin === candidate.origin &&
+          url.pathname.startsWith(candidate.pathname)
+            ? url.pathname.slice(candidate.pathname.length)
+            : '';
+        if (
+          req.destination !== 'worker' ||
+          req.method !== 'GET' ||
+          url.search ||
+          !/^[a-f0-9-]{36}\/(?:classic|module)\.js$/.test(suffix)
+        ) {
+          record('blocked-context-startup', req.url, req.method);
+          return Response.error();
+        }
+      }
       // Browsers may fetch manifests/icons without an application client. These
       // fixed routes expose only public installation metadata and captured icons.
       const publicPath =
@@ -188,7 +251,7 @@ worker.addEventListener('fetch', (event) => {
           );
           if (admitted && resource)
             return response(
-              await getResource(app.id, resource.path),
+              await getResource(app.id, resource.path, app.generation),
               resource.contentType,
             );
         }
@@ -204,8 +267,8 @@ worker.addEventListener('fetch', (event) => {
       )
         return (await (await caches.open(BOOT)).match(url.href)) || Response.error();
       const id =
-        (await runtimeIdentity(client?.url)) ||
-        (req.mode === 'navigate' ? await runtimeIdentity(url.href) : null);
+        (await runtimeIdentity(client)) ||
+        (req.mode === 'navigate' ? await identityFromURL(url.href) : null);
       const isTrusted =
         url.origin === BASE.origin &&
         trustedFiles.some((p) => url.href === new URL(p, BASE).href);
@@ -240,12 +303,87 @@ worker.addEventListener('fetch', (event) => {
         return cached || Response.error();
       }
       if (!id) {
-        record('blocked-unmanaged', req.url, req.method);
+        record(
+          'blocked-unmanaged:' +
+            JSON.stringify({
+              clientId: event.clientId,
+              resultingClientId: event.resultingClientId,
+              destination: req.destination,
+              clientURL: client?.url,
+              bound: boundWorker?.id,
+            }),
+          req.url,
+          req.method,
+        );
         return Response.error();
       }
       const app = await getApp(id);
       if (!app) return response('<h1>Application not installed</h1>', 'text/html', 404);
       const entry = applicationURL(app, BASE);
+      const contextPrefix = new URL('__contexts/', entry).pathname;
+      if (url.origin === BASE.origin && url.pathname.startsWith(contextPrefix)) {
+        const child = url.pathname
+          .slice(contextPrefix.length)
+          .match(/^([a-f0-9-]{36})\/(classic|module)\.js$/);
+        if (
+          child &&
+          req.method === 'GET' &&
+          !url.search &&
+          req.destination === 'worker' &&
+          client &&
+          event.resultingClientId
+        ) {
+          const identity = {
+            policyVersion: CONTEXT_POLICY_VERSION,
+            id: child[1],
+            application: app.id,
+            installationGeneration: app.generation,
+            parent: client.id,
+            kind: 'dedicated-worker' as const,
+            state: 'preparing' as const,
+            url: url.href,
+          };
+          await contexts.bind(event.resultingClientId, identity);
+          const bootstrap = await (
+            await caches.open(BOOT)
+          ).match(new URL('worker-guard.js', BASE).href);
+          if (!bootstrap) return Response.error();
+          const metadata: WorkerBootstrapMetadata = {
+            identity,
+            runtime: BASE.href,
+            applicationURL: entry.href,
+            aliases: app.resources.map((r) => [
+              r.url,
+              new URL(`resources/${r.path}`, new URL('./', identity.url)).href,
+            ]),
+          };
+          return response(
+            `"use strict";\nglobalThis.__privacyContext=${JSON.stringify(metadata)};\n${await bootstrap.text()}`,
+            'text/javascript',
+            200,
+            {
+              workerSource: new URL('__contexts/', entry).href,
+              controllerSource: new URL('sw.js', BASE).href,
+            },
+          );
+        }
+        const closing = url.pathname
+          .slice(contextPrefix.length)
+          .match(/^([a-f0-9-]{36})\/close$/);
+        if (
+          closing &&
+          req.method === 'POST' &&
+          req.mode !== 'navigate' &&
+          req.destination === '' &&
+          !url.search &&
+          client &&
+          (await runtimeIdentity(client)) === app.id
+        ) {
+          const closed = await contexts.closeChild(client.id, app.id, closing[1]);
+          return response('', 'text/plain', closed ? 200 : 404);
+        }
+        return Response.error();
+      }
       if (req.mode === 'navigate') {
         // Any attempt to use a different document is refused. Bootstrap contains no untrusted markup.
         if (req.method === 'GET' && url.origin === entry.origin && !url.search) {
@@ -264,8 +402,16 @@ worker.addEventListener('fetch', (event) => {
           return Response.error();
         }
         const script = new URL('guard.js', BASE).href;
+        const nonce = crypto.randomUUID().replaceAll('-', '');
         return response(
-          `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${app.manifest.name.replace(/[&<>"]/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }) as Record<string, string>)[c] || c)}</title><link rel="manifest" href="${manifestURL(app, BASE).href}"></head><body><script src="${script}" data-installation="${app.id}"></script></body></html>`,
+          `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${app.manifest.name.replace(/[&<>"]/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }) as Record<string, string>)[c] || c)}</title><link rel="manifest" href="${manifestURL(app, BASE).href}"></head><body><script src="${script}" nonce="${nonce}" data-installation="${app.id}"></script></body></html>`,
+          'text/html',
+          200,
+          {
+            scriptNonce: nonce,
+            workerSource: new URL('__contexts/', entry).href,
+            controllerSource: new URL('sw.js', BASE).href,
+          },
         );
       }
       if (
@@ -278,7 +424,7 @@ worker.addEventListener('fetch', (event) => {
           JSON.stringify(
             prepareRuntimeDocument(
               app,
-              await getResource(app.id, app.manifest.entry),
+              await getResource(app.id, app.manifest.entry, app.generation),
               BASE,
             ),
           ),
@@ -301,11 +447,13 @@ worker.addEventListener('fetch', (event) => {
             resource.path.endsWith('.css')
               ? css(
                   app,
-                  new TextDecoder().decode(await getResource(app.id, resource.path)),
+                  new TextDecoder().decode(
+                    await getResource(app.id, resource.path, app.generation),
+                  ),
                   resource.url,
                   BASE,
                 )
-              : await getResource(app.id, resource.path),
+              : await getResource(app.id, resource.path, app.generation),
             resource.contentType || mime(resource.path),
           );
         }

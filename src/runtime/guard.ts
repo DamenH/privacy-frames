@@ -1,23 +1,11 @@
-import 'ses';
-import type { PrecacheReceipt } from '../shared/types.ts';
 import { validateMarkup } from '../shared/policy.ts';
 import { applicationIdentity, publicAlias } from '../shared/runtime-url.ts';
-import { scopeIndexedDB } from './storage/indexed-db.ts';
-import { scopeCaches } from './storage/caches.ts';
-import { preparedWorker } from './precache-registration.ts';
-import { resourceAliases } from './resource-aliases.ts';
-import { createPolicyTools } from './enforcement/native.ts';
-import { installNavigationPolicy } from './enforcement/navigation.ts';
-import { installDOMPolicy, installResourceAttributePolicy } from './enforcement/dom.ts';
-import { installEffectPolicy } from './enforcement/effects.ts';
-import { scopeWebStorage } from './enforcement/web-storage.ts';
+import { prepareWindowRealm } from './contexts/window-realm.ts';
+import type { WindowContentMetadata } from './contexts/window-realm.ts';
 
-interface InstalledContent {
+interface InstalledContent extends WindowContentMetadata {
   head: string;
   body: string;
-  aliases: [string, string][];
-  serviceWorker: PrecacheReceipt | null;
-  source: string;
   manifestURL?: string;
   attributes?: {
     html?: { name: string; value: string }[];
@@ -32,7 +20,6 @@ const rawHTML = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML')!
 const rawCreate = Document.prototype.createElement,
   rawAppend = Node.prototype.appendChild;
 const rawAttr = Element.prototype.setAttribute;
-const rawGetAttr = Element.prototype.getAttribute;
 const trustedHead = document.head,
   trustedBody = document.body;
 const nativeApply = Reflect.apply;
@@ -43,21 +30,6 @@ try {
     throw new Error(
       'Confined applications require a top-level document without an opener',
     );
-  lockdown({
-    evalTaming: 'unsafe-eval',
-    errorTaming: 'safe',
-    consoleTaming: 'safe',
-    overrideTaming: 'severe',
-  });
-  const tools = createPolicyTools();
-  const { method, accessor, descriptor, propertyOwner, apply, fail, define } = tools;
-  let applicationWorker: ReturnType<typeof preparedWorker> = null;
-  const NativeURL = URL;
-  const resources = resourceAliases({ method, accessor, descriptor, apply });
-  installNavigationPolicy(tools);
-  installDOMPolicy(tools, rawGetAttr);
-  installEffectPolicy(tools, () => applicationWorker);
-  // Management state is inaccessible; provide application-scoped Storage-compatible methods.
   const bootstrapScript = document.currentScript;
   if (!(bootstrapScript instanceof HTMLScriptElement))
     throw new Error('Trusted bootstrap script is missing');
@@ -65,19 +37,14 @@ try {
   const app = bootstrapScript.getAttribute('data-installation');
   const route = applicationIdentity(location.href, new URL('./', guardURL));
   if (!app || route !== publicAlias(app)) throw new Error('Invalid runtime identity');
-  const prefix = `pf:${app}:`;
-  const scopedCaches = scopeCaches({ prefix, method, apply });
-  {
-    const owner = propertyOwner(window, 'caches');
-    accessor(owner!, 'caches', { get: () => scopedCaches });
-  }
-  const scopedIDB = scopeIndexedDB({ prefix, method, accessor, descriptor, apply, fail });
-  for (const key of ['indexedDB', 'webkitIndexedDB', 'mozIndexedDB', 'msIndexedDB']) {
-    const owner = propertyOwner(window, key);
-    if (owner) accessor(owner, key, { get: () => scopedIDB });
-  }
-  scopeWebStorage(prefix, tools);
-  installResourceAttributePolicy(tools, resources.mapURL);
+  const appURL = new URL(location.href);
+  appURL.search = '';
+  appURL.hash = '';
+  const realm = prepareWindowRealm({
+    application: app,
+    applicationURL: appURL.href,
+    scriptNonce: bootstrapScript.nonce,
+  });
   // Static metadata contains no host authority; applications may inspect it.
 
   document.documentElement.dataset.hostReady = 'true';
@@ -92,22 +59,7 @@ try {
       // Markup was independently validated by the worker. No app script executes in this parsing step.
       validateMarkup(data.head, { initial: true });
       validateMarkup(data.body, { initial: true });
-      resources.install(data.aliases || []);
-      applicationWorker = preparedWorker(data.serviceWorker, {
-        source: data.source,
-        runtime: location.href,
-        fail,
-      });
-      define(window, 'privacyHost', {
-        value: Object.freeze({
-          version: 1,
-          application: app,
-          publisher: new NativeURL(data.source).origin,
-          mode: 'network-isolated',
-        }),
-        writable: false,
-        configurable: false,
-      });
+      realm.admitContent(data);
       // Keep the bootstrap's manifest link continuously attached. Native PWA
       // installation can inspect it while the asynchronous app content is loading.
       const template = nativeApply(rawCreate, document, [

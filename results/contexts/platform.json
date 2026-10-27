@@ -1,0 +1,48 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "value": "worker platform control",
+    "observations": [
+      {
+        "url": "http://127.0.0.1:4330/context/control.js",
+        "destination": "worker",
+        "clientId": "f957a67b-acac-4d1a-9d88-a9860935be81",
+        "resultingClientId": "d17f6785-a769-4f1e-a8e2-a23ce6e9d3da",
+        "clientURL": "http://127.0.0.1:4330/app/",
+        "clientType": "window"
+      },
+      {
+        "url": "http://127.0.0.1:4330/data",
+        "destination": "",
+        "clientId": "d17f6785-a769-4f1e-a8e2-a23ce6e9d3da",
+        "resultingClientId": "",
+        "clientURL": "http://127.0.0.1:4330/context/control.js",
+        "clientType": "worker"
+      }
+    ]
+  },
+  {
+    "name": "firefox",
+    "version": "155.0",
+    "value": "worker platform control",
+    "observations": [
+      {
+        "url": "http://127.0.0.1:4330/context/control.js",
+        "destination": "worker",
+        "clientId": "59b6673a-1f1a-4114-9609-2a32e09760bd",
+        "resultingClientId": "87d1e751-b681-40a7-ba4a-a995c98c9ea6",
+        "clientURL": "http://127.0.0.1:4330/app/",
+        "clientType": "window"
+      },
+      {
+        "url": "http://127.0.0.1:4330/data",
+        "destination": "",
+        "clientId": "87d1e751-b681-40a7-ba4a-a995c98c9ea6",
+        "resultingClientId": "",
+        "clientURL": "http://127.0.0.1:4330/context/control.js",
+        "clientType": "worker"
+      }
+    ]
+  }
+]

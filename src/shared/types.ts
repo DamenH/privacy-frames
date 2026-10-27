@@ -19,14 +19,20 @@ export interface PrecacheReceipt {
   completed: ['install', 'activate'];
   profile: 'precache-v1';
 }
+export type PreparationOutcome =
+  | { status: 'absent' }
+  | { status: 'completed'; scriptURL: string }
+  | { status: 'unsupported' | 'failed'; scriptURL: string; reason: string };
 export interface Preparation {
   profile: 'website-v1';
+  outcome: PreparationOutcome;
   serviceWorker: PrecacheReceipt | null;
   caches: { name: string; urls: string[] }[];
   ended: true;
 }
 export interface Installation {
   id: string;
+  documentBase?: string;
   manifest: InstallationMetadata;
   source: string;
   resources: Resource[];

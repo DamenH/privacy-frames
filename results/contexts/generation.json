@@ -1,0 +1,191 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-27T08:26:26.334Z",
+    "revision": "596c0be1e4de35e992a762babc89d489bdfb21f9",
+    "dirty": true,
+    "sourceSHA256": "7cf824d81d161a710e4ffbd8de50b391a7cf4f3a17aaf36e59574e216868fabb",
+    "runner": "test/context-generation.ts",
+    "runnerSHA256": "e979b0e8a5aae964691ce92a8e8567812f372c981aed18830b45ca9521270503",
+    "publisherRevision": "da0f43b878e153b733ad8f14fdae74fbd0771f34",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+      "dist-manager/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/install-worker.js": "c625d6f916bdd606e8392ffe41cba1fdfac1cf4646132dbc07d261f9879ba3a7",
+      "dist-manager/manager.js": "2dcf4086753ae9ceb8fcc9c639e56b1258b3f6e64d233b5990170c87a0ce6fb8",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+      "dist-manager/sw.js": "96375c4f54eb3995ea17234b4eb9829a11dc9d82137417005396e2a9ae41f8d4",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/guard.js": "91a613e1a20962ae57e77d868aa09debcf5a7906df6d874c4bf5318701e73336",
+      "dist-runtime/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "792b42c425db8cf6ac848d4806dbc57e37e16bf9aed868aa53f27577b928143b",
+      "dist-runtime/sw.js": "2952d8443c3feead9b7445e8e2a8954f2d5c30e7a61b301ad2ca8b88c54a8df8",
+      "dist-runtime/worker-guard.js": "941b6d8f8e1048cecadc2c1440d5b6d8a22b1d2f8715d6bac2ef86d5acc87139"
+    }
+  },
+  "fixtureSHA256": "5d1b1ad8d3e9a3987adc087230c7f63fd0a3946a48faad72e6ea7db34059dad7",
+  "scope": "Real IndexedDB storage generation and replacement snapshots; independent of confinement adapters",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "result": {
+        "sameInstalledAt": true,
+        "publisherClaimIgnored": true,
+        "firstGeneration": "4a53994c-8ee3-4c3d-a0c6-e741c71967c1",
+        "replacementGeneration": "a9344249-19b4-4fd2-8d1a-083a5f2ea39b",
+        "generations": [
+          "4a53994c-8ee3-4c3d-a0c6-e741c71967c1",
+          "a9344249-19b4-4fd2-8d1a-083a5f2ea39b",
+          "b711a996-8134-4719-8773-a67d0334af6d",
+          "08119910-c66a-45cb-b7b4-a42a9bac8460",
+          "74d98765-4041-4657-901b-be1fd5fcd442",
+          "6196d95f-9645-42bc-a7a0-2e3287e78371",
+          "51cf5fa4-0bb8-4e07-b5ca-c5505bc00da6",
+          "f1ed8ead-835f-4c29-a4e3-fd8e7db17f3a",
+          "313c5710-ff89-4da8-a897-38fdcdd63513",
+          "a941d82f-acef-4e8a-aef7-24e751281451",
+          "eb78f0e2-7e91-4799-b8fa-4320671625e4",
+          "f5ac67d5-fb9e-4ef0-851e-1232206b76e8",
+          "c59997d0-a42b-451b-9bb4-d4e087962889",
+          "c83f9586-506f-450a-bd68-d7dc358ac07a"
+        ],
+        "overlap": [
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "result": {
+        "sameInstalledAt": true,
+        "publisherClaimIgnored": true,
+        "firstGeneration": "f17299e3-8118-490b-9594-b5417e59cb98",
+        "replacementGeneration": "ca44b0d4-3b48-43eb-8cf1-0d50447b5431",
+        "generations": [
+          "f17299e3-8118-490b-9594-b5417e59cb98",
+          "ca44b0d4-3b48-43eb-8cf1-0d50447b5431",
+          "98b45e8b-baa3-45c1-a287-2b3ee7ba1183",
+          "7056801e-ebe0-4e8c-abf9-af9523e4fa5d",
+          "86c221e2-3606-4905-9349-d28d6a2a2c47",
+          "04048005-8fcd-4aed-9b95-d8fdd5e3ca42",
+          "a8945918-598a-4051-8e0d-1cbb019436a6",
+          "f6bad4e7-54ee-4d48-babc-b59d27294bb4",
+          "c42009ad-95d5-4a7b-bf2e-0f97ae27656d",
+          "d1a58e3d-e76f-4833-9c7e-3b8fccd6a05f",
+          "64c3c0c8-9b96-4a72-821c-459d5dcab2c9",
+          "fc13eaab-c40e-449a-a6c3-67430ef6ed35",
+          "269aeda1-9bc7-4c91-a539-6b4d6cde6e23",
+          "2578bd7f-2299-491f-b264-dae3d4f59b2d"
+        ],
+        "overlap": [
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          },
+          {
+            "read": "old-generation",
+            "staleReadRejected": true
+          },
+          {
+            "read": "rejected",
+            "staleReadRejected": true
+          }
+        ]
+      }
+    }
+  ]
+}

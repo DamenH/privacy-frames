@@ -6,7 +6,8 @@
       "No-manifest website installation completes with no native browser authority in publisher install code and no surviving preparation worker",
       "Root-relative CSS/resources, relative module imports and generated cache content work; private execution has no publisher worker or network fallback",
       "Mediated registration cannot enable updates, alternate workers, messaging or navigation preload; offline fresh document works",
-      "Rejected install handler terminates preparation and publishes no application"
+      "Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches",
+      "Missing independently declared resources still refuse installation"
     ]
   },
   {
@@ -16,7 +17,8 @@
       "No-manifest website installation completes with no native browser authority in publisher install code and no surviving preparation worker",
       "Root-relative CSS/resources, relative module imports and generated cache content work; private execution has no publisher worker or network fallback",
       "Mediated registration cannot enable updates, alternate workers, messaging or navigation preload; offline fresh document works",
-      "Rejected install handler terminates preparation and publishes no application"
+      "Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches",
+      "Missing independently declared resources still refuse installation"
     ]
   }
 ]

@@ -1,0 +1,1958 @@
+{
+  "date": "2026-10-27T08:26:06.432Z",
+  "runnerSha256": "7e06a66696436a39b05db722c6e78f69ad271c8435c518e3d2ab545d26ff83db",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "blank",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "2f2b6742-348b-4708-8c65-0962f18dea24",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "blank",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-blank-location",
+        "currentKey": "3424875e-f387-439a-92f8-d8567de03683",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-blank-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-blank-location"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "blank",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-blank-link",
+        "currentKey": "3026bd68-2d01-4e3e-af1b-065f777f5300",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-blank-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-blank-link"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "blank",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-blank-form",
+        "currentKey": "9d98a166-59f8-4a9a-8a9d-646da3dd7020",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-blank-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-blank-form"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "hash",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "10e66854-3ae9-49f8-98a1-481b760a4d61",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "hash",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-hash-location",
+        "currentKey": "42fef298-ff1b-4057-a8cf-91268c615c0e",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-hash-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-hash-location"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "hash",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-hash-link",
+        "currentKey": "bd63a55f-5499-4911-8142-9aa01ec7111a",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-hash-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-hash-link"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "hash",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-hash-form",
+        "currentKey": "f2ef8664-2923-433e-901a-db0331847b8b",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-hash-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-hash-form"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "replace",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL 'http://127.0.0.1:4332/seed' cannot be created in a document with origin 'http://127.0.0.1:4332' and URL 'about:blank'.",
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "c64066e2-4c0a-4bdd-9f17-659c3bc23268",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "replace",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL 'http://127.0.0.1:4332/seed' cannot be created in a document with origin 'http://127.0.0.1:4332' and URL 'about:blank'.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-replace-location",
+        "currentKey": "bb57ded9-5d7c-4ae5-a202-f8d6f6f7d85a",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-replace-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-replace-location"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "replace",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL 'http://127.0.0.1:4332/seed' cannot be created in a document with origin 'http://127.0.0.1:4332' and URL 'about:blank'.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-replace-link",
+        "currentKey": "3d8f5748-4910-4501-97b9-47ef002b1e44",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-replace-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-replace-link"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "replace",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL 'http://127.0.0.1:4332/seed' cannot be created in a document with origin 'http://127.0.0.1:4332' and URL 'about:blank'.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-replace-form",
+        "currentKey": "befccec9-489a-477d-ae49-29ed1f4cb60a",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-replace-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-replace-form"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "push",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: Failed to execute 'pushState' on 'History': A history state object with URL 'http://127.0.0.1:4332/seed' cannot be created in a document with origin 'http://127.0.0.1:4332' and URL 'about:blank'.",
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "f234f8df-2d38-464a-aa3e-232171f14e41",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "push",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: Failed to execute 'pushState' on 'History': A history state object with URL 'http://127.0.0.1:4332/seed' cannot be created in a document with origin 'http://127.0.0.1:4332' and URL 'about:blank'.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-push-location",
+        "currentKey": "e71800f6-93f6-41cd-9d76-6fc0fe40f316",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-push-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-push-location"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "push",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: Failed to execute 'pushState' on 'History': A history state object with URL 'http://127.0.0.1:4332/seed' cannot be created in a document with origin 'http://127.0.0.1:4332' and URL 'about:blank'.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-push-link",
+        "currentKey": "71d22a32-b539-41ba-b43b-13b965f34c58",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-push-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-push-link"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "push",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: Failed to execute 'pushState' on 'History': A history state object with URL 'http://127.0.0.1:4332/seed' cannot be created in a document with origin 'http://127.0.0.1:4332' and URL 'about:blank'.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-push-form",
+        "currentKey": "c9738ca2-dc07-40ab-9a13-c307c8f03e27",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-push-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-push-form"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/parent",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "485f31ee-c6d8-4cbb-9db1-ab4ec708b4d5",
+        "count": 2,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/parent",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-location",
+        "currentKey": "24b0b342-49b4-4b95-93bc-dc6e156844a9",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-location"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/parent",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-link",
+        "currentKey": "07639be0-3942-4a2c-8b74-1bf401a8e734",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-link"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/parent",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-form",
+        "currentKey": "b46043e3-6877-4419-baec-a2c9c9385f36",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-form"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-hash",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/parent#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "af3d86e6-d58c-4224-a3ab-4329b59b28ab",
+        "count": 3,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-hash",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/parent#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-hash-location",
+        "currentKey": "972bd72d-f945-4500-b1fd-938d91150fbc",
+        "count": 3,
+        "href": "http://127.0.0.1:4332/receiver-open-hash-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-hash-location"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-hash",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/parent#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-hash-link",
+        "currentKey": "86d6b3ca-ff9b-42fe-96e1-bcaa4290ae5c",
+        "count": 3,
+        "href": "http://127.0.0.1:4332/receiver-open-hash-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-hash-link"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-hash",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/parent#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-hash-form",
+        "currentKey": "6972a215-0467-490b-829b-ff36a0b6c212",
+        "count": 3,
+        "href": "http://127.0.0.1:4332/receiver-open-hash-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-hash-form"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-replace",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/seed",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "8f74deb5-4f28-407c-9506-0424697a4ada",
+        "count": 2,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-replace",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/seed",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-replace-location",
+        "currentKey": "6649e989-a0c2-45ff-a194-2c5643ba9558",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-replace-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-replace-location"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-replace",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/seed",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-replace-link",
+        "currentKey": "2708e74f-4f11-474c-884c-26e3e6ef42d8",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-replace-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-replace-link"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-replace",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/seed",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-replace-form",
+        "currentKey": "a46b10b1-be62-41a7-bef6-1e09d825bf19",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-replace-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-replace-form"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-push",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/seed",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "2766a98f-dddf-4d5b-9dc1-9be2bc0ab4e3",
+        "count": 3,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-push",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/seed",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-push-location",
+        "currentKey": "8565f86b-1bc6-4376-a214-4fcc03f9977c",
+        "count": 3,
+        "href": "http://127.0.0.1:4332/receiver-open-push-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-push-location"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-push",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/seed",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-push-link",
+        "currentKey": "5bf0566e-35ed-4dee-bbd2-da55e56909c8",
+        "count": 3,
+        "href": "http://127.0.0.1:4332/receiver-open-push-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-push-link"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "open-push",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "http://127.0.0.1:4332/seed",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-push-form",
+        "currentKey": "6a7c04f3-2204-4e4c-8a84-08b391cc1958",
+        "count": 3,
+        "href": "http://127.0.0.1:4332/receiver-open-push-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-push-form"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "blank",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "0a61994a-688e-460d-88ff-1de3ea6da1d6",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "blank",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-blank-location",
+        "currentKey": "2f15b334-e9e5-4ee5-a24b-a30e5b1642bc",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-blank-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-blank-location"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "blank",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-blank-link",
+        "currentKey": "e7984cc7-bc96-44b1-a4af-549279e8ca3a",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-blank-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-blank-link"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "blank",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-blank-form",
+        "currentKey": "ddbfea45-c3cf-4c78-81b9-3788d2933975",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-blank-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-blank-form"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "hash",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "ac88896e-392a-4fa9-bd1f-c9a8c48241a4",
+        "count": 2,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "hash",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-hash-location",
+        "currentKey": "7e3e197b-9425-4703-817d-9e1e1cc37ffb",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-hash-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-hash-location"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "hash",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-hash-link",
+        "currentKey": "4751d171-adcb-41fd-839f-a7041065feb1",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-hash-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-hash-link"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "hash",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-hash-form",
+        "currentKey": "ec564fbd-b24d-4705-bb9d-24c90b72fe2b",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-hash-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-hash-form"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "replace",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "96ff50ae-0a16-49e3-97c0-1e20befaa8dc",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "replace",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-replace-location",
+        "currentKey": "93135a00-ef2c-4020-9ee6-ce6409fe7caf",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-replace-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-replace-location"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "replace",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-replace-link",
+        "currentKey": "f816e060-9e95-400f-a723-88594a09adda",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-replace-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-replace-link"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "replace",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-replace-form",
+        "currentKey": "233a55e6-b7c4-4109-b79e-926aba69dbcb",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-replace-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-replace-form"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "push",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "54d0ed87-39d8-4f3c-ba7c-ec522b633b69",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "push",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-push-location",
+        "currentKey": "e3299536-32a0-412e-9330-26543f14d448",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-push-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-push-location"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "push",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-push-link",
+        "currentKey": "ab17b4a8-d4fd-420f-8e80-868837828604",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-push-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-push-link"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "push",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-push-form",
+        "currentKey": "f22898b2-fab9-4f81-a848-ced406e847a6",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-push-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-push-form"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "46526fbd-0e26-409f-b114-e9f584156d8b",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-location",
+        "currentKey": "631a2350-9523-4ca5-89d8-4840cbd045f9",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-location"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-link",
+        "currentKey": "07c7562a-b197-47e8-b0ba-7772ce717399",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-link"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-form",
+        "currentKey": "bab055dc-9627-4b50-8f4f-b299d466f931",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-open-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-form"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-hash",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "8c38d534-7759-4be4-8c3e-1fd75c23b819",
+        "count": 3,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-hash",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-hash-location",
+        "currentKey": "379d117f-79a5-418d-8d17-39bb22955eb9",
+        "count": 3,
+        "href": "http://127.0.0.1:4332/receiver-open-hash-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-hash-location"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-hash",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-hash-link",
+        "currentKey": "36722c73-7a10-4337-8665-28755b47eedb",
+        "count": 3,
+        "href": "http://127.0.0.1:4332/receiver-open-hash-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-hash-link"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-hash",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank#host-ready",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": null,
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-hash-form",
+        "currentKey": "7cf88db3-c068-48dd-b65b-2613e391962c",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-hash-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-hash-form"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-replace",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "39a4f145-151c-4383-bd2c-9faf4886dc43",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-replace",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-replace-location",
+        "currentKey": "93e1fb7e-b080-4908-9a08-9c6400e66ec3",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-replace-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-replace-location"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-replace",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-replace-link",
+        "currentKey": "7b460e90-08ba-4460-ba02-c716def8ac64",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-replace-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-replace-link"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-replace",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-replace-form",
+        "currentKey": "62a67057-1f65-48a8-9908-a7a75b68f314",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-open-replace-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-replace-form"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-push",
+      "route": "blank",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "about:blank",
+        "currentKey": "7d895a18-bc6c-4b7d-8d56-9f0af3f56193",
+        "count": 1,
+        "href": "about:blank",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-push",
+      "route": "location",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-push-location",
+        "currentKey": "466773b1-1799-4ca5-a15f-0946ba1bc180",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-push-location",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-push-location"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-push",
+      "route": "link",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-push-link",
+        "currentKey": "dd1e59f6-a79a-4bb0-bc8e-45107f19b4d6",
+        "count": 2,
+        "href": "http://127.0.0.1:4332/receiver-open-push-link",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-push-link"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "open-push",
+      "route": "form",
+      "before": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "afterSeed": {
+        "count": 0,
+        "href": "about:blank",
+        "arrayRetained": true,
+        "policyRetained": true
+      },
+      "seedError": "SecurityError: The operation is insecure.",
+      "events": [],
+      "after": {
+        "currentURL": "http://127.0.0.1:4332/receiver-open-push-form",
+        "currentKey": "4bfff331-2216-4989-95a8-2698a7edeb8d",
+        "count": 1,
+        "href": "http://127.0.0.1:4332/receiver-open-push-form",
+        "arrayRetained": false,
+        "policyRetained": false
+      },
+      "requests": [
+        "/receiver-open-push-form"
+      ]
+    }
+  ]
+}
