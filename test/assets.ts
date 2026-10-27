@@ -54,10 +54,7 @@ for (const [site, base, directory] of [
   }
 }
 for (const id of ['notes', 'image', 'adversary', 'playground', 'ordinary']) {
-  const base =
-    id === 'playground'
-      ? 'https://pf-adversary.damenh.com/playground/'
-      : `https://pf-${id}.damenh.com/`;
+  const base = `https://privacy-frames.github.io/apps/${id}/`;
   const directory = new URL('dist-examples/' + id + '/', root);
   for (const file of (await filesUnder(directory)).filter(
     (file) => !['_headers', '_redirects'].includes(file.split('/').at(-1)),

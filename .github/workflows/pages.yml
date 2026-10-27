@@ -28,6 +28,7 @@ jobs:
       - run: npx playwright install --with-deps chromium firefox
         timeout-minutes: 10
       - run: npm test
+      - run: npm run test:lifecycle
       - run: npm run test:review
       - run: npm run test:storage-policy
       - run: npm run test:mobile

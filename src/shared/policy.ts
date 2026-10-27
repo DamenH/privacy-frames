@@ -2,7 +2,7 @@ import { parse, parseFragment } from 'parse5';
 import type { DefaultTreeAdapterTypes } from 'parse5';
 import type { InstallationMetadata } from './types';
 
-export const LIMITS = Object.freeze({ files: 100, bytes: 100 * 1024 * 1024 });
+export const LIMITS = Object.freeze({ files: 1000, bytes: 100 * 1024 * 1024 });
 
 const blockedElements = new Set([
   'iframe',

@@ -24,7 +24,7 @@ confinement proof.
 | Execution contexts and navigation | `enforcement/navigation.ts`, `enforcement/effects.ts`, `response-policy.ts` | CSP and protected APIs deny frames, popups, application workers and worklets. A native Navigation API listener cancels document exits. External embedding/opener tests remain separate from ordinary request tests. Browser menu actions and browser defects are outside scope. |
 | Storage | `enforcement/web-storage.ts`, `storage/indexed-db.ts`, `storage/caches.ts` | Namespaces apply at native factory prototypes; Web Storage handles and storage-event fields expose scoped views. Cache match options cannot replace the final prefixed cache name. Tests read back same-app data and check cross-app access and enumeration. Shared origin quotas and timing are not isolation guarantees. |
 | Routing and admission | `runtime/worker.ts`, `runtime/admission.ts`, `shared/runtime-url.ts` | Worker derives identity from actual clients, admits exact resource URLs and queries, and rejects unknown requests without network fallback. Full source digests govern storage; short aliases are collision checked. Admission reconstructs metadata and checks bodies and hashes before storage. |
-| Management and lifecycle | `bridge/connect.ts`, `manager/services/runtime-bridge.ts`, worker management handlers | Bridge checks the real parent window and configured origin. Worker independently requires a role issued for a trusted bridge navigation and bound to its browser client ID. Existing tests call worker management through a test-only captured native capability. Replacements/removals reject active app windows. |
+| Management and lifecycle | `bridge/connect.ts`, `manager/services/runtime-bridge.ts`, worker management handlers | Bridge checks the real parent window and configured origin. Worker independently requires a role issued for a trusted bridge navigation and bound to its browser client ID. Existing tests call worker management through a test-only captured native capability. Replacements/removals reject active app windows. `test/lifecycle.ts` replaces the host controller while an app is open, then checks saved state, request blocking and management after reload. |
 | Installation execution | `installation/import-website.ts`, `prepare-worker.ts` | Publisher preparation receives a compartment with a download broker and in-memory caches. Explicit lifecycle promises finish before the native worker is terminated and installation returned. No native publisher controller survives into confined execution. |
 
 ## Changes and findings
@@ -48,6 +48,8 @@ Independent network checks require live DNS, HTTP/TCP and STUN UDP controls.
 The retained baseline receipts show zero private-marker network observations for
 the calibrated routes. Fresh post-change receipts are kept separately from the
 baseline. Page-reported refusal alone is not treated as evidence of no traffic.
+
+The new lifecycle regression covers an actual controller replacement in both browsers. It does not establish BFCache restoration behavior or atomically test every concurrent navigation/install schedule.
 
 ## Limits
 

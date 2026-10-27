@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-27T04:02:04.865Z",
+  "date": "2026-10-27T04:15:32.540Z",
   "browsers": [
     {
       "name": "chromium",
@@ -22,6 +22,7 @@
         "cloneBlocked": true,
         "executed": false
       },
+      "prepared": "activated",
       "controlMutation": "text/javascript"
     },
     {
@@ -45,6 +46,7 @@
         "cloneBlocked": true,
         "executed": false
       },
+      "prepared": "activated",
       "controlMutation": "text/javascript"
     }
   ]

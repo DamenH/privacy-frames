@@ -39,7 +39,7 @@ Paste its webpage URL into the manager and choose **Install**. Open the installe
 copy from the list. Publishers need readable cross-origin responses through CORS.
 The host discovers resources through standard webpage declarations, supported
 module dependencies and supported service-worker precaching. The total
-installation limit is 100 MiB, with at most 100 resources.
+installation limit is 100 MiB, with at most 1,000 resources.
 
 A standard web app manifest can supply names, icons and launch preferences. The
 host generates a local manifest for each installation. There is no host-specific

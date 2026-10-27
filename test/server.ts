@@ -86,6 +86,13 @@ export async function servers() {
           );
           return;
         }
+        if (port === 4218 && relative === '/review/sw.js') {
+          response.setHeader('Content-Type', 'text/javascript');
+          response.end(
+            "addEventListener('install', event => event.waitUntil(skipWaiting())); addEventListener('activate', event => event.waitUntil(clients.claim()));",
+          );
+          return;
+        }
         if (port === 4218 && relative === '/review/') {
           response.setHeader('Content-Type', 'text/html');
           response.end(

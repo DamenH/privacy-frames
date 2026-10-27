@@ -5,7 +5,7 @@
   "examples": [
     {
       "name": "Notebook",
-      "url": "https://pf-notes.damenh.com/"
+      "url": "https://privacy-frames.github.io/apps/notes/"
     },
     {
       "name": "PhotoCraft",
@@ -13,11 +13,11 @@
     },
     {
       "name": "Hostile app",
-      "url": "https://pf-adversary.damenh.com/"
+      "url": "https://privacy-frames.github.io/apps/adversary/"
     },
     {
       "name": "Code playground",
-      "url": "https://pf-adversary.damenh.com/playground/"
+      "url": "https://privacy-frames.github.io/apps/playground/"
     },
     {
       "name": "Pitch Training",

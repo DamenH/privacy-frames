@@ -57,6 +57,11 @@ try {
         }
         return { value, typeBlocked, cloneBlocked, executed: '__dataExecuted' in window };
       });
+      const prepared = await app.evaluate(async () => {
+        const registration = await navigator.serviceWorker.ready;
+        return registration.active?.state;
+      });
+      assert.equal(prepared, 'activated');
       assert.deepEqual(data, {
         value: { value: 42 },
         typeBlocked: true,
@@ -80,6 +85,7 @@ try {
         confined,
         unrestricted,
         data,
+        prepared,
         controlMutation,
       });
       await context.close();

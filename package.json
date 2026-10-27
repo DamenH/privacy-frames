@@ -20,7 +20,8 @@
     "format:check": "prettier --check src scripts test *.json .github deployment --ignore-unknown",
     "build:examples": "tsx scripts/build-examples.ts",
     "test:wasm": "node test/wasm.ts",
-    "test:review": "node test/evaluation-review.ts"
+    "test:review": "node test/evaluation-review.ts",
+    "test:lifecycle": "node test/lifecycle.ts"
   },
   "dependencies": {
     "es-module-lexer": "^3.0.4",

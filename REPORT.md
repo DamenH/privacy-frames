@@ -38,6 +38,8 @@ SES freezes JavaScript intrinsics, and setup captures native methods before appl
 
 Local storage, session storage, IndexedDB and Cache Storage expose application-scoped names through their ordinary interfaces. Enforcement covers prototype calls, property access, enumeration and storage events. Applications cannot use these interfaces to open the host's installation database or another application's stores. Installation identity uses the full source-URL digest; choosing another application's display name does not inherit its storage. Public URLs use an 11-character alias derived from 64 digest bits, with collisions rejected during installation.
 
+Browser permission grants, such as microphone access, are shared across applications on the runtime origin. Per-application permission mediation remains future work.
+
 A trusted iframe on the runtime origin connects the manager to installation storage. Both endpoints check the actual peer window and browser-reported origin. The runtime worker separately authorizes management messages using a role bound to a trusted browser client. The bridge provides installation operations without exposing a general request proxy.
 
 The manager and runtime use same-site, different-origin domains so iframe installation and top-level execution can share runtime storage. Startup checks storage access and worker control. Tests verify shared installation state for this same-site deployment. These checks alone do not detect a separate but accessible storage partition; cross-site controls demonstrate that limitation.
