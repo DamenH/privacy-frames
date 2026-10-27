@@ -1,0 +1,57 @@
+{
+  "observed": "2026-10-27T04:34:52.618Z",
+  "revision": "84d87c224324a67402997cd39d70e0281132912a",
+  "managerWorkflow": 40450127518,
+  "runtimeWorkflow": 40450160258,
+  "publisherRevision": "b8ce7bca6681bc1dd42ee24a783f1555692c03b0",
+  "assets": [
+    {
+      "url": "https://pf.damenh.com/config.json",
+      "sha256": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+      "bytes": 817,
+      "server": "GitHub.com"
+    },
+    {
+      "url": "https://pf.damenh.com/manager.js",
+      "sha256": "ae099b49301cdc19e5e131f6c0f754fa9740154fba01989cf2a581beebf25c81",
+      "bytes": 1189336,
+      "server": "GitHub.com"
+    },
+    {
+      "url": "https://pf.damenh.com/install-worker.js",
+      "sha256": "48bfb97abbbc3cb6c02f62c8ccb2be3e89e8dca0a16c9b6a288bf0250fd4318d",
+      "bytes": 296047,
+      "server": "GitHub.com"
+    },
+    {
+      "url": "https://pf.damenh.com/sw.js",
+      "sha256": "2d076ef118db7d980f3bf50d0035646f13ccdb37d7603369bd5646330c7a99f8",
+      "bytes": 1720,
+      "server": "GitHub.com"
+    },
+    {
+      "url": "https://apps.pf.damenh.com/config.json",
+      "sha256": "4a81507df422d6f63324ab32d1aaab63610d74c5921ee8ce79e0e7aaad78345c",
+      "bytes": 817,
+      "server": "GitHub.com"
+    },
+    {
+      "url": "https://apps.pf.damenh.com/guard.js",
+      "sha256": "ee609604bd280fa4150f6c2e51459fcd80931fdb9ae53cc3f7cf964689e8a456",
+      "bytes": 578649,
+      "server": "GitHub.com"
+    },
+    {
+      "url": "https://apps.pf.damenh.com/connect.js",
+      "sha256": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "bytes": 6637,
+      "server": "GitHub.com"
+    },
+    {
+      "url": "https://apps.pf.damenh.com/sw.js",
+      "sha256": "0f7bf281726b11b1af0554047be15051725e617ec85dcf57982a99f6f2df237a",
+      "bytes": 326754,
+      "server": "GitHub.com"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-27T04:32:22.550Z",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "confined": {
+        "conversions": 1,
+        "fragment": "",
+        "pathname": "/runtime/Gyb-i86JtjE/review/"
+      },
+      "attribute": {
+        "conversions": 1,
+        "value": "conversion control"
+      },
+      "nativeAttribute": {
+        "conversions": 1,
+        "value": "conversion control"
+      },
+      "unrestricted": {
+        "conversions": 1,
+        "fragment": "#coercion-1",
+        "pathname": "/review/"
+      },
+      "data": {
+        "value": {
+          "value": 42
+        },
+        "typeBlocked": true,
+        "cloneBlocked": true,
+        "executed": false
+      },
+      "prepared": "activated",
+      "controlMutation": "text/javascript"
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "confined": {
+        "conversions": 1,
+        "fragment": "",
+        "pathname": "/runtime/Gyb-i86JtjE/review/"
+      },
+      "attribute": {
+        "conversions": 1,
+        "value": "conversion control"
+      },
+      "nativeAttribute": {
+        "conversions": 1,
+        "value": "conversion control"
+      },
+      "unrestricted": {
+        "conversions": 1,
+        "fragment": "#coercion-1",
+        "pathname": "/review/"
+      },
+      "data": {
+        "value": {
+          "value": 42
+        },
+        "typeBlocked": true,
+        "cloneBlocked": true,
+        "executed": false
+      },
+      "prepared": "activated",
+      "controlMutation": "text/javascript"
+    }
+  ]
+}

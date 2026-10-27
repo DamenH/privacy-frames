@@ -1,0 +1,135 @@
+[
+  {
+    "name": "chromium",
+    "environment": "local",
+    "version": "153.0.8010.12",
+    "checks": [
+      "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
+      "Completed installation is available through mediated worker readiness; unsupported updates reject",
+      "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
+      "Native microphone input reaches pitch analysis and capture stops; 220.5 Hz detected",
+      "Browser-denied microphone permission is handled without a capture stream",
+      "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
+      "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
+    ],
+    "worker": {
+      "state": "activated",
+      "updateDenied": true,
+      "script": "http://127.0.0.1:4211/runtime/ywJX53taGnk/pitch-training/sw.js"
+    },
+    "frequency": 220.5,
+    "executableReceipt": [
+      {
+        "url": "https://damenh.github.io/pitch-training/assets/index-C1XRTSWq.js",
+        "sha256": "aaa3eb69842ebe89194bb6addceb0cc4e500c78a247a0f1f30c95973358993f8"
+      },
+      {
+        "url": "https://damenh.github.io/pitch-training/sw.js",
+        "sha256": "c483b319e828d5bac11bf36c6603daf8b0ce808e9e5ebaf4b4517a3da131208f"
+      }
+    ],
+    "maintenance": [],
+    "policyObservations": [
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "http://127.0.0.1:4211/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "http://127.0.0.1:4211/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "http://127.0.0.1:4211/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "http://127.0.0.1:4211/favicon.ico"
+      },
+      {
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "url": "http://127.0.0.1:4211/favicon.ico"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "name": "firefox",
+    "environment": "local",
+    "version": "155.0",
+    "checks": [
+      "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
+      "Completed installation is available through mediated worker readiness; unsupported updates reject",
+      "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
+      "Native microphone input reaches pitch analysis and capture stops; 1000 Hz detected",
+      "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
+      "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
+    ],
+    "worker": {
+      "state": "activated",
+      "updateDenied": true,
+      "script": "http://127.0.0.1:4211/runtime/ywJX53taGnk/pitch-training/sw.js"
+    },
+    "frequency": 1000,
+    "executableReceipt": [
+      {
+        "url": "https://damenh.github.io/pitch-training/assets/index-C1XRTSWq.js",
+        "sha256": "aaa3eb69842ebe89194bb6addceb0cc4e500c78a247a0f1f30c95973358993f8"
+      },
+      {
+        "url": "https://damenh.github.io/pitch-training/sw.js",
+        "sha256": "c483b319e828d5bac11bf36c6603daf8b0ce808e9e5ebaf4b4517a3da131208f"
+      }
+    ],
+    "maintenance": [
+      {
+        "port": 4211,
+        "path": "/runtime/sw.js",
+        "method": "GET"
+      }
+    ],
+    "policyObservations": [
+      {
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "url": "http://127.0.0.1:4211/runtime/guard.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "url": "http://127.0.0.1:4211/runtime/guard.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "url": "http://127.0.0.1:4211/runtime/guard.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "url": "http://127.0.0.1:4211/runtime/guard.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8914}]",
+        "url": "http://127.0.0.1:4211/runtime/sw.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 281}]",
+        "url": "http://127.0.0.1:4211/runtime/guard.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7433}]",
+        "url": "http://127.0.0.1:4211/runtime/guard.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 7439}]",
+        "url": "http://127.0.0.1:4211/runtime/guard.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 3474}]",
+        "url": "http://127.0.0.1:4211/runtime/guard.js"
+      },
+      {
+        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 8914}]",
+        "url": "http://127.0.0.1:4211/runtime/sw.js"
+      }
+    ],
+    "errors": []
+  }
+]

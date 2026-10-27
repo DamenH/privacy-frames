@@ -111,3 +111,12 @@ word counts tokenize URLs and identifiers differently from `wc -w`.
 All script outputs were reviewed. Soft style warnings do not establish a defect
 in a particular sentence, and the audit does not claim that every scanner exits
 successfully.
+
+## Final release confirmation
+
+The final `84d87c2` corpus completed after this prose review. Its receipt is
+`results/evaluation/compatibility-release.json`: all 16 standalone controls and
+the same six confined task/offline pairs pass. Excalidraw now proceeds beyond the
+namespace write and encounters unsupported script imports during preparation.
+The report’s preparation, script-loading and context categories remain accurate;
+its frozen text did not require another edit.

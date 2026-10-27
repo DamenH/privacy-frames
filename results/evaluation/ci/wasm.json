@@ -1,0 +1,22 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "host": "http://127.0.0.1:4210/privacy-frames/",
+    "checks": [
+      "Initial inline module, preload Wasm and transitive relocated import execute",
+      "Wasm instantiation and module graph work offline",
+      "Private network marker absent at receiver; native workers remain refused"
+    ]
+  },
+  {
+    "name": "firefox",
+    "version": "155.0",
+    "host": "http://127.0.0.1:4210/privacy-frames/",
+    "checks": [
+      "Initial inline module, preload Wasm and transitive relocated import execute",
+      "Wasm instantiation and module graph work offline",
+      "Private network marker absent at receiver; native workers remain refused"
+    ]
+  }
+]

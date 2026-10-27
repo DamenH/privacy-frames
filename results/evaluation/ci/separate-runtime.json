@@ -1,0 +1,28 @@
+[
+  {
+    "name": "chromium",
+    "version": "153.0.8010.12",
+    "checks": [
+      "Same-site cross-origin iframe connects without a popup",
+      "Readable source-bound URL, scoped persistence and separate manager storage",
+      "Cached manager library launches installed application offline",
+      "A publisher parent cannot authenticate to a real runtime bridge",
+      "Non-index entry is hidden and a wrong label redirects without losing the app fragment",
+      "External embedding cannot run a private-state disclosure script; unrestricted frame control works",
+      "A forced 64-bit alias collision refuses installation without overwriting an app"
+    ]
+  },
+  {
+    "name": "firefox",
+    "version": "155.0",
+    "checks": [
+      "Same-site cross-origin iframe connects without a popup",
+      "Readable source-bound URL, scoped persistence and separate manager storage",
+      "Cached manager library launches installed application offline",
+      "A publisher parent cannot authenticate to a real runtime bridge",
+      "Non-index entry is hidden and a wrong label redirects without losing the app fragment",
+      "External embedding cannot run a private-state disclosure script; unrestricted frame control works",
+      "A forced 64-bit alias collision refuses installation without overwriting an app"
+    ]
+  }
+]

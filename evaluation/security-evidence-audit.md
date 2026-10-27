@@ -6,7 +6,10 @@ and receipts support the observations below; this audit does not replace their
 revision and browser provenance. HEAD at review was
 `b4dbf2e6367929cf216d883eaf90a5167e587253`, with concurrent evaluation edits in the
 worktree. A follow-up inspected `97d498b6708b48a79f52fd66839b84b8a0849489`
-and the added lifecycle and compatibility regressions.
+and the added lifecycle and compatibility regressions. The final source review
+inspected `84d87c224324a67402997cd39d70e0281132912a`, including its diff from
+`97d498b` and the current regression assertions and receipts. This audit runs no
+tests itself; source-to-run provenance remains the release audit's responsibility.
 
 ## Controls and measured coverage
 
@@ -37,7 +40,7 @@ and the added lifecycle and compatibility regressions.
    `privacy-frames/host`. The parent verified that transfer through GitHub's API.
    The report's current inventory link therefore identifies the maintained source.
    The initial finding relied on the former repository name.
-4. **Deployment evidence pending:** current configuration uses
+4. **Deployment provenance requirement:** current configuration uses
    `apps.pf.damenh.com`; the historical release receipt identifies
    `pf-apps.damenh.com`. Preserve that old provenance and use fresh deployment
    receipts to establish behavior at the new hostname.
@@ -61,11 +64,11 @@ behavior.
 | Initial JSON scripts | Only initial inline `application/json` and `application/ld+json` blocks receive the data exception. External data scripts and speculation rules remain refused. Runtime preparation retains the data nodes; existing mutation and insertion guards still apply to script elements. | Import tests assert data retention and refusal cases. Browser regressions read the JSON, reject type mutation and clone insertion, with a native mutation control. They do not claim execution of JSON as a successful native control. |
 | Admission limits | Shared limits now permit 1,000 resources with the unchanged 100 MiB byte cap. Import and admission read the same limits. Admission independently counts resources and hashes bytes before publication. Raising a count limit adds capacity without granting an effect capability. | Static consistency assessed. The follow-up did not run a boundary-size installation or measure resource-exhaustion behavior; availability remains outside the stated threat model. |
 
-## Proposed compartment-global alias
+## Implemented compartment-global alias
 
-The proposed preparation change removes `self: world` and defines `self` as an
+The final preparation source removes `self: world` and defines `self` as an
 alias of `compartment.globalThis` before evaluating publisher code. Static review
-supports this change: it introduces no native worker authority. The installed SES
+finds no native worker authority introduced by this change. The installed SES
 implementation creates a new `globalObject` for a compartment; the
 `Compartment.prototype.globalThis` getter returns that private object. It does
 not return the surrounding native worker global.
@@ -79,13 +82,16 @@ changes the compartment's namespace, rather than the native worker global.
 Writable and configurable `self` lets publisher code replace its own alias; it
 adds no reference to a more privileged object.
 
-Keep the definition before publisher evaluation, retain the same endowments,
-and do not replace the alias value with the surrounding `worker` or native
-`globalThis`. `importScripts` is still unsupported. Namespace compatibility alone
-therefore does not establish Workbox support. A functional fixture should check
-`self === globalThis`, a publisher-defined namespace property and continued
-absence of native messaging/worker authority. This section assesses the proposal;
-it does not claim that the change or fixture has been executed.
+The implemented definition precedes publisher evaluation and retains those
+endowments. The review fixture in `test/server.ts` assigns a publisher namespace
+property, checks `self === globalThis`, and throws if `postMessage`, `navigator`,
+`Worker` or `importScripts` exists in the compartment global. Successful
+preparation in `test/evaluation-review.ts` requires that fixture to complete.
+Its retained receipt reaches the activated state in Chromium 153.0.8010.12 and
+Firefox 155.0. The website-installation receipt also records successful and
+rejected preparation, worker termination and unavailable runtime publisher-worker
+operations in both browsers. These checks support the alias and listed absence
+claims; they do not establish general Workbox or `importScripts` support.
 
 ## Files read
 
@@ -117,8 +123,25 @@ listed policy and navigation files. Follow-up evidence:
 `results/evaluation/review-regressions.json` and
 `results/evaluation/lifecycle.json`.
 
-The alias proposal also inspected the installed SES implementation in
+The alias review also inspected the installed SES implementation in
 `node_modules/ses/src/compartment.js`: compartment global-object creation and the
 `globalThis` getter. The attribute-normalization follow-up re-read
 `src/runtime/enforcement/dom.ts`, `test/evaluation-review.ts` and its current
 receipt.
+
+Final-source follow-up: diff `97d498b..84d87c2` for preparation, attribute
+normalization, the review fixture and regression, and `REPORT.md`; current
+`evaluation/security-review.md`, `results/evaluation/review-regressions.json` and
+`results/website-installation.json`. The report retains its accessible-partition
+qualification and shared browser-permission limitation. Fresh public checks for
+this source were pending when this audit was finalized; no old public receipt is
+presented here as evidence for the final deployment.
+
+## Verification after the source audit
+
+The primary agent subsequently verified final source `84d87c2` through successful
+manager/runtime Pages deployments, 51 matching public assets, both-browser
+installation/storage/embedding checks and the complete final corpus. Fresh CI
+receipts and their hashes are indexed in `results/ci.json`; the final deployment
+and requirement audit is `evaluation/COMPLETION.md`. This closes the deployment
+evidence requirement without changing the scope of the independent source audit.

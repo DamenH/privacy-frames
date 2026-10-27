@@ -1,35 +1,81 @@
 {
-  "date": "2026-10-26",
-  "sites": [
+  "date": "2026-10-27",
+  "provider": "GitHub Pages",
+  "repositories": [
     {
-      "repository": "DamenH/privacy-frames",
-      "hostname": "pf.damenh.com",
-      "cname": "pf.damenh.com",
+      "repository": "privacy-frames/host",
+      "public": true,
+      "pagesURL": "https://pf.damenh.com/",
+      "customDomain": "pf.damenh.com",
       "httpsEnforced": true,
-      "server": "GitHub.com",
-      "certificateNames": [
+      "buildType": "workflow"
+    },
+    {
+      "repository": "privacy-frames/runtime",
+      "public": true,
+      "pagesURL": "https://apps.pf.damenh.com/",
+      "customDomain": "apps.pf.damenh.com",
+      "httpsEnforced": true,
+      "buildType": "workflow"
+    },
+    {
+      "repository": "privacy-frames/apps",
+      "public": true,
+      "pagesURL": "https://privacy-frames.github.io/apps/",
+      "customDomain": null,
+      "httpsEnforced": true,
+      "buildType": "workflow"
+    }
+  ],
+  "tls": [
+    {
+      "hostname": "pf.damenh.com",
+      "verified": true,
+      "names": [
         [
           "DNS",
           "pf.damenh.com"
         ]
       ],
-      "certificateExpiry": "Jan 23 22:52:06 2027 GMT"
+      "expires": "Jan 23 22:52:06 2027 GMT"
     },
     {
-      "repository": "DamenH/privacy-frames-apps",
-      "hostname": "pf-apps.damenh.com",
-      "cname": "pf-apps.damenh.com",
-      "httpsEnforced": true,
-      "server": "GitHub.com",
-      "certificateNames": [
+      "hostname": "apps.pf.damenh.com",
+      "verified": true,
+      "names": [
         [
           "DNS",
-          "pf-apps.damenh.com"
+          "apps.pf.damenh.com"
         ]
       ],
-      "certificateExpiry": "Jan 23 22:30:08 2027 GMT"
+      "expires": "Jan 25 02:56:46 2027 GMT"
     }
   ],
-  "retiredPublisher": "pf-resources.damenh.com",
-  "retiredPublisherDNS": "NXDOMAIN"
+  "retiredDNS": [
+    {
+      "hostname": "pf-apps.damenh.com",
+      "nxdomain": true
+    },
+    {
+      "hostname": "pf-notes.damenh.com",
+      "nxdomain": true
+    },
+    {
+      "hostname": "pf-image.damenh.com",
+      "nxdomain": true
+    },
+    {
+      "hostname": "pf-adversary.damenh.com",
+      "nxdomain": true
+    },
+    {
+      "hostname": "pf-ordinary.damenh.com",
+      "nxdomain": true
+    }
+  ],
+  "remainingProjectWorkers": [],
+  "sourceRevision": "84d87c224324a67402997cd39d70e0281132912a",
+  "managerRun": 40450127518,
+  "runtimeRun": 40450160258,
+  "publisherRun": 40448128112
 }

@@ -1,0 +1,85 @@
+{
+  "recordedAt": "2026-10-27T04:34:16.186492+00:00",
+  "cutoverTestedRevision": "97d498b6708b48a79f52fd66839b84b8a0849489",
+  "repositories": [
+    {
+      "repository": "privacy-frames/host",
+      "public": true,
+      "pagesURL": "https://pf.damenh.com/",
+      "customDomain": "pf.damenh.com",
+      "httpsEnforced": true,
+      "buildType": "workflow"
+    },
+    {
+      "repository": "privacy-frames/runtime",
+      "public": true,
+      "pagesURL": "https://apps.pf.damenh.com/",
+      "customDomain": "apps.pf.damenh.com",
+      "httpsEnforced": true,
+      "buildType": "workflow"
+    },
+    {
+      "repository": "privacy-frames/apps",
+      "public": true,
+      "pagesURL": "https://privacy-frames.github.io/apps/",
+      "customDomain": null,
+      "httpsEnforced": true,
+      "buildType": "workflow"
+    }
+  ],
+  "tls": [
+    {
+      "hostname": "pf.damenh.com",
+      "verified": true,
+      "names": [
+        [
+          "DNS",
+          "pf.damenh.com"
+        ]
+      ],
+      "expires": "Jan 23 22:52:06 2027 GMT"
+    },
+    {
+      "hostname": "apps.pf.damenh.com",
+      "verified": true,
+      "names": [
+        [
+          "DNS",
+          "apps.pf.damenh.com"
+        ]
+      ],
+      "expires": "Jan 25 02:56:46 2027 GMT"
+    }
+  ],
+  "retiredDNS": [
+    {
+      "hostname": "pf-apps.damenh.com",
+      "nxdomain": true
+    },
+    {
+      "hostname": "pf-notes.damenh.com",
+      "nxdomain": true
+    },
+    {
+      "hostname": "pf-image.damenh.com",
+      "nxdomain": true
+    },
+    {
+      "hostname": "pf-adversary.damenh.com",
+      "nxdomain": true
+    },
+    {
+      "hostname": "pf-ordinary.damenh.com",
+      "nxdomain": true
+    }
+  ],
+  "remainingProjectWorkers": [],
+  "oldRepositoryRedirect": "301 https://github.com/privacy-frames/host",
+  "dataTransition": "Origin-local browser storage was not migrated. Reinstall public URLs at the new runtime.",
+  "evidence": [
+    "results/deployed.json",
+    "results/embedding-deployed.json",
+    "results/compatibility-deployed.json"
+  ],
+  "releaseVerifiedRevision": "84d87c224324a67402997cd39d70e0281132912a"
+}

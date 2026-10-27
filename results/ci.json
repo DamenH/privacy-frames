@@ -1,66 +1,188 @@
 {
-  "run": 40337153972,
-  "revision": "3ed49fb6e3b2e45f695967f35ace8145ebea5c76",
+  "run": 40450127518,
+  "revision": "84d87c224324a67402997cd39d70e0281132912a",
   "status": "success",
   "jobs": [
     {
-      "databaseId": 121621685524,
       "name": "build",
       "status": "completed",
-      "conclusion": "success"
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run typecheck",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run format:check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Use the Ubuntu HTTPS archive for browser dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium firefox",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:lifecycle",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:review",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:storage-policy",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:mobile",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:wasm",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:compatibility",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provide virtual audio for native Firefox playback",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:pitch",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:network",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/configure-pages@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-pages-artifact@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
     },
     {
-      "databaseId": 121623159603,
       "name": "deploy",
       "status": "completed",
-      "conclusion": "success"
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/deploy-pages@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
     }
   ],
   "receiptHashes": {
-    "browser": {
-      "sha256": "10f77da70bc456b22a377951a6f482bb8e3772930aeb23413db92eab479bc4e2",
+    "results/evaluation/ci/browser.json": {
+      "sha256": "571a8a5c8c151db4ff19aa7c54158dd36065a74744bac66688c27419db949cbf",
       "bytes": 44528
     },
-    "scoped-storage": {
+    "results/evaluation/ci/scoped-storage.json": {
       "sha256": "f3bed63f01d99f24e3bd59c600e5a796d8185f4ef1749a1fbc5102e524d606c0",
       "bytes": 1258
     },
-    "separate-runtime": {
+    "results/evaluation/ci/separate-runtime.json": {
       "sha256": "ac8dc98729d5a1da42741da272d52002d88b833c8681a81d8a5ecff9ed484219",
       "bytes": 1332
     },
-    "website-installation": {
+    "results/evaluation/ci/website-installation.json": {
       "sha256": "1dedd045ea275110b24a11e2c7c73eacfb75c36e1fa946e546cd39690cad57c0",
       "bytes": 1218
     },
-    "storage-policy": {
+    "results/evaluation/ci/storage-policy.json": {
       "sha256": "108a1fea2f3128bd40eeb6083a480dc31b65620a395cc54a881f24d673a4e480",
       "bytes": 768
     },
-    "mobile": {
+    "results/evaluation/ci/mobile.json": {
       "sha256": "ef7f783041aa3136d44d3ba2112e2a2934266eaeb5ca07dbeff6cd332d0fc010",
       "bytes": 586
     },
-    "compatibility": {
+    "results/evaluation/ci/compatibility.json": {
       "sha256": "e9dbc01d33c9ad217ccdcaeff9895b808ad6d179097c23fce135ab23c40f9bcc",
       "bytes": 1121
     },
-    "pitch-training": {
-      "sha256": "1c485c534d3ba77fd7816cfd1feb3f75f58705df9958087aaf3ff41fde5addd4",
-      "bytes": 7732
+    "results/evaluation/ci/pitch-training.json": {
+      "sha256": "6ca957334edd0ead9e97c895d9159f5d21be65c989fd4822e2e1bd2ac9254e56",
+      "bytes": 7635
     },
-    "network": {
-      "sha256": "4358c83ec6a483b82d81b82b1a9f05bd537ab6484d3c5c0003309b9afd23cec1",
-      "bytes": 3104
+    "results/evaluation/ci/network.json": {
+      "sha256": "a8f6e8a3ca1619d0a96f09e475811da1fe1b0ef02725e9ebbf9cd170210e7b03",
+      "bytes": 3102
     },
-    "network-firefox": {
-      "sha256": "9ca719c7a5a6c3297021e531ff1d20b39795e1533385a8d2ccfb24477987bdbb",
+    "results/evaluation/ci/network-firefox.json": {
+      "sha256": "174ccc51d9d325fe7a507bc2034e8ed88d627818e33f6447be603ca12ba258d6",
       "bytes": 3225
     },
-    "wasm": {
+    "results/evaluation/ci/wasm.json": {
       "sha256": "c8217eb5550b9637261758b365ed2756078278147dd77b88295ebc54e17a8a6c",
       "bytes": 722
+    },
+    "results/evaluation/ci/review-regressions.json": {
+      "sha256": "af0ccbbfe744293afd95859e0e21eec2fd42f6c84a7587d2a2f25d208242bf50",
+      "bytes": 1568
+    },
+    "results/evaluation/ci/lifecycle.json": {
+      "sha256": "ec378bbff9ed8813cc9bb90a50f26968e0c1f369c3ec82d4f4175330f0245316",
+      "bytes": 462
     }
   },
-  "scope": "Successful full CI suite and Pages deployment, including 41 unit tests."
+  "scope": "Full CI suite and Pages deployment; 42 unit/import/build tests plus two-browser core, scoped storage, management, preparation, lifecycle, conversion/data-block, partition, emulated mobile, Wasm, compatibility, audio and independently calibrated network checks. Only newly executed test output files are copied from the artifact; preexisting release evidence in that artifact is excluded."
 }
