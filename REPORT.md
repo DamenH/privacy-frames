@@ -4,7 +4,7 @@
 
 The host installs a web application from a URL and runs a local copy against private input. Installation can use the network. Once the application starts, its HTTP requests receive installed resources or fail. There is no network fallback.
 
-The manager is the trusted installation interface: it accepts URLs, performs installation and launches applications. A separate runtime origin serves the installed copies. Both are static websites hosted on GitHub Pages. Installation, storage and enforcement run in the browser. Applications retain native JavaScript, asynchronous callbacks, DOM elements, canvas, audio and local file processing.
+The manager is the trusted installation interface: it accepts URLs, performs installation and launches applications. A separate runtime origin serves the installed copies. Both are static websites hosted on GitHub Pages. The repositories separate implementation and tests (`privacy-frames/host`), pinned runtime publication (`privacy-frames/runtime`) and unrestricted publishers (`privacy-frames/apps`). Installation, storage and enforcement run in the browser. Applications retain native JavaScript, asynchronous callbacks, DOM elements, canvas, audio and local file processing.
 
 ## Threat model
 
@@ -16,7 +16,7 @@ The target is application-initiated network disclosure during isolated execution
 
 ## Installation
 
-The host reads the supplied webpage and collects resources through its HTML, CSS and supported JavaScript dependencies. Cross-origin resources must permit credential-free browser reads through CORS. Downloads reject redirects and enforce resource and byte limits as data arrives. The installation limit is 100 MiB.
+The host reads the supplied webpage and collects resources through its HTML, CSS and supported JavaScript dependencies. Cross-origin resources must permit credential-free browser reads through CORS. Downloads reject redirects and enforce resource and byte limits as data arrives. The installation limits are 1,000 resources and 100 MiB.
 
 For supported precache PWAs, the host executes `install` and `activate` handlers in an [SES compartment](https://docs.endojs.org/documents/lockdown.html) inside a disposable, host-created worker. Publisher code receives an in-memory cache interface and a download broker. It receives no document, navigator, native storage, browser worker creation, raw networking or parent messaging. Preparation has no existing private application state and shows no application input interface. Completion waits for the handlers' explicit promises.
 
@@ -48,7 +48,7 @@ The manager and runtime use same-site, different-origin domains so iframe instal
 
 The importer handles document base URLs, presentation attributes, nested CSS resources and publisher manifest metadata. It generates local PWA identity, scope, launch URLs and icons so supporting browsers can install applications individually. Publisher manifests cannot introduce file, share or protocol handlers.
 
-Pitch Training was developed independently of the host and installs from its existing public URL without application source changes. Tests exercise its interface, sampled piano playback, microphone pitch analysis, settings, history and saved-score library. Wikipedia's REST HTML provides a separate document-import example. An independently developed Wasm image editor also starts and reloads offline. These use the general importer. Small fixtures exercise storage, private image processing and hostile browser operations; an editable playground lets a user try their own HTML, CSS and JavaScript.
+The [eight-application evaluation](https://github.com/privacy-frames/host/blob/main/evaluation/compatibility.md) compares selected tasks in Chromium and Firefox. All sixteen standalone controls pass. From their original URLs, PhotoCraft edits a supplied image and restarts offline; Pitch Training, installed without application source changes, retains submitted exercise history across reloads; Wikipedia renders and scrolls offline. Four other applications initially fail CORS checks. Licensed Pages copies remove that download barrier. In the recorded evaluation, the remaining blockers involve service-worker preparation and dynamic-script loading. CyberChef remains refused because its embedded object creates another execution context. Publisher inventories record relocated URLs and changed-file hashes. The matrix retains failed targets and identifies the first observed blocker.
 
 ## Evidence and remaining work
 

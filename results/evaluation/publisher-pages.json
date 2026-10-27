@@ -1,0 +1,180 @@
+{
+  "observed": "2026-10-27T04:20:12.517Z",
+  "source": "https://github.com/privacy-frames/apps",
+  "revision": "b8ce7bca6681bc1dd42ee24a783f1555692c03b0",
+  "workflow": 40448128112,
+  "url": "https://privacy-frames.github.io/apps/",
+  "checks": [
+    {
+      "path": "notes/index.html",
+      "bytes": 474,
+      "sha256": "31ff09540322cd2018a4822b291345b984b25ea0a1d9af01671a15a6648fe7b2",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1283,
+      "sha256": "691183deba48fdef58e1f2017acbf2ba8cb9f3b6871029452ff1f4ea4b1f3b1c",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "adversary/app.js",
+      "bytes": 7777,
+      "sha256": "6b216cced6dc3b629afe38f80654f2c99cc3f56c38f0c3b42a8a451f94a2f0fd",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "notes/app.js",
+      "bytes": 678177,
+      "sha256": "ad4e3c588a3be4370ca2c396473b2f065b3e04c6676e58472843d15e12632695",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "playground/app.js",
+      "bytes": 2276,
+      "sha256": "23fd2bd9052d220ac1938dad361f04a067b19509ddc7b472b5cb8504691ecd11",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "sources/sources.json",
+      "bytes": 741,
+      "sha256": "ee492c7d22c7f978b788e7f50dbdf98f9503849fd4d529095710b87859c512dc",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "ordinary/main.js",
+      "bytes": 753,
+      "sha256": "5134ceb60add6a56439ab1fb3b76e0846cc9c957c4c530aeed7ab650130913a3",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "squoosh/index.html",
+      "bytes": 75605,
+      "sha256": "7a4a04c179f01807b7fbf4e8e0f73dd5d338a092e2b3b39915a2efadaa3c837a",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "squoosh/MODIFICATIONS.json",
+      "bytes": 4956,
+      "sha256": "42af9642bf063cc4055274ec5a034785f24165d0afd0ec8247329cd9df51516d",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "squoosh/MIRROR-NOTICE.txt",
+      "bytes": 519,
+      "sha256": "28b63578f925ec9fcd4670b1032c10e28208b136f590108dce6755e5697f78e4",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "squoosh/UPSTREAM-LICENSE.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "excalidraw/index.html",
+      "bytes": 7061,
+      "sha256": "d36c21a830dd7fb0e326cdcc135323eb9bb09e8e70f2434911154fa70626e7ff",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "stackedit/index.html",
+      "bytes": 5566,
+      "sha256": "03e19c85ff3a8e3c1c1928ec0fbe64bb054867d3bbf7627562302bafdf093825",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "excalidraw/UPSTREAM-LICENSE.txt",
+      "bytes": 1067,
+      "sha256": "1352d204fdb90d5e482c13139d848bc2c9300a9a7de358a0a558a23e72d0d8be",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "excalidraw/MIRROR-NOTICE.txt",
+      "bytes": 311,
+      "sha256": "62929b060a4780083b236bdeb78f07dd7c995a779f751431539f70222342f08d",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "excalidraw/MODIFICATIONS.json",
+      "bytes": 1003,
+      "sha256": "892cf7702d39ddfe68e64eafed327864ec33ffef50a535fff58b14e7d7314637",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "stackedit/MIRROR-NOTICE.txt",
+      "bytes": 311,
+      "sha256": "62929b060a4780083b236bdeb78f07dd7c995a779f751431539f70222342f08d",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "stackedit/UPSTREAM-LICENSE.txt",
+      "bytes": 11357,
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "drawio/index.html",
+      "bytes": 4269,
+      "sha256": "fe98e232ad2d2664c55658ecee6ec3910eb7537fbb23edb7598ffa516c97a32a",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "stackedit/MODIFICATIONS.json",
+      "bytes": 2159,
+      "sha256": "8218d0fdac792b1fbdd3e4ce76827429065baac77fd53d8c27f5b20e85bf56fb",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "drawio/MIRROR-NOTICE.txt",
+      "bytes": 311,
+      "sha256": "62929b060a4780083b236bdeb78f07dd7c995a779f751431539f70222342f08d",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "drawio/MODIFICATIONS.json",
+      "bytes": 5922,
+      "sha256": "b1def6a8c8697488646de02b73cad531f1bfa16e499e88b8029189625bd312f1",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "drawio/UPSTREAM-LICENSE.txt",
+      "bytes": 11356,
+      "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+      "server": "GitHub.com",
+      "cors": "*"
+    },
+    {
+      "path": "sources/libimagequant-2.12.1.tar.gz",
+      "bytes": 75631,
+      "sha256": "7035eb281bc9a49cf36db8db807b713d03a0ffe8c5abfbb17a9ea8a038f21d5e"
+    },
+    {
+      "path": "sources/squoosh-e8d35e0fb66eb16eff6fe8fc773eabcbb7128de3.tar.gz",
+      "bytes": 22350386,
+      "sha256": "8a4caf8744066d08005ce32034ba654d8114aa6875ff3267b56a68a9021d1c08"
+    }
+  ]
+}

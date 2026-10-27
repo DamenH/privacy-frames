@@ -111,7 +111,6 @@ worker.addEventListener('message', async (event: MessageEvent<PreparationRequest
       },
     });
     const compartment = new Compartment({
-      self: world,
       registration: world.registration,
       location: world.location,
       clients: world.clients,
@@ -129,6 +128,12 @@ worker.addEventListener('message', async (event: MessageEvent<PreparationRequest
       TextEncoder,
       TextDecoder,
       console: harden({ log() {}, warn() {}, error() {} }),
+    });
+    // Publisher globals belong to the compartment, never the native worker.
+    Object.defineProperty(compartment.globalThis, 'self', {
+      value: compartment.globalThis,
+      writable: true,
+      configurable: true,
     });
     compartment.evaluate(data.code);
     if (!handlers.get('install')?.length)

@@ -1,0 +1,166 @@
+{
+  "completed": "2026-10-27T04:15:16.732Z",
+  "started": "2026-10-27T04:14:50.900Z",
+  "revision": "e09be7ef31529ec2eadad5f3c7f42212110370ef",
+  "host": "https://pf.damenh.com/",
+  "publisherRevision": "b8ce7bca6681bc1dd42ee24a783f1555692c03b0",
+  "variants": "Explicit publisher snapshot URL override; see each row URL",
+  "runnerSha256": "3d8c6385972dd60c96334bc3f46127bd55fbbc553345be4ec0856d2da4de4855",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "drawio",
+      "url": "https://privacy-frames.github.io/apps/drawio/",
+      "task": "Create a diagram",
+      "originalURL": "https://app.diagrams.net",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "fe98e232ad2d2664c55658ecee6ec3910eb7537fbb23edb7598ffa516c97a32a",
+        "inspection": {
+          "title": "Untitled Diagram - draw.io",
+          "text": "File\nEdit\nView\nArrange\nExtras\nHelp\nShare\nUntitled Diagram\nScratchpad\nDrag elements here\nGeneral\nText\nHeading\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nVertical Container\nHorizontal Container\nList\nItem 1\nItem 2\nItem 3\nList Item\nLabel\nLabel\nSource\nTarget\nMisc\nAdvanced\nBasic\nArrows\nFlowchart\nEntity Relation\nUML\n+\nMore Shapes\nDiagram\nStyle\nView\nGrid\nPage View\nBackground\nChange...\nOptions\nConnection Arrows\nConnection Points\nGuides\nPaper Size\nEdit Data...\nClear Default Style\n\nPage-1",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "geOmniSearch",
+              "placeholder": "Type / to search",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Dragged rectangle from shape palette into diagram; SVG contents changed",
+        "taskPassed": true,
+        "errors": [],
+        "responses": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed Flowchart Maker & Online Diagram Software.",
+        "url": "https://apps.pf.damenh.com/3WaQTy3qqZM/drawio/",
+        "inspection": {
+          "title": "Flowchart Maker & Online Diagram Software",
+          "text": "",
+          "inputs": []
+        },
+        "failure": "locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.geDiagramContainer') to be visible\u001b[22m\n",
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 ()",
+          "Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+          "Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+          "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+          "Removing intrinsics.%IteratorPrototype%.join",
+          "SES_UNCAUGHT_EXCEPTION: (SecurityError#1)",
+          "SecurityError#1: Dynamic policy/resource elements are not admitted",
+          ""
+        ],
+        "responses": [
+          {
+            "url": "https://privacy-frames.github.io/apps/drawio/sw.js",
+            "status": 404
+          }
+        ],
+        "requestFailures": [
+          "GET https://privacy-frames.github.io/apps/drawio/sw.js net::ERR_ABORTED"
+        ]
+      }
+    }
+  ]
+}

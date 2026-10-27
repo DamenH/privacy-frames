@@ -1,0 +1,258 @@
+{
+  "completed": "2026-10-27T04:07:16.312Z",
+  "started": "2026-10-27T04:07:03.172Z",
+  "revision": "e09be7ef31529ec2eadad5f3c7f42212110370ef",
+  "host": "https://pf.damenh.com/",
+  "variants": "Explicit publisher snapshot URL override; see each row URL",
+  "runnerSha256": "3dfcb3a0071a37f17ec93fd8da5a7649b036d13b9c240ac5092caf0359bafac4",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "drawio",
+      "url": "http://127.0.0.1:4620/apps/drawio/",
+      "task": "Create a diagram",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "fe98e232ad2d2664c55658ecee6ec3910eb7537fbb23edb7598ffa516c97a32a",
+        "inspection": {
+          "title": "Untitled Diagram - draw.io",
+          "text": "File\nEdit\nView\nArrange\nExtras\nHelp\nShare\nUntitled Diagram\nScratchpad\nDrag elements here\nGeneral\nText\nHeading\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nVertical Container\nHorizontal Container\nList\nItem 1\nItem 2\nItem 3\nList Item\nLabel\nLabel\nSource\nTarget\nMisc\nAdvanced\nBasic\nArrows\nFlowchart\nEntity Relation\nUML\n+\nMore Shapes\nDiagram\nStyle\nView\nGrid\nPage View\nBackground\nChange...\nOptions\nConnection Arrows\nConnection Points\nGuides\nPaper Size\nEdit Data...\nClear Default Style\n\nPage-1",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "geOmniSearch",
+              "placeholder": "Type / to search",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Dragged rectangle from shape palette into diagram; SVG contents changed",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {}
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "drawio",
+      "url": "http://127.0.0.1:4620/apps/drawio/",
+      "task": "Create a diagram",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "fe98e232ad2d2664c55658ecee6ec3910eb7537fbb23edb7598ffa516c97a32a",
+        "inspection": {
+          "title": "Untitled Diagram - draw.io",
+          "text": "File\nEdit\nView\nArrange\nExtras\nHelp\nShare\nUntitled Diagram\nScratchpad\nDrag elements here\nGeneral\nText\nHeading\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nVertical Container\nHorizontal Container\nList\nItem 1\nItem 2\nItem 3\nList Item\nLabel\nLabel\nSource\nTarget\nMisc\nAdvanced\nBasic\nArrows\nFlowchart\nEntity Relation\nUML\n+\nMore Shapes\nDiagram\nStyle\nView\nGrid\nPage View\nBackground\nChange...\nOptions\nConnection Arrows\nConnection Points\nGuides\nPaper Size\nEdit Data...\nClear Default Style\n\nPage-1",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "geOmniSearch",
+              "placeholder": "Type / to search",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Dragged rectangle from shape palette into diagram; SVG contents changed",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {}
+    }
+  ]
+}

@@ -7,51 +7,51 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "Completed installation is available through mediated worker readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 220.8 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 221.3 Hz detected",
       "Browser-denied microphone permission is handled without a capture stream",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation"
     ],
     "worker": {
       "state": "activated",
       "updateDenied": true,
-      "script": "https://pf-apps.damenh.com/ywJX53taGnk/pitch-training/sw.js"
+      "script": "https://apps.pf.damenh.com/ywJX53taGnk/pitch-training/sw.js"
     },
-    "frequency": 220.8,
+    "frequency": 221.3,
     "executableReceipt": [
       {
-        "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",
-        "sha256": "f2ef5516b4a422788662dbf4bc1fd764745d0b762837ea609fd9b72602d1b9f5"
+        "url": "https://damenh.github.io/pitch-training/assets/index-C1XRTSWq.js",
+        "sha256": "aaa3eb69842ebe89194bb6addceb0cc4e500c78a247a0f1f30c95973358993f8"
       },
       {
         "url": "https://damenh.github.io/pitch-training/sw.js",
-        "sha256": "17b0666bd6544f95104af31518034f980078c5ccb41bd6ebf2255c95ffe38a45"
+        "sha256": "c483b319e828d5bac11bf36c6603daf8b0ce808e9e5ebaf4b4517a3da131208f"
       }
     ],
     "maintenance": null,
     "policyObservations": [
       {
         "text": "Failed to load resource: net::ERR_FAILED",
-        "url": "https://pf-apps.damenh.com/favicon.ico"
+        "url": "https://apps.pf.damenh.com/favicon.ico"
       },
       {
         "text": "Failed to load resource: net::ERR_FAILED",
-        "url": "https://pf-apps.damenh.com/favicon.ico"
+        "url": "https://apps.pf.damenh.com/favicon.ico"
       },
       {
         "text": "Failed to load resource: net::ERR_FAILED",
-        "url": "https://pf-apps.damenh.com/favicon.ico"
+        "url": "https://apps.pf.damenh.com/favicon.ico"
       },
       {
         "text": "Failed to load resource: net::ERR_FAILED",
-        "url": "https://pf-apps.damenh.com/favicon.ico"
+        "url": "https://apps.pf.damenh.com/favicon.ico"
       },
       {
         "text": "Failed to load resource: net::ERR_FAILED",
-        "url": "https://pf-apps.damenh.com/favicon.ico"
+        "url": "https://apps.pf.damenh.com/favicon.ico"
       },
       {
         "text": "Failed to load resource: net::ERR_FAILED",
-        "url": "https://pf-apps.damenh.com/favicon.ico"
+        "url": "https://apps.pf.damenh.com/favicon.ico"
       }
     ],
     "errors": []
@@ -64,66 +64,66 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "Completed installation is available through mediated worker readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 1000 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 1000.1 Hz detected",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation"
     ],
     "worker": {
       "state": "activated",
       "updateDenied": true,
-      "script": "https://pf-apps.damenh.com/ywJX53taGnk/pitch-training/sw.js"
+      "script": "https://apps.pf.damenh.com/ywJX53taGnk/pitch-training/sw.js"
     },
-    "frequency": 1000,
+    "frequency": 1000.1,
     "executableReceipt": [
       {
-        "url": "https://damenh.github.io/pitch-training/assets/index-DzHNcNX9.js",
-        "sha256": "f2ef5516b4a422788662dbf4bc1fd764745d0b762837ea609fd9b72602d1b9f5"
+        "url": "https://damenh.github.io/pitch-training/assets/index-C1XRTSWq.js",
+        "sha256": "aaa3eb69842ebe89194bb6addceb0cc4e500c78a247a0f1f30c95973358993f8"
       },
       {
         "url": "https://damenh.github.io/pitch-training/sw.js",
-        "sha256": "17b0666bd6544f95104af31518034f980078c5ccb41bd6ebf2255c95ffe38a45"
+        "sha256": "c483b319e828d5bac11bf36c6603daf8b0ce808e9e5ebaf4b4517a3da131208f"
       }
     ],
     "maintenance": null,
     "policyObservations": [
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 281}]",
-        "url": "https://pf-apps.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://apps.pf.damenh.com/guard.js\" line: 281}]",
+        "url": "https://apps.pf.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 7433}]",
-        "url": "https://pf-apps.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://apps.pf.damenh.com/guard.js\" line: 7433}]",
+        "url": "https://apps.pf.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 7439}]",
-        "url": "https://pf-apps.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://apps.pf.damenh.com/guard.js\" line: 7439}]",
+        "url": "https://apps.pf.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 3474}]",
-        "url": "https://pf-apps.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://apps.pf.damenh.com/guard.js\" line: 3474}]",
+        "url": "https://apps.pf.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘https://pf-apps.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://pf-apps.damenh.com/sw.js\" line: 8907}]",
-        "url": "https://pf-apps.damenh.com/sw.js"
+        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 8914}]",
+        "url": "https://apps.pf.damenh.com/sw.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 281}]",
-        "url": "https://pf-apps.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://apps.pf.damenh.com/guard.js\" line: 281}]",
+        "url": "https://apps.pf.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 7433}]",
-        "url": "https://pf-apps.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://apps.pf.damenh.com/guard.js\" line: 7433}]",
+        "url": "https://apps.pf.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 7439}]",
-        "url": "https://pf-apps.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://apps.pf.damenh.com/guard.js\" line: 7439}]",
+        "url": "https://apps.pf.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://pf-apps.damenh.com/guard.js\" line: 3474}]",
-        "url": "https://pf-apps.damenh.com/guard.js"
+        "text": "[JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval'” (Missing 'unsafe-eval')\" {file: \"https://apps.pf.damenh.com/guard.js\" line: 3474}]",
+        "url": "https://apps.pf.damenh.com/guard.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘https://pf-apps.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://pf-apps.damenh.com/sw.js\" line: 8907}]",
-        "url": "https://pf-apps.damenh.com/sw.js"
+        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 8914}]",
+        "url": "https://apps.pf.damenh.com/sw.js"
       }
     ],
     "errors": []

@@ -89,7 +89,7 @@ export async function servers() {
         if (port === 4218 && relative === '/review/sw.js') {
           response.setHeader('Content-Type', 'text/javascript');
           response.end(
-            "addEventListener('install', event => event.waitUntil(skipWaiting())); addEventListener('activate', event => event.waitUntil(clients.claim()));",
+            "self.publisherNamespace = 42; if (self !== globalThis || self.publisherNamespace !== 42 || ['postMessage', 'navigator', 'Worker', 'importScripts'].some(name => name in self)) throw new Error('Invalid preparation globals'); addEventListener('install', event => event.waitUntil(skipWaiting())); addEventListener('activate', event => event.waitUntil(clients.claim()));",
           );
           return;
         }

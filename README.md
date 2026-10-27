@@ -80,7 +80,7 @@ Live deployment checks use:
 
 ```sh
 HOST_URL=https://pf.damenh.com/ npm run test:deployed
-HOST_URL=https://pf.damenh.com/ DOCUMENT_URL=https://pf-ordinary.damenh.com/document/index.html LIVE_ARTICLE=1 LIVE_PITCH_NATIVE=1 npm run test:compatibility
+HOST_URL=https://pf.damenh.com/ DOCUMENT_URL=https://privacy-frames.github.io/apps/ordinary/document/index.html LIVE_ARTICLE=1 LIVE_PITCH_NATIVE=1 npm run test:compatibility
 npm run test:assets
 ```
 

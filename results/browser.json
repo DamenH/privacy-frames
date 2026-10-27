@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-27T04:01:30.895Z",
+  "date": "2026-10-27T04:28:40.492Z",
   "browsers": [
     {
       "name": "chromium",
@@ -399,18 +399,13 @@
         },
         {
           "port": 4216,
-          "path": "/disclosure?value=control-marker-chromium&route=navigation",
-          "method": "GET"
+          "path": "/socket?value=control-marker-chromium",
+          "method": "UPGRADE"
         },
         {
           "port": 4216,
           "path": "/disclosure?value=control-marker-chromium&route=image",
           "method": "GET"
-        },
-        {
-          "port": 4216,
-          "path": "/socket?value=control-marker-chromium",
-          "method": "UPGRADE"
         },
         {
           "port": 4216,
@@ -851,12 +846,12 @@
         },
         {
           "port": 4216,
-          "path": "/disclosure?value=control-marker-firefox&route=css",
+          "path": "/disclosure?value=control-marker-firefox&route=navigation",
           "method": "GET"
         },
         {
           "port": 4216,
-          "path": "/disclosure?value=control-marker-firefox&route=navigation",
+          "path": "/disclosure?value=control-marker-firefox&route=css",
           "method": "GET"
         }
       ]

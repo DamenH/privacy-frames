@@ -1,0 +1,1468 @@
+{
+  "completed": "2026-10-27T04:15:10.209Z",
+  "started": "2026-10-27T04:10:46.131Z",
+  "revision": "e09be7ef31529ec2eadad5f3c7f42212110370ef",
+  "host": "https://pf.damenh.com/",
+  "publisherRevision": "b8ce7bca6681bc1dd42ee24a783f1555692c03b0",
+  "variants": "Explicit publisher snapshot URL override; see each row URL",
+  "runnerSha256": "7ea33941a4c9c88963a79bbdb74d3adcd84503edaaf15a04ddeb769ac0f78907",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "photocraft",
+      "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
+      "task": "Open synthetic image and apply brush stroke",
+      "originalURL": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
+      "variant": "original public URL",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "6574d32a360d7928d160d86e39d0617310374325692d054b2c7e15fc52465c93",
+        "inspection": {
+          "title": "PhotoCraft",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Imported synthetic red PNG; brush stroke changes sampled document pixel from red to black",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed PhotoCraft.",
+        "url": "https://apps.pf.damenh.com/JV_X5SpxyHg/hvo5f2d3geg2c4hy5/",
+        "inspection": {
+          "title": "PhotoCraft",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Imported synthetic red PNG; brush stroke changes sampled document pixel from red to black",
+        "taskPassed": true,
+        "offlineInspection": {
+          "title": "PhotoCraft",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "offlineReload": true,
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 ()"
+        ],
+        "requestFailures": [
+          "GET https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/sw.js net::ERR_ABORTED"
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "pitch",
+      "url": "https://damenh.github.io/pitch-training/",
+      "task": "Submit an identification exercise and retain history after reload",
+      "originalURL": "https://damenh.github.io/pitch-training/",
+      "variant": "original public URL",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "8f2a54f5006c0a7382620bad4b7e7a7dff291dd6eac5d40bac9bd8bf7795b433",
+        "inspection": {
+          "title": "Identify Notes · Pitch Training",
+          "text": "Skip to content\nPitch Training\nReference\nIdentify\nSing\nSing test\nImport\nHistory\nSettings\nIdentify\nNotes\n\nAll notes\nSession 0/0\n\nPlay note\nC\nC♯\nD\nD♯\nE\nF\nF♯\nG\nG♯\nA\nA♯\nB\nSubmit answer",
+          "inputs": []
+        },
+        "task": "Submitted exercise; saved history survives reload",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed Pitch Training.",
+        "url": "https://apps.pf.damenh.com/ywJX53taGnk/pitch-training/",
+        "inspection": {
+          "title": "Identify Notes · Pitch Training",
+          "text": "Skip to content\nPitch Training\nReference\nIdentify\nSing\nSing test\nImport\nHistory\nSettings\nIdentify\nNotes\n\nAll notes\nSession 0/0\n\nPlay note\nC\nC♯\nD\nD♯\nE\nF\nF♯\nG\nG♯\nA\nA♯\nB\nSubmit answer",
+          "inputs": []
+        },
+        "task": "Submitted exercise; saved history survives reload",
+        "taskPassed": true,
+        "offlinePersistence": true,
+        "offlineInspection": {
+          "title": "Identify Notes · Pitch Training",
+          "text": "Skip to content\nPitch Training\nReference\nIdentify\nSing\nSing test\nImport\nHistory\nSettings\nIdentify\nNotes\n\nAll notes\nSession 0/0\n\nPlay note\nC\nC♯\nD\nD♯\nE\nF\nF♯\nG\nG♯\nA\nA♯\nB\nSubmit answer",
+          "inputs": []
+        },
+        "offlineReload": true,
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "wikipedia",
+      "url": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
+      "task": "Read article and navigate to a section offline",
+      "originalURL": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
+      "variant": "original public URL",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "8d7ef86ea2e20ee8fde01ce0c9f71c93e1c6235d46e85125ff8aae89082d1865",
+        "inspection": {
+          "title": "Albert Einstein",
+          "text": "\"Einstein\" redirects here. For other uses, see Einstein (disambiguation) and Albert Einstein (disambiguation).\n\nAlbert Einstein\n\n\nEinstein in 1947\n\nBorn\t14 March 1879\nUlm, Kingdom of Württemberg, German Empire\nDied\t18 April 1955 (aged 76)\nPrinceton, New Jersey, U.S.\nCitizenship\t\nSee list\nKingdom of Württemberg, part of the German Empire (until 1896)[note 1]\nStateless (1896–1901)\nSwitzerland (from 1901)\nKingdom of Prussia, part of the German Empire (1914–1918)[note 1]\nFree State of Prussia (Weimar Republic, 1918–1933)[note 1]\nU.S. (from 1940)\n\nEducation\t\nSwiss federal polytechnic school (teaching diploma, 1900)\nUniversity of Zurich (PhD, 1905)\n\nKnown for\t\nGeneral relativity\nSpecial relativity\nPhotoelectric effect\nE=mc2 (mass–energy equivalence)\nE=hf (Planck–Einstein relation)\nTheory of Brownian motion\nEinstein field equations\nBose–Einstein statistics\nBose–Einstein condensate\nGravitational wave\nCosmological constant\nUnified field theory\nEPR paradox\nEnsemble interpretation\nList of other concepts\n\nSpouses\t\nMileva Marić\n​\n​(m. 1903; div. 1919)​\nElsa Löwenthal\n​\n​(m. 1919; died 1936)​\n\nChildren\t3, including Hans Albert\nFamily\tEinstein family\nAwards\t\nSee list\nBarnard Medal for Meritorious Service to Science (1920)\nNobel Prize in Physics (1921)\nMatteucci Medal (1921)\nForMemRS (1921)[1]\nCopley Medal (1925)[1]\nGold Medal of RAS (1926)[2]\nMax Planck Medal (1929)\nMembership of NAS (1942)[3]\nTime Person of the Century (1999)\n\nScientific career\nFields\tPhysics\nWorkplaces\t\nSee list\nUniversity of Bern (1908–1909)\nUniversity of Zurich (1909–1911)\nCharles University in Prague (1911–1912)\nETH Zurich (1912–1914)\nPrussian Academy of Sciences (1914–1933)\nHumboldt University of Berlin (1914–1933)\nKaiser Wilhelm Institute (director, 1917–1933)\nGerman Physical Society (president, 1916–1918)\nInst",
+          "inputs": []
+        },
+        "task": "Article visible; scrolled to final document section",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed Albert Einstein.",
+        "url": "https://apps.pf.damenh.com/6ZRP8wTAi0c/albert-einstein/",
+        "inspection": {
+          "title": "Albert Einstein",
+          "text": "\"Einstein\" redirects here. For other uses, see Einstein (disambiguation) and Albert Einstein (disambiguation).\n\nAlbert Einstein\n\n\nEinstein in 1947\n\nBorn\t14 March 1879\nUlm, Kingdom of Württemberg, German Empire\nDied\t18 April 1955 (aged 76)\nPrinceton, New Jersey, U.S.\nCitizenship\t\nSee list\nKingdom of Württemberg, part of the German Empire (until 1896)[note 1]\nStateless (1896–1901)\nSwitzerland (from 1901)\nKingdom of Prussia, part of the German Empire (1914–1918)[note 1]\nFree State of Prussia (Weimar Republic, 1918–1933)[note 1]\nU.S. (from 1940)\n\nEducation\t\nSwiss federal polytechnic school (teaching diploma, 1900)\nUniversity of Zurich (PhD, 1905)\n\nKnown for\t\nGeneral relativity\nSpecial relativity\nPhotoelectric effect\nE=mc2 (mass–energy equivalence)\nE=hf (Planck–Einstein relation)\nTheory of Brownian motion\nEinstein field equations\nBose–Einstein statistics\nBose–Einstein condensate\nGravitational wave\nCosmological constant\nUnified field theory\nEPR paradox\nEnsemble interpretation\nList of other concepts\n\nSpouses\t\nMileva Marić\n​\n​(m. 1903; div. 1919)​\nElsa Löwenthal\n​\n​(m. 1919; died 1936)​\n\nChildren\t3, including Hans Albert\nFamily\tEinstein family\nAwards\t\nSee list\nBarnard Medal for Meritorious Service to Science (1920)\nNobel Prize in Physics (1921)\nMatteucci Medal (1921)\nForMemRS (1921)[1]\nCopley Medal (1925)[1]\nGold Medal of RAS (1926)[2]\nMax Planck Medal (1929)\nMembership of NAS (1942)[3]\nTime Person of the Century (1999)\n\nScientific career\nFields\tPhysics\nWorkplaces\t\nSee list\nUniversity of Bern (1908–1909)\nUniversity of Zurich (1909–1911)\nCharles University in Prague (1911–1912)\nETH Zurich (1912–1914)\nPrussian Academy of Sciences (1914–1933)\nHumboldt University of Berlin (1914–1933)\nKaiser Wilhelm Institute (director, 1917–1933)\nGerman Physical Society (president, 1916–1918)\nInst",
+          "inputs": []
+        },
+        "task": "Article visible; scrolled to final document section",
+        "taskPassed": true,
+        "offlineTask": "Article visible; scrolled to final document section",
+        "offlineInspection": {
+          "title": "Albert Einstein",
+          "text": "\"Einstein\" redirects here. For other uses, see Einstein (disambiguation) and Albert Einstein (disambiguation).\n\nAlbert Einstein\n\n\nEinstein in 1947\n\nBorn\t14 March 1879\nUlm, Kingdom of Württemberg, German Empire\nDied\t18 April 1955 (aged 76)\nPrinceton, New Jersey, U.S.\nCitizenship\t\nSee list\nKingdom of Württemberg, part of the German Empire (until 1896)[note 1]\nStateless (1896–1901)\nSwitzerland (from 1901)\nKingdom of Prussia, part of the German Empire (1914–1918)[note 1]\nFree State of Prussia (Weimar Republic, 1918–1933)[note 1]\nU.S. (from 1940)\n\nEducation\t\nSwiss federal polytechnic school (teaching diploma, 1900)\nUniversity of Zurich (PhD, 1905)\n\nKnown for\t\nGeneral relativity\nSpecial relativity\nPhotoelectric effect\nE=mc2 (mass–energy equivalence)\nE=hf (Planck–Einstein relation)\nTheory of Brownian motion\nEinstein field equations\nBose–Einstein statistics\nBose–Einstein condensate\nGravitational wave\nCosmological constant\nUnified field theory\nEPR paradox\nEnsemble interpretation\nList of other concepts\n\nSpouses\t\nMileva Marić\n​\n​(m. 1903; div. 1919)​\nElsa Löwenthal\n​\n​(m. 1919; died 1936)​\n\nChildren\t3, including Hans Albert\nFamily\tEinstein family\nAwards\t\nSee list\nBarnard Medal for Meritorious Service to Science (1920)\nNobel Prize in Physics (1921)\nMatteucci Medal (1921)\nForMemRS (1921)[1]\nCopley Medal (1925)[1]\nGold Medal of RAS (1926)[2]\nMax Planck Medal (1929)\nMembership of NAS (1942)[3]\nTime Person of the Century (1999)\n\nScientific career\nFields\tPhysics\nWorkplaces\t\nSee list\nUniversity of Bern (1908–1909)\nUniversity of Zurich (1909–1911)\nCharles University in Prague (1911–1912)\nETH Zurich (1912–1914)\nPrussian Academy of Sciences (1914–1933)\nHumboldt University of Berlin (1914–1933)\nKaiser Wilhelm Institute (director, 1917–1933)\nGerman Physical Society (president, 1916–1918)\nInst",
+          "inputs": []
+        },
+        "offlineReload": true,
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 ()"
+        ],
+        "requestFailures": [
+          "GET https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/sw.js net::ERR_ABORTED",
+          "https://upload.wikimedia.org/wikipedia/commons/4/4d/Icon_pdf_file.png csp",
+          "https://en.wikipedia.org/w/load.php?modules=ext.phonos.icons&image=volumeUp&format=original&lang=en&skin=vector&version=nz3g3 csp",
+          "https://upload.wikimedia.org/wikipedia/commons/4/4d/Icon_pdf_file.png csp",
+          "https://en.wikipedia.org/w/load.php?modules=ext.phonos.icons&image=volumeUp&format=original&lang=en&skin=vector&version=nz3g3 csp"
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "squoosh",
+      "url": "https://privacy-frames.github.io/apps/squoosh/",
+      "task": "Open synthetic image and change compression settings",
+      "originalURL": "https://squoosh.app",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "7a4a04c179f01807b7fbf4e8e0f73dd5d338a092e2b3b39915a2efadaa3c837a",
+        "inspection": {
+          "title": "Squoosh",
+          "text": "Drop OR Paste\n\nOr try one of these:\n\n2.8MB\n2.9MB\n1.6MB\n13KB\nSmall\n\nSmaller images mean faster load times. Squoosh can reduce file size and maintain high quality.\n\nSimple\n\nOpen your image, inspect the differences, then save instantly. Feeling adventurous? Adjust the settings for even smaller files.\n\nSecure\n\nWorried about privacy? Images never leave your device since Squoosh does all the work locally.\n\nPrivacy\nSource on Github",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Synthetic image opened; compression range changed",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installation refused: skipWaiting is not a function",
+        "failure": "Installation refused: skipWaiting is not a function",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: skipWaiting is not a function\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "excalidraw",
+      "url": "https://privacy-frames.github.io/apps/excalidraw/",
+      "task": "Create and modify a drawing",
+      "originalURL": "https://excalidraw.com",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "d36c21a830dd7fb0e326cdcc135323eb9bb09e8e70f2434911154fa70626e7ff",
+        "inspection": {
+          "title": "Excalidraw Whiteboard",
+          "text": "Excalidraw\nYour drawings are saved in your browser's storage.\nBrowser storage can be cleared unexpectedly.\nSave your work to a file regularly to avoid losing it.\nOpen\nCtrl+O\nHelp\n?\nLive collaboration...\nSign up\nExport, preferences, languages, ...\nPick a tool & Start drawing!\nTo move canvas, hold Scroll wheel or Space while dragging, or use the hand tool\nShapes\nV\nR\nD\nO\nA\nL\nP\nT\nN\nE\nTry Excalidraw+\n14-day free trial\nCanvas actions\n100%\nShortcuts & help",
+          "inputs": []
+        },
+        "task": "Rectangle created and moved; changed x coordinate persisted in local storage",
+        "taskPassed": true,
+        "errors": [
+          "Failed to load resource: the server responded with a status of 403 ()",
+          "The path of the provided scope ('/') is not under the max scope allowed ('/apps/excalidraw/'). Adjust the scope, move the Service Worker script, or use the Service-Worker-Allowed HTTP header to allow the scope."
+        ],
+        "requestFailures": [
+          "GET https://excalidraw.nyc3.cdn.digitaloceanspaces.com/oss/apps/excalidraw/fonts/Excalifont/Excalifont-Regular-a88b72a24fb54c9f94e3b5fdaa7481c9.woff2 net::ERR_ABORTED"
+        ]
+      },
+      "confined": {
+        "installation": "Installation refused: Too many installation resources",
+        "failure": "Installation refused: Too many installation resources",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: Too many installation resources\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [
+          "Access to fetch at 'https://privacy-frames.github.io/manifest.webmanifest' from origin 'https://pf.damenh.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+          "Failed to load resource: net::ERR_FAILED"
+        ],
+        "requestFailures": [
+          "GET https://privacy-frames.github.io/manifest.webmanifest net::ERR_FAILED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/workbox-window.prod.es5-B9K5rw8f.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/ar-SA.json-C_3OfhwP.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/az-AZ.json-B66SPiLd.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/bg-BG.json-Dh5YdxU_.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/bn-BD.json-Do1Dizr8.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/bn-IN.json-BzkOElTe.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/ca-ES.json-DHcJnGlF.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/cs-CZ.json-C-9gQH-I.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/da-DK.json-BV0lj8ZC.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/de-CH.json-D1VGX01-.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/de-DE.json-CktmeeHs.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/el-GR.json-C0tUEWau.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/es-ES.json-Bp3ZJYm4.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/eu-ES.json-DLFyqHoF.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/fa-IR.json-Bp26kTi7.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/fi-FI.json-xpzHrUn1.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/fr-FR.json-CzAs2G34.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/gl-ES.json-BlQFfDxp.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/he-IL.json-CeI47FXj.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/hi-IN.json-43l6ZJCS.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/hu-HU.json-CnVfheph.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/id-ID.json-DSwPcG6y.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/it-IT.json-D3S60WEu.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/ja-JP.json-BUdCYAJM.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/kaa.json-BLLasIBU.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/kab-KAB.json-Cv0U1FA9.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/kk-KZ.json-D-e4begV.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/km-KH.json-KQpz5gtA.js net::ERR_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/ko-KR.json-BD_cqbAC.js net::ERR_ABORTED"
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "drawio",
+      "url": "https://privacy-frames.github.io/apps/drawio/",
+      "task": "Create a diagram",
+      "originalURL": "https://app.diagrams.net",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "fe98e232ad2d2664c55658ecee6ec3910eb7537fbb23edb7598ffa516c97a32a",
+        "inspection": {
+          "title": "Untitled Diagram - draw.io",
+          "text": "File\nEdit\nView\nArrange\nExtras\nHelp\nShare\nUntitled Diagram\nScratchpad\nDrag elements here\nGeneral\nText\nHeading\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nVertical Container\nHorizontal Container\nList\nItem 1\nItem 2\nItem 3\nList Item\nLabel\nLabel\nSource\nTarget\nMisc\nAdvanced\nBasic\nArrows\nFlowchart\nEntity Relation\nUML\n+\nMore Shapes\nDiagram\nStyle\nView\nGrid\nPage View\nBackground\nChange...\nOptions\nConnection Arrows\nConnection Points\nGuides\nPaper Size\nEdit Data...\nClear Default Style\n\nPage-1",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "geOmniSearch",
+              "placeholder": "Type / to search",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Dragged rectangle from shape palette into diagram; SVG contents changed",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed Flowchart Maker & Online Diagram Software.",
+        "url": "https://apps.pf.damenh.com/3WaQTy3qqZM/drawio/",
+        "inspection": {
+          "title": "Flowchart Maker & Online Diagram Software",
+          "text": "",
+          "inputs": []
+        },
+        "failure": "locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.geDiagramContainer') to be visible\u001b[22m\n",
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 ()"
+        ],
+        "requestFailures": [
+          "GET https://privacy-frames.github.io/apps/drawio/sw.js net::ERR_ABORTED"
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "stackedit",
+      "url": "https://privacy-frames.github.io/apps/stackedit/",
+      "task": "Edit Markdown and observe rendered preview",
+      "originalURL": "https://stackedit.io/app",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "03e19c85ff3a8e3c1c1928ec0fbe64bb054867d3bbf7627562302bafdf093825",
+        "inspection": {
+          "title": "StackEdit",
+          "text": "Welcome file\n# Welcome to StackEdit!\n\n\nHi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.\n\n\n\n# Files\n\n\nStackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**\n\n\n## Create files and folders\n\n\nThe file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.\n\n\n## Switch to another file\n\n\nAll your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.\n\n\n## Rename a file\n\n\nYou can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.\n\n\n## Delete a file\n\n\nYou can delete the current file by clicking the **Remove** button in the file explorer. The file will be moved into the **Trash** folder and automatically deleted after 7 days of inactivity.\n\n\n## Export a file\n\n\nYou can export the current file by clicking **Export to disk** in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.\n\n\n\n# Synchronization\n\n\nSynchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "PRE",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Markdown edited; preview heading rendered",
+        "taskPassed": true,
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 ()",
+          "Object"
+        ],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installation refused: Cannot read properties of undefined (reading 'prototype')",
+        "failure": "Installation refused: Cannot read properties of undefined (reading 'prototype')",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: Cannot read properties of undefined (reading 'prototype')\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "id": "cyberchef",
+      "url": "https://gchq.github.io/CyberChef/",
+      "task": "Transform synthetic input using To Base64",
+      "originalURL": "https://gchq.github.io/CyberChef/",
+      "variant": "original public URL",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "464c889ed2cd765de2762cc24ad6f4720623245cb516dd3a5f4a46bdac800973",
+        "inspection": {
+          "title": "CyberChef",
+          "text": "Download CyberChef file_download\nLast build: 4 days ago\nOptions settings About / Support help\nOperations\n506\nFavourites\nstar\nTo Base64\nFrom Base64\nTo Hex\nFrom Hex\nTo Hexdump\nFrom Hexdump\nURL Decode\nRegular expression\nEntropy\nFork\nMagic\nData format\nEncryption / Encoding\nPublic Key\nArithmetic / Logic\nNetworking\nLanguage\nUtils\nDate / Time\nExtractors\nCompression\nHashing\nCode tidy\nForensics\nMultimedia\nOther\nFlow control\nRecipe\nkeyboard_arrow_up\nsave\nfolder\ndelete\nSTEP\n BAKE!\n\nAuto Bake\nInput\nadd\nfolder_open\ninput\ndelete\nview_compact\n\n\nabc 0 sort 1\ntext_fields Raw Bytes keyboard_return LF\nOutput\nsave\ncontent_copy\nopen_in_browser\nfullscreen\n\n\nabc 0 sort 1\nschedule 0ms text_fields Raw Bytes keyboard_return LF",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "search",
+              "placeholder": "Search...",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "auto-bake",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "open-folder",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "open-file",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": "Filter...",
+              "label": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": "Filter...",
+              "label": null
+            },
+            {
+              "tag": "TEXTAREA",
+              "id": "save-text-chef",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "TEXTAREA",
+              "id": "save-text-clean",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "TEXTAREA",
+              "id": "save-text-compact",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "save-name",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "save-link-recipe-checkbox",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "save-link-input-checkbox",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "TEXTAREA",
+              "id": "load-text",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "updateUrl",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "showHighlighter",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "wordWrap",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "showErrors",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "errorTimeout",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "useMetaKey",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "autoMagic",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "imagePreview",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "syncTabs",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "showCatCount",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-show-pending",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-show-loading",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-show-loaded",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-filter",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-num-results",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-pending",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-baking",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-baked",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-stale",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-errored",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-content-filter",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-num-results",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "To Base64 produces expected synthetic output",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": [
+          "POST https://region1.google-analytics.com/g/collect?v=2&tid=G-G9R4C1H8SR&gtm=45je6an1v9105118602za208zd9105118602xf1&_p=1793074371766&gcd=13l3l3l2l1l1&npa=1&dma_cps=a&dma=1&cid=1100381013.1793074372&frm=0&ngs=1&pscdl=noapi&rcb=1&sr=1280x800&uaa=x86&uab=64&uafvl=HeadlessChrome%3B153.0.8010.12%7CNot_A%2520Brand%3B8.0.0.0%7CChromium%3B153.0.8010.12&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&_s=1&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120412526~120469145~120469153~121246026~121246034&sid=1793074371&sct=1&seg=0&dl=https%3A%2F%2Fgchq.github.io%2FCyberChef%2F&dt=CyberChef&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=627 net::ERR_ABORTED",
+          "POST https://region1.google-analytics.com/g/collect?v=2&tid=G-G9R4C1H8SR&gtm=45je6an1v9105118602za200zd9105118602xf1&_p=1793074371766&gcd=13l3l3l2l1l1&npa=1&dma_cps=a&dma=1&_eu=AEAAAAQ&ae=a&cid=1100381013.1793074372&frm=0&ngs=1&pscdl=noapi&rcb=1&sr=1280x800&uaa=x86&uab=64&uafvl=HeadlessChrome%3B153.0.8010.12%7CNot_A%2520Brand%3B8.0.0.0%7CChromium%3B153.0.8010.12&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&_s=2&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120412526~120469145~120469153~121246026~121246034&sid=1793074371&sct=1&seg=0&dl=https%3A%2F%2Fgchq.github.io%2FCyberChef%2F&dt=CyberChef&en=scroll&epn.percent_scrolled=90&_et=599&tfd=6229 net::ERR_ABORTED"
+        ]
+      },
+      "confined": {
+        "installation": "Installation refused: Context-producing markup is not admitted",
+        "failure": "Installation refused: Context-producing markup is not admitted",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: Context-producing markup is not admitted\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "photocraft",
+      "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
+      "task": "Open synthetic image and apply brush stroke",
+      "originalURL": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
+      "variant": "original public URL",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "6574d32a360d7928d160d86e39d0617310374325692d054b2c7e15fc52465c93",
+        "inspection": {
+          "title": "PhotoCraft",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Imported synthetic red PNG; brush stroke changes sampled document pixel from red to black",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed PhotoCraft.",
+        "url": "https://apps.pf.damenh.com/JV_X5SpxyHg/hvo5f2d3geg2c4hy5/",
+        "inspection": {
+          "title": "PhotoCraft",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Imported synthetic red PNG; brush stroke changes sampled document pixel from red to black",
+        "taskPassed": true,
+        "offlineInspection": {
+          "title": "PhotoCraft",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "offlineReload": true,
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "pitch",
+      "url": "https://damenh.github.io/pitch-training/",
+      "task": "Submit an identification exercise and retain history after reload",
+      "originalURL": "https://damenh.github.io/pitch-training/",
+      "variant": "original public URL",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "8f2a54f5006c0a7382620bad4b7e7a7dff291dd6eac5d40bac9bd8bf7795b433",
+        "inspection": {
+          "title": "Identify Notes · Pitch Training",
+          "text": "Skip to content\nPitch Training\nReference\nIdentify\nSing\nSing test\nImport\nHistory\nSettings\nIdentify\nNotes\n\nAll notes\nSession 0/0\n\nPlay note\nC\nC♯\nD\nD♯\nE\nF\nF♯\nG\nG♯\nA\nA♯\nB\nSubmit answer",
+          "inputs": []
+        },
+        "task": "Submitted exercise; saved history survives reload",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed Pitch Training.",
+        "url": "https://apps.pf.damenh.com/ywJX53taGnk/pitch-training/",
+        "inspection": {
+          "title": "Identify Notes · Pitch Training",
+          "text": "Skip to content\nPitch Training\nReference\nIdentify\nSing\nSing test\nImport\nHistory\nSettings\nIdentify\nNotes\n\nAll notes\nSession 0/0\n\nPlay note\nC\nC♯\nD\nD♯\nE\nF\nF♯\nG\nG♯\nA\nA♯\nB\nSubmit answer",
+          "inputs": []
+        },
+        "task": "Submitted exercise; saved history survives reload",
+        "taskPassed": true,
+        "offlinePersistence": true,
+        "offlineInspection": {
+          "title": "Identify Notes · Pitch Training",
+          "text": "Skip to content\nPitch Training\nReference\nIdentify\nSing\nSing test\nImport\nHistory\nSettings\nIdentify\nNotes\n\nAll notes\nSession 0/0\n\nPlay note\nC\nC♯\nD\nD♯\nE\nF\nF♯\nG\nG♯\nA\nA♯\nB\nSubmit answer",
+          "inputs": []
+        },
+        "offlineReload": true,
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "wikipedia",
+      "url": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
+      "task": "Read article and navigate to a section offline",
+      "originalURL": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
+      "variant": "original public URL",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "d9e2332288abe8ca74f882459fc24a82d2c64eb87d301b1a79dcd1b07e44fc7b",
+        "inspection": {
+          "title": "Albert Einstein",
+          "text": "\"Einstein\" redirects here. For other uses, see Einstein (disambiguation) and Albert Einstein (disambiguation).\n\nAlbert Einstein\n\n\nEinstein in 1947\n\nBorn\t14 March 1879\nUlm, Kingdom of Württemberg, German Empire\nDied\t18 April 1955 (aged 76)\nPrinceton, New Jersey, U.S.\nCitizenship\t\nSee list\nKingdom of Württemberg, part of the German Empire (until 1896)[note 1]\nStateless (1896–1901)\nSwitzerland (from 1901)\nKingdom of Prussia, part of the German Empire (1914–1918)[note 1]\nFree State of Prussia (Weimar Republic, 1918–1933)[note 1]\nU.S. (from 1940)\n\nEducation\t\nSwiss federal polytechnic school (teaching diploma, 1900)\nUniversity of Zurich (PhD, 1905)\n\nKnown for\t\nGeneral relativity\nSpecial relativity\nPhotoelectric effect\nE=mc2 (mass–energy equivalence)\nE=hf (Planck–Einstein relation)\nTheory of Brownian motion\nEinstein field equations\nBose–Einstein statistics\nBose–Einstein condensate\nGravitational wave\nCosmological constant\nUnified field theory\nEPR paradox\nEnsemble interpretation\nList of other concepts\n\nSpouses\t\nMileva Marić\n​\n​(m. 1903; div. 1919)​\nElsa Löwenthal\n​\n​(m. 1919; died 1936)​\n\nChildren\t3, including Hans Albert\nFamily\tEinstein family\nAwards\t\nSee list\nBarnard Medal for Meritorious Service to Science (1920)\nNobel Prize in Physics (1921)\nMatteucci Medal (1921)\nForMemRS (1921)[1]\nCopley Medal (1925)[1]\nGold Medal of RAS (1926)[2]\nMax Planck Medal (1929)\nMembership of NAS (1942)[3]\nTime Person of the Century (1999)\n\nScientific career\nFields\tPhysics\nWorkplaces\t\nSee list\nUniversity of Bern (1908–1909)\nUniversity of Zurich (1909–1911)\nCharles University in Prague (1911–1912)\nETH Zurich (1912–1914)\nPrussian Academy of Sciences (1914–1933)\nHumboldt University of Berlin (1914–1933)\nKaiser Wilhelm Institute (director, 1917–1933)\nGerman Physical Society (president, 1916–1918)\nInst",
+          "inputs": []
+        },
+        "task": "Article visible; scrolled to final document section",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed Albert Einstein.",
+        "url": "https://apps.pf.damenh.com/6ZRP8wTAi0c/albert-einstein/",
+        "inspection": {
+          "title": "Albert Einstein",
+          "text": "\"Einstein\" redirects here. For other uses, see Einstein (disambiguation) and Albert Einstein (disambiguation).\n\nAlbert Einstein\n\n\nEinstein in 1947\n\nBorn\t14 March 1879\nUlm, Kingdom of Württemberg, German Empire\nDied\t18 April 1955 (aged 76)\nPrinceton, New Jersey, U.S.\nCitizenship\t\nSee list\nKingdom of Württemberg, part of the German Empire (until 1896)[note 1]\nStateless (1896–1901)\nSwitzerland (from 1901)\nKingdom of Prussia, part of the German Empire (1914–1918)[note 1]\nFree State of Prussia (Weimar Republic, 1918–1933)[note 1]\nU.S. (from 1940)\n\nEducation\t\nSwiss federal polytechnic school (teaching diploma, 1900)\nUniversity of Zurich (PhD, 1905)\n\nKnown for\t\nGeneral relativity\nSpecial relativity\nPhotoelectric effect\nE=mc2 (mass–energy equivalence)\nE=hf (Planck–Einstein relation)\nTheory of Brownian motion\nEinstein field equations\nBose–Einstein statistics\nBose–Einstein condensate\nGravitational wave\nCosmological constant\nUnified field theory\nEPR paradox\nEnsemble interpretation\nList of other concepts\n\nSpouses\t\nMileva Marić\n​\n​(m. 1903; div. 1919)​\nElsa Löwenthal\n​\n​(m. 1919; died 1936)​\n\nChildren\t3, including Hans Albert\nFamily\tEinstein family\nAwards\t\nSee list\nBarnard Medal for Meritorious Service to Science (1920)\nNobel Prize in Physics (1921)\nMatteucci Medal (1921)\nForMemRS (1921)[1]\nCopley Medal (1925)[1]\nGold Medal of RAS (1926)[2]\nMax Planck Medal (1929)\nMembership of NAS (1942)[3]\nTime Person of the Century (1999)\n\nScientific career\nFields\tPhysics\nWorkplaces\t\nSee list\nUniversity of Bern (1908–1909)\nUniversity of Zurich (1909–1911)\nCharles University in Prague (1911–1912)\nETH Zurich (1912–1914)\nPrussian Academy of Sciences (1914–1933)\nHumboldt University of Berlin (1914–1933)\nKaiser Wilhelm Institute (director, 1917–1933)\nGerman Physical Society (president, 1916–1918)\nInst",
+          "inputs": []
+        },
+        "task": "Article visible; scrolled to final document section",
+        "taskPassed": true,
+        "offlineTask": "Article visible; scrolled to final document section",
+        "offlineInspection": {
+          "title": "Albert Einstein",
+          "text": "\"Einstein\" redirects here. For other uses, see Einstein (disambiguation) and Albert Einstein (disambiguation).\n\nAlbert Einstein\n\n\nEinstein in 1947\n\nBorn\t14 March 1879\nUlm, Kingdom of Württemberg, German Empire\nDied\t18 April 1955 (aged 76)\nPrinceton, New Jersey, U.S.\nCitizenship\t\nSee list\nKingdom of Württemberg, part of the German Empire (until 1896)[note 1]\nStateless (1896–1901)\nSwitzerland (from 1901)\nKingdom of Prussia, part of the German Empire (1914–1918)[note 1]\nFree State of Prussia (Weimar Republic, 1918–1933)[note 1]\nU.S. (from 1940)\n\nEducation\t\nSwiss federal polytechnic school (teaching diploma, 1900)\nUniversity of Zurich (PhD, 1905)\n\nKnown for\t\nGeneral relativity\nSpecial relativity\nPhotoelectric effect\nE=mc2 (mass–energy equivalence)\nE=hf (Planck–Einstein relation)\nTheory of Brownian motion\nEinstein field equations\nBose–Einstein statistics\nBose–Einstein condensate\nGravitational wave\nCosmological constant\nUnified field theory\nEPR paradox\nEnsemble interpretation\nList of other concepts\n\nSpouses\t\nMileva Marić\n​\n​(m. 1903; div. 1919)​\nElsa Löwenthal\n​\n​(m. 1919; died 1936)​\n\nChildren\t3, including Hans Albert\nFamily\tEinstein family\nAwards\t\nSee list\nBarnard Medal for Meritorious Service to Science (1920)\nNobel Prize in Physics (1921)\nMatteucci Medal (1921)\nForMemRS (1921)[1]\nCopley Medal (1925)[1]\nGold Medal of RAS (1926)[2]\nMax Planck Medal (1929)\nMembership of NAS (1942)[3]\nTime Person of the Century (1999)\n\nScientific career\nFields\tPhysics\nWorkplaces\t\nSee list\nUniversity of Bern (1908–1909)\nUniversity of Zurich (1909–1911)\nCharles University in Prague (1911–1912)\nETH Zurich (1912–1914)\nPrussian Academy of Sciences (1914–1933)\nHumboldt University of Berlin (1914–1933)\nKaiser Wilhelm Institute (director, 1917–1933)\nGerman Physical Society (president, 1916–1918)\nInst",
+          "inputs": []
+        },
+        "offlineReload": true,
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "squoosh",
+      "url": "https://privacy-frames.github.io/apps/squoosh/",
+      "task": "Open synthetic image and change compression settings",
+      "originalURL": "https://squoosh.app",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "7a4a04c179f01807b7fbf4e8e0f73dd5d338a092e2b3b39915a2efadaa3c837a",
+        "inspection": {
+          "title": "Squoosh",
+          "text": "Drop OR Paste\n\nOr try one of these:\n\n2.8MB\n2.9MB\n1.6MB\n13KB\nSmall\n\nSmaller images mean faster load times. Squoosh can reduce file size and maintain high quality.\n\nSimple\n\nOpen your image, inspect the differences, then save instantly. Feeling adventurous? Adjust the settings for even smaller files.\n\nSecure\n\nWorried about privacy? Images never leave your device since Squoosh does all the work locally.\n\nPrivacy\nSource on Github",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Synthetic image opened; compression range changed",
+        "taskPassed": true,
+        "errors": [
+          "[JavaScript Error: \"Cookie “_ga” has been rejected for invalid domain.\" {file: \"https://privacy-frames.github.io/apps/squoosh/\" line: 0}]"
+        ],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installation refused: (intermediate value).skipWaiting is not a function",
+        "failure": "Installation refused: (intermediate value).skipWaiting is not a function",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: (intermediate value).skipWaiting is not a function\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "excalidraw",
+      "url": "https://privacy-frames.github.io/apps/excalidraw/",
+      "task": "Create and modify a drawing",
+      "originalURL": "https://excalidraw.com",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "d36c21a830dd7fb0e326cdcc135323eb9bb09e8e70f2434911154fa70626e7ff",
+        "inspection": {
+          "title": "Excalidraw Whiteboard",
+          "text": "Excalidraw\nYour drawings are saved in your browser's storage.\nBrowser storage can be cleared unexpectedly.\nSave your work to a file regularly to avoid losing it.\nOpen\nCtrl+O\nHelp\n?\nLive collaboration...\nSign up\nExport, preferences, languages, ...\nPick a tool & Start drawing!\nTo move canvas, hold Scroll wheel or Space while dragging, or use the hand tool\nShapes\nV\nR\nD\nO\nA\nL\nP\nT\nN\nE\nTry Excalidraw+\n14-day free trial\nCanvas actions\n100%\nShortcuts & help",
+          "inputs": []
+        },
+        "task": "Rectangle created and moved; changed x coordinate persisted in local storage",
+        "taskPassed": true,
+        "errors": [
+          "[JavaScript Error: \"downloadable font: download failed (font-family: \"Excalifont\" style:normal weight:400 width:100 src index:0): status=2147746065 source: https://excalidraw.nyc3.cdn.digitaloceanspaces.com/oss/apps/excalidraw/fonts/Excalifont/Excalifont-Regular-a88b72a24fb54c9f94e3b5fdaa7481c9.woff2\"]"
+        ],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installation refused: Too many installation resources",
+        "failure": "Installation refused: Too many installation resources",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: Too many installation resources\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [
+          "[JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://privacy-frames.github.io/manifest.webmanifest. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 404.\"]"
+        ],
+        "requestFailures": [
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/workbox-window.prod.es5-B9K5rw8f.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/ar-SA.json-C_3OfhwP.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/de-CH.json-D1VGX01-.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/de-DE.json-CktmeeHs.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/el-GR.json-C0tUEWau.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/es-ES.json-Bp3ZJYm4.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/eu-ES.json-DLFyqHoF.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/fa-IR.json-Bp26kTi7.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/fi-FI.json-xpzHrUn1.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/fr-FR.json-CzAs2G34.js NS_BINDING_ABORTED",
+          "GET https://privacy-frames.github.io/apps/excalidraw/assets/locales/gl-ES.json-BlQFfDxp.js NS_BINDING_ABORTED"
+        ]
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "drawio",
+      "url": "https://privacy-frames.github.io/apps/drawio/",
+      "task": "Create a diagram",
+      "originalURL": "https://app.diagrams.net",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "fe98e232ad2d2664c55658ecee6ec3910eb7537fbb23edb7598ffa516c97a32a",
+        "inspection": {
+          "title": "Untitled Diagram - draw.io",
+          "text": "File\nEdit\nView\nArrange\nExtras\nHelp\nShare\nUntitled Diagram\nScratchpad\nDrag elements here\nGeneral\nText\nHeading\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nVertical Container\nHorizontal Container\nList\nItem 1\nItem 2\nItem 3\nList Item\nLabel\nLabel\nSource\nTarget\nMisc\nAdvanced\nBasic\nArrows\nFlowchart\nEntity Relation\nUML\n+\nMore Shapes\nDiagram\nStyle\nView\nGrid\nPage View\nBackground\nChange...\nOptions\nConnection Arrows\nConnection Points\nGuides\nPaper Size\nEdit Data...\nClear Default Style\n\nPage-1",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "geOmniSearch",
+              "placeholder": "Type / to search",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Dragged rectangle from shape palette into diagram; SVG contents changed",
+        "taskPassed": true,
+        "errors": [],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installed Flowchart Maker & Online Diagram Software.",
+        "url": "https://apps.pf.damenh.com/3WaQTy3qqZM/drawio/",
+        "inspection": {
+          "title": "Flowchart Maker & Online Diagram Software",
+          "text": "",
+          "inputs": []
+        },
+        "failure": "locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.geDiagramContainer') to be visible\u001b[22m\n",
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "stackedit",
+      "url": "https://privacy-frames.github.io/apps/stackedit/",
+      "task": "Edit Markdown and observe rendered preview",
+      "originalURL": "https://stackedit.io/app",
+      "variant": "explicit static publisher copy",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "03e19c85ff3a8e3c1c1928ec0fbe64bb054867d3bbf7627562302bafdf093825",
+        "inspection": {
+          "title": "StackEdit",
+          "text": "Welcome file\n# Welcome to StackEdit!\n\n\nHi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.\n\n\n\n# Files\n\n\nStackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**\n\n\n## Create files and folders\n\n\nThe file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.\n\n\n## Switch to another file\n\n\nAll your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.\n\n\n## Rename a file\n\n\nYou can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.\n\n\n## Delete a file\n\n\nYou can delete the current file by clicking the **Remove** button in the file explorer. The file will be moved into the **Trash** folder and automatically deleted after 7 days of inactivity.\n\n\n## Export a file\n\n\nYou can export the current file by clicking **Export to disk** in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.\n\n\n\n# Synchronization\n\n\nSynchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "PRE",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "Markdown edited; preview heading rendered",
+        "taskPassed": true,
+        "errors": [
+          "Object { body, headers, status }"
+        ],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installation refused: can't access property \"prototype\", ExtendableEvent is undefined",
+        "failure": "Installation refused: can't access property \"prototype\", ExtendableEvent is undefined",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: can't access property \"prototype\", ExtendableEvent is undefined\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [],
+        "requestFailures": []
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "id": "cyberchef",
+      "url": "https://gchq.github.io/CyberChef/",
+      "task": "Transform synthetic input using To Base64",
+      "originalURL": "https://gchq.github.io/CyberChef/",
+      "variant": "original public URL",
+      "standalone": {
+        "httpStatus": 200,
+        "entrySha256": "464c889ed2cd765de2762cc24ad6f4720623245cb516dd3a5f4a46bdac800973",
+        "inspection": {
+          "title": "CyberChef",
+          "text": "Download CyberChef file_download\nLast build: 4 days ago\nOptions settings About / Support help\nOperations\n506\nFavourites\nstar\nTo Base64\nFrom Base64\nTo Hex\nFrom Hex\nTo Hexdump\nFrom Hexdump\nURL Decode\nRegular expression\nEntropy\nFork\nMagic\nData format\nEncryption / Encoding\nPublic Key\nArithmetic / Logic\nNetworking\nLanguage\nUtils\nDate / Time\nExtractors\nCompression\nHashing\nCode tidy\nForensics\nMultimedia\nOther\nFlow control\nRecipe\nkeyboard_arrow_up\nsave\nfolder\ndelete\nSTEP\n BAKE!\n\nAuto Bake\nInput\nadd\nfolder_open\ninput\ndelete\nview_compact\n\n\nabc 0 sort 1\ntext_fields Raw Bytes keyboard_return LF\nOutput\nsave\ncontent_copy\nopen_in_browser\nfullscreen\n\n\nabc 0 sort 1\nschedule 1ms text_fields Raw Bytes keyboard_return LF",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "search",
+              "placeholder": "Search...",
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "auto-bake",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "open-folder",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "open-file",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": "Filter...",
+              "label": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "",
+              "placeholder": "Filter...",
+              "label": null
+            },
+            {
+              "tag": "TEXTAREA",
+              "id": "save-text-chef",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "TEXTAREA",
+              "id": "save-text-clean",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "TEXTAREA",
+              "id": "save-text-compact",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "save-name",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "save-link-recipe-checkbox",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "save-link-input-checkbox",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "TEXTAREA",
+              "id": "load-text",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "updateUrl",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "showHighlighter",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "wordWrap",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "showErrors",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "errorTimeout",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "useMetaKey",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "autoMagic",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "imagePreview",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "syncTabs",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "showCatCount",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-show-pending",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-show-loading",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-show-loaded",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-filter",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "input-num-results",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-pending",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-baking",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-baked",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-stale",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-show-errored",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-content-filter",
+              "placeholder": null,
+              "label": null
+            },
+            {
+              "tag": "INPUT",
+              "id": "output-num-results",
+              "placeholder": null,
+              "label": null
+            }
+          ]
+        },
+        "task": "To Base64 produces expected synthetic output",
+        "taskPassed": true,
+        "errors": [
+          "[JavaScript Error: \"Cookie “_ga_G9R4C1H8SR” has been rejected for invalid domain.\" {file: \"https://gchq.github.io/CyberChef/\" line: 0}]",
+          "[JavaScript Error: \"Cookie “_ga_G9R4C1H8SR” has been rejected for invalid domain.\" {file: \"https://gchq.github.io/CyberChef/\" line: 0}]",
+          "[JavaScript Error: \"Cookie “_ga” has been rejected for invalid domain.\" {file: \"https://gchq.github.io/CyberChef/\" line: 0}]"
+        ],
+        "requestFailures": []
+      },
+      "confined": {
+        "installation": "Installation refused: Context-producing markup is not admitted",
+        "failure": "Installation refused: Context-producing markup is not admitted",
+        "inspection": {
+          "title": "Privacy Frames",
+          "text": "Privacy Frames\nReport\nGitHub\nApplication URL\nInstall\n\nInstallation refused: Context-producing markup is not admitted\n\nEXAMPLES\nNotebook\nPhotoCraft\nHostile app\nCode playground\nPitch Training\nWikipedia article\nINSTALLED 0\nRefresh\n\nNo applications installed.\n\nDiagnostics",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "id": "app-url",
+              "placeholder": "https://…",
+              "label": null
+            }
+          ]
+        },
+        "errors": [],
+        "requestFailures": []
+      }
+    }
+  ]
+}

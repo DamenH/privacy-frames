@@ -45,6 +45,19 @@ const targets = [
     task: 'Transform synthetic input using To Base64',
   },
 ];
+const overrideInput: unknown = JSON.parse(process.env.EVALUATION_URL_OVERRIDES || '{}');
+if (!overrideInput || typeof overrideInput !== 'object' || Array.isArray(overrideInput))
+  throw new Error('Invalid URL overrides');
+const overrides = new Map<string, string>();
+for (const [key, value] of Object.entries(overrideInput)) {
+  if (
+    !targets.some((target) => target.id === key) ||
+    typeof value !== 'string' ||
+    !/^https?:/.test(value)
+  )
+    throw new Error('Invalid target URL override');
+  overrides.set(key, value);
+}
 const revision = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
 const output =
   process.env.EVALUATION_RESULTS || 'results/evaluation/compatibility-original.json';
@@ -56,9 +69,11 @@ const receipt = {
   started: new Date().toISOString(),
   revision,
   host,
-  variants: process.env.EVALUATION_URL
-    ? 'Explicit publisher snapshot URL override; see each row URL'
-    : 'original public URLs; no copies or publisher modifications',
+  publisherRevision: process.env.PUBLISHER_REVISION || null,
+  variants:
+    process.env.EVALUATION_URL || overrides.size
+      ? 'Explicit publisher snapshot URL override; see each row URL'
+      : 'original public URLs; no copies or publisher modifications',
   runnerSha256: createHash('sha256')
     .update(await readFile(new URL(import.meta.url)))
     .digest('hex'),
@@ -241,13 +256,22 @@ async function task(page: Page, id: string) {
   throw new Error('Missing task');
 }
 for (const [name, engine] of Object.entries({ chromium, firefox })) {
+  if (process.env.EVALUATION_BROWSER && process.env.EVALUATION_BROWSER !== name) continue;
   const browser = await launch(engine);
   try {
     for (const target of targets
       .filter(
         (t) => !process.env.EVALUATION_TARGET || t.id === process.env.EVALUATION_TARGET,
       )
-      .map((t) => ({ ...t, url: process.env.EVALUATION_URL || t.url }))) {
+      .map((t) => ({
+        ...t,
+        originalURL: t.url,
+        url: process.env.EVALUATION_URL || overrides.get(t.id) || t.url,
+        variant:
+          process.env.EVALUATION_URL || overrides.has(t.id)
+            ? 'explicit static publisher copy'
+            : 'original public URL',
+      }))) {
       const row = {
         browser: name,
         version: browser.version(),
@@ -270,8 +294,13 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
         page.on('requestfailed', (r) =>
           failed.push(`${r.method()} ${r.url()} ${r.failure()?.errorText}`),
         );
-        page.on('console', (m) => {
-          if (m.type() === 'error') errors.push(m.text());
+        context.on('console', (m) => {
+          if (['error', 'warning'].includes(m.type())) errors.push(m.text());
+        });
+        const responses: { url: string; status: number }[] = [];
+        context.on('response', (response) => {
+          if (response.status() >= 400)
+            responses.push({ url: response.url(), status: response.status() });
         });
         const state = row[mode];
         let app = page;
@@ -376,6 +405,7 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
         } finally {
           if (mode === 'standalone' && state.taskPassed !== true) controlsFailed = true;
           state.errors = errors.slice(0, 30);
+          state.responses = responses.slice(0, 30);
           state.requestFailures = failed.slice(0, 30);
           try {
             await app.screenshot({

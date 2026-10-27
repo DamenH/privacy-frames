@@ -267,7 +267,10 @@ export function installResourceAttributePolicy(
     method(Element.prototype, name, function (this: Element, ...args: unknown[]) {
       const tag = apply(local, this, []).toLowerCase();
       if (['link', 'meta', 'script'].includes(tag)) fail('Policy element is immutable');
-      const key = str(args[name === 'setAttributeNS' ? 1 : 0]).toLowerCase();
+      const nameIndex = name === 'setAttributeNS' ? 1 : 0;
+      const attributeName = str(args[nameIndex]);
+      args[nameIndex] = attributeName;
+      const key = attributeName.toLowerCase();
       if (key === 'srcdoc' || key === 'is' || key.startsWith('on'))
         fail('Attribute not admitted');
       if (

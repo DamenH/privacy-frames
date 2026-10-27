@@ -18,6 +18,21 @@ function historyCoercion() {
   return result;
 }
 
+function attributeCoercion() {
+  const node = document.createElement('p');
+  let conversions = 0;
+  node.setAttribute(
+    {
+      toString() {
+        conversions++;
+        return 'title';
+      },
+    } as unknown as string,
+    'conversion control',
+  );
+  return { conversions, value: node.getAttribute('title') };
+}
+
 const server = await servers();
 const evidence = { date: new Date().toISOString(), browsers: [] };
 try {
@@ -38,6 +53,8 @@ try {
       await app.locator('[data-host-ready="true"]').waitFor();
       await app.locator('#data').waitFor({ state: 'attached' });
       const confined = await app.evaluate(historyCoercion);
+      const attribute = await app.evaluate(attributeCoercion);
+      assert.deepEqual(attribute, { conversions: 1, value: 'conversion control' });
       assert.equal(confined.conversions, 1);
       assert(['', '#coercion-1'].includes(confined.fragment));
       const data = await app.evaluate(() => {
@@ -71,6 +88,8 @@ try {
       const control = await context.newPage();
       await control.goto('http://127.0.0.1:4218/review/');
       const unrestricted = await control.evaluate(historyCoercion);
+      const nativeAttribute = await control.evaluate(attributeCoercion);
+      assert.deepEqual(nativeAttribute, attribute);
       assert.equal(unrestricted.conversions, 1);
       const controlMutation = await control.evaluate(() => {
         const node = document.querySelector<HTMLScriptElement>('#data')!;
@@ -83,6 +102,8 @@ try {
         name,
         version: browser.version(),
         confined,
+        attribute,
+        nativeAttribute,
         unrestricted,
         data,
         prepared,

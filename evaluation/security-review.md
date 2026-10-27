@@ -34,7 +34,7 @@ object to the native method, which could convert it again. The wrapper now passe
 the checked string. This closes a check/use mismatch; no network disclosure or
 cross-application storage access was demonstrated through this route. A regression
 compares conversion counts with the unrestricted native method in both browsers.
-The Navigation API remains an independent navigation control.
+The Navigation API remains an independent navigation control. Resource attribute names now also pass their checked string to the native setter, resolving the analogous consistency question raised in the independent audit. A conversion-count regression compares the wrapper with an unrestricted native setter in both browsers.
 
 The compatibility study found that the importer rejected `application/ld+json`
 metadata. Initial inline JSON and JSON-LD blocks now remain data elements; they do
@@ -50,6 +50,8 @@ the calibrated routes. Fresh post-change receipts are kept separately from the
 baseline. Page-reported refusal alone is not treated as evidence of no traffic.
 
 The new lifecycle regression covers an actual controller replacement in both browsers. It does not establish BFCache restoration behavior or atomically test every concurrent navigation/install schedule.
+
+Preparation now exposes standard global lifecycle aliases and makes `self` refer to the compartment global object. Publisher-defined namespace properties remain inside that compartment. The regression checks alias identity, a publisher-defined property and the continued absence of native worker messaging, navigator, worker creation and `importScripts`. The per-installation resource budget is now 1,000 files; the 100 MiB byte limit and runtime admission checks remain in place.
 
 ## Limits
 

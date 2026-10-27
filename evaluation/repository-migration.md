@@ -13,11 +13,14 @@ The manager stays at `https://pf.damenh.com/`. The runtime moves to
 The manager and runtime retain separate origins within the same site, preserving
 how the bridge and top-level applications access installation storage.
 
-Verify installation, storage, offline execution and management authentication at
-the new runtime before retiring `pf-apps.damenh.com`. Existing installations and
-private application data remain stored under the old origin; changing DNS does
-not migrate browser storage. Tell users to export data from the old installation
-where supported before reinstalling at the new runtime.
+Installation, storage, offline execution and management checks passed at the new
+runtime in Chromium and Firefox before the old `pf-apps.damenh.com` DNS record
+was retired. Existing installations and private application data remain stored
+under the old browser origin; changing DNS does not migrate browser storage.
+The new manager starts with an empty installation list. Reinstall applications
+from their public URLs at the new runtime; automatic private-data migration was
+not implemented. The four former Cloudflare fixture Workers were also retired
+after their Pages replacements passed public installation checks.
 
 Publisher self-installation is an idea for later work, outside this implementation.
 A publisher could link to an installation request on the trusted manager, with
