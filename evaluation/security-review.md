@@ -1,62 +1,77 @@
 # Confinement review
 
-## Scope and method
+This document maps the current design to its security checks. It is a source
+review with empirical fixtures, not a confinement proof or an external
+penetration test. The latest combined build still needs full regressions,
+application tasks, independent network observations and public deployment checks.
 
-The baseline is host revision `b4dbf2e6367929cf216d883eaf90a5167e587253`.
-Fresh baseline checks and response-policy hashes are retained under
-`results/evaluation/baseline/`. Chromium 153.0.8010.12 and Firefox 155.0 ran with
-normal third-party storage partitioning restored by `test/browser-profile.ts`.
+## Boundaries reviewed
 
-The primary implementation review traced each boundary below through source and
-existing regression tests. Two delegated adversarial reviews were rejected by the
-agent platform before producing findings. Their rejection supplies no security
-evidence. A narrower independent documentation/evidence audit was requested
-separately. This review does not substitute for an external penetration test or a
-confinement proof.
+| Boundary                      | Current mechanism                                                                                           | Required checks                                                                         |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Installation                  | Separate authenticated origin/session; host approval; serialized capture and restricted precaching          | Exact parent/origin/session attacks, duplicate sessions and worker disposal             |
+| Admission                     | Runtime reconstructs metadata and validates paths, content, limits and digests                              | Invalid/partial packages cannot become published installations                          |
+| Root startup                  | Trusted bootstrap captures operations and prepares effects before publisher markup/code                     | Setup failures leave publisher code unexecuted                                          |
+| Child contexts                | Host-created workers, worklets, documents and popups inherit application/generation identity                | Pending references, recursive children, wrong parents and management attacks            |
+| Resource loading              | Original URLs map to the admitted local graph; uncaptured resources fail locally                            | Runtime-origin and external receiver controls, including same-origin WebSockets         |
+| Markup                        | Compiler checks plus viewless native parsing of actual nodes before insertion                               | HTML/SVG/MathML/template parser differences and dynamic insertion                       |
+| Trusted state                 | Private arrays/Maps/Sets/records/descriptors/options; captured native operations                            | Prototype getters/setters, implicit protocols and raw-context interception              |
+| Public language compatibility | Reviewed prototype/static/function metadata additions; protected operations, ancestry and Error stack hooks | Unchanged polyfills work while attempted replacement/reparenting fails                  |
+| Management                    | Authenticated channels and actual browser-client roles                                                      | App-supplied role, URL or identity cannot authorize management                          |
+| Publisher service workers     | Prepared executors and mediated events; host retains native response/controller authority                   | No arbitrary network proxy, executable-response injection or native controller takeover |
+| Storage                       | Application namespaces and protected native factory/prototype routes                                        | Saved-data round trips, enumeration and namespace regressions                           |
+| Lifecycle/navigation          | Scoped root history; prepared context publication; closed/replaced generation checks                        | Reload, cancellation, controller replacement and foreign navigation                     |
 
-## Areas assessed
+## Native references and prototype hooks
 
-| Area | Source examined | Checks and assessment |
-| --- | --- | --- |
-| Native references and live objects | `guard.ts`, `enforcement/native.ts`, `enforcement/dom.ts`, `resource-aliases.ts` | Native references are captured before application execution. The existing token-list receiver regression checks getters, methods and iteration with unrestricted controls. The iterator returns copied strings rather than retaining a native policy object. |
-| Reentrancy and scheduling | `enforcement/navigation.ts`, DOM wrappers, cache wrappers, guard script startup | Found a repeated URL conversion in history wrappers; normalized once before passing to the browser. Guard installation precedes application markup and scripts, including asynchronously loaded scripts. |
-| Parsing and insertion | `shared/policy.ts`, installation and runtime document processing, `enforcement/dom.ts` | Lexical and parsed gates cover HTML, SVG, MathML and template contents. Creation, parser, insertion and attribute paths have synchronous restrictions. Existing probes include real events and unrestricted native controls. The lexical gate remains deliberately conservative inside text and comments. |
-| Execution contexts and navigation | `enforcement/navigation.ts`, `enforcement/effects.ts`, `response-policy.ts` | CSP and protected APIs deny frames, popups, application workers and worklets. A native Navigation API listener cancels document exits. External embedding/opener tests remain separate from ordinary request tests. Browser menu actions and browser defects are outside scope. |
-| Storage | `enforcement/web-storage.ts`, `storage/indexed-db.ts`, `storage/caches.ts` | Namespaces apply at native factory prototypes; Web Storage handles and storage-event fields expose scoped views. Cache match options cannot replace the final prefixed cache name. Tests read back same-app data and check cross-app access and enumeration. Shared origin quotas and timing are not isolation guarantees. |
-| Routing and admission | `runtime/worker.ts`, `runtime/admission.ts`, `shared/runtime-url.ts` | Worker derives identity from actual clients, admits exact resource URLs and queries, and rejects unknown requests without network fallback. Full source digests govern storage; short aliases are collision checked. Admission reconstructs metadata and checks bodies and hashes before storage. |
-| Management and lifecycle | `bridge/connect.ts`, `manager/services/runtime-bridge.ts`, worker management handlers | Bridge checks the real parent window and configured origin. Worker independently requires a role issued for a trusted bridge navigation and bound to its browser client ID. Existing tests call worker management through a test-only captured native capability. Replacements/removals reject active app windows. `test/lifecycle.ts` replaces the host controller while an app is open, then checks saved state, request blocking and management after reload. |
-| Installation execution | `installation/import-website.ts`, `prepare-worker.ts` | Publisher preparation receives a compartment with a download broker and in-memory caches. Explicit lifecycle promises finish before the native worker is terminated and installation returned. No native publisher controller survives into confined execution. |
+The runtime permits language extensions without giving trusted records the public
+Object prototype. Collections and descriptor/option records are created through
+explicit private helpers. Trusted JSON/parser outputs are normalized before
+optional-field reads. Message envelopes are detached while application payloads
+retain their application-facing semantics.
 
-## Changes and findings
+Native-looking handles require a separate receiver check. In the popup facade,
+forwarding an inherited application getter with the private Window as receiver
+would reveal that Window. The facade now uses itself as the receiver for Object
+prototype extensions. Its native Window operations still use captured operations.
+The actual-source popup fixture compares both paths on a real child Window;
+it does not claim to exercise complete controller admission or confinement.
 
-The history wrapper previously validated `String(url)` and passed the original
-object to the native method, which could convert it again. The wrapper now passes
-the checked string. This closes a check/use mismatch; no network disclosure or
-cross-application storage access was demonstrated through this route. A regression
-compares conversion counts with the unrestricted native method in both browsers.
-The Navigation API remains an independent navigation control. Resource attribute names now also pass their checked string to the native setter, resolving the analogous consistency question raised in the independent audit. A conversion-count regression compares the wrapper with an unrestricted native setter in both browsers.
+Existing native methods and newly added metadata are distinct controls. String
+operations and other reviewed public replacements may differ from the captured
+operations used by trusted callbacks. Implicit hooks such as `then`, iterator and
+coercion protocols, plus Error stack formatting hooks, need explicit restrictions
+even when ordinary named extensions are supported. Protected globals may accept
+identical assignments without accepting a replacement constructor.
 
-The compatibility study found that the importer rejected `application/ld+json`
-metadata. Initial inline JSON and JSON-LD blocks now remain data elements; they do
-not become executable resources. External data-script resources and unsupported
-script types remain rejected by preparation. Existing script mutation and
-insertion controls also apply to these elements. Unit tests and browser controls
-check readable JSON, nonexecution, blocked type mutation and blocked reinsertion.
-This change does not add dynamic executable script support.
+## Evidence and historical findings
 
-Independent network checks require live DNS, HTTP/TCP and STUN UDP controls.
-The retained baseline receipts show zero private-marker network observations for
-the calibrated routes. Fresh post-change receipts are kept separately from the
-baseline. Page-reported refusal alone is not treated as evidence of no traffic.
+Current tests must include functional behavior and hostile attempts with working
+unrestricted controls. A thrown exception or browser console message alone does
+not establish that no request escaped. Receiver observations must cover the probe
+phase, not just a later network-test button. Same-runtime WebSocket controls test
+a route that a `connect-src 'self'` policy permits.
 
-The new lifecycle regression covers an actual controller replacement in both browsers. It does not establish BFCache restoration behavior or atomically test every concurrent navigation/install schedule.
+Earlier review found repeated URL conversion between validation and native calls.
+History and resource-attribute wrappers now pass their checked values to the
+browser. It also added JSON/JSON-LD data-script admission, controller-replacement
+checks and restricted precache lifecycle aliases. These findings and their
+receipts describe their recorded revisions, not fresh verification of the current
+implementation.
 
-Preparation now exposes standard global lifecycle aliases and makes `self` refer to the compartment global object. Publisher-defined namespace properties remain inside that compartment. The regression checks alias identity, a publisher-defined property and the continued absence of native worker messaging, navigator, worker creation and `importScripts`. The per-installation resource budget is now 1,000 files; the 100 MiB byte limit and runtime admission checks remain in place.
+The historical review baseline was
+`b4dbf2e6367929cf216d883eaf90a5167e587253`, with evidence under
+`results/evaluation/baseline/`. Two attempted delegated adversarial reviews were
+rejected before producing findings; those attempts supply no security evidence.
 
 ## Limits
 
-No new confirmed network-disclosure escape was established in this review.
-Coverage is finite: newly introduced browser APIs and browser behavior changes
-require renewed review. No WebKit or real-device mobile conclusion follows from
-the two desktop browser runs. Application workers, arbitrary updates and IFC
-remain outside this implementation round.
+Installed apps share a runtime origin. Storage namespaces do not establish
+cross-application storage or browser-permission isolation. Native browser UI,
+extensions, browser defects, physical side channels and availability are outside
+the threat model. General application updates and IFC remain deferred.
+
+Chromium and Firefox desktop receipts do not establish WebKit or real-device
+mobile behavior. BFCache, browser-process termination and every concurrent
+replacement schedule remain unmeasured. CyberChef cancellation/restart in Firefox
+is unverified where its native control does not complete reliably.

@@ -1,102 +1,115 @@
 # Implementation boundaries
 
-The source has four execution environments: the manager document, the runtime
-bridge, a disposable preparation worker and the confined application document.
-The host service worker controls installed application responses. Each boundary
-has explicit data validation and a distinct set of capabilities.
+The source separates the manager, installer and confined runtime onto three
+origins. The manager owns installation approval. The installer downloads public
+resources and runs restricted precaching. The runtime admits the resulting
+package and serves installed resources without network fallback.
+
+The configured sites are `pf.damenh.com`, `install.pf.damenh.com` and
+`apps.pf.damenh.com`. This describes the current source configuration; fresh
+verification and public deployment of this batch remain pending.
 
 ## Source structure
 
-| Directory | Responsibility |
-| --- | --- |
-| `src/manager/`, `src/manager.tsx` | React library interface, installation state and runtime connection |
-| `src/bridge/` | Authenticate the manager iframe connection and forward admitted management operations |
-| `src/installation/` | Download a webpage, discover resources and finish public preparation |
-| `src/runtime/worker.ts` | Authorize browser clients, admit installations and serve local virtual resources |
-| `src/runtime/guard.ts` | Establish restrictions before loading application markup or scripts |
-| `src/runtime/storage/` | Application-scoped IndexedDB and Cache Storage interfaces |
-| `src/runtime/storage.ts` | Host-owned installation metadata and resource bodies |
-| `src/shared/` | Shared types, runtime validation, resource limits and URL identity |
-| `publisher-source-ref.txt` | Pinned `privacy-frames/apps` source for ordinary and hostile fixtures |
-| `scripts/` | Static builds for both trusted origins and independent examples |
-| `test/` | Browser behavior, hostile probes and independently observed network tests |
+| Directory                         | Responsibility                                                                |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| `src/manager/`, `src/manager.tsx` | React interface, installation approval and runtime connection                 |
+| `src/bridge/`                     | Authenticate management connections and forward fixed operations              |
+| `src/installation/`               | Installation sessions, resource capture and restricted precaching             |
+| `src/runtime/worker.ts`           | Authorize browser clients, admit installations and serve local resources      |
+| `src/runtime/guard.ts`            | Prepare the root application before its markup or scripts run                 |
+| `src/runtime/contexts/`           | Prepare documents, popups, workers, shared workers and worklets               |
+| `src/runtime/publisher/`          | Mediate publisher service-worker behavior without granting native control     |
+| `src/runtime/enforcement/`        | Browser operation policies and the native markup validator                    |
+| `src/runtime/storage/`            | Application-scoped IndexedDB and Cache Storage interfaces                     |
+| `src/runtime/storage.ts`          | Host-owned installation metadata and resource bodies                          |
+| `src/shared/primordials.ts`       | Captured operations and explicit private collection/record helpers            |
+| `publisher-source-ref.txt`        | Pinned source for maintained examples and unchanged third-party copies        |
+| `scripts/`, `test/`               | Static builds, functional fixtures, hostile controls and network observations |
 
 ## Installation boundary
 
-Installation starts from a webpage URL. There is one importer and no external
-host-specific package format. HTML, CSS, supported module dependencies and
-precache installation all feed the same resource collection. Transformations
-resolve publisher URLs and prepare initial markup before runtime admission;
-they do not add publisher-specific branches.
+Installation starts from a webpage URL, without a custom application manifest.
+The manager creates a disposable installer iframe and authenticates its exact
+origin, window and session before transferring a MessagePort. A host Web Lock
+serializes installations across manager tabs through runtime admission. The
+installer accepts one preparation request and is removed before admission.
 
-Downloads omit credentials, reject redirects and enforce the shared limits while
-reading response bodies. Preparation code receives a limited download broker and
-in-memory caches inside an SES compartment. The native preparation worker is
-host-owned. It is terminated before the installation crosses into runtime
-storage.
+The existing importer runs on the installation origin. It does not execute the
+application UI. HTML, CSS, module references, bounded static loader discovery and
+restricted precaching feed the same resource collection. Publisher preparation
+receives a limited download broker and in-memory caches inside an SES compartment;
+the host-owned preparation worker is terminated before admission.
 
-The runtime independently validates received installation metadata, resource
-paths, markup, byte counts and digests. TypeScript types describe internal code;
-they do not authorize data received through browser messages. Failed validation
-must leave the installation unpublished.
+Downloads omit credentials and reject redirects. Missing ordinary dependencies
+are recorded while successful captures are retained. A missing entry document,
+failed host preparation, exceeded limit or invalid package still rejects the
+installation. Failed publisher precaching contributes no partial cache writes.
+The limits remain 1,000 resources and 100 MiB per installation.
+
+The runtime independently checks metadata, paths, markup, byte counts and digests
+before publishing an installation. Installation success establishes an admitted
+resource graph; useful application behavior requires a separate task test.
 
 ## Runtime boundary
 
-The host worker serves an initial document containing only the guard. The guard
-captures native methods, freezes language intrinsics and establishes restrictions
-before admitting application markup and scripts. Setup failure prevents
-application execution.
+The initial response contains only trusted setup. Root and child documents admit
+publisher content after common preparation succeeds. Resource aliases map original
+publisher URLs to exact installed responses. The service worker rejects uncaptured
+runtime requests, and CSP restricts ordinary requests to the runtime origin.
+WebSocket, WebRTC and other alternate effects also require explicit API controls;
+CSP alone does not block a same-origin WebSocket.
 
-Network confinement combines two controls. A runtime-origin-only CSP prevents
-external request destinations, including measured DNS disclosure routes. The
-host worker serves exact installed resources and rejects other runtime-origin
-requests. Publisher URL aliases are translated before native request creation.
+The runtime creates and prepares dedicated and shared workers, worklets, child
+HTML/SVG documents and popups before publisher execution. Pending document
+references remain unavailable. Context identity includes the application,
+installation generation and actual parent; a child receives no management role.
+Root history updates may stay within the installed application's URL namespace.
+Document exits and unsafe history traversal remain restricted.
 
-The guard also covers operations outside ordinary HTTP interception: navigation,
-new execution contexts, alternate transports, browser-mediated remote services
-and access to unscoped storage. Dedicated workers, shared workers and worklets
-remain prohibited. The detailed operation inventory is in
-[SURFACE_INVENTORY.md](SURFACE_INVENTORY.md).
+Dynamic scripts use installed resources or application Blobs. An uncaptured script
+is redirected to a local unavailable-resource response so native asynchronous
+failure behavior can be retained. Autonomous custom elements are supported;
+customized built-ins and document replacement remain restricted. Before live
+markup insertion, a viewless native parser checks the actual nodes in addition to
+the compiler's checks.
 
-A limited precache registration interface lets supported PWAs inspect their
-completed installation. Publisher registration, update and fetch-handler
-execution never gain native runtime authority. General application updates remain
-outside the current profile.
+Trusted callbacks use captured operations and explicit private arrays, Maps, Sets,
+records, descriptor records and native option objects. These objects do not inherit
+application prototype additions. The public language profile permits ordinary
+prototype and metadata extensions, including Object, Map and Set extensions.
+Selected public replacements, including String methods and
+`Function.prototype.toString`, leave the captured trusted operations intact.
+Protected native operations, intrinsic ancestry, implicit coercion/iteration/then/JSON hooks and
+Error stack hooks retain separate restrictions. No custom build-time transform
+rewrites trusted runtime code.
 
-## Storage and identity
+Publisher service-worker registrations and events are mediated through prepared
+executors. They cannot replace the host controller, obtain arbitrary network
+access or authorize responses outside the admitted graph. General application
+updates remain deferred.
 
-Host-owned IndexedDB separates installation metadata from resource bodies. Library
-listing and alias lookup read metadata without copying every installed resource.
-Resource bodies are loaded when needed for a response. This uses browser-managed
-origin storage; the 100 MiB admission limit is an application policy.
+## Storage and management
 
-The full source-derived identity governs storage namespaces and ownership. The
-11-character public alias is a URL convenience, with collisions rejected during
-admission. Application display names confer no authority. The guard namespaces
-local storage, session storage, IndexedDB and Cache Storage, including prototype
-calls, enumeration and storage events.
+Host IndexedDB separates installation metadata from resource bodies. Full
+source-derived identities govern namespaces; the 11-character URL alias is
+collision checked. Local storage, session storage, IndexedDB and Cache Storage
+have application-scoped views. The prototype does not promise cross-application
+storage or browser-permission isolation within the shared runtime origin.
 
-## Management boundary
-
-The manager embeds a trusted bridge from the runtime origin. Both endpoints check
-the browser-reported origin and actual peer window before exchanging a
-MessagePort. The bridge accepts a fixed operation set. The worker independently
-requires a management role bound to a trusted browser client.
-
-Applications launch top-level without openers and cannot be embedded by an
-external parent. Same-site manager and runtime domains allow iframe installation
-and top-level execution to share runtime storage. The bridge checks storage
-access and worker control before proceeding.
+The manager embeds the trusted runtime bridge. Both endpoints check browser-issued
+origin and actual peer window before exchanging a MessagePort. The worker also
+requires a management role bound to a trusted browser client. Top-level
+applications launch without openers; application content cannot become a manager
+or an installer by supplying a URL or role field.
 
 ## Builds and evidence
 
-The build emits separate manager and runtime sites for both local testing and
-production. A small second repository exists only to publish the runtime through
-GitHub Pages; implementation and fixtures stay together here. Untrusted examples
-are built separately and published on independent origins.
+The build emits separate static manager, runtime and installation sites for GitHub
+Pages. Publisher examples are served from independent origins. Development uses
+separate local origins for the same roles.
 
-Changes to admission or enforcement require both working unrestricted controls
-and confined attempts. Network observations use external receivers and process
-tracing in addition to page-reported errors. Receipt provenance must identify the
-revision and browser tested. Existing receipts provide historical evidence until
-the changed implementation is tested again.
+Receipts must identify the source, built artifacts and browser tested. Existing
+release receipts describe their recorded revisions. Fresh full regressions,
+corpus tasks, independent network checks and public deployment are required before
+this batch can be called a verified release.

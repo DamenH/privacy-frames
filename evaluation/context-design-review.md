@@ -283,3 +283,160 @@ confinement. The actual adapter still needs shared realm enforcement, load-event
 resumption, safe content rendering, reference checks, replacement/navigation
 handling and nested cases. It must cover batch insertion and reentrancy rather
 than relying on a Promise or the contentWindow getter alone.
+
+## Document adapter hooks after the first-commit experiments
+
+The newer platform experiments change the candidate lifecycle. Set the owned
+HTTP `src` before insertion, prepare the initial child realm synchronously, and
+retain that prepared realm through its first trusted commit. The parent reports
+retention in Chromium (8 runs) and Firefox (40 runs) when native controller
+coverage and a preinstalled navigation handler are present. Blank-only creation
+followed by renavigation exposed an unprepared realm in 3 of 40 Firefox runs.
+These counts describe the platform experiments; they do not establish coverage
+of every insertion or parser API. The adapter should follow the first lifecycle
+and keep later document replacement disabled.
+
+A batch insertion can execute an inline script while the native insertion call
+is still running. A wrapper that prepares frames only after native insertion
+returns leaves a gap. The script-policy `beforeExecute` trampoline addresses that
+ordering for inline classic scripts, with the original directive prologue kept
+first. It must flush pending child preparation before publisher statements run.
+Invalid scripts retain their native syntax failure. Data scripts need no
+trampoline; modules and external scripts need their own execution-order checks.
+A DOM mutation observer runs too late to supply this boundary.
+
+The current DOM policy still rejects context elements and their references.
+Admitting a tag requires the following hooks together:
+
+- Creation and insertion: `createElement`, `createElementNS`, the existing
+  `appendChild`/`insertBefore`/`replaceChild`, ParentNode and ChildNode operations,
+  `insertAdjacentElement`, and Range insertion. Feature-detect `moveBefore` on
+  the ParentNode implementations that provide it. A state-preserving move should
+  keep its existing prepared context rather than mint another one. Inspect nested
+  fragments and template contents. Capture native getters for traversal and
+  element classification.
+- Parsing: `innerHTML`, `outerHTML`, `insertAdjacentHTML`, and any parser that is
+  later admitted. The current Range fragment, DOMParser, Document parsing and
+  DocumentImplementation entry points remain denied. Frame-bearing markup must
+  receive an owned startup URL before an active parser can create its context.
+  Validate or construct it in an inert representation first. Post-parse scanning
+  alone cannot cover synchronous load callbacks or inline script execution.
+- Copying and transfer: deep `cloneNode`, `importNode`, `adoptNode`, template
+  cloning and Range extraction/cloning. A copied element must obtain fresh
+  private lifecycle state when activated; its copied host URL is not authority to
+  reuse the original context. Adoption and state-preserving moves need explicit
+  rules for existing windows and their retained references. Reject a transfer
+  the adapter cannot classify before activation.
+- Attribute changes: frame reflected properties, `setAttribute`/`NS`,
+  `setAttributeNode`/`NS`, `toggleAttribute`, `Attr.value`, `Attr.nodeValue` and
+  `Attr.textContent`. The current sensitive-Attr check covers policy/script
+  elements, not newly admitted frames. Read the native Attr name, namespace and
+  owner getters; publisher-visible property lookups cannot classify a native
+  attribute securely. Include removal through `removeAttribute`/`NS`,
+  `removeAttributeNode`, and `NamedNodeMap.removeNamedItem`/`NS`. Removing `src`
+  or changing `srcdoc` can start a different document. Frame `sandbox` exposes a
+  mutable DOMTokenList, so protecting its reflected setter alone is insufficient.
+- Execution and events: flush pending preparation before each supported script
+  execution path and before exposing a child reference. Install the parent's
+  native capture listeners before publisher listeners exist. A synchronous load
+  callback during insertion must observe a prepared child or be withheld; a
+  later listener cannot repair that ordering. Keep navigation cancellation in
+  every child, with only its single owned first commit admitted. Do not depend on
+  load handlers to establish confidentiality after publisher code can run.
+- Removal and replacement: `removeChild`, `remove`, `replaceChild`,
+  `replaceChildren`, Range deletion/extraction, and string-based replacement can
+  detach an entire subtree. Revoke its resource capability and controller record
+  through the actual parent. Existing references to an old Window must remain
+  confined after detachment. Closing bookkeeping cannot remove an already
+  exposed native reference or undo code that ran before preparation.
+
+Named and indexed Window properties are another reason to enforce preparation at
+activation. `window.frames`, numeric indexing, named windows, form/link targets,
+`parent`, `top` and `opener` do not all pass through frame-element
+`contentWindow`/`contentDocument` getters. Those getters are useful checks but
+cannot define the security boundary. Keep popups, objects and embeds disabled
+until their own creation and reference paths are implemented.
+
+Cross-realm calls also need receiver-based dispatch. Publisher code in a prepared
+child can call its DOM methods on a parent's nodes, and vice versa. A wrapper
+must select the private document policy from the actual native `ownerDocument`
+(or Document receiver), rather than assume its defining realm owns the target.
+Otherwise it can queue a pending child in one policy while another policy's
+script trampoline flushes a different queue. If that dispatch is unavailable,
+refuse the affected cross-document operation before mutation.
+
+A small explicit interface can keep document handling out of the generic DOM
+wrapper:
+
+```ts
+interface DocumentContextPolicy {
+  isContextElement(node: unknown): node is Element;
+  prepare(element: Element): void;
+  attribute(element: Element, name: string, value: string | null): string | null;
+  settle(): void;
+}
+```
+
+`prepare` assigns the owned startup route and records the pending lifecycle before
+activation. `attribute` validates normalized attribute updates and removals before
+native mutation. `settle` synchronously prepares newly created initial realms;
+call it after every supported mutation, including partial mutations before a
+native exception, and from the script execution hook. The adapter owns its
+captured native frame accessors, per-document dispatch, pending contexts,
+first-commit allowance and cleanup. Shared DOM policy retains parser validation,
+traversal and insertion wrapping. Unsupported context kinds still fail at the
+adapter boundary. This interface is a proposal; it does not implement the hooks
+listed above.
+
+Native SVG documents need a separate parser and execution review even if the
+Window-retention experiment succeeds. Their document shape, SVG script elements,
+foreignObject descendants and load order differ from the HTML bootstrap. Sharing
+window effects, storage and context ownership is useful; treating HTML parsing or
+an HTMLScriptElement check as coverage of native SVG startup would overstate the
+current implementation.
+
+### Foreground publisher-worker profile (implementation under validation)
+
+A publisher service worker must not become the native controller. The host's
+native worker continues to authenticate browser clients, serve context guards,
+and enforce graph-only resource access. A separate prepared SharedWorker runs
+publisher install, activate, message, and eligible fetch handlers. Its native
+connection port is transferred directly from trusted Window setup to the host;
+application messages use a nested payload and do not become host commands.
+
+The role registry records application, installation generation, current native
+SharedWorker client, fresh context identity, and one-use connection grants in
+host-private IndexedDB. A native-controller restart can request a new connection
+through an authenticated application Window. An active profile with no ready
+executor fails closed while that connection is restored. The source worker's
+own graph requests bypass its publisher fetch handler, avoiding recursion.
+
+This profile handles GET requests for admitted non-executable resources. Scripts,
+documents, context creation, guards, management, and host protocol routes stay
+outside the publisher handler. Requests omit origin-wide Cookie and Authorization
+headers. Handler rejection, redirects, executable response types, and malformed
+results fail closed; absence of respondWith selects the captured graph response.
+Response headers cannot replace host policies, set cookies, redirect, or grant
+additional cross-origin access. The host applies its response policy again.
+
+The implemented API supports one registration per application generation and
+foreground execution while an application Window is available. Background push,
+updates, navigation preload, native publisher registration, and publisher
+clients.openWindow are outside this profile. SharedWorker API absence must be
+reported as unavailable, not counted as successful support. This is an explicit
+compatibility profile rather than native service-worker equivalence.
+
+Independent tests currently establish the native Window → controller →
+SharedWorker port bridge in both browsers, role-store transaction behavior in
+both browsers, and event-kernel request/response handling in unit tests. The full
+installed-runtime fixture is authored but has not yet run; integration and
+controller-restart behavior therefore remain unverified.
+
+Cache URL normalization is shared by Window and worker realms: relative inputs
+resolve against the logical publisher execution base and known runtime aliases
+use original resource URLs as keys. CacheStorage.match still searches only the
+application namespace. The independent two-realm matrix passes in Chromium and
+Firefox, including query and fragment handling and rejection of unknown
+Cache.add sources before fetching. Cache.addAll retains the existing sequential
+storage behavior after all downloads succeed; native atomic batch semantics are
+not established by this adapter.
