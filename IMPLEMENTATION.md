@@ -6,8 +6,9 @@ resources and runs restricted precaching. The runtime admits the resulting
 package and serves installed resources without network fallback.
 
 The configured sites are `pf.damenh.com`, `install.pf.damenh.com` and
-`apps.pf.damenh.com`. This describes the current source configuration; fresh
-verification and public deployment of this batch remain pending.
+`apps.pf.damenh.com`. All three are deployed on GitHub Pages. The
+[completion audit](evaluation/COMPLETION.md) records the verified source, public
+application tasks and network checks.
 
 ## Source structure
 
@@ -80,14 +81,18 @@ application prototype additions. The public language profile permits ordinary
 prototype and metadata extensions, including Object, Map and Set extensions.
 Selected public replacements, including String methods and
 `Function.prototype.toString`, leave the captured trusted operations intact.
-Protected native operations, intrinsic ancestry, implicit coercion/iteration/then/JSON hooks and
-Error stack hooks retain separate restrictions. No custom build-time transform
+Protected native operations, intrinsic ancestry, implicit coercion/iteration/then/JSON
+hooks and Error stack hooks retain separate restrictions. No custom build-time transform
 rewrites trusted runtime code.
 
 Publisher service-worker registrations and events are mediated through prepared
-executors. They cannot replace the host controller, obtain arbitrary network
-access or authorize responses outside the admitted graph. General application
-updates remain deferred.
+executors. Registration scopes in the physical installed namespace map back to
+the corresponding publisher scope; this does not expand the admitted resource
+graph. Scope validation uses captured native URL getters. Setup and executor
+rebinding have deadlines; publisher event jobs have no fixed processing timeout.
+The executors cannot replace the host controller, obtain arbitrary network access
+or authorize responses outside the admitted graph. General application updates
+remain deferred.
 
 ## Storage and management
 

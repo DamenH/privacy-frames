@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-27T08:11:25.142Z",
+  "date": "2026-10-28T20:31:07.926Z",
   "browsers": [
     {
       "name": "chromium",
@@ -14,15 +14,17 @@
         "Cross-origin manager and same-runtime host state, resources, prototype getters, management and URL identity protected",
         "Read-only link token lists retain native behavior without exposing their receiver through mutable browser prototypes",
         "Fetch, XHR, image, CSS, link ping, form, location and socket disclosure attempts produced no marker at HTTP receivers",
-        "31 context/authority/tampering probes refused before creating children",
+        "33 context and authority probes checked against their permitted operations",
         "Ten unrestricted context/agent creation controls active",
         "Editable HTML/CSS/JS playground blocks default disclosure, runs edited scripts in place and retains context guards; unrestricted control transmits",
-        "Incomplete installation refused atomically",
+        "Missing entry document refused atomically",
         "Open-window update rejected; identical application labels at different sources get isolated storage",
         "Unavailable Navigation API refuses startup before application input or execution",
         "Uncontrolled virtual runtime URL serves 404 without application code"
       ],
       "errors": [
+        "Access to fetch at 'https://example.com/not-installed' from origin 'http://127.0.0.1:4219' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
         "Failed to load resource: the server responded with a status of 404 (Not Found)",
         "Failed to load resource: the server responded with a status of 404 (Not Found)",
         "Failed to load resource: the server responded with a status of 404 (Not Found)",
@@ -38,17 +40,21 @@
         "adversary: Fetch API cannot load http://127.0.0.1:4210/privacy-frames/report.html. Refused to connect because it violates the document's Content Security Policy.",
         "adversary: Connecting to 'http://127.0.0.1:4210/privacy-frames/sw.js' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
         "adversary: Fetch API cannot load http://127.0.0.1:4210/privacy-frames/sw.js. Refused to connect because it violates the document's Content Security Policy.",
-        "adversary: Blocked opening 'http://127.0.0.1:4210/privacy-frames/?unexpected-navigation=1' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set.",
-        "adversary: Connecting to 'http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=fetch' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
-        "adversary: Fetch API cannot load http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=fetch. Refused to connect because it violates the document's Content Security Policy.",
-        "adversary: Connecting to 'http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=xhr' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
-        "adversary: Connecting to 'http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=ping' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
-        "adversary: Loading the image 'http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=image' violates the following Content Security Policy directive: \"img-src 'self' data: blob:\". The action has been blocked.",
-        "adversary: Loading the image 'http://127.0.0.1:4216/disclosure?value=private-marker-chromium&route=css' violates the following Content Security Policy directive: \"img-src 'self' data: blob:\". The action has been blocked.",
-        "playground: Connecting to 'http://127.0.0.1:4216/disclosure?secret=private-playground-marker' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
-        "playground: Fetch API cannot load http://127.0.0.1:4216/disclosure?secret=private-playground-marker. Refused to connect because it violates the document's Content Security Policy.",
-        "playground: Running the JavaScript URL violates the following Content Security Policy directive 'script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-29da86fec6ee4c328c8e02ec43a2f225''. Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.",
-        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        "adversary: Failed to load resource: net::ERR_FAILED",
+        "adversary: Connecting to 'http://127.0.0.1:4366/disclosure?value=private-marker-chromium&route=fetch' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "adversary: Fetch API cannot load http://127.0.0.1:4366/disclosure?value=private-marker-chromium&route=fetch. Refused to connect because it violates the document's Content Security Policy.",
+        "adversary: Connecting to 'http://127.0.0.1:4366/disclosure?value=private-marker-chromium&route=xhr' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "adversary: Connecting to 'http://127.0.0.1:4366/disclosure?value=private-marker-chromium&route=ping' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "adversary: Loading the image 'http://127.0.0.1:4366/disclosure?value=private-marker-chromium&route=image' violates the following Content Security Policy directive: \"img-src 'self' data: blob:\". The action has been blocked.",
+        "adversary: Loading the image 'http://127.0.0.1:4366/disclosure?value=private-marker-chromium&route=css' violates the following Content Security Policy directive: \"img-src 'self' data: blob:\". The action has been blocked.",
+        "playground: Connecting to 'http://127.0.0.1:4366/disclosure?secret=private-playground-marker' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "playground: Fetch API cannot load http://127.0.0.1:4366/disclosure?secret=private-playground-marker. Refused to connect because it violates the document's Content Security Policy.",
+        "playground: Running the JavaScript URL violates the following Content Security Policy directive 'script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-9e5330bef9d84086a90981df1d5e4742''. Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked.",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Access to fetch at 'https://example.com/not-installed' from origin 'http://127.0.0.1:4219' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED",
+        "Access to fetch at 'https://example.com/not-installed' from origin 'http://127.0.0.1:4219' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
       ],
       "runtimeIsolation": {
         "origin": "http://127.0.0.1:4211",
@@ -77,231 +83,457 @@
           ]
         }
       },
-      "uiProbes": [
-        "createElement iframeBlocked: Error",
-        "createElementNS iframeBlocked: Error",
-        "innerHTML iframeBlocked: Error",
-        "insertAdjacentHTML iframeBlocked: Error",
-        "outerHTML iframeBlocked: Error",
-        "template parserBlocked: Error",
-        "Shadow DOM parserBlocked: Error",
-        "Range parserBlocked: SecurityError",
-        "DOMParser importBlocked: SecurityError",
-        "document creationBlocked: SecurityError",
-        "document.writeBlocked: SecurityError",
-        "Audio workletBlocked: SecurityError",
-        "Uninstalled WorkerBlocked: SecurityError",
-        "SharedWorkerBlocked: SecurityError",
-        "WebSocketBlocked: SecurityError",
-        "WebRTCBlocked: SecurityError",
-        "window.openBlocked: SecurityError",
-        "service worker authorityBlocked: NotSupportedError",
-        "Native storage prototype recoveryBlocked: SecurityError",
-        "Storage access handleBlocked: SecurityError",
-        "Remote speech serviceBlocked: SecurityError",
-        "Media artwork URLBlocked: SecurityError",
-        "Existing script property mutationBlocked: SecurityError",
-        "history identity spoofBlocked: SecurityError",
-        "history replace spoofBlocked: SecurityError",
-        "SVG parser mismatchBlocked: Error",
-        "setHTMLUnsafeBlocked: SecurityError",
-        "document execCommandBlocked: SecurityError",
-        "history traversalBlocked: SecurityError",
-        "custom built-inBlocked: SecurityError",
-        "evalBlocked: EvalError",
-        "Function constructorBlocked: EvalError",
-        "prototype tamperingBlocked: TypeError"
-      ],
       "probes": [
         {
           "name": "createElement iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "createElementNS iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "innerHTML iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "insertAdjacentHTML iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "outerHTML iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "template parser",
           "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Shadow DOM parser",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Range parser",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "DOMParser import",
           "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "pending": false,
+          "safe": true,
+          "error": "Error",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "document creation",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "viewless document",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "document.write",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Audio worklet",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "admitted worklet module loaded",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Uninstalled Worker",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "SharedWorker",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "mediated SharedWorker handle and application port",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "WebSocket",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "WebRTC",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "window.open",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "pending or prepared popup",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "service worker authority",
           "blocked": true,
-          "error": "NotSupportedError",
-          "contexts": 0
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Native storage prototype recovery",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Storage access handle",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Remote speech service",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Media artwork URL",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Existing script property mutation",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "uninstalled script mapped locally and fresh load ended with error",
+          "value": "undefined",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "history identity spoof",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/bridge.html",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "history replace spoof",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/bridge.html",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "SVG parser mismatch",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "Error",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "setHTMLUnsafe",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "document execCommand",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "history traversal",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "custom built-in",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "eval",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "local computation returned 2",
+          "value": "number",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Function constructor",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "local computation returned 2",
+          "value": "number",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "prototype tampering",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "TypeError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
+        }
+      ],
+      "uiProbes": [
+        {
+          "name": "createElement iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "createElementNS iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "innerHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "insertAdjacentHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "outerHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "template parser",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Shadow DOM parser",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "Range parser",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "DOMParser import",
+          "status": "Blocked: Error"
+        },
+        {
+          "name": "document creation",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "document.write",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Audio worklet",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "Uninstalled Worker",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "SharedWorker",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "WebSocket",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "WebRTC",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "window.open",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "service worker authority",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Native storage prototype recovery",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Storage access handle",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Remote speech service",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Media artwork URL",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Existing script property mutation",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "history identity spoof",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "history replace spoof",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "SVG parser mismatch",
+          "status": "Blocked: Error"
+        },
+        {
+          "name": "setHTMLUnsafe",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "document execCommand",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "history traversal",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "custom built-in",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "eval",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "Function constructor",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "prototype tampering",
+          "status": "Blocked: TypeError"
         }
       ],
       "receiver": {
         "httpRequests": 0,
+        "boundaryAndNetworkRequests": 0,
         "tcpConnections": 0
       },
       "tokenListControl": {
@@ -329,6 +561,13 @@
           ]
         }
       },
+      "scriptControl": [
+        {
+          "port": 4366,
+          "path": "/script?value=script-control-56a6987e-0ca6-4a9d-be00-22a2a59ee39d",
+          "method": "GET"
+        }
+      ],
       "controls": [
         {
           "name": "createElement iframe",
@@ -383,37 +622,45 @@
       ],
       "networkControl": [
         {
-          "port": 4216,
+          "port": 4366,
           "path": "/disclosure?value=control-marker-chromium&route=fetch",
+          "method": "GET",
+          "origin": "http://127.0.0.1:4215"
+        },
+        {
+          "port": 4366,
+          "path": "/disclosure?value=control-marker-chromium&route=xhr",
+          "method": "POST",
+          "origin": "http://127.0.0.1:4215"
+        },
+        {
+          "port": 4366,
+          "path": "/disclosure?value=control-marker-chromium&route=ping",
+          "method": "POST",
+          "origin": "http://127.0.0.1:4215"
+        },
+        {
+          "port": 4366,
+          "path": "/disclosure?value=control-marker-chromium&route=navigation",
           "method": "GET"
         },
         {
-          "port": 4216,
-          "path": "/disclosure?value=control-marker-chromium&route=xhr",
-          "method": "POST"
-        },
-        {
-          "port": 4216,
-          "path": "/disclosure?value=control-marker-chromium&route=ping",
-          "method": "POST"
-        },
-        {
-          "port": 4216,
-          "path": "/socket?value=control-marker-chromium",
-          "method": "UPGRADE"
-        },
-        {
-          "port": 4216,
+          "port": 4366,
           "path": "/disclosure?value=control-marker-chromium&route=image",
           "method": "GET"
         },
         {
-          "port": 4216,
+          "port": 4366,
+          "path": "/socket?value=control-marker-chromium",
+          "method": "UPGRADE"
+        },
+        {
+          "port": 4366,
           "path": "/disclosure?value=control-marker-chromium&route=css",
           "method": "GET"
         },
         {
-          "port": 4216,
+          "port": 4366,
           "path": "/disclosure?value=control-marker-chromium&route=location",
           "method": "GET"
         }
@@ -432,65 +679,39 @@
         "Cross-origin manager and same-runtime host state, resources, prototype getters, management and URL identity protected",
         "Read-only link token lists retain native behavior without exposing their receiver through mutable browser prototypes",
         "Fetch, XHR, image, CSS, link ping, form, location and socket disclosure attempts produced no marker at HTTP receivers",
-        "31 context/authority/tampering probes refused before creating children",
+        "33 context and authority probes checked against their permitted operations",
         "Ten unrestricted context/agent creation controls active",
         "Editable HTML/CSS/JS playground blocks default disclosure, runs edited scripts in place and retains context guards; unrestricted control transmits",
-        "Incomplete installation refused atomically",
+        "Missing entry document refused atomically",
         "Open-window update rejected; identical application labels at different sources get isolated storage",
         "Unavailable Navigation API refuses startup before application input or execution",
         "Uncontrolled virtual runtime URL serves 404 without application code"
       ],
       "errors": [
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-e192fb933d284fb186938c2a66d14a41'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8486}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-e192fb933d284fb186938c2a66d14a41'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15638}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-e192fb933d284fb186938c2a66d14a41'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15644}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-e192fb933d284fb186938c2a66d14a41'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11679}]",
-        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 9262}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-896bddedb5a145bc853bc4b3a01fcd63'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8486}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-896bddedb5a145bc853bc4b3a01fcd63'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15638}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-896bddedb5a145bc853bc4b3a01fcd63'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15644}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-896bddedb5a145bc853bc4b3a01fcd63'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11679}]",
-        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 9262}]",
-        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-94fb489cf94e48f099d03021009d4616'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8486}]",
-        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-94fb489cf94e48f099d03021009d4616'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15638}]",
-        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-94fb489cf94e48f099d03021009d4616'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15644}]",
-        "image: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-94fb489cf94e48f099d03021009d4616'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11679}]",
-        "image: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 9262}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-f485bfd758fa40a1957ad81075b58527'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8486}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-f485bfd758fa40a1957ad81075b58527'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15638}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-f485bfd758fa40a1957ad81075b58527'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15644}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-f485bfd758fa40a1957ad81075b58527'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11679}]",
-        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 9262}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at https://example.com/not-installed because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22773}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-9c22c64ac9c242ff8df1a610a14665d6'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8486}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-9c22c64ac9c242ff8df1a610a14665d6'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15638}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-9c22c64ac9c242ff8df1a610a14665d6'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15644}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-9c22c64ac9c242ff8df1a610a14665d6'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11679}]",
-        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 9262}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/index.html because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22773}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/manager.js because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22773}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/config.json because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22773}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/report.html because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22773}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/sw.js because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22773}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-9c22c64ac9c242ff8df1a610a14665d6'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 130}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-9c22c64ac9c242ff8df1a610a14665d6'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 131}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=fetch because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22773}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=xhr because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 189}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (form-action) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=form because it violates the following directive: “form-action 'none'”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 211}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=image because it violates the following directive: “img-src 'self' data: blob:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22830}]",
-        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:4216/disclosure?value=private-marker-firefox&route=css because it violates the following directive: “img-src 'self' data: blob:”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/\" line: 0}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-462edd70b1c54e91ab499fc5e9577a81'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8486}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-462edd70b1c54e91ab499fc5e9577a81'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15638}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-462edd70b1c54e91ab499fc5e9577a81'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15644}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-462edd70b1c54e91ab499fc5e9577a81'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11679}]",
-        "playground: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 9262}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4216/disclosure?secret=private-playground-marker because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 22773}]",
-        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked an inline script (script-src-elem) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-462edd70b1c54e91ab499fc5e9577a81'”. Consider using a hash ('sha256-7DCA9I+N8CEcxl85+FFBgrexA3CEyhiIkSe9WQlLcME=') or a nonce.\nSource: javascript:window.__jsurlEscape=1;'<h1>e…\" {file: \"http://127.0.0.1:4211/runtime/0vpdLR01oXs/playground/\" line: 0}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-e9e0eccd28814f3da140c0f3accf47ea'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 8486}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-e9e0eccd28814f3da140c0f3accf47ea'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15638}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-e9e0eccd28814f3da140c0f3accf47ea'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 15644}]",
-        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked a JavaScript eval (script-src) from being executed because it violates the following directive: “script-src 'self' blob: 'wasm-unsafe-eval' 'nonce-e9e0eccd28814f3da140c0f3accf47ea'” (Missing 'unsafe-eval')\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 11679}]",
-        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 9262}]"
+        "[JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://example.com/not-installed. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 404.\"]",
+        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "image: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "notes: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at https://example.com/not-installed because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24279}]",
+        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/index.html because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24279}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/manager.js because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24279}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/config.json because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24279}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/report.html because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24279}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4210/privacy-frames/sw.js because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24279}]",
+        "adversary: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/__contexts/unavailable-script’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4366/disclosure?value=private-marker-firefox&route=fetch because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24279}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4366/disclosure?value=private-marker-firefox&route=xhr because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 196}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (form-action) at http://127.0.0.1:4366/disclosure?value=private-marker-firefox&route=form because it violates the following directive: “form-action 'none'”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/app.js\" line: 218}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:4366/disclosure?value=private-marker-firefox&route=image because it violates the following directive: “img-src 'self' data: blob:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24401}]",
+        "adversary: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at http://127.0.0.1:4366/disclosure?value=private-marker-firefox&route=css because it violates the following directive: “img-src 'self' data: blob:”\" {file: \"http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/\" line: 0}]",
+        "playground: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4366/disclosure?secret=private-playground-marker because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 24279}]",
+        "playground: [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked an inline script (script-src-elem) from being executed because it violates the following directive: “script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-c5de5f8758ea4bdb8d6faadfdf02d521'”. Consider using a hash ('sha256-7DCA9I+N8CEcxl85+FFBgrexA3CEyhiIkSe9WQlLcME=') or a nonce.\nSource: javascript:window.__jsurlEscape=1;'<h1>e…\" {file: \"http://127.0.0.1:4211/runtime/0vpdLR01oXs/playground/\" line: 0}]",
+        "notes: [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "[JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://example.com/not-installed. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 404.\"]",
+        "[JavaScript Error: \"Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://example.com/not-installed. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 404.\"]"
       ],
       "runtimeIsolation": {
         "origin": "http://127.0.0.1:4211",
@@ -519,231 +740,457 @@
           ]
         }
       },
-      "uiProbes": [
-        "createElement iframeBlocked: Error",
-        "createElementNS iframeBlocked: Error",
-        "innerHTML iframeBlocked: Error",
-        "insertAdjacentHTML iframeBlocked: Error",
-        "outerHTML iframeBlocked: Error",
-        "template parserBlocked: Error",
-        "Shadow DOM parserBlocked: Error",
-        "Range parserBlocked: SecurityError",
-        "DOMParser importBlocked: SecurityError",
-        "document creationBlocked: SecurityError",
-        "document.writeBlocked: SecurityError",
-        "Audio workletBlocked: SecurityError",
-        "Uninstalled WorkerBlocked: SecurityError",
-        "SharedWorkerBlocked: SecurityError",
-        "WebSocketBlocked: SecurityError",
-        "WebRTCBlocked: SecurityError",
-        "window.openBlocked: SecurityError",
-        "service worker authorityBlocked: NotSupportedError",
-        "Native storage prototype recoveryBlocked: SecurityError",
-        "Storage access handleBlocked: SecurityError",
-        "Remote speech serviceBlocked: SecurityError",
-        "Media artwork URLBlocked: SecurityError",
-        "Existing script property mutationBlocked: SecurityError",
-        "history identity spoofBlocked: SecurityError",
-        "history replace spoofBlocked: SecurityError",
-        "SVG parser mismatchBlocked: Error",
-        "setHTMLUnsafeBlocked: SecurityError",
-        "document execCommandBlocked: SecurityError",
-        "history traversalBlocked: SecurityError",
-        "custom built-inBlocked: SecurityError",
-        "evalBlocked: EvalError",
-        "Function constructorBlocked: EvalError",
-        "prototype tamperingBlocked: TypeError"
-      ],
       "probes": [
         {
           "name": "createElement iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "createElementNS iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "innerHTML iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "insertAdjacentHTML iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "outerHTML iframe",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "template parser",
           "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Shadow DOM parser",
-          "blocked": true,
-          "error": "Error",
-          "contexts": 0
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Range parser",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "DOMParser import",
           "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "pending": false,
+          "safe": true,
+          "error": "Error",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "document creation",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "viewless document",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "document.write",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Audio worklet",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "admitted worklet module loaded",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Uninstalled Worker",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "SharedWorker",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "mediated SharedWorker handle and application port",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "WebSocket",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "WebRTC",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "window.open",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "pending or prepared popup",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "service worker authority",
           "blocked": true,
-          "error": "NotSupportedError",
-          "contexts": 0
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Native storage prototype recovery",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Storage access handle",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Remote speech service",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Media artwork URL",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "Existing script property mutation",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "uninstalled script mapped locally and fresh load ended with error",
+          "value": "undefined",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "history identity spoof",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/bridge.html",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "history replace spoof",
-          "blocked": true,
-          "error": "SecurityError",
-          "contexts": 0
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "http://127.0.0.1:4211/runtime/KGi0prdKV8M/adversary/bridge.html",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "SVG parser mismatch",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "Error",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "setHTMLUnsafe",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "document execCommand",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "history traversal",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "custom built-in",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "SecurityError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "eval",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "local computation returned 2",
+          "value": "number",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Function constructor",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "local computation returned 2",
+          "value": "number",
+          "contexts": 0,
+          "indexedSafe": true
         },
         {
           "name": "prototype tampering",
           "blocked": true,
+          "pending": false,
+          "safe": true,
           "error": "TypeError",
-          "contexts": 0
+          "contexts": 0,
+          "indexedSafe": true
+        }
+      ],
+      "uiProbes": [
+        {
+          "name": "createElement iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "createElementNS iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "innerHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "insertAdjacentHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "outerHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "template parser",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Shadow DOM parser",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "Range parser",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "DOMParser import",
+          "status": "Blocked: Error"
+        },
+        {
+          "name": "document creation",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "document.write",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Audio worklet",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "Uninstalled Worker",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "SharedWorker",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "WebSocket",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "WebRTC",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "window.open",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "service worker authority",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Native storage prototype recovery",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Storage access handle",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Remote speech service",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Media artwork URL",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Existing script property mutation",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "history identity spoof",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "history replace spoof",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "SVG parser mismatch",
+          "status": "Blocked: Error"
+        },
+        {
+          "name": "setHTMLUnsafe",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "document execCommand",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "history traversal",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "custom built-in",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "eval",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "Function constructor",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "prototype tampering",
+          "status": "Blocked: TypeError"
         }
       ],
       "receiver": {
         "httpRequests": 0,
+        "boundaryAndNetworkRequests": 0,
         "tcpConnections": 0
       },
       "tokenListControl": {
@@ -771,6 +1218,13 @@
           ]
         }
       },
+      "scriptControl": [
+        {
+          "port": 4366,
+          "path": "/script?value=script-control-2d62fd7f-8bcc-4f0a-855a-40298b6d90fc",
+          "method": "GET"
+        }
+      ],
       "controls": [
         {
           "name": "createElement iframe",
@@ -825,33 +1279,35 @@
       ],
       "networkControl": [
         {
-          "port": 4216,
-          "path": "/disclosure?value=control-marker-firefox&route=xhr",
-          "method": "POST"
-        },
-        {
-          "port": 4216,
+          "port": 4366,
           "path": "/disclosure?value=control-marker-firefox&route=fetch",
-          "method": "GET"
+          "method": "GET",
+          "origin": "http://127.0.0.1:4215"
         },
         {
-          "port": 4216,
+          "port": 4366,
+          "path": "/disclosure?value=control-marker-firefox&route=xhr",
+          "method": "POST",
+          "origin": "http://127.0.0.1:4215"
+        },
+        {
+          "port": 4366,
           "path": "/socket?value=control-marker-firefox",
           "method": "UPGRADE"
         },
         {
-          "port": 4216,
+          "port": 4366,
           "path": "/disclosure?value=control-marker-firefox&route=image",
           "method": "GET"
         },
         {
-          "port": 4216,
-          "path": "/disclosure?value=control-marker-firefox&route=navigation",
+          "port": 4366,
+          "path": "/disclosure?value=control-marker-firefox&route=css",
           "method": "GET"
         },
         {
-          "port": 4216,
-          "path": "/disclosure?value=control-marker-firefox&route=css",
+          "port": 4366,
+          "path": "/disclosure?value=control-marker-firefox&route=navigation",
           "method": "GET"
         }
       ]

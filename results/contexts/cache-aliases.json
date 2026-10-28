@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-28T20:34:40.935Z",
+  "bundles": {
+    "window": "169699afa528886d04595d0cf367501749a0486f237237ed0b0d1d25811c4a79",
+    "worker": "38d7efa0f5686050104c075dbab994e22b1fa0c5a241bf9dc57cc2ec83e0ac85"
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "result": {
+        "nativeControl": {
+          "rootString": "native-root",
+          "rootRequest": "native-root",
+          "local": "native-local",
+          "localURL": "http://127.0.0.1:33407/local.txt?x=1#ignored",
+          "rootURL": "http://127.0.0.1:33407/cached-value?version=1",
+          "wrongQuery": true,
+          "ignoreSearch": "native-root"
+        },
+        "relative": "installed",
+        "canonical": "installed",
+        "storage": "installed",
+        "all": 1,
+        "wrongQuery": true,
+        "ignoreSearch": "installed",
+        "key": "https://publisher.invalid/directory/value.txt?edition=1#first",
+        "local": "local",
+        "localURL": "http://127.0.0.1:33407/local.txt?x=1#ignored",
+        "rootString": "root",
+        "rootRequest": "root",
+        "rootURL": "http://127.0.0.1:33407/cached-value?version=1",
+        "queryURL": "variant",
+        "queryRequest": "variant",
+        "queryIgnoreSearch": "installed",
+        "queryDeleted": true,
+        "queryURLPut": "url-variant",
+        "queryRequestPut": "request-variant",
+        "queryDownloadRejected": true,
+        "absolute": "https://other.invalid/preserved",
+        "deleted": true,
+        "deletedMissing": true,
+        "unknownRejected": true,
+        "names": [
+          "values"
+        ],
+        "worker": {
+          "nativeControl": {
+            "rootString": "native-root",
+            "rootRequest": "native-root",
+            "local": "native-local",
+            "localURL": "http://127.0.0.1:33407/local.txt?x=1#ignored",
+            "rootURL": "http://127.0.0.1:33407/cached-value?version=1",
+            "wrongQuery": true,
+            "ignoreSearch": "native-root"
+          },
+          "relative": "installed",
+          "canonical": "installed",
+          "storage": "installed",
+          "all": 1,
+          "wrongQuery": true,
+          "ignoreSearch": "installed",
+          "key": "https://publisher.invalid/directory/value.txt?edition=1#first",
+          "local": "local",
+          "localURL": "http://127.0.0.1:33407/local.txt?x=1#ignored",
+          "rootString": "root",
+          "rootRequest": "root",
+          "rootURL": "http://127.0.0.1:33407/cached-value?version=1",
+          "queryURL": "variant",
+          "queryRequest": "variant",
+          "queryIgnoreSearch": "installed",
+          "queryDeleted": true,
+          "queryURLPut": "url-variant",
+          "queryRequestPut": "request-variant",
+          "queryDownloadRejected": true,
+          "absolute": "https://other.invalid/preserved",
+          "deleted": true,
+          "deletedMissing": true,
+          "unknownRejected": true,
+          "names": [
+            "values"
+          ]
+        }
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "result": {
+        "nativeControl": {
+          "rootString": "native-root",
+          "rootRequest": "native-root",
+          "local": "native-local",
+          "localURL": "http://127.0.0.1:33407/local.txt?x=1#ignored",
+          "rootURL": "http://127.0.0.1:33407/cached-value?version=1",
+          "wrongQuery": true,
+          "ignoreSearch": "native-root"
+        },
+        "relative": "installed",
+        "canonical": "installed",
+        "storage": "installed",
+        "all": 1,
+        "wrongQuery": true,
+        "ignoreSearch": "installed",
+        "key": "https://publisher.invalid/directory/value.txt?edition=1#first",
+        "local": "local",
+        "localURL": "http://127.0.0.1:33407/local.txt?x=1#ignored",
+        "rootString": "root",
+        "rootRequest": "root",
+        "rootURL": "http://127.0.0.1:33407/cached-value?version=1",
+        "queryURL": "variant",
+        "queryRequest": "variant",
+        "queryIgnoreSearch": "installed",
+        "queryDeleted": true,
+        "queryURLPut": "url-variant",
+        "queryRequestPut": "request-variant",
+        "queryDownloadRejected": true,
+        "absolute": "https://other.invalid/preserved",
+        "deleted": true,
+        "deletedMissing": true,
+        "unknownRejected": true,
+        "names": [
+          "values"
+        ],
+        "worker": {
+          "nativeControl": {
+            "rootString": "native-root",
+            "rootRequest": "native-root",
+            "local": "native-local",
+            "localURL": "http://127.0.0.1:33407/local.txt?x=1#ignored",
+            "rootURL": "http://127.0.0.1:33407/cached-value?version=1",
+            "wrongQuery": true,
+            "ignoreSearch": "native-root"
+          },
+          "relative": "installed",
+          "canonical": "installed",
+          "storage": "installed",
+          "all": 1,
+          "wrongQuery": true,
+          "ignoreSearch": "installed",
+          "key": "https://publisher.invalid/directory/value.txt?edition=1#first",
+          "local": "local",
+          "localURL": "http://127.0.0.1:33407/local.txt?x=1#ignored",
+          "rootString": "root",
+          "rootRequest": "root",
+          "rootURL": "http://127.0.0.1:33407/cached-value?version=1",
+          "queryURL": "variant",
+          "queryRequest": "variant",
+          "queryIgnoreSearch": "installed",
+          "queryDeleted": true,
+          "queryURLPut": "url-variant",
+          "queryRequestPut": "request-variant",
+          "queryDownloadRejected": true,
+          "absolute": "https://other.invalid/preserved",
+          "deleted": true,
+          "deletedMissing": true,
+          "unknownRejected": true,
+          "names": [
+            "values"
+          ]
+        }
+      }
+    }
+  ],
+  "requests": [
+    "/",
+    "/window.js",
+    "/window/value.txt?edition=1",
+    "/worker.js",
+    "/",
+    "/window.js",
+    "/window/value.txt?edition=1",
+    "/worker.js"
+  ]
+}

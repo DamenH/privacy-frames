@@ -1,0 +1,302 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-28T20:42:03.176Z",
+    "revision": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
+    "dirty": true,
+    "sourceSHA256": "84f55de14cccd083d3fb3d9312be9073a07ae314c3ddd66e3c1e4d30d4a2dad2",
+    "runner": "test/cyberchef.ts",
+    "runnerSHA256": "307f189125175aecf46f43dde0ad709a9bed7607e715af3c3e78cdf417b0136c",
+    "publisherRevision": "2c26c40c77160af643ae053115a3975cc5a01ba0",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb",
+      "dist-manager/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "daccf37a0074676cc480fd95023844fea64f70328dd65b241c646051190f2b87",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "f375143aebdb8cbc407e8b9cc808d82daf63314baaa6142f0f178250af3c9036",
+      "dist-manager/sw.js": "79802b250d5ec03ed6d4b62f0558da67ca055c8d69d6cf4bbdc31f20cc018e9f",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "74aa6c5da9303eadfe16707c0eb0280886712bcb9716b76bc6639b486bd05ef5",
+      "dist-runtime/guard.js": "d6f91fa807a7569631485c56e4d208d7649298a4586278a7e95fd8989cd03710",
+      "dist-runtime/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "7aefafa99b81ee8ccdad783cb5b169d20f08f49a943d330a517f52fa071b813e",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "f375143aebdb8cbc407e8b9cc808d82daf63314baaa6142f0f178250af3c9036",
+      "dist-runtime/shared-worker-guard.js": "39e1d10b656f8bc8f0e6d4236178d1d028085614fa9ff605500518654f47b3d9",
+      "dist-runtime/sw.js": "ebf627533c7eaa363ffc5261cabe74f42b99e11e38507b7265d524538fee2f0b",
+      "dist-runtime/worker-guard.js": "26708927172cf41cbee9e34ce02e198b7d822c8c8484df9df663c952648a5054",
+      "dist-runtime/worklet-guard.js": "42d5d3f373a61870a682ac7eb7522ce7ab4236cb9b70acef4ef9e602bfd4561b",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/install-worker.js": "732c579c04e320864c3fb8b9a0127f3332687fc715ce294a49e1ee3510ece87e",
+      "dist-installation/installation.js": "b33f4f12fd76d7df7ab73eed1d2f4078d29e97b0ed64c6b840de1766448db5b8"
+    }
+  },
+  "source": "https://gchq.github.io/CyberChef/",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "standalone",
+      "errors": [],
+      "progress": [
+        {
+          "mode": "online",
+          "stage": "PBKDF2 output",
+          "details": {
+            "iterations": 1000,
+            "derivedKey": "33ba5bd86adf07f60b362c2a4ebc7ae5"
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "Pending recipe",
+          "details": {
+            "recipe": "Sleep\nTime (ms)\npause\nnot_interested\nkeyboard_arrow_up\n ",
+            "delay": "10000"
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "SVG animation",
+          "details": {
+            "contentType": "image/svg+xml",
+            "width": 101,
+            "height": 101,
+            "transform": "rotate(13.846153846153847, 69.20000076293945, 67.39999961853027)"
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "Worker cancellation",
+          "details": {
+            "terminatedWorkers": 2
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "Restart output",
+          "details": {
+            "text": "restart confirmed"
+          }
+        }
+      ],
+      "failedTasks": [],
+      "entryStatus": 200,
+      "entrySHA256": "464c889ed2cd765de2762cc24ad6f4720623245cb516dd3a5f4a46bdac800973",
+      "url": "https://gchq.github.io/CyberChef/",
+      "workers": {
+        "started": [
+          "blob:https://gchq.github.io/dbcd672c-7cf9-4357-af4d-dd583553ce75",
+          "blob:https://gchq.github.io/652774d5-cb27-4bb1-b36e-260f635258b2",
+          "blob:https://gchq.github.io/194f5377-b1d2-4673-ab4d-c8e58993e411",
+          "blob:https://gchq.github.io/ca24c50c-c123-4036-84af-15eb8c9c63ec",
+          "blob:https://gchq.github.io/c62e2a40-f2c1-4159-b1a6-89a9aa2dafbd",
+          "blob:https://gchq.github.io/fdd8ec52-53a0-405c-98ba-438150422ba8",
+          "blob:https://gchq.github.io/6d8750c6-e58d-4123-8a5a-5d3514d580a5",
+          "blob:https://gchq.github.io/c0512ffd-894d-4162-a604-c7c498ad322b"
+        ],
+        "closed": [
+          "blob:https://gchq.github.io/c62e2a40-f2c1-4159-b1a6-89a9aa2dafbd",
+          "blob:https://gchq.github.io/652774d5-cb27-4bb1-b36e-260f635258b2",
+          "blob:https://gchq.github.io/c0512ffd-894d-4162-a604-c7c498ad322b",
+          "blob:https://gchq.github.io/fdd8ec52-53a0-405c-98ba-438150422ba8"
+        ]
+      },
+      "cancelRestartSVG": {
+        "derivation": "33ba5bd86adf07f60b362c2a4ebc7ae5",
+        "animated": true,
+        "geometry": {
+          "contentType": "image/svg+xml",
+          "width": 101,
+          "height": 101,
+          "transform": "rotate(13.846153846153847, 69.20000076293945, 67.39999961853027)"
+        },
+        "terminatedWorkers": 2
+      },
+      "passed": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "confined",
+      "errors": [
+        "Native browsing targets must remain in the prepared context",
+        "Native browsing targets must remain in the prepared context",
+        "Native browsing targets must remain in the prepared context",
+        "Native browsing targets must remain in the prepared context",
+        "Native browsing targets must remain in the prepared context",
+        "Native browsing targets must remain in the prepared context",
+        "Native browsing targets must remain in the prepared context"
+      ],
+      "progress": [
+        {
+          "mode": "online",
+          "stage": "PBKDF2 output",
+          "details": {
+            "iterations": 1000,
+            "derivedKey": "33ba5bd86adf07f60b362c2a4ebc7ae5"
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "Pending recipe",
+          "details": {
+            "recipe": "Sleep\nTime (ms)\npause\nnot_interested\nkeyboard_arrow_up\n ",
+            "delay": "10000"
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "SVG animation",
+          "details": {
+            "contentType": "image/svg+xml",
+            "width": 101,
+            "height": 101,
+            "transform": "rotate(55.38461538461539, 69.20000076293945, 67.39999961853027)"
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "Worker cancellation",
+          "details": {
+            "terminatedWorkers": 2
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "Restart output",
+          "details": {
+            "text": "restart confirmed"
+          }
+        },
+        {
+          "mode": "offline",
+          "stage": "PBKDF2 output",
+          "details": {
+            "iterations": 1000,
+            "derivedKey": "33ba5bd86adf07f60b362c2a4ebc7ae5"
+          }
+        },
+        {
+          "mode": "offline",
+          "stage": "Pending recipe",
+          "details": {
+            "recipe": "Sleep\nTime (ms)\npause\nnot_interested\nkeyboard_arrow_up\n ",
+            "delay": "10000"
+          }
+        },
+        {
+          "mode": "offline",
+          "stage": "SVG animation",
+          "details": {
+            "contentType": "image/svg+xml",
+            "width": 101,
+            "height": 101,
+            "transform": "rotate(83.07692307692307, 69.20000076293945, 67.39999961853027)"
+          }
+        },
+        {
+          "mode": "offline",
+          "stage": "Worker cancellation",
+          "details": {
+            "terminatedWorkers": 2
+          }
+        },
+        {
+          "mode": "offline",
+          "stage": "Restart output",
+          "details": {
+            "text": "restart confirmed"
+          }
+        }
+      ],
+      "failedTasks": [],
+      "installation": "Installed CyberChef.",
+      "url": "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/",
+      "workers": {
+        "started": [
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/d4021b57-905e-4066-98be-e69668822f43/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/e157bbcc-69a4-4ad8-9547-48c48088336a/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/f8e3ee09-59d1-4fb0-9103-bafe0fed2a87/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/06640361-0b6f-4cba-8a61-ef6f9a407ec7/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/6873e42d-3df9-4f22-a5c8-31674182e0a2/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/055ddebe-f3ef-46f3-b466-3b2e4513b4cd/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/bc123de9-b8ad-449b-8ce8-c657bc7f5659/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/98721986-7264-4721-aa53-09d559f7d70b/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/370c76fd-7c3a-4415-89ac-c77e01e4d6cd/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/6f59d41e-f63c-49c4-8296-9b772186746a/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/c539edff-5519-4e7f-b745-464263765496/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/710f0596-a1d8-4adc-bce6-22a48a10d825/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/f22102cf-1912-41a3-b3bc-5f9e2476f876/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/44999e71-ef37-4266-bc85-9e0b9b75aa3c/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/fc443292-cee5-43bf-b5b3-65cf292fa63f/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/183406a1-64af-410f-ae34-28372009c016/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/c54dcfcd-c4d4-40c4-9270-4eb16749faeb/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/817e3a91-bbc4-4a2a-a78b-1663c3d00466/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/3d3cd201-4835-445d-a981-aadc9182f9e8/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/53b8cda1-9e45-40a8-9922-df886e4bf53e/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/f96476bb-4d11-404f-a150-d92de34794ce/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/47181758-36e8-452b-8ee2-5e7aa0f57a3c/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/439c699c-eb11-40b1-a439-90908834993b/classic.js"
+        ],
+        "closed": [
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/6873e42d-3df9-4f22-a5c8-31674182e0a2/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/e157bbcc-69a4-4ad8-9547-48c48088336a/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/055ddebe-f3ef-46f3-b466-3b2e4513b4cd/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/98721986-7264-4721-aa53-09d559f7d70b/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/06640361-0b6f-4cba-8a61-ef6f9a407ec7/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/bc123de9-b8ad-449b-8ce8-c657bc7f5659/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/d4021b57-905e-4066-98be-e69668822f43/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/f8e3ee09-59d1-4fb0-9103-bafe0fed2a87/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/fc443292-cee5-43bf-b5b3-65cf292fa63f/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/370c76fd-7c3a-4415-89ac-c77e01e4d6cd/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/6f59d41e-f63c-49c4-8296-9b772186746a/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/710f0596-a1d8-4adc-bce6-22a48a10d825/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/44999e71-ef37-4266-bc85-9e0b9b75aa3c/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/f22102cf-1912-41a3-b3bc-5f9e2476f876/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/c539edff-5519-4e7f-b745-464263765496/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/53b8cda1-9e45-40a8-9922-df886e4bf53e/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/c54dcfcd-c4d4-40c4-9270-4eb16749faeb/classic.js",
+          "https://apps.pf.damenh.com/ll58XCfgHEw/cyberchef/__contexts/439c699c-eb11-40b1-a439-90908834993b/classic.js"
+        ]
+      },
+      "cancelRestartSVG": {
+        "derivation": "33ba5bd86adf07f60b362c2a4ebc7ae5",
+        "animated": true,
+        "geometry": {
+          "contentType": "image/svg+xml",
+          "width": 101,
+          "height": 101,
+          "transform": "rotate(55.38461538461539, 69.20000076293945, 67.39999961853027)"
+        },
+        "terminatedWorkers": 2
+      },
+      "offlineTextAndFile": {
+        "textBytes": 52,
+        "fileBytes": 2900,
+        "sha256": "ee26272a068fc466bc5fd887e5d64fad67272466e9492a55c7192ad271f1d0ba"
+      },
+      "offlineCancelRestartSVG": {
+        "derivation": "33ba5bd86adf07f60b362c2a4ebc7ae5",
+        "animated": true,
+        "geometry": {
+          "contentType": "image/svg+xml",
+          "width": 101,
+          "height": 101,
+          "transform": "rotate(83.07692307692307, 69.20000076293945, 67.39999961853027)"
+        },
+        "terminatedWorkers": 2
+      },
+      "passed": true
+    }
+  ]
+}

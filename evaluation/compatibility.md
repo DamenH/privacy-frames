@@ -5,28 +5,43 @@ Excalidraw, diagrams.net, StackEdit and CyberChef. Each comparison runs a useful
 standalone task before attempting that task inside confinement. Installation,
 startup, task completion and offline execution are recorded separately.
 
-## Current local evidence
+## Current public evidence
 
-The current implementation adds partial resource capture, prepared child contexts,
-prototype compatibility and ordinary client-side routes. The table summarizes available local receipts. A complete comparison of this
-revision and its public deployment checks are still pending.
+The [complete public matrix](../results/evaluation/compatibility-release-public.json)
+passed all 16 browser/application rows: the standalone task, confined task and
+application-specific offline check. It ran on 28 October 2026 from 20:38:33 to
+20:50:53 UTC, using Chromium 153.0.8010.12 and Firefox 155.0.
 
-| Application    | Task                                                    | Evidence and verification still required                                                                          |
-| -------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| PhotoCraft     | Import a PNG and paint a stroke                         | Task and offline startup passed in the 27 October comparison; current revision needs a fresh run                  |
-| Pitch Training | Submit an answer and retain history                     | Chromium passed in that comparison; Firefox encountered a reload wait timeout; current revision needs a fresh run |
-| Wikipedia      | Read the article and scroll to a section                | Task and offline task passed in that comparison; current revision needs a fresh run                               |
-| Excalidraw     | Draw and move a rectangle                               | Task and offline reload passed in that comparison, with some fonts blocked; current revision needs a fresh run    |
-| Squoosh        | Encode a PNG to JPEG, change quality and inspect output | Targeted Chromium and Firefox tests pass, including offline re-encoding                                           |
-| diagrams.net   | Create and edit a diagram                               | Startup and offline configuration are under investigation; final task receipts pending                            |
-| StackEdit      | Write Markdown and inspect its preview                  | Prototype compatibility work is in progress; final task receipts pending                                          |
-| CyberChef      | Process text and a file                                 | Targeted text, file and offline testing is in progress; final browser-pair verification pending                   |
+| Application    | Task                                                   | Chromium task / offline check | Firefox task / offline check |
+| -------------- | ------------------------------------------------------ | ----------------------------- | ---------------------------- |
+| PhotoCraft     | Import a PNG and paint a stroke                        | Passed / passed               | Passed / passed              |
+| Pitch Training | Submit an answer and retain history                    | Passed / passed               | Passed / passed              |
+| Wikipedia      | Read the article and scroll to its final section       | Passed / passed               | Passed / passed              |
+| Excalidraw     | Draw and move a rectangle; check its saved coordinate  | Passed / passed               | Passed / passed              |
+| Squoosh        | Encode a PNG to JPEG and change quality                | Passed / passed               | Passed / passed              |
+| diagrams.net   | Drag a rectangle from the palette; observe changed SVG | Passed / passed               | Passed / passed              |
+| StackEdit      | Edit Markdown and render the preview heading           | Passed / passed               | Passed / passed              |
+| CyberChef      | Produce expected To Base64 output                      | Passed / passed               | Passed / passed              |
 
-The [27 October comparison](../results/evaluation/compatibility-contexts-review.json)
-and its [provenance](../results/evaluation/compatibility-contexts-review-provenance.json)
-predate the installation-origin and prototype changes. Squoosh's stronger local
-receipts are [Chromium](../results/evaluation/squoosh-encoded-offline.json) and
-[Firefox](../results/evaluation/squoosh-firefox-offline-ready.json). The Squoosh receipts come from separate runs.
+The matrix ran against `https://pf.damenh.com/` on source
+`2dfcbc2e8be6d9ec64bc3c20789446b59977e14e`. Its before/after artifact maps match
+exactly (`artifactsStable: true`), including runtime `sw.js` SHA-256
+`ebf627533c7eaa363ffc5261cabe74f42b99e11e38507b7265d524538fee2f0b`.
+
+## Final-source CI and public artifacts
+
+Source `2dfcbc2e8be6d9ec64bc3c20789446b59977e14e` passed the
+[final CI run](https://github.com/privacy-frames/host/actions/runs/40763844471),
+including the regression suite, selected functional tests and calibrated network
+checks. The [fresh receipt index](../results/evaluation/final-ci-receipts.json)
+separates those results from historical files in the CI artifact.
+
+The [public HTTPS check](../results/assets.json) matched 59 files to their build
+hashes. These hashes identify the deployed build. The public matrix, deeper
+CyberChef tests and [Pitch Training checks](../results/pitch-training-deployed.json)
+have passed. The [general host-interface checks](../results/deployed.json) also
+passed in both browsers; deployment
+revisions are recorded in the [completion audit](COMPLETION.md).
 
 ## Tasks and publishers
 
@@ -43,17 +58,27 @@ and verifies the decoded dimensions and file signature. Changing quality must
 produce different JPEG bytes. The task exercises a real browser worker and repeats
 encoding after an offline reload.
 
-StackEdit's task checks the rendered heading produced from Markdown. CyberChef's
-tasks check expected text output and file hashes. diagrams.net's task creates and
-edits a diagram. Where a publisher provides an offline startup option, the test
-may select that documented URL option. The runtime has no publisher-specific
+StackEdit's task checks the rendered heading produced from Markdown and repeats
+the task after offline reload. The corpus CyberChef task checks expected To Base64
+output. diagrams.net drags a rectangle from the palette and checks the changed
+SVG, then repeats that task offline. Where a publisher provides an offline startup
+option, the test may select that documented URL option. The runtime has no publisher-specific
 branch for it.
 
-CyberChef's cancellation/SVG task passes in [standalone Chromium](../results/evaluation/cyberchef-native-cancel-bounded-final.json).
+The [public CyberChef text/file tests](../results/evaluation/cyberchef-text-file-release-public.json)
+pass in standalone and confined execution on both browsers. They check a
+52-byte text round trip and the expected SHA-256 of a 2,900-byte file, repeated
+offline in confinement.
+
+Chromium's [public cancellation/SVG tests](../results/evaluation/cyberchef-cancel-release-public.json)
+also pass: cancellation/restart terminates two workers and renders animated SVG,
+with an offline repeat in confinement and a working standalone control.
+
 In [native Firefox](../results/evaluation/cyberchef-native-cancel-firefox-final.json),
 automation does not reliably observe the animated SVG before the operation
-finishes; other runs crash after worker cancellation. The current Firefox result
-does not verify this task.
+finishes; other native runs crash after worker cancellation. Firefox
+cancellation/restart and animated SVG remain unverified. Firefox has separate passing text/file and offline checks; the corpus row covers
+the smaller To Base64 task.
 
 PhotoCraft, Pitch Training, Wikipedia and CyberChef use their original public
 URLs. CORS-readable licensed copies of the other applications are hosted at
@@ -63,7 +88,15 @@ subdirectory hosting and records changes in `MODIFICATIONS.json`. This batch add
 compatibility in the host rather than patching application behavior. Inventories
 and licenses are described in [publisher-packaging.md](publisher-packaging.md).
 
-## Historical release
+## Earlier comparisons
+
+The [earlier local matrix](../results/evaluation/compatibility-release-local.json)
+also passed all 16 task/offline rows on a stable intermediate build. Its source
+snapshots were `5be286df9aca0e982fb47c2ac153422dcbabe93a` and
+`3c9f7839e147ae5af5800edcc080a79614b43193`, before the publisher-scope and URL-getter
+changes. The public matrix above supersedes it for release verification.
+
+## Previous release
 
 The [previous deployed matrix](../results/evaluation/compatibility-release.json)
 used host revision `84d87c224324a67402997cd39d70e0281132912a` and publisher revision

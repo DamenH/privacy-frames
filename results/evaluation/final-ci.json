@@ -1,0 +1,328 @@
+{
+  "source": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
+  "workflow": 40763844471,
+  "jobs": [
+    {
+      "id": 123082595282,
+      "run_id": 40763844471,
+      "workflow_name": "Test and publish host",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/privacy-frames/host/actions/runs/40763844471",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVW494M8AAAAcqEtb0g",
+      "head_sha": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
+      "url": "https://api.github.com/repos/privacy-frames/host/actions/jobs/123082595282",
+      "html_url": "https://github.com/privacy-frames/host/actions/runs/40763844471/job/123082595282",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T20:30:10Z",
+      "started_at": "2026-10-28T20:30:12Z",
+      "completed_at": "2026-10-28T20:37:41Z",
+      "name": "build",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-28T20:30:13Z",
+          "completed_at": "2026-10-28T20:30:14Z"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-28T20:30:14Z",
+          "completed_at": "2026-10-28T20:30:16Z"
+        },
+        {
+          "name": "Run actions/setup-node@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-28T20:30:16Z",
+          "completed_at": "2026-10-28T20:30:17Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-28T20:30:17Z",
+          "completed_at": "2026-10-28T20:30:19Z"
+        },
+        {
+          "name": "Run npm run typecheck",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-28T20:30:19Z",
+          "completed_at": "2026-10-28T20:30:22Z"
+        },
+        {
+          "name": "Run npm run format:check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-28T20:30:22Z",
+          "completed_at": "2026-10-28T20:30:25Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-28T20:30:25Z",
+          "completed_at": "2026-10-28T20:30:29Z"
+        },
+        {
+          "name": "Use the Ubuntu HTTPS archive for browser dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-28T20:30:29Z",
+          "completed_at": "2026-10-28T20:30:29Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium firefox",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-28T20:30:29Z",
+          "completed_at": "2026-10-28T20:31:04Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-28T20:31:04Z",
+          "completed_at": "2026-10-28T20:35:42Z"
+        },
+        {
+          "name": "Run npm run test:lifecycle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-28T20:35:42Z",
+          "completed_at": "2026-10-28T20:35:54Z"
+        },
+        {
+          "name": "Run npm run test:review",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-28T20:35:54Z",
+          "completed_at": "2026-10-28T20:36:01Z"
+        },
+        {
+          "name": "Run npm run test:storage-policy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-28T20:36:01Z",
+          "completed_at": "2026-10-28T20:36:07Z"
+        },
+        {
+          "name": "Run npm run test:mobile",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-28T20:36:07Z",
+          "completed_at": "2026-10-28T20:36:17Z"
+        },
+        {
+          "name": "Run npm run test:wasm",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-28T20:36:17Z",
+          "completed_at": "2026-10-28T20:36:24Z"
+        },
+        {
+          "name": "Run npm run test:compatibility",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-28T20:36:24Z",
+          "completed_at": "2026-10-28T20:36:43Z"
+        },
+        {
+          "name": "Provide virtual audio for native Firefox playback",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-28T20:36:43Z",
+          "completed_at": "2026-10-28T20:36:55Z"
+        },
+        {
+          "name": "Run npm run test:pitch",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-28T20:36:55Z",
+          "completed_at": "2026-10-28T20:37:14Z"
+        },
+        {
+          "name": "Run npm run test:network",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-28T20:37:14Z",
+          "completed_at": "2026-10-28T20:37:33Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-28T20:37:33Z",
+          "completed_at": "2026-10-28T20:37:36Z"
+        },
+        {
+          "name": "Run actions/configure-pages@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-28T20:37:36Z",
+          "completed_at": "2026-10-28T20:37:36Z"
+        },
+        {
+          "name": "Run actions/upload-pages-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-28T20:37:36Z",
+          "completed_at": "2026-10-28T20:37:37Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43,
+          "started_at": "2026-10-28T20:37:37Z",
+          "completed_at": "2026-10-28T20:37:39Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44,
+          "started_at": "2026-10-28T20:37:39Z",
+          "completed_at": "2026-10-28T20:37:39Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45,
+          "started_at": "2026-10-28T20:37:39Z",
+          "completed_at": "2026-10-28T20:37:39Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/privacy-frames/host/check-runs/123082595282",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000022,
+      "runner_name": "GitHub Actions 1000000022",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 123086525337,
+      "run_id": 40763844471,
+      "workflow_name": "Test and publish host",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/privacy-frames/host/actions/runs/40763844471",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVW494M8AAAAcqIdTmQ",
+      "head_sha": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
+      "url": "https://api.github.com/repos/privacy-frames/host/actions/jobs/123086525337",
+      "html_url": "https://github.com/privacy-frames/host/actions/runs/40763844471/job/123086525337",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T20:37:41Z",
+      "started_at": "2026-10-28T20:37:45Z",
+      "completed_at": "2026-10-28T20:37:56Z",
+      "name": "deploy",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-28T20:37:46Z",
+          "completed_at": "2026-10-28T20:37:47Z"
+        },
+        {
+          "name": "Run actions/deploy-pages@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-28T20:37:47Z",
+          "completed_at": "2026-10-28T20:37:55Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-28T20:37:55Z",
+          "completed_at": "2026-10-28T20:37:55Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/privacy-frames/host/check-runs/123086525337",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000025,
+      "runner_name": "GitHub Actions 1000000025",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12850101796,
+      "node_id": "MDg6QXJ0aWZhY3QxMjg1MDEwMTc5Ng==",
+      "name": "browser-evidence",
+      "size_in_bytes": 21986484,
+      "url": "https://api.github.com/repos/privacy-frames/host/actions/artifacts/12850101796",
+      "archive_download_url": "https://api.github.com/repos/privacy-frames/host/actions/artifacts/12850101796/zip",
+      "expired": false,
+      "digest": "sha256:ad9f7a9118fc4f1bbec4999ea682abfc8b7ec2f2d7d9c44d3295ff896b571979",
+      "created_at": "2026-10-28T20:37:35Z",
+      "updated_at": "2026-10-28T20:37:35Z",
+      "expires_at": "2027-01-26T20:30:09Z",
+      "workflow_run": {
+        "id": 40763844471,
+        "repository_id": 1433288160,
+        "head_repository_id": 1433288160,
+        "head_branch": "main",
+        "head_sha": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e"
+      }
+    },
+    {
+      "id": 12848544488,
+      "node_id": "MDg6QXJ0aWZhY3QxMjg0ODU0NDQ4OA==",
+      "name": "github-pages",
+      "size_in_bytes": 131752,
+      "url": "https://api.github.com/repos/privacy-frames/host/actions/artifacts/12848544488",
+      "archive_download_url": "https://api.github.com/repos/privacy-frames/host/actions/artifacts/12848544488/zip",
+      "expired": false,
+      "digest": "sha256:c9d5684474f09ec584e21ae80d2715fda0ac4d91cd7217aa5ccf9c752fbb617d",
+      "created_at": "2026-10-28T20:37:37Z",
+      "updated_at": "2026-10-28T20:37:37Z",
+      "expires_at": "2026-10-29T20:37:36Z",
+      "workflow_run": {
+        "id": 40763844471,
+        "repository_id": 1433288160,
+        "head_repository_id": 1433288160,
+        "head_branch": "main",
+        "head_sha": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e"
+      }
+    }
+  ]
+}

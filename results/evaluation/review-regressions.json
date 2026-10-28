@@ -1,12 +1,12 @@
 {
-  "date": "2026-10-27T08:11:44.630Z",
+  "date": "2026-10-28T20:35:55.177Z",
   "browsers": [
     {
       "name": "chromium",
       "version": "153.0.8010.12",
       "confined": {
         "conversions": 1,
-        "fragment": "",
+        "fragment": "#coercion-1",
         "pathname": "/runtime/Gyb-i86JtjE/review/"
       },
       "attribute": {
@@ -30,7 +30,35 @@
         "cloneBlocked": false,
         "executed": false
       },
-      "prepared": "activated",
+      "prepared": {
+        "profile": "website-v1",
+        "ended": true,
+        "caches": [],
+        "serviceWorker": {
+          "profile": "precache-v1",
+          "completed": [
+            "install",
+            "activate"
+          ],
+          "scriptURL": "http://127.0.0.1:4218/review/sw.js",
+          "scope": "http://127.0.0.1:4218/review/"
+        },
+        "outcome": {
+          "status": "completed",
+          "scriptURL": "http://127.0.0.1:4218/review/sw.js"
+        },
+        "unavailableResources": []
+      },
+      "pendingRegistration": {
+        "registrations": 0,
+        "registered": false,
+        "readyWithin250ms": false
+      },
+      "nativeRegistration": {
+        "registrations": 0,
+        "registered": false,
+        "readyWithin250ms": false
+      },
       "controlMutation": {
         "type": "speculationrules",
         "cloneAttached": true,
@@ -44,7 +72,7 @@
       "version": "155.0",
       "confined": {
         "conversions": 1,
-        "fragment": "",
+        "fragment": "#coercion-1",
         "pathname": "/runtime/Gyb-i86JtjE/review/"
       },
       "attribute": {
@@ -68,7 +96,35 @@
         "cloneBlocked": false,
         "executed": false
       },
-      "prepared": "activated",
+      "prepared": {
+        "profile": "website-v1",
+        "ended": true,
+        "caches": [],
+        "serviceWorker": {
+          "profile": "precache-v1",
+          "completed": [
+            "install",
+            "activate"
+          ],
+          "scriptURL": "http://127.0.0.1:4218/review/sw.js",
+          "scope": "http://127.0.0.1:4218/review/"
+        },
+        "outcome": {
+          "status": "completed",
+          "scriptURL": "http://127.0.0.1:4218/review/sw.js"
+        },
+        "unavailableResources": []
+      },
+      "pendingRegistration": {
+        "registrations": 0,
+        "registered": false,
+        "readyWithin250ms": false
+      },
+      "nativeRegistration": {
+        "registrations": 0,
+        "registered": false,
+        "readyWithin250ms": false
+      },
       "controlMutation": {
         "type": "speculationrules",
         "cloneAttached": true,

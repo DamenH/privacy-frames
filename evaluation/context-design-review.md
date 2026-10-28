@@ -6,6 +6,9 @@ worktree. The architecture review itself runs no browser experiments. Separately
 authorized common-policy changes and context-model unit tests are noted
 below; broader context support requires its own functional and network evidence.
 
+Implementation and release verification followed this review. The
+[completion audit](COMPLETION.md) records the current tested state.
+
 ## Implementation inspected
 
 The controller now binds a dedicated worker during its bootstrap fetch. It derives

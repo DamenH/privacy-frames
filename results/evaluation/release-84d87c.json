@@ -1,0 +1,215 @@
+{
+  "status": "complete",
+  "verifiedOn": "2026-10-27T04:43:16.351604+00:00",
+  "implementationRevision": "84d87c224324a67402997cd39d70e0281132912a",
+  "managerPublicationRevision": "84d87c224324a67402997cd39d70e0281132912a",
+  "runtimePublicationRevision": "d74e8316d4cf5daa756c00f808e45fae080e7a19",
+  "publisherRevision": "b8ce7bca6681bc1dd42ee24a783f1555692c03b0",
+  "hosting": {
+    "provider": "GitHub Pages",
+    "manager": "https://pf.damenh.com/",
+    "runtime": "https://apps.pf.damenh.com/",
+    "publishers": "https://privacy-frames.github.io/apps/",
+    "managerRun": 40450127518,
+    "runtimeRun": 40450160258,
+    "publisherRun": 40448128112
+  },
+  "requirements": {
+    "organizationRepositories": {
+      "status": "complete",
+      "evidence": [
+        "results/evaluation/migration.json",
+        "publisher-source-ref.txt",
+        "https://github.com/privacy-frames/runtime/blob/main/runtime-host-ref.txt"
+      ]
+    },
+    "hostingAndCutover": {
+      "status": "complete",
+      "evidence": [
+        "results/hosting.json",
+        "results/assets.json",
+        "results/deployed.json",
+        "results/embedding-deployed.json",
+        "results/compatibility-deployed.json",
+        "evaluation/repository-migration.md"
+      ]
+    },
+    "licensedPublishers": {
+      "status": "complete",
+      "evidence": [
+        "evaluation/publisher-packaging.md",
+        "results/evaluation/publisher-pages.json",
+        "results/evaluation/publishers/sources.json",
+        "https://github.com/privacy-frames/apps/blob/main/mirrors/lock.json"
+      ]
+    },
+    "confinementReview": {
+      "status": "complete",
+      "evidence": [
+        "evaluation/security-review.md",
+        "evaluation/security-evidence-audit.md",
+        "results/evaluation/ci/review-regressions.json",
+        "results/evaluation/ci/lifecycle.json",
+        "results/evaluation/ci/network.json",
+        "results/evaluation/ci/network-firefox.json"
+      ]
+    },
+    "compatibilityStudy": {
+      "status": "complete",
+      "evidence": [
+        "evaluation/compatibility.md",
+        "results/evaluation/compatibility-final-baseline.json",
+        "results/evaluation/compatibility-pages.json",
+        "results/evaluation/compatibility-final.json",
+        "results/evaluation/compatibility-release.json",
+        "test/evaluation-compatibility.ts"
+      ]
+    },
+    "reportAndEvidence": {
+      "status": "complete",
+      "evidence": [
+        "REPORT.md",
+        "evaluation/report-review.md",
+        "evaluation/COMPLETION.md",
+        "results/ci.json",
+        "results/assets.json"
+      ]
+    },
+    "futureIdeas": {
+      "status": "complete",
+      "evidence": [
+        "evaluation/future-ideas.md"
+      ],
+      "scope": "Shared browser permissions and publisher-initiated installation are recorded, not implemented."
+    }
+  },
+  "checks": {
+    "unitTests": 42,
+    "browsers": {
+      "chromium": "153.0.8010.12",
+      "firefox": "155.0"
+    },
+    "coreGroupsPerBrowser": 16,
+    "directProbesPerBrowser": 31,
+    "eventProbesPerBrowser": 33,
+    "standaloneTasks": 16,
+    "confinedTaskAndOfflinePasses": 6,
+    "confinedStartupFailures": 2,
+    "refusedInstallations": 8,
+    "matchedPublicAssets": 51,
+    "publisherAssetsAudited": 25,
+    "nativeChromiumPwas": 3,
+    "privateNetworkMarkersObservedOnTestedRoutes": 0,
+    "limits": {
+      "files": 1000,
+      "bytes": 104857600
+    }
+  },
+  "limits": [
+    "Empirical review and calibrated route tests; no machine-checked confinement proof.",
+    "Five corpus apps still encounter preparation, dynamic-script or context restrictions. Failed targets remain in the matrix.",
+    "Browser permissions are shared by runtime-origin apps; permission isolation remains future work.",
+    "Application workers, IFC, general application updates, BFCache/concurrent replacement guarantees and real-device mobile/WebKit verification remain outside measured support.",
+    "Changing the runtime origin does not migrate existing browser-local app data."
+  ],
+  "baselines": {
+    "local": "results/evaluation/baseline/provenance.json",
+    "originalURLs": "results/evaluation/compatibility-final-baseline.json",
+    "initialPages": "results/evaluation/compatibility-pages.json",
+    "sharedFixes": "results/evaluation/compatibility-final.json"
+  },
+  "receipts": {
+    "results/ci.json": {
+      "sha256": "70d2fcf4c4f6e6c07cb1bcc775053b3e975f2793c00a5a75fd910ad97dc7855b",
+      "bytes": 5738
+    },
+    "results/assets.json": {
+      "sha256": "5ef9d7f5c5c9e5f27b50a42d1b58a4ab848f5e72bf671592f18751002f50c37a",
+      "bytes": 7860
+    },
+    "results/deployed.json": {
+      "sha256": "53d2ac6255edd63eaf6b0b02eb744a5973a57cddd28b5ed6ce3685b6880cb795",
+      "bytes": 5226
+    },
+    "results/embedding-deployed.json": {
+      "sha256": "f742aacb358c247281525d01ef93f21784f425be2de41ad5555cba0549534a8e",
+      "bytes": 888
+    },
+    "results/compatibility-deployed.json": {
+      "sha256": "9618797d547df1610afad2d755ff167015a79bdb16017cf240d0251d5c9f352a",
+      "bytes": 1863
+    },
+    "results/hosting.json": {
+      "sha256": "34afa711efee0d4565f4f4d606b2ccf09cc320343721bb56af20c66f21a8d668",
+      "bytes": 1793
+    },
+    "results/evaluation/migration.json": {
+      "sha256": "b1096e860b7df599b4f6feb4d624d7a8b9bdea9faf2918da4ac13245136bb0c8",
+      "bytes": 2098
+    },
+    "results/evaluation/compatibility-release.json": {
+      "sha256": "a967038da687bd0bca62f1f9ad0100a89db2c15573af94d1796db26cd75b62c4",
+      "bytes": 111882
+    },
+    "results/evaluation/compatibility-release-deployment.json": {
+      "sha256": "231640d101ebce2f6b2ddfe9d7750a10cb87cf6a55d47f64aed1f0ee13bd0d9e",
+      "bytes": 1848
+    },
+    "results/evaluation/publisher-pages.json": {
+      "sha256": "824ea97d44fd841b69e63c7a2325d4cf43281faf1a0fce51a2e181f5e4d911f1",
+      "bytes": 5368
+    },
+    "results/evaluation/ci/browser.json": {
+      "sha256": "571a8a5c8c151db4ff19aa7c54158dd36065a74744bac66688c27419db949cbf",
+      "bytes": 44528
+    },
+    "results/evaluation/ci/compatibility.json": {
+      "sha256": "e9dbc01d33c9ad217ccdcaeff9895b808ad6d179097c23fce135ab23c40f9bcc",
+      "bytes": 1121
+    },
+    "results/evaluation/ci/lifecycle.json": {
+      "sha256": "ec378bbff9ed8813cc9bb90a50f26968e0c1f369c3ec82d4f4175330f0245316",
+      "bytes": 462
+    },
+    "results/evaluation/ci/mobile.json": {
+      "sha256": "ef7f783041aa3136d44d3ba2112e2a2934266eaeb5ca07dbeff6cd332d0fc010",
+      "bytes": 586
+    },
+    "results/evaluation/ci/network-firefox.json": {
+      "sha256": "174ccc51d9d325fe7a507bc2034e8ed88d627818e33f6447be603ca12ba258d6",
+      "bytes": 3225
+    },
+    "results/evaluation/ci/network.json": {
+      "sha256": "a8f6e8a3ca1619d0a96f09e475811da1fe1b0ef02725e9ebbf9cd170210e7b03",
+      "bytes": 3102
+    },
+    "results/evaluation/ci/pitch-training.json": {
+      "sha256": "6ca957334edd0ead9e97c895d9159f5d21be65c989fd4822e2e1bd2ac9254e56",
+      "bytes": 7635
+    },
+    "results/evaluation/ci/review-regressions.json": {
+      "sha256": "af0ccbbfe744293afd95859e0e21eec2fd42f6c84a7587d2a2f25d208242bf50",
+      "bytes": 1568
+    },
+    "results/evaluation/ci/scoped-storage.json": {
+      "sha256": "f3bed63f01d99f24e3bd59c600e5a796d8185f4ef1749a1fbc5102e524d606c0",
+      "bytes": 1258
+    },
+    "results/evaluation/ci/separate-runtime.json": {
+      "sha256": "ac8dc98729d5a1da42741da272d52002d88b833c8681a81d8a5ecff9ed484219",
+      "bytes": 1332
+    },
+    "results/evaluation/ci/storage-policy.json": {
+      "sha256": "108a1fea2f3128bd40eeb6083a480dc31b65620a395cc54a881f24d673a4e480",
+      "bytes": 768
+    },
+    "results/evaluation/ci/wasm.json": {
+      "sha256": "c8217eb5550b9637261758b365ed2756078278147dd77b88295ebc54e17a8a6c",
+      "bytes": 722
+    },
+    "results/evaluation/ci/website-installation.json": {
+      "sha256": "1dedd045ea275110b24a11e2c7c73eacfb75c36e1fa946e546cd39690cad57c0",
+      "bytes": 1218
+    }
+  }
+}

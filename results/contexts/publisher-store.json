@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-28T20:34:38.468Z",
+  "bundleSHA256": "c3d1e3177154bd92b86aadbc5c9d9934ad2fa06fb6c087cf95ddc2e5385046df",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "checks": {
+        "sameRegistration": true,
+        "changedSource": true,
+        "foreignApp": true,
+        "foreignGeneration": true,
+        "claimedClient": true,
+        "oneUse": true,
+        "active": true,
+        "oldBinding": true,
+        "unregister": true,
+        "oldTicket": true,
+        "closedIdNeverReused": true,
+        "oldRegistration": true,
+        "newGrant": true
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "checks": {
+        "sameRegistration": true,
+        "changedSource": true,
+        "foreignApp": true,
+        "foreignGeneration": true,
+        "claimedClient": true,
+        "oneUse": true,
+        "active": true,
+        "oldBinding": true,
+        "unregister": true,
+        "oldTicket": true,
+        "closedIdNeverReused": true,
+        "oldRegistration": true,
+        "newGrant": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,1067 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-28T20:33:31.910Z",
+    "revision": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
+    "dirty": true,
+    "sourceSHA256": "34b1f84faf9bfd0b048d2ed9ec946c14969b577492747392060cc55e8dea2244",
+    "runner": "test/document-renderer.ts",
+    "runnerSHA256": "2666fd2b9af959a9fa7b9f1e02d1505e1350eac47fc3974ad4e32a1601c445dc",
+    "publisherRevision": "2c26c40c77160af643ae053115a3975cc5a01ba0",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb",
+      "dist-manager/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "daccf37a0074676cc480fd95023844fea64f70328dd65b241c646051190f2b87",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "f375143aebdb8cbc407e8b9cc808d82daf63314baaa6142f0f178250af3c9036",
+      "dist-manager/sw.js": "79802b250d5ec03ed6d4b62f0558da67ca055c8d69d6cf4bbdc31f20cc018e9f",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "74aa6c5da9303eadfe16707c0eb0280886712bcb9716b76bc6639b486bd05ef5",
+      "dist-runtime/guard.js": "d6f91fa807a7569631485c56e4d208d7649298a4586278a7e95fd8989cd03710",
+      "dist-runtime/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "7aefafa99b81ee8ccdad783cb5b169d20f08f49a943d330a517f52fa071b813e",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "f375143aebdb8cbc407e8b9cc808d82daf63314baaa6142f0f178250af3c9036",
+      "dist-runtime/shared-worker-guard.js": "39e1d10b656f8bc8f0e6d4236178d1d028085614fa9ff605500518654f47b3d9",
+      "dist-runtime/sw.js": "ebf627533c7eaa363ffc5261cabe74f42b99e11e38507b7265d524538fee2f0b",
+      "dist-runtime/worker-guard.js": "26708927172cf41cbee9e34ce02e198b7d822c8c8484df9df663c952648a5054",
+      "dist-runtime/worklet-guard.js": "42d5d3f373a61870a682ac7eb7522ce7ab4236cb9b70acef4ef9e602bfd4561b",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/install-worker.js": "732c579c04e320864c3fb8b9a0127f3332687fc715ce294a49e1ee3510ece87e",
+      "dist-installation/installation.js": "b33f4f12fd76d7df7ab73eed1d2f4078d29e97b0ed64c6b840de1766448db5b8"
+    }
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "initial": {
+        "result": {
+          "done": true,
+          "callbackCount": 0,
+          "sameDocument": true,
+          "sameWindow": true,
+          "sameAddress": true,
+          "sameController": true,
+          "controlled": true,
+          "captureChecks": {
+            "privateDocuments": 0,
+            "publicDocuments": 0,
+            "urlReads": 0,
+            "arrayCalls": 0,
+            "arrayReplacementDenied": false,
+            "urlControl": 0
+          },
+          "manifestRetained": true,
+          "manifestRemovals": 0
+        },
+        "events": [
+          "classic",
+          "inline-defer",
+          "inline-async",
+          "external",
+          "defer",
+          "module",
+          "DOMContentLoaded",
+          "async",
+          "body-load",
+          "window-load"
+        ],
+        "global": 42,
+        "module": 13,
+        "moduleURL": "https://publisher.invalid/app/index.html",
+        "bodyThis": true,
+        "bodyAliases": true,
+        "json": {
+          "value": 42
+        },
+        "linkedShape": null,
+        "syntheticLoadProbes": 1,
+        "contexts": 0,
+        "privateConstructorCalls": 0,
+        "bindingReplacementsDenied": {
+          "Map": true,
+          "Promise": true,
+          "Reflect": true
+        },
+        "bindingReplacementsAccepted": {
+          "Map": false,
+          "Promise": false,
+          "Reflect": false
+        },
+        "privateReflectCalls": 0,
+        "privateQueryCalls": 0
+      },
+      "publication": {
+        "initial": 40,
+        "loaded": 40,
+        "later": 40,
+        "root": "image/svg+xml"
+      },
+      "activated": {
+        "runs": 1,
+        "click": true,
+        "contextDenied": true,
+        "rawContexts": 0
+      },
+      "vector": {
+        "result": {
+          "done": true,
+          "callbackCount": 0,
+          "sameDocument": true,
+          "sameWindow": true,
+          "sameAddress": true,
+          "sameController": true,
+          "controlled": true,
+          "captureChecks": {
+            "privateDocuments": 0,
+            "publicDocuments": 0,
+            "urlReads": 0,
+            "arrayCalls": 0,
+            "arrayReplacementDenied": false,
+            "urlControl": 0
+          },
+          "manifestRetained": true,
+          "manifestRemovals": 0
+        },
+        "type": "image/svg+xml",
+        "namespace": "http://www.w3.org/2000/svg",
+        "root": true,
+        "geometry": 40,
+        "handler": {
+          "target": true,
+          "self": true,
+          "alias": true
+        },
+        "inlineThis": true,
+        "events": [
+          "DOMContentLoaded",
+          "svg-load",
+          "window-load"
+        ],
+        "x": 25.329999923706055,
+        "json": {
+          "value": 42
+        },
+        "linkedShape": "#box"
+      },
+      "animated": 13.666801452636719,
+      "controls": [
+        {
+          "mode": "unavailable",
+          "result": {
+            "done": true,
+            "callbackCount": 0,
+            "sameDocument": true,
+            "sameWindow": true,
+            "sameAddress": true,
+            "sameController": true,
+            "controlled": true,
+            "captureChecks": {
+              "privateDocuments": 0,
+              "publicDocuments": 0,
+              "urlReads": 0,
+              "arrayCalls": 0,
+              "arrayReplacementDenied": false,
+              "urlControl": 0
+            },
+            "manifestRetained": true,
+            "manifestRemovals": 0
+          },
+          "events": [
+            "classic-error",
+            "after-classic",
+            "async-error",
+            "defer-error",
+            "module-error",
+            "DOMContentLoaded"
+          ],
+          "nativeRequests": 3
+        },
+        {
+          "mode": "context",
+          "result": {
+            "done": true,
+            "callbackCount": 1,
+            "sameDocument": true,
+            "sameWindow": true,
+            "sameAddress": true,
+            "sameController": true,
+            "controlled": true,
+            "captureChecks": {
+              "privateDocuments": 0,
+              "publicDocuments": 0,
+              "urlReads": 0,
+              "arrayCalls": 0,
+              "arrayReplacementDenied": false,
+              "urlControl": 0
+            },
+            "manifestRetained": true,
+            "manifestRemovals": 0
+          },
+          "ran": true,
+          "rawContexts": 0,
+          "facade": true,
+          "facadeHandler": true
+        },
+        {
+          "mode": "missing-adapter",
+          "result": {
+            "done": false,
+            "error": "Child document adapter is unavailable",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        },
+        {
+          "mode": "malformed",
+          "result": {
+            "done": false,
+            "error": "Child URL protocol differs",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        },
+        {
+          "mode": "raw-script",
+          "result": {
+            "done": false,
+            "error": "Content is not passive",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        },
+        {
+          "mode": "raw-frame",
+          "result": {
+            "done": false,
+            "error": "Content is not passive",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        },
+        {
+          "mode": "executable-url",
+          "result": {
+            "done": false,
+            "error": "Executable content URL",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        }
+      ],
+      "nativeHTML": {
+        "bindingReplacementsAccepted": {
+          "Map": true,
+          "Promise": true,
+          "Reflect": true
+        },
+        "bindingReplacementsDenied": {
+          "Map": false,
+          "Promise": false,
+          "Reflect": false
+        },
+        "privateConstructorCalls": 1,
+        "events": [
+          "classic",
+          "inline-defer",
+          "inline-async",
+          "external",
+          "defer",
+          "module",
+          "DOMContentLoaded",
+          "async",
+          "body-load",
+          "window-load"
+        ],
+        "global": 42,
+        "module": 13,
+        "bodyThis": true
+      },
+      "nativeSVG": {
+        "type": "image/svg+xml",
+        "geometry": 40,
+        "handler": {
+          "target": true,
+          "self": true,
+          "alias": true
+        },
+        "inlineThis": true,
+        "events": [
+          "DOMContentLoaded",
+          "svg-load",
+          "window-load"
+        ]
+      },
+      "afterPublicationCaptures": {
+        "done": true,
+        "callbackCount": 0,
+        "sameDocument": true,
+        "sameWindow": true,
+        "sameAddress": true,
+        "sameController": true,
+        "controlled": true,
+        "captureChecks": {
+          "privateDocuments": 0,
+          "publicDocuments": 3,
+          "urlReads": 0,
+          "arrayCalls": 0,
+          "arrayReplacementDenied": true,
+          "urlControl": 1
+        },
+        "manifestRetained": true,
+        "manifestRemovals": 0
+      },
+      "topLevelAwait": [
+        {
+          "mode": "tla-inline-dcl",
+          "mediated": {
+            "result": {
+              "done": true,
+              "callbackCount": 0,
+              "sameDocument": true,
+              "sameWindow": true,
+              "sameAddress": true,
+              "sameController": true,
+              "controlled": true,
+              "captureChecks": {
+                "privateDocuments": 0,
+                "publicDocuments": 0,
+                "urlReads": 0,
+                "arrayCalls": 0,
+                "arrayReplacementDenied": false,
+                "urlControl": 0
+              },
+              "manifestRetained": true,
+              "manifestRemovals": 0
+            },
+            "events": [
+              "module-start",
+              "DOMContentLoaded",
+              "awaited-event",
+              "module-resumed",
+              "window-load"
+            ]
+          },
+          "native": [
+            "module-start",
+            "DOMContentLoaded",
+            "awaited-event",
+            "module-resumed",
+            "window-load"
+          ]
+        },
+        {
+          "mode": "tla-external-dcl",
+          "mediated": {
+            "result": {
+              "done": true,
+              "callbackCount": 0,
+              "sameDocument": true,
+              "sameWindow": true,
+              "sameAddress": true,
+              "sameController": true,
+              "controlled": true,
+              "captureChecks": {
+                "privateDocuments": 0,
+                "publicDocuments": 0,
+                "urlReads": 0,
+                "arrayCalls": 0,
+                "arrayReplacementDenied": false,
+                "urlControl": 0
+              },
+              "manifestRetained": true,
+              "manifestRemovals": 0
+            },
+            "events": [
+              "module-start",
+              "module-load",
+              "DOMContentLoaded",
+              "awaited-event",
+              "module-resumed",
+              "window-load"
+            ]
+          },
+          "native": [
+            "module-start",
+            "module-load",
+            "DOMContentLoaded",
+            "awaited-event",
+            "module-resumed",
+            "window-load"
+          ]
+        },
+        {
+          "mode": "tla-inline-load",
+          "mediated": {
+            "result": {
+              "done": true,
+              "callbackCount": 0,
+              "sameDocument": true,
+              "sameWindow": true,
+              "sameAddress": true,
+              "sameController": true,
+              "controlled": true,
+              "captureChecks": {
+                "privateDocuments": 0,
+                "publicDocuments": 0,
+                "urlReads": 0,
+                "arrayCalls": 0,
+                "arrayReplacementDenied": false,
+                "urlControl": 0
+              },
+              "manifestRetained": true,
+              "manifestRemovals": 0
+            },
+            "events": [
+              "module-start",
+              "DOMContentLoaded",
+              "window-load",
+              "awaited-event",
+              "module-resumed"
+            ]
+          },
+          "native": [
+            "module-start",
+            "DOMContentLoaded",
+            "window-load",
+            "awaited-event",
+            "module-resumed"
+          ]
+        },
+        {
+          "mode": "tla-external-load",
+          "mediated": {
+            "result": {
+              "done": true,
+              "callbackCount": 0,
+              "sameDocument": true,
+              "sameWindow": true,
+              "sameAddress": true,
+              "sameController": true,
+              "controlled": true,
+              "captureChecks": {
+                "privateDocuments": 0,
+                "publicDocuments": 0,
+                "urlReads": 0,
+                "arrayCalls": 0,
+                "arrayReplacementDenied": false,
+                "urlControl": 0
+              },
+              "manifestRetained": true,
+              "manifestRemovals": 0
+            },
+            "events": [
+              "module-start",
+              "module-load",
+              "DOMContentLoaded",
+              "window-load",
+              "awaited-event",
+              "module-resumed"
+            ]
+          },
+          "native": [
+            "module-start",
+            "module-load",
+            "DOMContentLoaded",
+            "window-load",
+            "awaited-event",
+            "module-resumed"
+          ]
+        }
+      ],
+      "childTicket": {
+        "result": {
+          "done": true,
+          "callbackCount": 1,
+          "sameDocument": true,
+          "sameWindow": true,
+          "sameAddress": true,
+          "sameController": true,
+          "controlled": true,
+          "captureChecks": {
+            "privateDocuments": 0,
+            "publicDocuments": 0,
+            "urlReads": 0,
+            "arrayCalls": 0,
+            "arrayReplacementDenied": false,
+            "urlControl": 0
+          },
+          "manifestRetained": true,
+          "manifestRemovals": 0
+        },
+        "events": [
+          "parent-code",
+          "DOMContentLoaded",
+          "children-loaded",
+          "window-load"
+        ],
+        "parentGlobal": 42
+      },
+      "nativeChildTicket": {
+        "events": [
+          "parent-code",
+          "DOMContentLoaded",
+          "children-loaded",
+          "window-load"
+        ],
+        "parentGlobal": 42
+      },
+      "classicBarrier": {
+        "result": {
+          "done": true,
+          "callbackCount": 1,
+          "sameDocument": true,
+          "sameWindow": true,
+          "sameAddress": true,
+          "sameController": true,
+          "controlled": true,
+          "captureChecks": {
+            "privateDocuments": 0,
+            "publicDocuments": 0,
+            "urlReads": 0,
+            "arrayCalls": 0,
+            "arrayReplacementDenied": false,
+            "urlControl": 0
+          },
+          "manifestRetained": true,
+          "manifestRemovals": 0
+        },
+        "beforePreparation": true,
+        "childGlobal": 42,
+        "events": [
+          "parent-classic",
+          "child-start",
+          "child-load",
+          "module-start",
+          "module-complete"
+        ]
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "initial": {
+        "result": {
+          "done": true,
+          "callbackCount": 0,
+          "sameDocument": true,
+          "sameWindow": true,
+          "sameAddress": true,
+          "sameController": true,
+          "controlled": true,
+          "captureChecks": {
+            "privateDocuments": 0,
+            "publicDocuments": 0,
+            "urlReads": 0,
+            "arrayCalls": 0,
+            "arrayReplacementDenied": false,
+            "urlControl": 0
+          },
+          "manifestRetained": true,
+          "manifestRemovals": 0
+        },
+        "events": [
+          "classic",
+          "inline-defer",
+          "inline-async",
+          "external",
+          "defer",
+          "module",
+          "DOMContentLoaded",
+          "async",
+          "body-load",
+          "window-load"
+        ],
+        "global": 42,
+        "module": 13,
+        "moduleURL": "https://publisher.invalid/app/index.html",
+        "bodyThis": true,
+        "bodyAliases": true,
+        "json": {
+          "value": 42
+        },
+        "linkedShape": null,
+        "syntheticLoadProbes": 1,
+        "contexts": 0,
+        "privateConstructorCalls": 0,
+        "bindingReplacementsDenied": {
+          "Map": true,
+          "Promise": true,
+          "Reflect": true
+        },
+        "bindingReplacementsAccepted": {
+          "Map": false,
+          "Promise": false,
+          "Reflect": false
+        },
+        "privateReflectCalls": 0,
+        "privateQueryCalls": 0
+      },
+      "publication": {
+        "initial": 40,
+        "loaded": 40,
+        "later": 40,
+        "root": "image/svg+xml"
+      },
+      "activated": {
+        "runs": 1,
+        "click": true,
+        "contextDenied": true,
+        "rawContexts": 0
+      },
+      "vector": {
+        "result": {
+          "done": true,
+          "callbackCount": 0,
+          "sameDocument": true,
+          "sameWindow": true,
+          "sameAddress": true,
+          "sameController": true,
+          "controlled": true,
+          "captureChecks": {
+            "privateDocuments": 0,
+            "publicDocuments": 0,
+            "urlReads": 0,
+            "arrayCalls": 0,
+            "arrayReplacementDenied": false,
+            "urlControl": 0
+          },
+          "manifestRetained": true,
+          "manifestRemovals": 0
+        },
+        "type": "image/svg+xml",
+        "namespace": "http://www.w3.org/2000/svg",
+        "root": true,
+        "geometry": 40,
+        "handler": {
+          "target": true,
+          "self": true,
+          "alias": true
+        },
+        "inlineThis": true,
+        "events": [
+          "DOMContentLoaded",
+          "svg-load",
+          "window-load"
+        ],
+        "x": 9.600000381469727,
+        "json": {
+          "value": 42
+        },
+        "linkedShape": "#box"
+      },
+      "animated": 26.299999237060547,
+      "controls": [
+        {
+          "mode": "unavailable",
+          "result": {
+            "done": true,
+            "callbackCount": 0,
+            "sameDocument": true,
+            "sameWindow": true,
+            "sameAddress": true,
+            "sameController": true,
+            "controlled": true,
+            "captureChecks": {
+              "privateDocuments": 0,
+              "publicDocuments": 0,
+              "urlReads": 0,
+              "arrayCalls": 0,
+              "arrayReplacementDenied": false,
+              "urlControl": 0
+            },
+            "manifestRetained": true,
+            "manifestRemovals": 0
+          },
+          "events": [
+            "classic-error",
+            "after-classic",
+            "async-error",
+            "defer-error",
+            "module-error",
+            "DOMContentLoaded"
+          ],
+          "nativeRequests": 4
+        },
+        {
+          "mode": "context",
+          "result": {
+            "done": true,
+            "callbackCount": 1,
+            "sameDocument": true,
+            "sameWindow": true,
+            "sameAddress": true,
+            "sameController": true,
+            "controlled": true,
+            "captureChecks": {
+              "privateDocuments": 0,
+              "publicDocuments": 0,
+              "urlReads": 0,
+              "arrayCalls": 0,
+              "arrayReplacementDenied": false,
+              "urlControl": 0
+            },
+            "manifestRetained": true,
+            "manifestRemovals": 0
+          },
+          "ran": true,
+          "rawContexts": 0,
+          "facade": true,
+          "facadeHandler": true
+        },
+        {
+          "mode": "missing-adapter",
+          "result": {
+            "done": false,
+            "error": "Child document adapter is unavailable",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        },
+        {
+          "mode": "malformed",
+          "result": {
+            "done": false,
+            "error": "Child URL protocol differs",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        },
+        {
+          "mode": "raw-script",
+          "result": {
+            "done": false,
+            "error": "Content is not passive",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        },
+        {
+          "mode": "raw-frame",
+          "result": {
+            "done": false,
+            "error": "Content is not passive",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        },
+        {
+          "mode": "executable-url",
+          "result": {
+            "done": false,
+            "error": "Executable content URL",
+            "callbackCount": 0
+          },
+          "rawContexts": 0,
+          "facade": false
+        }
+      ],
+      "nativeHTML": {
+        "bindingReplacementsAccepted": {
+          "Map": true,
+          "Promise": true,
+          "Reflect": true
+        },
+        "bindingReplacementsDenied": {
+          "Map": false,
+          "Promise": false,
+          "Reflect": false
+        },
+        "privateConstructorCalls": 1,
+        "events": [
+          "classic",
+          "inline-defer",
+          "inline-async",
+          "external",
+          "defer",
+          "module",
+          "DOMContentLoaded",
+          "async",
+          "body-load",
+          "window-load"
+        ],
+        "global": 42,
+        "module": 13,
+        "bodyThis": true
+      },
+      "nativeSVG": {
+        "type": "image/svg+xml",
+        "geometry": 40,
+        "handler": {
+          "target": true,
+          "self": true,
+          "alias": true
+        },
+        "inlineThis": true,
+        "events": [
+          "svg-load",
+          "DOMContentLoaded",
+          "window-load"
+        ]
+      },
+      "afterPublicationCaptures": {
+        "done": true,
+        "callbackCount": 0,
+        "sameDocument": true,
+        "sameWindow": true,
+        "sameAddress": true,
+        "sameController": true,
+        "controlled": true,
+        "captureChecks": {
+          "privateDocuments": 0,
+          "publicDocuments": 3,
+          "urlReads": 0,
+          "arrayCalls": 0,
+          "arrayReplacementDenied": true,
+          "urlControl": 1
+        },
+        "manifestRetained": true,
+        "manifestRemovals": 0
+      },
+      "topLevelAwait": [
+        {
+          "mode": "tla-inline-dcl",
+          "mediated": {
+            "result": {
+              "done": true,
+              "callbackCount": 0,
+              "sameDocument": true,
+              "sameWindow": true,
+              "sameAddress": true,
+              "sameController": true,
+              "controlled": true,
+              "captureChecks": {
+                "privateDocuments": 0,
+                "publicDocuments": 0,
+                "urlReads": 0,
+                "arrayCalls": 0,
+                "arrayReplacementDenied": false,
+                "urlControl": 0
+              },
+              "manifestRetained": true,
+              "manifestRemovals": 0
+            },
+            "events": [
+              "module-start",
+              "DOMContentLoaded",
+              "awaited-event",
+              "module-resumed",
+              "window-load"
+            ]
+          },
+          "native": [
+            "module-start",
+            "DOMContentLoaded",
+            "awaited-event",
+            "module-resumed",
+            "window-load"
+          ]
+        },
+        {
+          "mode": "tla-external-dcl",
+          "mediated": {
+            "result": {
+              "done": true,
+              "callbackCount": 0,
+              "sameDocument": true,
+              "sameWindow": true,
+              "sameAddress": true,
+              "sameController": true,
+              "controlled": true,
+              "captureChecks": {
+                "privateDocuments": 0,
+                "publicDocuments": 0,
+                "urlReads": 0,
+                "arrayCalls": 0,
+                "arrayReplacementDenied": false,
+                "urlControl": 0
+              },
+              "manifestRetained": true,
+              "manifestRemovals": 0
+            },
+            "events": [
+              "module-start",
+              "module-load",
+              "DOMContentLoaded",
+              "awaited-event",
+              "module-resumed",
+              "window-load"
+            ]
+          },
+          "native": [
+            "module-start",
+            "module-load",
+            "DOMContentLoaded",
+            "awaited-event",
+            "module-resumed",
+            "window-load"
+          ]
+        },
+        {
+          "mode": "tla-inline-load",
+          "mediated": {
+            "result": {
+              "done": true,
+              "callbackCount": 0,
+              "sameDocument": true,
+              "sameWindow": true,
+              "sameAddress": true,
+              "sameController": true,
+              "controlled": true,
+              "captureChecks": {
+                "privateDocuments": 0,
+                "publicDocuments": 0,
+                "urlReads": 0,
+                "arrayCalls": 0,
+                "arrayReplacementDenied": false,
+                "urlControl": 0
+              },
+              "manifestRetained": true,
+              "manifestRemovals": 0
+            },
+            "events": [
+              "module-start",
+              "DOMContentLoaded",
+              "window-load",
+              "awaited-event",
+              "module-resumed"
+            ]
+          },
+          "native": [
+            "module-start",
+            "DOMContentLoaded",
+            "window-load",
+            "awaited-event",
+            "module-resumed"
+          ]
+        },
+        {
+          "mode": "tla-external-load",
+          "mediated": {
+            "result": {
+              "done": true,
+              "callbackCount": 0,
+              "sameDocument": true,
+              "sameWindow": true,
+              "sameAddress": true,
+              "sameController": true,
+              "controlled": true,
+              "captureChecks": {
+                "privateDocuments": 0,
+                "publicDocuments": 0,
+                "urlReads": 0,
+                "arrayCalls": 0,
+                "arrayReplacementDenied": false,
+                "urlControl": 0
+              },
+              "manifestRetained": true,
+              "manifestRemovals": 0
+            },
+            "events": [
+              "module-start",
+              "module-load",
+              "DOMContentLoaded",
+              "window-load",
+              "awaited-event",
+              "module-resumed"
+            ]
+          },
+          "native": [
+            "module-start",
+            "module-load",
+            "DOMContentLoaded",
+            "window-load",
+            "awaited-event",
+            "module-resumed"
+          ]
+        }
+      ],
+      "childTicket": {
+        "result": {
+          "done": true,
+          "callbackCount": 1,
+          "sameDocument": true,
+          "sameWindow": true,
+          "sameAddress": true,
+          "sameController": true,
+          "controlled": true,
+          "captureChecks": {
+            "privateDocuments": 0,
+            "publicDocuments": 0,
+            "urlReads": 0,
+            "arrayCalls": 0,
+            "arrayReplacementDenied": false,
+            "urlControl": 0
+          },
+          "manifestRetained": true,
+          "manifestRemovals": 0
+        },
+        "events": [
+          "parent-code",
+          "DOMContentLoaded",
+          "children-loaded",
+          "window-load"
+        ],
+        "parentGlobal": 42
+      },
+      "nativeChildTicket": {
+        "events": [
+          "parent-code",
+          "DOMContentLoaded",
+          "children-loaded",
+          "window-load"
+        ],
+        "parentGlobal": 42
+      },
+      "classicBarrier": {
+        "result": {
+          "done": true,
+          "callbackCount": 1,
+          "sameDocument": true,
+          "sameWindow": true,
+          "sameAddress": true,
+          "sameController": true,
+          "controlled": true,
+          "captureChecks": {
+            "privateDocuments": 0,
+            "publicDocuments": 0,
+            "urlReads": 0,
+            "arrayCalls": 0,
+            "arrayReplacementDenied": false,
+            "urlControl": 0
+          },
+          "manifestRetained": true,
+          "manifestRemovals": 0
+        },
+        "beforePreparation": true,
+        "childGlobal": 42,
+        "events": [
+          "parent-classic",
+          "child-start",
+          "child-load",
+          "module-start",
+          "module-complete"
+        ]
+      }
+    }
+  ]
+}

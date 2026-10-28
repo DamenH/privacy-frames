@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-27T04:35:17.521Z",
+  "date": "2026-10-28T21:02:57.983Z",
   "entry": "https://pf.damenh.com/",
   "browsers": [
     {
@@ -10,48 +10,723 @@
         "All example URLs install, including independently developed applications, and library metadata survives reload",
         "Readable app URL, native notes, persistent scoped storage and no opener",
         "PhotoCraft renders its canvas and starts offline",
-        "Thirty-three hostile event checks and manager-state isolation",
+        "Hostile operations remain denied while inert documents, local evaluation and prepared contexts work",
         "Editable HTML/CSS/JavaScript runs inside the restricted realm",
         "Published Pitch Training renders, saves a score and reopens its hash route offline",
         "Static manager and installed reader launch offline",
         "Reconnected manager obtains a specific worker-denial diagnostic after reload",
         "Current standalone report delivered"
       ],
-      "errors": [],
+      "errors": [
+        "importScripts is not a function"
+      ],
+      "errorEvents": [
+        {
+          "role": "manager",
+          "phase": "installation",
+          "installationURL": "https://privacy-frames.github.io/apps/excalidraw/",
+          "message": "importScripts is not a function",
+          "name": "TypeError",
+          "stack": "",
+          "pageURL": "https://pf.damenh.com/",
+          "workerURLs": [
+            "https://install.pf.damenh.com/install-worker.js"
+          ]
+        }
+      ],
+      "installations": [
+        {
+          "url": "https://privacy-frames.github.io/apps/notes/",
+          "status": "Installed Notes.",
+          "outcome": {
+            "status": "completed",
+            "scriptURL": "https://privacy-frames.github.io/apps/notes/sw.js"
+          }
+        },
+        {
+          "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
+          "status": "Installed PhotoCraft.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/adversary/",
+          "status": "Installed Adversary.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/playground/",
+          "status": "Installed Playground.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://damenh.github.io/pitch-training/",
+          "status": "Installed Pitch Training.",
+          "outcome": {
+            "status": "completed",
+            "scriptURL": "https://damenh.github.io/pitch-training/sw.js"
+          }
+        },
+        {
+          "url": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
+          "status": "Installed Albert Einstein.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/excalidraw/",
+          "status": "Installed Excalidraw Whiteboard.",
+          "outcome": {
+            "status": "unsupported",
+            "scriptURL": "https://privacy-frames.github.io/apps/excalidraw/sw.js",
+            "reason": "Worker has no explicit install handler"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/squoosh/",
+          "status": "Installed Squoosh.",
+          "outcome": {
+            "status": "unsupported",
+            "scriptURL": "https://privacy-frames.github.io/apps/squoosh/sw.js",
+            "reason": "Worker has no explicit install handler"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/drawio/?offline=1",
+          "status": "Installed Flowchart Maker & Online Diagram Software.",
+          "outcome": {
+            "status": "completed",
+            "scriptURL": "https://privacy-frames.github.io/apps/drawio/service-worker.js"
+          }
+        },
+        {
+          "url": "https://gchq.github.io/CyberChef/",
+          "status": "Installed CyberChef.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/stackedit/",
+          "status": "Installed StackEdit.",
+          "outcome": {
+            "status": "failed",
+            "scriptURL": "https://privacy-frames.github.io/apps/stackedit/sw.js",
+            "reason": "Cannot read properties of undefined (reading 'prototype')"
+          }
+        }
+      ],
+      "workerDiagnostics": [
+        {
+          "workerURL": "https://install.pf.damenh.com/install-worker.js",
+          "message": "TypeError: importScripts is not a function",
+          "type": "error",
+          "location": {
+            "url": "https://install.pf.damenh.com/install-worker.js",
+            "lineNumber": 4711,
+            "columnNumber": 15
+          },
+          "evidence": {
+            "target": {
+              "targetId": "4B7EB2280E6C5443497B6D7B6B819272",
+              "type": "worker",
+              "title": "",
+              "url": "",
+              "attached": false,
+              "parentId": "5605C591C675DA436F7C40C5D18B65FE",
+              "canAccessOpener": false,
+              "parentFrameId": "E9292D83C06D5985C2621A1BDA98C677",
+              "browserContextId": "60A468DF9539C0D865A20BD845C3771E"
+            },
+            "contextOrigin": "https://install.pf.damenh.com/install-worker.js",
+            "exceptionDetails": {
+              "exceptionId": 1,
+              "text": "Uncaught (in promise)",
+              "lineNumber": 0,
+              "columnNumber": 213,
+              "scriptId": "15",
+              "stackTrace": {
+                "callFrames": [
+                  {
+                    "functionName": "eval",
+                    "scriptId": "15",
+                    "url": "",
+                    "lineNumber": 0,
+                    "columnNumber": 213
+                  },
+                  {
+                    "functionName": "i",
+                    "scriptId": "15",
+                    "url": "",
+                    "lineNumber": 0,
+                    "columnNumber": 76
+                  },
+                  {
+                    "functionName": "u",
+                    "scriptId": "15",
+                    "url": "",
+                    "lineNumber": 0,
+                    "columnNumber": 467
+                  },
+                  {
+                    "functionName": "eval",
+                    "scriptId": "15",
+                    "url": "",
+                    "lineNumber": 0,
+                    "columnNumber": 546
+                  },
+                  {
+                    "functionName": "self.define",
+                    "scriptId": "15",
+                    "url": "",
+                    "lineNumber": 0,
+                    "columnNumber": 532
+                  },
+                  {
+                    "functionName": "eval",
+                    "scriptId": "15",
+                    "url": "",
+                    "lineNumber": 0,
+                    "columnNumber": 578
+                  },
+                  {
+                    "functionName": "eval",
+                    "scriptId": "14",
+                    "url": "",
+                    "lineNumber": 11,
+                    "columnNumber": 21
+                  },
+                  {
+                    "functionName": "safeEvaluate",
+                    "scriptId": "3",
+                    "url": "https://install.pf.damenh.com/install-worker.js",
+                    "lineNumber": 4711,
+                    "columnNumber": 15
+                  },
+                  {
+                    "functionName": "compartmentEvaluate",
+                    "scriptId": "3",
+                    "url": "https://install.pf.damenh.com/install-worker.js",
+                    "lineNumber": 6367,
+                    "columnNumber": 11
+                  },
+                  {
+                    "functionName": "evaluate",
+                    "scriptId": "3",
+                    "url": "https://install.pf.damenh.com/install-worker.js",
+                    "lineNumber": 6838,
+                    "columnNumber": 13
+                  },
+                  {
+                    "functionName": "",
+                    "scriptId": "3",
+                    "url": "https://install.pf.damenh.com/install-worker.js",
+                    "lineNumber": 9070,
+                    "columnNumber": 18
+                  }
+                ]
+              },
+              "exception": {
+                "type": "object",
+                "subtype": "error",
+                "className": "TypeError",
+                "description": "TypeError: importScripts is not a function",
+                "objectId": "-9195093820185223115.1.1",
+                "preview": {
+                  "type": "object",
+                  "subtype": "error",
+                  "description": "TypeError: importScripts is not a function",
+                  "overflow": false,
+                  "properties": [
+                    {
+                      "name": "stack",
+                      "type": "string",
+                      "value": ""
+                    },
+                    {
+                      "name": "message",
+                      "type": "string",
+                      "value": "importScripts is not a function"
+                    }
+                  ]
+                }
+              },
+              "executionContextId": 1
+            }
+          },
+          "phase": "installation",
+          "installationURL": "https://privacy-frames.github.io/apps/excalidraw/"
+        }
+      ],
+      "expectedPreparationErrors": [
+        {
+          "role": "manager",
+          "phase": "installation",
+          "installationURL": "https://privacy-frames.github.io/apps/excalidraw/",
+          "message": "importScripts is not a function",
+          "name": "TypeError",
+          "stack": "",
+          "pageURL": "https://pf.damenh.com/",
+          "workerURLs": [
+            "https://install.pf.damenh.com/install-worker.js"
+          ],
+          "category": "unsupported-secondary"
+        }
+      ],
+      "unexpectedErrors": [],
+      "boundaryCapabilities": [
+        {
+          "name": "createElement iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "createElementNS iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "innerHTML iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "insertAdjacentHTML iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "outerHTML iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "template parser",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Shadow DOM parser",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Range parser",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "DOMParser import",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "Error",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "document creation",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "viewless document",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "document.write",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Audio worklet",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "admitted worklet module loaded",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Uninstalled Worker",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "SharedWorker",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "mediated SharedWorker handle and application port",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "WebSocket",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "WebRTC",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "window.open",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "pending or prepared popup",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "service worker authority",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Native storage prototype recovery",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Storage access handle",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Remote speech service",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Media artwork URL",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Existing script property mutation",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "uninstalled script mapped locally and fresh load ended with error",
+          "value": "undefined",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "history identity spoof",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "https://apps.pf.damenh.com/plwJXNxTSvU/adversary/bridge.html",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "history replace spoof",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "https://apps.pf.damenh.com/plwJXNxTSvU/adversary/bridge.html",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "SVG parser mismatch",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "Error",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "setHTMLUnsafe",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "document execCommand",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "history traversal",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "custom built-in",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "eval",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "local computation returned 2",
+          "value": "number",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Function constructor",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "local computation returned 2",
+          "value": "number",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "prototype tampering",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "TypeError",
+          "contexts": 0,
+          "indexedSafe": true
+        }
+      ],
       "probes": [
-        "createElement iframeBlocked: Error",
-        "createElementNS iframeBlocked: Error",
-        "innerHTML iframeBlocked: Error",
-        "insertAdjacentHTML iframeBlocked: Error",
-        "outerHTML iframeBlocked: Error",
-        "template parserBlocked: Error",
-        "Shadow DOM parserBlocked: Error",
-        "Range parserBlocked: SecurityError",
-        "DOMParser importBlocked: SecurityError",
-        "document creationBlocked: SecurityError",
-        "document.writeBlocked: SecurityError",
-        "Audio workletBlocked: SecurityError",
-        "WorkerBlocked: SecurityError",
-        "SharedWorkerBlocked: SecurityError",
-        "WebSocketBlocked: SecurityError",
-        "WebRTCBlocked: SecurityError",
-        "window.openBlocked: SecurityError",
-        "service worker authorityBlocked: SecurityError",
-        "Native storage prototype recoveryBlocked: SecurityError",
-        "Storage access handleBlocked: SecurityError",
-        "Remote speech serviceBlocked: SecurityError",
-        "Media artwork URLBlocked: SecurityError",
-        "Existing script property mutationBlocked: SecurityError",
-        "history identity spoofBlocked: SecurityError",
-        "history replace spoofBlocked: SecurityError",
-        "SVG parser mismatchBlocked: Error",
-        "setHTMLUnsafeBlocked: SecurityError",
-        "document execCommandBlocked: SecurityError",
-        "history traversalBlocked: SecurityError",
-        "custom built-inBlocked: SecurityError",
-        "evalBlocked: EvalError",
-        "Function constructorBlocked: EvalError",
-        "prototype tamperingBlocked: TypeError"
+        {
+          "name": "createElement iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "createElementNS iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "innerHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "insertAdjacentHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "outerHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "template parser",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Shadow DOM parser",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "Range parser",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "DOMParser import",
+          "status": "Blocked: Error"
+        },
+        {
+          "name": "document creation",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "document.write",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Audio worklet",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "Uninstalled Worker",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "SharedWorker",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "WebSocket",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "WebRTC",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "window.open",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "service worker authority",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Native storage prototype recovery",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Storage access handle",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Remote speech service",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Media artwork URL",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Existing script property mutation",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "history identity spoof",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "history replace spoof",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "SVG parser mismatch",
+          "status": "Blocked: Error"
+        },
+        {
+          "name": "setHTMLUnsafe",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "document execCommand",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "history traversal",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "custom built-in",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "eval",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "Function constructor",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "prototype tampering",
+          "status": "Blocked: TypeError"
+        }
       ]
     },
     {
@@ -62,7 +737,7 @@
         "All example URLs install, including independently developed applications, and library metadata survives reload",
         "Readable app URL, native notes, persistent scoped storage and no opener",
         "PhotoCraft renders its canvas and starts offline",
-        "Thirty-three hostile event checks and manager-state isolation",
+        "Hostile operations remain denied while inert documents, local evaluation and prepared contexts work",
         "Editable HTML/CSS/JavaScript runs inside the restricted realm",
         "Published Pitch Training renders, saves a score and reopens its hash route offline",
         "Static manager and installed reader launch offline",
@@ -70,40 +745,545 @@
         "Current standalone report delivered"
       ],
       "errors": [],
+      "errorEvents": [],
+      "installations": [
+        {
+          "url": "https://privacy-frames.github.io/apps/notes/",
+          "status": "Installed Notes.",
+          "outcome": {
+            "status": "completed",
+            "scriptURL": "https://privacy-frames.github.io/apps/notes/sw.js"
+          }
+        },
+        {
+          "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
+          "status": "Installed PhotoCraft.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/adversary/",
+          "status": "Installed Adversary.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/playground/",
+          "status": "Installed Playground.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://damenh.github.io/pitch-training/",
+          "status": "Installed Pitch Training.",
+          "outcome": {
+            "status": "completed",
+            "scriptURL": "https://damenh.github.io/pitch-training/sw.js"
+          }
+        },
+        {
+          "url": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
+          "status": "Installed Albert Einstein.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/excalidraw/",
+          "status": "Installed Excalidraw Whiteboard.",
+          "outcome": {
+            "status": "unsupported",
+            "scriptURL": "https://privacy-frames.github.io/apps/excalidraw/sw.js",
+            "reason": "Worker has no explicit install handler"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/squoosh/",
+          "status": "Installed Squoosh.",
+          "outcome": {
+            "status": "unsupported",
+            "scriptURL": "https://privacy-frames.github.io/apps/squoosh/sw.js",
+            "reason": "Worker has no explicit install handler"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/drawio/?offline=1",
+          "status": "Installed Flowchart Maker & Online Diagram Software.",
+          "outcome": {
+            "status": "completed",
+            "scriptURL": "https://privacy-frames.github.io/apps/drawio/service-worker.js"
+          }
+        },
+        {
+          "url": "https://gchq.github.io/CyberChef/",
+          "status": "Installed CyberChef.",
+          "outcome": {
+            "status": "absent"
+          }
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/stackedit/",
+          "status": "Installed StackEdit.",
+          "outcome": {
+            "status": "failed",
+            "scriptURL": "https://privacy-frames.github.io/apps/stackedit/sw.js",
+            "reason": "can't access property \"prototype\", ExtendableEvent is undefined"
+          }
+        }
+      ],
+      "workerDiagnostics": [],
+      "expectedPreparationErrors": [],
+      "unexpectedErrors": [],
+      "boundaryCapabilities": [
+        {
+          "name": "createElement iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "createElementNS iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "innerHTML iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "insertAdjacentHTML iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "outerHTML iframe",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "template parser",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Shadow DOM parser",
+          "blocked": false,
+          "pending": true,
+          "safe": true,
+          "detail": "available",
+          "value": "boolean",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Range parser",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "DOMParser import",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "Error",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "document creation",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "viewless document",
+          "value": "object",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "document.write",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 0,
+          "indexedSafe": true
+        },
+        {
+          "name": "Audio worklet",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "admitted worklet module loaded",
+          "value": "boolean",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "Uninstalled Worker",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "SharedWorker",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "mediated SharedWorker handle and application port",
+          "value": "object",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "WebSocket",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "WebRTC",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "window.open",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "pending or prepared popup",
+          "value": "object",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "service worker authority",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "Native storage prototype recovery",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "Storage access handle",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "Remote speech service",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "Media artwork URL",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "Existing script property mutation",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "uninstalled script mapped locally and fresh load ended with error",
+          "value": "undefined",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "history identity spoof",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "https://apps.pf.damenh.com/plwJXNxTSvU/adversary/bridge.html",
+          "value": "boolean",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "history replace spoof",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "https://apps.pf.damenh.com/plwJXNxTSvU/adversary/bridge.html",
+          "value": "boolean",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "SVG parser mismatch",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "Error",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "setHTMLUnsafe",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "document execCommand",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "history traversal",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "custom built-in",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "SecurityError",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "eval",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "local computation returned 2",
+          "value": "number",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "Function constructor",
+          "blocked": false,
+          "pending": false,
+          "safe": true,
+          "detail": "local computation returned 2",
+          "value": "number",
+          "contexts": 5,
+          "indexedSafe": true
+        },
+        {
+          "name": "prototype tampering",
+          "blocked": true,
+          "pending": false,
+          "safe": true,
+          "error": "TypeError",
+          "contexts": 5,
+          "indexedSafe": true
+        }
+      ],
       "probes": [
-        "createElement iframeBlocked: Error",
-        "createElementNS iframeBlocked: Error",
-        "innerHTML iframeBlocked: Error",
-        "insertAdjacentHTML iframeBlocked: Error",
-        "outerHTML iframeBlocked: Error",
-        "template parserBlocked: Error",
-        "Shadow DOM parserBlocked: Error",
-        "Range parserBlocked: SecurityError",
-        "DOMParser importBlocked: SecurityError",
-        "document creationBlocked: SecurityError",
-        "document.writeBlocked: SecurityError",
-        "Audio workletBlocked: SecurityError",
-        "WorkerBlocked: SecurityError",
-        "SharedWorkerBlocked: SecurityError",
-        "WebSocketBlocked: SecurityError",
-        "WebRTCBlocked: SecurityError",
-        "window.openBlocked: SecurityError",
-        "service worker authorityBlocked: SecurityError",
-        "Native storage prototype recoveryBlocked: SecurityError",
-        "Storage access handleBlocked: SecurityError",
-        "Remote speech serviceBlocked: SecurityError",
-        "Media artwork URLBlocked: SecurityError",
-        "Existing script property mutationBlocked: SecurityError",
-        "history identity spoofBlocked: SecurityError",
-        "history replace spoofBlocked: SecurityError",
-        "SVG parser mismatchBlocked: Error",
-        "setHTMLUnsafeBlocked: SecurityError",
-        "document execCommandBlocked: SecurityError",
-        "history traversalBlocked: SecurityError",
-        "custom built-inBlocked: SecurityError",
-        "evalBlocked: EvalError",
-        "Function constructorBlocked: EvalError",
-        "prototype tamperingBlocked: TypeError"
+        {
+          "name": "createElement iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "createElementNS iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "innerHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "insertAdjacentHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "outerHTML iframe",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "template parser",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Shadow DOM parser",
+          "status": "Blocked: context pending preparation"
+        },
+        {
+          "name": "Range parser",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "DOMParser import",
+          "status": "Blocked: Error"
+        },
+        {
+          "name": "document creation",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "document.write",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Audio worklet",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "Uninstalled Worker",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "SharedWorker",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "WebSocket",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "WebRTC",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "window.open",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "service worker authority",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Native storage prototype recovery",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Storage access handle",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Remote speech service",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Media artwork URL",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "Existing script property mutation",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "history identity spoof",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "history replace spoof",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "SVG parser mismatch",
+          "status": "Blocked: Error"
+        },
+        {
+          "name": "setHTMLUnsafe",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "document execCommand",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "history traversal",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "custom built-in",
+          "status": "Blocked: SecurityError"
+        },
+        {
+          "name": "eval",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "Function constructor",
+          "status": "Allowed / available"
+        },
+        {
+          "name": "prototype tampering",
+          "status": "Blocked: TypeError"
+        }
       ]
     }
   ],

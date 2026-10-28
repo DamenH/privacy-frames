@@ -1,0 +1,95 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-28T16:40:43.653Z",
+    "revision": "4ca1d5b142aefc4e71b9be1ab3f943fde0a242b2",
+    "dirty": true,
+    "sourceSHA256": "7068632d7fc4f829c8df4b0eb8a1a68ddf9e0d818e26cc57a76eb54ab0d7cb25",
+    "runner": "test/cyberchef.ts",
+    "runnerSHA256": "fd3abd45d52cd85f87b41d3a538ab24e2b291cd719ec541f82801bfcc356b395",
+    "publisherRevision": "2f221bae76500a54c4331d809caba1faa57b8483",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "1c4cd1f0c232170079d1d2054f4b14b613fcf36e471a41437a7791d53e9e56de",
+      "dist-manager/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "c508eb7d5aaad30e090c48b5a46cf5c3507a4b017ddd194470cb0432fb253404",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "a9f2a1c5962c53d97af3fe6d8d732da91d2a1d6e0da329227ad498d12caba139",
+      "dist-manager/sw.js": "f9cc3530a121c7e1dec86d60ab9c7726a7a2dd785fb3c21e6b2f379f19841ff7",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "1c4cd1f0c232170079d1d2054f4b14b613fcf36e471a41437a7791d53e9e56de",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "75c21a86f505eba3c0b25e322892532bd4a99ac992e58e45aae3b051951e1210",
+      "dist-runtime/guard.js": "d982286bcbe21754b1c9b950c8c5a3f29129b4b1b1cc3673b20070bc31030ac1",
+      "dist-runtime/host.css": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "8936ee19b4c5b6c1a80bc696744149cf5a9a4b4147627bd806b339a60ade851d",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "a9f2a1c5962c53d97af3fe6d8d732da91d2a1d6e0da329227ad498d12caba139",
+      "dist-runtime/shared-worker-guard.js": "3de1a397f61c3d649dbbd2a4bdeab539ecbeab335844b03113fe13dcd2e47d5c",
+      "dist-runtime/sw.js": "db07b2bea2abf00233b4083402ae45867b4f9077b2d3ba9a58daa9451eb4b8d1",
+      "dist-runtime/worker-guard.js": "c80702f25e12ff287b5ba47319c1a84372c02829d9c006e368de5e9082fecdea",
+      "dist-runtime/worklet-guard.js": "1f299f9470f4ebc307c9eabeac74118b6eb2775646d022e76f315a77d1fe48ca",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "1c4cd1f0c232170079d1d2054f4b14b613fcf36e471a41437a7791d53e9e56de",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/install-worker.js": "59ac6caf33f511257cada4d9369ad982e44bfc8b9de250465b9d426b8385ee7d",
+      "dist-installation/installation.js": "6e59b419bb0f0095ed0b9b8dbbc60826aa3299fe05e6eea1f372849f3b6084f0"
+    }
+  },
+  "source": "https://gchq.github.io/CyberChef/",
+  "results": [
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "mode": "standalone",
+      "errors": [],
+      "progress": [
+        {
+          "mode": "online",
+          "stage": "PBKDF2 output",
+          "details": {
+            "iterations": 1000,
+            "derivedKey": "33ba5bd86adf07f60b362c2a4ebc7ae5"
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "Pending recipe",
+          "details": {
+            "recipe": "Sleep\nTime (ms)\npause\nnot_interested\nkeyboard_arrow_up\n ",
+            "delay": "10000"
+          }
+        },
+        {
+          "mode": "online",
+          "stage": "SVG animation failure",
+          "details": {
+            "message": "Native object SVG frame is not exposed to automation",
+            "objects": [],
+            "loader": "opacity: 0; visibility: hidden;",
+            "frameCount": 1
+          }
+        }
+      ],
+      "failedTasks": [],
+      "entryStatus": 200,
+      "entrySHA256": "464c889ed2cd765de2762cc24ad6f4720623245cb516dd3a5f4a46bdac800973",
+      "url": "https://gchq.github.io/CyberChef/",
+      "workers": {
+        "started": [
+          "blob:https://gchq.github.io/3fdea5af-0cad-44f8-93e8-d2494f94c6a7",
+          "blob:https://gchq.github.io/237361f9-ba9d-4c32-a058-9ca9d4983095",
+          "blob:https://gchq.github.io/0d6ad05a-9975-4940-b623-8a95f497335d",
+          "blob:https://gchq.github.io/42db1ad8-9a46-4653-902b-c610e38282bc",
+          "blob:https://gchq.github.io/c9310299-8e59-47a4-82eb-d761ede097fb"
+        ],
+        "closed": []
+      },
+      "failure": "AssertionError [ERR_ASSERTION]: Operation completed before Cancel could be exercised\n    at cyberChefCancelRestart (file:///home/damen/Projects/privacy-frames/test/helpers/cyberchef.ts:244:3)\n    at async file:///home/damen/Projects/privacy-frames/test/cyberchef.ts:110:34"
+    }
+  ]
+}

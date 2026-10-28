@@ -2,7 +2,17 @@ import { launch } from './browser-profile.ts';
 import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { chromium, firefox } from 'playwright';
+import type { Page } from 'playwright';
+import type { Installation } from '../src/shared/types.ts';
 import { checkBoundaryProbes, checkBoundaryProbeUI } from './helpers/boundary-probes.ts';
+import {
+  preparationErrorCategory,
+  type InstallationError,
+  type InstallationOutcome,
+  type PreparationWorkerDiagnostic,
+  type PreparationErrorCategory,
+} from './helpers/installation-errors.ts';
+import { observeWorkerExceptions } from './helpers/worker-exceptions.ts';
 const hostURL = process.env.HOST_URL || 'https://pf.damenh.com/';
 const report = { date: new Date().toISOString(), entry: hostURL, browsers: [] };
 try {
@@ -13,9 +23,46 @@ try {
       ),
       context = await browser.newContext({ viewport: { width: 1100, height: 900 } }),
       page = await context.newPage();
-    const row = { name, version: browser.version(), checks: [], errors: [] };
+    const row = {
+      name,
+      version: browser.version(),
+      checks: [],
+      errors: [] as string[],
+      errorEvents: [] as InstallationError[],
+      installations: [] as InstallationOutcome[],
+      workerDiagnostics: [] as PreparationWorkerDiagnostic[],
+      expectedPreparationErrors: [] as (InstallationError & {
+        category: PreparationErrorCategory;
+      })[],
+      unexpectedErrors: [] as InstallationError[],
+    };
     report.browsers.push(row);
-    page.on('pageerror', (e) => row.errors.push(e.message));
+    let phase = 'manager-startup';
+    let installationURL: string | undefined;
+    let stopWorkerObserver: (() => Promise<void>) | undefined;
+    const installerWorkers: { url: string; installationURL: string }[] = [];
+    page.on('worker', (worker) => {
+      if (phase === 'installation' && installationURL)
+        installerWorkers.push({ url: worker.url(), installationURL });
+    });
+    function observeErrors(target: Page, role: 'manager' | 'application', label = '') {
+      target.on('pageerror', (error) => {
+        row.errors.push(label + error.message);
+        row.errorEvents.push({
+          role,
+          phase,
+          installationURL,
+          message: error.message,
+          name: error.name,
+          stack: error.stack || '',
+          pageURL: target.url(),
+          workerURLs: installerWorkers
+            .filter((worker) => worker.installationURL === installationURL)
+            .map((worker) => worker.url),
+        });
+      });
+    }
+    observeErrors(page, 'manager');
     try {
       await page.goto(hostURL);
       await page.locator('#refresh-apps').waitFor();
@@ -36,6 +83,13 @@ try {
         3,
       );
       assert.deepEqual(config.managerOrigins, [base.origin]);
+      if (name === 'chromium')
+        stopWorkerObserver = await observeWorkerExceptions(
+          browser,
+          new URL('install-worker.js', config.installationURL).href,
+          (diagnostic) =>
+            row.workerDiagnostics.push({ ...diagnostic, phase, installationURL }),
+        );
       assert.equal(await page.locator('iframe').count(), 1);
       assert.equal(context.pages().length, 1);
       assert.equal(
@@ -48,6 +102,8 @@ try {
         'Dedicated dark manager, separate runtime and exact production management origin',
       );
       for (const example of config.examples) {
+        phase = 'installation';
+        installationURL = example.url;
         await page.locator('#app-url').fill(example.url);
         await page.locator('#install button').click();
         await page.waitForFunction(
@@ -58,12 +114,40 @@ try {
           {},
           { timeout: 300000 },
         );
-        assert.match(
-          await page.locator('#status').textContent(),
-          /^Installed /,
-          example.url,
-        );
+        const status = await page.locator('#status').textContent();
+        assert.match(status, /^Installed /, example.url);
+        const bridge = page
+          .frames()
+          .find((frame) => frame.url().endsWith('/connect.html'));
+        assert(bridge);
+        const source = new URL(example.url);
+        source.hash = '';
+        const outcome = await bridge.evaluate(async (source) => {
+          const database = await new Promise<IDBDatabase>((resolve, reject) => {
+            const request = indexedDB.open('privacy-frames-installations');
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+          });
+          try {
+            const records = await new Promise<Installation[]>((resolve, reject) => {
+              const request = database
+                .transaction('installations')
+                .objectStore('installations')
+                .getAll();
+              request.onsuccess = () => resolve(request.result);
+              request.onerror = () => reject(request.error);
+            });
+            const installation = records.find((record) => record.source === source);
+            if (!installation) throw new Error('Installed metadata missing');
+            return installation.preparation.outcome;
+          } finally {
+            database.close();
+          }
+        }, source.href);
+        row.installations.push({ url: example.url, status, outcome });
       }
+      phase = 'runtime';
+      installationURL = undefined;
       assert.equal(await page.locator('.app-card').count(), config.examples.length);
       await page.reload();
       await page.locator('[data-app="pitch-training"]').waitFor();
@@ -74,7 +158,7 @@ try {
         const opened = context.waitForEvent('page');
         await page.locator(`[data-app="${id}"]`).click();
         const app = await opened;
-        app.on('pageerror', (e) => row.errors.push(id + ': ' + e.message));
+        observeErrors(app, 'application', id + ': ');
         if (ready)
           await app.waitForFunction(() =>
             document.querySelector('#mode')?.textContent.includes('network isolated'),
@@ -228,7 +312,33 @@ try {
       assert.equal(response.status(), 200);
       assert((await response.text()).includes('Threat model'));
       row.checks.push('Current standalone report delivered');
-      assert.deepEqual(row.errors, []);
+      const installerWorkerURL = new URL('install-worker.js', config.installationURL)
+        .href;
+      const remainingDiagnostics = [...row.workerDiagnostics];
+      for (const error of row.errorEvents) {
+        const category = preparationErrorCategory(
+          error,
+          row.installations,
+          installerWorkerURL,
+          remainingDiagnostics,
+        );
+        if (!category) {
+          row.unexpectedErrors.push(error);
+          continue;
+        }
+        row.expectedPreparationErrors.push({ ...error, category });
+        const matching = remainingDiagnostics.findIndex(
+          (diagnostic) =>
+            diagnostic.phase === 'installation' &&
+            diagnostic.installationURL === error.installationURL &&
+            diagnostic.workerURL === installerWorkerURL &&
+            diagnostic.type === 'error' &&
+            diagnostic.message.includes(error.message),
+        );
+        // A single worker exception cannot explain two page errors.
+        if (matching >= 0) remainingDiagnostics.splice(matching, 1);
+      }
+      assert.deepEqual(row.unexpectedErrors, []);
       if (name === 'chromium') {
         await page.screenshot({
           path: new URL('../results/desktop.png', import.meta.url).pathname,
@@ -247,6 +357,7 @@ try {
       row.failure = error.stack;
       throw error;
     } finally {
+      await stopWorkerObserver?.().catch(() => {});
       await context.close();
       await browser.close();
     }
@@ -262,6 +373,9 @@ try {
 }
 console.log(
   report.browsers
-    .map((row) => `${row.name}: ${row.checks.length} deployed groups passed`)
+    .map(
+      (row) =>
+        `${row.name}: ${row.checks.length} deployed groups passed; ${row.expectedPreparationErrors.length} optional preparation errors attributed`,
+    )
     .join('\n'),
 );

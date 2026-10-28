@@ -2,8 +2,8 @@
 
 This document maps the current design to its security checks. It is a source
 review with empirical fixtures, not a confinement proof or an external
-penetration test. The latest combined build still needs full regressions,
-application tasks, independent network observations and public deployment checks.
+penetration test. Final-source CI and public asset verification have passed;
+public application task and host-interface checks have also passed.
 
 ## Boundaries reviewed
 
@@ -44,13 +44,49 @@ coercion protocols, plus Error stack formatting hooks, need explicit restriction
 even when ordinary named extensions are supported. Protected globals may accept
 identical assignments without accepting a replacement constructor.
 
-## Evidence and historical findings
+## Current evidence
 
-Current tests must include functional behavior and hostile attempts with working
-unrestricted controls. A thrown exception or browser console message alone does
-not establish that no request escaped. Receiver observations must cover the probe
-phase, not just a later network-test button. Same-runtime WebSocket controls test
-a route that a `connect-src 'self'` policy permits.
+The [final CI run](https://github.com/privacy-frames/host/actions/runs/40763844471)
+passed on source `2dfcbc2e8be6d9ec64bc3c20789446b59977e14e`, including 182 unit
+tests and the browser context, management, storage, lifecycle and hostile
+interception checks. Its [fresh receipt index](../results/evaluation/final-ci-receipts.json)
+contains 42 generated receipts and excludes unchanged historical files shipped
+in the same artifact.
+
+The [Chromium](../results/network.json) and
+[Firefox](../results/network-firefox.json) network receipts identify that exact
+source. Both record zero confined receiver TCP connections, STUN UDP datagrams
+and private-marker DNS sends. Native controls produced HTTP requests, worker
+requests, STUN traffic and DNS sends. These observations cover the calibrated
+routes, including worker requests.
+
+The [public asset check](../results/assets.json) verified HTTPS delivery and
+matching hashes for 59 files. The host, runtime and installer deployments are
+live; their revisions and workflow links are in the [completion audit](COMPLETION.md).
+The [public eight-app matrix](../results/evaluation/compatibility-release-public.json)
+passed all 16 browser/application task and offline rows on that deployed source.
+Separate public tests passed [CyberChef text/file processing](../results/evaluation/cyberchef-text-file-release-public.json)
+in both browsers, [Chromium cancellation/SVG](../results/evaluation/cyberchef-cancel-release-public.json)
+online and offline, and [Pitch Training](../results/pitch-training-deployed.json).
+These tasks verify the selected behavior described in the
+[compatibility evaluation](compatibility.md). The [host-interface receipt](../results/deployed.json)
+records ten passing behavior/security groups per browser and zero unexpected
+errors. Chromium retained one unsupported optional-preparation error, attributed
+to its native installer-worker exception; the distinct outcome reason remains
+recorded.
+
+The [CI PWA test](../results/compatibility.json) covers Chromium DevTools native
+installation and launch of two apps, a full browser restart and offline cold
+launch with private state. It does not cover manual installation UI; Firefox did
+not perform native installation.
+
+A thrown exception or browser console message alone does not establish that no
+request escaped. Receiver observations cover the probe phase as well as later
+network attempts. Same-runtime WebSocket controls test a route that
+`connect-src 'self'` permits. Popup receiver controls compare guarded and unsafe
+forwarding on the same native child Window.
+
+## Historical findings
 
 Earlier review found repeated URL conversion between validation and native calls.
 History and resource-attribute wrappers now pass their checked values to the
@@ -72,6 +108,6 @@ extensions, browser defects, physical side channels and availability are outside
 the threat model. General application updates and IFC remain deferred.
 
 Chromium and Firefox desktop receipts do not establish WebKit or real-device
-mobile behavior. BFCache, browser-process termination and every concurrent
+mobile behavior. BFCache, abrupt browser-process loss and every concurrent
 replacement schedule remain unmeasured. CyberChef cancellation/restart in Firefox
 is unverified where its native control does not complete reliably.

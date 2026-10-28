@@ -4,21 +4,107 @@
     "version": "153.0.8010.12",
     "checks": [
       "No-manifest website installation completes with no native browser authority in publisher install code and no surviving preparation worker",
-      "Root-relative CSS/resources, relative module imports and generated cache content work; private execution has no publisher worker or network fallback",
-      "Mediated registration cannot enable updates, alternate workers, messaging or navigation preload; offline fresh document works",
+      "Root-relative resources, module imports and generated cache content work without network fallback",
+      "Virtual messaging cannot list host installations; virtual unregister preserves native registration/control and blocked unknown requests; offline reload and relaunch remain confined",
       "Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches",
-      "Missing independently declared resources still refuse installation"
-    ]
+      "Missing entry document refuses installation without publishing a record"
+    ],
+    "authority": {
+      "prohibited": [
+        true,
+        true,
+        true
+      ],
+      "virtualReplies": [],
+      "unregistered": true
+    },
+    "nativeBefore": {
+      "controller": "http://127.0.0.1:4211/runtime/sw.js",
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4211/runtime/",
+          "active": "http://127.0.0.1:4211/runtime/sw.js",
+          "state": "activated"
+        }
+      ]
+    },
+    "nativeAfter": {
+      "controller": "http://127.0.0.1:4211/runtime/sw.js",
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4211/runtime/",
+          "active": "http://127.0.0.1:4211/runtime/sw.js",
+          "state": "activated"
+        }
+      ]
+    },
+    "afterUnregister": {
+      "marker": "post-unregister-27da8ea1-80c3-45fd-b252-4146cfd9da81",
+      "outcomes": [
+        true,
+        true
+      ],
+      "mode": "network-isolated"
+    },
+    "escapedAfterUnregister": [],
+    "httpControl": {
+      "marker": "native-receiver-da9933bf-38ac-464b-bbde-1b9d3b37c08c",
+      "status": 200,
+      "body": "diagnostic receiver"
+    }
   },
   {
     "name": "firefox",
     "version": "155.0",
     "checks": [
       "No-manifest website installation completes with no native browser authority in publisher install code and no surviving preparation worker",
-      "Root-relative CSS/resources, relative module imports and generated cache content work; private execution has no publisher worker or network fallback",
-      "Mediated registration cannot enable updates, alternate workers, messaging or navigation preload; offline fresh document works",
+      "Root-relative resources, module imports and generated cache content work without network fallback",
+      "Virtual messaging cannot list host installations; virtual unregister preserves native registration/control and blocked unknown requests; offline reload and relaunch remain confined",
       "Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches",
-      "Missing independently declared resources still refuse installation"
-    ]
+      "Missing entry document refuses installation without publishing a record"
+    ],
+    "authority": {
+      "prohibited": [
+        true,
+        true,
+        true
+      ],
+      "virtualReplies": [],
+      "unregistered": true
+    },
+    "nativeBefore": {
+      "controller": "http://127.0.0.1:4211/runtime/sw.js",
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4211/runtime/",
+          "active": "http://127.0.0.1:4211/runtime/sw.js",
+          "state": "activated"
+        }
+      ]
+    },
+    "nativeAfter": {
+      "controller": "http://127.0.0.1:4211/runtime/sw.js",
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4211/runtime/",
+          "active": "http://127.0.0.1:4211/runtime/sw.js",
+          "state": "activated"
+        }
+      ]
+    },
+    "afterUnregister": {
+      "marker": "post-unregister-07e5f302-579c-4eb2-b4a9-b33bf44573f1",
+      "outcomes": [
+        true,
+        true
+      ],
+      "mode": "network-isolated"
+    },
+    "escapedAfterUnregister": [],
+    "httpControl": {
+      "marker": "native-receiver-8cb42f1f-5acf-4a87-98fe-f5eac312eb27",
+      "status": 200,
+      "body": "diagnostic receiver"
+    }
   }
 ]

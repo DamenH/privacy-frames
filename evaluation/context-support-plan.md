@@ -1,5 +1,9 @@
 # Context support implementation
 
+The implementation and release checks are complete; their receipts are listed in
+the [completion audit](COMPLETION.md). This document retains the agreed scope and
+verification gates.
+
 ## Approved scope
 
 Keep third-party applications unchanged. Move the existing importer and restricted

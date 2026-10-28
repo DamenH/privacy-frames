@@ -6,9 +6,7 @@
     "checks": [
       "Initial inline module, preload Wasm and transitive relocated import execute",
       "Wasm instantiation and module graph work offline",
-      "Private network marker absent at receiver; native workers remain refused",
-      "Independent Wasm application installs and renders its canvas",
-      "Independent Wasm application starts offline"
+      "Prepared module worker computes the Wasm result; private markers remain absent at receiver"
     ]
   },
   {
@@ -18,9 +16,7 @@
     "checks": [
       "Initial inline module, preload Wasm and transitive relocated import execute",
       "Wasm instantiation and module graph work offline",
-      "Private network marker absent at receiver; native workers remain refused",
-      "Independent Wasm application installs and renders its canvas",
-      "Independent Wasm application starts offline"
+      "Prepared module worker computes the Wasm result; private markers remain absent at receiver"
     ]
   }
 ]

@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-28T16:45:51.914Z",
+  "publisherRevision": "2c26c40c77160af643ae053115a3975cc5a01ba0",
+  "workflow": "https://github.com/privacy-frames/apps/actions/runs/40728518629",
+  "scope": "Changed maintained fixture files only; not host or runtime deployment verification",
+  "files": [
+    {
+      "url": "https://privacy-frames.github.io/apps/adversary/app.js",
+      "sha256": "a743578489c2dfc6719551015da9fc6922dd46cdc6379d20b5fb9de391cdba6b",
+      "matchesLocal": true
+    },
+    {
+      "url": "https://privacy-frames.github.io/apps/playground/app.js",
+      "sha256": "59a4145fd6d2c617dfa38c843edfe14c5d921c6d65426dfc4fa4dd38686bcd5e",
+      "matchesLocal": true
+    },
+    {
+      "url": "https://privacy-frames.github.io/apps/ordinary/wasm/index.html",
+      "sha256": "3fba9ba7e964f2ca1061070310a1aa7c456cbfd5018f15e4f7e8f28dac82129c",
+      "matchesLocal": true
+    }
+  ]
+}
