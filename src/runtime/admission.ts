@@ -1,15 +1,11 @@
-import {
-  digest,
-  LIMITS,
-  safePath,
-  validateMarkup,
-  validateMetadata,
-} from '../shared/policy.ts';
-import { publicAlias } from '../shared/runtime-url.ts';
+import { digest, LIMITS, safePath, validateMetadata } from '../shared/policy.ts';
+import { publicAlias, resourceURL } from '../shared/runtime-url.ts';
+import { compileDocumentContent } from './contexts/document-content.ts';
 import type {
   DownloadedResource,
   PreparedInstallation,
   Preparation,
+  UnavailableResource,
 } from '../shared/types.ts';
 import { prepareRuntimeDocument } from './document.ts';
 import { listApps } from './storage.ts';
@@ -73,6 +69,42 @@ function preparation(value: unknown): Preparation {
     };
   }
   const inputOutcome = object(input.outcome);
+  const unavailableResources: UnavailableResource[] = [];
+  if (input.unavailableResources !== undefined) {
+    if (
+      !Array.isArray(input.unavailableResources) ||
+      input.unavailableResources.length > LIMITS.files
+    )
+      throw new Error('Invalid unavailable resource diagnostics');
+    const seen = new Set<string>();
+    for (const item of input.unavailableResources) {
+      const diagnostic = object(item);
+      const url = publicURL(diagnostic.url);
+      if (
+        seen.has(url) ||
+        !['network', 'http', 'body'].includes(String(diagnostic.reason)) ||
+        (diagnostic.reason === 'http'
+          ? typeof diagnostic.status !== 'number' ||
+            !Number.isInteger(diagnostic.status) ||
+            diagnostic.status < 100 ||
+            diagnostic.status > 599 ||
+            (diagnostic.status >= 200 && diagnostic.status < 300)
+          : diagnostic.status !== undefined)
+      )
+        throw new Error('Invalid unavailable resource diagnostic');
+      seen.add(url);
+      unavailableResources.push({
+        url,
+        reason:
+          diagnostic.reason === 'network'
+            ? 'network'
+            : diagnostic.reason === 'http'
+              ? 'http'
+              : 'body',
+        ...(typeof diagnostic.status === 'number' ? { status: diagnostic.status } : {}),
+      });
+    }
+  }
   let outcome: Preparation['outcome'];
   if (inputOutcome.status === 'absent') {
     outcome = { status: 'absent' };
@@ -93,7 +125,14 @@ function preparation(value: unknown): Preparation {
   } else if (serviceWorker || caches.length) {
     throw new Error('Uncompleted preparation cannot publish worker authority or caches');
   }
-  return { profile: 'website-v1', ended: true, caches, serviceWorker, outcome };
+  return {
+    profile: 'website-v1',
+    ended: true,
+    caches,
+    serviceWorker,
+    outcome,
+    unavailableResources,
+  };
 }
 
 export async function admitInstallation(
@@ -131,22 +170,22 @@ export async function admitInstallation(
     size += resource.bytes.byteLength;
     if (size > LIMITS.bytes || (await digest(resource.bytes)) !== resource.sha256)
       throw new Error('Resource integrity or size check failed');
-    if (path.endsWith('.html'))
-      validateMarkup(new TextDecoder().decode(resource.bytes), {
-        document: true,
-        initial: true,
-      });
     resources.push({
       path,
       url,
       bytes: resource.bytes,
       contentType: resource.contentType,
       sha256: resource.sha256 as string,
+      ...(resource.documentBase === undefined
+        ? {}
+        : { documentBase: publicURL(resource.documentBase) }),
     });
   }
   const entry = resources.find((resource) => resource.path === manifest.entry);
   if (!entry) throw new Error('Missing entry');
   const receipt = preparation(value.preparation);
+  if (receipt.unavailableResources?.some((item) => urls.has(item.url)))
+    throw new Error('Unavailable resource is also installed');
   for (const cache of receipt.caches)
     for (const url of cache.urls)
       if (!urls.has(url)) throw new Error('Cache contains an uninstalled resource');
@@ -167,6 +206,26 @@ export async function admitInstallation(
     installedAt: new Date().toISOString(),
     preparation: receipt,
   };
+  const aliases: [string, string][] = resources.map((resource) => [
+    resource.url,
+    resourceURL(app, resource.path, runtime).href,
+  ]);
+  for (const resource of resources)
+    if (
+      resource.path.endsWith('.html') ||
+      resource.contentType.split(';')[0].trim().toLowerCase() === 'text/html'
+    )
+      compileDocumentContent({
+        kind: 'html',
+        text: new TextDecoder().decode(resource.bytes),
+        sourceURL: resource.url,
+        baseURL:
+          resource.documentBase ||
+          (resource.url === source ? app.documentBase : undefined) ||
+          resource.url,
+        aliases,
+        unavailableURLs: receipt.unavailableResources?.map((item) => item.url),
+      });
   if (
     (await listApps()).some(
       (other) => other.id !== id && publicAlias(other.id) === publicAlias(id),

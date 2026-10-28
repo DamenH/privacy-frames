@@ -19,6 +19,8 @@ const resource = (url: string, text: string, contentType: string): CapturedRespo
 
 interface Scenario {
   expectedWorkers?: number;
+  applicationCode?: string;
+  prepare?(message: Record<string, unknown>): void;
   workerFetch?(options?: RequestInit): Promise<Response>;
   start(worker: MockWorker): void;
   reply?(worker: MockWorker, message: Record<string, unknown>): void;
@@ -39,8 +41,10 @@ class MockWorker {
       this.messagesAfterTermination++;
       throw new Error('Message sent to terminated preparation');
     }
-    if (value.type === 'prepare') queueMicrotask(() => scenario.start(this));
-    else scenario.reply?.(this, value);
+    if (value.type === 'prepare') {
+      scenario.prepare?.(value);
+      queueMicrotask(() => scenario.start(this));
+    } else scenario.reply?.(this, value);
   }
   emit(value: unknown) {
     this.onmessage?.(new MessageEvent('message', { data: value }));
@@ -73,7 +77,7 @@ async function install(
         },
       );
     if (url === applicationScript)
-      return new Response(originalCode, {
+      return new Response(selected.applicationCode ?? originalCode, {
         headers: { 'content-type': 'text/javascript' },
       });
     if (url === script && selected.workerFetch) return selected.workerFetch(options);
@@ -154,7 +158,7 @@ test('invalid cache overwrite and its broker downloads roll back together', asyn
               entries: [
                 resource(
                   source,
-                  '<iframe src="https://outside.test/"></iframe>',
+                  '<a href="javascript:escape()">Unsafe staged document</a>',
                   'text/html',
                 ),
                 resource(
@@ -253,6 +257,93 @@ test('successful preparation promotes generated resources and a matching complet
   );
 });
 
+test('optional preparation follows a statically registered script instead of guessing sw.js', async () => {
+  const foreground = new URL('foreground.js', source).href;
+  await install(
+    {
+      applicationCode: 'navigator.serviceWorker.register("./foreground.js");',
+      prepare(message) {
+        assert.equal(message.scriptURL, foreground);
+      },
+      start(worker) {
+        worker.emit({ type: 'prepared', caches: [] });
+      },
+      extraFetch(url) {
+        return url === foreground
+          ? Promise.resolve(
+              new Response('// foreground worker', {
+                headers: { 'content-type': 'text/javascript' },
+              }),
+            )
+          : undefined;
+      },
+    },
+    (app, requests) => {
+      assert.equal(app.preparation.serviceWorker?.scriptURL, foreground);
+      assert(!requests.includes(script));
+    },
+  );
+});
+
+test('ambiguous captured registrations do not choose an arbitrary worker to execute', async () => {
+  await install(
+    {
+      expectedWorkers: 0,
+      applicationCode:
+        'navigator.serviceWorker.register("./first.js");navigator.serviceWorker.register("./second.js");',
+      start() {
+        throw new Error('No worker should run');
+      },
+      extraFetch(url) {
+        return /\/(first|second)\.js$/.test(url)
+          ? Promise.resolve(
+              new Response('// worker', {
+                headers: { 'content-type': 'text/javascript' },
+              }),
+            )
+          : undefined;
+      },
+    },
+    (app) => {
+      assert.equal(app.preparation.outcome.status, 'unsupported');
+      assert.equal(app.preparation.serviceWorker, null);
+    },
+  );
+});
+
+test('one available registration can prepare while an alternative remains unavailable', async () => {
+  const foreground = new URL('foreground.js', source).href;
+  await install(
+    {
+      applicationCode:
+        'navigator.serviceWorker.register("./missing.js");navigator.serviceWorker.register("./foreground.js");',
+      prepare(message) {
+        assert.equal(message.scriptURL, foreground);
+      },
+      start(worker) {
+        worker.emit({ type: 'prepared', caches: [] });
+      },
+      extraFetch(url) {
+        return url === foreground
+          ? Promise.resolve(
+              new Response('// worker', {
+                headers: { 'content-type': 'text/javascript' },
+              }),
+            )
+          : undefined;
+      },
+    },
+    (app) => {
+      assert.equal(app.preparation.serviceWorker?.scriptURL, foreground);
+      assert(
+        app.preparation.unavailableResources?.some((item) =>
+          item.url.endsWith('/missing.js'),
+        ),
+      );
+    },
+  );
+});
+
 test('malformed completion data cannot promote preparation resources', async () => {
   await install(
     {
@@ -277,7 +368,7 @@ test('malformed completion data cannot promote preparation resources', async () 
   );
 });
 
-test('failed independent resource discovery remains a hard installation failure', async () => {
+test('unavailable independent scripts are recorded without becoming installed scripts', async () => {
   const originalFetch = globalThis.fetch;
   try {
     globalThis.fetch = async (input) =>
@@ -286,7 +377,16 @@ test('failed independent resource discovery remains a hard installation failure'
             headers: { 'content-type': 'text/html' },
           })
         : new Response('Missing', { status: 404 });
-    await assert.rejects(downloadWebsite(source), /missing\.js: HTTP 404/);
+    const application = await downloadWebsite(source);
+    assert.equal(application.resources.length, 1);
+    assert(
+      application.preparation.unavailableResources?.some(
+        (item) =>
+          item.url === new URL('missing.js', source).href &&
+          item.reason === 'http' &&
+          item.status === 404,
+      ),
+    );
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -406,6 +506,25 @@ test('optional outcomes cannot bypass independent resource integrity checks', as
     admitInstallation(app, new URL('https://runtime.test/')),
     /integrity or size/,
   );
+});
+
+test('unavailable resource diagnostics are bounded data rather than executable authority', async () => {
+  for (const unavailableResources of [
+    [{ url: 'javascript:escape()', reason: 'network' }],
+    [{ url: source, reason: 'network' }],
+    [{ url: 'https://outside.test/script.js', reason: 'http', status: 200 }],
+    [{ url: 'https://outside.test/script.js', reason: 'unknown' }],
+    [
+      { url: 'https://outside.test/script.js', reason: 'network' },
+      { url: 'https://outside.test/script.js', reason: 'body' },
+    ],
+  ]) {
+    const app = await admissionCandidate();
+    const preparation = { ...app.preparation, unavailableResources };
+    await assert.rejects(
+      admitInstallation({ ...app, preparation }, new URL('https://runtime.test/')),
+    );
+  }
 });
 
 test('unsupported external script types in cached HTML roll back before runtime admission', async () => {

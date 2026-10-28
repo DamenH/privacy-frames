@@ -1,4 +1,5 @@
 import { parse } from 'es-module-lexer/js';
+import { internalArray, strings, ownDescriptor } from '../shared/primordials.ts';
 
 interface ModuleResources {
   mapURL(input: unknown): string;
@@ -6,7 +7,7 @@ interface ModuleResources {
 }
 
 const NativeURL = URL;
-const href = Object.getOwnPropertyDescriptor(NativeURL.prototype, 'href')!.get!;
+const href = ownDescriptor(NativeURL.prototype, 'href')!.get!;
 const apply = Reflect.apply;
 
 /** Relocate literal imports to admitted resources without evaluating publisher code. */
@@ -17,7 +18,7 @@ export function relocateRuntimeModule(
 ): string {
   try {
     const [imports] = parse(code);
-    for (const item of [...imports].reverse()) {
+    for (const item of internalArray([...imports]).reverse()) {
       if (!item.specifier || (item.type === 'dynamic' && item.glob)) continue;
       if (!/^(?:\.\.?\/|\/|https?:\/\/)/.test(item.specifier)) continue;
       const original: string = apply(href, new NativeURL(item.specifier, base), []);
@@ -26,7 +27,8 @@ export function relocateRuntimeModule(
       if (mapped === item.specifier) continue;
       const start = item.type === 'dynamic' ? item.start : item.start - 1;
       const end = item.type === 'dynamic' ? item.end : item.end + 1;
-      code = code.slice(0, start) + JSON.stringify(mapped) + code.slice(end);
+      code =
+        strings.slice(code, 0, start) + JSON.stringify(mapped) + strings.slice(code, end);
     }
   } catch {
     // Invalid syntax and unresolved Blob-relative imports keep native behavior.

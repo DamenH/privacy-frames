@@ -1,15 +1,17 @@
+import { internalRecord } from '../../shared/primordials.ts';
 import type { PolicyTools } from './native.ts';
 
 export interface ContextFactories {
   Worker?: Function;
   SharedWorker?: Function;
+  WorkletAddModule?: Function;
 }
 
 /** Close effects that do not reliably pass through the HTTP request gate. */
 export function installEffectPolicy(
   tools: PolicyTools,
   getApplicationWorker: () => unknown,
-  contextFactories: ContextFactories = {},
+  contextFactories: ContextFactories = internalRecord({}),
   target: object = globalThis,
 ) {
   const { apply, descriptor, method, accessor, propertyOwner, deny, array } = tools;
@@ -24,6 +26,7 @@ export function installEffectPolicy(
     'Worker',
     'SharedWorker',
     'ShadowRealm',
+    'XSLTProcessor',
     'BroadcastChannel',
     'EventSource',
     'Notification',
@@ -52,7 +55,8 @@ export function installEffectPolicy(
     const owner = propertyOwner(target, key);
     if (owner) method(owner, key, deny);
   }
-  if (globalThis.Worklet) method(Worklet.prototype, 'addModule', deny);
+  if (globalThis.Worklet)
+    method(Worklet.prototype, 'addModule', contextFactories.WorkletAddModule || deny);
   // Browser-mediated services are not necessarily ordinary document fetches.
   // Keep local Web Audio, but exclude remote speech/casting and URL-bearing OS
   // media artwork. Text-only media metadata used by players remains available.
@@ -67,24 +71,32 @@ export function installEffectPolicy(
       chapters = descriptor(MediaMetadata.prototype, 'chapterInfo'),
       metadata = descriptor(MediaSession.prototype, 'metadata');
     if (artwork?.set)
-      accessor(MediaMetadata.prototype, 'artwork', {
-        set(value) {
-          if (array(value).length) deny();
-          return apply(artwork.set!, this, [[]]);
-        },
-      });
+      accessor(
+        MediaMetadata.prototype,
+        'artwork',
+        internalRecord({
+          set(value) {
+            if (array(value).length) deny();
+            return apply(artwork.set!, this, [[]]);
+          },
+        }),
+      );
     if (metadata?.set)
-      accessor(MediaSession.prototype, 'metadata', {
-        set(value) {
-          if (
-            value !== null &&
-            ((artwork?.get && apply(artwork.get, value, []).length) ||
-              (chapters?.get && apply(chapters.get, value, []).length))
-          )
-            deny();
-          return apply(metadata.set!, this, [value]);
-        },
-      });
+      accessor(
+        MediaSession.prototype,
+        'metadata',
+        internalRecord({
+          set(value) {
+            if (
+              value !== null &&
+              ((artwork?.get && apply(artwork.get, value, []).length) ||
+                (chapters?.get && apply(chapters.get, value, []).length))
+            )
+              deny();
+            return apply(metadata.set!, this, [value]);
+          },
+        }),
+      );
   }
   for (const ctor of [
     globalThis.ServiceWorkerContainer,
@@ -110,7 +122,11 @@ export function installEffectPolicy(
   if (nativeNavigator) {
     const owner = propertyOwner(nativeNavigator, 'serviceWorker');
     if (owner)
-      accessor(owner, 'serviceWorker', { get: () => getApplicationWorker() || deny() });
+      accessor(
+        owner,
+        'serviceWorker',
+        internalRecord({ get: () => getApplicationWorker() || deny() }),
+      );
     for (const key of [
       'sendBeacon',
       'share',
@@ -131,7 +147,7 @@ export function installEffectPolicy(
     // StorageManager exposes origin-wide OPFS; Web Locks expose shared names.
     for (const key of ['presentation', 'storage', 'locks']) {
       const owner = propertyOwner(nativeNavigator, key);
-      if (owner) accessor(owner, key, { get: deny });
+      if (owner) accessor(owner, key, internalRecord({ get: deny }));
     }
   }
   if (globalThis.CredentialsContainer)
@@ -141,6 +157,6 @@ export function installEffectPolicy(
     for (const key of ['write', 'writeText']) method(Clipboard.prototype, key, deny);
   for (const key of ['sharedStorage']) {
     const owner = propertyOwner(target, key);
-    if (owner) accessor(owner, key, { get: deny });
+    if (owner) accessor(owner, key, internalRecord({ get: deny }));
   }
 }

@@ -1,4 +1,5 @@
 import type { HostConfig } from '../types';
+import { installationConfiguration } from '../../installation/session.ts';
 
 export async function loadConfig(base: URL): Promise<HostConfig> {
   const response = await fetch(new URL('config.json', base));
@@ -8,12 +9,18 @@ export async function loadConfig(base: URL): Promise<HostConfig> {
     throw new Error('Invalid host configuration.');
 
   const value = config as Record<string, unknown>;
-  if (typeof value.managerURL !== 'string' || typeof value.runtimeURL !== 'string') {
+  if (
+    typeof value.managerURL !== 'string' ||
+    typeof value.runtimeURL !== 'string' ||
+    typeof value.installationURL !== 'string'
+  ) {
     throw new Error('Host origins are not configured.');
   }
 
   const manager = new URL(value.managerURL);
   const runtime = new URL(value.runtimeURL);
+  const installation = new URL(value.installationURL);
+  installationConfiguration(value, installation.origin);
   if (manager.origin !== location.origin) {
     location.replace(manager.href);
     throw new Error('Opening the application library…');
@@ -32,7 +39,12 @@ export async function loadConfig(base: URL): Promise<HostConfig> {
       )
     : [];
 
-  return { managerURL: manager.href, runtimeURL: runtime.href, examples };
+  return {
+    managerURL: manager.href,
+    runtimeURL: runtime.href,
+    installationURL: installation.href,
+    examples,
+  };
 }
 
 /** Management authority is issued only after a worker-controlled navigation. */

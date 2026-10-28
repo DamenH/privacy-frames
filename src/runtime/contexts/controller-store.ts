@@ -1,3 +1,4 @@
+import { internalRecord } from '../../shared/primordials.ts';
 import { CONTEXT_POLICY_VERSION } from './model.ts';
 import type {
   ContextIdentity,
@@ -45,7 +46,7 @@ function parse(value: unknown): ContextIdentity {
     typeof value.url !== 'string'
   )
     throw new Error('Invalid stored context identity');
-  return {
+  return internalRecord({
     policyVersion: value.policyVersion,
     installationGeneration: value.installationGeneration,
     id: value.id,
@@ -54,7 +55,7 @@ function parse(value: unknown): ContextIdentity {
     kind: value.kind,
     state: value.state,
     url: value.url,
-  };
+  });
 }
 
 /** This store exists only in the trusted controller, outside app cache namespaces. */
@@ -72,7 +73,7 @@ export function controllerContextStorage(base: URL): ContextStorage {
       base,
     ).href;
   const open = () => caches.open('pf-browser-contexts-v1');
-  return {
+  return internalRecord({
     async get(client) {
       const cache = await open();
       const response = await cache.match(key(client));
@@ -84,7 +85,9 @@ export function controllerContextStorage(base: URL): ContextStorage {
             closureKey(identity.parent, identity.application, identity.id),
           )
         : undefined;
-      return closed || requested ? { ...identity, state: 'closed' } : identity;
+      return closed || requested
+        ? internalRecord<ContextIdentity>({ ...identity, state: 'closed' })
+        : identity;
     },
     async put(client, identity) {
       const cache = await open();
@@ -92,9 +95,12 @@ export function controllerContextStorage(base: URL): ContextStorage {
         await cache.put(closedKey(client), new Response('closed'));
       await cache.put(
         key(client),
-        new Response(JSON.stringify(identity), {
-          headers: { 'Content-Type': 'application/json' },
-        }),
+        new Response(
+          JSON.stringify(identity),
+          internalRecord({
+            headers: internalRecord({ 'Content-Type': 'application/json' }),
+          }),
+        ),
       );
       await cache.put(contextKey(identity.id), new Response(client));
     },
@@ -113,5 +119,5 @@ export function controllerContextStorage(base: URL): ContextStorage {
         await open()
       ).put(closureKey(parent, application, context), new Response('closed'));
     },
-  };
+  });
 }

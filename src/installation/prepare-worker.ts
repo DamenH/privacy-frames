@@ -2,10 +2,15 @@ import 'ses';
 import type { PreparationRequest, PreparedCache } from './protocol.ts';
 import { errorMessage } from './protocol.ts';
 import { LIMITS } from '../shared/policy.ts';
+import { preparationCrypto } from './preparation-crypto.ts';
 // Only this trusted bootstrap runs as a native Worker. Publisher code runs in a
 // compartment with no browser worker/network/storage/global messaging authority.
 const worker = self as unknown as DedicatedWorkerGlobalScope;
 const send = worker.postMessage.bind(worker);
+const hashCrypto = preparationCrypto(crypto);
+const encodeBase64 = btoa;
+const decodeBase64 = atob;
+const preparationDate = Date;
 const pending = new Map<
   number,
   { resolve: (response: Response) => void; reject: (error: Error) => void }
@@ -128,6 +133,10 @@ worker.addEventListener('message', async (event: MessageEvent<PreparationRequest
       File,
       TextEncoder,
       TextDecoder,
+      Date: preparationDate,
+      crypto: harden(hashCrypto),
+      btoa: harden((value: string) => encodeBase64(value)),
+      atob: harden((value: string) => decodeBase64(value)),
       console: harden({ log() {}, warn() {}, error() {} }),
     });
     // Publisher globals belong to the compartment, never the native worker.

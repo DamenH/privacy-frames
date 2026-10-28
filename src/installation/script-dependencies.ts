@@ -1,16 +1,41 @@
-import { parse } from 'acorn';
+import {
+  type SyntaxNode,
+  record,
+  node,
+  nodes,
+  children,
+  name,
+  memberName,
+  parseProgram,
+  mutableModuleMetadata,
+} from '../shared/module-source.ts';
 
 export interface ScriptExecution {
-  realm: 'window' | 'worker';
+  realm: 'window' | 'worker' | 'worklet' | 'service-worker';
   baseURL: string;
   documentURL?: string;
   moduleURL?: string;
 }
 export interface ScriptDependencyContext extends ScriptExecution {
   sourceURL: string;
+  loaders?: readonly ScriptLoader[];
+}
+export interface ScriptLoader {
+  name: string;
+  kind: ScriptDependencyKind;
+  argument: number;
+  prefix: string;
+  suffix: string;
 }
 export type ScriptDependencyKind =
-  'worker' | 'shared-worker' | 'worker-import' | 'script';
+  | 'worker'
+  | 'shared-worker'
+  | 'worker-import'
+  | 'script'
+  | 'audio-worklet'
+  | 'paint-worklet'
+  | 'service-worker'
+  | 'resource';
 export interface ScriptDependency {
   kind: ScriptDependencyKind;
   url: string;
@@ -29,14 +54,9 @@ export interface UnresolvedScriptDependency {
 export interface ScriptDependencies {
   references: ScriptDependency[];
   unresolved: UnresolvedScriptDependency[];
+  loaders?: ScriptLoader[];
 }
 
-interface SyntaxNode {
-  type: string;
-  start: number;
-  end: number;
-  [key: string]: unknown;
-}
 interface Binding {
   initializer?: SyntaxNode;
   scope: Scope;
@@ -49,44 +69,23 @@ interface Scope {
   dynamic: boolean;
   bindings: Map<string, Binding>;
 }
-type Value = { kind: 'string' | 'url'; text: string } | { kind: 'script' };
+type Value =
+  | { kind: 'string' | 'url'; text: string }
+  | {
+      kind:
+        | 'script'
+        | 'audio-context'
+        | 'audio-worklet'
+        | 'paint-worklet'
+        | 'service-worker-container'
+        | 'xml-http-request';
+    };
+function textValue(
+  value: Value | undefined,
+): value is { kind: 'string' | 'url'; text: string } {
+  return value?.kind === 'string' || value?.kind === 'url';
+}
 
-function record(value: unknown): Record<string, unknown> | undefined {
-  return value !== null && typeof value === 'object' && !Array.isArray(value)
-    ? (value as Record<string, unknown>)
-    : undefined;
-}
-function node(value: unknown): SyntaxNode | undefined {
-  const candidate = record(value);
-  return candidate &&
-    typeof candidate.type === 'string' &&
-    typeof candidate.start === 'number' &&
-    typeof candidate.end === 'number'
-    ? (candidate as SyntaxNode)
-    : undefined;
-}
-function nodes(value: unknown): SyntaxNode[] {
-  return Array.isArray(value) ? value.flatMap((value) => node(value) ?? []) : [];
-}
-function children(parent: SyntaxNode): SyntaxNode[] {
-  return Object.values(parent).flatMap((value) =>
-    Array.isArray(value) ? nodes(value) : (node(value) ?? []),
-  );
-}
-function name(value: unknown): string | undefined {
-  const identifier = node(value);
-  return identifier?.type === 'Identifier' && typeof identifier.name === 'string'
-    ? identifier.name
-    : undefined;
-}
-function memberName(member: SyntaxNode): string | undefined {
-  if (member.type !== 'MemberExpression') return;
-  if (!member.computed) return name(member.property);
-  const property = node(member.property);
-  return property?.type === 'Literal' && typeof property.value === 'string'
-    ? property.value
-    : undefined;
-}
 function lookup(scope: Scope, identifier: string): Binding | undefined {
   for (let current: Scope | undefined = scope; current; current = current.parent) {
     const binding = current.bindings.get(identifier);
@@ -122,80 +121,6 @@ function functionScope(scope: Scope): Scope {
   let result = scope;
   while (!result.function && result.parent) result = result.parent;
   return result;
-}
-
-function parseProgram(code: string): SyntaxNode {
-  let parsed: unknown;
-  try {
-    parsed = parse(code, { ecmaVersion: 'latest', sourceType: 'module' });
-  } catch {
-    parsed = parse(code, { ecmaVersion: 'latest', sourceType: 'script' });
-  }
-  const program = node(parsed);
-  if (!program) throw new Error('JavaScript parser returned an invalid program');
-  return program;
-}
-function importMeta(value: unknown): boolean {
-  const expression = node(value);
-  return (
-    expression?.type === 'MetaProperty' &&
-    name(expression.meta) === 'import' &&
-    name(expression.property) === 'meta'
-  );
-}
-function importMetaURL(value: unknown): boolean {
-  const expression = node(value);
-  return (
-    !!expression && memberName(expression) === 'url' && importMeta(expression.object)
-  );
-}
-function mutableModuleMetadata(program: SyntaxNode): boolean {
-  let mutable = false;
-  const visit = (current: SyntaxNode, parent?: SyntaxNode): void => {
-    if (
-      importMeta(current) &&
-      !(parent?.type === 'MemberExpression' && parent.object === current)
-    )
-      mutable = true;
-    if (
-      current.type === 'MemberExpression' &&
-      importMeta(current.object) &&
-      (memberName(current) === 'url' || memberName(current) === undefined) &&
-      parent &&
-      ((parent.type === 'AssignmentExpression' && parent.left === current) ||
-        parent.type === 'UpdateExpression' ||
-        (parent.type === 'UnaryExpression' && parent.operator === 'delete'))
-    )
-      mutable = true;
-    for (const child of children(current)) visit(child, current);
-  };
-  visit(program);
-  return mutable;
-}
-
-/** Keep asset URL construction tied to the publisher module after resource relocation. */
-export function relocateImportMeta(code: string, moduleURL: string): string {
-  let program: SyntaxNode;
-  try {
-    program = parseProgram(code);
-  } catch {
-    return code;
-  }
-  if (mutableModuleMetadata(program)) return code;
-  const replacements: SyntaxNode[] = [];
-  const visit = (current: SyntaxNode): void => {
-    if (importMetaURL(current)) replacements.push(current);
-    else for (const child of children(current)) visit(child);
-  };
-  visit(program);
-  for (const replacement of replacements.sort((left, right) => right.start - left.start))
-    code =
-      code.slice(0, replacement.start) +
-      '(' +
-      JSON.stringify(moduleURL) +
-      ')' +
-      code.slice(replacement.end);
-  return code;
 }
 
 /** Discover only parsed, semantically identified loading expressions; never execute code. */
@@ -253,7 +178,8 @@ export function scriptDependencies(
       'FunctionExpression',
       'ArrowFunctionExpression',
     ].includes(current.type);
-    if (current.type === 'FunctionDeclaration') declare(node(current.id), parent);
+    if (current.type === 'FunctionDeclaration')
+      declare(node(current.id), parent, current, true);
     if (current.type === 'ClassDeclaration') declare(node(current.id), parent);
     if (
       isFunction ||
@@ -316,6 +242,37 @@ export function scriptDependencies(
       functionScope(scope).dynamic = true;
   }
 
+  const fields = new Map<Binding | string, Map<string, SyntaxNode | undefined>>();
+  for (const [current, scope] of scopes) {
+    if (
+      current.type !== 'AssignmentExpression' &&
+      current.type !== 'UpdateExpression' &&
+      !(current.type === 'UnaryExpression' && current.operator === 'delete')
+    )
+      continue;
+    const target = node(
+      current.type === 'AssignmentExpression' ? current.left : current.argument,
+    );
+    const object = target && name(target.object);
+    const property = target && memberName(target);
+    if (!object || !property) continue;
+    const key = lookup(scope, object) || object;
+    let members = fields.get(key);
+    if (!members) {
+      members = new Map();
+      fields.set(key, members);
+    }
+    members.set(
+      property,
+      members.has(property) ||
+        current.type !== 'AssignmentExpression' ||
+        current.operator !== '='
+        ? undefined
+        : node(current.right),
+    );
+  }
+  const resolvingFields = new Set<SyntaxNode>();
+  let parameters = new Map<Binding, Value>();
   const value = (
     expression: SyntaxNode | undefined,
     scope: Scope,
@@ -326,12 +283,9 @@ export function scriptDependencies(
       return { kind: 'string', text: expression.value };
     if (expression.type === 'Identifier' && typeof expression.name === 'string') {
       const binding = lookup(scope, expression.name);
-      if (
-        !binding?.constant ||
-        binding.writes ||
-        !binding.initializer ||
-        visited.has(binding)
-      )
+      if (binding && !binding.writes && parameters.has(binding))
+        return parameters.get(binding);
+      if (!binding || binding.writes || !binding.initializer || visited.has(binding))
         return;
       const next = new Set(visited).add(binding);
       const resolved = value(binding.initializer, binding.scope, next);
@@ -363,6 +317,36 @@ export function scriptDependencies(
     if (expression.type === 'MemberExpression') {
       const property = memberName(expression),
         object = node(expression.object);
+      const identifier = name(object);
+      const field =
+        identifier && property
+          ? fields.get(lookup(scope, identifier) || identifier)?.get(property)
+          : undefined;
+      if (field && !resolvingFields.has(field)) {
+        resolvingFields.add(field);
+        const resolved = value(field, scopes.get(field) || scope, visited);
+        resolvingFields.delete(field);
+        if (resolved) return resolved;
+      }
+
+      if (
+        context.realm === 'window' &&
+        property === 'audioWorklet' &&
+        value(object, scope, visited)?.kind === 'audio-context'
+      )
+        return { kind: 'audio-worklet' };
+      if (
+        context.realm === 'window' &&
+        property === 'paintWorklet' &&
+        globalMember(object, 'CSS', scope)
+      )
+        return { kind: 'paint-worklet' };
+      if (
+        context.realm === 'window' &&
+        property === 'serviceWorker' &&
+        globalMember(object, 'navigator', scope)
+      )
+        return { kind: 'service-worker-container' };
       if (
         !mutableMetadata &&
         property === 'url' &&
@@ -379,7 +363,7 @@ export function scriptDependencies(
         return { kind: 'string', text: context.baseURL };
       if (property === 'href') {
         const isLocation = globalMember(object, 'location', scope);
-        if (isLocation)
+        if (isLocation && context.realm !== 'worklet')
           return {
             kind: 'string',
             text:
@@ -393,24 +377,40 @@ export function scriptDependencies(
     }
     if (
       expression.type === 'NewExpression' &&
+      context.realm === 'window' &&
+      [
+        'AudioContext',
+        'OfflineAudioContext',
+        'webkitAudioContext',
+        'webkitOfflineAudioContext',
+      ].some((name) => globalMember(expression.callee, name, scope))
+    )
+      return { kind: 'audio-context' };
+    if (
+      expression.type === 'NewExpression' &&
+      (context.realm === 'window' || context.realm === 'worker') &&
+      globalMember(expression.callee, 'XMLHttpRequest', scope)
+    )
+      return { kind: 'xml-http-request' };
+    if (
+      expression.type === 'NewExpression' &&
+      globalMember(expression.callee, 'Request', scope)
+    ) {
+      const input = value(nodes(expression.arguments)[0], scope, visited);
+      if (textValue(input)) return { kind: 'url', text: input.text };
+    }
+    if (
+      expression.type === 'NewExpression' &&
       globalMember(expression.callee, 'URL', scope)
     ) {
       const args = nodes(expression.arguments),
         input = value(args[0], scope, visited);
       const base = args[1] && value(args[1], scope, visited);
-      if (
-        !input ||
-        input.kind === 'script' ||
-        (args[1] && (!base || base.kind === 'script'))
-      )
-        return;
+      if (!textValue(input) || (args[1] && !textValue(base))) return;
       try {
         return {
           kind: 'url',
-          text: new URL(
-            input.text,
-            base && base.kind !== 'script' ? base.text : undefined,
-          ).href,
+          text: new URL(input.text, textValue(base) ? base.text : undefined).href,
         };
       } catch {
         return;
@@ -430,13 +430,17 @@ export function scriptDependencies(
       }
     }
   };
-  const add = (
+  let summarizing:
+    | {
+        marker: string;
+        templates: Array<{ kind: ScriptDependencyKind; prefix: string; suffix: string }>;
+      }
+    | undefined;
+  const addOne = (
     kind: ScriptDependencyKind,
-    expression: SyntaxNode | undefined,
+    resolved: Value | undefined,
     owner: SyntaxNode,
-    scope: Scope,
   ): void => {
-    const resolved = value(expression, scope);
     const unresolved = (reason: string) =>
       result.unresolved.push({
         kind,
@@ -445,7 +449,19 @@ export function scriptDependencies(
         end: owner.end,
         reason,
       });
-    if (!resolved || resolved.kind === 'script') {
+    if (summarizing) {
+      if (textValue(resolved)) {
+        const index = resolved.text.indexOf(summarizing.marker);
+        if (index >= 0)
+          summarizing.templates.push({
+            kind,
+            prefix: resolved.text.slice(0, index),
+            suffix: resolved.text.slice(index + summarizing.marker.length),
+          });
+      }
+      return;
+    }
+    if (!textValue(resolved)) {
       unresolved('Resource URL is not a supported constant expression');
       return;
     }
@@ -470,8 +486,73 @@ export function scriptDependencies(
       end: owner.end,
     });
   };
-  for (const [current, scope] of scopes) {
-    if (current.type === 'NewExpression') {
+  const alternatives = (
+    expression: SyntaxNode | undefined,
+    scope: Scope,
+    visited = new Set<Binding>(),
+    depth = 0,
+  ): Value[] => {
+    if (!expression || depth > 12 || !staticScope(scope)) return [];
+    const resolved = value(expression, scope);
+    if (resolved) return [resolved];
+    if (expression.type === 'Identifier') {
+      const identifier = name(expression);
+      const binding = identifier && lookup(scope, identifier);
+      if (
+        binding &&
+        !binding.writes &&
+        binding.initializer &&
+        !visited.has(binding) &&
+        !(
+          binding.initializer.type === 'NewExpression' &&
+          globalMember(binding.initializer.callee, 'URL', binding.scope)
+        )
+      )
+        return alternatives(
+          binding.initializer,
+          binding.scope,
+          new Set(visited).add(binding),
+          depth + 1,
+        );
+    }
+    if (expression.type === 'ConditionalExpression')
+      return [expression.consequent, expression.alternate].flatMap((branch) =>
+        alternatives(node(branch), scope, visited, depth + 1),
+      );
+    if (expression.type === 'LogicalExpression')
+      return [expression.left, expression.right].flatMap((branch) =>
+        alternatives(node(branch), scope, visited, depth + 1),
+      );
+    if (expression.type === 'BinaryExpression' && expression.operator === '+') {
+      const left = alternatives(node(expression.left), scope, visited, depth + 1);
+      const right = alternatives(node(expression.right), scope, visited, depth + 1);
+      return left
+        .flatMap((prefix) =>
+          right.flatMap((suffix): Value[] =>
+            prefix.kind === 'string' && suffix.kind === 'string'
+              ? [{ kind: 'string', text: prefix.text + suffix.text }]
+              : [],
+          ),
+        )
+        .slice(0, 32);
+    }
+    return [];
+  };
+  const add = (
+    kind: ScriptDependencyKind,
+    expression: SyntaxNode | undefined,
+    owner: SyntaxNode,
+    scope: Scope,
+  ): void => {
+    const resolved = alternatives(expression, scope);
+    if (!resolved.length) addOne(kind, undefined, owner);
+    else for (const candidate of resolved) addOne(kind, candidate, owner);
+  };
+  const inspect = (current: SyntaxNode, scope: Scope): void => {
+    if (
+      current.type === 'NewExpression' &&
+      (context.realm === 'window' || context.realm === 'worker')
+    ) {
       const kind = globalMember(current.callee, 'Worker', scope)
         ? 'worker'
         : globalMember(current.callee, 'SharedWorker', scope)
@@ -482,7 +563,7 @@ export function scriptDependencies(
     if (
       current.type === 'CallExpression' &&
       globalMember(current.callee, 'importScripts', scope) &&
-      context.realm === 'worker'
+      (context.realm === 'worker' || context.realm === 'service-worker')
     )
       for (const argument of nodes(current.arguments))
         add('worker-import', argument, current, scope);
@@ -495,8 +576,45 @@ export function scriptDependencies(
       )
         add('script', node(current.right), current, scope);
     }
+    if (
+      current.type === 'CallExpression' &&
+      context.realm !== 'worklet' &&
+      globalMember(current.callee, 'fetch', scope)
+    )
+      add('resource', nodes(current.arguments)[0], current, scope);
     if (current.type === 'CallExpression') {
+      for (const loader of context.loaders || []) {
+        if (!globalMember(current.callee, loader.name, scope)) continue;
+        for (const resolved of alternatives(
+          nodes(current.arguments)[loader.argument],
+          scope,
+        ))
+          if (textValue(resolved))
+            addOne(
+              loader.kind,
+              { kind: 'string', text: loader.prefix + resolved.text + loader.suffix },
+              current,
+            );
+      }
       const target = node(current.callee);
+      if (
+        target &&
+        memberName(target) === 'open' &&
+        value(node(target.object), scope)?.kind === 'xml-http-request'
+      )
+        add('resource', nodes(current.arguments)[1], current, scope);
+
+      if (
+        target &&
+        memberName(target) === 'register' &&
+        value(node(target.object), scope)?.kind === 'service-worker-container'
+      )
+        add('service-worker', nodes(current.arguments)[0], current, scope);
+      if (target && memberName(target) === 'addModule') {
+        const receiver = value(node(target.object), scope);
+        if (receiver?.kind === 'audio-worklet' || receiver?.kind === 'paint-worklet')
+          add(receiver.kind, nodes(current.arguments)[0], current, scope);
+      }
       if (
         target &&
         memberName(target) === 'setAttribute' &&
@@ -508,6 +626,99 @@ export function scriptDependencies(
           add('script', args[1], current, scope);
       }
     }
+  };
+  const functionNodes = new Map<Scope, [SyntaxNode, Scope][]>();
+  for (const [current, scope] of scopes) {
+    const owner = functionScope(scope);
+    let indexed = functionNodes.get(owner);
+    if (!indexed) {
+      indexed = [];
+      functionNodes.set(owner, indexed);
+    }
+    indexed.push([current, scope]);
+    inspect(current, scope);
   }
+
+  // Follow locally declared loader wrappers by substituting known call arguments.
+  // This inspects syntax only; publisher functions are never invoked. The bounded
+  // traversal is conservative about reassignment and does not assume branch order.
+  let invocations = 0;
+  const follow = (call: SyntaxNode, scope: Scope, depth: number): void => {
+    if (call.type !== 'CallExpression' || depth > 6 || invocations >= 2000) return;
+    const identifier = name(call.callee);
+    const binding = identifier && lookup(scope, identifier);
+    const fn = binding && !binding.writes ? binding.initializer : undefined;
+    if (
+      !fn ||
+      !['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression'].includes(
+        fn.type,
+      )
+    )
+      return;
+    const local = scopes.get(fn);
+    if (!local || !staticScope(local)) return;
+    const args = nodes(call.arguments);
+    const previous = parameters;
+    const supplied = new Map(previous);
+    let known = false;
+    for (const [index, parameter] of nodes(fn.params).entries()) {
+      const key = name(parameter);
+      const target = key && local.bindings.get(key);
+      const resolved = value(args[index], scope);
+      if (target && !target.writes && resolved) {
+        supplied.set(target, resolved);
+        known = true;
+      }
+    }
+    if (!known) return;
+    invocations++;
+    parameters = supplied;
+    for (const [current, owner] of functionNodes.get(local) || []) {
+      inspect(current, owner);
+      follow(current, owner, depth + 1);
+    }
+    parameters = previous;
+  };
+  for (const [current, scope] of scopes) follow(current, scope, 0);
+  const loaders: ScriptLoader[] = [];
+  const marker = '__privacy_static_loader_argument__';
+  for (const [identifier, binding] of root.bindings) {
+    const fn = binding.initializer;
+    if (
+      !fn ||
+      binding.writes ||
+      !['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression'].includes(
+        fn.type,
+      )
+    )
+      continue;
+    const local = scopes.get(fn);
+    if (!local || !staticScope(local)) continue;
+    for (const [argument, parameter] of nodes(fn.params).entries()) {
+      const key = name(parameter);
+      const target = key && local.bindings.get(key);
+      if (!target || target.writes) continue;
+      summarizing = { marker, templates: [] };
+      parameters = new Map([[target, { kind: 'string', text: marker }]]);
+      for (const [current, scope] of functionNodes.get(local) || []) {
+        inspect(current, scope);
+        follow(current, scope, 0);
+      }
+      for (const template of summarizing.templates)
+        loaders.push({ name: identifier, argument, ...template });
+      summarizing = undefined;
+      parameters = new Map();
+    }
+  }
+  result.loaders = [
+    ...new Map(loaders.map((loader) => [JSON.stringify(loader), loader])).values(),
+  ];
+  const unique = new Map(
+    result.references.map((reference) => [
+      `${reference.kind}:${reference.start}:${reference.url}`,
+      reference,
+    ]),
+  );
+  result.references = [...unique.values()];
   return result;
 }

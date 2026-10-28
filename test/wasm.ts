@@ -34,7 +34,7 @@ try {
         'Initial inline module, preload Wasm and transitive relocated import execute',
       );
       await context.setOffline(true);
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app.getByText('Answer: 42', { exact: true }).waitFor();
       row.checks.push('Wasm instantiation and module graph work offline');
       await context.setOffline(false);
@@ -97,7 +97,7 @@ try {
         row.checks.push('Independent Wasm application installs and renders its canvas');
         assert(!errors.length, errors.join('\n'));
         await context.setOffline(true);
-        await external.reload();
+        await external.reload({ waitUntil: 'commit' });
         await external.waitForFunction(
           () =>
             document.querySelector('#photocraft_loading') === null &&

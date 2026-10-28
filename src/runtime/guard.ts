@@ -1,30 +1,42 @@
-import { validateMarkup } from '../shared/policy.ts';
+import {
+  internalArray,
+  internalData,
+  ownDescriptor,
+  internalRecord,
+} from '../shared/primordials.ts';
 import { applicationIdentity, publicAlias } from '../shared/runtime-url.ts';
+import { compileDocumentContent } from './contexts/document-content.ts';
+import { createDocumentRenderer } from './contexts/document-renderer.ts';
+import { parseInstalledDocument } from './contexts/document-protocol.ts';
 import { prepareWindowRealm } from './contexts/window-realm.ts';
-import type { WindowContentMetadata } from './contexts/window-realm.ts';
 
-interface InstalledContent extends WindowContentMetadata {
-  head: string;
-  body: string;
-  manifestURL?: string;
-  attributes?: {
-    html?: { name: string; value: string }[];
-    body?: { name: string; value: string }[];
-  };
-  scripts: { src: string; type?: string }[];
+// This parser-blocking bootstrap precedes all publisher markup. Capture trusted
+// startup operations before preparing the realm or running application code.
+const nativeApply = Reflect.apply;
+const nativeFetch = window.fetch;
+const responseJSON = Response.prototype.json;
+const responseOK = ownDescriptor(Response.prototype, 'ok')!.get!;
+const rawText = ownDescriptor(Node.prototype, 'textContent')!.set!;
+const rawCreate = Document.prototype.createElement;
+const rawAppend = Node.prototype.appendChild;
+const nativeDocument = document;
+const nativeWindow = window;
+const trustedBody = document.body;
+const manifest = document.querySelector('head > link[rel="manifest"]');
+const logError = console.error.bind(console);
+
+function failure(title: string, description: string) {
+  nativeApply(rawText, trustedBody, ['']);
+  for (const [tag, text] of [
+    ['h1', title],
+    ['p', description],
+  ]) {
+    const node = nativeApply(rawCreate, nativeDocument, [tag]);
+    nativeApply(rawText, node, [text]);
+    nativeApply(rawAppend, trustedBody, [node]);
+  }
 }
 
-// Only this trusted script exists in the initial document. Application content
-// and scripts are loaded from a verified worker response after setup succeeds.
-const rawHTML = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML')!.set!;
-const rawCreate = Document.prototype.createElement,
-  rawAppend = Node.prototype.appendChild;
-const rawAttr = Element.prototype.setAttribute;
-const trustedHead = document.head,
-  trustedBody = document.body;
-const nativeApply = Reflect.apply;
-// This code is always parser-blocking and precedes all application markup.
-// No native method captured here is published to application code.
 try {
   if (window.top !== window || window.parent !== window || window.opener !== null)
     throw new Error(
@@ -35,73 +47,57 @@ try {
     throw new Error('Trusted bootstrap script is missing');
   const guardURL = new URL(bootstrapScript.src);
   const app = bootstrapScript.getAttribute('data-installation');
+  const entry = bootstrapScript.getAttribute('data-application-url');
   const route = applicationIdentity(location.href, new URL('./', guardURL));
-  if (!app || route !== publicAlias(app)) throw new Error('Invalid runtime identity');
-  const appURL = new URL(location.href);
-  appURL.search = '';
-  appURL.hash = '';
-  const realm = prepareWindowRealm({
-    application: app,
-    applicationURL: appURL.href,
-    scriptNonce: bootstrapScript.nonce,
-  });
-  // Static metadata contains no host authority; applications may inspect it.
-
-  document.documentElement.dataset.hostReady = 'true';
-  const content = new URL(location.href);
+  if (!app || !entry || route !== publicAlias(app))
+    throw new Error('Invalid runtime identity');
+  const appURL = new URL(entry);
+  if (applicationIdentity(appURL, new URL('./', guardURL)) !== route)
+    throw new Error('Invalid canonical application URL');
+  const realm = prepareWindowRealm(
+    internalRecord({
+      application: app,
+      applicationURL: appURL.href,
+      scriptNonce: bootstrapScript.nonce,
+      enableDocumentContexts: true,
+    }),
+  );
+  const renderer = createDocumentRenderer(
+    internalRecord({
+      nonce: bootstrapScript.nonce,
+      scripts: realm.scripts,
+      resources: realm.resources,
+      prepareContext: realm.documents?.prepareContext,
+      contextsLoaded: realm.documents?.whenLoaded,
+      contextsPrepared: realm.documents?.whenPrepared,
+      deferChildStartup: realm.documents?.deferChildStartup,
+      retainedHeadNodes: manifest ? internalArray([manifest]) : internalArray(),
+    }),
+  );
+  const content = new URL(appURL);
   content.search = '?host-content=1';
-  fetch(content)
-    .then((r) => {
-      if (!r.ok) throw new Error('Installed content unavailable');
-      return r.json() as Promise<InstalledContent>;
-    })
-    .then(async (data) => {
-      // Markup was independently validated by the worker. No app script executes in this parsing step.
-      validateMarkup(data.head, { initial: true });
-      validateMarkup(data.body, { initial: true });
-      realm.admitContent(data);
-      // Keep the bootstrap's manifest link continuously attached. Native PWA
-      // installation can inspect it while the asynchronous app content is loading.
-      const template = nativeApply(rawCreate, document, [
-        'template',
-      ]) as HTMLTemplateElement;
-      nativeApply(rawHTML, template, [data.head]);
-      for (const child of Array.from(template.content.childNodes))
-        nativeApply(rawAppend, trustedHead, [child]);
-      nativeApply(rawHTML, trustedBody, [data.body]);
-      for (const [target, attributes] of [
-        [document.documentElement, data.attributes?.html],
-        [trustedBody, data.attributes?.body],
-      ] as const)
-        for (const attr of attributes || [])
-          nativeApply(rawAttr, target, [attr.name, attr.value]);
-      if (data.manifestURL && !document.querySelector('link[rel="manifest"]')) {
-        const link = nativeApply(rawCreate, document, ['link']);
-        nativeApply(rawAttr, link, ['rel', 'manifest']);
-        nativeApply(rawAttr, link, ['href', data.manifestURL]);
-        nativeApply(rawAppend, trustedHead, [link]);
-      }
-      for (const script of data.scripts) {
-        await new Promise<void>((resolve, reject) => {
-          const node = nativeApply(rawCreate, document, ['script']) as HTMLScriptElement;
-          nativeApply(rawAttr, node, ['src', script.src]);
-          if (script.type) nativeApply(rawAttr, node, ['type', script.type]);
-          node.onload = () => resolve();
-          node.onerror = () => reject(new Error('Installed script failed'));
-          nativeApply(rawAppend, trustedHead, [node]);
-        });
-      }
-    })
-    .catch((error) => {
-      nativeApply(rawHTML, trustedBody, [
-        '<h1>Application could not start</h1><p>Reload or reinstall this application.</p>',
-      ]);
-      console.error(error);
-    });
+  const start = async () => {
+    const response = await nativeApply(nativeFetch, nativeWindow, [content.href]);
+    if (!nativeApply(responseOK, response, []))
+      throw new Error('Installed content unavailable');
+    const data = parseInstalledDocument(
+      internalData(await nativeApply(responseJSON, response, [])),
+      appURL.href,
+    );
+    realm.admitContent(data);
+    const compiled = compileDocumentContent(data.document);
+    renderer.prepare(compiled);
+    await renderer.render(compiled);
+    realm.documents?.settle();
+  };
+  void start().catch((error: unknown) => {
+    failure('Application could not start', 'Reload or reinstall this application.');
+    logError(error);
+  });
 } catch (error) {
-  // Parsing must never proceed into untrusted scripts after setup failure.
-  nativeApply(rawHTML, trustedBody, [
-    '<h1>Application refused</h1><p>The browser could not establish the required runtime restrictions.</p>',
-  ]);
+  failure(
+    'Application refused',
+    'The browser could not establish the required runtime restrictions.',
+  );
   throw error;
 }

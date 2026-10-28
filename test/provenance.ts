@@ -40,12 +40,26 @@ export async function testProvenance(runner: string) {
   );
   const source = createHash('sha256');
   for (const name of [...new Set(names.split('\n'))].filter(Boolean).sort()) {
-    const bytes = await readFile(resolve(root, name));
+    let bytes: Uint8Array;
+    try {
+      bytes = await readFile(resolve(root, name));
+    } catch (error) {
+      if (
+        error &&
+        typeof error === 'object' &&
+        'code' in error &&
+        error.code === 'ENOENT'
+      ) {
+        source.update(name + '\0deleted\0');
+        continue;
+      }
+      throw error;
+    }
     source.update(name + '\0' + bytes.byteLength + '\0');
     source.update(bytes);
   }
   const artifacts: Record<string, string> = {};
-  for (const directory of ['dist-manager', 'dist-runtime'])
+  for (const directory of ['dist-manager', 'dist-runtime', 'dist-installation'])
     for (const path of (await filesBelow(resolve(root, directory))).sort())
       artifacts[relative(root, path)] = hash(await readFile(path));
   return {

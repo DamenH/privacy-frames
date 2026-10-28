@@ -8,7 +8,10 @@ export type AppSummary = Pick<
   Installation,
   'id' | 'manifest' | 'source' | 'installedAt' | 'size'
 >;
-export type HostConfig = Pick<Configuration, 'managerURL' | 'runtimeURL' | 'examples'>;
+export type HostConfig = Pick<
+  Configuration,
+  'managerURL' | 'runtimeURL' | 'installationURL' | 'examples'
+>;
 export type RuntimeObservation = RuntimeEvent;
 
 export interface Status {

@@ -106,7 +106,7 @@ try {
         });
       }
       await context.setOffline(true);
-      await doc.reload();
+      await doc.reload({ waitUntil: 'commit' });
       await doc.waitForFunction(
         () => document.querySelector('#illustration')?.naturalWidth > 0,
       );
@@ -192,7 +192,7 @@ try {
         );
         const images = await article.locator('img').count();
         await context.setOffline(true);
-        await article.reload();
+        await article.reload({ waitUntil: 'commit' });
         await article.waitForFunction(
           () => window.privacyHost?.mode === 'network-isolated',
         );

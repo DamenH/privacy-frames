@@ -1,3 +1,4 @@
+import { strings, internalSet, internalRecord } from '../../shared/primordials.ts';
 import { isDataScript, isExecutableScriptType } from '../../shared/policy.ts';
 import { relocateRuntimeModule } from '../modules.ts';
 import type { PolicyTools } from './native.ts';
@@ -13,9 +14,11 @@ interface ScriptResources {
   nonce: string;
   mapURL(input: unknown): string;
   isInstalledURL(input: unknown): boolean;
+  baseURL?(): string;
+  unavailableURL?: string;
 }
 
-const stringProperties = new Set([
+const stringProperties = internalSet<string>([
   'charset',
   'crossOrigin',
   'integrity',
@@ -23,8 +26,8 @@ const stringProperties = new Set([
   'fetchPriority',
   'blocking',
 ]);
-const booleanProperties = new Set(['async', 'defer', 'noModule']);
-const attributes = new Set([
+const booleanProperties = internalSet<string>(['async', 'defer', 'noModule']);
+const attributes = internalSet<string>([
   'src',
   'type',
   'charset',
@@ -54,6 +57,8 @@ export function installScriptPolicy(
   const urlProtocol = descriptor(NativeURL.prototype, 'protocol')!.get!;
   const baseURI = descriptor(Node.prototype, 'baseURI')!.get!;
   const prototype = HTMLScriptElement.prototype;
+  const nativeSrc = descriptor(prototype, 'src')!.get!;
+  const logicalSources = new WeakMap<HTMLScriptElement, string>();
   const local = descriptor(Element.prototype, 'localName')!.get!;
   const namespace = descriptor(Element.prototype, 'namespaceURI')!.get!;
   const getAttribute = Element.prototype.getAttribute;
@@ -75,7 +80,7 @@ export function installScriptPolicy(
   }
 
   function scriptType(input: unknown): string {
-    const value = str(input).trim().toLowerCase();
+    const value = strings.toLowerCase(strings.trim(str(input)));
     if (!isExecutableScriptType(value) && !isDataScript(value))
       fail('Unsupported script type');
     return value;
@@ -92,7 +97,7 @@ export function installScriptPolicy(
         apply(urlOrigin, url, []) === location.origin
       )
     )
-      fail('Script resource is not installed');
+      return resources.unavailableURL || fail('Script resource is not installed');
     return href;
   }
 
@@ -116,7 +121,7 @@ export function installScriptPolicy(
   }
 
   function attribute(node: HTMLScriptElement, name: string, input: unknown): string {
-    const key = name.toLowerCase();
+    const key = strings.toLowerCase(name);
     if (!attributes.has(key) && !/^(?:data-|aria-)/.test(key))
       fail('Script attribute is not admitted');
     const value = str(input);
@@ -126,10 +131,16 @@ export function installScriptPolicy(
         fail('Data scripts must be inline');
     }
     if (key === 'src') {
+      const logical = new NativeURL(
+        value,
+        resources.baseURL?.() || apply(baseURI, document, []),
+      ).href;
       const type = scriptType(apply(getAttribute, node, ['type']) || '');
       if (isDataScript(type)) fail('Data scripts must be inline');
       prepare(node);
-      return sourceURL(value);
+      const mapped = sourceURL(value);
+      logicalSources.set(node, logical);
+      return mapped;
     }
     prepare(node);
     return key === 'nonce' ? nonce : value;
@@ -139,45 +150,60 @@ export function installScriptPolicy(
     const property = descriptor(prototype, key);
     if (!property?.set) continue;
     const setter = property.set;
-    accessor(prototype, key, {
-      set(this: HTMLScriptElement, value: unknown) {
-        if (key === 'src') return apply(setter, this, [attribute(this, 'src', value)]);
-        if (key === 'type') {
-          const text = str(value);
-          const type = scriptType(text);
-          if (isDataScript(type) && apply(getAttribute, this, ['src']) !== null)
-            fail('Data scripts must be inline');
-          prepare(this);
-          return apply(setter, this, [text]);
-        }
-        if (['text', 'textContent', 'innerText'].includes(key)) {
-          prepare(this);
-          const empty =
-            (key === 'textContent' && value == null) ||
-            (key === 'innerText' && value === null);
-          const text = empty ? '' : str(value);
-          return apply(setter, this, [scriptText(this, text)]);
-        }
-        if (stringProperties.has(key)) {
-          prepare(this);
-          return apply(setter, this, [str(value)]);
-        }
-        if (booleanProperties.has(key)) {
-          prepare(this);
-          return apply(setter, this, [value]);
-        }
-        return fail('Script property is not admitted');
-      },
-    });
+    accessor(
+      prototype,
+      key,
+      internalRecord({
+        ...(key === 'src'
+          ? internalRecord({
+              get(this: HTMLScriptElement) {
+                if (apply(getAttribute, this, ['src']) === null)
+                  return apply(nativeSrc, this, []);
+                return logicalSources.get(this) ?? apply(nativeSrc, this, []);
+              },
+            })
+          : internalRecord({})),
+        set(this: HTMLScriptElement, value: unknown) {
+          if (key === 'src') return apply(setter, this, [attribute(this, 'src', value)]);
+          if (key === 'type') {
+            const text = str(value);
+            const type = scriptType(text);
+            if (isDataScript(type) && apply(getAttribute, this, ['src']) !== null)
+              fail('Data scripts must be inline');
+            prepare(this);
+            return apply(setter, this, [text]);
+          }
+          if (['text', 'textContent', 'innerText'].includes(key)) {
+            prepare(this);
+            const empty =
+              (key === 'textContent' && value == null) ||
+              (key === 'innerText' && value === null);
+            const text = empty ? '' : str(value);
+            return apply(setter, this, [scriptText(this, text)]);
+          }
+          if (stringProperties.has(key)) {
+            prepare(this);
+            return apply(setter, this, [str(value)]);
+          }
+          if (booleanProperties.has(key)) {
+            prepare(this);
+            return apply(setter, this, [value]);
+          }
+          return fail('Script property is not admitted');
+        },
+      }),
+    );
   }
 
-  return Object.freeze({
-    isScript,
-    prepare,
-    attribute,
-    text(node: HTMLScriptElement, value: string) {
-      prepare(node);
-      apply(nativeText, node, [scriptText(node, value)]);
-    },
-  });
+  return Object.freeze(
+    internalRecord({
+      isScript,
+      prepare,
+      attribute,
+      text(node: HTMLScriptElement, value: string) {
+        prepare(node);
+        apply(nativeText, node, [scriptText(node, value)]);
+      },
+    }),
+  );
 }

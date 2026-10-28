@@ -1,9 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {
-  scriptDependencies,
-  relocateImportMeta,
-} from '../src/installation/script-dependencies.ts';
+import { scriptDependencies } from '../src/installation/script-dependencies.ts';
+import { relocateImportMeta } from '../src/shared/module-source.ts';
 import { relocateModule } from '../src/installation/modules.ts';
 import { downloadWebsite } from '../src/installation/import-website.ts';
 import type { ScriptDiscoveryEvent } from '../src/installation/resource-capture.ts';
@@ -288,4 +286,345 @@ test('fresh nested URL bases resolve without evaluating publisher functions', ()
     found.references.map((reference) => reference.url),
     ['https://publisher.test/workers/entry.js'],
   );
+});
+
+test('proven native audio and paint worklet receivers reveal constant addModule URLs', () => {
+  const result = scriptDependencies(
+    `
+    const context = new AudioContext();
+    const audio = context.audioWorklet;
+    audio.addModule('./processor.js');
+    new globalThis.OfflineAudioContext(1, 128, 44100).audioWorklet.addModule(new URL('./offline.js', import.meta.url));
+    const paint = CSS.paintWorklet;
+    paint.addModule('/paint.js');
+    window.CSS.paintWorklet.addModule('./second-paint.js');
+  `,
+    context,
+  );
+  assert.deepEqual(
+    result.references.map(({ kind, url }) => ({ kind, url })),
+    [
+      { kind: 'audio-worklet', url: 'https://publisher.test/documents/processor.js' },
+      { kind: 'audio-worklet', url: 'https://publisher.test/scripts/offline.js' },
+      { kind: 'paint-worklet', url: 'https://publisher.test/paint.js' },
+      { kind: 'paint-worklet', url: 'https://publisher.test/documents/second-paint.js' },
+    ],
+  );
+  assert.equal(result.unresolved.length, 0);
+});
+
+test('unrelated addModule methods, shadowed constructors and unknown audio objects do not invent downloads', () => {
+  const result = scriptDependencies(
+    `
+    const unknown = getAudioContext(); unknown.audioWorklet.addModule('./unknown.js');
+    const fake = { addModule() {} }; fake.addModule('./fake.js');
+    function local(AudioContext, CSS) { new AudioContext().audioWorklet.addModule('./local.js'); CSS.paintWorklet.addModule('./local-paint.js'); }
+    const real = new AudioContext(); real.audioWorklet.addModule(configuration.url);
+    real.audioWorklet.addModule('blob:https://publisher.test/runtime-module');
+  `,
+    context,
+  );
+  assert.deepEqual(result.references, []);
+  assert.equal(result.unresolved.length, 2);
+  assert(result.unresolved.every((item) => item.kind === 'audio-worklet'));
+});
+
+test('capture follows worklet static imports with a module-only execution context', async () => {
+  const originalFetch = globalThis.fetch;
+  const source = 'https://publisher.test/worklets/index.html';
+  const values = new Map<string, [string, string]>([
+    [source, ['<script src="main.js"></script>', 'text/html']],
+    [
+      'https://publisher.test/worklets/main.js',
+      [
+        'const context=new AudioContext();context.audioWorklet.addModule("./processor.js");',
+        'text/javascript',
+      ],
+    ],
+    [
+      'https://publisher.test/worklets/processor.js',
+      [
+        'import "./dependency.js";registerProcessor("fixture",class extends AudioWorkletProcessor{});',
+        'text/javascript',
+      ],
+    ],
+    [
+      'https://publisher.test/worklets/dependency.js',
+      ['export const dependency=1;', 'text/javascript'],
+    ],
+  ]);
+  const discovery: ScriptDiscoveryEvent[] = [];
+  globalThis.fetch = async (input) => {
+    const item = values.get(String(input));
+    return item
+      ? new Response(item[0], { headers: { 'Content-Type': item[1] } })
+      : new Response('Absent', { status: 404 });
+  };
+  try {
+    const app = await downloadWebsite(source, {
+      onDiscovery: (event) => discovery.push(event),
+    });
+    assert(app.resources.some((resource) => resource.url.endsWith('/processor.js')));
+    assert(app.resources.some((resource) => resource.url.endsWith('/dependency.js')));
+    for (const filename of ['processor.js', 'dependency.js'])
+      assert(
+        discovery.some(
+          (event) =>
+            event.sourceURL.endsWith('/' + filename) &&
+            event.execution.realm === 'worklet',
+        ),
+      );
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('native service-worker registration receivers are discovered without executing their source', () => {
+  const found = scriptDependencies(
+    'navigator.serviceWorker.register("./foreground.js"); const sw = window.navigator.serviceWorker;sw.register(new URL("../module-worker.js",import.meta.url),{type:"module"});function local(navigator){navigator.serviceWorker.register("./fake.js")};const unrelated={register(){}};unrelated.register("./not-sw.js");',
+    context,
+  );
+  assert.deepEqual(
+    found.references.map(({ kind, url }) => ({ kind, url })),
+    [
+      { kind: 'service-worker', url: 'https://publisher.test/documents/foreground.js' },
+      { kind: 'service-worker', url: 'https://publisher.test/module-worker.js' },
+    ],
+  );
+  const imported = scriptDependencies(
+    'importScripts("./library.js");new Worker("./not-a-service-worker-api.js");',
+    {
+      realm: 'service-worker',
+      sourceURL: 'https://publisher.test/app/foreground.js',
+      baseURL: 'https://publisher.test/app/foreground.js',
+    },
+  );
+  assert.deepEqual(
+    imported.references.map(({ kind, url }) => ({ kind, url })),
+    [{ kind: 'worker-import', url: 'https://publisher.test/app/library.js' }],
+  );
+});
+
+test('a declared nonconventional service worker and its classic imports are independent installation resources', async () => {
+  const nativeFetch = globalThis.fetch;
+  const source = 'https://publisher.test/foreground/index.html';
+  const sources = new Map<string, [string, string]>([
+    [source, ['<script src="main.js"></script>', 'text/html']],
+    [
+      'https://publisher.test/foreground/main.js',
+      ['navigator.serviceWorker.register("./foreground.js");', 'text/javascript'],
+    ],
+    [
+      'https://publisher.test/foreground/foreground.js',
+      [
+        'globalThis.__publisherSourceExecuted=true;importScripts("./library.js");self.addEventListener("fetch",event=>event.respondWith(fetch(event.request)));',
+        'text/javascript',
+      ],
+    ],
+    [
+      'https://publisher.test/foreground/library.js',
+      ['globalThis.workerLibrary=true;', 'text/javascript'],
+    ],
+  ]);
+  globalThis.fetch = async (input) => {
+    const value = sources.get(String(input));
+    return value
+      ? new Response(value[0], { headers: { 'Content-Type': value[1] } })
+      : new Response('Not found', { status: 404 });
+  };
+  try {
+    const discovery: ScriptDiscoveryEvent[] = [];
+    const app = await downloadWebsite(source, {
+      onDiscovery: (event) => discovery.push(event),
+    });
+    assert(app.resources.some((resource) => resource.url.endsWith('/foreground.js')));
+    assert(app.resources.some((resource) => resource.url.endsWith('/library.js')));
+    assert(
+      discovery.some(
+        (event) =>
+          event.execution.realm === 'service-worker' &&
+          event.sourceURL.endsWith('/foreground.js'),
+      ),
+    );
+    assert.equal(Reflect.has(globalThis, '__publisherSourceExecuted'), false);
+    // This Node fixture has no browser Worker. Optional preparation fails while
+    // the independently discovered registration script and imports remain usable.
+    assert.equal(app.preparation.outcome.status, 'failed');
+    assert.equal(app.preparation.serviceWorker, null);
+    assert.deepEqual(app.preparation.caches, []);
+  } finally {
+    globalThis.fetch = nativeFetch;
+  }
+});
+
+test('local script loader functions reveal literal calls through single-assignment var bindings', () => {
+  const result = scriptDependencies(
+    `
+    function loadScript(source) {
+      var script = document.createElement('script');
+      script.setAttribute('src', source);
+      document.head.appendChild(script);
+    }
+    var directory = './chunks/';
+    loadScript(directory + 'editor.js');
+    loadScript(new URL('../helpers.js', import.meta.url).href);
+    `,
+    context,
+  );
+  assert.deepEqual(
+    result.references.map((item) => item.url),
+    [
+      'https://publisher.test/documents/chunks/editor.js',
+      'https://publisher.test/helpers.js',
+    ],
+  );
+});
+
+test('loader argument substitution follows nested wrappers without invoking publisher functions', () => {
+  const result = scriptDependencies(
+    `
+    function append(source) {
+      throw new Error('Do not execute me');
+      var element = document.createElement('script');
+      element.src = source;
+    }
+    const load = (name) => append('./parts/' + name);
+    load('one.js');
+    load('two.js');
+    `,
+    context,
+  );
+  assert.deepEqual(
+    result.references.map((item) => item.url),
+    [
+      'https://publisher.test/documents/parts/one.js',
+      'https://publisher.test/documents/parts/two.js',
+    ],
+  );
+});
+
+test('mutable loader functions, reassigned arguments and shadowed DOM factories stay unresolved', () => {
+  for (const code of [
+    `function load(source) {const s=document.createElement('script');s.src=source;}load=other;load('./unknown.js');`,
+    `function load(source) {source=compute();const s=document.createElement('script');s.src=source;}load('./unknown.js');`,
+    `function load(source,document) {const s=document.createElement('script');s.src=source;}load('./unknown.js',fake);`,
+    `let path='./unknown.js';path=compute();const s=document.createElement('script');s.src=path;`,
+  ])
+    assert.deepEqual(scriptDependencies(code, context).references, [], code);
+});
+
+test('recursive loader analysis remains bounded and deduplicates repeated references', () => {
+  const result = scriptDependencies(
+    `function loop(source) {const s=document.createElement('script');s.src=source;loop(source);}loop('./one.js');loop('./one.js');`,
+    context,
+  );
+  assert.deepEqual(
+    result.references.map((item) => item.url),
+    ['https://publisher.test/documents/one.js'],
+  );
+});
+
+test('finite conditional service-worker paths are captured without guessing branch conditions', () => {
+  const result = scriptDependencies(
+    `var worker = stable ? './stable/foreground.js' : './foreground.js';navigator.serviceWorker.register(worker);`,
+    context,
+  );
+  assert.deepEqual(
+    result.references.map((item) => item.url),
+    [
+      'https://publisher.test/documents/stable/foreground.js',
+      'https://publisher.test/documents/foreground.js',
+    ],
+  );
+});
+
+test('native fetch and XMLHttpRequest resource sinks capture constant URLs and ignore mocks', () => {
+  const result = scriptDependencies(
+    `
+    fetch('./dictionary.txt');
+    const request = new Request('./settings.json');window.fetch(request);
+    var xhr = new XMLHttpRequest();xhr.open('GET', './theme.xml');
+    function local(fetch, XMLHttpRequest) {fetch('./fake.txt');const xhr=new XMLHttpRequest();xhr.open('GET','./fake.xml');}
+    const fake={open(){}};fake.open('GET','./unrelated.xml');
+    `,
+    context,
+  );
+  assert.deepEqual(
+    result.references.map(({ kind, url }) => ({ kind, url })),
+    [
+      { kind: 'resource', url: 'https://publisher.test/documents/dictionary.txt' },
+      { kind: 'resource', url: 'https://publisher.test/documents/settings.json' },
+      { kind: 'resource', url: 'https://publisher.test/documents/theme.xml' },
+    ],
+  );
+});
+
+test('resource fetch wrappers substitute arguments and preserve unresolved dynamic requests', () => {
+  const result = scriptDependencies(
+    `function get(path){return fetch(path);}get('./data.json');fetch(userInput);`,
+    context,
+  );
+  assert.deepEqual(
+    result.references.map((item) => item.url),
+    ['https://publisher.test/documents/data.json'],
+  );
+  assert(result.unresolved.some((item) => item.kind === 'resource'));
+});
+
+test('global loader summaries cross scripts and resolve static object properties', () => {
+  const bootstrap = scriptDependencies(
+    `function inject(address){var script=document.createElement('script');script.src=address;}`,
+    context,
+  );
+  assert.deepEqual(bootstrap.loaders, [
+    { name: 'inject', argument: 0, kind: 'script', prefix: '', suffix: '' },
+  ]);
+  const consumer = scriptDependencies(
+    `function Application(){}Application.LIBRARY='./library.js';inject(Application.LIBRARY);window.inject('./other.js');`,
+    { ...context, loaders: bootstrap.loaders },
+  );
+  assert.deepEqual(
+    consumer.references.map((reference) => reference.url),
+    [
+      'https://publisher.test/documents/library.js',
+      'https://publisher.test/documents/other.js',
+    ],
+  );
+});
+
+test('loader summaries preserve argument positions and literal URL transformations', () => {
+  const bootstrap = scriptDependencies(
+    `const inject = (unused,name) => {const script=document.createElement('script');script.src='./chunks/'+name+'.js';};`,
+    context,
+  );
+  assert.deepEqual(bootstrap.loaders, [
+    { name: 'inject', argument: 1, kind: 'script', prefix: './chunks/', suffix: '.js' },
+  ]);
+  const consumer = scriptDependencies(`inject(null,'editor')`, {
+    ...context,
+    loaders: bootstrap.loaders,
+  });
+  assert.equal(
+    consumer.references[0].url,
+    'https://publisher.test/documents/chunks/editor.js',
+  );
+});
+
+test('shadowed cross-script loaders and mutable member constants do not invent downloads', () => {
+  const loaders = [
+    { name: 'inject', kind: 'script' as const, argument: 0, prefix: '', suffix: '' },
+  ];
+  for (const code of [
+    `function local(inject){inject('./mock.js')}`,
+    `const window={inject(){}};window.inject('./mock.js')`,
+    `function Application(){}Application.LIBRARY='./unknown.js';Application.LIBRARY=compute();inject(Application.LIBRARY);`,
+    `function Application(){}Application.LIBRARY=Application.LIBRARY;inject(Application.LIBRARY);`,
+    `function Application(){}Application.LIBRARY='./unknown.js';Application.LIBRARY+='?changed';inject(Application.LIBRARY);`,
+    `function Application(){}Application.LIBRARY='./unknown.js';delete Application.LIBRARY;inject(Application.LIBRARY);`,
+  ])
+    assert.deepEqual(
+      scriptDependencies(code, { ...context, loaders }).references,
+      [],
+      code,
+    );
 });

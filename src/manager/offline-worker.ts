@@ -8,7 +8,6 @@ const files = [
   'host.css',
   'config.json',
   'report.html',
-  'install-worker.js',
   'pwa-192.png',
   'pwa-512.png',
 ];

@@ -18,10 +18,10 @@ for (const path of sources.sort()) {
 for (const path of [
   'package-lock.json',
   'REPORT.md',
-  ...(await readdir(resolve(root, 'scripts')))
-    .filter((path) => path.endsWith('.ts'))
-    .sort()
-    .map((path) => 'scripts/' + path),
+  'scripts/build.ts',
+  'scripts/build-examples.ts',
+  'scripts/icons.ts',
+  'scripts/report.ts',
 ])
   hash.update(await readFile(resolve(root, path)));
 hash.update(JSON.stringify(config));
@@ -32,19 +32,32 @@ const entries = {
   guard: 'src/runtime/guard.ts',
   connect: 'src/bridge/connect.ts',
   'install-worker': 'src/installation/prepare-worker.ts',
+  installation: 'src/installation/controller.ts',
   'worker-guard': 'src/runtime/contexts/worker-guard.ts',
+  'document-guard': 'src/runtime/contexts/document-guard.ts',
+  'shared-worker-guard': 'src/runtime/contexts/shared-worker-guard.ts',
+  'worklet-guard': 'src/runtime/contexts/worklet-guard.ts',
+  'publisher-worker-guard': 'src/runtime/publisher/guard.ts',
 };
-const roles = process.env.HOST_ROLE ? [process.env.HOST_ROLE] : ['manager', 'runtime'];
+const roles = process.env.HOST_ROLE
+  ? [process.env.HOST_ROLE]
+  : ['manager', 'runtime', 'installation'];
 for (const role of roles) {
-  if (!['manager', 'runtime'].includes(role)) throw new Error('Invalid build role');
+  if (!['manager', 'runtime', 'installation'].includes(role))
+    throw new Error('Invalid build role');
   const output = process.env.BUILD_DIRECTORY || `dist-${role}`;
   const directory = resolve(root, output);
   await rm(directory, { recursive: true, force: true });
   await mkdir(directory, { recursive: true });
   for (const [name, entry] of Object.entries(entries)) {
-    if (role === 'manager' && ['guard', 'connect', 'worker-guard'].includes(name))
+    if (role === 'manager' && !['manager', 'worker'].includes(name)) continue;
+    if (role === 'installation' && !['installation', 'install-worker'].includes(name))
       continue;
-    if (role === 'runtime' && ['manager', 'install-worker'].includes(name)) continue;
+    if (
+      role === 'runtime' &&
+      ['manager', 'install-worker', 'installation'].includes(name)
+    )
+      continue;
     await build({
       entryPoints: [
         resolve(
@@ -61,15 +74,31 @@ for (const role of roles) {
         'process.env.NODE_ENV': '"production"',
       },
       banner: { js: '"use strict";' },
-      format: ['manager', 'connect'].includes(name) ? 'esm' : 'iife',
+      format: ['manager', 'connect', 'installation', 'worklet-guard'].includes(name)
+        ? 'esm'
+        : 'iife',
       target: 'es2022',
       jsx: 'automatic',
     });
   }
   await cp(
-    resolve(root, 'src', role === 'manager' ? 'index.html' : 'connect.html'),
-    resolve(directory, role === 'manager' ? 'index.html' : 'connect.html'),
+    resolve(
+      root,
+      'src',
+      role === 'manager'
+        ? 'index.html'
+        : role === 'installation'
+          ? 'installation/index.html'
+          : 'connect.html',
+    ),
+    resolve(directory, role === 'runtime' ? 'connect.html' : 'index.html'),
   );
+  await writeFile(resolve(directory, 'config.json'), JSON.stringify(config, null, 2));
+  await writeFile(resolve(directory, '.nojekyll'), '');
+  if (role === 'installation') {
+    console.log(`Built ${role} in ${output}`);
+    continue;
+  }
   execFileSync(
     process.execPath,
     [
@@ -89,8 +118,6 @@ for (const role of roles) {
       resolve(directory, 'index.html'),
       '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy Frames applications</title><link rel="stylesheet" href="./host.css"><main><h1>Privacy Frames</h1><a href="https://pf.damenh.com/">Open manager</a></main></html>',
     );
-  await writeFile(resolve(directory, 'config.json'), JSON.stringify(config, null, 2));
-  await writeFile(resolve(directory, '.nojekyll'), '');
   execFileSync(process.execPath, [resolve(root, 'scripts/report.ts')], {
     cwd: root,
     env: { ...process.env, BUILD_DIRECTORY: directory },

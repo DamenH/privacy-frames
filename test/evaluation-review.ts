@@ -50,7 +50,7 @@ try {
       const opened = context.waitForEvent('page');
       await link.click();
       const app = await opened;
-      await app.locator('[data-host-ready="true"]').waitFor();
+      await app.waitForFunction(() => window.privacyHost?.mode === 'network-isolated');
       await app.locator('#data').waitFor({ state: 'attached' });
       const confined = await app.evaluate(historyCoercion);
       const attribute = await app.evaluate(attributeCoercion);

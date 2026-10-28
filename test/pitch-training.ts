@@ -287,7 +287,7 @@ try {
       await app.getByLabel('Instrument').selectOption('triangle');
       await app.getByText('Ready offline', { exact: true }).waitFor();
       await context.setOffline(true);
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app.getByLabel('Instrument').waitFor();
       assert.equal(await app.getByLabel('Instrument').inputValue(), 'triangle');
       await tab('Reference');

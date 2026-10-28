@@ -1,9 +1,12 @@
-import { parse, serialize, type DefaultTreeAdapterTypes as Tree } from 'parse5';
 import {
-  validateMarkup,
-  isDataScript,
-  isExecutableScriptType,
-} from '../shared/policy.ts';
+  parse,
+  parseFragment,
+  serialize,
+  type DefaultTreeAdapterTypes as Tree,
+} from 'parse5';
+import { isDataScript, isExecutableScriptType } from '../shared/policy.ts';
+import { compileDocumentContent } from '../runtime/contexts/document-content.ts';
+import { decodeDocumentDataURL } from '../shared/document-data.ts';
 
 export function cssReferences(text: string, base: string): string[] {
   const urls: string[] = [];
@@ -31,52 +34,127 @@ function absoluteCSS(text: string, base: string): string {
 const element = (node: Tree.Node): node is Tree.Element => 'tagName' in node;
 const attribute = (node: Tree.Element, name: string) =>
   node.attrs.find((attr) => attr.name === name)?.value;
-function visit(node: Tree.Node, callback: (node: Tree.Element) => void) {
+interface PreparedScriptContext {
+  url: string;
+  baseURL: string;
+  documentURL: string;
+  inline: boolean;
+}
+export interface PreparedSourceDocument {
+  html: string;
+  kind: 'html' | 'svg';
+  title: string;
+  baseURL: string;
+  links: string[];
+  documentURLs: string[];
+  manifestURL: string | null;
+  inlineScripts: { url: string; code: string }[];
+  scriptContexts: PreparedScriptContext[];
+}
+interface SourceDocumentOptions {
+  kind?: 'html' | 'svg';
+  baseURL?: string;
+}
+function visit(
+  node: Tree.Node,
+  callback: (node: Tree.Element) => void,
+  templates = true,
+) {
   if (element(node)) callback(node);
-  if ('childNodes' in node) for (const child of node.childNodes) visit(child, callback);
-  if ('content' in node) visit(node.content as Tree.DocumentFragment, callback);
+  if ('childNodes' in node)
+    for (const child of node.childNodes) visit(child, callback, templates);
+  if (templates && 'content' in node)
+    visit(node.content as Tree.DocumentFragment, callback, templates);
 }
 
-/** Resolve public resources before runtime admission; publisher policy is never inherited. */
-export function prepareDocument(text: string, documentURL: string) {
-  const ast = parse(text),
-    links = new Set<string>();
+/** Resolve source dependencies without rendering publisher markup or inheriting policy. */
+export function prepareDocument(
+  text: string,
+  documentURL: string,
+  options: SourceDocumentOptions = {},
+): PreparedSourceDocument {
+  return prepareSource(text, documentURL, options, 0);
+}
+function prepareSource(
+  text: string,
+  documentURL: string,
+  options: SourceDocumentOptions,
+  depth: number,
+): PreparedSourceDocument {
+  if (depth > 64)
+    throw new Error('Nested source documents exceed the preparation work limit');
+  const kind = options.kind || 'html';
+  const ast = kind === 'html' ? parse(text) : parseFragment(text);
+  const links = new Set<string>();
+  const documentURLs = new Set<string>();
   const inlineScripts: { url: string; code: string }[] = [];
-  const scriptURLs = new Set<string>();
+  const scriptContexts: PreparedScriptContext[] = [];
   let title = '',
-    base = documentURL,
+    base = options.baseURL || documentURL,
     baseFound = false,
     canonical = documentURL,
     manifestURL: string | null = null;
-  visit(ast, (node) => {
-    const href = attribute(node, 'href');
-    if (node.tagName === 'base' && !baseFound && href) {
-      baseFound = true;
-      try {
-        base = new URL(href, documentURL).href;
-      } catch {
-        /* Invalid first base uses the document URL. */
-      }
+  if (kind === 'html')
+    visit(
+      ast,
+      (node) => {
+        const href = attribute(node, 'href');
+        if (node.tagName === 'base' && !baseFound && href) {
+          baseFound = true;
+          try {
+            base = new URL(href, base).href;
+          } catch {
+            /* Invalid first base keeps the fallback. */
+          }
+        }
+      },
+      false,
+    );
+  visit(
+    ast,
+    (node) => {
+      if (node.tagName !== 'link') return;
+      const rel = (attribute(node, 'rel') || '').toLowerCase().split(/\s+/),
+        href = attribute(node, 'href');
+      if (!href) return;
+      if (rel.includes('modulepreload') || rel.includes('preload'))
+        links.add(new URL(href, base).href);
+      if (!manifestURL && rel.includes('manifest'))
+        manifestURL = new URL(href, base).href;
+      if (rel.includes('canonical') || rel.includes('dc:isversionof'))
+        canonical = new URL(href, base).href;
+    },
+    false,
+  );
+  const add = (value: string | undefined, currentBase: string) => {
+    if (value && !/^(?:data:|blob:|#)/i.test(value)) {
+      const url = new URL(value, currentBase);
+      url.hash = '';
+      links.add(url.href);
     }
-  });
-  visit(ast, (node) => {
-    if (node.tagName !== 'link') return;
-    const rel = (attribute(node, 'rel') || '').toLowerCase().split(/\s+/),
-      href = attribute(node, 'href');
-    if (!href) return;
-    if (rel.includes('modulepreload') || rel.includes('preload'))
-      links.add(new URL(href, base).href);
-    if (!manifestURL && rel.includes('manifest')) manifestURL = new URL(href, base).href;
-    if (rel.includes('canonical') || rel.includes('dc:isversionof'))
-      canonical = new URL(href, base).href;
-  });
-  const add = (value: string | undefined) => {
-    if (value && !/^(?:data:|blob:|#)/i.test(value)) links.add(new URL(value, base).href);
   };
-  function walk(parent: Tree.ParentNode) {
+  const absorb = (child: PreparedSourceDocument) => {
+    child.links.forEach((url) => links.add(url));
+    child.documentURLs.forEach((url) => documentURLs.add(url));
+    inlineScripts.push(...child.inlineScripts);
+    scriptContexts.push(...child.scriptContexts);
+  };
+  function walk(parent: Tree.ParentNode, inheritedBase: string) {
     parent.childNodes = parent.childNodes.filter((child) => {
       if (!element(child)) return true;
       const get = (name: string) => attribute(child, name);
+      const xmlBase =
+        kind === 'svg'
+          ? child.attrs.find(
+              (attr) =>
+                attr.name === 'xml:base' ||
+                (attr.prefix === 'xml' && attr.name === 'base'),
+            )
+          : undefined;
+      const currentBase = xmlBase
+        ? new URL(xmlBase.value, inheritedBase).href
+        : inheritedBase;
+      if (xmlBase) xmlBase.value = currentBase;
       if (child.tagName === 'base') return false;
       if (child.tagName === 'title')
         title = child.childNodes
@@ -102,10 +180,10 @@ export function prepareDocument(text: string, documentURL: string) {
         child.attrs = child.attrs.filter((attr) => attr !== candidates);
       }
       for (const attr of child.attrs) {
-        if (['src', 'href', 'poster'].includes(attr.name) && attr.value) {
+        if (['src', 'href', 'poster', 'data'].includes(attr.name) && attr.value) {
           if (child.tagName === 'a' && attr.name === 'href') {
             if (attr.value.startsWith('#')) continue;
-            const target = new URL(attr.value, base),
+            const target = new URL(attr.value, currentBase),
               identity = new URL(canonical),
               fragment = target.hash;
             target.hash = '';
@@ -113,63 +191,133 @@ export function prepareDocument(text: string, documentURL: string) {
             attr.value =
               fragment && target.href === identity.href
                 ? fragment
-                : new URL(attr.value, base).href;
-          } else if (!/^(?:data:|blob:|#)/i.test(attr.value))
-            attr.value = new URL(attr.value, base).href;
+                : new URL(attr.value, currentBase).href;
+          } else if (!/^(?:data:|blob:|#|about:)/i.test(attr.value))
+            attr.value = new URL(attr.value, currentBase).href;
         }
         if (attr.name === 'style') {
-          attr.value = absoluteCSS(attr.value, base);
-          for (const url of cssReferences(attr.value, base)) add(url);
+          attr.value = absoluteCSS(attr.value, currentBase);
+          cssReferences(attr.value, currentBase).forEach((url) => add(url, currentBase));
+        }
+      }
+      if (['iframe', 'object'].includes(child.tagName)) {
+        const inline =
+          child.tagName === 'iframe'
+            ? child.attrs.find((attr) => attr.name === 'srcdoc')
+            : undefined;
+        const source = child.attrs.find(
+          (attr) => attr.name === (child.tagName === 'object' ? 'data' : 'src'),
+        );
+        if (inline) {
+          const nested = prepareSource(
+            inline.value,
+            documentURL,
+            { kind: 'html', baseURL: currentBase },
+            depth + 1,
+          );
+          inline.value = nested.html;
+          absorb(nested);
+        } else if (source?.value) {
+          const url = new URL(source.value, currentBase);
+          if (url.protocol === 'data:') {
+            const fragment = url.hash;
+            url.hash = '';
+            const decoded = decodeDocumentDataURL(url.href);
+            const nested = prepareSource(
+              decoded.text,
+              documentURL,
+              { kind: decoded.kind, baseURL: currentBase },
+              depth + 1,
+            );
+            source.value =
+              'data:' +
+              (decoded.kind === 'svg' ? 'image/svg+xml' : 'text/html') +
+              ';charset=utf-8,' +
+              encodeURIComponent(nested.html) +
+              fragment;
+            absorb(nested);
+          } else if (['http:', 'https:'].includes(url.protocol)) {
+            url.hash = '';
+            links.add(url.href);
+            documentURLs.add(url.href);
+          }
         }
       }
       if (child.tagName === 'script') {
+        const sourceKey =
+          child.namespaceURI === 'http://www.w3.org/2000/svg' ? 'href' : 'src';
         if (isDataScript(get('type') || '')) {
-          if (get('src')) throw new Error('Data scripts must be inline');
+          if (get('src') || get('href')) throw new Error('Data scripts must be inline');
           return true;
         }
         if (!isExecutableScriptType(get('type') || ''))
           throw new Error('Unsupported executable script type');
-        if (!get('src')) {
-          const url = new URL(`__pf_inline_${crypto.randomUUID()}.js`, base).href;
+        let url = get(sourceKey);
+        const inline = !url;
+        if (!url) {
+          url = new URL('__pf_inline_' + crypto.randomUUID() + '.js', currentBase).href;
           const code = child.childNodes
             .map((node) => ('value' in node ? node.value : ''))
             .join('');
           inlineScripts.push({ url, code });
           child.childNodes = [];
-          child.attrs.push({ name: 'src', value: url });
-          scriptURLs.add(url);
-        } else {
-          const src = get('src')!;
-          scriptURLs.add(new URL(src, base).href);
-          add(src);
-        }
+          child.attrs.push({ name: sourceKey, value: url });
+        } else add(url, currentBase);
+        const scriptURL = new URL(url, currentBase);
+        const documentAddress = new URL(documentURL);
+        scriptURL.hash = '';
+        documentAddress.hash = '';
+        if (!inline && scriptURL.href === documentAddress.href)
+          throw new Error('Script must be installed JavaScript, not its source document');
+        scriptContexts.push({
+          url: scriptURL.href,
+          baseURL: currentBase,
+          documentURL,
+          inline,
+        });
       }
-      if (child.tagName === 'link') add(get('href'));
-      if (['img', 'audio', 'video', 'source', 'input'].includes(child.tagName)) {
-        add(get('src'));
-        add(get('poster'));
+      if (child.tagName === 'link') add(get('href'), currentBase);
+      if (['img', 'image', 'audio', 'video', 'source', 'input'].includes(child.tagName)) {
+        add(get(child.tagName === 'image' ? 'href' : 'src'), currentBase);
+        add(get('poster'), currentBase);
       }
       if (child.tagName === 'style')
         for (const node of child.childNodes)
           if ('value' in node) {
-            node.value = absoluteCSS(node.value, base);
-            for (const url of cssReferences(node.value, base)) add(url);
+            node.value = absoluteCSS(node.value, currentBase);
+            cssReferences(node.value, currentBase).forEach((url) =>
+              add(url, currentBase),
+            );
           }
-      walk(child);
-      if ('content' in child) walk(child.content as Tree.DocumentFragment);
+      walk(child, currentBase);
+      if ('content' in child) walk(child.content as Tree.DocumentFragment, currentBase);
       return true;
     });
   }
-  walk(ast);
+  walk(ast, base);
   const html = serialize(ast);
-  validateMarkup(html, { document: true, initial: true });
+  // Discovery aliases assert no runtime authority. Final admission recompiles
+  // against the actual downloaded graph before any application code can run.
+  const aliases: [string, string][] = scriptContexts.map((script) => [
+    script.url,
+    script.url,
+  ]);
+  compileDocumentContent({
+    kind,
+    text: html,
+    sourceURL: documentURL,
+    baseURL: base,
+    aliases,
+  });
   return {
     html,
+    kind,
     title,
     baseURL: base,
     links: [...links],
+    documentURLs: [...documentURLs],
     manifestURL,
     inlineScripts,
-    scriptURLs: [...scriptURLs],
+    scriptContexts,
   };
 }

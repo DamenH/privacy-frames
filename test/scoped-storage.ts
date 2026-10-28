@@ -183,7 +183,7 @@ try {
       );
       assert.equal(nativeNames.filter((n) => n.endsWith(':shared-name')).length, 2);
       assert(nativeNames.includes('privacy-frames-installations'));
-      await notes.reload();
+      await notes.reload({ waitUntil: 'commit' });
       await notes.waitForFunction(() =>
         document.querySelector('#mode')?.textContent.includes('network isolated'),
       );
@@ -253,7 +253,7 @@ try {
       const cacheNetwork = await notes.evaluate(async () => {
         const cache = await caches.open('network-attempt');
         try {
-          await cache.add('http://127.0.0.1:4216/cache?value=private-cache-marker');
+          await cache.add('http://127.0.0.1:4366/cache?value=private-cache-marker');
           return false;
         } catch {
           return true;

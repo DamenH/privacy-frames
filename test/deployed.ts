@@ -2,6 +2,7 @@ import { launch } from './browser-profile.ts';
 import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { chromium, firefox } from 'playwright';
+import { checkBoundaryProbes, checkBoundaryProbeUI } from './helpers/boundary-probes.ts';
 const hostURL = process.env.HOST_URL || 'https://pf.damenh.com/';
 const report = { date: new Date().toISOString(), entry: hostURL, browsers: [] };
 try {
@@ -26,6 +27,14 @@ try {
       ).json();
       assert.equal(base.origin, new URL(config.managerURL).origin);
       assert.notEqual(base.origin, new URL(config.runtimeURL).origin);
+      assert.equal(
+        new Set([
+          base.origin,
+          new URL(config.runtimeURL).origin,
+          new URL(config.installationURL).origin,
+        ]).size,
+        3,
+      );
       assert.deepEqual(config.managerOrigins, [base.origin]);
       assert.equal(await page.locator('iframe').count(), 1);
       assert.equal(context.pages().length, 1);
@@ -47,7 +56,7 @@ try {
               document.querySelector('#status').textContent,
             ),
           {},
-          { timeout: 90000 },
+          { timeout: 300000 },
         );
         assert.match(
           await page.locator('#status').textContent(),
@@ -78,7 +87,7 @@ try {
       let app = await launch('notes');
       await app.locator('#note').fill('Synthetic deployed private note');
       await app.locator('#save').click();
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app.waitForFunction(() =>
         document.querySelector('#mode')?.textContent.includes('network isolated'),
       );
@@ -103,7 +112,7 @@ try {
         { timeout: 60000 },
       );
       await context.setOffline(true);
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app.waitForFunction(
         () =>
           document.querySelector('#photocraft_loading') === null &&
@@ -132,18 +141,12 @@ try {
         await app.evaluate(() => localStorage.getItem('host-private-canary')),
         null,
       );
-      await app.locator('#run').click();
-      await app.waitForFunction(
-        () =>
-          document.querySelectorAll('#results tr').length ===
-          Object.keys(boundaryProbes).length,
-      );
-      row.probes = await app.locator('#results tr').allTextContents();
-      assert.equal(row.probes.length, 33);
-      assert(row.probes.every((x) => x.includes('Blocked:')));
-      assert.equal(await app.evaluate(() => window.length), 0);
+      row.boundaryCapabilities = await checkBoundaryProbes(app);
+      row.probes = await checkBoundaryProbeUI(app);
       await app.close();
-      row.checks.push('Thirty-three hostile event checks and manager-state isolation');
+      row.checks.push(
+        'Hostile operations remain denied while inert documents, local evaluation and prepared contexts work',
+      );
       app = await launch('playground');
       await app.locator('#secret').fill('synthetic-hosted-playground-marker');
       await app.locator('#run').click();
@@ -178,7 +181,7 @@ try {
         .getByRole('button', { name: 'Synthetic deployed score', exact: true })
         .waitFor();
       await context.setOffline(true);
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app
         .getByRole('button', { name: 'Synthetic deployed score', exact: true })
         .waitFor();

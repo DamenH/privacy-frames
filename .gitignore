@@ -3,6 +3,7 @@ node_modules/
 dist/
 dist-manager/
 dist-runtime/
+dist-installation/
 .local-deployment.json
 test/apps/
 results/*.png

@@ -2,6 +2,9 @@ interface ResponseOptions {
   scriptNonce?: string;
   workerSource?: string;
   controllerSource?: string;
+  frameSource?: string;
+  embedded?: boolean;
+  popups?: boolean;
 }
 
 function workerURL(value: string): URL {
@@ -37,20 +40,26 @@ function workerSources(options: ResponseOptions): string {
 }
 
 /** Browser policy prevents effects that a service-worker fetch handler cannot cover. */
-function policy(nonce: string | undefined, workerSource: string) {
+function policy(
+  nonce: string | undefined,
+  workerSource: string,
+  options: ResponseOptions,
+) {
   return [
-    'sandbox allow-scripts allow-same-origin allow-forms',
-    "frame-ancestors 'none'",
+    'sandbox allow-scripts allow-same-origin allow-forms' +
+      (options.popups ? ' allow-popups allow-popups-to-escape-sandbox' : ''),
+    options.embedded ? "frame-ancestors 'self'" : "frame-ancestors 'none'",
     "default-src 'none'",
     "manifest-src 'self'",
-    "script-src 'self' blob: 'wasm-unsafe-eval'" + (nonce ? ` 'nonce-${nonce}'` : ''),
+    "script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval'" +
+      (nonce ? ` 'nonce-${nonce}'` : ''),
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob:",
     "font-src 'self' data:",
     "connect-src 'self' blob: data:",
     "media-src 'self' blob: data:",
     "object-src 'none'",
-    "frame-src 'none'",
+    'frame-src ' + (options.frameSource ? workerSource : "'none'"),
     `worker-src ${workerSource}`,
     "form-action 'none'",
     "base-uri 'none'",
@@ -76,11 +85,21 @@ export function response(
 ): Response {
   if (options.scriptNonce && !/^[a-zA-Z0-9+/_-]+$/.test(options.scriptNonce))
     throw new Error('Invalid script nonce');
+  if (
+    (options.frameSource !== undefined && options.frameSource !== options.workerSource) ||
+    (options.embedded && !options.frameSource)
+  )
+    throw new Error('Document contexts require their owning bootstrap directory');
   return new Response(body, {
     status,
     headers: {
       ...headers,
-      'Content-Security-Policy': policy(options.scriptNonce, workerSources(options)),
+      'Content-Security-Policy': policy(
+        options.scriptNonce,
+        workerSources(options),
+        options,
+      ),
+      'X-Frame-Options': options.embedded ? 'SAMEORIGIN' : 'DENY',
       'Content-Type': type,
     },
   });

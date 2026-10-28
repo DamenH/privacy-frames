@@ -49,7 +49,7 @@ try {
         null,
       );
       assert.equal(await app.evaluate(() => window.opener), null);
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app.waitForFunction(() =>
         document.querySelector('#mode')?.textContent.includes('network isolated'),
       );
@@ -68,7 +68,7 @@ try {
         document.querySelector('#mode')?.textContent.includes('network isolated'),
       );
       await context.setOffline(true);
-      await offline.reload();
+      await offline.reload({ waitUntil: 'commit' });
       await offline.waitForFunction(() =>
         document.querySelector('#mode')?.textContent.includes('network isolated'),
       );
@@ -173,7 +173,7 @@ try {
       const wrong = new URL(customURL);
       wrong.pathname = wrong.pathname.replace('/custom-entry/', '/wrong/');
       wrong.hash = '/reference';
-      await customPage.goto(wrong.href);
+      await customPage.goto(wrong.href, { waitUntil: 'commit' });
       await customPage.getByText('network-isolated', { exact: true }).waitFor();
       assert.equal(new URL(customPage.url()).pathname, new URL(customURL).pathname);
       assert.equal(new URL(customPage.url()).hash, '#/reference');

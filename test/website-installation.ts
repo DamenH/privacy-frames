@@ -63,39 +63,155 @@ try {
           .filter((r) => r.path.includes('private-website-marker')),
         [],
       );
-      assert.equal(app.workers().length, 0);
       checks.push(
-        'Root-relative CSS/resources, relative module imports and generated cache content work; private execution has no publisher worker or network fallback',
+        'Root-relative resources, module imports and generated cache content work without network fallback',
       );
+      const runtimeBridgeRealm = manager
+        .frames()
+        .find((frame) => frame.url().endsWith('/connect.html'));
+      assert(runtimeBridgeRealm);
+      const nativeState = () =>
+        runtimeBridgeRealm.evaluate(async () => ({
+          controller: navigator.serviceWorker.controller?.scriptURL,
+          registrations: (await navigator.serviceWorker.getRegistrations())
+            .map((registration) => ({
+              scope: registration.scope,
+              active: registration.active?.scriptURL,
+              state: registration.active?.state,
+            }))
+            .sort((left, right) => left.scope.localeCompare(right.scope)),
+        }));
+      const before = await nativeState();
+      assert(before.controller?.endsWith('/runtime/sw.js'));
+      assert.equal(before.registrations.length, 1);
+      assert.equal(before.registrations[0].state, 'activated');
+      const httpControlStart = server.traffic.length;
+      const httpControl = await manager.evaluate(async () => {
+        const marker = 'native-receiver-' + crypto.randomUUID();
+        const response = await fetch('http://127.0.0.1:4366/disclosure?marker=' + marker);
+        return { marker, status: response.status, body: await response.text() };
+      });
+      assert.equal(httpControl.status, 200);
+      assert.equal(httpControl.body, 'diagnostic receiver');
+      assert.equal(
+        server.traffic
+          .slice(httpControlStart)
+          .filter((request) => request.path.includes(httpControl.marker)).length,
+        1,
+        'Native HTTP receiver control was inactive',
+      );
+      const nativeListControl = await runtimeBridgeRealm.evaluate(
+        () =>
+          new Promise((resolve, reject) => {
+            const channel = new MessageChannel();
+            const timeout = setTimeout(
+              () => reject(new Error('Native list control timed out')),
+              5000,
+            );
+            channel.port1.onmessage = (event) => {
+              clearTimeout(timeout);
+              channel.port1.close();
+              resolve(event.data);
+            };
+            navigator.serviceWorker.controller!.postMessage({ operation: 'list' }, [
+              channel.port2,
+            ]);
+          }),
+      );
+      assert.equal(nativeListControl.ok, true);
+      assert.equal(nativeListControl.value.length, 1);
       const authority = await app.evaluate(async () => {
         const ready = await navigator.serviceWorker.ready;
-        const results = [];
+        const prohibited = [];
         for (const operation of [
           () => navigator.serviceWorker.register('/other-worker.js'),
           () => ready.update(),
-          () => ready.unregister(),
           () => ready.navigationPreload.enable(),
-          () => ready.active.postMessage({ operation: 'list' }),
         ]) {
           try {
             await operation();
-            results.push(false);
+            prohibited.push(false);
           } catch {
-            results.push(true);
+            prohibited.push(true);
           }
         }
-        return results;
+        const virtualReplies = await new Promise<unknown[]>((resolve) => {
+          const channel = new MessageChannel();
+          const replies: unknown[] = [];
+          channel.port1.onmessage = (event) => replies.push(event.data);
+          ready.active!.postMessage({ operation: 'list' }, [channel.port2]);
+          setTimeout(() => {
+            channel.port1.close();
+            resolve(replies);
+          }, 750);
+        });
+        return { prohibited, virtualReplies, unregistered: await ready.unregister() };
       });
-      assert.deepEqual(authority, [true, true, true, true, true]);
+      assert.deepEqual(authority.prohibited, [true, true, true]);
+      assert.deepEqual(
+        authority.virtualReplies,
+        [],
+        'Virtual messaging reached host management',
+      );
+      assert.equal(typeof authority.unregistered, 'boolean');
+      assert.equal(authority.unregistered, true);
+      assert.deepEqual(
+        await nativeState(),
+        before,
+        'Virtual unregister changed native worker authority',
+      );
+      const unregisterStart = server.traffic.length;
+      const afterUnregister = await app.evaluate(async () => {
+        const marker = 'post-unregister-' + crypto.randomUUID();
+        const outcomes = [];
+        for (const url of [
+          new URL('__private-not-installed?marker=' + marker, location.href).href,
+          'http://127.0.0.1:4366/disclosure?marker=' + marker,
+        ]) {
+          try {
+            const response = await fetch(url);
+            outcomes.push(!response.ok);
+          } catch {
+            outcomes.push(true);
+          }
+        }
+        return { marker, outcomes, mode: window.privacyHost?.mode };
+      });
+      assert.deepEqual(afterUnregister.outcomes, [true, true]);
+      assert.equal(afterUnregister.mode, 'network-isolated');
+      await app.waitForTimeout(250);
+      const escapedAfterUnregister = server.traffic
+        .slice(unregisterStart)
+        .filter((request) => request.path.includes(afterUnregister.marker));
+      assert.deepEqual(
+        escapedAfterUnregister,
+        [],
+        'Post-unregister request reached HTTP receiver',
+      );
       await context.setOffline(true);
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app
         .getByText('Imported module: prepared; activated', { exact: true })
         .waitFor();
+      assert.equal(
+        await app.evaluate(() => window.privacyHost?.mode),
+        'network-isolated',
+      );
+      await app.close();
+      const relaunched = context.waitForEvent('page');
+      await manager.locator('[data-app="ordinary"]').click();
+      app = await relaunched;
+      await app
+        .getByText('Imported module: prepared; activated', { exact: true })
+        .waitFor();
+      assert.equal(
+        await app.evaluate(() => window.privacyHost?.mode),
+        'network-isolated',
+      );
       await context.setOffline(false);
       await app.close();
       checks.push(
-        'Mediated registration cannot enable updates, alternate workers, messaging or navigation preload; offline fresh document works',
+        'Virtual messaging cannot list host installations; virtual unregister preserves native registration/control and blocked unknown requests; offline reload and relaunch remain confined',
       );
       await manager.locator('#app-url').fill('http://127.0.0.1:4218/reject/');
       await manager.locator('#install button').click();
@@ -139,16 +255,28 @@ try {
       checks.push(
         'Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches',
       );
-      await manager.locator('#app-url').fill('http://127.0.0.1:4212/broken/');
+      await manager.locator('#app-url').fill('http://127.0.0.1:4212/missing-entry.html');
       await manager.locator('#install button').click();
       await manager.waitForFunction(() =>
         document.querySelector('#status').textContent.startsWith('Installation refused:'),
       );
       assert.equal(await manager.locator('.app-card').count(), 2);
       assert.equal(manager.workers().length, 0);
-      checks.push('Missing independently declared resources still refuse installation');
+      checks.push(
+        'Missing entry document refuses installation without publishing a record',
+      );
       assert.deepEqual(errors, []);
-      results.push({ name, version: browser.version(), checks });
+      results.push({
+        name,
+        version: browser.version(),
+        checks,
+        authority,
+        nativeBefore: before,
+        nativeAfter: await nativeState(),
+        afterUnregister,
+        escapedAfterUnregister,
+        httpControl,
+      });
     } catch (error) {
       results.push({
         name,

@@ -7,9 +7,15 @@ import type {
 } from '../shared/types.ts';
 import { prepareDocument } from './document.ts';
 import { digest, LIMITS } from '../shared/policy.ts';
-import { ResourceCapture, publicResourceURL } from './resource-capture.ts';
+import {
+  CaptureLimitError,
+  ResourceCapture,
+  publicResourceURL,
+} from './resource-capture.ts';
 import type { FinalizedResources, ScriptDiscoveryEvent } from './resource-capture.ts';
 import { prepareRuntimeDocument } from '../runtime/document.ts';
+
+class UnsupportedPrecacheError extends Error {}
 
 export async function downloadWebsite(
   input: string,
@@ -52,8 +58,11 @@ export async function downloadWebsite(
         entry: 'index.html',
       },
       source: source.href,
-      documentBase: prepared.baseURL,
-      ...finalized,
+      documentBase:
+        finalized.resources.find((resource) => resource.path === 'index.html')
+          ?.documentBase || prepared.baseURL,
+      resources: finalized.resources,
+      size: finalized.size,
       publisherManifest,
       installedAt: new Date().toISOString(),
       preparation: {
@@ -65,6 +74,7 @@ export async function downloadWebsite(
         })),
         outcome,
         ended: true,
+        unavailableResources: finalized.unavailableResources,
       },
     });
     const validateDocument = (candidate: PreparedInstallation) => {
@@ -81,7 +91,9 @@ export async function downloadWebsite(
     };
 
     capture.document(prepared, source.href, independent);
-    await Promise.all(prepared.links.map((url) => capture.download(url, independent)));
+    await Promise.all(
+      prepared.links.map((url) => capture.downloadDependency(url, independent)),
+    );
     let publisherManifest: PreparedInstallation['publisherManifest'] = null;
     if (prepared.manifestURL) {
       try {
@@ -103,11 +115,13 @@ export async function downloadWebsite(
           try {
             await capture.download(url, independent);
           } catch (error) {
+            if (error instanceof CaptureLimitError) throw error;
             independent.downloads.delete(url);
             onProgress('Optional icon unavailable: ' + errorMessage(error));
           }
         }
       } catch (error) {
+        if (error instanceof CaptureLimitError) throw error;
         independent.downloads.delete(prepared.manifestURL);
         onProgress('Optional manifest unavailable: ' + errorMessage(error));
       }
@@ -119,7 +133,22 @@ export async function downloadWebsite(
     let receipt: PrecacheReceipt | null = null;
     let caches: PreparedCache[] = [];
     let outcome: PreparationOutcome = { status: 'absent' };
-    const scriptURL = new URL('sw.js', scope);
+    const registeredScripts = [
+      ...new Set(
+        independent.scriptReferences
+          .filter((reference) => reference.kind === 'service-worker')
+          .map((reference) => reference.url),
+      ),
+    ];
+    const availableScripts = registeredScripts.filter(
+      (url) => !independent.unavailable.has(url),
+    );
+    const scriptURL = new URL(
+      availableScripts.length === 1
+        ? availableScripts[0]
+        : registeredScripts[0] || 'sw.js',
+      scope,
+    );
     const stage = capture.graph(independent);
     let brokerOpen = true;
     let scriptFound = false;
@@ -129,6 +158,10 @@ export async function downloadWebsite(
       );
     }, 45000);
     try {
+      if (registeredScripts.length > 1 && availableScripts.length !== 1)
+        throw new UnsupportedPrecacheError(
+          'Multiple captured service-worker scripts require application execution to select',
+        );
       const script = await capture.download(scriptURL.href, stage);
       scriptFound = true;
       if (!/javascript|ecmascript/i.test(script.contentType)) {
@@ -245,17 +278,24 @@ export async function downloadWebsite(
         }
       }
     } catch (error) {
+      if (error instanceof CaptureLimitError) throw error;
       outcome =
-        !scriptFound &&
-        error instanceof Error &&
-        'status' in error &&
-        error.status === 404
-          ? { status: 'absent' }
-          : {
-              status: 'failed',
+        error instanceof UnsupportedPrecacheError
+          ? {
+              status: 'unsupported',
               scriptURL: scriptURL.href,
-              reason: errorMessage(error).slice(0, 2000),
-            };
+              reason: error.message,
+            }
+          : !scriptFound &&
+              error instanceof Error &&
+              'status' in error &&
+              error.status === 404
+            ? { status: 'absent' }
+            : {
+                status: 'failed',
+                scriptURL: scriptURL.href,
+                reason: errorMessage(error).slice(0, 2000),
+              };
     } finally {
       clearTimeout(stageTimer);
       brokerOpen = false;

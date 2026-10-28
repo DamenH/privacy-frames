@@ -1,6 +1,7 @@
 {
   "managerURL": "https://pf.damenh.com/",
   "runtimeURL": "https://apps.pf.damenh.com/",
+  "installationURL": "https://install.pf.damenh.com/",
   "managerOrigins": ["https://pf.damenh.com"],
   "examples": [
     {
@@ -26,6 +27,26 @@
     {
       "name": "Wikipedia article",
       "url": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html"
+    },
+    {
+      "name": "Excalidraw",
+      "url": "https://privacy-frames.github.io/apps/excalidraw/"
+    },
+    {
+      "name": "Squoosh",
+      "url": "https://privacy-frames.github.io/apps/squoosh/"
+    },
+    {
+      "name": "diagrams.net",
+      "url": "https://privacy-frames.github.io/apps/drawio/?offline=1"
+    },
+    {
+      "name": "CyberChef",
+      "url": "https://gchq.github.io/CyberChef/"
+    },
+    {
+      "name": "StackEdit",
+      "url": "https://privacy-frames.github.io/apps/stackedit/"
     }
   ]
 }

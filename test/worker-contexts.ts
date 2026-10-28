@@ -97,7 +97,7 @@ const receiver = http.createServer((req, res) => {
 receiver.on('connection', () => connections.push(Date.now()));
 await new Promise<void>((resolve) => publisher.listen(4344, '127.0.0.1', resolve));
 await new Promise<void>((resolve) => receiver.listen(4345, '127.0.0.1', resolve));
-const server = await servers();
+const server = await servers({ receiver: false });
 const results = [];
 
 async function roundTrip(page: Page, kind: string, optionsMode = 'array') {
@@ -555,10 +555,17 @@ try {
         void new MessageEvent('message', { data: { type: 'pf-context-ready' } }).data;
         const getterControl = privateEvents;
         privateEvents = 0;
-        Object.defineProperty(globalThis, 'Reflect', {
-          ...originalReflect,
-          value: replacement,
-        });
+        const replacementDescriptor =
+          'value' in originalReflect
+            ? { ...originalReflect, value: replacement }
+            : { ...originalReflect, get: () => replacement };
+        let bindingReplacementDenied = false;
+        try {
+          Object.defineProperty(globalThis, 'Reflect', replacementDescriptor);
+        } catch {
+          bindingReplacementDenied = true;
+        }
+        const bindingRetained = Reflect === nativeReflect;
         let worker: Worker | undefined;
         try {
           worker = new Worker('worker.js');
@@ -583,6 +590,8 @@ try {
           });
           return {
             sameConstructor,
+            bindingReplacementDenied,
+            bindingRetained,
             unknownRejected,
             nativeConstructorCalls,
             privateEvents,
@@ -595,6 +604,8 @@ try {
         }
       });
       assert.equal(recovery.sameConstructor, true);
+      assert.equal(recovery.bindingReplacementDenied, true);
+      assert.equal(recovery.bindingRetained, true);
       assert.equal(recovery.unknownRejected, true);
       assert.equal(recovery.nativeConstructorCalls, 0);
       assert.equal(recovery.privateEvents, 0);
@@ -651,12 +662,26 @@ try {
         nativeTla.push({ path, result });
       }
       const nativeRecovery = await control.evaluate(async (target) => {
+        const original = Object.getOwnPropertyDescriptor(globalThis, 'Reflect')!;
+        const nativeReflect = Reflect;
+        const replacement = Object.create(nativeReflect);
+        const replacementDescriptor =
+          'value' in original
+            ? { ...original, value: replacement }
+            : { ...original, get: () => replacement };
+        let replacementAccepted = false;
+        try {
+          Object.defineProperty(globalThis, 'Reflect', replacementDescriptor);
+          replacementAccepted = Reflect === replacement;
+        } finally {
+          Object.defineProperty(globalThis, 'Reflect', original);
+        }
         const worker = new Worker('worker.js');
         const constructor = worker.constructor as typeof Worker;
         worker.terminate();
         const recovered = new constructor('uninstalled.js');
         try {
-          return await new Promise<unknown>((resolve, reject) => {
+          const response = await new Promise<unknown>((resolve, reject) => {
             recovered.onmessage = (e) => resolve(e.data);
             recovered.onerror = (e) => reject(new Error(e.message));
             setTimeout(
@@ -665,11 +690,13 @@ try {
             );
             recovered.postMessage({ op: 'network', target });
           });
+          return { ...response, replacementAccepted };
         } finally {
           recovered.terminate();
         }
       }, receiverURL);
       assert.equal(nativeRecovery.fetchRefused, false);
+      assert.equal(nativeRecovery.replacementAccepted, true);
       assert.equal(nativeRecovery.importsRefused, false);
       assert(requests.length > before);
       assert(connections.length > connectionsBefore);

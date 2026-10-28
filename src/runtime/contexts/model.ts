@@ -1,3 +1,6 @@
+import { internalRecord } from '../../shared/primordials.ts';
+import { isApplicationRoute } from '../../shared/application-navigation.ts';
+
 export const CONTEXT_POLICY_VERSION = 2;
 
 export type ContextKind = 'window' | 'dedicated-worker' | 'shared-worker' | 'worklet';
@@ -19,6 +22,7 @@ export interface WorkerBootstrapMetadata {
   runtime: string;
   applicationURL: string;
   aliases: [string, string][];
+  rootAliases: [string, string][];
 }
 
 export interface ContextStorage {
@@ -74,7 +78,7 @@ export class ContextRegistry {
         ))
       )
         throw new Error('Browser context closed before startup');
-      await this.storage.put(client, { ...identity, state: 'preparing' });
+      await this.storage.put(client, internalRecord({ ...identity, state: 'preparing' }));
     });
   }
 
@@ -83,11 +87,21 @@ export class ContextRegistry {
     url: string;
   }): Promise<ContextIdentity | undefined> {
     const identity = await this.storage.get(client.id);
-    return identity?.policyVersion === CONTEXT_POLICY_VERSION &&
-      identity.state !== 'closed' &&
-      identity.url === client.url
-      ? identity
-      : undefined;
+    if (identity?.policyVersion !== CONTEXT_POLICY_VERSION || identity.state === 'closed')
+      return;
+    let address = client.url;
+    if (identity.kind === 'window') {
+      if (identity.parent === null)
+        return isApplicationRoute(address, identity.url) ? identity : undefined;
+      try {
+        const url = new URL(address);
+        url.hash = '';
+        address = url.href;
+      } catch {
+        return;
+      }
+    }
+    return identity.url === address ? identity : undefined;
   }
 
   async resolveWorker(client: string): Promise<ContextIdentity | undefined> {
@@ -107,7 +121,7 @@ export class ContextRegistry {
     const client = await this.storage.lookupByContext(context);
     if (!client || (caller && caller !== client)) return undefined;
     const identity = await this.resolveWorker(client);
-    return identity?.id === context ? { client, identity } : undefined;
+    return identity?.id === context ? internalRecord({ client, identity }) : undefined;
   }
 
   /** Synchronization is idempotent bookkeeping, not evidence of trusted execution. */
@@ -116,17 +130,23 @@ export class ContextRegistry {
       const capability = await this.resourceCapability(context, caller);
       if (!capability) return false;
       if (capability.identity.state === 'preparing')
-        await this.storage.put(capability.client, {
-          ...capability.identity,
-          state: 'ready',
-        });
+        await this.storage.put(
+          capability.client,
+          internalRecord({
+            ...capability.identity,
+            state: 'ready',
+          }),
+        );
       const current = await this.resourceCapability(context, caller);
       if (!current) return false;
       if (current.identity.state === 'ready')
-        await this.storage.put(current.client, {
-          ...current.identity,
-          state: 'running',
-        });
+        await this.storage.put(
+          current.client,
+          internalRecord({
+            ...current.identity,
+            state: 'running',
+          }),
+        );
       return !!(await this.resourceCapability(context, caller));
     });
   }
@@ -135,15 +155,15 @@ export class ContextRegistry {
     return this.mutate(async () => {
       const identity = await this.resolve(client);
       if (!identity) throw new Error('Browser context is not bound');
-      const allowed: Record<ContextState, ContextState[]> = {
+      const allowed: Record<ContextState, ContextState[]> = internalRecord({
         preparing: ['ready', 'closed'],
         ready: ['running', 'closed'],
         running: ['closed'],
         closed: [],
-      };
+      });
       if (!allowed[identity.state].includes(state))
         throw new Error('Invalid browser context transition');
-      await this.storage.put(client.id, { ...identity, state });
+      await this.storage.put(client.id, internalRecord({ ...identity, state }));
     });
   }
 
@@ -162,7 +182,7 @@ export class ContextRegistry {
         )
           return false;
         await this.storage.requestClosure(parent, application, context);
-        await this.storage.put(client, { ...identity, state: 'closed' });
+        await this.storage.put(client, internalRecord({ ...identity, state: 'closed' }));
         return true;
       }
       // A constructor can be terminated before its reserved client is bound.
@@ -179,7 +199,10 @@ export class ContextRegistry {
           identity.parent !== parent
         )
           return false;
-        await this.storage.put(racedClient, { ...identity, state: 'closed' });
+        await this.storage.put(
+          racedClient,
+          internalRecord({ ...identity, state: 'closed' }),
+        );
       }
       return true;
     });

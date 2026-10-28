@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { prepareDocument, cssReferences } from '../src/installation/document.ts';
 import {
   applicationURL,
+  applicationLaunchURL,
   applicationIdentity,
   publicAlias,
 } from '../src/shared/runtime-url.ts';
@@ -67,12 +68,12 @@ test('generic document base is resolved once and removed before admission', () =
   assert(result.links.includes('https://publisher.test/assets/photo.png'));
   assert(!result.html.includes('srcset='));
   assert(!result.links.includes('https://ignored.test/'));
-  assert.throws(() =>
-    prepareDocument(
-      '<base href="/assets/"><template><iframe></iframe></template>',
-      'https://publisher.test/',
-    ),
+  const dormant = prepareDocument(
+    '<base href="/assets/"><template><iframe></iframe></template>',
+    'https://publisher.test/',
   );
+  assert(dormant.html.includes('<template><iframe'));
+  assert.equal(dormant.baseURL, 'https://publisher.test/assets/');
 });
 test('CSS dependency discovery handles imports, relative resources and cycles without following data', () => {
   assert.deepEqual(
@@ -428,4 +429,25 @@ test('streamed installation bytes crossing 100 MiB abort even when content-lengt
   } finally {
     globalThis.fetch = originalFetch;
   }
+});
+
+test('publisher query configuration survives launch and PWA metadata without changing resource bases', () => {
+  const configured = { ...app, source: app.source + '?mode=offline&text=a%26b' };
+  const launch = applicationLaunchURL(configured, 'https://runtime.test/');
+  assert.equal(launch.search, '?mode=offline&text=a%26b');
+  assert.equal(applicationURL(configured, 'https://runtime.test/').search, '');
+  assert.equal(new URL('assets/main.js', launch).search, '');
+  const manifest = webManifest(configured, 'https://runtime.test/');
+  assert.equal(manifest.start_url, launch.pathname + launch.search);
+  const publisher = webManifest(
+    {
+      ...configured,
+      publisherManifest: {
+        url: 'https://publisher.test/app/manifest.json',
+        value: { start_url: './?mode=offline&text=a%26b#start' },
+      },
+    },
+    'https://runtime.test/',
+  );
+  assert.equal(publisher.start_url, launch.pathname + launch.search + '#start');
 });

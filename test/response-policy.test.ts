@@ -67,3 +67,30 @@ test('worker policy can name its controlling script without allowing its directo
   }
   assert.throws(() => response('', 'text/javascript', 200, { controllerSource }));
 });
+
+test('embedded documents admit only their own guarded contexts and retain sandbox restrictions', () => {
+  const workerSource = 'https://runtime.test/app/__contexts/';
+  const controllerSource = 'https://runtime.test/sw.js';
+  const result = response('shell', 'image/svg+xml', 200, {
+    workerSource,
+    controllerSource,
+    frameSource: workerSource,
+    embedded: true,
+  });
+  const policy = result.headers.get('Content-Security-Policy')!;
+  assert(policy.includes(`; frame-src ${workerSource} ${controllerSource};`));
+  assert(policy.includes("frame-ancestors 'self'"));
+  assert(policy.includes('sandbox allow-scripts allow-same-origin allow-forms'));
+  assert(policy.includes("object-src 'none'"));
+  assert(policy.includes("form-action 'none'"));
+  assert.equal(result.headers.get('X-Frame-Options'), 'SAMEORIGIN');
+  for (const options of [
+    { embedded: true },
+    { workerSource, embedded: true },
+    { frameSource: workerSource },
+    { workerSource, frameSource: 'https://other.test/__contexts/' },
+    { workerSource, frameSource: workerSource + 'other/' },
+  ])
+    assert.throws(() => response('shell', 'text/html', 200, options));
+  assert.equal(response('root').headers.get('X-Frame-Options'), 'DENY');
+});

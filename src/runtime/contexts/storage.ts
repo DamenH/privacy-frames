@@ -1,3 +1,4 @@
+import { internalRecord } from '../../shared/primordials.ts';
 import type { PolicyTools } from '../enforcement/native.ts';
 import { scopeCaches } from '../storage/caches.ts';
 import { scopeIndexedDB } from '../storage/indexed-db.ts';
@@ -10,13 +11,15 @@ export function scopeContextStorage(
 ) {
   const { method, accessor, descriptor, apply, fail, propertyOwner } = tools;
   const prefix = `pf:${application}:`;
-  const caches = scopeCaches({ prefix, method, apply });
+  const caches = scopeCaches(internalRecord({ prefix, method, apply }));
   const cacheOwner = propertyOwner(target, 'caches');
   if (!cacheOwner) throw new Error('Cache Storage is required');
-  accessor(cacheOwner, 'caches', { get: () => caches });
-  const databases = scopeIndexedDB({ prefix, method, accessor, descriptor, apply, fail });
+  accessor(cacheOwner, 'caches', internalRecord({ get: () => caches }));
+  const databases = scopeIndexedDB(
+    internalRecord({ prefix, method, accessor, descriptor, apply, fail }),
+  );
   for (const key of ['indexedDB', 'webkitIndexedDB', 'mozIndexedDB', 'msIndexedDB']) {
     const owner = propertyOwner(target, key);
-    if (owner) accessor(owner, key, { get: () => databases });
+    if (owner) accessor(owner, key, internalRecord({ get: () => databases }));
   }
 }

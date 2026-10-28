@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { chromium, firefox } from 'playwright';
 import { servers } from './server.ts';
+import { checkBoundaryProbes, checkBoundaryProbeUI } from './helpers/boundary-probes.ts';
 // Mutating browser prototypes must not expose a private native token list through
 // the read-only relList interface. The unrestricted page runs the same probe.
 function tokenListReceiverProbe() {
@@ -80,6 +81,7 @@ const server = await servers();
 const results = { date: new Date().toISOString(), browsers: [] };
 try {
   for (const [name, engine] of Object.entries({ chromium, firefox })) {
+    if (process.env.BOUNDARY_BROWSER && process.env.BOUNDARY_BROWSER !== name) continue;
     const browser = await launch(engine, { headless: true });
     const context = await browser.newContext();
     const page = await context.newPage();
@@ -141,8 +143,21 @@ try {
         p.on('console', (m) => {
           if (m.type() === 'error') errors.push(`${id}: ${m.text()}`);
         });
-        await p.waitForLoadState();
-        await p.locator('[data-host-ready="true"]').waitFor();
+        if (process.env.BOUNDARY_NATIVE_LOAD_DIAGNOSTIC)
+          try {
+            await p.waitForLoadState('load');
+          } catch (error) {
+            const state = await p.evaluate(() => ({
+              readyState: document.readyState,
+              hostMode: window.privacyHost?.mode,
+              mode: document.querySelector('#mode')?.textContent,
+              notePresent: !!document.querySelector('#note'),
+            }));
+            result.lifecycleDiagnostic = state;
+            console.error(name, 'NATIVE LOAD DIAGNOSTIC', JSON.stringify(state));
+            throw error;
+          }
+        await p.waitForFunction(() => window.privacyHost?.mode === 'network-isolated');
         await p.waitForFunction(() =>
           document.querySelector('#mode')?.textContent.includes('network isolated'),
         );
@@ -152,7 +167,8 @@ try {
       assert.equal(await app.evaluate(() => window.opener), null);
       await app.locator('#note').fill('A private diagnostic note');
       await app.locator('#save').click();
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
+      await app.waitForFunction(() => document.readyState === 'complete');
       await app.waitForFunction(() =>
         document.querySelector('#mode')?.textContent.includes('network isolated'),
       );
@@ -417,49 +433,10 @@ try {
       result.checks.push(
         'Read-only link token lists retain native behavior without exposing their receiver through mutable browser prototypes',
       );
-      const names = await app.evaluate(() => Object.keys(window.boundaryProbes));
-      const probes = [];
-      for (const probe of names.filter(
-        (n) => !['eval', 'Function constructor'].includes(n),
-      )) {
-        const observation = await app.evaluate(async (name) => {
-          const before = window.length;
-          try {
-            const value = await window.boundaryProbes[name]();
-            return {
-              name,
-              blocked: false,
-              value: typeof value,
-              contexts: window.length - before,
-            };
-          } catch (e) {
-            return {
-              name,
-              blocked: true,
-              error: e.name,
-              contexts: window.length - before,
-            };
-          }
-        }, probe);
-        probes.push(observation);
-        assert(observation.blocked, `${name}: ${probe} was allowed`);
-        assert.equal(observation.contexts, 0, `${probe}: context created`);
-      }
-      await app.locator('#run').click();
-      await app.waitForFunction(
-        () =>
-          document.querySelector('#results').children.length ===
-          Object.keys(boundaryProbes).length,
-      );
-      const uiResults = await app.locator('#results tr').allTextContents();
-      assert(
-        uiResults.every((text) => text.includes('Blocked:')),
-        `Unblocked real-event probe: ${uiResults.filter((text) => !text.includes('Blocked:'))}`,
-      );
-      result.uiProbes = uiResults;
-      result.probes = probes;
       const start = server.traffic.length,
         connectionStart = server.connections.length;
+      result.probes = await checkBoundaryProbes(app);
+      result.uiProbes = await checkBoundaryProbeUI(app);
       await app.locator('#diagnostic').fill('private-marker-' + name);
       await app.locator('#network').click({ noWaitAfter: true });
       await app.waitForFunction(() =>
@@ -472,9 +449,17 @@ try {
         .slice(start)
         .filter((x) => x.path.includes('private-marker'));
       assert.deepEqual(escaped, [], 'Runtime marker reached network');
+      const collectorRequests = server.traffic
+        .slice(start)
+        .filter((item) => item.port === 4366);
+      assert.deepEqual(
+        collectorRequests,
+        [],
+        'Boundary or network probe reached HTTP receiver',
+      );
       const collectorConnections = server.connections
         .slice(connectionStart)
-        .filter((x) => x.port === 4216);
+        .filter((x) => x.port === 4366);
       assert.deepEqual(
         collectorConnections,
         [],
@@ -482,6 +467,7 @@ try {
       );
       result.receiver = {
         httpRequests: escaped.length,
+        boundaryAndNetworkRequests: collectorRequests.length,
         tcpConnections: collectorConnections.length,
       };
       result.checks.push(
@@ -489,7 +475,7 @@ try {
       );
       await app.close();
       result.checks.push(
-        `${probes.length} context/authority/tampering probes refused before creating children`,
+        `${result.probes.length} context and authority probes checked against their permitted operations`,
       );
       const baseline = await context.newPage();
       await baseline.goto('http://127.0.0.1:4215/');
@@ -508,6 +494,29 @@ try {
       assert.equal(tokenListControl.mutationBlocked, false);
       assert.deepEqual(tokenListControl.behavior, tokenListIsolation.behavior);
       result.tokenListControl = tokenListControl;
+      const scriptControlStart = server.traffic.length;
+      assert.equal(
+        await baseline.evaluate(async () => {
+          const script = document.createElement('script');
+          script.src =
+            'http://127.0.0.1:4366/script?value=script-control-' + crypto.randomUUID();
+          await new Promise<void>((resolve, reject) => {
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error('Native external script failed'));
+            document.body.append(script);
+          });
+          return Reflect.get(window, '__boundaryExternalScriptExecuted');
+        }),
+        true,
+      );
+      result.scriptControl = server.traffic
+        .slice(scriptControlStart)
+        .filter((item) => item.port === 4366 && item.path.startsWith('/script?'));
+      assert.equal(
+        result.scriptControl.length,
+        1,
+        'Native script did not reach receiver',
+      );
       result.controls = [];
       for (const probe of [
         'createElement iframe',
@@ -542,7 +551,7 @@ try {
         .slice(controlStart)
         .filter((x) => x.path.includes('control-marker'));
       assert(
-        networkControl.some((x) => x.port === 4216),
+        networkControl.some((x) => x.port === 4366),
         'Inactive HTTP network control',
       );
       result.networkControl = networkControl;
@@ -555,7 +564,7 @@ try {
       await app.waitForFunction(() =>
         document.querySelector('#output').textContent.includes('BLOCKED:'),
       );
-      assert(!server.traffic.slice(playgroundStart).some((x) => x.port === 4216));
+      assert(!server.traffic.slice(playgroundStart).some((x) => x.port === 4366));
       assert(
         (await app.locator('#output').textContent()).includes(
           'private-playground-marker',
@@ -581,10 +590,12 @@ try {
       assert.equal(await app.evaluate(() => window.length), 0);
       await app
         .locator('#javascript')
-        .fill('document.body.append(document.createElement("iframe"));');
+        .fill(
+          'const frame = document.createElement("iframe"); document.body.append(frame); log("PENDING WINDOW:", frame.contentWindow === null);',
+        );
       await app.locator('#run').click();
       await app.waitForFunction(() =>
-        document.querySelector('#output').textContent.includes('ERROR:'),
+        document.querySelector('#output').textContent.includes('PENDING WINDOW: true'),
       );
       assert.equal(await app.evaluate(() => window.length), 0);
       await app
@@ -606,19 +617,19 @@ try {
       await playgroundBaseline.waitForFunction(() =>
         document.querySelector('#output').textContent.includes('NETWORK REACHED'),
       );
-      assert(server.traffic.slice(baselineStart).some((x) => x.port === 4216));
+      assert(server.traffic.slice(baselineStart).some((x) => x.port === 4366));
       await playgroundBaseline.close();
       result.checks.push(
         'Editable HTML/CSS/JS playground blocks default disclosure, runs edited scripts in place and retains context guards; unrestricted control transmits',
       );
-      // A failed download must not publish an installation.
-      await page.locator('#app-url').fill('http://127.0.0.1:4212/broken/');
+      // Missing dependencies may be admitted; a missing entry document cannot be.
+      await page.locator('#app-url').fill('http://127.0.0.1:4212/missing-entry.html');
       await page.locator('#install button').click();
       await page.waitForFunction(() =>
         document.querySelector('#status').textContent.startsWith('Installation refused:'),
       );
       assert.equal(await page.locator('.app-card').count(), 4);
-      result.checks.push('Incomplete installation refused atomically');
+      result.checks.push('Missing entry document refused atomically');
       // Open-window replacement must fail, and a different source cannot inherit note data.
       const originalNoteURL = await page
         .locator('[data-app="notes"]')

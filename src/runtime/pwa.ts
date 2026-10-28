@@ -1,4 +1,8 @@
-import { applicationURL, publicAlias } from '../shared/runtime-url.ts';
+import {
+  applicationURL,
+  applicationLaunchURL,
+  publicAlias,
+} from '../shared/runtime-url.ts';
 import type { Installation } from '../shared/types';
 
 interface ManifestIcon {
@@ -52,7 +56,7 @@ function localLaunch(
     return url.origin === original.origin &&
       url.pathname === original.pathname &&
       url.search === original.search
-      ? entry.pathname + url.hash
+      ? entry.pathname + url.search + url.hash
       : null;
   } catch {
     return null;
@@ -62,6 +66,7 @@ function localLaunch(
 /** Publisher metadata describes presentation; the host supplies all local routes. */
 export function webManifest(app: Installation, base: string | URL): WebManifest {
   const entry = applicationURL(app, base);
+  const launch = applicationLaunchURL(app, base);
   const root = new URL(`${publicAlias(app.id)}/`, base);
   const original = app.publisherManifest?.value ?? {};
   const publisherURL = app.publisherManifest?.url;
@@ -69,7 +74,7 @@ export function webManifest(app: Installation, base: string | URL): WebManifest 
     id: root.pathname,
     name: text(original.name, 100) || app.manifest.name,
     short_name: text(original.short_name, 40) || app.manifest.name.slice(0, 40),
-    start_url: entry.pathname,
+    start_url: launch.pathname + launch.search,
     scope: root.pathname,
     display: 'standalone',
     icons: [],
@@ -102,7 +107,7 @@ export function webManifest(app: Installation, base: string | URL): WebManifest 
   if (publisherURL) {
     result.start_url =
       localLaunch(original.start_url ?? app.source, app.source, publisherURL, entry) ??
-      entry.pathname;
+      launch.pathname + launch.search;
     const icons = Array.isArray(original.icons) ? original.icons.slice(0, 8) : [];
     for (const item of icons) {
       const icon = record(item);

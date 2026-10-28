@@ -52,12 +52,12 @@ try {
         return navigator.serviceWorker.controller!.scriptURL;
       });
       assert(scriptURL.endsWith('?lifecycle=1'));
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app.locator('#note').waitFor();
       assert.equal(await app.locator('#note').inputValue(), 'synthetic lifecycle note');
       const blocked = await app.evaluate(async () => {
         try {
-          await fetch('http://127.0.0.1:4216/lifecycle-private-marker');
+          await fetch('http://127.0.0.1:4366/lifecycle-private-marker');
           return false;
         } catch {
           return true;

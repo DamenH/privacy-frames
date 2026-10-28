@@ -85,7 +85,7 @@ try {
       assert.equal(headers['x-frame-options'], 'DENY');
       assert(headers['content-security-policy'].includes("frame-ancestors 'none'"));
       await app.locator('#secret').fill('synthetic-private-embedding-marker');
-      await app.reload();
+      await app.reload({ waitUntil: 'commit' });
       await app.getByText('Ready', { exact: true }).waitFor();
       assert.equal(
         await app.locator('#secret').inputValue(),

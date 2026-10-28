@@ -78,7 +78,7 @@ for (const [server, port] of [
   [receiverServer, 4341],
 ] as const)
   await new Promise<void>((resolve) => server.listen(port, '127.0.0.1', resolve));
-const host = policyOnly ? { close: async () => {} } : await servers();
+const host = policyOnly ? { close: async () => {} } : await servers({ receiver: false });
 const results = {
   provenance: await testProvenance(import.meta.url),
   mode: policyOnly ? 'isolated script/DOM policy fixture' : 'full runtime installation',
@@ -201,13 +201,13 @@ try {
       const connections = receiverConnections.length;
       const blocked = await app.evaluate(async (target) => {
         const script = document.createElement('script');
-        let source = false,
+        let sourceDenied = false,
           type = false,
           coercions = 0;
         try {
-          script.src = target + 'private-marker';
+          script.src = target + 'private-marker-' + crypto.randomUUID();
         } catch {
-          source = true;
+          sourceDenied = true;
         }
         try {
           script.type = {
@@ -225,6 +225,27 @@ try {
         } catch {
           type = true;
         }
+        let sourceOutcome = 'denied';
+        if (!sourceDenied)
+          sourceOutcome = await new Promise<string>((resolve) => {
+            const timeout = setTimeout(() => resolve('timeout'), 5000);
+            script.onload = () => {
+              clearTimeout(timeout);
+              resolve('load');
+            };
+            script.onerror = () => {
+              clearTimeout(timeout);
+              resolve('error');
+            };
+            document.head.append(script);
+          });
+        const physical = script.getAttribute('src');
+        const localPlaceholder =
+          physical !== null &&
+          new URL(physical, location.href).origin === location.origin &&
+          new URL(physical, location.href).pathname.endsWith(
+            '/__contexts/unavailable-script',
+          );
         const inline = document.createElement('script');
         inline.text =
           'globalThis.__dynamic.transport=fetch(' +
@@ -232,14 +253,26 @@ try {
           ').then(()=>false,()=>true);';
         document.head.append(inline);
         return {
-          source,
+          sourceDenied,
+          sourceOutcome,
+          localPlaceholder,
+          externalScriptExecuted:
+            Reflect.get(globalThis, 'receiverScriptExecuted') === true,
           type,
           coercions,
           checkedType,
           inlineFetchBlocked: await Reflect.get(globalThis, '__dynamic').transport,
         };
       }, receiver);
-      assert.equal(blocked.source, true);
+      if (policyOnly) {
+        assert.equal(blocked.sourceDenied, true);
+        assert.equal(blocked.sourceOutcome, 'denied');
+      } else {
+        assert.equal(blocked.sourceDenied, false);
+        assert.equal(blocked.sourceOutcome, 'error');
+        assert.equal(blocked.localPlaceholder, true);
+      }
+      assert.equal(blocked.externalScriptExecuted, false);
       assert.equal(blocked.type, true);
       assert.equal(blocked.coercions, 1);
       assert.equal(blocked.checkedType, 'text/javascript');
@@ -251,16 +284,23 @@ try {
       await control.goto(publisher);
       const unrestricted = await exercise(control);
       assert.deepEqual(unrestricted, isolated);
-      await control.evaluate(async (target) => {
+      const controlStart = receiverRequests.length;
+      const controlMarker = await control.evaluate(async (target) => {
+        const marker = 'control-marker-' + crypto.randomUUID();
         await new Promise<void>((resolve, reject) => {
           const script = document.createElement('script');
-          script.src = target + 'control-marker';
+          script.src = target + marker;
           script.onload = () => resolve();
           script.onerror = () => reject(new Error('Inactive script receiver control'));
           document.head.append(script);
         });
+        if (Reflect.get(globalThis, 'receiverScriptExecuted') !== true)
+          throw new Error('Native receiver script did not execute');
+        return marker;
       }, receiver);
-      assert(receiverRequests.some((path) => path === '/control-marker'));
+      assert(
+        receiverRequests.slice(controlStart).some((path) => path === '/' + controlMarker),
+      );
       assert(receiverConnections.length > connections);
       results.browsers.push({
         name,

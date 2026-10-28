@@ -1,10 +1,10 @@
+import { strings, internalSet, internalRecord } from '../../shared/primordials.ts';
 import { ContextRegistry } from './model.ts';
 import { getApp, getResource } from '../storage.ts';
 import { applicationURL } from '../../shared/runtime-url.ts';
 import { response } from '../response-policy.ts';
 import { isExecutableScriptType, mime } from '../../shared/policy.ts';
-
-const resourceDestinations = new Set<RequestDestination>([
+const resourceDestinations = internalSet<RequestDestination>([
   '',
   'script',
   'style',
@@ -14,12 +14,10 @@ const resourceDestinations = new Set<RequestDestination>([
   'video',
   'track',
 ]);
-
 interface ResourceStore {
   getApp: typeof getApp;
   getResource: typeof getResource;
 }
-
 export interface ContextResourceDiagnostic {
   reason: string;
   clientId: string;
@@ -28,7 +26,6 @@ export interface ContextResourceDiagnostic {
   boundContext?: string;
   boundClient?: string;
 }
-
 /** Some nested worker requests have no browser client ID. Their bootstrap-issued
  * bearer grants only this context's immutable resource graph and synchronization. */
 export async function contextResourceResponse(
@@ -36,27 +33,30 @@ export async function contextResourceResponse(
     Partial<Pick<FetchEvent, 'resultingClientId'>>,
   registry: ContextRegistry,
   base: URL,
-  store: ResourceStore = { getApp, getResource },
+  store: ResourceStore = internalRecord({ getApp, getResource }),
   diagnose?: (diagnostic: ContextResourceDiagnostic) => void,
 ): Promise<Response | undefined> {
   const url = new URL(event.request.url);
   url.hash = '';
   if (url.origin !== base.origin) return undefined;
-  const match = url.pathname.match(
+  const match = strings.match(
+    url.pathname,
     /\/__contexts\/([a-f0-9-]{36})\/(ready|resources\/.+)$/,
   );
   if (!match) return undefined;
   const deny = async (reason: string) => {
     if (diagnose) {
       const bound = await registry.resourceCapability(match[1], '');
-      diagnose({
-        reason,
-        clientId: event.clientId,
-        resultingClientId: event.resultingClientId || '',
-        destination: event.request.destination,
-        boundContext: bound?.identity.id,
-        boundClient: bound?.client,
-      });
+      diagnose(
+        internalRecord({
+          reason,
+          clientId: event.clientId,
+          resultingClientId: event.resultingClientId || '',
+          destination: event.request.destination,
+          boundContext: bound?.identity.id,
+          boundClient: bound?.client,
+        }),
+      );
     }
     return Response.error();
   };
@@ -99,8 +99,11 @@ export async function contextResourceResponse(
   );
   if (!resource) return deny('resource-missing');
   const contentType = resource.contentType || mime(resource.path);
-  const essence = contentType.split(';')[0].trim().toLowerCase();
-  if (workerModule && (!essence.includes('/') || !isExecutableScriptType(essence)))
+  const essence = strings.toLowerCase(strings.trim(strings.split(contentType, ';')[0]));
+  if (
+    workerModule &&
+    (!strings.includes(essence, '/') || !isExecutableScriptType(essence))
+  )
     return deny('module-content-type');
   return response(
     await store.getResource(

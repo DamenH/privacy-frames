@@ -17,6 +17,7 @@ async function filesUnder(directory, prefix = '') {
 for (const [site, base, directory] of [
   ['manager', 'https://pf.damenh.com/', 'dist-manager'],
   ['runtime', 'https://apps.pf.damenh.com/', 'dist-runtime'],
+  ['installation', 'https://install.pf.damenh.com/', 'dist-installation'],
 ]) {
   for (const file of (await filesUnder(new URL(directory + '/', root))).filter(
     (file) => !file.startsWith('.'),
@@ -77,8 +78,13 @@ const github = await fetch('https://privacy-frames.github.io/host/config.json');
 assert.equal(github.status, 200);
 const config = await github.json();
 assert.equal(config.managerURL, 'https://pf.damenh.com/');
+assert.equal(config.installationURL, 'https://install.pf.damenh.com/');
 assert.deepEqual(config.managerOrigins, ['https://pf.damenh.com']);
-evidence.githubEntry = { managerURL: config.managerURL, runtimeURL: config.runtimeURL };
+evidence.githubEntry = {
+  managerURL: config.managerURL,
+  runtimeURL: config.runtimeURL,
+  installationURL: config.installationURL,
+};
 await writeFile(
   new URL('results/assets.json', root),
   JSON.stringify(evidence, null, 2) + '\n',

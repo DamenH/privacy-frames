@@ -1,0 +1,22 @@
+import { prepareWindowRealm } from '../../../src/runtime/contexts/window-realm.ts';
+import { bindingProbe, cacheCallbackProbe, webStorageCallbackProbe } from './probe.ts';
+declare global {
+  interface Window {
+    runGlobalBindingProbe(): Promise<unknown>;
+  }
+}
+prepareWindowRealm({
+  application: 'binding-fixture',
+  applicationURL: location.origin + '/app/',
+  scriptNonce: 'fixture',
+}).admitContent({
+  installationGeneration: 'generation-a',
+  source: location.origin + '/app/',
+  aliases: [],
+  serviceWorker: null,
+});
+window.runGlobalBindingProbe = async () => ({
+  bindings: bindingProbe(),
+  webStorage: webStorageCallbackProbe(),
+  cache: await cacheCallbackProbe(),
+});

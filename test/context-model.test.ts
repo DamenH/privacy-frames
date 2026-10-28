@@ -82,6 +82,61 @@ test('closed contexts cannot regain authority through ready messages', async () 
   await assert.rejects(registry.transition(client, 'ready'), /not bound/);
 });
 
+test('window fragments retain their browser binding while document/query changes and closure revoke it', async () => {
+  const registry = new ContextRegistry(memoryStorage());
+  const value = {
+    ...identity(),
+    kind: 'window' as const,
+    url: 'https://runtime.test/child/',
+  };
+  await registry.bind('browser-window', value);
+  assert.equal(
+    (await registry.resolve({ id: 'browser-window', url: value.url + '#section' }))
+      ?.application,
+    value.application,
+  );
+  for (const url of [value.url + '?new=1', value.url + 'different/', 'not a URL'])
+    assert.equal(await registry.resolve({ id: 'browser-window', url }), undefined);
+  await registry.transition(
+    { id: 'browser-window', url: value.url + '#section' },
+    'closed',
+  );
+  assert.equal(
+    await registry.resolve({ id: 'browser-window', url: value.url }),
+    undefined,
+  );
+});
+
+test('root window identity survives only routes inside its installed application namespace', async () => {
+  const registry = new ContextRegistry(memoryStorage());
+  const value = {
+    ...identity(),
+    parent: null,
+    kind: 'window' as const,
+    url: 'https://runtime.test/runtime/abcdefghijk/example/',
+  };
+  await registry.bind('root-window', value);
+  assert.equal(
+    (
+      await registry.resolve({
+        id: 'root-window',
+        url: value.url + 'editor?image=1#view',
+      })
+    )?.application,
+    value.application,
+  );
+  for (const url of [
+    value.url + '__contexts/raw.js',
+    value.url + '?host-content=1',
+    'https://runtime.test/runtime/connect.html',
+    'https://runtime.test/runtime/anotherapp1/example/',
+    'https://publisher.test/',
+  ])
+    assert.equal(await registry.resolve({ id: 'root-window', url }), undefined);
+  await registry.transition({ id: 'root-window', url: value.url + 'editor' }, 'closed');
+  assert.equal(await registry.resolve({ id: 'root-window', url: value.url }), undefined);
+});
+
 test('an incompatible context policy cannot bind or regain authority from persisted state', async () => {
   const records = new Map<string, ContextIdentity>();
   const registry = new ContextRegistry(memoryStorage(records));

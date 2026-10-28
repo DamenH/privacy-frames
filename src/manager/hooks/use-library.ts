@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { downloadWebsite } from '../../installation/import-website';
 import { initializeManager, loadConfig } from '../services/bootstrap';
 import { RuntimeBridge } from '../services/runtime-bridge';
+import { InstallationBridge } from '../services/installation-bridge';
 import { errorMessage } from '../types';
 import type { AppSummary, HostConfig, RuntimeObservation, Status } from '../types';
 
@@ -13,6 +13,7 @@ export function useLibrary() {
   const [installing, setInstalling] = useState(false);
   const [observations, setObservations] = useState('No observations loaded.');
   const bridge = useRef<RuntimeBridge | null>(null);
+  const installer = useRef<InstallationBridge | null>(null);
 
   function report(message: string, error = false) {
     setStatus({ message, error });
@@ -32,6 +33,7 @@ export function useLibrary() {
       const base = new URL('./', location.href);
       const settings = await loadConfig(base);
       setConfig(settings);
+      installer.current = new InstallationBridge(new URL(settings.installationURL));
       await initializeManager(base);
       bridge.current = new RuntimeBridge(new URL(settings.runtimeURL), () => {
         report('Allow application storage to continue.');
@@ -48,12 +50,21 @@ export function useLibrary() {
     setInstalling(true);
     try {
       await runtime().connect();
-      report('Downloading…');
-      const application = await downloadWebsite(url.trim(), { onProgress: report });
-      report('Installing…');
-      await runtime().request('install', application);
+      if (!installer.current) throw new Error('Installation origin is not configured.');
+      const result = await installer.current.install(
+        url.trim(),
+        report,
+        async (input) => {
+          report('Installing…');
+          return runtime().request<{ id: string }>('install', input);
+        },
+      );
       await refreshLibrary();
-      report(`Installed ${application.manifest.name}.`);
+      const installed = (await runtime().request<AppSummary[]>('list')).find(
+        (application) => application.id === result.id,
+      );
+      if (!installed) throw new Error('Installed application could not be found.');
+      report(`Installed ${installed.manifest.name}.`);
       return true;
     } catch (error) {
       report(`Installation refused: ${errorMessage(error)}`, true);

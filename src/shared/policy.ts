@@ -1,10 +1,14 @@
+import { internalSet, strings, internalRecord } from './primordials.ts';
+import { isNavigationTarget, isUnsafeTargetMutation } from './navigation-targets.ts';
 import { parse, parseFragment } from 'parse5';
 import type { DefaultTreeAdapterTypes } from 'parse5';
 import type { InstallationMetadata } from './types';
 
-export const LIMITS = Object.freeze({ files: 1000, bytes: 100 * 1024 * 1024 });
+export const LIMITS = Object.freeze(
+  internalRecord({ files: 1000, bytes: 100 * 1024 * 1024 }),
+);
 
-const blockedElements = new Set([
+const blockedElements = internalSet([
   'iframe',
   'frame',
   'frameset',
@@ -16,7 +20,7 @@ const blockedElements = new Set([
   'webview',
   'base',
 ]);
-const presentationMetadata = new Set(['viewport', 'color-scheme', 'theme-color']);
+const presentationMetadata = internalSet(['viewport', 'color-scheme', 'theme-color']);
 
 /** Executable initial and dynamic script types supported by the host. */
 export function isExecutableScriptType(type: string): boolean {
@@ -27,17 +31,19 @@ export function isExecutableScriptType(type: string): boolean {
     'application/javascript',
     'text/ecmascript',
     'application/ecmascript',
-  ].includes(type.trim().toLowerCase());
+  ].includes(strings.toLowerCase(strings.trim(type)));
 }
 
 /** These script types contain data and never execute as JavaScript. */
 export function isDataScript(type: string): boolean {
-  return ['application/json', 'application/ld+json'].includes(type.trim().toLowerCase());
+  return ['application/json', 'application/ld+json'].includes(
+    strings.toLowerCase(strings.trim(type)),
+  );
 }
 
 export function elementAllowed(name: unknown): void {
-  const tag = String(name).toLowerCase();
-  if (blockedElements.has(tag) || tag.includes(':')) {
+  const tag = strings.toLowerCase(String(name));
+  if (blockedElements.has(tag) || strings.includes(tag, ':')) {
     throw new Error(`Element not admitted: ${tag}`);
   }
 }
@@ -49,7 +55,7 @@ interface MarkupOptions {
 
 export function validateMarkup(
   html: string,
-  { document = false, initial = false }: MarkupOptions = {},
+  { document = false, initial = false }: MarkupOptions = internalRecord({}),
 ): DefaultTreeAdapterTypes.Document | DefaultTreeAdapterTypes.DocumentFragment {
   // Apply this lexical gate before parsing, including raw text and comments.
   if (
@@ -66,7 +72,7 @@ export function validateMarkup(
   const ast = document ? parse(html) : parseFragment(html);
   function visit(node: DefaultTreeAdapterTypes.Node): void {
     if ('tagName' in node) {
-      const tag = node.tagName.toLowerCase();
+      const tag = strings.toLowerCase(node.tagName);
       elementAllowed(tag);
       if (
         tag === 'meta' &&
@@ -74,15 +80,16 @@ export function validateMarkup(
           (attribute) =>
             attribute.name === 'http-equiv' ||
             (attribute.name === 'name' &&
-              !presentationMetadata.has(attribute.value.toLowerCase())),
+              !presentationMetadata.has(strings.toLowerCase(attribute.value))),
         )
       ) {
         throw new Error('Application response policy must be supplied by the host');
       }
       if (
         tag === 'link' &&
-        node.attrs.find((attribute) => attribute.name === 'rel')?.value.toLowerCase() !==
-          'stylesheet'
+        strings.toLowerCase(
+          node.attrs.find((attribute) => attribute.name === 'rel')?.value || '',
+        ) !== 'stylesheet'
       ) {
         throw new Error('Only stylesheet links are admitted');
       }
@@ -98,14 +105,20 @@ export function validateMarkup(
         (!initial ||
           !node.attrs.some((attribute) => attribute.name === 'src') ||
           node.childNodes.some(
-            (child) => 'value' in child && Boolean(child.value.trim()),
+            (child) => 'value' in child && Boolean(strings.trim(child.value)),
           ))
       ) {
         throw new Error('Inline scripts must be prepared as installed resources');
       }
       for (const attribute of node.attrs) {
         if (
-          attribute.name.startsWith('on') ||
+          (isNavigationTarget(attribute.name) &&
+            strings.toLowerCase(attribute.value) !== '_self') ||
+          isUnsafeTargetMutation(attribute.name, attribute.value)
+        )
+          throw new Error('Native browsing targets must remain in the prepared context');
+        if (
+          strings.startsWith(attribute.name, 'on') ||
           ['srcdoc', 'is', 'manifest'].includes(attribute.name)
         ) {
           throw new Error(`Attribute not admitted: ${attribute.name}`);
@@ -124,12 +137,14 @@ export function safePath(path: unknown): string {
     typeof path !== 'string' ||
     !path ||
     path.length > 200 ||
-    path.startsWith('/') ||
-    path.includes('\\') ||
-    path.includes('%') ||
-    path.includes('?') ||
-    path.includes('#') ||
-    path.split('/').some((segment) => !segment || segment === '.' || segment === '..')
+    strings.startsWith(path, '/') ||
+    strings.includes(path, '\\') ||
+    strings.includes(path, '%') ||
+    strings.includes(path, '?') ||
+    strings.includes(path, '#') ||
+    strings
+      .split(path, '/')
+      .some((segment) => !segment || segment === '.' || segment === '..')
   )
     throw new Error('Invalid installation path');
   return path;
@@ -143,21 +158,21 @@ export function validateMetadata(input: unknown): InstallationMetadata {
     typeof value.id !== 'string' ||
     !/^[-a-z0-9]{1,48}$/.test(value.id) ||
     typeof value.name !== 'string' ||
-    !value.name.trim() ||
+    !strings.trim(value.name) ||
     value.name.length > 100
   )
     throw new Error('Invalid installation metadata');
   const entry = safePath(value.entry);
-  if (!entry.endsWith('.html')) throw new Error('Entry must be HTML');
-  return { id: value.id, name: value.name, entry };
+  if (!strings.endsWith(entry, '.html')) throw new Error('Entry must be HTML');
+  return internalRecord({ id: value.id, name: value.name, entry });
 }
 
 export async function digest(bytes: BufferSource): Promise<string> {
   const hash = new Uint8Array(await crypto.subtle.digest('SHA-256', bytes));
-  return Array.from(hash, (byte) => byte.toString(16).padStart(2, '0')).join('');
+  return Array.from(hash, (byte) => strings.padStart(byte.toString(16), 2, '0')).join('');
 }
 
-const mediaTypes: Record<string, string> = {
+const mediaTypes: Record<string, string> = internalRecord({
   html: 'text/html',
   js: 'text/javascript',
   mjs: 'text/javascript',
@@ -175,10 +190,10 @@ const mediaTypes: Record<string, string> = {
   ogg: 'audio/ogg',
   woff2: 'font/woff2',
   wasm: 'application/wasm',
-};
+});
 
 export function mime(path: string): string {
-  const extension = path.split('.').pop() ?? '';
+  const extension = strings.split(path, '.').pop() ?? '';
   return Object.hasOwn(mediaTypes, extension)
     ? mediaTypes[extension]
     : 'application/octet-stream';

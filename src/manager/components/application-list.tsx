@@ -1,4 +1,4 @@
-import { applicationURL } from '../../shared/runtime-url';
+import { applicationLaunchURL } from '../../shared/runtime-url';
 import type { AppSummary } from '../types';
 
 interface ApplicationListProps {
@@ -31,7 +31,7 @@ export function ApplicationList({ apps, runtimeURL, onRemove }: ApplicationListP
               <div className="actions flex shrink-0 gap-2">
                 <a
                   className="button px-3 py-2 text-xs"
-                  href={applicationURL(app, new URL(runtimeURL)).href}
+                  href={applicationLaunchURL(app, new URL(runtimeURL)).href}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-app={app.manifest.id}

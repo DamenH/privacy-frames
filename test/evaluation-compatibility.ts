@@ -5,6 +5,8 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { chromium, firefox, type Page } from 'playwright';
 import { launch } from './browser-profile.ts';
+import { squooshImageTask } from './helpers/squoosh.ts';
+import { testProvenance } from './provenance.ts';
 
 const host = process.env.HOST_URL || 'https://pf.damenh.com/';
 const targets = [
@@ -26,7 +28,7 @@ const targets = [
   {
     id: 'squoosh',
     url: 'https://squoosh.app',
-    task: 'Open synthetic image and change compression settings',
+    task: 'Encode a synthetic PNG to JPEG and verify changed output after quality adjustment',
   },
   {
     id: 'excalidraw',
@@ -64,11 +66,16 @@ const output =
 const screenshotDirectory = `results/evaluation/screenshots/${basename(output, '.json')}`;
 await mkdir(screenshotDirectory, { recursive: true });
 let controlsFailed = false;
+let confinedFailed = false;
+const initialProvenance = await testProvenance(import.meta.url);
 const receipt = {
   completed: null as string | null,
   started: new Date().toISOString(),
   revision,
   host,
+  localBuild: initialProvenance,
+  finalLocalBuild: null as Awaited<ReturnType<typeof testProvenance>> | null,
+  artifactsStable: null as boolean | null,
   publisherRevision: process.env.PUBLISHER_REVISION || null,
   variants:
     process.env.EVALUATION_URL || overrides.size
@@ -108,7 +115,7 @@ async function task(page: Page, id: string) {
       return key ? localStorage.getItem(key) : null;
     });
     assert(history && JSON.parse(history).length > 0);
-    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.reload({ waitUntil: 'commit' });
     await page.getByRole('navigation', { name: 'Main', exact: true }).waitFor();
     assert.equal(
       await page.evaluate(() => {
@@ -176,19 +183,7 @@ async function task(page: Page, id: string) {
     assert.deepEqual(colors.after, [0, 0, 0, 255]);
     return 'Imported synthetic red PNG; brush stroke changes sampled document pixel from red to black';
   }
-  if (id === 'squoosh') {
-    await page.locator('input[type=file]').setInputFiles({
-      name: 'synthetic.svg',
-      mimeType: 'image/svg+xml',
-      buffer: Buffer.from(
-        '<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><rect width="256" height="256" fill="red"/></svg>',
-      ),
-    });
-    await page.getByText('Compress', { exact: true }).first().waitFor();
-    const range = page.locator('input[type=range]').first();
-    await range.fill('50');
-    return 'Synthetic image opened; compression range changed';
-  }
+  if (id === 'squoosh') return squooshImageTask(page);
   if (id === 'excalidraw') {
     await page.locator('canvas').first().waitFor();
     await page.keyboard.press('Escape');
@@ -210,8 +205,15 @@ async function task(page: Page, id: string) {
   }
   if (id === 'drawio') {
     const device = page.getByText('Device', { exact: true }).first();
-    if (await device.isVisible()) await device.click();
     const create = page.getByRole('button', { name: 'Create New Diagram', exact: true });
+    // First startup can finish asynchronously into the storage chooser. Wait for
+    // an actionable screen before deciding which setup controls are present.
+    await Promise.race([
+      device.waitFor({ state: 'visible', timeout: 60000 }),
+      create.waitFor({ state: 'visible', timeout: 60000 }),
+      page.locator('.geDiagramContainer').waitFor({ state: 'visible', timeout: 60000 }),
+    ]);
+    if (await device.isVisible()) await device.click();
     if (await create.isVisible()) await create.click();
     const blank = page.getByText('Blank Diagram', { exact: true }).first();
     if (await blank.isVisible()) await blank.click();
@@ -230,10 +232,12 @@ async function task(page: Page, id: string) {
   }
   if (id === 'stackedit') {
     const editor = page.locator('[contenteditable=true]').first();
-    await page
-      .getByRole('button', { name: 'SKIP', exact: true })
-      .click()
-      .catch(() => {});
+    const skip = page.getByRole('button', { name: 'SKIP', exact: true });
+    await Promise.race([
+      editor.waitFor({ state: 'visible' }),
+      skip.waitFor({ state: 'visible' }),
+    ]);
+    if (await skip.isVisible()) await skip.click();
     await editor.waitFor();
     await editor.fill('# Synthetic evaluation\n\n**Private** local note');
     await page
@@ -290,7 +294,7 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
         const page = await context.newPage();
         const errors: string[] = [];
         const failed: string[] = [];
-        page.on('pageerror', (e) => errors.push(e.message));
+        page.on('pageerror', (e) => errors.push(e.stack || e.message));
         page.on('requestfailed', (r) =>
           failed.push(`${r.method()} ${r.url()} ${r.failure()?.errorText}`),
         );
@@ -341,7 +345,7 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
               .getByRole('link', { name: 'Open', exact: true })
               .click();
             app = await opened;
-            app.on('pageerror', (e) => errors.push(e.message));
+            app.on('pageerror', (e) => errors.push(e.stack || e.message));
             app.on('requestfailed', (r) =>
               failed.push(`${r.url()} ${r.failure()?.errorText}`),
             );
@@ -370,11 +374,20 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
                   })
                 : null;
             await context.setOffline(true);
-            await app.reload({ waitUntil: 'domcontentloaded' });
+            await app.reload({ waitUntil: 'commit' });
             await app.waitForFunction(
               () => window.privacyHost?.mode === 'network-isolated',
             );
-            if (target.id === 'wikipedia') state.offlineTask = await task(app, target.id);
+            if (['wikipedia', 'drawio', 'squoosh'].includes(target.id))
+              state.offlineTask = await task(app, target.id);
+            if (target.id === 'stackedit') {
+              await app
+                .locator('.cl-preview-section h1')
+                .getByText('Synthetic evaluation', { exact: true })
+                .waitFor();
+              state.offlinePersistence = true;
+              state.offlineTask = await task(app, target.id);
+            }
             if (target.id === 'photocraft')
               await app.waitForFunction(
                 () =>
@@ -404,6 +417,8 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
           } catch {}
         } finally {
           if (mode === 'standalone' && state.taskPassed !== true) controlsFailed = true;
+          if (mode === 'confined' && (state.failure || state.offlineReload !== true))
+            confinedFailed = true;
           state.errors = errors.slice(0, 30);
           state.responses = responses.slice(0, 30);
           state.requestFailures = failed.slice(0, 30);
@@ -429,5 +444,14 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
 }
 
 receipt.completed = new Date().toISOString();
+receipt.finalLocalBuild = await testProvenance(import.meta.url);
+receipt.artifactsStable =
+  JSON.stringify(initialProvenance.artifacts) ===
+  JSON.stringify(receipt.finalLocalBuild.artifacts);
 await writeFile(output, JSON.stringify(receipt, null, 2) + '\n');
-if (controlsFailed) process.exitCode = 1;
+if (
+  controlsFailed ||
+  !receipt.artifactsStable ||
+  (process.env.EVALUATION_REQUIRE_CONFINED === '1' && confinedFailed)
+)
+  process.exitCode = 1;
