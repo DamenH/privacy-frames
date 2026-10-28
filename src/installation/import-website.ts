@@ -178,6 +178,7 @@ export async function downloadWebsite(
         const result = await new Promise<PreparationReply>((resolve, reject) => {
           const signal = stage.controller.signal;
           const stop = () => {
+            clearTimeout(stageTimer);
             brokerOpen = false;
             preparationWorker.onmessage = null;
             preparationWorker.onerror = null;

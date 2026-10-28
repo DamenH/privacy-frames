@@ -58,6 +58,7 @@ export function prepareWindowRealm({
       descriptor,
       apply,
       baseURL: () => resourceBase,
+      documentSourceURL: () => sourceURL,
     }),
   );
   const publisher = createPublisherContainer(

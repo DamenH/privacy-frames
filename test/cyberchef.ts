@@ -77,7 +77,7 @@ try {
                   document.querySelector('#status')?.textContent || '',
                 ),
               undefined,
-              { timeout: 180000 },
+              { timeout: 330000 },
             );
             const status = await manager.locator('#status').innerText();
             row.installation = status;

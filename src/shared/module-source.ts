@@ -1,10 +1,4 @@
-import {
-  strings,
-  internalRecord,
-  internalArray,
-  internalSet,
-  ownDescriptor,
-} from './primordials.ts';
+import { strings, internalRecord, internalArray, internalSet } from './primordials.ts';
 import { parse } from 'acorn';
 
 const isArray = Array.isArray;
@@ -14,6 +8,13 @@ const NativeError = Error;
 const ownKeys = Reflect.ownKeys;
 const getPrototype = Object.getPrototypeOf;
 const objectPrototype = Object.prototype;
+const descriptor = Object.getOwnPropertyDescriptor;
+const hasOwn = Object.hasOwn;
+
+function ownValue(object: object, key: PropertyKey): unknown {
+  const property = descriptor(object, key);
+  return property && hasOwn(property, 'value') ? property.value : undefined;
+}
 
 /** Parser nodes contain publisher syntax; detach their optional-field lookups. */
 function protectSyntaxTree(value: unknown): void {
@@ -23,19 +24,16 @@ function protectSyntaxTree(value: unknown): void {
     seen.add(current);
     if (isArray(current)) internalArray(current);
     else {
-      const type = ownDescriptor(current, 'type');
-      const start = ownDescriptor(current, 'start');
-      const end = ownDescriptor(current, 'end');
       const syntaxNode =
-        typeof type?.value === 'string' &&
-        typeof start?.value === 'number' &&
-        typeof end?.value === 'number';
+        typeof ownValue(current, 'type') === 'string' &&
+        typeof ownValue(current, 'start') === 'number' &&
+        typeof ownValue(current, 'end') === 'number';
       if (!syntaxNode && getPrototype(current) !== objectPrototype) return;
       internalRecord(current);
     }
     for (const key of ownKeys(current)) {
-      const property = ownDescriptor(current, key);
-      if (property && 'value' in property) visit(property.value);
+      const property = descriptor(current, key);
+      if (property && hasOwn(property, 'value')) visit(property.value);
     }
   };
   visit(value);

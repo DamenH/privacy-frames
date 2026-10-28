@@ -3,12 +3,14 @@ import {
   internalMap,
   internalSet,
   internalRecord,
+  strings,
 } from '../shared/primordials.ts';
 import type { PolicyTools } from './enforcement/native.ts';
 
 type AliasTools = Pick<PolicyTools, 'method' | 'accessor' | 'descriptor' | 'apply'> & {
   target?: object;
   baseURL?: () => string;
+  documentSourceURL?: () => string;
 };
 
 export interface ResourceAliases {
@@ -31,6 +33,7 @@ export function resourceAliases({
   apply,
   target = globalThis,
   baseURL,
+  documentSourceURL,
 }: AliasTools): ResourceAliases {
   const NativeURL = URL;
   const NativeRequest = Request;
@@ -70,7 +73,18 @@ export function resourceAliases({
   }
 
   function mapURL(input: unknown): string {
-    const { href, hash } = address(input);
+    const value = NativeString(input);
+    const { href, hash } = address(value);
+    if (
+      nativeDocument &&
+      documentSourceURL &&
+      strings.startsWith(strings.trim(value), '#') &&
+      href === address(documentSourceURL()).href
+    ) {
+      // Keep a same-document fragment relative: native URL resolution tracks
+      // live clean/history paths and queries instead of the cached HTML path.
+      return hash || '#';
+    }
     return (aliases.get(href) ?? href) + hash;
   }
 

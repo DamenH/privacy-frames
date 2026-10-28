@@ -418,6 +418,60 @@ test('a hung optional worker reaches a bounded failure and leaves the static gra
   );
 });
 
+test('completed workers are revoked before trusted dependency discovery outlasts their deadline', async () => {
+  const generated = new URL('generated.js', source).href;
+  const dependency = new URL('trusted-extra.js', source).href;
+  let discovered = false;
+  await shortPreparationDeadline(() =>
+    install(
+      {
+        start(worker) {
+          worker.emit({
+            type: 'prepared',
+            caches: [
+              {
+                name: 'public-cache',
+                entries: [
+                  resource(generated, 'import "./trusted-extra.js";', 'text/javascript'),
+                ],
+              },
+            ],
+          });
+        },
+        extraFetch(url, options) {
+          if (url !== dependency) return;
+          discovered = true;
+          assert.equal(workers[0]!.terminated, true);
+          assert.equal(workers[0]!.onmessage, null);
+          return new Promise((resolve, reject) => {
+            const timer = setTimeout(() => {
+              options?.signal?.removeEventListener('abort', aborted);
+              resolve(
+                new Response('export const prepared = true;', {
+                  headers: { 'Content-Type': 'text/javascript' },
+                }),
+              );
+            }, 25);
+            const aborted = () => {
+              clearTimeout(timer);
+              reject(options?.signal?.reason);
+            };
+            options?.signal?.addEventListener('abort', aborted, { once: true });
+          });
+        },
+      },
+      (app) => {
+        assert(discovered);
+        assert.equal(app.preparation.outcome.status, 'completed');
+        assert(app.resources.some((item) => item.url === dependency));
+        assert.deepEqual(app.preparation.caches, [
+          { name: 'public-cache', urls: [generated] },
+        ]);
+      },
+    ),
+  );
+});
+
 test('the optional deadline also covers fetching the conventional worker script', async () => {
   let aborted = false;
   await shortPreparationDeadline(() =>

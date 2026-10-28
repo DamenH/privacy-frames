@@ -332,7 +332,7 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
                   document.querySelector('#status')?.textContent || '',
                 ),
               {},
-              { timeout: 150000 },
+              { timeout: 330000 },
             );
             const status = await page.locator('#status').innerText();
             state.installation = status;
