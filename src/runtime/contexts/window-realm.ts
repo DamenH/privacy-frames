@@ -65,6 +65,7 @@ export function prepareWindowRealm({
     internalRecord({
       applicationURL,
       baseURL: () => resourceBase,
+      installationSourceURL: () => sourceURL,
       resources,
     }),
   );

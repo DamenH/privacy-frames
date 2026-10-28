@@ -6,6 +6,7 @@ import {
   internalRecord,
 } from '../../shared/primordials.ts';
 import type { ResourceAliases } from '../resource-aliases.ts';
+import { publisherRegistrationScope } from './scope.ts';
 import {
   PUBLISHER_RPC,
   PUBLISHER_LAUNCH,
@@ -81,6 +82,7 @@ export interface ForegroundContainer extends EventTarget {
 export interface PublisherClientOptions {
   applicationURL: string;
   baseURL(): string;
+  installationSourceURL(): string;
   resources: ResourceAliases;
 }
 function unsupported(): Promise<never> {
@@ -95,6 +97,7 @@ function unsupported(): Promise<never> {
 export function createPublisherContainer({
   applicationURL,
   baseURL,
+  installationSourceURL,
   resources,
 }: PublisherClientOptions) {
   const nativeNavigator = navigator;
@@ -127,10 +130,15 @@ export function createPublisherContainer({
       const workerType = options.type || 'classic';
       if (workerType !== 'classic' && workerType !== 'module')
         throw new TypeError('Invalid publisher worker type');
-      const scope = new NativeURL(
-        options.scope || './',
-        options.scope ? baseURL() : script,
-      ).href;
+      const scope = publisherRegistrationScope(
+        options.scope,
+        script,
+        internalRecord({
+          applicationURL,
+          installationSourceURL: installationSourceURL(),
+          documentBaseURL: baseURL(),
+        }),
+      );
       return start(await rpc('register', internalRecord({ script, scope, workerType })));
     }
     async getRegistration(input?: string | URL) {

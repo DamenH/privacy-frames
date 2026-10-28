@@ -40,6 +40,7 @@ const publisher = http.createServer((request, response) => {
     response.setHeader('Content-Type', 'text/javascript');
     response.end(`
  globalThis.startPublisher=async()=>{const registration=await navigator.serviceWorker.register('./foreground.js');await navigator.serviceWorker.ready;return{scope:registration.scope,controller:!!navigator.serviceWorker.controller};};
+ globalThis.startPhysicalPublisher=async()=>{const base=new URL('./',document.baseURI);const registration=await navigator.serviceWorker.register(new URL('foreground.js',base),{scope:base.pathname,updateViaCache:'none'});return{scope:registration.scope,script:registration.active.scriptURL};};
  globalThis.startPublisherModule=async()=>{return navigator.serviceWorker.register('./foreground-module.js',{type:'module'});};
  globalThis.messagePublisher=data=>new Promise((resolve,reject)=>{const channel=new MessageChannel();const timer=setTimeout(()=>reject(new Error('Application message timeout')),10000);channel.port1.onmessage=event=>{clearTimeout(timer);resolve(event.data);channel.port1.close();};navigator.serviceWorker.controller.postMessage(data,[channel.port2]);});
  globalThis.publisherReady=true;
@@ -126,6 +127,41 @@ try {
         Reflect.get(window, 'startPublisher')(),
       );
       assert.equal(registration.controller, true);
+      const physicalRegistration = await app.evaluate(() =>
+        Reflect.get(window, 'startPhysicalPublisher')(),
+      );
+      assert.equal(physicalRegistration.scope, publisherOrigin + '/publisher-lab/');
+      assert.equal(
+        physicalRegistration.script,
+        publisherOrigin + '/publisher-lab/foreground.js',
+      );
+      const invalidPhysicalScopes = await app.evaluate(async () => {
+        const base = new URL('./', document.baseURI);
+        const script = new URL('foreground.js', base);
+        const denied = [];
+        for (const scope of [
+          new URL('/runtime/another-app/', location.href).href,
+          base.href + '?variant=1',
+          base.href + '#fragment',
+        ]) {
+          try {
+            await navigator.serviceWorker.register(script, { scope });
+            denied.push(false);
+          } catch {
+            denied.push(true);
+          }
+        }
+        try {
+          await navigator.serviceWorker.register(new URL('missing-script.js', base), {
+            scope: base.pathname,
+          });
+          denied.push(false);
+        } catch {
+          denied.push(true);
+        }
+        return denied;
+      });
+      assert.deepEqual(invalidPhysicalScopes, [true, true, true, true]);
       const first = await app.evaluate(() =>
         Reflect.get(
           window,
