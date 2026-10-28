@@ -278,7 +278,7 @@ try {
       );
       context.setDefaultTimeout(30000);
       const restored = context.pages()[0];
-      await restored.goto(noteURL);
+      await restored.goto(noteURL, { waitUntil: 'commit' });
       await restored.waitForFunction(() =>
         document.querySelector('#mode')?.textContent.includes('network isolated'),
       );

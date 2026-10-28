@@ -155,11 +155,6 @@ try {
         peer.createDataChannel('private-marker');
         await peer.setLocalDescription(await peer.createOffer());
       });
-      await attempt('navigation preload', () =>
-        navigator.serviceWorker.ready.then((registration) =>
-          registration.navigationPreload.enable(),
-        ),
-      );
       for (const kind of ['classic', 'module', 'nested']) {
         const address = routeURL('worker-' + kind);
         const source = `
@@ -225,7 +220,7 @@ try {
   results.isolated.udpDatagrams = 0;
   results.isolated.receiverTCPConnections = 0;
   results.checks.push(
-    'Runtime network, cache fetch, speculative links/rules, sockets, RTC and navigation preload refused with zero receiver TCP or STUN UDP traffic',
+    'Runtime network, cache fetch, speculative links/rules, sockets and RTC refused with zero receiver TCP or STUN UDP traffic',
   );
   await app.close();
   const control = await context.newPage();

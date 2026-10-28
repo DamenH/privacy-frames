@@ -127,13 +127,50 @@ try {
         Reflect.get(window, 'startPublisher')(),
       );
       assert.equal(registration.controller, true);
-      const physicalRegistration = await app.evaluate(() =>
-        Reflect.get(window, 'startPhysicalPublisher')(),
-      );
+      const physicalRegistration = await app.evaluate(async () => {
+        const fields = ['href', 'origin', 'pathname', 'search', 'hash'];
+        const descriptors = fields.map(
+          (field) =>
+            [field, Object.getOwnPropertyDescriptor(URL.prototype, field)!] as const,
+        );
+        const href = descriptors[0][1].get!;
+        let privateReads = 0,
+          publicReads = 0;
+        for (const [field, descriptor] of descriptors)
+          Object.defineProperty(URL.prototype, field, {
+            ...descriptor,
+            get() {
+              const actual: string = Reflect.apply(href, this, []);
+              if (actual.includes('/__contexts/publisher/')) {
+                privateReads++;
+                if (field === 'href') return actual + '#untrusted-constructor-input';
+              } else publicReads++;
+              return Reflect.apply(descriptor.get!, this, []);
+            },
+          });
+        try {
+          const control = new URL('https://native-control.invalid/');
+          for (const field of fields) Reflect.get(control, field);
+          const registration = await Reflect.get(window, 'startPhysicalPublisher')();
+          return { ...registration, privateReads, publicReads };
+        } finally {
+          for (const [field, descriptor] of descriptors)
+            Object.defineProperty(URL.prototype, field, descriptor);
+        }
+      });
       assert.equal(physicalRegistration.scope, publisherOrigin + '/publisher-lab/');
       assert.equal(
         physicalRegistration.script,
         publisherOrigin + '/publisher-lab/foreground.js',
+      );
+      assert.equal(
+        physicalRegistration.privateReads,
+        0,
+        'Application URL getters received private executor URLs',
+      );
+      assert(
+        physicalRegistration.publicReads >= 5,
+        'Native URL getter poisoning control did not execute',
       );
       const invalidPhysicalScopes = await app.evaluate(async () => {
         const base = new URL('./', document.baseURI);
@@ -302,6 +339,8 @@ try {
         name,
         version: browser.version(),
         registration,
+        physicalRegistration,
+        invalidPhysicalScopes,
         first,
         value,
         fallback,

@@ -39,6 +39,11 @@ const NativeEventTarget = EventTarget;
 const NativeEvent = Event;
 const NativeMessageEvent = MessageEvent;
 const NativeURL = URL;
+const urlHref = ownDescriptor(NativeURL.prototype, 'href')!.get!;
+const urlOrigin = ownDescriptor(NativeURL.prototype, 'origin')!.get!;
+const urlPathname = ownDescriptor(NativeURL.prototype, 'pathname')!.get!;
+const urlSearch = ownDescriptor(NativeURL.prototype, 'search')!.get!;
+const urlHash = ownDescriptor(NativeURL.prototype, 'hash')!.get!;
 const NativePromise = Promise;
 const NativeError = Error;
 const NativeDOMException = DOMException;
@@ -307,15 +312,18 @@ export function createPublisherContainer({
     const url = new NativeURL(publisherString(launch.url));
     const application = new NativeURL(applicationURL);
     if (
-      url.origin !== application.origin ||
-      !strings.startsWith(url.pathname, application.pathname + '__contexts/publisher/') ||
-      url.search ||
-      url.hash
+      apply(urlOrigin, url, []) !== apply(urlOrigin, application, []) ||
+      !strings.startsWith(
+        apply(urlPathname, url, []),
+        apply(urlPathname, application, []) + '__contexts/publisher/',
+      ) ||
+      apply(urlSearch, url, []) ||
+      apply(urlHash, url, [])
     )
       throw new NativeError('Publisher executor URL is outside the application');
     return internalRecord({
       ticket: publisherString(launch.ticket),
-      url: url.href,
+      url: apply(urlHref, url, []),
       name: publisherString(launch.name),
       registration: record,
     });
