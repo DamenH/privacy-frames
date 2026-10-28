@@ -120,9 +120,9 @@ try {
         await app.evaluate(() => Reflect.get(window, 'fixtureStartup')),
         startup,
       );
-      const fragmentRequests = await app.evaluate(async () => {
+      const fragmentRequests = await app.evaluate(async (source) => {
         const fetched = await fetch('#resource');
-        const request = new Request(new URL('#request', location.href));
+        const request = new Request(new URL('#request', source));
         const requested = await fetch(request);
         const xhr = await new Promise<number>((resolve, reject) => {
           const client = new XMLHttpRequest();
@@ -139,7 +139,7 @@ try {
           xhr,
           cached: (await cache.match('#cached'))?.status,
         };
-      });
+      }, outside + '/publisher/');
       assert.deepEqual(fragmentRequests, {
         fetched: 200,
         requested: 200,
@@ -194,8 +194,9 @@ try {
         .waitFor({ timeout: 120000 });
       const openedForeign = context.waitForEvent('page');
       await manager
-        .locator('[data-app]')
+        .locator('article')
         .filter({ hasText: 'Foreign base fixture' })
+        .getByRole('link', { name: 'Open', exact: true })
         .click();
       const foreign = await openedForeign;
       await foreign.getByText('network-isolated', { exact: true }).waitFor();
