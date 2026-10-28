@@ -28,7 +28,7 @@ const publisher = http.createServer((request, response) => {
   } else if (path === '/app.js') {
     response.setHeader('Content-Type', 'text/javascript');
     response.end(
-      `document.querySelector('#ready').textContent=globalThis.privacyHost?.mode||'native';document.querySelector('#fragment').href='#section';globalThis.fixtureStartup=crypto.randomUUID();globalThis.fixtureWorker=()=>new Worker('./worker.js');`,
+      `document.querySelector('#ready').textContent=globalThis.privacyHost?.mode||'native';document.querySelector('#fragment').href='#section';document.querySelector('#fragment-attribute').setAttribute('href','#attribute');globalThis.fixtureStartup=crypto.randomUUID();globalThis.fixtureWorker=()=>new Worker('./worker.js');`,
     );
   } else if (path === '/sw.js') response.writeHead(404).end('No publisher worker');
   else if (path === '/other.html') {
@@ -43,7 +43,7 @@ const publisher = http.createServer((request, response) => {
         (path === '/foreign-base/' ? 'Foreign base fixture' : 'History fixture') +
         '</title>' +
         (path === '/foreign-base/' ? '<base href="' + outside + '/other.html">' : '') +
-        '<p id="ready">starting</p><a id="fragment">Section</a><p id="section">Section target</p><script src="/app.js"></script>',
+        '<p id="ready">starting</p><a id="fragment">Section</a><a id="fragment-attribute">Attribute section</a><p id="section">Section target</p><script src="/app.js"></script>',
     );
   }
 });
@@ -120,6 +120,15 @@ try {
         await app.evaluate(() => Reflect.get(window, 'fixtureStartup')),
         startup,
       );
+      assert.equal(
+        await app.locator('#fragment-attribute').getAttribute('href'),
+        '#attribute',
+      );
+      await app.locator('#fragment-attribute').click();
+      await app.waitForFunction(() => location.hash === '#attribute');
+      assert.equal(app.url(), entry + 'editor?image=2#attribute');
+      await app.locator('#fragment').click();
+      await app.waitForFunction(() => location.hash === '#section');
       const fragmentRequests = await app.evaluate(async (source) => {
         const fetched = await fetch('#resource');
         const request = new Request(new URL('#request', source));

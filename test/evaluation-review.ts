@@ -3,6 +3,18 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { servers } from './server.ts';
+import type { Installation } from '../src/shared/types.ts';
+
+async function registrationStatus() {
+  return {
+    registrations: (await navigator.serviceWorker.getRegistrations()).length,
+    registered: (await navigator.serviceWorker.getRegistration()) !== undefined,
+    readyWithin250ms: await Promise.race([
+      navigator.serviceWorker.ready.then(() => true),
+      new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 250)),
+    ]),
+  };
+}
 
 function historyCoercion() {
   const original = location.href;
@@ -74,11 +86,49 @@ try {
         }
         return { value, typeBlocked, cloneBlocked, executed: '__dataExecuted' in window };
       });
-      const prepared = await app.evaluate(async () => {
-        const registration = await navigator.serviceWorker.ready;
-        return registration.active?.state;
+      // Restricted installation ran this script, but the page never registered
+      // a foreground worker. A precache receipt must not invent registration.
+      const pendingRegistration = await app.evaluate(registrationStatus);
+      assert.deepEqual(pendingRegistration, {
+        registrations: 0,
+        registered: false,
+        readyWithin250ms: false,
       });
-      assert.equal(prepared, 'activated');
+      const bridge = manager
+        .frames()
+        .find((frame) => frame.url().endsWith('/connect.html'));
+      assert(bridge);
+      const prepared = await bridge.evaluate(async () => {
+        const database = await new Promise<IDBDatabase>((resolve, reject) => {
+          const request = indexedDB.open('privacy-frames-installations');
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = () => reject(request.error);
+        });
+        try {
+          const records = await new Promise<Installation[]>((resolve, reject) => {
+            const request = database
+              .transaction('installations')
+              .objectStore('installations')
+              .getAll();
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+          });
+          const installation = records.find(
+            (record) => record.source === 'http://127.0.0.1:4218/review/',
+          );
+          if (!installation) throw new Error('Review installation metadata missing');
+          return installation.preparation;
+        } finally {
+          database.close();
+        }
+      });
+      assert.equal(prepared.outcome.status, 'completed');
+      assert.equal(
+        prepared.serviceWorker?.scriptURL,
+        'http://127.0.0.1:4218/review/sw.js',
+      );
+      assert.deepEqual(prepared.serviceWorker?.completed, ['install', 'activate']);
+      assert.equal(prepared.ended, true);
       assert.deepEqual(data, {
         value: { value: 42 },
         typeBlocked: true,
@@ -87,6 +137,8 @@ try {
       });
       const control = await context.newPage();
       await control.goto('http://127.0.0.1:4218/review/');
+      const nativeRegistration = await control.evaluate(registrationStatus);
+      assert.deepEqual(nativeRegistration, pendingRegistration);
       const unrestricted = await control.evaluate(historyCoercion);
       const nativeAttribute = await control.evaluate(attributeCoercion);
       assert.deepEqual(nativeAttribute, attribute);
@@ -118,6 +170,8 @@ try {
         unrestricted,
         data,
         prepared,
+        pendingRegistration,
+        nativeRegistration,
         controlMutation,
       });
       await context.close();

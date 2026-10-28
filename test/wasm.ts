@@ -4,6 +4,35 @@ import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { servers } from './server.ts';
 
+async function workerProbe({ source, marker }: { source: string; marker: string }) {
+  const labelURL = new URL('../wasm-label.js', source).href;
+  const wasmURL = new URL('./answer.wasm', source).href;
+  const code = `import { label } from ${JSON.stringify(labelURL)};
+    let blocked = false;
+    try { await fetch(${JSON.stringify('http://127.0.0.1:4366/worker-disclosure?value=' + encodeURIComponent(marker))}); }
+    catch { blocked = true; }
+    const result = await WebAssembly.instantiateStreaming(fetch(${JSON.stringify(wasmURL)}), {});
+    postMessage({ answer: label(result.instance.exports.answer()), mode: globalThis.privacyHost?.mode || 'native', blocked });`;
+  const url = URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
+  const worker = new Worker(url, { type: 'module' });
+  try {
+    return await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('Wasm worker timed out')), 15000);
+      worker.onmessage = (event) => {
+        clearTimeout(timer);
+        resolve(event.data);
+      };
+      worker.onerror = (event) => {
+        clearTimeout(timer);
+        reject(new Error(event.message));
+      };
+    });
+  } finally {
+    worker.terminate();
+    URL.revokeObjectURL(url);
+  }
+}
+
 const hostURL = process.env.HOST_URL || 'http://127.0.0.1:4210/privacy-frames/';
 const deployed = !!process.env.HOST_URL;
 const server = deployed ? { traffic: [], close: async () => {} } : await servers();
@@ -29,7 +58,24 @@ try {
       const opened = context.waitForEvent('page');
       await manager.locator('[data-app="wasm"]').click();
       const app = await opened;
+      app.on('console', (message) => {
+        if (
+          message.type() === 'error' &&
+          message.text().includes('Worker startup failed:')
+        )
+          console.error(message.text());
+      });
       await app.getByText('Answer: 42', { exact: true }).waitFor();
+      if (!deployed) {
+        const control = await context.newPage();
+        await control.goto(fixture);
+        const native = await control.evaluate(workerProbe, {
+          source: fixture,
+          marker: `native-wasm-${name}`,
+        });
+        assert.deepEqual(native, { answer: '42', mode: 'native', blocked: false });
+        await control.close();
+      }
       row.checks.push(
         'Initial inline module, preload Wasm and transitive relocated import execute',
       );
@@ -47,20 +93,24 @@ try {
           .slice(before)
           .some((request) => request.path.includes('private-wasm')),
       );
+      const workerResult = await app.evaluate(workerProbe, {
+        source: fixture,
+        marker: `private-wasm-${name}`,
+      });
+      assert.deepEqual(workerResult, {
+        answer: '42',
+        mode: 'network-isolated',
+        blocked: true,
+      });
       assert(
-        await app.evaluate(() => {
-          try {
-            new Worker('module.js');
-            return false;
-          } catch {
-            return true;
-          }
-        }),
+        !server.traffic
+          .slice(before)
+          .some((request) => request.path.includes('private-wasm')),
       );
       row.checks.push(
         deployed
-          ? 'Runtime rejects the network attempt and native workers; receiver evidence is measured locally'
-          : 'Private network marker absent at receiver; native workers remain refused',
+          ? 'Prepared module worker computes the Wasm result and rejects disclosure; receiver evidence is measured locally'
+          : 'Prepared module worker computes the Wasm result; private markers remain absent at receiver',
       );
       await app.close();
       if (process.env.EXTERNAL_WASM_URL) {

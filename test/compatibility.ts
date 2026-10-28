@@ -69,9 +69,35 @@ try {
         () =>
           getComputedStyle(document.querySelector('h1')).color === 'rgb(169, 199, 255)',
       );
+      const documentAddress = doc.url();
+      const externalBaseTarget = new URL('./assets/#section', documentURL).href;
+      const beforeFragment = deployed ? 0 : server.traffic.length;
       await doc.locator('#section-link').click();
-      await doc.waitForURL('**#section');
-      assert.equal(new URL(doc.url()).hash, '#section');
+      await doc.waitForTimeout(250);
+      assert.equal(doc.url(), documentAddress);
+      if (!deployed)
+        assert(
+          !server.traffic
+            .slice(beforeFragment)
+            .some(
+              (request) =>
+                request.path.split('?')[0] === new URL(externalBaseTarget).pathname,
+            ),
+        );
+      const native = await context.newPage();
+      await native.goto(documentURL);
+      assert.equal(
+        await native
+          .locator('#section-link')
+          .evaluate((link: HTMLAnchorElement) => link.href),
+        externalBaseTarget,
+      );
+      await native.locator('#section-link').click();
+      await native.waitForURL(externalBaseTarget, { waitUntil: 'commit' });
+      await native.close();
+      row.checks.push(
+        'Foreign-base fragment navigation is blocked; native control leaves the document',
+      );
       const manifest = await doc.evaluate(
         async () =>
           await (await fetch(document.querySelector('link[rel="manifest"]').href)).json(),
@@ -117,7 +143,7 @@ try {
       await context.setOffline(false);
       console.log(name, 'compatibility checkpoint');
       row.checks.push(
-        'Generic base URL, nested CSS, image, fragment and inherited manifest work offline',
+        'Generic base URL, nested CSS, image and inherited manifest work offline',
       );
       const config = await page.evaluate(
         async () => await (await fetch('./config.json')).json(),
