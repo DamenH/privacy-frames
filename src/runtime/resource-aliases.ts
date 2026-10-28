@@ -15,6 +15,7 @@ type AliasTools = Pick<PolicyTools, 'method' | 'accessor' | 'descriptor' | 'appl
 
 export interface ResourceAliases {
   mapURL(input: unknown): string;
+  mapNavigationURL(input: unknown): string;
   isInstalledURL(input: unknown): boolean;
   sourceURL(input: unknown): string | undefined;
   install(
@@ -73,6 +74,11 @@ export function resourceAliases({
   }
 
   function mapURL(input: unknown): string {
+    const { href, hash } = address(input);
+    return (aliases.get(href) ?? href) + hash;
+  }
+
+  function mapNavigationURL(input: unknown): string {
     const value = NativeString(input);
     const { href, hash } = address(value);
     if (
@@ -277,12 +283,17 @@ export function resourceAliases({
     const original = descriptor(constructor.prototype, key);
     const nativeSet = original?.set;
     if (!nativeSet) continue;
+    const map =
+      constructor === globalThis.HTMLAnchorElement ||
+      constructor === globalThis.HTMLAreaElement
+        ? mapNavigationURL
+        : mapURL;
     accessor(
       constructor.prototype,
       key,
       internalRecord({
         set(this: HTMLElement, value: unknown) {
-          return apply(nativeSet, this, [mapURL(value)]);
+          return apply(nativeSet, this, [map(value)]);
         },
       }),
     );
@@ -291,6 +302,7 @@ export function resourceAliases({
   return Object.freeze(
     internalRecord({
       mapURL,
+      mapNavigationURL,
       isInstalledURL,
       sourceURL(input: unknown) {
         const { href, hash } = address(input);

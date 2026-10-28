@@ -623,9 +623,11 @@ export function installResourceAttributePolicy(
   mapURL: (input: unknown) => string,
   scripts?: ScriptPolicy,
   documents?: DocumentContextPolicy,
+  mapNavigationURL?: (input: unknown) => string,
 ) {
   const { apply, descriptor, method, fail, str } = tools;
   const local = descriptor(Element.prototype, 'localName')!.get!;
+  const namespace = descriptor(Element.prototype, 'namespaceURI')!.get!;
   const nativeSetAttribute = Element.prototype.setAttribute;
   const resourceElements = createResourceElementPolicy(tools, mapURL);
   // Meta policy remains immutable; dynamic links receive restricted resource roles.
@@ -700,7 +702,13 @@ export function installResourceAttributePolicy(
         ['src', 'href', 'poster', 'xlink:href'].includes(key)
       ) {
         const index = name === 'setAttributeNS' ? 2 : 1;
-        args[index] = mapURL(args[index]);
+        args[index] =
+          key === 'href' &&
+          (tag === 'a' || tag === 'area') &&
+          apply(namespace, this, []) === 'http://www.w3.org/1999/xhtml' &&
+          mapNavigationURL
+            ? mapNavigationURL(args[index])
+            : mapURL(args[index]);
       }
       return apply(fn, this, args);
     });

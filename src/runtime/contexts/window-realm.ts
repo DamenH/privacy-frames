@@ -138,7 +138,13 @@ export function prepareWindowRealm({
   );
   scopeContextStorage(application, tools);
   scopeWebStorage(`pf:${application}:`, tools);
-  installResourceAttributePolicy(tools, resources.mapURL, scripts, documents);
+  installResourceAttributePolicy(
+    tools,
+    resources.mapURL,
+    scripts,
+    documents,
+    resources.mapNavigationURL,
+  );
 
   sealRuntimeBindings();
 

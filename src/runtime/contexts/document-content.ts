@@ -143,6 +143,8 @@ export function compileDocumentContent(
   input: DocumentContentInput,
 ): CompiledDocumentContent {
   const sourceURL = new URL(input.sourceURL).href;
+  const documentURL = new URL(sourceURL);
+  documentURL.hash = '';
   let baseURL = new URL(input.baseURL || sourceURL, sourceURL).href;
   const aliases = internalMap<string, string>();
   const installed = internalSet<string>();
@@ -174,8 +176,11 @@ export function compileDocumentContent(
     });
   }
   function mapURL(value: string, currentBase = baseURL): string {
-    if (strings.startsWith(value, '#')) return value;
     const result = address(value, currentBase);
+    if (strings.startsWith(strings.trim(value), '#')) {
+      if (result.url.href === documentURL.href) return value;
+      return (result.mapped || result.url.href) + result.hash;
+    }
     if (['javascript:', 'vbscript:'].includes(result.url.protocol))
       throw new Error('Executable URL is not render markup');
     return result.mapped ? result.mapped + result.hash : value;

@@ -9,8 +9,10 @@ import { testProvenance } from './provenance.ts';
 const host = process.env.HOST_URL || 'http://127.0.0.1:4210/privacy-frames/';
 const ownedHost = process.env.HOST_URL ? undefined : await servers({ receiver: false });
 const traffic: string[] = [];
+const publisherRequests: string[] = [];
 let outside = '';
 const publisher = http.createServer((request, response) => {
+  publisherRequests.push(request.url || '/');
   const path = new URL(request.url || '/', 'http://publisher.test').pathname.replace(
     /^\/publisher(?=\/)/,
     '',
@@ -26,13 +28,22 @@ const publisher = http.createServer((request, response) => {
   } else if (path === '/app.js') {
     response.setHeader('Content-Type', 'text/javascript');
     response.end(
-      `document.querySelector('#ready').textContent=globalThis.privacyHost?.mode||'native';globalThis.fixtureWorker=()=>new Worker('./worker.js');`,
+      `document.querySelector('#ready').textContent=globalThis.privacyHost?.mode||'native';document.querySelector('#fragment').href='#section';globalThis.fixtureStartup=crypto.randomUUID();globalThis.fixtureWorker=()=>new Worker('./worker.js');`,
     );
   } else if (path === '/sw.js') response.writeHead(404).end('No publisher worker');
-  else {
+  else if (path === '/other.html') {
     response.setHeader('Content-Type', 'text/html');
     response.end(
-      '<!doctype html><title>History fixture</title><p id="ready">starting</p><script src="/app.js"></script>',
+      '<!doctype html><title>Foreign base target</title><p>Foreign document</p>',
+    );
+  } else {
+    response.setHeader('Content-Type', 'text/html');
+    response.end(
+      '<!doctype html><title>' +
+        (path === '/foreign-base/' ? 'Foreign base fixture' : 'History fixture') +
+        '</title>' +
+        (path === '/foreign-base/' ? '<base href="' + outside + '/other.html">' : '') +
+        '<p id="ready">starting</p><a id="fragment">Section</a><p id="section">Section target</p><script src="/app.js"></script>',
     );
   }
 });
@@ -55,6 +66,14 @@ try {
         await fetch(origin + '/collect?nonce=' + crypto.randomUUID());
       }, outside);
       assert.equal(traffic.length, name === 'chromium' ? 1 : 2);
+      await native.evaluate(() => history.replaceState({}, '', '?view=1#before'));
+      await native.locator('#fragment').click();
+      assert.equal(native.url(), outside + '/publisher/?view=1#section');
+      await native.goto(outside + '/foreign-base/');
+      await Promise.all([
+        native.waitForURL(outside + '/other.html#section'),
+        native.locator('#fragment').click(),
+      ]);
       await native.close();
       const manager = await context.newPage();
       await manager.goto(host);
@@ -70,6 +89,15 @@ try {
       await app.getByText('network-isolated', { exact: true }).waitFor();
       const entry = app.url();
       const before = traffic.length;
+      const startup = await app.evaluate(() => Reflect.get(window, 'fixtureStartup'));
+      assert.equal(await app.locator('#fragment').getAttribute('href'), '#section');
+      await app.locator('#fragment').click();
+      await app.waitForFunction(() => location.hash === '#section');
+      assert.equal(app.url(), entry + '#section');
+      assert.equal(
+        await app.evaluate(() => Reflect.get(window, 'fixtureStartup')),
+        startup,
+      );
       await app.evaluate(() =>
         history.pushState({ view: 'editor' }, '', '/editor?image=1#view'),
       );
@@ -85,6 +113,39 @@ try {
       );
       assert.equal(app.url(), entry + 'editor?image=2#result');
       assert.deepEqual(await app.evaluate(() => history.state), { view: 'result' });
+      await app.locator('#fragment').click();
+      await app.waitForFunction(() => location.hash === '#section');
+      assert.equal(app.url(), entry + 'editor?image=2#section');
+      assert.equal(
+        await app.evaluate(() => Reflect.get(window, 'fixtureStartup')),
+        startup,
+      );
+      const fragmentRequests = await app.evaluate(async () => {
+        const fetched = await fetch('#resource');
+        const request = new Request(new URL('#request', location.href));
+        const requested = await fetch(request);
+        const xhr = await new Promise<number>((resolve, reject) => {
+          const client = new XMLHttpRequest();
+          client.open('GET', '#xhr');
+          client.onload = () => resolve(client.status);
+          client.onerror = () => reject(new Error('Fragment XHR failed'));
+          client.send();
+        });
+        const cache = await caches.open('fragment-navigation-test');
+        await cache.add('#cached');
+        return {
+          fetched: fetched.status,
+          requested: requested.status,
+          xhr,
+          cached: (await cache.match('#cached'))?.status,
+        };
+      });
+      assert.deepEqual(fragmentRequests, {
+        fetched: 200,
+        requested: 200,
+        xhr: 200,
+        cached: 200,
+      });
       const worker = await app.evaluate(
         () =>
           new Promise((resolve, reject) => {
@@ -119,12 +180,36 @@ try {
         { origin: outside.replace('127.0.0.1', 'localhost'), entry },
       );
       assert(denied.every(Boolean));
-      assert.equal(app.url(), entry + 'editor?image=2#result');
+      assert.equal(app.url(), entry + 'editor?image=2#section');
       await context.setOffline(true);
       await app.reload({ waitUntil: 'commit' });
       await app.getByText('network-isolated', { exact: true }).waitFor();
-      assert.equal(app.url(), entry + 'editor?image=2#result');
+      assert.equal(app.url(), entry + 'editor?image=2#section');
       assert.deepEqual(traffic.slice(before), []);
+      await context.setOffline(false);
+      await manager.locator('#app-url').fill(outside + '/foreign-base/');
+      await manager.locator('#install button').click();
+      await manager
+        .getByText('Installed Foreign base fixture.', { exact: true })
+        .waitFor({ timeout: 120000 });
+      const openedForeign = context.waitForEvent('page');
+      await manager
+        .locator('[data-app]')
+        .filter({ hasText: 'Foreign base fixture' })
+        .click();
+      const foreign = await openedForeign;
+      await foreign.getByText('network-isolated', { exact: true }).waitFor();
+      const foreignEntry = foreign.url();
+      const requestStart = publisherRequests.length;
+      await foreign.locator('#fragment').click();
+      await foreign.evaluate(
+        () =>
+          new Promise((resolve) =>
+            requestAnimationFrame(() => requestAnimationFrame(resolve)),
+          ),
+      );
+      assert.equal(foreign.url(), foreignEntry);
+      assert.deepEqual(publisherRequests.slice(requestStart), []);
       receipt.results.push({
         name,
         version: browser.version(),
@@ -134,6 +219,8 @@ try {
         denied,
         offlineReload: true,
         receiverRequests: traffic.slice(before),
+        fragmentRequests,
+        foreignBaseBlocked: true,
       });
     } finally {
       await context.close();

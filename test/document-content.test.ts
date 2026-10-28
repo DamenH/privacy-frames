@@ -31,6 +31,35 @@ function svg(text: string) {
   });
 }
 
+test('fragment markup preserves the document identity and explicit base query semantics', () => {
+  const sourceURL = 'https://publisher.test/page.html?revision=one';
+  function compile(base: string) {
+    const result = compileDocumentContent({
+      kind: 'html',
+      sourceURL,
+      aliases,
+      text: `<base href="${base}"><a href="#section">Section</a>`,
+    });
+    if (result.kind !== 'html') throw new Error('Wrong kind');
+    return result.html.body;
+  }
+  assert(compile('?revision=one').includes('href="#section"'));
+  assert(
+    compile('?revision=two').includes(
+      'href="https://publisher.test/page.html?revision=two#section"',
+    ),
+  );
+  assert(
+    compile('/other.html').includes('href="https://publisher.test/other.html#section"'),
+  );
+  const vector = svg(
+    '<svg xmlns="http://www.w3.org/2000/svg"><style>rect{fill:url(#paint)}</style><defs><linearGradient id="paint"/></defs><rect/><use href="#shape"/></svg>',
+  );
+  if (vector.kind !== 'svg') throw new Error('Wrong kind');
+  assert(vector.svg.content.includes('url(#paint)'));
+  assert(vector.svg.content.includes('href="#shape"'));
+});
+
 test('HTML compilation extracts scripts and handlers while mapping installed resources and base URLs', () => {
   const result = html(
     `<html lang="en" onload="rootLoaded()"><head><base href="/assets/"><base href="/ignored/"><link rel="stylesheet" href="site.css"><script>"use strict"; window.order = [1];</script><script src="main.js" defer></script></head><body onload="bodyLoaded()"><img src="photo.png#detail" onclick="inspect(event)" style="background:url(photo.png)"><script type="module" async src="module.js"></script></body></html>`,
