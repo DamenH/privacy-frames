@@ -3,10 +3,10 @@
     "name": "chromium",
     "version": "153.0.8010.12",
     "checks": [
-      "No-manifest website installation completes with no native browser authority in publisher install code and no surviving preparation worker",
+      "No-manifest installation captures an explicit resource list without executing application UI or service-worker code",
       "Root-relative resources, module imports and generated cache content work without network fallback",
       "Virtual messaging cannot list host installations; virtual unregister preserves native registration/control and blocked unknown requests; offline reload and relaunch remain confined",
-      "Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches",
+      "An unreferenced service worker is neither downloaded nor executed, and capture metadata has no preparation state",
       "Missing entry document refuses installation without publishing a record"
     ],
     "authority": {
@@ -17,6 +17,40 @@
       ],
       "virtualReplies": [],
       "unregistered": true
+    },
+    "phase": {
+      "phase": "prepared",
+      "authority": {
+        "document": false,
+        "postMessage": false,
+        "Worker": false,
+        "SharedWorker": false,
+        "WebSocket": true,
+        "RTCPeerConnection": false,
+        "indexedDB": true,
+        "navigator": true,
+        "localStorage": false
+      }
+    },
+    "beforeCaches": [
+      "pf-trusted-bootstrap-cfd75edd532d4bf1",
+      "pf-browser-contexts-v1",
+      "pf-management-clients-v1"
+    ],
+    "capture": {
+      "format": "offline-resources-v1",
+      "capture": {
+        "additionalResources": [],
+        "unavailableResources": []
+      },
+      "resourceURLs": [
+        "http://127.0.0.1:4218/reject/",
+        "http://127.0.0.1:4218/reject/manifest.webmanifest",
+        "http://127.0.0.1:4218/style.css",
+        "http://127.0.0.1:4218/reject/main.js",
+        "http://127.0.0.1:4218/reject/dependency.js"
+      ],
+      "legacyPreparation": false
     },
     "nativeBefore": {
       "controller": "http://127.0.0.1:4211/runtime/sw.js",
@@ -39,7 +73,7 @@
       ]
     },
     "afterUnregister": {
-      "marker": "post-unregister-27da8ea1-80c3-45fd-b252-4146cfd9da81",
+      "marker": "post-unregister-ce8606f5-a49e-43a0-8c98-9ab84a25c953",
       "outcomes": [
         true,
         true
@@ -48,7 +82,7 @@
     },
     "escapedAfterUnregister": [],
     "httpControl": {
-      "marker": "native-receiver-da9933bf-38ac-464b-bbde-1b9d3b37c08c",
+      "marker": "native-receiver-e9e17af8-1455-43ec-a870-122408c2ca90",
       "status": 200,
       "body": "diagnostic receiver"
     }
@@ -57,10 +91,10 @@
     "name": "firefox",
     "version": "155.0",
     "checks": [
-      "No-manifest website installation completes with no native browser authority in publisher install code and no surviving preparation worker",
+      "No-manifest installation captures an explicit resource list without executing application UI or service-worker code",
       "Root-relative resources, module imports and generated cache content work without network fallback",
       "Virtual messaging cannot list host installations; virtual unregister preserves native registration/control and blocked unknown requests; offline reload and relaunch remain confined",
-      "Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches",
+      "An unreferenced service worker is neither downloaded nor executed, and capture metadata has no preparation state",
       "Missing entry document refuses installation without publishing a record"
     ],
     "authority": {
@@ -71,6 +105,40 @@
       ],
       "virtualReplies": [],
       "unregistered": true
+    },
+    "phase": {
+      "phase": "prepared",
+      "authority": {
+        "document": false,
+        "postMessage": false,
+        "Worker": true,
+        "SharedWorker": false,
+        "WebSocket": true,
+        "RTCPeerConnection": false,
+        "indexedDB": true,
+        "navigator": true,
+        "localStorage": false
+      }
+    },
+    "beforeCaches": [
+      "pf-trusted-bootstrap-cfd75edd532d4bf1",
+      "pf-management-clients-v1",
+      "pf-browser-contexts-v1"
+    ],
+    "capture": {
+      "format": "offline-resources-v1",
+      "capture": {
+        "additionalResources": [],
+        "unavailableResources": []
+      },
+      "resourceURLs": [
+        "http://127.0.0.1:4218/reject/",
+        "http://127.0.0.1:4218/reject/manifest.webmanifest",
+        "http://127.0.0.1:4218/style.css",
+        "http://127.0.0.1:4218/reject/main.js",
+        "http://127.0.0.1:4218/reject/dependency.js"
+      ],
+      "legacyPreparation": false
     },
     "nativeBefore": {
       "controller": "http://127.0.0.1:4211/runtime/sw.js",
@@ -93,7 +161,7 @@
       ]
     },
     "afterUnregister": {
-      "marker": "post-unregister-07e5f302-579c-4eb2-b4a9-b33bf44573f1",
+      "marker": "post-unregister-87e981f8-5d9f-4e55-97cd-da98fa54128d",
       "outcomes": [
         true,
         true
@@ -102,7 +170,7 @@
     },
     "escapedAfterUnregister": [],
     "httpControl": {
-      "marker": "native-receiver-8cb42f1f-5acf-4a87-98fe-f5eac312eb27",
+      "marker": "native-receiver-6e9eb063-09fc-49be-b505-842f6a30a6c7",
       "status": 200,
       "body": "diagnostic receiver"
     }

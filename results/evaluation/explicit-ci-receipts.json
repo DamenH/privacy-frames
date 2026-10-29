@@ -1,0 +1,182 @@
+{
+  "source": "97f2b835609eedc95c9f52a470c7c32046f1b5fb",
+  "run": 40858648533,
+  "artifact": "browser-evidence",
+  "selection": "JSON receipts whose bytes differ from the committed source checkout, including newly produced files. Unchanged historical receipts excluded.",
+  "freshReceiptCount": 43,
+  "unchangedHistoricalReceiptsExcluded": 83,
+  "receipts": [
+    {
+      "path": "results/browser.json",
+      "sha256": "499f3352bd668adcaa1dea434252468cb9eef6938d6aa64b697df543205f54cf"
+    },
+    {
+      "path": "results/compatibility.json",
+      "sha256": "2c4e2ead6cb6445d938b7d91c8506d3c38de00dca935c1a6e7495b30ca418f75"
+    },
+    {
+      "path": "results/contexts/application-history.json",
+      "sha256": "1531854899583198ddd0372dcdc03e746d41342e6831ce8c22afad9d718fa951"
+    },
+    {
+      "path": "results/contexts/cache-aliases.json",
+      "sha256": "79f8430f964f05ea561dfbc4b41e70c6c63590d2b2632ddb7d6159b12ac5337e"
+    },
+    {
+      "path": "results/contexts/csp-startup.json",
+      "sha256": "d8520fb2b916256282b4282af686011ffa2d37ca24806160fe6286759e28255c"
+    },
+    {
+      "path": "results/contexts/custom-elements.json",
+      "sha256": "78c4570355dc7e7806e388a46a00d6a90954f5cb93d9531ac30c01165dae439d"
+    },
+    {
+      "path": "results/contexts/document-contexts-chromium.json",
+      "sha256": "6d4610b048a6c493342d930f285d0f859feebbe01effa0129dae32b48836562b"
+    },
+    {
+      "path": "results/contexts/document-contexts-firefox.json",
+      "sha256": "ec94e7a474136a5245c2289d69d604548ca9a2ef1dcdb46252ddfeeded50fc2e"
+    },
+    {
+      "path": "results/contexts/document-contexts.json",
+      "sha256": "abedd29dd47776239a5baf3c49c85e145b175f641a63a7898bcb2cf2a71dd572"
+    },
+    {
+      "path": "results/contexts/document-factory.json",
+      "sha256": "20f015ac2844031326ed7f33620bf683757c31cfcf7d08c72e1d5ad9ec524dce"
+    },
+    {
+      "path": "results/contexts/document-intents.json",
+      "sha256": "33e2b79c214dd7a29efc59a9a41546023cebdef976bb9d806964022f8ed60b07"
+    },
+    {
+      "path": "results/contexts/document-renderer.json",
+      "sha256": "31e238083a00f2188b9d083a6b976c736ab3d2247200736975e8d5097d18a8a6"
+    },
+    {
+      "path": "results/contexts/dynamic-scripts.json",
+      "sha256": "23d731fde36efba0167438dea4e8d149984e2ee7c1f3a8e92d2684ae85456476"
+    },
+    {
+      "path": "results/contexts/generation.json",
+      "sha256": "77b051d556d9fc27071d558bce2900338747d91bea5af24d2a89004e3a0a128d"
+    },
+    {
+      "path": "results/contexts/global-bindings.json",
+      "sha256": "cd5642c154487bdb62af9243e97f9d3d53053e6e170602994357dd056ba97e23"
+    },
+    {
+      "path": "results/contexts/inert-documents.json",
+      "sha256": "9b71c90d5e0605fe50983feb7246ee3b294bb17e9d6448d304b33f79d4aa65f3"
+    },
+    {
+      "path": "results/contexts/intrinsics.json",
+      "sha256": "bd072e0733857e4b47c6e18b55d56620b817b3a7a880444957c567249b3ff3b4"
+    },
+    {
+      "path": "results/contexts/launch-query.json",
+      "sha256": "db7a7b5d59c3501065043f1ccffcfc937ef94f8ebb626c1d904978b8331dd030"
+    },
+    {
+      "path": "results/contexts/native-markup.json",
+      "sha256": "b5fc8fa69935bf6f41760fdacf87de44265404ae5dc875abd2917e09c64bf696"
+    },
+    {
+      "path": "results/contexts/navigation.json",
+      "sha256": "37e262deeea40b769a332b0461542713e272b35897c3ec9ad19c413f1ee6cedf"
+    },
+    {
+      "path": "results/contexts/popup-receivers.json",
+      "sha256": "da26c86d6ba15501d786c8bb8b3e17e60183120f2074186d58ec4f07782a7d02"
+    },
+    {
+      "path": "results/contexts/prototype-confinement.json",
+      "sha256": "9d7db524466e56a2fd1aafdc7ed11603e0746a9fe3b4417314a0065c1f7d79c1"
+    },
+    {
+      "path": "results/contexts/publisher-store.json",
+      "sha256": "4b56f2cd2ba91d8fa11b3d018a289e097395bb756b6eb7fbfd5ca7f6f3263d75"
+    },
+    {
+      "path": "results/contexts/publishers.json",
+      "sha256": "a0e4843794385475d26d32e62036f32bc091737a2368744f88655d48828b0cb3"
+    },
+    {
+      "path": "results/contexts/realm-enforcement.json",
+      "sha256": "c331955b4c873c532f25a5ea671e16f33cda63985776ae69fbfd806687ca744c"
+    },
+    {
+      "path": "results/contexts/resource-elements.json",
+      "sha256": "edea5c6f6df315d4bee37d7d8cfc2d9a334e068d43c3caa5c4e45dd4bedae1d6"
+    },
+    {
+      "path": "results/contexts/shared-connections.json",
+      "sha256": "d5e804e5566941c074c3407774d461fcbc39ad660522f7a369262be04dd523a8"
+    },
+    {
+      "path": "results/contexts/shared-workers.json",
+      "sha256": "0d3ae1fedbcd4885e6ca8abba8ce23075478677d4013687f3d18b754b1c57bdb"
+    },
+    {
+      "path": "results/contexts/storage-proxy-receiver.json",
+      "sha256": "bf582390e636295cb13a54ef3f43f43c468d72f979136864fd2f57c7150d0ce7"
+    },
+    {
+      "path": "results/contexts/worker-destinations.json",
+      "sha256": "07ed334976074ae27d8fa18460b7c96b4cfb53f703e8d4a62d4818f8717f42a9"
+    },
+    {
+      "path": "results/contexts/worker-root-aliases.json",
+      "sha256": "1dea7ad03197ae5bf7feeb6c9cb96e5e8887cbcbf2648259e25f07a0c3c91971"
+    },
+    {
+      "path": "results/contexts/workers.json",
+      "sha256": "7280d86b5f42f8f48b50c6d5e8f025a386acaa9f5df06fa2c451b089f83a2dba"
+    },
+    {
+      "path": "results/contexts/worklet-guard.json",
+      "sha256": "9b0a89009ec05d8d0ac9c96d30052fbebbb733f2056f95b89ba3cbed4d6b3e5b"
+    },
+    {
+      "path": "results/contexts/worklet-platform.json",
+      "sha256": "7b3485d21005f21e1ec9070cbf3afe783e5b3d7bcbe6fc0c202f7a3878360f68"
+    },
+    {
+      "path": "results/contexts/worklets.json",
+      "sha256": "090a8d8c62540f33abe17370a00ecfdfca2be6de6d4210d9b8f88ad8fb5d1110"
+    },
+    {
+      "path": "results/evaluation/review-regressions.json",
+      "sha256": "05fc4326274e0c49954a092cf922cbd45c3326211b4599869cd6660f77d04e72"
+    },
+    {
+      "path": "results/installation-origin.json",
+      "sha256": "a2261a36e37a366e81da256e7f6a89c9618e03973c402f77781288910e3d4972"
+    },
+    {
+      "path": "results/manager-installation.json",
+      "sha256": "976f75989f096bf229fac4633187d0f199a99236f7e4a08fc811a9e35acb657b"
+    },
+    {
+      "path": "results/network-firefox.json",
+      "sha256": "73250acac64b235dbba78e1af746dbb244bf2c390f8e83f9316ae6b1af499f78"
+    },
+    {
+      "path": "results/network.json",
+      "sha256": "a51b14333e73e45e3e85109ac84d99fa955a484dbe19ca577445e0f6c651ba7b"
+    },
+    {
+      "path": "results/pitch-training.json",
+      "sha256": "73562fd8e6882bfd8ec059f6b9b8fa9bf611aaeeb3b4742da9c60587ce9771fc"
+    },
+    {
+      "path": "results/wasm.json",
+      "sha256": "0bd459633754acd9837ef53d758f97ca2e67f6ead4119f1a06c6ce92188314b3"
+    },
+    {
+      "path": "results/website-installation.json",
+      "sha256": "b8e9218b5d912e90ca68874beb7910d7ab512263acbe9b9af41681a636dbfd97"
+    }
+  ]
+}

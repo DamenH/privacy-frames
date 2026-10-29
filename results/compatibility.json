@@ -24,6 +24,18 @@
           "fileHandlers": []
         }
       }
+    ],
+    "installations": [
+      {
+        "url": "http://127.0.0.1:4218/document/index.html",
+        "resourceListUsed": null,
+        "installationElapsedMs": 146.96518700000001
+      },
+      {
+        "url": "http://127.0.0.1:4212/",
+        "resourceListUsed": "http://127.0.0.1:4212/resource-list.uris",
+        "installationElapsedMs": 163.75980600000003
+      }
     ]
   },
   {
@@ -34,6 +46,18 @@
       "Generic base URL, nested CSS, image and inherited manifest work offline",
       "Iframe installation and private storage survive full browser restart"
     ],
-    "pwas": []
+    "pwas": [],
+    "installations": [
+      {
+        "url": "http://127.0.0.1:4218/document/index.html",
+        "resourceListUsed": null,
+        "installationElapsedMs": 207.10381400000006
+      },
+      {
+        "url": "http://127.0.0.1:4212/",
+        "resourceListUsed": "http://127.0.0.1:4212/resource-list.uris",
+        "installationElapsedMs": 511.524261999999
+      }
+    ]
   }
 ]

@@ -1,22 +1,26 @@
 {
-  "date": "2026-10-28T20:34:38.468Z",
-  "bundleSHA256": "c3d1e3177154bd92b86aadbc5c9d9934ad2fa06fb6c087cf95ddc2e5385046df",
+  "date": "2026-10-29T10:39:08.535Z",
+  "bundleSHA256": "28d635b05a6a7ad49fe59cfb0a2f4884bc273034d9568469751f35ff067d0d23",
   "browsers": [
     {
       "name": "chromium",
       "version": "153.0.8010.12",
       "checks": {
         "sameRegistration": true,
+        "callerCannotCompleteLifecycle": true,
         "changedSource": true,
         "foreignApp": true,
         "foreignGeneration": true,
         "claimedClient": true,
         "oneUse": true,
         "active": true,
+        "completedLifecycle": true,
+        "reRegisterKeepsLifecycle": true,
         "oldBinding": true,
         "unregister": true,
         "oldTicket": true,
         "closedIdNeverReused": true,
+        "newRegistrationNeedsLifecycle": true,
         "oldRegistration": true,
         "newGrant": true
       }
@@ -26,16 +30,20 @@
       "version": "155.0",
       "checks": {
         "sameRegistration": true,
+        "callerCannotCompleteLifecycle": true,
         "changedSource": true,
         "foreignApp": true,
         "foreignGeneration": true,
         "claimedClient": true,
         "oneUse": true,
         "active": true,
+        "completedLifecycle": true,
+        "reRegisterKeepsLifecycle": true,
         "oldBinding": true,
         "unregister": true,
         "oldTicket": true,
         "closedIdNeverReused": true,
+        "newRegistrationNeedsLifecycle": true,
         "oldRegistration": true,
         "newGrant": true
       }

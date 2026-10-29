@@ -1,15 +1,15 @@
 {
-  "date": "2026-10-28T20:37:59.503Z",
+  "date": "2026-10-29T10:45:07.744Z",
   "assets": [
     {
       "site": "manager",
       "file": "config.json",
-      "sha256": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb"
+      "sha256": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9"
     },
     {
       "site": "manager",
       "file": "host.css",
-      "sha256": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e"
+      "sha256": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92"
     },
     {
       "site": "manager",
@@ -19,7 +19,7 @@
     {
       "site": "manager",
       "file": "manager.js",
-      "sha256": "daccf37a0074676cc480fd95023844fea64f70328dd65b241c646051190f2b87"
+      "sha256": "ff7959705803e7d8ceb993b66ced20f929f156ce5169253081dc23a4f9c4581e"
     },
     {
       "site": "manager",
@@ -34,17 +34,17 @@
     {
       "site": "manager",
       "file": "report.html",
-      "sha256": "f375143aebdb8cbc407e8b9cc808d82daf63314baaa6142f0f178250af3c9036"
+      "sha256": "c47e59c6031da65c478b2444bf9240ab680908a21243255a9ffd663e8617f04b"
     },
     {
       "site": "manager",
       "file": "sw.js",
-      "sha256": "79802b250d5ec03ed6d4b62f0558da67ca055c8d69d6cf4bbdc31f20cc018e9f"
+      "sha256": "458c25fa30067bf812505d86717c6c4bfe13481c19af3207a8a6eb11a2b57cc3"
     },
     {
       "site": "runtime",
       "file": "config.json",
-      "sha256": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb"
+      "sha256": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9"
     },
     {
       "site": "runtime",
@@ -59,17 +59,17 @@
     {
       "site": "runtime",
       "file": "document-guard.js",
-      "sha256": "74aa6c5da9303eadfe16707c0eb0280886712bcb9716b76bc6639b486bd05ef5"
+      "sha256": "26663fb7793898ea8a740cbe0dd714791429db8ac11eeb3cada1068e3bc8b94b"
     },
     {
       "site": "runtime",
       "file": "guard.js",
-      "sha256": "d6f91fa807a7569631485c56e4d208d7649298a4586278a7e95fd8989cd03710"
+      "sha256": "2d9003e4617ae952f28358d1aae5172c8f7d3cc2b9a0e38e5f3b87609a59ff09"
     },
     {
       "site": "runtime",
       "file": "host.css",
-      "sha256": "3e63c63b1f1fabeda296361b4c4867fb6756ee19acc0b22a1b9afa3fbaa1be4e"
+      "sha256": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92"
     },
     {
       "site": "runtime",
@@ -79,7 +79,7 @@
     {
       "site": "runtime",
       "file": "publisher-worker-guard.js",
-      "sha256": "7aefafa99b81ee8ccdad783cb5b169d20f08f49a943d330a517f52fa071b813e"
+      "sha256": "16278c8706a3c527b7fdf59aa6672f25fc0836719b221468712a1643a4c42576"
     },
     {
       "site": "runtime",
@@ -94,22 +94,22 @@
     {
       "site": "runtime",
       "file": "report.html",
-      "sha256": "f375143aebdb8cbc407e8b9cc808d82daf63314baaa6142f0f178250af3c9036"
+      "sha256": "c47e59c6031da65c478b2444bf9240ab680908a21243255a9ffd663e8617f04b"
     },
     {
       "site": "runtime",
       "file": "shared-worker-guard.js",
-      "sha256": "39e1d10b656f8bc8f0e6d4236178d1d028085614fa9ff605500518654f47b3d9"
+      "sha256": "ab52741a5a63acf5b26ea53c2db111c32df61dcc1fae4beaf9e0893ce4a0c5f9"
     },
     {
       "site": "runtime",
       "file": "sw.js",
-      "sha256": "ebf627533c7eaa363ffc5261cabe74f42b99e11e38507b7265d524538fee2f0b"
+      "sha256": "acdd43232496e96b2a4b9827914345f5755a8e080fc24935682ed35b2fe622d3"
     },
     {
       "site": "runtime",
       "file": "worker-guard.js",
-      "sha256": "26708927172cf41cbee9e34ce02e198b7d822c8c8484df9df663c952648a5054"
+      "sha256": "c40e3e15df30ee45881bc461b2626a9c21f62348dffa55607fc86cf818af868e"
     },
     {
       "site": "runtime",
@@ -119,7 +119,7 @@
     {
       "site": "installation",
       "file": "config.json",
-      "sha256": "a6fca56af3c439567da6ba8931efef6f02b6cb8ca88d25ada75c9df1b7989dbb"
+      "sha256": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9"
     },
     {
       "site": "installation",
@@ -128,13 +128,8 @@
     },
     {
       "site": "installation",
-      "file": "install-worker.js",
-      "sha256": "732c579c04e320864c3fb8b9a0127f3332687fc715ce294a49e1ee3510ece87e"
-    },
-    {
-      "site": "installation",
       "file": "installation.js",
-      "sha256": "b33f4f12fd76d7df7ab73eed1d2f4078d29e97b0ed64c6b840de1766448db5b8"
+      "sha256": "3ab0f84a466c65c6f407b7b6972fb00ae1d286627a9c9aaabd0268e4d78c1db3"
     },
     {
       "site": "notes",
@@ -295,6 +290,71 @@
       "site": "ordinary",
       "file": "wasm-label.js",
       "sha256": "926ff4725d251e7b2ceb62728ac3df308161cf3b4e22e2bfbd816cfe8e9b0147"
+    },
+    {
+      "site": "resource-lists",
+      "file": "adversary.uris",
+      "sha256": "3d574dc663e266360670bebf93d25d12f3cb0bb5b4b202ace47f972a3817fd75"
+    },
+    {
+      "site": "resource-lists",
+      "file": "cyberchef.uris",
+      "sha256": "cf05094a5e5c33cfe35b6223a6769599abd457387fdf51ce92a09523b21d03f2"
+    },
+    {
+      "site": "resource-lists",
+      "file": "drawio.uris",
+      "sha256": "9abbe603ccf72ee5b9f789aef305d63ed2df67694d2dcd822d4db28217300534"
+    },
+    {
+      "site": "resource-lists",
+      "file": "excalidraw.uris",
+      "sha256": "a11620839d200668dc2be46405fe368fef21b9c0fc35319522fad4413db0f275"
+    },
+    {
+      "site": "resource-lists",
+      "file": "image.uris",
+      "sha256": "b108a5971867148a4394c20baff83ecf5f45a4b37987781231f6bcf7edf3d34e"
+    },
+    {
+      "site": "resource-lists",
+      "file": "inventories.json",
+      "sha256": "2bafd902d5fef7db78d6553e23f08d728ee85f783e8b27fce73bd56c9169b74f"
+    },
+    {
+      "site": "resource-lists",
+      "file": "notes.uris",
+      "sha256": "d1626169bc078850372694eab4aade5ae73c5aec601406583eb9f88235c2e2b8"
+    },
+    {
+      "site": "resource-lists",
+      "file": "ordinary.uris",
+      "sha256": "17daf3c087119aeee988f2ea211765bc3e5469a2382404a7a5451befc1b4b804"
+    },
+    {
+      "site": "resource-lists",
+      "file": "photocraft.uris",
+      "sha256": "14201a23c96d6bd001a5b672d165a7341b008effc23f45ff8462fc952902322a"
+    },
+    {
+      "site": "resource-lists",
+      "file": "pitch-training.uris",
+      "sha256": "d31e2b0440e25d02dcc793e7eb308c4bdfda84b60e1ed9aadc6e20c073a77165"
+    },
+    {
+      "site": "resource-lists",
+      "file": "playground.uris",
+      "sha256": "e47d8be8341b2b4000a4a3a5a60f37d126c8264c32b7658c27d8f9637c0d8ee7"
+    },
+    {
+      "site": "resource-lists",
+      "file": "squoosh.uris",
+      "sha256": "ba0d7a4d1af62dab955008181307807d418eff69336c21aadc3811719b4b952e"
+    },
+    {
+      "site": "resource-lists",
+      "file": "stackedit.uris",
+      "sha256": "587af83df23d4f8b27450c0a8f722e57b383528af3468385e59c0370cbfb9889"
     }
   ],
   "githubEntry": {

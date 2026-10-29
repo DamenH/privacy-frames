@@ -36,6 +36,13 @@ application-generated responses and temporary Blob URLs. Recording requests does
 not transfer running JavaScript state. Listed resources still need to be readable
 by the credential-free installer, and the application starts afresh in confinement.
 
+## CSS response rewriting
+
+Installation now parses CSS resource declarations and preserves unrelated strings
+and comments. The runtime markup compiler still has a separate regex-based URL
+mapper. A focused follow-up should give that mapper the same syntax accuracy
+while preserving the captured-operation rules required inside application realms.
+
 ## Updates
 
 Updates would collect a new resource package separately from runtime user data.

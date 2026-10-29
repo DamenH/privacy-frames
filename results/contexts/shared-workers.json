@@ -1,0 +1,673 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-29T10:38:18.617Z",
+    "revision": "97f2b835609eedc95c9f52a470c7c32046f1b5fb",
+    "dirty": true,
+    "sourceSHA256": "c5f450536309c213b11297f006363d332a5cafc6d250fc871b89b76c87586b2b",
+    "runner": "test/shared-worker-contexts.ts",
+    "runnerSHA256": "599a1a789c92740a16e089cb109379264e7ca422ec6a5f965eb2f7430c59576b",
+    "publisherRevision": "f5de28d798237921e7d83467e9fa399dbb141b25",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "ff7959705803e7d8ceb993b66ced20f929f156ce5169253081dc23a4f9c4581e",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "c47e59c6031da65c478b2444bf9240ab680908a21243255a9ffd663e8617f04b",
+      "dist-manager/sw.js": "458c25fa30067bf812505d86717c6c4bfe13481c19af3207a8a6eb11a2b57cc3",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "26663fb7793898ea8a740cbe0dd714791429db8ac11eeb3cada1068e3bc8b94b",
+      "dist-runtime/guard.js": "2d9003e4617ae952f28358d1aae5172c8f7d3cc2b9a0e38e5f3b87609a59ff09",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "16278c8706a3c527b7fdf59aa6672f25fc0836719b221468712a1643a4c42576",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "c47e59c6031da65c478b2444bf9240ab680908a21243255a9ffd663e8617f04b",
+      "dist-runtime/shared-worker-guard.js": "ab52741a5a63acf5b26ea53c2db111c32df61dcc1fae4beaf9e0893ce4a0c5f9",
+      "dist-runtime/sw.js": "acdd43232496e96b2a4b9827914345f5755a8e080fc24935682ed35b2fe622d3",
+      "dist-runtime/worker-guard.js": "c40e3e15df30ee45881bc461b2626a9c21f62348dffa55607fc86cf818af868e",
+      "dist-runtime/worklet-guard.js": "42d5d3f373a61870a682ac7eb7522ce7ab4236cb9b70acef4ef9e602bfd4561b",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "3ab0f84a466c65c6f407b7b6972fb00ae1d286627a9c9aaabd0268e4d78c1db3"
+    }
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "a": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "undefined"
+        }
+      },
+      "b": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 2,
+          "connection": 2,
+          "connections": 2,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "undefined"
+        }
+      },
+      "isolated": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "second-862e68a79c17ea8455617e22921ecdf0e51d664a8ebe20bfdacdb9d342a71429",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "undefined"
+        }
+      },
+      "malformed": {
+        "response": {
+          "type": "privacy-shared-failed"
+        },
+        "appMessages": 0
+      },
+      "afterMalformed": {
+        "count": 3,
+        "connection": 1,
+        "connections": 2,
+        "name": "state",
+        "location": "http://127.0.0.1:4352/shared.js",
+        "helper": 17,
+        "host": {
+          "version": 1,
+          "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+          "mode": "network-isolated",
+          "context": "shared-worker"
+        },
+        "bytes": [],
+        "sourceIsPort": true,
+        "worker": "undefined"
+      },
+      "transferredPort": [
+        "ready",
+        "pong:ping"
+      ],
+      "nested": {
+        "supported": false
+      },
+      "module": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared-module.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "undefined"
+        }
+      },
+      "topLevelAwait": {
+        "value": 91,
+        "host": {
+          "version": 1,
+          "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+          "mode": "network-isolated",
+          "context": "shared-worker"
+        },
+        "trusted": false,
+        "sourceIsPort": true
+      },
+      "alternate": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/alternate.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "undefined"
+        }
+      },
+      "recovery": {
+        "sameConstructor": true,
+        "refused": true
+      },
+      "offline": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "offline",
+          "location": "http://127.0.0.1:4352/shared-module.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "undefined"
+        }
+      },
+      "blob": [
+        {
+          "count": 1,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          }
+        },
+        {
+          "count": 2,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          }
+        }
+      ],
+      "broken": true,
+      "afterClose": {
+        "count": 4,
+        "connection": 1,
+        "connections": 2,
+        "name": "state",
+        "location": "http://127.0.0.1:4352/shared.js",
+        "helper": 17,
+        "host": {
+          "version": 1,
+          "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+          "mode": "network-isolated",
+          "context": "shared-worker"
+        },
+        "bytes": [],
+        "sourceIsPort": true,
+        "worker": "undefined"
+      },
+      "network": {
+        "fetchRefused": true,
+        "importRefused": true,
+        "socketRefused": true
+      },
+      "nativeNetwork": {
+        "fetchRefused": false,
+        "importRefused": false,
+        "socketRefused": false
+      },
+      "privateReceiverRequests": 0,
+      "privateReceiverConnections": 0,
+      "activeReceiverControl": true,
+      "regenerated": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "undefined"
+        }
+      },
+      "newIdentity": {
+        "key": "privacy-shared-v1:[\"first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959\",\"504c27be-9444-4456-8bc9-08239d6a85c0\",\"http://127.0.0.1:4352/shared.js\",\"classic\",\"state\"]",
+        "generation": "504c27be-9444-4456-8bc9-08239d6a85c0"
+      },
+      "unaffectedOther": {
+        "count": 2,
+        "connection": 1,
+        "connections": 1,
+        "name": "state",
+        "location": "http://127.0.0.1:4352/shared.js",
+        "helper": 17,
+        "host": {
+          "version": 1,
+          "application": "second-862e68a79c17ea8455617e22921ecdf0e51d664a8ebe20bfdacdb9d342a71429",
+          "mode": "network-isolated",
+          "context": "shared-worker"
+        },
+        "bytes": [],
+        "sourceIsPort": true,
+        "worker": "undefined"
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "a": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "function"
+        }
+      },
+      "b": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 2,
+          "connection": 2,
+          "connections": 2,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "function"
+        }
+      },
+      "isolated": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "second-862e68a79c17ea8455617e22921ecdf0e51d664a8ebe20bfdacdb9d342a71429",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "function"
+        }
+      },
+      "malformed": {
+        "response": {
+          "type": "privacy-shared-failed"
+        },
+        "appMessages": 0
+      },
+      "afterMalformed": {
+        "count": 3,
+        "connection": 1,
+        "connections": 2,
+        "name": "state",
+        "location": "http://127.0.0.1:4352/shared.js",
+        "helper": 17,
+        "host": {
+          "version": 1,
+          "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+          "mode": "network-isolated",
+          "context": "shared-worker"
+        },
+        "bytes": [],
+        "sourceIsPort": true,
+        "worker": "function"
+      },
+      "transferredPort": [
+        "ready",
+        "pong:ping"
+      ],
+      "nested": {
+        "supported": true,
+        "nested": {
+          "value": 73,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "dedicated-worker"
+          }
+        }
+      },
+      "module": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared-module.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "function"
+        }
+      },
+      "topLevelAwait": {
+        "value": 91,
+        "host": {
+          "version": 1,
+          "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+          "mode": "network-isolated",
+          "context": "shared-worker"
+        },
+        "trusted": false,
+        "sourceIsPort": true
+      },
+      "alternate": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/alternate.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "function"
+        }
+      },
+      "recovery": {
+        "sameConstructor": true,
+        "refused": true
+      },
+      "offline": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "offline",
+          "location": "http://127.0.0.1:4352/shared-module.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "function"
+        }
+      },
+      "blob": [
+        {
+          "count": 1,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          }
+        },
+        {
+          "count": 2,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          }
+        }
+      ],
+      "broken": true,
+      "afterClose": {
+        "count": 4,
+        "connection": 1,
+        "connections": 2,
+        "name": "state",
+        "location": "http://127.0.0.1:4352/shared.js",
+        "helper": 17,
+        "host": {
+          "version": 1,
+          "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+          "mode": "network-isolated",
+          "context": "shared-worker"
+        },
+        "bytes": [],
+        "sourceIsPort": true,
+        "worker": "function"
+      },
+      "network": {
+        "fetchRefused": true,
+        "importRefused": true,
+        "socketRefused": true
+      },
+      "nativeNetwork": {
+        "fetchRefused": false,
+        "importRefused": false,
+        "socketRefused": false
+      },
+      "privateReceiverRequests": 0,
+      "privateReceiverConnections": 0,
+      "activeReceiverControl": true,
+      "regenerated": {
+        "detached": true,
+        "native": true,
+        "portNative": true,
+        "portIdentity": true,
+        "value": {
+          "count": 1,
+          "connection": 1,
+          "connections": 1,
+          "name": "state",
+          "location": "http://127.0.0.1:4352/shared.js",
+          "helper": 17,
+          "host": {
+            "version": 1,
+            "application": "first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959",
+            "mode": "network-isolated",
+            "context": "shared-worker"
+          },
+          "bytes": [
+            5,
+            11,
+            29
+          ],
+          "sourceIsPort": true,
+          "worker": "function"
+        }
+      },
+      "newIdentity": {
+        "key": "privacy-shared-v1:[\"first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959\",\"2b1044b9-c609-4478-afd4-2f8f282e8475\",\"http://127.0.0.1:4352/shared.js\",\"classic\",\"state\"]",
+        "generation": "2b1044b9-c609-4478-afd4-2f8f282e8475"
+      },
+      "unaffectedOther": {
+        "count": 2,
+        "connection": 1,
+        "connections": 1,
+        "name": "state",
+        "location": "http://127.0.0.1:4352/shared.js",
+        "helper": 17,
+        "host": {
+          "version": 1,
+          "application": "second-862e68a79c17ea8455617e22921ecdf0e51d664a8ebe20bfdacdb9d342a71429",
+          "mode": "network-isolated",
+          "context": "shared-worker"
+        },
+        "bytes": [],
+        "sourceIsPort": true,
+        "worker": "function"
+      }
+    }
+  ]
+}

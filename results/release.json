@@ -1,13 +1,93 @@
 {
-  "status": "verification-in-progress",
-  "change": "Explicit resource discovery with optional text/uri-list supplements; no publisher execution during installation",
-  "previousRelease": "evaluation/release-2dfcbc.json",
+  "status": "complete",
+  "verifiedOn": "2026-10-29T10:53:00.557454+00:00",
+  "implementationRevision": "97f2b835609eedc95c9f52a470c7c32046f1b5fb",
+  "managerPublicationRevision": "97f2b835609eedc95c9f52a470c7c32046f1b5fb",
+  "runtimePublicationRevision": "234fba3b4469ca243d2208e22b90b62aedaebd25",
+  "installationPublicationRevision": "5f460f4b8aca4c87f1512861e269108761ac46b2",
   "publisherRevision": "f5de28d798237921e7d83467e9fa399dbb141b25",
-  "requirements": [
-    "Unit and browser regressions",
-    "Eight-app useful tasks and offline checks",
-    "Independent network controls",
-    "Same-source three-origin GitHub Pages publication",
-    "Public artifact and functional verification"
-  ]
+  "hosting": {
+    "provider": "GitHub Pages",
+    "manager": "https://pf.damenh.com/",
+    "runtime": "https://apps.pf.damenh.com/",
+    "installation": "https://install.pf.damenh.com/",
+    "publishers": "https://privacy-frames.github.io/apps/"
+  },
+  "checks": {
+    "ciUnitTests": 136,
+    "publishedAssetsMatched": 71,
+    "publicApplications": 8,
+    "publicBrowserApplicationPairs": 16,
+    "selectedTasksAndOfflineChecks": "passed",
+    "publicCyberChefTextAndFiles": [
+      "chromium",
+      "firefox"
+    ],
+    "publicCyberChefCancellationAndSVG": [
+      "chromium"
+    ],
+    "publicPitchTraining": [
+      "chromium",
+      "firefox"
+    ],
+    "publicInterface": [
+      "chromium",
+      "firefox"
+    ],
+    "legacyResourcePackages": "reinstall required; private application storage retained",
+    "installerCodeReductionPercent": 62.7
+  },
+  "limitations": [
+    "Selected browser surfaces and workflows; not a formal confinement proof",
+    "Firefox CyberChef cancellation unverified against unreliable native control",
+    "WebKit and real-device mobile installation unverified",
+    "Updates and strict per-application origin/permission isolation deferred"
+  ],
+  "receipts": [
+    {
+      "path": "results/assets.json",
+      "sha256": "4eb51b6b64cceb1445aae35ef634689440fe5097a5ba10aac6b9ec2bb0afc7d2"
+    },
+    {
+      "path": "results/deployed.json",
+      "sha256": "50506faeabc94dc7635613cecc5906ddbdcdda38287bdbfd0d240ff497c1b857"
+    },
+    {
+      "path": "results/pitch-training-deployed.json",
+      "sha256": "8d0082a484a68822fce1356346d847e45ae0173b88023b8641d8d20bd799f67a"
+    },
+    {
+      "path": "results/evaluation/compatibility-explicit-lists-public.json",
+      "sha256": "d6096a1a73b0d393a767b944a44ad3b608b7efd8773ea8a0897e9ce6299927ab"
+    },
+    {
+      "path": "results/evaluation/cyberchef-text-file-explicit-lists-public.json",
+      "sha256": "c8db925e10023f535785aa49977d0a20c754089022a4ee2fe9be25499f76e129"
+    },
+    {
+      "path": "results/evaluation/cyberchef-cancel-explicit-lists-public.json",
+      "sha256": "20802728846ea36d52f0b1cae57cfc97828979dbef657c79ce976c1e942d37aa"
+    },
+    {
+      "path": "results/evaluation/explicit-ci.json",
+      "sha256": "59ae3dc6c0dceaeccdfb7144e865a5e37e67a7bb23a1e3eac4a874c9edf13b5b"
+    },
+    {
+      "path": "results/evaluation/explicit-ci-receipts.json",
+      "sha256": "5f90380bd4f82949fed0b393fe3fc532fff0834f1d2926024c42bfdb4b1b69ed"
+    },
+    {
+      "path": "results/evaluation/explicit-deployments.json",
+      "sha256": "2e0509839cf1b1a46dc2dc13d30f232b1221be75c2f139d245eb174fa8dea574"
+    },
+    {
+      "path": "results/evaluation/explicit-installer-code-size.json",
+      "sha256": "541518f10abe0fd1728699968bf27cba9ef3debe6235235beed05728572d9a09"
+    },
+    {
+      "path": "results/evaluation/retired-installer-worker.json",
+      "sha256": "d35ebd793709302e430f63df7c01eea175123b094c073fa4a909d3eb77473ae6"
+    }
+  ],
+  "previousRelease": "evaluation/release-2dfcbc.json"
 }

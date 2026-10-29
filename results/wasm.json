@@ -7,6 +7,13 @@
       "Initial inline module, preload Wasm and transitive relocated import execute",
       "Wasm instantiation and module graph work offline",
       "Prepared module worker computes the Wasm result; private markers remain absent at receiver"
+    ],
+    "installations": [
+      {
+        "url": "http://127.0.0.1:4218/wasm/index.html",
+        "resourceListUsed": null,
+        "installationElapsedMs": 145.97172
+      }
     ]
   },
   {
@@ -17,6 +24,13 @@
       "Initial inline module, preload Wasm and transitive relocated import execute",
       "Wasm instantiation and module graph work offline",
       "Prepared module worker computes the Wasm result; private markers remain absent at receiver"
+    ],
+    "installations": [
+      {
+        "url": "http://127.0.0.1:4218/wasm/index.html",
+        "resourceListUsed": null,
+        "installationElapsedMs": 180.03882200000044
+      }
     ]
   }
 ]

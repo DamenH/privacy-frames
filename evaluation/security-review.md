@@ -7,20 +7,20 @@ public application task and host-interface checks have also passed.
 
 ## Boundaries reviewed
 
-| Boundary                      | Current mechanism                                                                                           | Required checks                                                                         |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Installation                  | Separate authenticated origin/session; host approval; serialized capture and restricted precaching          | Exact parent/origin/session attacks, duplicate sessions and worker disposal             |
-| Admission                     | Runtime reconstructs metadata and validates paths, content, limits and digests                              | Invalid/partial packages cannot become published installations                          |
-| Root startup                  | Trusted bootstrap captures operations and prepares effects before publisher markup/code                     | Setup failures leave publisher code unexecuted                                          |
-| Child contexts                | Host-created workers, worklets, documents and popups inherit application/generation identity                | Pending references, recursive children, wrong parents and management attacks            |
-| Resource loading              | Original URLs map to the admitted local graph; uncaptured resources fail locally                            | Runtime-origin and external receiver controls, including same-origin WebSockets         |
-| Markup                        | Compiler checks plus viewless native parsing of actual nodes before insertion                               | HTML/SVG/MathML/template parser differences and dynamic insertion                       |
-| Trusted state                 | Private arrays/Maps/Sets/records/descriptors/options; captured native operations                            | Prototype getters/setters, implicit protocols and raw-context interception              |
-| Public language compatibility | Reviewed prototype/static/function metadata additions; protected operations, ancestry and Error stack hooks | Unchanged polyfills work while attempted replacement/reparenting fails                  |
-| Management                    | Authenticated channels and actual browser-client roles                                                      | App-supplied role, URL or identity cannot authorize management                          |
-| Publisher service workers     | Prepared executors and mediated events; host retains native response/controller authority                   | No arbitrary network proxy, executable-response injection or native controller takeover |
-| Storage                       | Application namespaces and protected native factory/prototype routes                                        | Saved-data round trips, enumeration and namespace regressions                           |
-| Lifecycle/navigation          | Scoped root history; prepared context publication; closed/replaced generation checks                        | Reload, cancellation, controller replacement and foreign navigation                     |
+| Boundary                      | Current mechanism                                                                                                 | Required checks                                                                                |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Installation                  | Separate authenticated origin/session; host approval; serialized declaration/list capture; no publisher execution | Exact parent/origin/session attacks, duplicate sessions, inert scripts and no guessed requests |
+| Admission                     | Runtime reconstructs metadata and validates paths, content, limits and digests                                    | Invalid/partial packages cannot become published installations                                 |
+| Root startup                  | Trusted bootstrap captures operations and prepares effects before publisher markup/code                           | Setup failures leave publisher code unexecuted                                                 |
+| Child contexts                | Host-created workers, worklets, documents and popups inherit application/generation identity                      | Pending references, recursive children, wrong parents and management attacks                   |
+| Resource loading              | Original URLs map to the admitted local graph; uncaptured resources fail locally                                  | Runtime-origin and external receiver controls, including same-origin WebSockets                |
+| Markup                        | Compiler checks plus viewless native parsing of actual nodes before insertion                                     | HTML/SVG/MathML/template parser differences and dynamic insertion                              |
+| Trusted state                 | Private arrays/Maps/Sets/records/descriptors/options; captured native operations                                  | Prototype getters/setters, implicit protocols and raw-context interception                     |
+| Public language compatibility | Reviewed prototype/static/function metadata additions; protected operations, ancestry and Error stack hooks       | Unchanged polyfills work while attempted replacement/reparenting fails                         |
+| Management                    | Authenticated channels and actual browser-client roles                                                            | App-supplied role, URL or identity cannot authorize management                                 |
+| Publisher service workers     | Prepared executors and mediated events; host retains native response/controller authority                         | No arbitrary network proxy, executable-response injection or native controller takeover        |
+| Storage                       | Application namespaces and protected native factory/prototype routes                                              | Saved-data round trips, enumeration and namespace regressions                                  |
+| Lifecycle/navigation          | Scoped root history; prepared context publication; closed/replaced generation checks                              | Reload, cancellation, controller replacement and foreign navigation                            |
 
 ## Native references and prototype hooks
 
@@ -46,11 +46,11 @@ identical assignments without accepting a replacement constructor.
 
 ## Current evidence
 
-The [final CI run](https://github.com/privacy-frames/host/actions/runs/40763844471)
-passed on source `2dfcbc2e8be6d9ec64bc3c20789446b59977e14e`, including 182 unit
+The [final CI run](https://github.com/privacy-frames/host/actions/runs/40858648533)
+passed on source `97f2b835609eedc95c9f52a470c7c32046f1b5fb`, including 136 unit
 tests and the browser context, management, storage, lifecycle and hostile
-interception checks. Its [fresh receipt index](../results/evaluation/final-ci-receipts.json)
-contains 42 generated receipts and excludes unchanged historical files shipped
+interception checks. Its [fresh receipt index](../results/evaluation/explicit-ci-receipts.json)
+contains 43 generated receipts and excludes 83 unchanged historical files shipped
 in the same artifact.
 
 The [Chromium](../results/network.json) and
@@ -61,19 +61,17 @@ requests, STUN traffic and DNS sends. These observations cover the calibrated
 routes, including worker requests.
 
 The [public asset check](../results/assets.json) verified HTTPS delivery and
-matching hashes for 59 files. The host, runtime and installer deployments are
+matching hashes for 71 files. The host, runtime and installer deployments are
 live; their revisions and workflow links are in the [completion audit](COMPLETION.md).
-The [public eight-app matrix](../results/evaluation/compatibility-release-public.json)
+The [public eight-app matrix](../results/evaluation/compatibility-explicit-lists-public.json)
 passed all 16 browser/application task and offline rows on that deployed source.
-Separate public tests passed [CyberChef text/file processing](../results/evaluation/cyberchef-text-file-release-public.json)
-in both browsers, [Chromium cancellation/SVG](../results/evaluation/cyberchef-cancel-release-public.json)
+Separate public tests passed [CyberChef text/file processing](../results/evaluation/cyberchef-text-file-explicit-lists-public.json)
+in both browsers, [Chromium cancellation/SVG](../results/evaluation/cyberchef-cancel-explicit-lists-public.json)
 online and offline, and [Pitch Training](../results/pitch-training-deployed.json).
 These tasks verify the selected behavior described in the
 [compatibility evaluation](compatibility.md). The [host-interface receipt](../results/deployed.json)
 records ten passing behavior/security groups per browser and zero unexpected
-errors. Chromium retained one unsupported optional-preparation error, attributed
-to its native installer-worker exception; the distinct outcome reason remains
-recorded.
+errors. Installation no longer executes a publisher preparation worker.
 
 The [CI PWA test](../results/compatibility.json) covers Chromium DevTools native
 installation and launch of two apps, a full browser restart and offline cold

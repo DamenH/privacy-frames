@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-28T20:35:55.177Z",
+  "date": "2026-10-29T10:40:21.428Z",
   "browsers": [
     {
       "name": "chromium",
@@ -30,24 +30,16 @@
         "cloneBlocked": false,
         "executed": false
       },
-      "prepared": {
-        "profile": "website-v1",
-        "ended": true,
-        "caches": [],
-        "serviceWorker": {
-          "profile": "precache-v1",
-          "completed": [
-            "install",
-            "activate"
-          ],
-          "scriptURL": "http://127.0.0.1:4218/review/sw.js",
-          "scope": "http://127.0.0.1:4218/review/"
+      "captured": {
+        "format": "offline-resources-v1",
+        "capture": {
+          "additionalResources": [],
+          "unavailableResources": []
         },
-        "outcome": {
-          "status": "completed",
-          "scriptURL": "http://127.0.0.1:4218/review/sw.js"
-        },
-        "unavailableResources": []
+        "resources": [
+          "http://127.0.0.1:4218/review/"
+        ],
+        "legacyPreparation": false
       },
       "pendingRegistration": {
         "registrations": 0,
@@ -96,24 +88,16 @@
         "cloneBlocked": false,
         "executed": false
       },
-      "prepared": {
-        "profile": "website-v1",
-        "ended": true,
-        "caches": [],
-        "serviceWorker": {
-          "profile": "precache-v1",
-          "completed": [
-            "install",
-            "activate"
-          ],
-          "scriptURL": "http://127.0.0.1:4218/review/sw.js",
-          "scope": "http://127.0.0.1:4218/review/"
+      "captured": {
+        "format": "offline-resources-v1",
+        "capture": {
+          "additionalResources": [],
+          "unavailableResources": []
         },
-        "outcome": {
-          "status": "completed",
-          "scriptURL": "http://127.0.0.1:4218/review/sw.js"
-        },
-        "unavailableResources": []
+        "resources": [
+          "http://127.0.0.1:4218/review/"
+        ],
+        "legacyPreparation": false
       },
       "pendingRegistration": {
         "registrations": 0,

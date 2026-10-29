@@ -5,12 +5,14 @@
     "version": "153.0.8010.12",
     "checks": [
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
-      "Completed installation is available through mediated worker readiness; unsupported updates reject",
+      "The application registers its admitted worker and receives readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
       "Native microphone input reaches pitch analysis and capture stops; 220.8 Hz detected",
       "Browser-denied microphone permission is handled without a capture stream",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation"
     ],
+    "installationElapsedMs": 2750.214804,
+    "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/pitch-training.uris",
     "worker": {
       "state": "activated",
       "updateDenied": true,
@@ -66,17 +68,19 @@
     "version": "155.0",
     "checks": [
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
-      "Completed installation is available through mediated worker readiness; unsupported updates reject",
+      "The application registers its admitted worker and receives readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 1000.8 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 1000.6 Hz detected",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation"
     ],
+    "installationElapsedMs": 1076.2693199999994,
+    "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/pitch-training.uris",
     "worker": {
       "state": "activated",
       "updateDenied": true,
       "script": "https://damenh.github.io/pitch-training/sw.js"
     },
-    "frequency": 1000.8,
+    "frequency": 1000.6,
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-BbG6COy_.js",
@@ -90,11 +94,11 @@
     "maintenance": null,
     "policyObservations": [
       {
-        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 18002}]",
+        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 17933}]",
         "url": "https://apps.pf.damenh.com/sw.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 18002}]",
+        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 17933}]",
         "url": "https://apps.pf.damenh.com/sw.js"
       }
     ],

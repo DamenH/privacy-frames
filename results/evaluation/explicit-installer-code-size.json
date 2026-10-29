@@ -1,0 +1,14 @@
+{
+  "method": "Count splitlines() in committed src/installation TypeScript; excludes dependencies, generated bundles, manager UI and runtime.",
+  "beforeRevision": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
+  "afterRevision": "97f2b835609eedc95c9f52a470c7c32046f1b5fb",
+  "before": {
+    "files": 12,
+    "lines": 3027
+  },
+  "after": {
+    "files": 8,
+    "lines": 1129
+  },
+  "reductionPercent": 62.7
+}

@@ -5,13 +5,15 @@
     "version": "153.0.8010.12",
     "checks": [
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
-      "Completed installation is available through mediated worker readiness; unsupported updates reject",
+      "The application registers its admitted worker and receives readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
       "Native microphone input reaches pitch analysis and capture stops; 221.1 Hz detected",
       "Browser-denied microphone permission is handled without a capture stream",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
       "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
     ],
+    "installationElapsedMs": 3614.457678,
+    "resourceListUsed": "pasted:dist-examples/resource-lists/pitch-training.uris",
     "worker": {
       "state": "activated",
       "updateDenied": true,
@@ -69,18 +71,20 @@
     "version": "155.0",
     "checks": [
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
-      "Completed installation is available through mediated worker readiness; unsupported updates reject",
+      "The application registers its admitted worker and receives readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 1000.5 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 1001.4 Hz detected",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation",
       "No application resource requests reach the physical runtime HTTP server; fixed host-worker update traffic is recorded separately"
     ],
+    "installationElapsedMs": 457.5042090000006,
+    "resourceListUsed": "pasted:dist-examples/resource-lists/pitch-training.uris",
     "worker": {
       "state": "activated",
       "updateDenied": true,
       "script": "https://damenh.github.io/pitch-training/sw.js"
     },
-    "frequency": 1000.5,
+    "frequency": 1001.4,
     "executableReceipt": [
       {
         "url": "https://damenh.github.io/pitch-training/assets/index-BbG6COy_.js",
@@ -100,11 +104,11 @@
     ],
     "policyObservations": [
       {
-        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 17933}]",
         "url": "http://127.0.0.1:4211/runtime/sw.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 18002}]",
+        "text": "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 17933}]",
         "url": "http://127.0.0.1:4211/runtime/sw.js"
       }
     ],

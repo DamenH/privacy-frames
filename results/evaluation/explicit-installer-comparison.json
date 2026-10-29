@@ -1,0 +1,1946 @@
+{
+  "title": "CyberChef installer comparison with an explicit resource list",
+  "recordedAt": "2026-10-29T10:13:03.865Z",
+  "methodology": {
+    "runs": 1,
+    "execution": "Separate fresh Node processes, retained baseline completed before retained explicit-list run started.",
+    "applicationExecution": "None. The baseline optional worker script returned HTTP404, so no installer Worker was constructed; the new installer downloads/parses resources only.",
+    "environment": "Node on this development machine; no browser and no CORS simulation. Browser-origin CORS checks are separate evidence.",
+    "instrumentation": "Native global fetch wrapped to record requested URL, response status, credentials mode and request-header completion timing. Whole installation measured with performance.now(). Output resource byte counts and SHA256 are installer output, which may include adapted documents/scripts.",
+    "limitations": [
+      "One elapsed-time comparison, not a statistical benchmark or pure CPU measurement.",
+      "The runs use live network resources and different resource graphs; explicit installation captured more resources and bytes.",
+      "Module import and initial source hashing occur before the timed installation.",
+      "No shared cache was installed by the harness. Network/server/CDN cache state is uncontrolled.",
+      "A preliminary overlapping trial was discarded; only the subsequent sequential pair is retained.",
+      "Each installer synthesizes four inline-script resource URLs with random identifiers. Those output URL differences are adaptation artifacts; the request trace records actual network URLs."
+    ],
+    "sourceIntegrity": "Every TypeScript source file was hashed before and after each run; both retained runs had stable source hashes. The new source is a dirty implementation worktree, so HEAD alone is not its implementation identity.",
+    "credentialsOmitted": true,
+    "measurementScriptSHA256": "440f400eec16e764d4d8f0ec2128446c37af5bc6911a9f35658b25f3b4ce4ab2",
+    "measurementScript": "import { readFile, writeFile, readdir } from 'node:fs/promises';\nimport { createHash } from 'node:crypto';\nimport { execFileSync } from 'node:child_process';\nimport { pathToFileURL } from 'node:url';\nconst [kind, root, output] = process.argv.slice(2);\nconst hash = b => createHash('sha256').update(b).digest('hex');\nasync function files(dir) {\n  const entries = await readdir(dir, {withFileTypes:true});\n  const result=[];\n  for(const e of entries) { const p=dir+'/'+e.name; if(e.isDirectory()) result.push(...await files(p)); else if(e.name.endsWith('.ts')) result.push(p); }\n  return result;\n}\nasync function sources() { const out={}; for (const p of (await files(root+'/src')).sort()) out[p.slice(root.length+1)]=hash(await readFile(p)); return out; }\nconst initialSources=await sources();\nconst requested=[];\nconst nativeFetch=globalThis.fetch;\nglobalThis.fetch=async function(input, init) {\n  const url=typeof input==='string'? input:input instanceof URL?input.href:input.url;\n  const row={url, credentials:init?.credentials ?? null, mode:init?.mode ?? null, startedAt:new Date().toISOString()}; requested.push(row);\n  const t=performance.now();\n  try { const response=await nativeFetch(input,init); Object.assign(row,{status:response.status,responseURL:response.url,milliseconds:performance.now()-t}); return response; }\n  catch(error) { Object.assign(row,{error:String(error),milliseconds:performance.now()-t}); throw error; }\n};\nconst {downloadWebsite}=await import(pathToFileURL(root+'/src/installation/import-website.ts').href);\nconst source='https://gchq.github.io/CyberChef/';\nconst input=kind==='before'?source:{url:source,resourceList:{kind:'url',url:'https://privacy-frames.github.io/apps/resource-lists/cyberchef.uris'}};\nconst startedAt=new Date().toISOString(); const start=performance.now();\nconst result={kind, input, sourceRevision:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(), sourceClean:execFileSync('git',['status','--porcelain','--untracked-files=no'],{cwd:root,encoding:'utf8'}).trim()==='',node:process.version,platform:process.platform,architecture:process.arch,browser:null, applicationExecuted:false, startedAt};\ntry { const installation=await downloadWebsite(input); Object.assign(result,{success:true,resourceCount:installation.resources.length,resourceBytes:installation.size,resources:installation.resources.map(r=>({url:r.url,size:r.bytes.byteLength,sha256:hash(Buffer.from(r.bytes))})),capture:installation.capture??null,preparation:installation.preparation??null}); }\ncatch(error) { Object.assign(result,{success:false,error:String(error),stack:error.stack}); }\nObject.assign(result,{endedAt:new Date().toISOString(),milliseconds:performance.now()-start,requested,sourceFiles:initialSources,sourceFilesStable:JSON.stringify(initialSources)===JSON.stringify(await sources())});\nawait writeFile(output,JSON.stringify(result,null,2)+'\\n');\nprocess.stdout.write(JSON.stringify({kind,success:result.success,milliseconds:result.milliseconds,resourceCount:result.resourceCount,resourceBytes:result.resourceBytes,requests:requested.length,error:result.error})+'\\n');\n"
+  },
+  "summary": {
+    "beforeMilliseconds": 84277.726387,
+    "afterMilliseconds": 5925.1244,
+    "elapsedRatio": 14.223790202109512,
+    "beforeResourceCount": 35,
+    "afterResourceCount": 75,
+    "beforeBytes": 45352318,
+    "afterBytes": 61611940,
+    "beforeRequestCount": 34,
+    "afterRequestCount": 72,
+    "additionalCapturedURLs": [
+      "https://gchq.github.io/CyberChef/__pf_inline_d9b0c178-58dc-4479-9084-aee431a44467.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_b6703cd8-3f43-4d1a-83cc-1dfde6ce3463.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_4e11838e-ad7b-4535-835a-efa1251d94ad.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_c5a0ff70-7cdf-4c8c-8b5f-e4484299802b.js",
+      "https://gchq.github.io/CyberChef/assets/aecc661b69309290f600.ico",
+      "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.fnt",
+      "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.png",
+      "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.fnt",
+      "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.png",
+      "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.fnt",
+      "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.png",
+      "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.fnt",
+      "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.png",
+      "https://gchq.github.io/CyberChef/assets/forge/prime.worker.min.js",
+      "https://gchq.github.io/CyberChef/assets/main.css.gz",
+      "https://gchq.github.io/CyberChef/assets/main.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/assets/tesseract/lang-data/eng.traineddata.gz",
+      "https://gchq.github.io/CyberChef/assets/tesseract/tesseract-core.wasm.js",
+      "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js",
+      "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/images/file-128x128.png",
+      "https://gchq.github.io/CyberChef/modules/Bletchley.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Charts.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Ciphers.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Code.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Compression.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Crypto.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Diff.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Encodings.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/File.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Handlebars.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Hashing.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Image.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Jq.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/OCR.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/PGP.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Protobuf.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/PublicKey.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Regex.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Serialise.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Shellcode.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/URL.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/UserAgent.js.LICENSE.txt",
+      "https://gchq.github.io/CyberChef/modules/Yara.js.LICENSE.txt"
+    ],
+    "noLongerCapturedURLs": [
+      "https://gchq.github.io/CyberChef/__pf_inline_23dca9a0-2459-47ad-b2e4-71572039c426.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_56ae6abe-bf94-4bd1-9911-d62857b6876a.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_52885247-3173-4953-9e25-d402b9278fbb.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_0f55bf83-024e-473f-b45b-7233952d06c4.js"
+    ],
+    "speculativeFailedRequests": [
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Default.js",
+        "beforeStatus": 404,
+        "afterRequested": false,
+        "afterStatus": null
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/forge/prime.worker.js",
+        "beforeStatus": 404,
+        "afterRequested": false,
+        "afterStatus": null
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/sw.js",
+        "beforeStatus": 404,
+        "afterRequested": false,
+        "afterStatus": null
+      }
+    ],
+    "beforeSyntheticResourceURLs": [
+      "https://gchq.github.io/CyberChef/__pf_inline_23dca9a0-2459-47ad-b2e4-71572039c426.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_56ae6abe-bf94-4bd1-9911-d62857b6876a.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_52885247-3173-4953-9e25-d402b9278fbb.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_0f55bf83-024e-473f-b45b-7233952d06c4.js"
+    ],
+    "afterSyntheticResourceURLs": [
+      "https://gchq.github.io/CyberChef/__pf_inline_d9b0c178-58dc-4479-9084-aee431a44467.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_b6703cd8-3f43-4d1a-83cc-1dfde6ce3463.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_4e11838e-ad7b-4535-835a-efa1251d94ad.js",
+      "https://gchq.github.io/CyberChef/__pf_inline_c5a0ff70-7cdf-4c8c-8b5f-e4484299802b.js"
+    ]
+  },
+  "before": {
+    "kind": "before",
+    "input": "https://gchq.github.io/CyberChef/",
+    "sourceRevision": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
+    "sourceClean": true,
+    "node": "v26.2.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "browser": null,
+    "applicationExecuted": false,
+    "startedAt": "2026-10-29T10:10:51.621Z",
+    "success": true,
+    "resourceCount": 35,
+    "resourceBytes": 45352318,
+    "resources": [
+      {
+        "url": "https://gchq.github.io/CyberChef/",
+        "size": 79455,
+        "sha256": "8f16886e031ac143d45a9340be2c27046ecf462b2c2899a70790d140482916f3"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/__pf_inline_23dca9a0-2459-47ad-b2e4-71572039c426.js",
+        "size": 2327,
+        "sha256": "91ed32bd073cc83b4c88772382193f7912d54bb601c5d21cf802a836b941e85c"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/__pf_inline_56ae6abe-bf94-4bd1-9911-d62857b6876a.js",
+        "size": 263,
+        "sha256": "09aa729d5cef719335d44c9140a16105477d398e15f8e30c67621cbc8b78de71"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/__pf_inline_52885247-3173-4953-9e25-d402b9278fbb.js",
+        "size": 1707,
+        "sha256": "e1e2b1a242966d32a5429e448d2c221431e5ac11578f16d13376fdb56adfc586"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/__pf_inline_0f55bf83-024e-473f-b45b-7233952d06c4.js",
+        "size": 160,
+        "sha256": "413cdea5cc11c02cda9be0d2c32245e262387fcd3a07eef4dad81dd280bf0d32"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.js",
+        "size": 13695615,
+        "sha256": "6739e4ac527ba21566bf1c32f547375c84d2644158648a16c4d2fccde24173a2"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.css",
+        "size": 662490,
+        "sha256": "a0a5c7fba4492493705415503ab03e1009a10947d8cc0ca13fdc41cf6d20813a"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/cook_male-32x32.png",
+        "size": 1624,
+        "sha256": "1af9634ec949405731ff7480de7f164175cd73d7521a8b7818f157f569d7e8c0"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/cyberchef-128x128.png",
+        "size": 5970,
+        "sha256": "d356c96b82b0b0f7baba248cb8de87bb570fc550112556f3099ed230ae8dee8d"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/fork_me.png",
+        "size": 5453,
+        "sha256": "7944dc07e597d827892a4ebf9ac878dd760a97c9a991bc66d4d579a44fc053e8"
+      },
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-G9R4C1H8SR",
+        "size": 535579,
+        "sha256": "59518f583b07f85433ab29eda747bdd70e2974c0c3f35b314b44a6ebbfb12a84"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/02aafe15b98928fdaa38.ttf",
+        "size": 354228,
+        "sha256": "a3ef7af8b79e32a4acdf8bcd5c7d8227bdd557750f76a23ccf11ca02ab5cabe3"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Crypto.js",
+        "size": 2169245,
+        "sha256": "00ef3633767d7f6401f6091b1ad22104aecd2f3bfefe1946b9ac9c5ff72dcc41"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Ciphers.js",
+        "size": 2418387,
+        "sha256": "18a6f41d0c7f37c2129dff17c0f2265775f50952203fdde05b8dc9816028a195"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Encodings.js",
+        "size": 2627359,
+        "sha256": "923e952397690ccab256a61f77fa449ce6de331a5ab9016424dd525b82457f59"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Image.js",
+        "size": 1624252,
+        "sha256": "4bc24469da53eed5a1eb0f33d4d77582c6b8fa5d193e8bbc4e911f2d3c1540b0"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Serialise.js",
+        "size": 671723,
+        "sha256": "7bb17ca29f0bb9a7676609a314e0e352bcb39b149b76b780fd093f278487e3ee"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Hashing.js",
+        "size": 1013831,
+        "sha256": "878036dc559bbf966ea47e654021c40cce6038852947df9653debd79fcb617f7"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Bletchley.js",
+        "size": 377752,
+        "sha256": "60116c2646829c192af90a7ad709f0074d75c66b70c8ad90bfdb63f126ab6016"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Compression.js",
+        "size": 703563,
+        "sha256": "2dc1cf1030171514f105f2b9ec7688f4f2e4d7283f720b27ee72a6bd19da780d"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Code.js",
+        "size": 2750711,
+        "sha256": "03791796f3b89603024ac02e23ae0b41acfa3aee2823bcc6c4d6b6744c39e27c"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Diff.js",
+        "size": 291692,
+        "sha256": "b2a21bd7dfa823a43f327a708ecb52f80b49971e555e53a5c07314ecb55c84e5"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Shellcode.js",
+        "size": 5644569,
+        "sha256": "9629e221d490bd018ea4b1285da1678380664b9b7c27cea9cd317b728b292f31"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Charts.js",
+        "size": 608004,
+        "sha256": "2d78065011e22e5dad62739d753a6029ca7767bd9de64127e80f278281c7e743"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Regex.js",
+        "size": 446028,
+        "sha256": "10ffd74b0205f0623292812c4340305d6f8a050fb1fc42e70b2f6459b593444c"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PGP.js",
+        "size": 1920833,
+        "sha256": "b60c5a92325b50b45c5ed8a736279f0e5079ea35445049b154e9f6001d96b6b3"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PublicKey.js",
+        "size": 733260,
+        "sha256": "2f1cbac646e9bf64fe18b6f213de360ea6053bbb6e1ab62bbecc2f641de41f42"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Jq.js",
+        "size": 2626558,
+        "sha256": "7d498dc2caa034db9a0bb261bc9c5fd619b659a5615b5612440222690be5917b"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/OCR.js",
+        "size": 285491,
+        "sha256": "24b331c8ef395e1ba44cd44aadc2264cdc1f4be077a223c8f93eac91d54c9884"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/URL.js",
+        "size": 326070,
+        "sha256": "abd50895391e445a619e5f308389751342d6c568b8b34c2fa531fdd94bc107e4"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/UserAgent.js",
+        "size": 294081,
+        "sha256": "c21fe55545c1813714b9a73a30d812f2796fc59f12a65a84643ebad21261a1ef"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Protobuf.js",
+        "size": 398082,
+        "sha256": "da3f1720c639bc270ba446f4b290e46835f29533143cda35d41da1081a64cdfb"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/File.js",
+        "size": 268600,
+        "sha256": "0ac4986a78ce7e7d3c92604011fa2f3c0fefb412eeec63bd7db5d7d6ab04839b"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Handlebars.js",
+        "size": 344069,
+        "sha256": "8765faae04aeedfa8d0b1291c2a22a0a5e1f892199f6542755e47dc4bd7ad34e"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Yara.js",
+        "size": 1463287,
+        "sha256": "45d849df732890e93b3ec8919bffa49bcb02e46c482e9f4bd370bc009b47aa32"
+      }
+    ],
+    "capture": null,
+    "preparation": {
+      "profile": "website-v1",
+      "serviceWorker": null,
+      "caches": [],
+      "outcome": {
+        "status": "absent"
+      },
+      "ended": true,
+      "unavailableResources": [
+        {
+          "url": "https://gchq.github.io/CyberChef/modules/Default.js",
+          "reason": "http",
+          "status": 404
+        },
+        {
+          "url": "https://gchq.github.io/CyberChef/forge/prime.worker.js",
+          "reason": "http",
+          "status": 404
+        }
+      ]
+    },
+    "endedAt": "2026-10-29T10:12:15.900Z",
+    "milliseconds": 84277.726387,
+    "requested": [
+      {
+        "url": "https://gchq.github.io/CyberChef/",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:10:51.630Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/",
+        "milliseconds": 264.914783
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:10:51.977Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/main.js",
+        "milliseconds": 228.665348
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.css",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:10:51.978Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/main.css",
+        "milliseconds": 249.90856999999994
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/cook_male-32x32.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:10:51.979Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/images/cook_male-32x32.png",
+        "milliseconds": 247.303964
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/cyberchef-128x128.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:10:51.979Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/images/cyberchef-128x128.png",
+        "milliseconds": 257.78432599999996
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/fork_me.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:10:51.980Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/images/fork_me.png",
+        "milliseconds": 263.90607400000005
+      },
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-G9R4C1H8SR",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:10:51.980Z",
+        "status": 200,
+        "responseURL": "https://www.googletagmanager.com/gtag/js?id=G-G9R4C1H8SR",
+        "milliseconds": 190.58674399999995
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/02aafe15b98928fdaa38.ttf",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:10:52.937Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/02aafe15b98928fdaa38.ttf",
+        "milliseconds": 148.4900200000002
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Default.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:01.607Z",
+        "status": 404,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Default.js",
+        "milliseconds": 149.1667839999991
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Crypto.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:01.757Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Crypto.js",
+        "milliseconds": 142.59029799999917
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Ciphers.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:02.002Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Ciphers.js",
+        "milliseconds": 143.25853599999937
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Encodings.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:02.222Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Encodings.js",
+        "milliseconds": 345.00858400000106
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Image.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:02.680Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Image.js",
+        "milliseconds": 149.34596500000043
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Serialise.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:02.872Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Serialise.js",
+        "milliseconds": 177.58785199999875
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Hashing.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:03.057Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Hashing.js",
+        "milliseconds": 177.82778300000064
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Bletchley.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:03.271Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Bletchley.js",
+        "milliseconds": 147.392745000001
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Compression.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:03.423Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Compression.js",
+        "milliseconds": 33.36235300000044
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Code.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:03.464Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Code.js",
+        "milliseconds": 142.41462599999977
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Diff.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:03.720Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Diff.js",
+        "milliseconds": 155.15156000000025
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Shellcode.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:03.878Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Shellcode.js",
+        "milliseconds": 148.48876299999938
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Charts.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:04.188Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Charts.js",
+        "milliseconds": 146.21776800000043
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Regex.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:04.347Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Regex.js",
+        "milliseconds": 153.93838900000083
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PGP.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:04.506Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/PGP.js",
+        "milliseconds": 150.71055800000067
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PublicKey.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:04.728Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/PublicKey.js",
+        "milliseconds": 140.44396400000005
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Jq.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:04.876Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Jq.js",
+        "milliseconds": 490.37488200000007
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/OCR.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:05.445Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/OCR.js",
+        "milliseconds": 180.66622800000005
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/URL.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:05.628Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/URL.js",
+        "milliseconds": 153.0132999999987
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/UserAgent.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:05.785Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/UserAgent.js",
+        "milliseconds": 152.24813100000028
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Protobuf.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:05.940Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Protobuf.js",
+        "milliseconds": 160.0270070000006
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/File.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:06.104Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/File.js",
+        "milliseconds": 146.84687999999915
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Handlebars.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:06.254Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Handlebars.js",
+        "milliseconds": 141.97718799999893
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Yara.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:06.400Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Yara.js",
+        "milliseconds": 189.5030229999993
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/forge/prime.worker.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:11:12.623Z",
+        "status": 404,
+        "responseURL": "https://gchq.github.io/CyberChef/forge/prime.worker.js",
+        "milliseconds": 151.14932800000315
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/sw.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:15.841Z",
+        "status": 404,
+        "responseURL": "https://gchq.github.io/CyberChef/sw.js",
+        "milliseconds": 34.162292999986676
+      }
+    ],
+    "sourceFiles": {
+      "src/bridge/connect.ts": "bd35b868143935b8cfa4f7ce3227644c516b01f5ef82eea2b196e3183f17833b",
+      "src/installation/amd-dependencies.ts": "20c23844a365b434b88bd4fd13cf3127a94336bf39fb3dc9506e05c05b0c7010",
+      "src/installation/controller.ts": "74b2a18ae3ab21b8a8d531b7b40c1dccb571492538c9a2894c9fb02be8aa980e",
+      "src/installation/document.ts": "b1c6d4a5968205ae1ec7e0436ffe899d1d1bf697c8711ff3a8cda97c7fea73e9",
+      "src/installation/finite-resources.ts": "7a87389156fb7851a43d6708150e20b3bf5ef5fb78f8e19b58d38587c1659eee",
+      "src/installation/import-website.ts": "832865385e1d27383086dcb2fe3feb1fb5bc9ece9ef102b41a0c75e552fb5e8d",
+      "src/installation/modules.ts": "34c89557ce1efc5f63128c8a34175a016841c22950eab26b103e47e119c0b2a6",
+      "src/installation/preparation-crypto.ts": "69cac442099a9659724ed5492418ce76a969919d13a46c24b95c0409954841bc",
+      "src/installation/prepare-worker.ts": "1f5c01c85d791d76af485167908371275212a01f22dbc8418063c6cd33df60f2",
+      "src/installation/protocol.ts": "279a51fafcdb3c0c8f9dcbf665b5799b4105b08b7ee51d9ec56edcc2b71ac39a",
+      "src/installation/resource-capture.ts": "39460d808a9a66631bf78244b273c506c6a20175c1aca4be84443be09bb8ae09",
+      "src/installation/script-dependencies.ts": "68a94ad5a37b816ea852f6a5f27e144e9faa2f5bf832e8fcb38b6c58564b4a83",
+      "src/installation/session.ts": "81751da74ad7c2873b54a8d5afe24220522188195e636d471fc794de516cc96b",
+      "src/manager/hooks/use-library.ts": "f9a006842afa7ad180ca5d5a9916ae84fe65c093d5a0eba21f32a0929c10c3f1",
+      "src/manager/offline-worker.ts": "b6f865bef0257d6e9a4a9e0973f62f24d4eb47201bf968ab6360a0adf05e344b",
+      "src/manager/services/bootstrap.ts": "f5d4c31414469aba52b2774b71a327d29041658e237e98b0fbb0bbd572b680de",
+      "src/manager/services/installation-bridge.ts": "0afdbe43a47ff254d0c33087199de5a46ed1044550448228689240cb563ca267",
+      "src/manager/services/runtime-bridge.ts": "caa00c5630807353ba90e7947fb1c0521f356bbb68b39768feae33d944ee7562",
+      "src/manager/types.ts": "42ae93cbd6cf8ac36c5a4fe5a00b9d34c2d91840877eb978801d43866941291c",
+      "src/runtime/admission.ts": "4ed8a30fdbf821b9b7031b09e8adc7dc3129db4c3ca50922073bc4e4efb57f90",
+      "src/runtime/bindings.ts": "196ef724864fcc77b694c33ea9243b8597b9ea7ab3a9b751e74daf4f63fc3457",
+      "src/runtime/contexts/controller-store.ts": "92f35bfec481f9ff704afef964826b35f70f9f49ce7607066238280cce887fe7",
+      "src/runtime/contexts/document-content.ts": "68f87c0abfeda686ad98aca447b6d6d2f658264c58d331c44c5c0f1c967c910e",
+      "src/runtime/contexts/document-controller.ts": "06d329fe896824494ad1f27821e560ee21d9ee2e81c1d2e0c9da1c2aa68acc29",
+      "src/runtime/contexts/document-factory.ts": "40979db07d32e81d28d8a072c10854bad24d2692677dda1edf7a1c316e7332df",
+      "src/runtime/contexts/document-guard.ts": "bc301a09ccdec3879eac03054d5dea499393020108f43237ad1e7cdc96ea033d",
+      "src/runtime/contexts/document-intents.ts": "16550b200a9f2a36658ff05ed0fc201d47976ad0f317c9bec1f34ab19e3a9b17",
+      "src/runtime/contexts/document-protocol.ts": "86143962be2334f002f921984f1325e550a48b1fc24b3d50bbfa3e0c8412ff6f",
+      "src/runtime/contexts/document-renderer.ts": "9b9b95d659a0541008e74c1b193146787a7df42b62652e86c0abd2aaad34766b",
+      "src/runtime/contexts/document-request.ts": "604ffaeeb40ea03f9b89737adcfc30c00f37201c64b0e858b58ddd853b3afa1f",
+      "src/runtime/contexts/document-surface.ts": "73780345316cb9e751e51ade3299253745651a859094384e7835abf2f3b20f10",
+      "src/runtime/contexts/model.ts": "7032cac8cb33178a992d6b30be7c290e9ae544439ce891fbfae3ea26f9f16343",
+      "src/runtime/contexts/popup-factory.ts": "98ed001beac20e6de23da466f08313bc9c6b406c8d75432f3ae529a5b49c3bde",
+      "src/runtime/contexts/resources.ts": "0d242e5dea0d5e8830a65fac7d87aae51cc9bd09db2c548eae82472c802a0fcd",
+      "src/runtime/contexts/shared-connections.ts": "1e94a740b899b9f1600a3868391e62a58b24e7b2098d524ae2d3c550645194b1",
+      "src/runtime/contexts/shared-controller.ts": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174",
+      "src/runtime/contexts/shared-worker-factory.ts": "24e9cbffafcdf036811fe91177aa63bf2a122b303c4be829d2d79e7b8e94eb2a",
+      "src/runtime/contexts/shared-worker-guard.ts": "d31d4fd3cae95383cabd3593370b9ecf7fa209fc829b3f97de0807c11a459738",
+      "src/runtime/contexts/storage.ts": "35dba5f75e80958cb3f4e965e7fb4a69125bc13cfc61b7753a7a795f0b3fb23a",
+      "src/runtime/contexts/window-realm.ts": "f395aca56727c9b16d9380014628c444c9a9a83c5733df673fa626b013d95701",
+      "src/runtime/contexts/worker-aliases.ts": "70006fb7ef2acbbd230560984875c32251ebaf3c8c136a37b1188cddaf058061",
+      "src/runtime/contexts/worker-factory.ts": "a91ac1819cea5a4611f8f0c63fbd4232f3764aa95dac6188b39909ad9045f4f2",
+      "src/runtime/contexts/worker-guard.ts": "1cb3e8709dad51a8aecb291a508cf05c15e35e37d06342c0ca90421c4b362ae1",
+      "src/runtime/contexts/worker-realm.ts": "edce33feb3f62d3d6295da029d71993526541ea71d34a5fdd7e196024bdcb2e2",
+      "src/runtime/contexts/worklet-controller.ts": "268da6b2d90a980e34a5731450e2dd347fa44d68e44d9c142dd5468ac81b4ef3",
+      "src/runtime/contexts/worklet-factory.ts": "612e22f99c30773826a6cae7ff05555edf5acd36353cc7e0e5972761228fa5bc",
+      "src/runtime/contexts/worklet-guard.ts": "a26c494bba38ab190640551b59bff4c946edc3e6ebc03bba6167f0de4d48e9fb",
+      "src/runtime/contexts/worklet-source.ts": "9ac644cde22403046f982cc1d88efc1f27b5556dd0d7e042b26a2ceebc9f3a46",
+      "src/runtime/contexts/worklet-store.ts": "004262eb8eed4923bcaf8e9efab23842ec4df0243d929681f9d13ad4f2e3cdf9",
+      "src/runtime/contexts/worklet-types.ts": "9d6ab984d337bdc0ac65db031bd5232e1d469eee19e21a210f37b5b61267f257",
+      "src/runtime/document.ts": "fedf33b01103f35339df0c5d89e225f153bf7c2583db02b6f10cf47cd4d825fd",
+      "src/runtime/enforcement/dom.ts": "58a96651df819caf67de5129a17b5da5a479ad98d533570b4dba9f812f23b07d",
+      "src/runtime/enforcement/effects.ts": "df1d2356b250f13f19df8f525d6a19a31ff83e436b1a02f29be409e07cb80d3c",
+      "src/runtime/enforcement/inert-documents.ts": "cb1562720fee409e4bf0997af9febf99a62163f55e318197a7d25fc91080f1b1",
+      "src/runtime/enforcement/native-markup.ts": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105",
+      "src/runtime/enforcement/native.ts": "3fb84f3d2d5bb6f8579e9dd707fdb63fab9ed8af83653b30db200acbf6591aa1",
+      "src/runtime/enforcement/navigation-targets.ts": "f7b5265d3d971c39d888abb99f837204e94d727d5df493ba38d54cc5bb6efd0b",
+      "src/runtime/enforcement/navigation.ts": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd",
+      "src/runtime/enforcement/resource-elements.ts": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234",
+      "src/runtime/enforcement/scripts.ts": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb",
+      "src/runtime/enforcement/web-storage.ts": "4a9f9afa52367f70f9ae544da11f657163636e2127f0984770cdaccc067a7b44",
+      "src/runtime/guard.ts": "371ab976638544b140dae1e32c540eb46a9d8ad6e25ea2775127d0cb92e28813",
+      "src/runtime/intrinsics.ts": "51aa615555dc8605649f809d57b2ab49273863287c2229d7f198299158737851",
+      "src/runtime/modules.ts": "1a5f3a9385d11a8f4a0c16ef5058938eb482a9b9abe141d1607de3056bbaf0ac",
+      "src/runtime/publisher/client.ts": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf",
+      "src/runtime/publisher/controller.ts": "3220d2139bc203127750f0b18bc5f2998e63cf864f4ee38ca2dd98c27766ee7a",
+      "src/runtime/publisher/events.ts": "d054af683a6264a67aa2d375f38dca17079835226e5e4c6ebd7669f2e70c2ced",
+      "src/runtime/publisher/guard.ts": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49",
+      "src/runtime/publisher/protocol.ts": "2facf0d152606b30661d75fe68a7b86f6c3e73fb2125d61039889bb771ff9de4",
+      "src/runtime/publisher/scope.ts": "35940cbf17448e39db66eb92f8a6f542b2a553a47f4c16d8ec517bd049d9d3fa",
+      "src/runtime/publisher/store.ts": "85e968a172a146c3c39b6b0c3557b18ac6141dcdac5cba0174b1b2f44e1ca0c6",
+      "src/runtime/pwa.ts": "e0faa83a5a61406b5c8f029c2715e648923de694e814a6b5a33cd059f81ea267",
+      "src/runtime/resource-aliases.ts": "1cec53fc26a88a46d818a38e9c603b851fb87149b773ba55a1ccca6f82e1a353",
+      "src/runtime/response-policy.ts": "280861b1bae2af16a78711d9756ed69d4e6196be09a02a21d4b9f0f77857b6a4",
+      "src/runtime/storage.ts": "f34b452dc1b2591450a3a2565a2c3a11c345416b0719a6d6e9e6ca410db5db66",
+      "src/runtime/storage/caches.ts": "0703cc8ba12dcff604c390306d1606b48884454af8b8872b5001f606285785bb",
+      "src/runtime/storage/indexed-db.ts": "b50afa20c7c27357c12f4cd7f04e9a444c1487bbbff5acdd7d720fc8cb822fd5",
+      "src/runtime/worker.ts": "59cf4e97ab6de224abe0bbfa4351a91e37e9f8f7b93858badc102bd378fc3f51",
+      "src/shared/application-navigation.ts": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
+      "src/shared/document-data.ts": "63983f145fe714b6b4bf5531d1d54b1a440726546014f4f09fc9c2b4891b27de",
+      "src/shared/module-source.ts": "71b8c4c27921d9fa53a4dad43e5aeb5a431eb56e5af3cfb7cee7bedb92c4c2ef",
+      "src/shared/navigation-targets.ts": "2528c9e28b512664604fc198e640902a69d8262690495ab77eaa5a54ac587399",
+      "src/shared/platform.d.ts": "b622bdedc143b0a79d4f030ab61b472e761bcfd7b9f303cd2fdc2713009dac9f",
+      "src/shared/policy.ts": "59d701d9a8c60e91cb32d4b65375af9eb4f072b9d776a1a64b8293fa3ab74ed2",
+      "src/shared/primordials.ts": "cab25b07a59697b7b1b40aa0a1f7bf8516812066760d5bc5748781d6dc95ca20",
+      "src/shared/runtime-url.ts": "57744dce45f05a53651172647d8981ca0bfcc92cf20284f9c969c840e47f548a",
+      "src/shared/shared-worker.ts": "628cd871c0853c1ecf8a750eccdffd8b1573f00559079ec7b313a756fb5ab672",
+      "src/shared/types.ts": "4ec463a27ac843b8c2f3cbaed6040ca0b7a5ab7cfde1cbeaedd64a1e537df1d9"
+    },
+    "sourceFilesStable": true
+  },
+  "after": {
+    "kind": "after",
+    "input": {
+      "url": "https://gchq.github.io/CyberChef/",
+      "resourceList": {
+        "kind": "url",
+        "url": "https://privacy-frames.github.io/apps/resource-lists/cyberchef.uris"
+      }
+    },
+    "sourceRevision": "2f4c1b47aa2e2d0dfdc6148c0de1a4fb0ac9fbb8",
+    "sourceClean": false,
+    "node": "v26.2.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "browser": null,
+    "applicationExecuted": false,
+    "startedAt": "2026-10-29T10:12:19.437Z",
+    "success": true,
+    "resourceCount": 75,
+    "resourceBytes": 61611940,
+    "resources": [
+      {
+        "url": "https://gchq.github.io/CyberChef/",
+        "size": 79455,
+        "sha256": "bf1d28f9fd635e22f232f5a074cbb9412034828f97048698877b3a200b17735f"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/__pf_inline_d9b0c178-58dc-4479-9084-aee431a44467.js",
+        "size": 2327,
+        "sha256": "91ed32bd073cc83b4c88772382193f7912d54bb601c5d21cf802a836b941e85c"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/__pf_inline_b6703cd8-3f43-4d1a-83cc-1dfde6ce3463.js",
+        "size": 263,
+        "sha256": "09aa729d5cef719335d44c9140a16105477d398e15f8e30c67621cbc8b78de71"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/__pf_inline_4e11838e-ad7b-4535-835a-efa1251d94ad.js",
+        "size": 1707,
+        "sha256": "e1e2b1a242966d32a5429e448d2c221431e5ac11578f16d13376fdb56adfc586"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/__pf_inline_c5a0ff70-7cdf-4c8c-8b5f-e4484299802b.js",
+        "size": 160,
+        "sha256": "413cdea5cc11c02cda9be0d2c32245e262387fcd3a07eef4dad81dd280bf0d32"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/02aafe15b98928fdaa38.ttf",
+        "size": 354228,
+        "sha256": "a3ef7af8b79e32a4acdf8bcd5c7d8227bdd557750f76a23ccf11ca02ab5cabe3"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/aecc661b69309290f600.ico",
+        "size": 1082,
+        "sha256": "9eeb302edeb3bfeaf0164a9865c2659ba2c0403530fec2b411c1dce2c80350bd"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.fnt",
+        "size": 31549,
+        "sha256": "83bc549774011d6ce2504293f5e20d0dbda3775fd72ed9765dcb3e5cd6e9f2b9"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.png",
+        "size": 52730,
+        "sha256": "f49e52b7908d49d2559a7efff9dbb015e3a564f10338af4a7bbc60d5ab16b4ac"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.fnt",
+        "size": 31735,
+        "sha256": "5b85972c940df7769793e1c88049087c3400f341641bfe5fbcbe31dfe8377656"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.png",
+        "size": 50192,
+        "sha256": "fce3f5574b38ebe47f9e7f04f39aa6ebe1474eda49eec599a0c78dd61d72127c"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.fnt",
+        "size": 11934,
+        "sha256": "e6f956b7a27ba125751ad79cd11d220d101348288e10f4568a3ffd66f3f1a6b8"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.png",
+        "size": 52580,
+        "sha256": "6b03b66ea87a796ab67de0835cdf9152dae992ad961e49073f581dfd59fef584"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.fnt",
+        "size": 31945,
+        "sha256": "ef4cd84f32dcb096fbc754bc18e216cf5a27b38c7b3573aa12b700d49b064545"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.png",
+        "size": 54282,
+        "sha256": "bb8c23755e80bcfcb46a8504433552d12b7a47db05e68072ac6cd5bdd40971bd"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/forge/prime.worker.min.js",
+        "size": 21366,
+        "sha256": "d9c06e4a9263409043f33115239c2d7a6deb343b2d0754fafa554288b315bae4"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.css",
+        "size": 662490,
+        "sha256": "a0a5c7fba4492493705415503ab03e1009a10947d8cc0ca13fdc41cf6d20813a"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.css.gz",
+        "size": 70995,
+        "sha256": "e8f47fe246a88ef705bf44ebb3c8e6e1974a1b43cb761e2d6853b3efd29f89e8"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.js",
+        "size": 13695615,
+        "sha256": "6739e4ac527ba21566bf1c32f547375c84d2644158648a16c4d2fccde24173a2"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.js.LICENSE.txt",
+        "size": 7394,
+        "sha256": "d9ebf216cd9d89ecfc40d6a3f2ee00744229fec5a3b44eaadc3317225f5d9854"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/tesseract/lang-data/eng.traineddata.gz",
+        "size": 10923060,
+        "sha256": "ed350f3752f81ee8f38769edc14d92d997dababe23b565c59879372cc46a2468"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/tesseract/tesseract-core.wasm.js",
+        "size": 4687103,
+        "sha256": "8eca07943d2f624d5e254d602a4e3be058b22a2925467cd76f051c1fcd36ea8d"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js",
+        "size": 110955,
+        "sha256": "50c1c38b0fca7ebd54e20c909026dcc0281296bac98da68ea9791efd14b843ce"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js.LICENSE.txt",
+        "size": 68,
+        "sha256": "980d86295be1b66b19b80fb1e8e01c0af4e971acd2db481391110a436b3df42d"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/cook_male-32x32.png",
+        "size": 1624,
+        "sha256": "1af9634ec949405731ff7480de7f164175cd73d7521a8b7818f157f569d7e8c0"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/cyberchef-128x128.png",
+        "size": 5970,
+        "sha256": "d356c96b82b0b0f7baba248cb8de87bb570fc550112556f3099ed230ae8dee8d"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/file-128x128.png",
+        "size": 19378,
+        "sha256": "a925999224175e99aa0d031e446ad76cd26dd553c2caaea19418b30eeb48da11"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/fork_me.png",
+        "size": 5453,
+        "sha256": "7944dc07e597d827892a4ebf9ac878dd760a97c9a991bc66d4d579a44fc053e8"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Bletchley.js",
+        "size": 377752,
+        "sha256": "60116c2646829c192af90a7ad709f0074d75c66b70c8ad90bfdb63f126ab6016"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Bletchley.js.LICENSE.txt",
+        "size": 5412,
+        "sha256": "0d3b6b937c0764f2b550d6215f09658f25c5c390a351407980f8a8921a7042c8"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Charts.js",
+        "size": 608004,
+        "sha256": "2d78065011e22e5dad62739d753a6029ca7767bd9de64127e80f278281c7e743"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Charts.js.LICENSE.txt",
+        "size": 2848,
+        "sha256": "66ec87aeaa5f781153c1918e76d12a35d898aa0bba1c460fbfde322315027284"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Ciphers.js",
+        "size": 2418387,
+        "sha256": "18a6f41d0c7f37c2129dff17c0f2265775f50952203fdde05b8dc9816028a195"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Ciphers.js.LICENSE.txt",
+        "size": 12286,
+        "sha256": "e2008ebbd7df2890e4a43c226ca619d269339f68e382036220526d1fe89d4866"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Code.js",
+        "size": 2750711,
+        "sha256": "03791796f3b89603024ac02e23ae0b41acfa3aee2823bcc6c4d6b6744c39e27c"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Code.js.LICENSE.txt",
+        "size": 5678,
+        "sha256": "3316ab9922b6fb361f5c50b896eb03883fe3021317dae4bd798c4e8cd1b59b10"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Compression.js",
+        "size": 703563,
+        "sha256": "2dc1cf1030171514f105f2b9ec7688f4f2e4d7283f720b27ee72a6bd19da780d"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Compression.js.LICENSE.txt",
+        "size": 4006,
+        "sha256": "166c16f1e388d929dea50cb7e2fdb6d33debc4126c89095ae0b2a587f781bfd6"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Crypto.js",
+        "size": 2169245,
+        "sha256": "00ef3633767d7f6401f6091b1ad22104aecd2f3bfefe1946b9ac9c5ff72dcc41"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Crypto.js.LICENSE.txt",
+        "size": 7666,
+        "sha256": "8eeb1407b527837e048c32ba4c6a83fba9fc76cebf8da935533c6c2d659da6c1"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Diff.js",
+        "size": 291692,
+        "sha256": "b2a21bd7dfa823a43f327a708ecb52f80b49971e555e53a5c07314ecb55c84e5"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Diff.js.LICENSE.txt",
+        "size": 2715,
+        "sha256": "509053d2641cfb8555ba2fb52cf1f1f2681971f45cab68fb841719c56141b06e"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Encodings.js",
+        "size": 2627359,
+        "sha256": "923e952397690ccab256a61f77fa449ce6de331a5ab9016424dd525b82457f59"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Encodings.js.LICENSE.txt",
+        "size": 4893,
+        "sha256": "8fd856068cfae3993554e187ff68ffa2bb6e3924cdff4bdedc8d3716b777756e"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/File.js",
+        "size": 268600,
+        "sha256": "0ac4986a78ce7e7d3c92604011fa2f3c0fefb412eeec63bd7db5d7d6ab04839b"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/File.js.LICENSE.txt",
+        "size": 2825,
+        "sha256": "1acbb250b4ce1c3d151b682450e49535be294a410c5e6aef6b21ed162f72b69f"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Handlebars.js",
+        "size": 344069,
+        "sha256": "8765faae04aeedfa8d0b1291c2a22a0a5e1f892199f6542755e47dc4bd7ad34e"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Handlebars.js.LICENSE.txt",
+        "size": 2816,
+        "sha256": "fe901fa48221a5009f6488272bc2b292a63853e07caabe661b5fb6e01902d7b7"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Hashing.js",
+        "size": 1013831,
+        "sha256": "878036dc559bbf966ea47e654021c40cce6038852947df9653debd79fcb617f7"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Hashing.js.LICENSE.txt",
+        "size": 3825,
+        "sha256": "977b60411eed0ba823b1a3423b19ace42af35ee6f3fbc779bd2b6cc8e26f87fc"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Image.js",
+        "size": 1624252,
+        "sha256": "4bc24469da53eed5a1eb0f33d4d77582c6b8fa5d193e8bbc4e911f2d3c1540b0"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Image.js.LICENSE.txt",
+        "size": 9777,
+        "sha256": "e7f7bb1e2d6abaac951c52dd05ceef5da2a016ee729760edf9b513795f4ec67b"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Jq.js",
+        "size": 2626558,
+        "sha256": "7d498dc2caa034db9a0bb261bc9c5fd619b659a5615b5612440222690be5917b"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Jq.js.LICENSE.txt",
+        "size": 2911,
+        "sha256": "12e662eda3a782834f9fe0496c5ec9f236efe57bd3c9f21f4265ed5f4693884d"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/OCR.js",
+        "size": 285491,
+        "sha256": "24b331c8ef395e1ba44cd44aadc2264cdc1f4be077a223c8f93eac91d54c9884"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/OCR.js.LICENSE.txt",
+        "size": 2889,
+        "sha256": "53c9757cac3cf2baaa8f73aaa5c90db1430a5098045ff6cf7cbb7216b12a030b"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PGP.js",
+        "size": 1920833,
+        "sha256": "b60c5a92325b50b45c5ed8a736279f0e5079ea35445049b154e9f6001d96b6b3"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PGP.js.LICENSE.txt",
+        "size": 4385,
+        "sha256": "0c0e5b53d504f9593bb6e3cf565e6f797360f0f492b6095ece87459463e10ea6"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Protobuf.js",
+        "size": 398082,
+        "sha256": "da3f1720c639bc270ba446f4b290e46835f29533143cda35d41da1081a64cdfb"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Protobuf.js.LICENSE.txt",
+        "size": 4007,
+        "sha256": "331d0bb0e1625131c1c12aec0b32490d75e9bd45aa1c0aa12f24e992f8968f5b"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PublicKey.js",
+        "size": 733260,
+        "sha256": "2f1cbac646e9bf64fe18b6f213de360ea6053bbb6e1ab62bbecc2f641de41f42"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PublicKey.js.LICENSE.txt",
+        "size": 3793,
+        "sha256": "37ac0fdfa7bec080d2714f79aacf626c09eddd2f3a7af0975182bff19f278829"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Regex.js",
+        "size": 446028,
+        "sha256": "10ffd74b0205f0623292812c4340305d6f8a050fb1fc42e70b2f6459b593444c"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Regex.js.LICENSE.txt",
+        "size": 4022,
+        "sha256": "709a4340afa70ecc00d0b28d2b50751e50ee5040cd645f05b3c51ec5c67080ab"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Serialise.js",
+        "size": 671723,
+        "sha256": "7bb17ca29f0bb9a7676609a314e0e352bcb39b149b76b780fd093f278487e3ee"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Serialise.js.LICENSE.txt",
+        "size": 3301,
+        "sha256": "3cc7b2f1f514bd064e60bd19ffe5c9d6598d5a9ee7d1646146076e1e689b2c38"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Shellcode.js",
+        "size": 5644569,
+        "sha256": "9629e221d490bd018ea4b1285da1678380664b9b7c27cea9cd317b728b292f31"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Shellcode.js.LICENSE.txt",
+        "size": 2916,
+        "sha256": "b31687879a2a9f1236796ff0107e0e01281f84e6e163fdeba15da7a95f817503"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/URL.js",
+        "size": 326070,
+        "sha256": "abd50895391e445a619e5f308389751342d6c568b8b34c2fa531fdd94bc107e4"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/URL.js.LICENSE.txt",
+        "size": 2767,
+        "sha256": "8d08f0b5b36a0e066615dc5b322ed6a18b79a0fd1accc9558ffc091b5f4f226a"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/UserAgent.js",
+        "size": 294081,
+        "sha256": "c21fe55545c1813714b9a73a30d812f2796fc59f12a65a84643ebad21261a1ef"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/UserAgent.js.LICENSE.txt",
+        "size": 2715,
+        "sha256": "509053d2641cfb8555ba2fb52cf1f1f2681971f45cab68fb841719c56141b06e"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Yara.js",
+        "size": 1463287,
+        "sha256": "45d849df732890e93b3ec8919bffa49bcb02e46c482e9f4bd370bc009b47aa32"
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Yara.js.LICENSE.txt",
+        "size": 2821,
+        "sha256": "7b2f46616a40ad3b4fa7f1a3697e1a2fb28e7ec2abeb85f3a3f311e792082ea2"
+      },
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-G9R4C1H8SR",
+        "size": 535579,
+        "sha256": "59518f583b07f85433ab29eda747bdd70e2974c0c3f35b314b44a6ebbfb12a84"
+      }
+    ],
+    "capture": {
+      "additionalResources": [
+        "https://gchq.github.io/CyberChef/assets/02aafe15b98928fdaa38.ttf",
+        "https://gchq.github.io/CyberChef/assets/aecc661b69309290f600.ico",
+        "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.fnt",
+        "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.png",
+        "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.fnt",
+        "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.png",
+        "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.fnt",
+        "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.png",
+        "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.fnt",
+        "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.png",
+        "https://gchq.github.io/CyberChef/assets/forge/prime.worker.min.js",
+        "https://gchq.github.io/CyberChef/assets/main.css",
+        "https://gchq.github.io/CyberChef/assets/main.css.gz",
+        "https://gchq.github.io/CyberChef/assets/main.js",
+        "https://gchq.github.io/CyberChef/assets/main.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/assets/tesseract/lang-data/eng.traineddata.gz",
+        "https://gchq.github.io/CyberChef/assets/tesseract/tesseract-core.wasm.js",
+        "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js",
+        "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/images/cook_male-32x32.png",
+        "https://gchq.github.io/CyberChef/images/cyberchef-128x128.png",
+        "https://gchq.github.io/CyberChef/images/file-128x128.png",
+        "https://gchq.github.io/CyberChef/images/fork_me.png",
+        "https://gchq.github.io/CyberChef/modules/Bletchley.js",
+        "https://gchq.github.io/CyberChef/modules/Bletchley.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Charts.js",
+        "https://gchq.github.io/CyberChef/modules/Charts.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Ciphers.js",
+        "https://gchq.github.io/CyberChef/modules/Ciphers.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Code.js",
+        "https://gchq.github.io/CyberChef/modules/Code.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Compression.js",
+        "https://gchq.github.io/CyberChef/modules/Compression.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Crypto.js",
+        "https://gchq.github.io/CyberChef/modules/Crypto.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Diff.js",
+        "https://gchq.github.io/CyberChef/modules/Diff.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Encodings.js",
+        "https://gchq.github.io/CyberChef/modules/Encodings.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/File.js",
+        "https://gchq.github.io/CyberChef/modules/File.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Handlebars.js",
+        "https://gchq.github.io/CyberChef/modules/Handlebars.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Hashing.js",
+        "https://gchq.github.io/CyberChef/modules/Hashing.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Image.js",
+        "https://gchq.github.io/CyberChef/modules/Image.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Jq.js",
+        "https://gchq.github.io/CyberChef/modules/Jq.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/OCR.js",
+        "https://gchq.github.io/CyberChef/modules/OCR.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/PGP.js",
+        "https://gchq.github.io/CyberChef/modules/PGP.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Protobuf.js",
+        "https://gchq.github.io/CyberChef/modules/Protobuf.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/PublicKey.js",
+        "https://gchq.github.io/CyberChef/modules/PublicKey.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Regex.js",
+        "https://gchq.github.io/CyberChef/modules/Regex.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Serialise.js",
+        "https://gchq.github.io/CyberChef/modules/Serialise.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Shellcode.js",
+        "https://gchq.github.io/CyberChef/modules/Shellcode.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/URL.js",
+        "https://gchq.github.io/CyberChef/modules/URL.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/UserAgent.js",
+        "https://gchq.github.io/CyberChef/modules/UserAgent.js.LICENSE.txt",
+        "https://gchq.github.io/CyberChef/modules/Yara.js",
+        "https://gchq.github.io/CyberChef/modules/Yara.js.LICENSE.txt"
+      ],
+      "unavailableResources": []
+    },
+    "preparation": null,
+    "endedAt": "2026-10-29T10:12:25.363Z",
+    "milliseconds": 5925.1244,
+    "requested": [
+      {
+        "url": "https://privacy-frames.github.io/apps/resource-lists/cyberchef.uris",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:19.445Z",
+        "status": 200,
+        "responseURL": "https://privacy-frames.github.io/apps/resource-lists/cyberchef.uris",
+        "milliseconds": 148.268551
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:19.596Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/",
+        "milliseconds": 124.71839399999996
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/02aafe15b98928fdaa38.ttf",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:19.803Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/02aafe15b98928fdaa38.ttf",
+        "milliseconds": 36.23996299999999
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/aecc661b69309290f600.ico",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:19.804Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/aecc661b69309290f600.ico",
+        "milliseconds": 232.829861
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.fnt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:19.805Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.fnt",
+        "milliseconds": 251.587156
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:19.806Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/fonts/Roboto72White.png",
+        "milliseconds": 394.44924499999996
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.fnt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:19.806Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.fnt",
+        "milliseconds": 261.47119999999995
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:19.807Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/fonts/RobotoBlack72White.png",
+        "milliseconds": 281.15863099999996
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.fnt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.239Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.fnt",
+        "milliseconds": 170.684393
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.239Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/fonts/RobotoMono72White.png",
+        "milliseconds": 159.543773
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.fnt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.240Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.fnt",
+        "milliseconds": 144.4648709999999
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.240Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/fonts/RobotoSlab72White.png",
+        "milliseconds": 150.714111
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/forge/prime.worker.min.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.240Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/forge/prime.worker.min.js",
+        "milliseconds": 161.39487499999996
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.css",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.240Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/main.css",
+        "milliseconds": 144.92411099999993
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.css.gz",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.450Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/main.css.gz",
+        "milliseconds": 195.0183780000002
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.450Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/main.js",
+        "milliseconds": 147.66795000000002
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/main.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.450Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/main.js.LICENSE.txt",
+        "milliseconds": 140.85376900000006
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/tesseract/lang-data/eng.traineddata.gz",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.450Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/tesseract/lang-data/eng.traineddata.gz",
+        "milliseconds": 572.1772860000001
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/tesseract/tesseract-core.wasm.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.451Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/tesseract/tesseract-core.wasm.js",
+        "milliseconds": 453.25331099999994
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:20.451Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js",
+        "milliseconds": 166.30990399999996
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.722Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/assets/tesseract/worker.min.js.LICENSE.txt",
+        "milliseconds": 149.643556
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/cook_male-32x32.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.722Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/images/cook_male-32x32.png",
+        "milliseconds": 159.82124199999998
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/cyberchef-128x128.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.722Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/images/cyberchef-128x128.png",
+        "milliseconds": 149.15527299999985
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/file-128x128.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.723Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/images/file-128x128.png",
+        "milliseconds": 154.36796800000002
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/images/fork_me.png",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.723Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/images/fork_me.png",
+        "milliseconds": 32.28145799999993
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Bletchley.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.723Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Bletchley.js",
+        "milliseconds": 33.854621999999836
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Bletchley.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.885Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Bletchley.js.LICENSE.txt",
+        "milliseconds": 154.488433
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Charts.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.886Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Charts.js",
+        "milliseconds": 32.674271999999746
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Charts.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.886Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Charts.js.LICENSE.txt",
+        "milliseconds": 141.578841
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Ciphers.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.886Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Ciphers.js",
+        "milliseconds": 32.56034499999987
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Ciphers.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.886Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Ciphers.js.LICENSE.txt",
+        "milliseconds": 156.75089400000024
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Code.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:22.886Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Code.js",
+        "milliseconds": 33.8493239999998
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Code.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.084Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Code.js.LICENSE.txt",
+        "milliseconds": 146.6331839999998
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Compression.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.085Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Compression.js",
+        "milliseconds": 33.32745399999976
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Compression.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.085Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Compression.js.LICENSE.txt",
+        "milliseconds": 148.09055899999976
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Crypto.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.085Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Crypto.js",
+        "milliseconds": 32.66047800000024
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Crypto.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.085Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Crypto.js.LICENSE.txt",
+        "milliseconds": 146.18450500000017
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Diff.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.085Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Diff.js",
+        "milliseconds": 152.6984419999999
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Diff.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.265Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Diff.js.LICENSE.txt",
+        "milliseconds": 244.3383819999999
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Encodings.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.265Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Encodings.js",
+        "milliseconds": 168.15362499999992
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Encodings.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.266Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Encodings.js.LICENSE.txt",
+        "milliseconds": 168.30225500000006
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/File.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.266Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/File.js",
+        "milliseconds": 471.96611900000016
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/File.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.266Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/File.js.LICENSE.txt",
+        "milliseconds": 167.46341500000017
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Handlebars.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.266Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Handlebars.js",
+        "milliseconds": 33.34173600000031
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Handlebars.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.756Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Handlebars.js.LICENSE.txt",
+        "milliseconds": 149.3727570000001
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Hashing.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.756Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Hashing.js",
+        "milliseconds": 218.22422000000006
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Hashing.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.756Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Hashing.js.LICENSE.txt",
+        "milliseconds": 150.27420600000005
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Image.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.756Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Image.js",
+        "milliseconds": 33.146263999999974
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Image.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.756Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Image.js.LICENSE.txt",
+        "milliseconds": 153.80483400000048
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Jq.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:23.757Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Jq.js",
+        "milliseconds": 216.38866999999937
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Jq.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.093Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Jq.js.LICENSE.txt",
+        "milliseconds": 151.8784109999997
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/OCR.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.093Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/OCR.js",
+        "milliseconds": 32.87127899999996
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/OCR.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.093Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/OCR.js.LICENSE.txt",
+        "milliseconds": 149.26597799999945
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PGP.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.093Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/PGP.js",
+        "milliseconds": 32.45541200000025
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PGP.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.093Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/PGP.js.LICENSE.txt",
+        "milliseconds": 145.7394719999993
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Protobuf.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.094Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Protobuf.js",
+        "milliseconds": 176.61570700000084
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Protobuf.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.305Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Protobuf.js.LICENSE.txt",
+        "milliseconds": 143.9226830000007
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PublicKey.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.306Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/PublicKey.js",
+        "milliseconds": 33.26024099999995
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/PublicKey.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.306Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/PublicKey.js.LICENSE.txt",
+        "milliseconds": 146.50108699999964
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Regex.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.306Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Regex.js",
+        "milliseconds": 33.16803399999935
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Regex.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.306Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Regex.js.LICENSE.txt",
+        "milliseconds": 147.9092380000002
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Serialise.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.306Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Serialise.js",
+        "milliseconds": 194.3026400000008
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Serialise.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.524Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Serialise.js.LICENSE.txt",
+        "milliseconds": 156.9295400000001
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Shellcode.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.524Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Shellcode.js",
+        "milliseconds": 33.58946199999991
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Shellcode.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.524Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Shellcode.js.LICENSE.txt",
+        "milliseconds": 140.35744599999998
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/URL.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.524Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/URL.js",
+        "milliseconds": 33.537021000000095
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/URL.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.524Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/URL.js.LICENSE.txt",
+        "milliseconds": 161.65510200000062
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/UserAgent.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.524Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/UserAgent.js",
+        "milliseconds": 143.21997600000032
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/UserAgent.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.722Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/UserAgent.js.LICENSE.txt",
+        "milliseconds": 149.0641029999997
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Yara.js",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.722Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Yara.js",
+        "milliseconds": 205.0837419999998
+      },
+      {
+        "url": "https://gchq.github.io/CyberChef/modules/Yara.js.LICENSE.txt",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:24.722Z",
+        "status": 200,
+        "responseURL": "https://gchq.github.io/CyberChef/modules/Yara.js.LICENSE.txt",
+        "milliseconds": 152.35611599999993
+      },
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-G9R4C1H8SR",
+        "credentials": "omit",
+        "mode": null,
+        "startedAt": "2026-10-29T10:12:25.006Z",
+        "status": 200,
+        "responseURL": "https://www.googletagmanager.com/gtag/js?id=G-G9R4C1H8SR",
+        "milliseconds": 143.4749609999999
+      }
+    ],
+    "sourceFiles": {
+      "src/bridge/connect.ts": "bd35b868143935b8cfa4f7ce3227644c516b01f5ef82eea2b196e3183f17833b",
+      "src/installation/controller.ts": "2cc0339c63f3d7c05adba6c4b76ef527eae02739d6ffd8398764e2438f64e535",
+      "src/installation/document.ts": "b1c6d4a5968205ae1ec7e0436ffe899d1d1bf697c8711ff3a8cda97c7fea73e9",
+      "src/installation/import-website.ts": "a6ad30e6cd7b08ba348324b639466559499d923aef743b2dd5a0abb968b5ca23",
+      "src/installation/modules.ts": "2aa88f93fc29aa20df1f59dbec6fe2eb7c159c501760c1d981f14e90528fc5dd",
+      "src/installation/protocol.ts": "a9ff1b99100b1307d0e40b860cdfde32e13b0fd15bd61617674a0b2d1eb3cb04",
+      "src/installation/resource-capture.ts": "452f772b0bfc02317c39c21fd628be5f2461ba91962aa9198b948d1b537553d1",
+      "src/installation/resource-list.ts": "642d14e0627f05faba5694ba124ec0fe61959a90fca754ec444c11ab40998208",
+      "src/installation/session.ts": "0381b435c49234134d1cb0f20d4e86503fd64ae4e416a5823e26f61e7aaf3f20",
+      "src/manager/hooks/use-library.ts": "2aa5787652779a54f39a8edff8ce768d95a14b0d9908cea5381e53a12aaf727e",
+      "src/manager/installation-form.ts": "fdabaa17f8899045af82112dafc7d8c2a514d0a1d89100ff581837c4a97ee8e5",
+      "src/manager/offline-worker.ts": "b6f865bef0257d6e9a4a9e0973f62f24d4eb47201bf968ab6360a0adf05e344b",
+      "src/manager/services/bootstrap.ts": "17176349ebf2d4f1f2fe9662e0e737b5da3f50a52eef7f84b21102158ab16427",
+      "src/manager/services/installation-bridge.ts": "417e63fc6dece34d81fe933f551795471dac57fecf5fef836c8920094fb45090",
+      "src/manager/services/runtime-bridge.ts": "caa00c5630807353ba90e7947fb1c0521f356bbb68b39768feae33d944ee7562",
+      "src/manager/types.ts": "42ae93cbd6cf8ac36c5a4fe5a00b9d34c2d91840877eb978801d43866941291c",
+      "src/runtime/admission.ts": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff",
+      "src/runtime/bindings.ts": "196ef724864fcc77b694c33ea9243b8597b9ea7ab3a9b751e74daf4f63fc3457",
+      "src/runtime/contexts/controller-store.ts": "92f35bfec481f9ff704afef964826b35f70f9f49ce7607066238280cce887fe7",
+      "src/runtime/contexts/document-content.ts": "68f87c0abfeda686ad98aca447b6d6d2f658264c58d331c44c5c0f1c967c910e",
+      "src/runtime/contexts/document-controller.ts": "bcf98b7f3c9a9ba9e9179253abd448196c953fb1e2b1eab8da7882e82912df0e",
+      "src/runtime/contexts/document-factory.ts": "40979db07d32e81d28d8a072c10854bad24d2692677dda1edf7a1c316e7332df",
+      "src/runtime/contexts/document-guard.ts": "bc301a09ccdec3879eac03054d5dea499393020108f43237ad1e7cdc96ea033d",
+      "src/runtime/contexts/document-intents.ts": "16550b200a9f2a36658ff05ed0fc201d47976ad0f317c9bec1f34ab19e3a9b17",
+      "src/runtime/contexts/document-protocol.ts": "0e45e6ed8ac16d68724db9c7319ca720a7a5453b6083073316c7ed38fd2d86db",
+      "src/runtime/contexts/document-renderer.ts": "9b9b95d659a0541008e74c1b193146787a7df42b62652e86c0abd2aaad34766b",
+      "src/runtime/contexts/document-request.ts": "d40b3a28c6bcc35ad28e6d22fb95b460853793d748a67215edf46f605032f57b",
+      "src/runtime/contexts/document-surface.ts": "73780345316cb9e751e51ade3299253745651a859094384e7835abf2f3b20f10",
+      "src/runtime/contexts/model.ts": "c50ebfc5efb0d96c7dd4484e2a270b5aa642c1342e6e5bf528cb2864631277c8",
+      "src/runtime/contexts/popup-factory.ts": "98ed001beac20e6de23da466f08313bc9c6b406c8d75432f3ae529a5b49c3bde",
+      "src/runtime/contexts/resources.ts": "0d242e5dea0d5e8830a65fac7d87aae51cc9bd09db2c548eae82472c802a0fcd",
+      "src/runtime/contexts/shared-connections.ts": "1e94a740b899b9f1600a3868391e62a58b24e7b2098d524ae2d3c550645194b1",
+      "src/runtime/contexts/shared-controller.ts": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174",
+      "src/runtime/contexts/shared-worker-factory.ts": "24e9cbffafcdf036811fe91177aa63bf2a122b303c4be829d2d79e7b8e94eb2a",
+      "src/runtime/contexts/shared-worker-guard.ts": "d31d4fd3cae95383cabd3593370b9ecf7fa209fc829b3f97de0807c11a459738",
+      "src/runtime/contexts/storage.ts": "35dba5f75e80958cb3f4e965e7fb4a69125bc13cfc61b7753a7a795f0b3fb23a",
+      "src/runtime/contexts/window-realm.ts": "0f4d1ccdeba3be3203917beed5ff0162452e6f5203449adee23fb56f41917c2e",
+      "src/runtime/contexts/worker-aliases.ts": "70006fb7ef2acbbd230560984875c32251ebaf3c8c136a37b1188cddaf058061",
+      "src/runtime/contexts/worker-factory.ts": "a91ac1819cea5a4611f8f0c63fbd4232f3764aa95dac6188b39909ad9045f4f2",
+      "src/runtime/contexts/worker-guard.ts": "1cb3e8709dad51a8aecb291a508cf05c15e35e37d06342c0ca90421c4b362ae1",
+      "src/runtime/contexts/worker-realm.ts": "edce33feb3f62d3d6295da029d71993526541ea71d34a5fdd7e196024bdcb2e2",
+      "src/runtime/contexts/worklet-controller.ts": "268da6b2d90a980e34a5731450e2dd347fa44d68e44d9c142dd5468ac81b4ef3",
+      "src/runtime/contexts/worklet-factory.ts": "612e22f99c30773826a6cae7ff05555edf5acd36353cc7e0e5972761228fa5bc",
+      "src/runtime/contexts/worklet-guard.ts": "a26c494bba38ab190640551b59bff4c946edc3e6ebc03bba6167f0de4d48e9fb",
+      "src/runtime/contexts/worklet-source.ts": "9ac644cde22403046f982cc1d88efc1f27b5556dd0d7e042b26a2ceebc9f3a46",
+      "src/runtime/contexts/worklet-store.ts": "004262eb8eed4923bcaf8e9efab23842ec4df0243d929681f9d13ad4f2e3cdf9",
+      "src/runtime/contexts/worklet-types.ts": "9d6ab984d337bdc0ac65db031bd5232e1d469eee19e21a210f37b5b61267f257",
+      "src/runtime/document.ts": "bd2e73fd84bebb7e90217351e5962ae3b1bfe88955e0647d66064eac45611d4d",
+      "src/runtime/enforcement/dom.ts": "58a96651df819caf67de5129a17b5da5a479ad98d533570b4dba9f812f23b07d",
+      "src/runtime/enforcement/effects.ts": "df1d2356b250f13f19df8f525d6a19a31ff83e436b1a02f29be409e07cb80d3c",
+      "src/runtime/enforcement/inert-documents.ts": "cb1562720fee409e4bf0997af9febf99a62163f55e318197a7d25fc91080f1b1",
+      "src/runtime/enforcement/native-markup.ts": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105",
+      "src/runtime/enforcement/native.ts": "3fb84f3d2d5bb6f8579e9dd707fdb63fab9ed8af83653b30db200acbf6591aa1",
+      "src/runtime/enforcement/navigation-targets.ts": "f7b5265d3d971c39d888abb99f837204e94d727d5df493ba38d54cc5bb6efd0b",
+      "src/runtime/enforcement/navigation.ts": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd",
+      "src/runtime/enforcement/resource-elements.ts": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234",
+      "src/runtime/enforcement/scripts.ts": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb",
+      "src/runtime/enforcement/web-storage.ts": "4a9f9afa52367f70f9ae544da11f657163636e2127f0984770cdaccc067a7b44",
+      "src/runtime/guard.ts": "371ab976638544b140dae1e32c540eb46a9d8ad6e25ea2775127d0cb92e28813",
+      "src/runtime/intrinsics.ts": "51aa615555dc8605649f809d57b2ab49273863287c2229d7f198299158737851",
+      "src/runtime/modules.ts": "1a5f3a9385d11a8f4a0c16ef5058938eb482a9b9abe141d1607de3056bbaf0ac",
+      "src/runtime/publisher/client.ts": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf",
+      "src/runtime/publisher/controller.ts": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff",
+      "src/runtime/publisher/events.ts": "d054af683a6264a67aa2d375f38dca17079835226e5e4c6ebd7669f2e70c2ced",
+      "src/runtime/publisher/guard.ts": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49",
+      "src/runtime/publisher/protocol.ts": "2facf0d152606b30661d75fe68a7b86f6c3e73fb2125d61039889bb771ff9de4",
+      "src/runtime/publisher/scope.ts": "35940cbf17448e39db66eb92f8a6f542b2a553a47f4c16d8ec517bd049d9d3fa",
+      "src/runtime/publisher/store.ts": "c9ab45a206e482c1703024b2ab318afc5b0ff353080beb2522c3c6b9875b1d7d",
+      "src/runtime/pwa.ts": "e0faa83a5a61406b5c8f029c2715e648923de694e814a6b5a33cd059f81ea267",
+      "src/runtime/resource-aliases.ts": "1cec53fc26a88a46d818a38e9c603b851fb87149b773ba55a1ccca6f82e1a353",
+      "src/runtime/response-policy.ts": "280861b1bae2af16a78711d9756ed69d4e6196be09a02a21d4b9f0f77857b6a4",
+      "src/runtime/storage.ts": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d",
+      "src/runtime/storage/caches.ts": "0703cc8ba12dcff604c390306d1606b48884454af8b8872b5001f606285785bb",
+      "src/runtime/storage/indexed-db.ts": "b50afa20c7c27357c12f4cd7f04e9a444c1487bbbff5acdd7d720fc8cb822fd5",
+      "src/runtime/worker.ts": "3a7522482b7590baef2a78204e2f6468a2f985f751d6e110d287f4738ce14bc7",
+      "src/shared/application-navigation.ts": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
+      "src/shared/document-data.ts": "63983f145fe714b6b4bf5531d1d54b1a440726546014f4f09fc9c2b4891b27de",
+      "src/shared/module-source.ts": "71b8c4c27921d9fa53a4dad43e5aeb5a431eb56e5af3cfb7cee7bedb92c4c2ef",
+      "src/shared/navigation-targets.ts": "2528c9e28b512664604fc198e640902a69d8262690495ab77eaa5a54ac587399",
+      "src/shared/platform.d.ts": "b622bdedc143b0a79d4f030ab61b472e761bcfd7b9f303cd2fdc2713009dac9f",
+      "src/shared/policy.ts": "59d701d9a8c60e91cb32d4b65375af9eb4f072b9d776a1a64b8293fa3ab74ed2",
+      "src/shared/primordials.ts": "cab25b07a59697b7b1b40aa0a1f7bf8516812066760d5bc5748781d6dc95ca20",
+      "src/shared/runtime-url.ts": "57744dce45f05a53651172647d8981ca0bfcc92cf20284f9c969c840e47f548a",
+      "src/shared/shared-worker.ts": "628cd871c0853c1ecf8a750eccdffd8b1573f00559079ec7b313a756fb5ab672",
+      "src/shared/types.ts": "7ed3466c5c8558c9490037ed04569224f9715e4776dfaba76e8cfec04cba9247"
+    },
+    "sourceFilesStable": true
+  }
+}

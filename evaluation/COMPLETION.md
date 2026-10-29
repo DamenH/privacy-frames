@@ -1,76 +1,70 @@
-# Explicit-resource installation: verification in progress
+# Completion audit
 
-The replacement installer downloads declared resources and optional URL lists
-without executing publisher code. Its source and local checks are being verified;
-the public manager, runtime and installer still serve the previous release below.
-Those historical receipts do not verify the replacement.
-
-# Previous release audit
-
-The implementation is deployed on all three trusted origins. CI and public
-artifact checks, the public eight-app matrix and deeper CyberChef/Pitch Training
-tests have passed. The general host interface also passed in both browsers.
+The explicit-resource installer is deployed on all three trusted origins. No
+publisher code runs during installation. Automatic discovery follows HTML/CSS
+resource declarations and literal JavaScript imports; optional URL lists supply
+other dependencies.
 
 ## Source and deployment
 
-| Role                              | Repository revision                        | Site                                                                    |
-| --------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------- |
-| Host                              | `2dfcbc2e8be6d9ec64bc3c20789446b59977e14e` | [pf.damenh.com](https://pf.damenh.com/)                                 |
-| Runtime publisher                 | `a9c2869408c38330d5b9d8b7031abeeedddf3741` | [apps.pf.damenh.com](https://apps.pf.damenh.com/)                       |
-| Installer publisher               | `e8f71e6b9255a8bcb21b4fc0ba599f7aba0fbc05` | [install.pf.damenh.com](https://install.pf.damenh.com/)                 |
-| Maintained application publishers | `2c26c40c77160af643ae053115a3975cc5a01ba0` | [privacy-frames.github.io/apps](https://privacy-frames.github.io/apps/) |
+| Role                                 | Revision                                   | Site                                                                    |
+| ------------------------------------ | ------------------------------------------ | ----------------------------------------------------------------------- |
+| Host source                          | `97f2b835609eedc95c9f52a470c7c32046f1b5fb` | [pf.damenh.com](https://pf.damenh.com/)                                 |
+| Runtime publisher                    | `234fba3b4469ca243d2208e22b90b62aedaebd25` | [apps.pf.damenh.com](https://apps.pf.damenh.com/)                       |
+| Installer publisher                  | `5f460f4b8aca4c87f1512861e269108761ac46b2` | [install.pf.damenh.com](https://install.pf.damenh.com/)                 |
+| Application publishers and URL lists | `f5de28d798237921e7d83467e9fa399dbb141b25` | [privacy-frames.github.io/apps](https://privacy-frames.github.io/apps/) |
 
-The host [CI/deployment run](https://github.com/privacy-frames/host/actions/runs/40763844471)
-passed type checking, formatting, 182 unit tests, the full browser regression suite,
-security review checks, storage/lifecycle tests, Pitch Training and independent
-network tests. [Workflow results](../results/evaluation/final-ci.json) and the
-[42 fresh receipt hashes](../results/evaluation/final-ci-receipts.json) identify this
-run. Older receipts bundled in its artifact are excluded from that fresh set.
+Both deployment-only repositories pin the host source above. All four
+[GitHub Pages workflows](../results/evaluation/explicit-deployments.json) passed.
+The [public asset check](../results/assets.json) matched 71 files to the tested
+build. The [retired installer worker](../results/evaluation/retired-installer-worker.json)
+returns 404.
 
-The [runtime workflow](https://github.com/privacy-frames/runtime/actions/runs/40763816951)
-and [installer workflow](https://github.com/privacy-frames/installation/actions/runs/40763821000)
-also completed. The [public HTTPS asset check](../results/assets.json) matched all
-59 checked files against local build hashes, including the three trusted sites.
+## Verification
 
-## Verification status
+| Requirement                    | Evidence                                                                                                                                                  | Result                             |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Source checks and regressions  | [Final CI](https://github.com/privacy-frames/host/actions/runs/40858648533), 136 unit tests, core/context suite, storage, lifecycle and functional checks | Passed                             |
+| URL-list UI and admission      | CI includes paste/upload/URL selection, malformed lists, required-resource failures, old-format rejection and private-data preservation                   | Passed                             |
+| Network confinement            | [Chromium](../results/network.json) and [Firefox](../results/network-firefox.json), with active HTTP/TCP, DNS and STUN controls                           | No measured private-marker traffic |
+| Eight applications             | [Public matrix](../results/evaluation/compatibility-explicit-lists-public.json), 16 standalone/confined task and offline pairs                            | Passed                             |
+| CyberChef text and files       | [Public native/confined checks](../results/evaluation/cyberchef-text-file-explicit-lists-public.json), both browsers, offline repetition                  | Passed                             |
+| CyberChef cancellation and SVG | [Public Chromium checks](../results/evaluation/cyberchef-cancel-explicit-lists-public.json), native control and confined online/offline tasks             | Passed                             |
+| Pitch Training                 | [Public checks](../results/pitch-training-deployed.json), both browsers, audio, microphone, worker and persistence checks                                 | Passed                             |
+| Host interface                 | [Public checks](../results/deployed.json), all eleven examples installed and ten behavior/security groups per browser                                     | Passed                             |
 
-| Area                                         | Evidence                                                                                                                              | Status                                 |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| Installation, admission and partial capture  | Final-source CI tests and public installations of all eight applications                                                              | Passed                                 |
-| Contexts, prototype compatibility and markup | Two-browser CI regressions and public useful-task comparison                                                                          | Passed                                 |
-| Network controls                             | Calibrated final-source DNS/HTTP/TCP/UDP tests in CI                                                                                  | Passed for measured routes             |
-| Eight-app corpus                             | [Public matrix](../results/evaluation/compatibility-release-public.json): all 16 standalone/confined task and offline rows            | Passed                                 |
-| Pitch Training                               | [Deployed tests](../results/pitch-training-deployed.json): six Chromium and five Firefox groups, no recorded errors                   | Passed                                 |
-| CyberChef text/file tasks                    | [Public tests](../results/evaluation/cyberchef-text-file-release-public.json): both browsers, standalone and confined; offline repeat | Passed                                 |
-| CyberChef cancellation/SVG                   | [Public Chromium tests](../results/evaluation/cyberchef-cancel-release-public.json): online/offline with native control               | Passed in Chromium; Firefox unverified |
-| General host interface                       | [Public checks](../results/deployed.json): eleven examples installed and ten behavior/security groups in each browser                 | Passed                                 |
+The [CI receipt index](../results/evaluation/explicit-ci-receipts.json) identifies
+43 freshly produced JSON receipts and excludes 83 unchanged historical receipts
+from the uploaded artifact. The public matrix recorded stable artifacts before
+and after testing. Application source files were unchanged; the publisher commit
+adds URL lists and their verification data.
 
-The deployment receipt retains one Chromium error from an unsupported optional
-precache worker, with browser-native exception attribution and the separate
-preparation outcome. Both browsers recorded zero unexpected errors.
+## Simplification
 
-The [compatibility evaluation](compatibility.md) defines each selected task and
-its offline check. Installation or startup alone does not count as task success.
-The [CI compatibility test](../results/compatibility.json) installed and launched
-two independent native PWAs through Chromium DevTools, then cold-launched offline
-after a full browser restart with saved private state. Firefox did not perform
-native PWA installation. Manual desktop installation UI, WebKit and real-device
-mobile behavior remain untested.
+The [committed-source count](../results/evaluation/explicit-installer-code-size.json)
+measures 3,027 installer TypeScript lines before this change and 1,129 after it, a 62.7%
+reduction. It excludes dependencies, generated bundles, the manager and runtime.
+Filename guessing, loader inference, installation-time publisher execution, SES,
+preparation receipts and cache contributions were removed.
 
-## Previous release
+The public matrix measured installation at 1.07–4.09 seconds in Chromium and
+1.06–4.03 seconds in Firefox. A separate [Node comparison](../results/evaluation/explicit-installer-comparison.json)
+records CyberChef at 84.3 seconds before and 5.9 seconds after the initial
+replacement. That single live-network comparison used different resource graphs
+and predates the CSS parser correction; it is not a statistical speedup claim.
 
-The earlier completed release tested host source
-`84d87c224324a67402997cd39d70e0281132912a`, runtime publisher
-`d74e8316d4cf5daa756c00f808e45fae080e7a19` and application publisher
-`b8ce7bca6681bc1dd42ee24a783f1555692c03b0`. Its receipt set is retained in
-[archived release ledger](../results/evaluation/release-84d87c.json) and the corresponding evaluation records.
+Existing resource installations require reinstalling. Private application
+storage is separate and is retained. There is one installation format and no
+legacy reader.
 
-Its host workflow was [40450127518](https://github.com/privacy-frames/host/actions/runs/40450127518),
-runtime workflow [40450160258](https://github.com/privacy-frames/runtime/actions/runs/40450160258)
-and publisher workflow [40448128112](https://github.com/privacy-frames/apps/actions/runs/40448128112).
-Those deployment and network observations apply to that release. They do not
-verify the current context or prototype changes.
+## Limits
 
-Shared-origin browser permissions, general application updates and IFC remain
-outside this implementation batch. Abrupt browser-process loss, BFCache and every
-concurrent replacement schedule have not been established by the existing tests.
+These checks cover selected workflows and browser surfaces, not a formal
+confinement proof or every feature of each application. Firefox CyberChef
+cancellation remains unverified because the unrestricted native control is
+unreliable. WebKit, real-device mobile installation, general updates and strict
+per-application origin/permission isolation remain future work. Missing runtime
+resources still fail locally without network fallback.
+
+The [previous release ledger](../results/evaluation/release-2dfcbc.json) retains
+historical deployment information. It does not verify this release.
