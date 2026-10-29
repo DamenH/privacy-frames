@@ -31,7 +31,9 @@ export interface UpgradeObservation {
 }
 
 /** Static files only, with the same separate manager/runtime roles as deployment. */
-export async function servers(options: { receiver?: boolean } = {}) {
+export async function servers(
+  options: { receiver?: boolean; publicExamples?: boolean } = {},
+) {
   const traffic: RequestObservation[] = [];
   const connections: Array<{ port: number; time: number }> = [];
   const upgrades: UpgradeObservation[] = [];
@@ -94,11 +96,12 @@ export async function servers(options: { receiver?: boolean } = {}) {
           config.managerURL = 'http://127.0.0.1:4210/privacy-frames/';
           config.installationURL = 'http://127.0.0.1:4219/installation/';
           config.managerOrigins = ['http://127.0.0.1:4210'];
-          config.examples = Object.entries(publisherApps).map(([port, name]) => ({
-            name,
-            url: 'http://127.0.0.1:' + port + '/',
-            resourceListURL: 'http://127.0.0.1:' + port + '/resource-list.uris',
-          }));
+          if (!options.publicExamples)
+            config.examples = Object.entries(publisherApps).map(([port, name]) => ({
+              name,
+              url: 'http://127.0.0.1:' + port + '/',
+              resourceListURL: 'http://127.0.0.1:' + port + '/resource-list.uris',
+            }));
           response.setHeader('Content-Type', 'application/json');
           response.end(JSON.stringify(config));
           return;

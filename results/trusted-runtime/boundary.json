@@ -1,10 +1,10 @@
 {
-  "revision": "8119a2381a733c1f281799aa07f52e981f27bb8c",
-  "testedAt": "2026-10-29T21:50:17.068Z",
+  "revision": "48ce8690f1ea3e2e0d63145072a3838b7722067a",
+  "testedAt": "2026-10-29T21:57:35.624Z",
   "hashes": {
     "test/trusted-boundary.ts": "0d43dd3b1a49b551267d3cab43b57ee9bc2a879d442950962edf74e6da92d7f3",
-    "src/runtime/trusted/context.ts": "dbb96d83199fbab795925eab041a8f4a47311252770bca3b66954aba8c7cdc41",
-    "src/runtime/trusted/client.ts": "6ba934927e1e214f2b2df96e3f9c3271adfe5c7aa0fa1bbc8679e20868605e5b",
+    "src/runtime/trusted/context.ts": "425bf7232a2ef83aba94d185f9b3d00c9da00ec450399fddeef10b43b2069ac7",
+    "src/runtime/trusted/client.ts": "a374280b5b69e02480e6267a15354c41e1acb446844304d6e21c3f4687be0dc4",
     "src/runtime/trusted/entry.ts": "106e8205a7091272c6f023b426afbf71eb30bfbffecbf5094c3a2340b2e4e824",
     "src/runtime/trusted/fragment.ts": "3dbc7e1ebc8cc3eab9422f22cbce64470e0aceda13ed6fae88dd2bd62fb5b3da"
   },

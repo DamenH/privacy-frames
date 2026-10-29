@@ -1,6 +1,6 @@
 {
-  "revision": "8119a2381a733c1f281799aa07f52e981f27bb8c",
-  "testedAt": "2026-10-29T21:50:14.897Z",
+  "revision": "48ce8690f1ea3e2e0d63145072a3838b7722067a",
+  "testedAt": "2026-10-29T21:57:33.490Z",
   "scope": "Isolated computation under confined CSP; production integration and complete confinement not yet qualified.",
   "policySHA256": "e409d2a070ea84d85dd30ab3c3187ffa6567cfba09dcfba756e7390717842a42",
   "policyBytes": 325732,

@@ -1,5 +1,19 @@
-import { parse } from 'es-module-lexer/js';
-import { internalArray, strings, ownDescriptor } from '../shared/primordials.ts';
+import {
+  internalArray,
+  internalRecord,
+  strings,
+  ownDescriptor,
+} from '../shared/primordials.ts';
+import {
+  children,
+  node,
+  nodes,
+  parseProgram,
+  record,
+  type SyntaxNode,
+} from '../shared/module-source.ts';
+import { Parser } from 'acorn';
+import importPhases from 'acorn-import-phases';
 
 interface ModuleResources {
   mapURL(input: unknown): string;
@@ -9,6 +23,17 @@ interface ModuleResources {
 const NativeURL = URL;
 const href = ownDescriptor(NativeURL.prototype, 'href')!.get!;
 const apply = Reflect.apply;
+const stringify = JSON.stringify;
+const ModuleParser = Parser.extend(importPhases());
+const parseModule = ModuleParser.parse.bind(ModuleParser);
+
+function specifier(source: SyntaxNode): string | undefined {
+  if (source.type === 'Literal' && typeof source.value === 'string') return source.value;
+  if (source.type !== 'TemplateLiteral' || nodes(source.expressions).length) return;
+  const quasis = nodes(source.quasis);
+  const cooked = quasis.length === 1 ? record(quasis[0].value)?.cooked : undefined;
+  return typeof cooked === 'string' ? cooked : undefined;
+}
 
 /** Relocate literal imports to admitted resources without evaluating publisher code. */
 export function relocateRuntimeModule(
@@ -17,18 +42,34 @@ export function relocateRuntimeModule(
   resources: ModuleResources,
 ): string {
   try {
-    const [imports] = parse(code);
-    for (const item of internalArray([...imports]).reverse()) {
-      if (!item.specifier || (item.type === 'dynamic' && item.glob)) continue;
+    const imports = internalArray<{ start: number; end: number; specifier: string }>();
+    const visit = (current: SyntaxNode): void => {
+      if (
+        current.type === 'ImportDeclaration' ||
+        current.type === 'ExportNamedDeclaration' ||
+        current.type === 'ExportAllDeclaration' ||
+        current.type === 'ImportExpression'
+      ) {
+        const source = node(current.source);
+        const value = source && specifier(source);
+        if (source && value)
+          imports.push(
+            internalRecord({ start: source.start, end: source.end, specifier: value }),
+          );
+      }
+      for (const child of children(current)) visit(child);
+    };
+    visit(parseProgram(code, parseModule));
+    for (const item of imports.sort((left, right) => right.start - left.start)) {
       if (!/^(?:\.\.?\/|\/|https?:\/\/)/.test(item.specifier)) continue;
       const original: string = apply(href, new NativeURL(item.specifier, base), []);
       const mapped = resources.mapURL(original);
       if (!resources.isInstalledURL(mapped)) continue;
       if (mapped === item.specifier) continue;
-      const start = item.type === 'dynamic' ? item.start : item.start - 1;
-      const end = item.type === 'dynamic' ? item.end : item.end + 1;
       code =
-        strings.slice(code, 0, start) + JSON.stringify(mapped) + strings.slice(code, end);
+        strings.slice(code, 0, item.start) +
+        stringify(mapped) +
+        strings.slice(code, item.end);
     }
   } catch {
     // Invalid syntax and unresolved Blob-relative imports keep native behavior.

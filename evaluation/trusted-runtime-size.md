@@ -59,36 +59,38 @@ it is absent from every executor that shares an environment with application cod
 
 ## Current development snapshot
 
-[The current receipt](../results/trusted-runtime/size-marker-split.json), captured
-at 21:50:26 UTC on 29 October 2026, records stable copied source hash
-`195965305377c5fba2dbd46ae1a892a9aed6d7040f7c59d2a5739412f05d2362`.
-It includes the intrinsics helper refactor, shared markup extraction and the
-separation of compiler types/marker from parser initialization.
+[The parser-consolidation receipt](../results/trusted-runtime/size-parser-consolidation.json)
+records stable source hash `3396b19b19ff4f671937191607c484881f23a7ea06ff57e8dc6d22d3cbf39471`.
+The runtime now reuses Acorn for literal import relocation instead of shipping a
+second JavaScript parser. A pinned, small import-phase extension preserves the
+source/deferred syntax recognized by the previous lexer. The installer still uses
+its existing lexer; this comparison covers the runtime graph.
 
-| Measure                                   | Historical source | Current snapshot |  Change |
-| ----------------------------------------- | ----------------: | ---------------: | ------: |
-| Unique reachable project/dependency lines |            31,306 |           31,392 |     +86 |
-| Unique reachable project/dependency bytes |         1,224,016 |        1,228,877 |  +4,861 |
-| All runtime TypeScript lines              |            14,253 |           14,342 |     +89 |
-| Eight deployed bundles, bytes             |         3,631,962 |        3,643,245 | +11,283 |
-| Eight deployed bundles, gzip bytes        |           647,285 |          655,111 |  +7,826 |
+| Measure                                   | Historical source | Current snapshot |   Change |
+| ----------------------------------------- | ----------------: | ---------------: | -------: |
+| Unique reachable project/dependency lines |            31,306 |           31,542 |     +236 |
+| Unique reachable project/dependency bytes |         1,224,016 |        1,165,605 |  -58,411 |
+| All runtime TypeScript lines              |            14,253 |           14,357 |     +104 |
+| Eight deployed bundles, bytes             |         3,631,962 |        3,286,062 | -345,900 |
+| Eight deployed bundles, gzip bytes        |           647,285 |          675,486 |  +28,201 |
 
-The root guard contains 326,431 bytes of private code as data. Excluding that data,
-its executable code and wrappers fall from 999,516 to 684,179 bytes, a reduction
-of 315,337 bytes. The child guard falls from 1,005,012 to 689,672 bytes on the same
-basis. Both retain the local native hooks. Neither guard has any parse5 or
-entities input in its executable build graph.
+Maintained runtime source and dependency bytes shrink by 58,411 bytes, and the
+complete deployed runtime bundles shrink by 345,900 bytes. Source line count
+increases: the removed lexer uses generated compact source, while the replacement
+uses a readable extension and import traversal. This is a byte/dependency
+reduction, not a claim of fewer TypeScript lines.
 
-The complete nested graph remains charged in the total. It includes 25
-isolated-only files/10,278 lines, eight mixed files/971 lines, 43 local-executable
-files/15,451 lines and 21 controller-only files/4,692 lines. Mixed files contain
-shared policy, protocol, navigation and captured-native helpers. Those counts
-include whole input files, so they are not a function-level exposure estimate.
+The private HTML parser remains fully counted, including the 326,431-byte embedded
+bundle in each window guard. Both window guards have no executable parse5/entities
+contributions. Native DOM hooks and remaining JavaScript analysis still execute
+locally with their existing protections. The optional native isolation experiment
+lives in the research harness; production has one private iframe implementation.
 
-Total maintained source has grown by 86 lines. Local executable output has
-shrunk, but that does not satisfy a separate requirement to reduce total code.
-The new emitted payload also costs 11,283 deployment bytes across the eight
-executors. No dependency cost has been removed merely because it became a string.
+The [previous cleanup measurement](../results/trusted-runtime/size-cleanup.json)
+was 60 source lines and 8,375 deployment bytes larger than the baseline. Parser
+consolidation supplies the subsequent reduction. The new full AST parse also has
+a different cost from lexical scanning; compatibility and startup observations
+must accompany the size result.
 
 ## Earlier measurements
 

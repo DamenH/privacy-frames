@@ -4,7 +4,7 @@ import type {
   CompiledDocumentContent,
   DocumentContentInput,
 } from '../contexts/document-content-types.ts';
-import { createTrustedContext, type TrustedBackend } from './context.ts';
+import { createTrustedContext } from './context.ts';
 import type { FragmentInput, PreparedFragment } from './fragment.ts';
 
 type Reply<T> = { ok: true; value: T } | { ok: false; error: string };
@@ -16,13 +16,10 @@ export interface TrustedPolicy {
 }
 
 /** Kept in bootstrap closures, never installed on an application-facing object. */
-export function createTrustedPolicy(
-  applicationURL: string,
-  backend?: TrustedBackend,
-): TrustedPolicy {
+export function createTrustedPolicy(applicationURL: string): TrustedPolicy {
   const stringify = JSON.stringify;
   const parse = JSON.parse;
-  const call = createTrustedContext(source, backend);
+  const call = createTrustedContext(source);
   function invoke<T>(operation: string, input: object): T {
     // This is the private bundled producer's typed response, not an external
     // message. The producer validates input; JSON creates local owned records.

@@ -33,10 +33,12 @@
     "test:worker-root-aliases": "node test/worker-root-aliases.ts",
     "test:realm-probes": "node test/realm-adapters.ts && node test/realm-dom.ts && node test/realm-loading-spike.ts && node test/realm-classic-spike.ts && node test/realm-buffer-spike.ts && node test/realm-wasm-contract.ts",
     "test:trusted-runtime": "node test/trusted-computation.ts && node test/trusted-boundary.ts",
-    "test:realm-research": "npm run test:realm-probes && node test/realm-qualification.ts"
+    "test:realm-research": "npm run test:realm-probes && node test/realm-qualification.ts",
+    "test:corpus": "node test/local-corpus.ts"
   },
   "dependencies": {
     "acorn": "8.19.0",
+    "acorn-import-phases": "1.0.4",
     "css-tree": "^3.2.1",
     "es-module-lexer": "^3.0.4",
     "parse5": "8.0.1",

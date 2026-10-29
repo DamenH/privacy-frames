@@ -26,7 +26,18 @@ const probe = await build({
       const policySource = ${JSON.stringify(policySource)};
       globalThis.probeTrusted = (backend) => {
         const originalFrames = window.length;
-        const call = createTrustedContext(policySource, backend);
+        // Native mode is a research control; production uses the private frame.
+        let call;
+        if (backend === 'native') {
+          const Constructor = Reflect.get(globalThis, 'ShadowRealm');
+          const realm = Reflect.construct(Constructor, []);
+          const native = realm.evaluate(policySource);
+          call = (operation, serialized) => {
+            if(typeof operation !== 'string' || typeof serialized !== 'string')
+              throw new TypeError('Expected primitive text');
+            return native(operation, serialized);
+          };
+        } else call = createTrustedContext(policySource);
         const input = JSON.stringify({
           kind:'html', text:'<h1>Hello</h1><script>globalThis.appRan = true</script>',
           sourceURL:location.origin+'/publisher/index.html',

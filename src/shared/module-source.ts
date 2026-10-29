@@ -81,12 +81,18 @@ export function memberName(member: SyntaxNode): string | undefined {
     ? property.value
     : undefined;
 }
-export function parseProgram(code: string): SyntaxNode {
+export function parseProgram(code: string, parser: typeof parse = parse): SyntaxNode {
   let parsed: unknown;
   try {
-    parsed = parse(code, internalRecord({ ecmaVersion: 'latest', sourceType: 'module' }));
+    parsed = parser(
+      code,
+      internalRecord({ ecmaVersion: 'latest', sourceType: 'module' }),
+    );
   } catch {
-    parsed = parse(code, internalRecord({ ecmaVersion: 'latest', sourceType: 'script' }));
+    parsed = parser(
+      code,
+      internalRecord({ ecmaVersion: 'latest', sourceType: 'script' }),
+    );
   }
   protectSyntaxTree(parsed);
   const program = node(parsed);

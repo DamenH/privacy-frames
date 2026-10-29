@@ -1,0 +1,2539 @@
+{
+  "capturedAt": "2026-10-29T22:14:48.382Z",
+  "baselineRevision": "97f2b835609eedc95c9f52a470c7c32046f1b5fb",
+  "currentHEAD": "48ce8690f1ea3e2e0d63145072a3838b7722067a",
+  "currentWorkingTreeSHA256": "3396b19b19ff4f671937191607c484881f23a7ea06ff57e8dc6d22d3cbf39471",
+  "sourceStableDuringSnapshot": true,
+  "installedLockSHA256": "5f7788e9e8e08aee987fc970d3fa7d8856e08a0c9a5f22e979f10115cf03f87d",
+  "pluginSHA256": "93cc9dffdee1683b74faa06251b4f8ab16eaf5294047b5783f156cb6417a5e36",
+  "runnerSHA256": "c72058ee779a61b8ae537f8270adab03da7c1d279854c9689b4c4ee62cc5410d",
+  "method": {
+    "source": "Whole unique reachable input files, including nested trusted entry graph. Mixed input files are conservatively charged to local exposure.",
+    "executablePlacement": "Local means root/child windows, dedicated/shared/publisher workers and worklets. Controller means SW/connect only. Placement is build reachability, not a security proof.",
+    "virtual": "Embedded code string is not counted again as maintained source; its deployed bytes remain included in outer bundles.",
+    "nested": "Separate nested build reproduces trusted-policy plugin entry/settings. Nested emitted size is diagnostic; never add again to outer deployment total.",
+    "versions": "Baseline and current both resolve measuring worktree node_modules. Lock hash is recorded; dependency versions must be checked before comparing with historical release assets.",
+    "scope": "Working-tree development snapshot, not a release or a code-reduction/security gate pass."
+  },
+  "baseline": {
+    "runtimeSource": {
+      "total": {
+        "files": 59,
+        "bytes": 519281,
+        "lines": 14253
+      },
+      "files": {
+        "src/runtime/admission.ts": {
+          "bytes": 6384,
+          "lines": 180,
+          "sha256": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff"
+        },
+        "src/runtime/bindings.ts": {
+          "bytes": 2682,
+          "lines": 90,
+          "sha256": "196ef724864fcc77b694c33ea9243b8597b9ea7ab3a9b751e74daf4f63fc3457"
+        },
+        "src/runtime/contexts/controller-store.ts": {
+          "bytes": 4159,
+          "lines": 123,
+          "sha256": "92f35bfec481f9ff704afef964826b35f70f9f49ce7607066238280cce887fe7"
+        },
+        "src/runtime/contexts/document-content.ts": {
+          "bytes": 19512,
+          "lines": 572,
+          "sha256": "68f87c0abfeda686ad98aca447b6d6d2f658264c58d331c44c5c0f1c967c910e"
+        },
+        "src/runtime/contexts/document-controller.ts": {
+          "bytes": 11161,
+          "lines": 294,
+          "sha256": "bcf98b7f3c9a9ba9e9179253abd448196c953fb1e2b1eab8da7882e82912df0e"
+        },
+        "src/runtime/contexts/document-factory.ts": {
+          "bytes": 37026,
+          "lines": 980,
+          "sha256": "40979db07d32e81d28d8a072c10854bad24d2692677dda1edf7a1c316e7332df"
+        },
+        "src/runtime/contexts/document-guard.ts": {
+          "bytes": 9626,
+          "lines": 244,
+          "sha256": "bc301a09ccdec3879eac03054d5dea499393020108f43237ad1e7cdc96ea033d"
+        },
+        "src/runtime/contexts/document-intents.ts": {
+          "bytes": 13458,
+          "lines": 423,
+          "sha256": "16550b200a9f2a36658ff05ed0fc201d47976ad0f317c9bec1f34ab19e3a9b17"
+        },
+        "src/runtime/contexts/document-protocol.ts": {
+          "bytes": 7165,
+          "lines": 191,
+          "sha256": "0e45e6ed8ac16d68724db9c7319ca720a7a5453b6083073316c7ed38fd2d86db"
+        },
+        "src/runtime/contexts/document-renderer.ts": {
+          "bytes": 30249,
+          "lines": 735,
+          "sha256": "9b9b95d659a0541008e74c1b193146787a7df42b62652e86c0abd2aaad34766b"
+        },
+        "src/runtime/contexts/document-request.ts": {
+          "bytes": 5922,
+          "lines": 169,
+          "sha256": "d40b3a28c6bcc35ad28e6d22fb95b460853793d748a67215edf46f605032f57b"
+        },
+        "src/runtime/contexts/document-surface.ts": {
+          "bytes": 1660,
+          "lines": 46,
+          "sha256": "73780345316cb9e751e51ade3299253745651a859094384e7835abf2f3b20f10"
+        },
+        "src/runtime/contexts/model.ts": {
+          "bytes": 7363,
+          "lines": 210,
+          "sha256": "c50ebfc5efb0d96c7dd4484e2a270b5aa642c1342e6e5bf528cb2864631277c8"
+        },
+        "src/runtime/contexts/popup-factory.ts": {
+          "bytes": 19384,
+          "lines": 525,
+          "sha256": "98ed001beac20e6de23da466f08313bc9c6b406c8d75432f3ae529a5b49c3bde"
+        },
+        "src/runtime/contexts/resources.ts": {
+          "bytes": 4178,
+          "lines": 116,
+          "sha256": "0d242e5dea0d5e8830a65fac7d87aae51cc9bd09db2c548eae82472c802a0fcd"
+        },
+        "src/runtime/contexts/shared-connections.ts": {
+          "bytes": 9611,
+          "lines": 291,
+          "sha256": "1e94a740b899b9f1600a3868391e62a58b24e7b2098d524ae2d3c550645194b1"
+        },
+        "src/runtime/contexts/shared-controller.ts": {
+          "bytes": 7938,
+          "lines": 209,
+          "sha256": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174"
+        },
+        "src/runtime/contexts/shared-worker-factory.ts": {
+          "bytes": 11453,
+          "lines": 298,
+          "sha256": "24e9cbffafcdf036811fe91177aa63bf2a122b303c4be829d2d79e7b8e94eb2a"
+        },
+        "src/runtime/contexts/shared-worker-guard.ts": {
+          "bytes": 8690,
+          "lines": 247,
+          "sha256": "d31d4fd3cae95383cabd3593370b9ecf7fa209fc829b3f97de0807c11a459738"
+        },
+        "src/runtime/contexts/storage.ts": {
+          "bytes": 1144,
+          "lines": 25,
+          "sha256": "35dba5f75e80958cb3f4e965e7fb4a69125bc13cfc61b7753a7a795f0b3fb23a"
+        },
+        "src/runtime/contexts/window-realm.ts": {
+          "bytes": 5580,
+          "lines": 182,
+          "sha256": "0f4d1ccdeba3be3203917beed5ff0162452e6f5203449adee23fb56f41917c2e"
+        },
+        "src/runtime/contexts/worker-aliases.ts": {
+          "bytes": 827,
+          "lines": 23,
+          "sha256": "70006fb7ef2acbbd230560984875c32251ebaf3c8c136a37b1188cddaf058061"
+        },
+        "src/runtime/contexts/worker-factory.ts": {
+          "bytes": 10790,
+          "lines": 287,
+          "sha256": "a91ac1819cea5a4611f8f0c63fbd4232f3764aa95dac6188b39909ad9045f4f2"
+        },
+        "src/runtime/contexts/worker-guard.ts": {
+          "bytes": 2526,
+          "lines": 71,
+          "sha256": "1cb3e8709dad51a8aecb291a508cf05c15e35e37d06342c0ca90421c4b362ae1"
+        },
+        "src/runtime/contexts/worker-realm.ts": {
+          "bytes": 11852,
+          "lines": 344,
+          "sha256": "edce33feb3f62d3d6295da029d71993526541ea71d34a5fdd7e196024bdcb2e2"
+        },
+        "src/runtime/contexts/worklet-controller.ts": {
+          "bytes": 8181,
+          "lines": 208,
+          "sha256": "268da6b2d90a980e34a5731450e2dd347fa44d68e44d9c142dd5468ac81b4ef3"
+        },
+        "src/runtime/contexts/worklet-factory.ts": {
+          "bytes": 7642,
+          "lines": 207,
+          "sha256": "612e22f99c30773826a6cae7ff05555edf5acd36353cc7e0e5972761228fa5bc"
+        },
+        "src/runtime/contexts/worklet-guard.ts": {
+          "bytes": 3120,
+          "lines": 80,
+          "sha256": "a26c494bba38ab190640551b59bff4c946edc3e6ebc03bba6167f0de4d48e9fb"
+        },
+        "src/runtime/contexts/worklet-source.ts": {
+          "bytes": 3977,
+          "lines": 126,
+          "sha256": "9ac644cde22403046f982cc1d88efc1f27b5556dd0d7e042b26a2ceebc9f3a46"
+        },
+        "src/runtime/contexts/worklet-store.ts": {
+          "bytes": 6512,
+          "lines": 183,
+          "sha256": "004262eb8eed4923bcaf8e9efab23842ec4df0243d929681f9d13ad4f2e3cdf9"
+        },
+        "src/runtime/contexts/worklet-types.ts": {
+          "bytes": 479,
+          "lines": 18,
+          "sha256": "9d6ab984d337bdc0ac65db031bd5232e1d469eee19e21a210f37b5b61267f257"
+        },
+        "src/runtime/document.ts": {
+          "bytes": 2468,
+          "lines": 75,
+          "sha256": "bd2e73fd84bebb7e90217351e5962ae3b1bfe88955e0647d66064eac45611d4d"
+        },
+        "src/runtime/enforcement/dom.ts": {
+          "bytes": 28574,
+          "lines": 716,
+          "sha256": "58a96651df819caf67de5129a17b5da5a479ad98d533570b4dba9f812f23b07d"
+        },
+        "src/runtime/enforcement/effects.ts": {
+          "bytes": 5423,
+          "lines": 162,
+          "sha256": "df1d2356b250f13f19df8f525d6a19a31ff83e436b1a02f29be409e07cb80d3c"
+        },
+        "src/runtime/enforcement/inert-documents.ts": {
+          "bytes": 6058,
+          "lines": 170,
+          "sha256": "cb1562720fee409e4bf0997af9febf99a62163f55e318197a7d25fc91080f1b1"
+        },
+        "src/runtime/enforcement/native-markup.ts": {
+          "bytes": 9252,
+          "lines": 229,
+          "sha256": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105"
+        },
+        "src/runtime/enforcement/native.ts": {
+          "bytes": 3873,
+          "lines": 133,
+          "sha256": "3fb84f3d2d5bb6f8579e9dd707fdb63fab9ed8af83653b30db200acbf6591aa1"
+        },
+        "src/runtime/enforcement/navigation-targets.ts": {
+          "bytes": 4781,
+          "lines": 130,
+          "sha256": "f7b5265d3d971c39d888abb99f837204e94d727d5df493ba38d54cc5bb6efd0b"
+        },
+        "src/runtime/enforcement/navigation.ts": {
+          "bytes": 6233,
+          "lines": 149,
+          "sha256": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd"
+        },
+        "src/runtime/enforcement/resource-elements.ts": {
+          "bytes": 2742,
+          "lines": 68,
+          "sha256": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234"
+        },
+        "src/runtime/enforcement/scripts.ts": {
+          "bytes": 7205,
+          "lines": 209,
+          "sha256": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb"
+        },
+        "src/runtime/enforcement/web-storage.ts": {
+          "bytes": 6249,
+          "lines": 180,
+          "sha256": "4a9f9afa52367f70f9ae544da11f657163636e2127f0984770cdaccc067a7b44"
+        },
+        "src/runtime/guard.ts": {
+          "bytes": 4032,
+          "lines": 103,
+          "sha256": "371ab976638544b140dae1e32c540eb46a9d8ad6e25ea2775127d0cb92e28813"
+        },
+        "src/runtime/intrinsics.ts": {
+          "bytes": 18858,
+          "lines": 555,
+          "sha256": "51aa615555dc8605649f809d57b2ab49273863287c2229d7f198299158737851"
+        },
+        "src/runtime/modules.ts": {
+          "bytes": 1416,
+          "lines": 37,
+          "sha256": "1a5f3a9385d11a8f4a0c16ef5058938eb482a9b9abe141d1607de3056bbaf0ac"
+        },
+        "src/runtime/publisher/client.ts": {
+          "bytes": 15484,
+          "lines": 444,
+          "sha256": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf"
+        },
+        "src/runtime/publisher/controller.ts": {
+          "bytes": 26060,
+          "lines": 706,
+          "sha256": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff"
+        },
+        "src/runtime/publisher/events.ts": {
+          "bytes": 9543,
+          "lines": 281,
+          "sha256": "d054af683a6264a67aa2d375f38dca17079835226e5e4c6ebd7669f2e70c2ced"
+        },
+        "src/runtime/publisher/guard.ts": {
+          "bytes": 11863,
+          "lines": 309,
+          "sha256": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49"
+        },
+        "src/runtime/publisher/protocol.ts": {
+          "bytes": 2705,
+          "lines": 71,
+          "sha256": "2facf0d152606b30661d75fe68a7b86f6c3e73fb2125d61039889bb771ff9de4"
+        },
+        "src/runtime/publisher/scope.ts": {
+          "bytes": 1883,
+          "lines": 50,
+          "sha256": "35940cbf17448e39db66eb92f8a6f542b2a553a47f4c16d8ec517bd049d9d3fa"
+        },
+        "src/runtime/publisher/store.ts": {
+          "bytes": 9990,
+          "lines": 286,
+          "sha256": "c9ab45a206e482c1703024b2ab318afc5b0ff353080beb2522c3c6b9875b1d7d"
+        },
+        "src/runtime/pwa.ts": {
+          "bytes": 5341,
+          "lines": 175,
+          "sha256": "e0faa83a5a61406b5c8f029c2715e648923de694e814a6b5a33cd059f81ea267"
+        },
+        "src/runtime/resource-aliases.ts": {
+          "bytes": 13815,
+          "lines": 376,
+          "sha256": "1cec53fc26a88a46d818a38e9c603b851fb87149b773ba55a1ccca6f82e1a353"
+        },
+        "src/runtime/response-policy.ts": {
+          "bytes": 3542,
+          "lines": 106,
+          "sha256": "280861b1bae2af16a78711d9756ed69d4e6196be09a02a21d4b9f0f77857b6a4"
+        },
+        "src/runtime/storage.ts": {
+          "bytes": 4418,
+          "lines": 115,
+          "sha256": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d"
+        },
+        "src/runtime/storage/caches.ts": {
+          "bytes": 1973,
+          "lines": 50,
+          "sha256": "0703cc8ba12dcff604c390306d1606b48884454af8b8872b5001f606285785bb"
+        },
+        "src/runtime/storage/indexed-db.ts": {
+          "bytes": 2591,
+          "lines": 84,
+          "sha256": "b50afa20c7c27357c12f4cd7f04e9a444c1487bbbff5acdd7d720fc8cb822fd5"
+        },
+        "src/runtime/worker.ts": {
+          "bytes": 22658,
+          "lines": 587,
+          "sha256": "3a7522482b7590baef2a78204e2f6468a2f985f751d6e110d287f4738ce14bc7"
+        }
+      }
+    },
+    "reachable": {
+      "total": {
+        "files": 91,
+        "bytes": 1224016,
+        "lines": 31306
+      },
+      "project": {
+        "files": 68,
+        "bytes": 556931,
+        "lines": 15362
+      },
+      "dependencies": {
+        "files": 23,
+        "bytes": 667085,
+        "lines": 15944
+      },
+      "files": {
+        "src/shared/primordials.ts": {
+          "bytes": 6212,
+          "lines": 170,
+          "sha256": "cab25b07a59697b7b1b40aa0a1f7bf8516812066760d5bc5748781d6dc95ca20",
+          "placement": "local-executable"
+        },
+        "src/shared/runtime-url.ts": {
+          "bytes": 1988,
+          "lines": 67,
+          "sha256": "57744dce45f05a53651172647d8981ca0bfcc92cf20284f9c969c840e47f548a",
+          "placement": "local-executable"
+        },
+        "src/runtime/pwa.ts": {
+          "bytes": 5341,
+          "lines": 175,
+          "sha256": "e0faa83a5a61406b5c8f029c2715e648923de694e814a6b5a33cd059f81ea267",
+          "placement": "controller-only"
+        },
+        "src/runtime/storage.ts": {
+          "bytes": 4418,
+          "lines": 115,
+          "sha256": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d",
+          "placement": "controller-only"
+        },
+        "src/shared/navigation-targets.ts": {
+          "bytes": 1501,
+          "lines": 37,
+          "sha256": "2528c9e28b512664604fc198e640902a69d8262690495ab77eaa5a54ac587399",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/common/unicode.js": {
+          "bytes": 2989,
+          "lines": 62,
+          "sha256": "69a0a52be895d2bcf88850beead4a098c5305c0b5669d1e8a0fe26f621ea25c6",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/common/error-codes.js": {
+          "bytes": 4746,
+          "lines": 63,
+          "sha256": "b38ae5ac4f2a31ce2e1cfeca35cf7b89cc66736cd5be068cc433a3ccaca78be2",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/tokenizer/preprocessor.js": {
+          "bytes": 7021,
+          "lines": 196,
+          "sha256": "12199175a31eb461dcecefa10ce2536c69ab92cdd2a1f67da3ea20b214599ac1",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/common/token.js": {
+          "bytes": 834,
+          "lines": 20,
+          "sha256": "52dac9efba3a637771818d633a5cf1df30c7913d05ff23235150c88319ea035a",
+          "placement": "local-executable"
+        },
+        "node_modules/entities/dist/decode-codepoint.js": {
+          "bytes": 2413,
+          "lines": 61,
+          "sha256": "dddf76e72987697316e647f046b2755dafe16308fe83159969b3155e0ebf3beb",
+          "placement": "local-executable"
+        },
+        "node_modules/entities/dist/internal/decode-shared.js": {
+          "bytes": 8252,
+          "lines": 195,
+          "sha256": "cd26388e8ec3fdc2c4b212883e9ae460a4fe6dd37d80d0dacffd6b0087171b6b",
+          "placement": "local-executable"
+        },
+        "node_modules/entities/dist/generated/decode-data-html.js": {
+          "bytes": 18811,
+          "lines": 5,
+          "sha256": "1ff1226550125bb8976dd032b2dcfc37ba311863dbf9ae69b4b16922f5a38ead",
+          "placement": "local-executable"
+        },
+        "node_modules/entities/dist/generated/decode-data-xml.js": {
+          "bytes": 330,
+          "lines": 7,
+          "sha256": "e549a5fd573d540a4652c81fab6655f3418c34c1613a30ed245ca017d9a5b730",
+          "placement": "local-executable"
+        },
+        "node_modules/entities/dist/internal/bin-trie-flags.js": {
+          "bytes": 2847,
+          "lines": 49,
+          "sha256": "8bb285f9ab41b9fd2525c83902c99b36e7c36da7cb7fa3be574d68f328183de5",
+          "placement": "local-executable"
+        },
+        "node_modules/entities/dist/decode.js": {
+          "bytes": 49384,
+          "lines": 1132,
+          "sha256": "6ce0048039ae0f9dab6e21dd1309661bcfe7e3beabfab1f15cdd61adb91e20b7",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/common/html.js": {
+          "bytes": 17554,
+          "lines": 523,
+          "sha256": "e6cf93f387be70ddcd4f2bec67fbeb53161094f6306d834de461ec888a9dab76",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/tokenizer/index.js": {
+          "bytes": 98338,
+          "lines": 2712,
+          "sha256": "810ebc73056d41c9ed5e4718d0973b87bc90306ca010d0c8533ed81669f58a58",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/parser/open-element-stack.js": {
+          "bytes": 10918,
+          "lines": 324,
+          "sha256": "fe4b609a572c9aa06fbd45ac53632b3ad565168903f4126a6f98d5a9d1f42999",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/parser/formatting-element-list.js": {
+          "bytes": 4301,
+          "lines": 110,
+          "sha256": "a6e04b000b228a0bf7eba4e5462b343ec1e13dbfbe40bce913ade646bbde4461",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/tree-adapters/default.js": {
+          "bytes": 5232,
+          "lines": 173,
+          "sha256": "14b6408b0abb1c041e645644f977db34da280239be8a59a2eb3c9e282e89b7c4",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/common/doctype.js": {
+          "bytes": 4661,
+          "lines": 114,
+          "sha256": "855d8cd764782cdc73003a9847d03ed261c5158f6a6901e563ccd4d3b92c8b16",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/common/foreign-content.js": {
+          "bytes": 6299,
+          "lines": 228,
+          "sha256": "129a84a9d04b6050b6896de45a70e1ee468434e19bdd6486e3aef3405d137cac",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/parser/index.js": {
+          "bytes": 107124,
+          "lines": 3245,
+          "sha256": "23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d",
+          "placement": "local-executable"
+        },
+        "node_modules/entities/dist/escape.js": {
+          "bytes": 6122,
+          "lines": 172,
+          "sha256": "880426162e6e6a1c65cb67cca4824c529c37192b51b0571927a81d33074f7302",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/serializer/index.js": {
+          "bytes": 5269,
+          "lines": 168,
+          "sha256": "bb11a62d05d463bf756814d89227ea889733d3808fe7ebe27cb4f607ed85a4c7",
+          "placement": "local-executable"
+        },
+        "node_modules/parse5/dist/index.js": {
+          "bytes": 1355,
+          "lines": 42,
+          "sha256": "b825162aced2e79be8d68d45efb1f89ec34ed4189467195a071a0d7b694a19d4",
+          "placement": "local-executable"
+        },
+        "src/shared/policy.ts": {
+          "bytes": 6417,
+          "lines": 200,
+          "sha256": "59d701d9a8c60e91cb32d4b65375af9eb4f072b9d776a1a64b8293fa3ab74ed2",
+          "placement": "local-executable"
+        },
+        "src/shared/application-navigation.ts": {
+          "bytes": 4325,
+          "lines": 111,
+          "sha256": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
+          "placement": "local-executable"
+        },
+        "src/runtime/response-policy.ts": {
+          "bytes": 3542,
+          "lines": 106,
+          "sha256": "280861b1bae2af16a78711d9756ed69d4e6196be09a02a21d4b9f0f77857b6a4",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-content.ts": {
+          "bytes": 19512,
+          "lines": 572,
+          "sha256": "68f87c0abfeda686ad98aca447b6d6d2f658264c58d331c44c5c0f1c967c910e",
+          "placement": "local-executable"
+        },
+        "src/runtime/document.ts": {
+          "bytes": 2468,
+          "lines": 75,
+          "sha256": "bd2e73fd84bebb7e90217351e5962ae3b1bfe88955e0647d66064eac45611d4d",
+          "placement": "controller-only"
+        },
+        "src/runtime/admission.ts": {
+          "bytes": 6384,
+          "lines": 180,
+          "sha256": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/model.ts": {
+          "bytes": 7363,
+          "lines": 210,
+          "sha256": "c50ebfc5efb0d96c7dd4484e2a270b5aa642c1342e6e5bf528cb2864631277c8",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worker-aliases.ts": {
+          "bytes": 827,
+          "lines": 23,
+          "sha256": "70006fb7ef2acbbd230560984875c32251ebaf3c8c136a37b1188cddaf058061",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/controller-store.ts": {
+          "bytes": 4159,
+          "lines": 123,
+          "sha256": "92f35bfec481f9ff704afef964826b35f70f9f49ce7607066238280cce887fe7",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/resources.ts": {
+          "bytes": 4178,
+          "lines": 116,
+          "sha256": "0d242e5dea0d5e8830a65fac7d87aae51cc9bd09db2c548eae82472c802a0fcd",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-surface.ts": {
+          "bytes": 1660,
+          "lines": 46,
+          "sha256": "73780345316cb9e751e51ade3299253745651a859094384e7835abf2f3b20f10",
+          "placement": "local-executable"
+        },
+        "src/shared/document-data.ts": {
+          "bytes": 2191,
+          "lines": 59,
+          "sha256": "63983f145fe714b6b4bf5531d1d54b1a440726546014f4f09fc9c2b4891b27de",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-request.ts": {
+          "bytes": 5922,
+          "lines": 169,
+          "sha256": "d40b3a28c6bcc35ad28e6d22fb95b460853793d748a67215edf46f605032f57b",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-controller.ts": {
+          "bytes": 11161,
+          "lines": 294,
+          "sha256": "bcf98b7f3c9a9ba9e9179253abd448196c953fb1e2b1eab8da7882e82912df0e",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-intents.ts": {
+          "bytes": 13458,
+          "lines": 423,
+          "sha256": "16550b200a9f2a36658ff05ed0fc201d47976ad0f317c9bec1f34ab19e3a9b17",
+          "placement": "controller-only"
+        },
+        "src/shared/shared-worker.ts": {
+          "bytes": 1769,
+          "lines": 68,
+          "sha256": "628cd871c0853c1ecf8a750eccdffd8b1573f00559079ec7b313a756fb5ab672",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/shared-controller.ts": {
+          "bytes": 7938,
+          "lines": 209,
+          "sha256": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/shared-connections.ts": {
+          "bytes": 9611,
+          "lines": 291,
+          "sha256": "1e94a740b899b9f1600a3868391e62a58b24e7b2098d524ae2d3c550645194b1",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/worklet-types.ts": {
+          "bytes": 479,
+          "lines": 18,
+          "sha256": "9d6ab984d337bdc0ac65db031bd5232e1d469eee19e21a210f37b5b61267f257",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worklet-store.ts": {
+          "bytes": 6512,
+          "lines": 183,
+          "sha256": "004262eb8eed4923bcaf8e9efab23842ec4df0243d929681f9d13ad4f2e3cdf9",
+          "placement": "controller-only"
+        },
+        "node_modules/acorn/dist/acorn.mjs": {
+          "bytes": 234658,
+          "lines": 6341,
+          "sha256": "76254fc76529713b4dfd2532972d17a991ffd9aafeebb1f977445b5506b9fb0b",
+          "placement": "local-executable"
+        },
+        "src/shared/module-source.ts": {
+          "bytes": 5504,
+          "lines": 157,
+          "sha256": "71b8c4c27921d9fa53a4dad43e5aeb5a431eb56e5af3cfb7cee7bedb92c4c2ef",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worklet-source.ts": {
+          "bytes": 3977,
+          "lines": 126,
+          "sha256": "9ac644cde22403046f982cc1d88efc1f27b5556dd0d7e042b26a2ceebc9f3a46",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/worklet-controller.ts": {
+          "bytes": 8181,
+          "lines": 208,
+          "sha256": "268da6b2d90a980e34a5731450e2dd347fa44d68e44d9c142dd5468ac81b4ef3",
+          "placement": "controller-only"
+        },
+        "src/runtime/publisher/store.ts": {
+          "bytes": 9990,
+          "lines": 286,
+          "sha256": "c9ab45a206e482c1703024b2ab318afc5b0ff353080beb2522c3c6b9875b1d7d",
+          "placement": "controller-only"
+        },
+        "src/runtime/publisher/protocol.ts": {
+          "bytes": 2705,
+          "lines": 71,
+          "sha256": "2facf0d152606b30661d75fe68a7b86f6c3e73fb2125d61039889bb771ff9de4",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/controller.ts": {
+          "bytes": 26060,
+          "lines": 706,
+          "sha256": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff",
+          "placement": "controller-only"
+        },
+        "src/runtime/worker.ts": {
+          "bytes": 22658,
+          "lines": 587,
+          "sha256": "3a7522482b7590baef2a78204e2f6468a2f985f751d6e110d287f4738ce14bc7",
+          "placement": "controller-only"
+        },
+        "node_modules/es-module-lexer/dist/lexer.asm.js": {
+          "bytes": 67627,
+          "lines": 2,
+          "sha256": "dc1ef1fd0dfb8ff7a20502cdc515c81ec3af3ba12a50267334caaa19997ecec4",
+          "placement": "local-executable"
+        },
+        "src/runtime/modules.ts": {
+          "bytes": 1416,
+          "lines": 37,
+          "sha256": "1a5f3a9385d11a8f4a0c16ef5058938eb482a9b9abe141d1607de3056bbaf0ac",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/native-markup.ts": {
+          "bytes": 9252,
+          "lines": 229,
+          "sha256": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/document-renderer.ts": {
+          "bytes": 30249,
+          "lines": 735,
+          "sha256": "9b9b95d659a0541008e74c1b193146787a7df42b62652e86c0abd2aaad34766b",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/document-protocol.ts": {
+          "bytes": 7165,
+          "lines": 191,
+          "sha256": "0e45e6ed8ac16d68724db9c7319ca720a7a5453b6083073316c7ed38fd2d86db",
+          "placement": "local-executable"
+        },
+        "src/runtime/intrinsics.ts": {
+          "bytes": 18858,
+          "lines": 555,
+          "sha256": "51aa615555dc8605649f809d57b2ab49273863287c2229d7f198299158737851",
+          "placement": "local-executable"
+        },
+        "src/runtime/bindings.ts": {
+          "bytes": 2682,
+          "lines": 90,
+          "sha256": "196ef724864fcc77b694c33ea9243b8597b9ea7ab3a9b751e74daf4f63fc3457",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/popup-factory.ts": {
+          "bytes": 19384,
+          "lines": 525,
+          "sha256": "98ed001beac20e6de23da466f08313bc9c6b406c8d75432f3ae529a5b49c3bde",
+          "placement": "local-executable"
+        },
+        "src/runtime/storage/caches.ts": {
+          "bytes": 1973,
+          "lines": 50,
+          "sha256": "0703cc8ba12dcff604c390306d1606b48884454af8b8872b5001f606285785bb",
+          "placement": "local-executable"
+        },
+        "src/runtime/storage/indexed-db.ts": {
+          "bytes": 2591,
+          "lines": 84,
+          "sha256": "b50afa20c7c27357c12f4cd7f04e9a444c1487bbbff5acdd7d720fc8cb822fd5",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/storage.ts": {
+          "bytes": 1144,
+          "lines": 25,
+          "sha256": "35dba5f75e80958cb3f4e965e7fb4a69125bc13cfc61b7753a7a795f0b3fb23a",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worker-factory.ts": {
+          "bytes": 10790,
+          "lines": 287,
+          "sha256": "a91ac1819cea5a4611f8f0c63fbd4232f3764aa95dac6188b39909ad9045f4f2",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/shared-worker-factory.ts": {
+          "bytes": 11453,
+          "lines": 298,
+          "sha256": "24e9cbffafcdf036811fe91177aa63bf2a122b303c4be829d2d79e7b8e94eb2a",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worklet-factory.ts": {
+          "bytes": 7642,
+          "lines": 207,
+          "sha256": "612e22f99c30773826a6cae7ff05555edf5acd36353cc7e0e5972761228fa5bc",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/scripts.ts": {
+          "bytes": 7205,
+          "lines": 209,
+          "sha256": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/scope.ts": {
+          "bytes": 1883,
+          "lines": 50,
+          "sha256": "35940cbf17448e39db66eb92f8a6f542b2a553a47f4c16d8ec517bd049d9d3fa",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/client.ts": {
+          "bytes": 15484,
+          "lines": 444,
+          "sha256": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf",
+          "placement": "local-executable"
+        },
+        "src/runtime/resource-aliases.ts": {
+          "bytes": 13815,
+          "lines": 376,
+          "sha256": "1cec53fc26a88a46d818a38e9c603b851fb87149b773ba55a1ccca6f82e1a353",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/native.ts": {
+          "bytes": 3873,
+          "lines": 133,
+          "sha256": "3fb84f3d2d5bb6f8579e9dd707fdb63fab9ed8af83653b30db200acbf6591aa1",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/navigation.ts": {
+          "bytes": 6233,
+          "lines": 149,
+          "sha256": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/navigation-targets.ts": {
+          "bytes": 4781,
+          "lines": 130,
+          "sha256": "f7b5265d3d971c39d888abb99f837204e94d727d5df493ba38d54cc5bb6efd0b",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/resource-elements.ts": {
+          "bytes": 2742,
+          "lines": 68,
+          "sha256": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/inert-documents.ts": {
+          "bytes": 6058,
+          "lines": 170,
+          "sha256": "cb1562720fee409e4bf0997af9febf99a62163f55e318197a7d25fc91080f1b1",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/dom.ts": {
+          "bytes": 28574,
+          "lines": 716,
+          "sha256": "58a96651df819caf67de5129a17b5da5a479ad98d533570b4dba9f812f23b07d",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/effects.ts": {
+          "bytes": 5423,
+          "lines": 162,
+          "sha256": "df1d2356b250f13f19df8f525d6a19a31ff83e436b1a02f29be409e07cb80d3c",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/web-storage.ts": {
+          "bytes": 6249,
+          "lines": 180,
+          "sha256": "4a9f9afa52367f70f9ae544da11f657163636e2127f0984770cdaccc067a7b44",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/document-factory.ts": {
+          "bytes": 37026,
+          "lines": 980,
+          "sha256": "40979db07d32e81d28d8a072c10854bad24d2692677dda1edf7a1c316e7332df",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/window-realm.ts": {
+          "bytes": 5580,
+          "lines": 182,
+          "sha256": "0f4d1ccdeba3be3203917beed5ff0162452e6f5203449adee23fb56f41917c2e",
+          "placement": "local-executable"
+        },
+        "src/runtime/guard.ts": {
+          "bytes": 4032,
+          "lines": 103,
+          "sha256": "371ab976638544b140dae1e32c540eb46a9d8ad6e25ea2775127d0cb92e28813",
+          "placement": "local-executable"
+        },
+        "src/bridge/connect.ts": {
+          "bytes": 7743,
+          "lines": 240,
+          "sha256": "bd35b868143935b8cfa4f7ce3227644c516b01f5ef82eea2b196e3183f17833b",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/worker-realm.ts": {
+          "bytes": 11852,
+          "lines": 344,
+          "sha256": "edce33feb3f62d3d6295da029d71993526541ea71d34a5fdd7e196024bdcb2e2",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worker-guard.ts": {
+          "bytes": 2526,
+          "lines": 71,
+          "sha256": "1cb3e8709dad51a8aecb291a508cf05c15e35e37d06342c0ca90421c4b362ae1",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/document-guard.ts": {
+          "bytes": 9626,
+          "lines": 244,
+          "sha256": "bc301a09ccdec3879eac03054d5dea499393020108f43237ad1e7cdc96ea033d",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/shared-worker-guard.ts": {
+          "bytes": 8690,
+          "lines": 247,
+          "sha256": "d31d4fd3cae95383cabd3593370b9ecf7fa209fc829b3f97de0807c11a459738",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worklet-guard.ts": {
+          "bytes": 3120,
+          "lines": 80,
+          "sha256": "a26c494bba38ab190640551b59bff4c946edc3e6ebc03bba6167f0de4d48e9fb",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/events.ts": {
+          "bytes": 9543,
+          "lines": 281,
+          "sha256": "d054af683a6264a67aa2d375f38dca17079835226e5e4c6ebd7669f2e70c2ced",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/guard.ts": {
+          "bytes": 11863,
+          "lines": 309,
+          "sha256": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49",
+          "placement": "local-executable"
+        }
+      },
+      "placement": {
+        "local-executable": {
+          "files": 70,
+          "bytes": 1057297,
+          "lines": 26612
+        },
+        "mixed-local-and-isolated": {
+          "files": 0,
+          "bytes": 0,
+          "lines": 0
+        },
+        "isolated-only": {
+          "files": 0,
+          "bytes": 0,
+          "lines": 0
+        },
+        "controller-only": {
+          "files": 21,
+          "bytes": 166719,
+          "lines": 4694
+        }
+      }
+    },
+    "virtualDataModules": {},
+    "bundles": {
+      "worker": {
+        "bytes": 688374,
+        "gzipBytes": 138734,
+        "sha256": "f58e6721238b20ba0c2df4dc6333c0c1b4c70dcd6f7a58eafd07404340962552",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 688374,
+        "contributions": {
+          "src/shared/primordials.ts": 4679,
+          "src/shared/runtime-url.ts": 1441,
+          "src/runtime/pwa.ts": 4244,
+          "src/runtime/storage.ts": 3952,
+          "src/shared/navigation-targets.ts": 1171,
+          "node_modules/parse5/dist/common/unicode.js": 3058,
+          "node_modules/parse5/dist/common/error-codes.js": 4805,
+          "node_modules/parse5/dist/tokenizer/preprocessor.js": 5155,
+          "node_modules/parse5/dist/common/token.js": 845,
+          "node_modules/entities/dist/decode-codepoint.js": 799,
+          "node_modules/entities/dist/internal/decode-shared.js": 3995,
+          "node_modules/entities/dist/generated/decode-data-html.js": 18612,
+          "node_modules/entities/dist/generated/decode-data-xml.js": 278,
+          "node_modules/entities/dist/internal/bin-trie-flags.js": 444,
+          "node_modules/entities/dist/decode.js": 18431,
+          "node_modules/parse5/dist/common/html.js": 17981,
+          "node_modules/parse5/dist/tokenizer/index.js": 88254,
+          "node_modules/parse5/dist/parser/open-element-stack.js": 10242,
+          "node_modules/parse5/dist/parser/formatting-element-list.js": 3841,
+          "node_modules/parse5/dist/tree-adapters/default.js": 4927,
+          "node_modules/parse5/dist/common/doctype.js": 4550,
+          "node_modules/parse5/dist/common/foreign-content.js": 6292,
+          "node_modules/parse5/dist/parser/index.js": 95050,
+          "node_modules/parse5/dist/index.js": 420,
+          "node_modules/entities/dist/escape.js": 877,
+          "node_modules/parse5/dist/serializer/index.js": 3906,
+          "src/shared/policy.ts": 2661,
+          "src/shared/application-navigation.ts": 1523,
+          "src/runtime/response-policy.ts": 3193,
+          "src/runtime/contexts/document-content.ts": 16124,
+          "src/runtime/document.ts": 1773,
+          "src/runtime/admission.ts": 5601,
+          "src/runtime/contexts/model.ts": 5442,
+          "src/runtime/contexts/worker-aliases.ts": 433,
+          "src/runtime/contexts/controller-store.ts": 3592,
+          "src/runtime/contexts/resources.ts": 2952,
+          "src/runtime/contexts/document-surface.ts": 1268,
+          "src/shared/document-data.ts": 1999,
+          "src/runtime/contexts/document-request.ts": 5048,
+          "src/runtime/contexts/document-controller.ts": 9585,
+          "src/runtime/contexts/document-intents.ts": 10834,
+          "src/shared/shared-worker.ts": 961,
+          "src/runtime/contexts/shared-controller.ts": 6713,
+          "src/runtime/contexts/shared-connections.ts": 8326,
+          "src/runtime/contexts/worklet-types.ts": 34,
+          "src/runtime/contexts/worklet-store.ts": 5413,
+          "node_modules/acorn/dist/acorn.mjs": 216746,
+          "src/shared/module-source.ts": 4590,
+          "src/runtime/contexts/worklet-source.ts": 3196,
+          "src/runtime/contexts/worklet-controller.ts": 6564,
+          "src/runtime/publisher/store.ts": 8488,
+          "src/runtime/publisher/protocol.ts": 656,
+          "src/runtime/publisher/controller.ts": 22687,
+          "src/runtime/worker.ts": 19815
+        }
+      },
+      "guard": {
+        "bytes": 999516,
+        "gzipBytes": 183757,
+        "sha256": "3913e380986cd84580ea984c542639a8a278acd0bebf02fcd13b3a9fd9a72808",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 999516,
+        "contributions": {
+          "src/shared/primordials.ts": 4666,
+          "src/shared/runtime-url.ts": 1063,
+          "src/shared/navigation-targets.ts": 1178,
+          "node_modules/parse5/dist/common/unicode.js": 3058,
+          "node_modules/parse5/dist/common/error-codes.js": 4805,
+          "node_modules/parse5/dist/tokenizer/preprocessor.js": 5155,
+          "node_modules/parse5/dist/common/token.js": 845,
+          "node_modules/entities/dist/decode-codepoint.js": 799,
+          "node_modules/entities/dist/internal/decode-shared.js": 3995,
+          "node_modules/entities/dist/generated/decode-data-html.js": 18612,
+          "node_modules/entities/dist/generated/decode-data-xml.js": 278,
+          "node_modules/entities/dist/internal/bin-trie-flags.js": 444,
+          "node_modules/entities/dist/decode.js": 18422,
+          "node_modules/parse5/dist/common/html.js": 17981,
+          "node_modules/parse5/dist/tokenizer/index.js": 88274,
+          "node_modules/parse5/dist/parser/open-element-stack.js": 10246,
+          "node_modules/parse5/dist/parser/formatting-element-list.js": 3841,
+          "node_modules/parse5/dist/tree-adapters/default.js": 4952,
+          "node_modules/parse5/dist/common/doctype.js": 4550,
+          "node_modules/parse5/dist/common/foreign-content.js": 6292,
+          "node_modules/parse5/dist/parser/index.js": 95060,
+          "node_modules/parse5/dist/index.js": 420,
+          "node_modules/entities/dist/escape.js": 877,
+          "node_modules/parse5/dist/serializer/index.js": 3909,
+          "src/shared/policy.ts": 3904,
+          "src/runtime/contexts/document-content.ts": 16132,
+          "node_modules/es-module-lexer/dist/lexer.asm.js": 209158,
+          "src/runtime/modules.ts": 972,
+          "node_modules/acorn/dist/acorn.mjs": 216225,
+          "src/shared/module-source.ts": 4576,
+          "src/runtime/enforcement/native-markup.ts": 8596,
+          "src/runtime/contexts/document-renderer.ts": 26570,
+          "src/runtime/contexts/document-surface.ts": 1266,
+          "src/shared/application-navigation.ts": 3552,
+          "src/runtime/contexts/document-protocol.ts": 4930,
+          "src/runtime/intrinsics.ts": 17048,
+          "src/runtime/bindings.ts": 2155,
+          "src/runtime/contexts/popup-factory.ts": 17229,
+          "src/runtime/storage/caches.ts": 1536,
+          "src/runtime/storage/indexed-db.ts": 1885,
+          "src/runtime/contexts/storage.ts": 869,
+          "src/runtime/contexts/worker-factory.ts": 9774,
+          "src/shared/shared-worker.ts": 266,
+          "src/runtime/contexts/shared-worker-factory.ts": 10094,
+          "src/runtime/contexts/worklet-factory.ts": 6772,
+          "src/runtime/enforcement/scripts.ts": 6164,
+          "src/runtime/publisher/scope.ts": 1535,
+          "src/runtime/publisher/protocol.ts": 1388,
+          "src/runtime/publisher/client.ts": 13003,
+          "src/runtime/resource-aliases.ts": 11518,
+          "src/runtime/enforcement/native.ts": 3381,
+          "src/runtime/enforcement/navigation.ts": 5489,
+          "src/runtime/enforcement/navigation-targets.ts": 4339,
+          "src/runtime/enforcement/resource-elements.ts": 2412,
+          "src/runtime/enforcement/inert-documents.ts": 5393,
+          "src/runtime/enforcement/dom.ts": 25304,
+          "src/runtime/enforcement/effects.ts": 4810,
+          "src/runtime/enforcement/web-storage.ts": 5535,
+          "src/runtime/contexts/document-factory.ts": 34023,
+          "src/runtime/contexts/window-realm.ts": 4163,
+          "src/runtime/guard.ts": 3528
+        }
+      },
+      "connect": {
+        "bytes": 6637,
+        "gzipBytes": 1954,
+        "sha256": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 6637,
+        "contributions": {
+          "src/bridge/connect.ts": 6597
+        }
+      },
+      "worker-guard": {
+        "bytes": 292027,
+        "gzipBytes": 42135,
+        "sha256": "65c17b3a9be3a3f8b0a76468ec78f3043cefb406f68172541828efb8fc393cc1",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 292027,
+        "contributions": {
+          "src/shared/primordials.ts": 4664,
+          "src/runtime/intrinsics.ts": 17037,
+          "src/runtime/bindings.ts": 2142,
+          "src/shared/application-navigation.ts": 412,
+          "src/runtime/contexts/model.ts": 34,
+          "src/runtime/enforcement/native.ts": 3373,
+          "src/runtime/enforcement/effects.ts": 4813,
+          "src/runtime/resource-aliases.ts": 11495,
+          "src/runtime/storage/caches.ts": 1524,
+          "src/runtime/storage/indexed-db.ts": 1876,
+          "src/runtime/contexts/storage.ts": 869,
+          "node_modules/es-module-lexer/dist/lexer.asm.js": 209152,
+          "src/runtime/modules.ts": 976,
+          "src/runtime/contexts/worker-factory.ts": 9765,
+          "src/shared/shared-worker.ts": 264,
+          "src/runtime/contexts/shared-worker-factory.ts": 10026,
+          "src/runtime/contexts/worker-realm.ts": 10561,
+          "src/runtime/contexts/worker-guard.ts": 2239
+        }
+      },
+      "document-guard": {
+        "bytes": 1005012,
+        "gzipBytes": 184481,
+        "sha256": "3c2e7174c2ffce5eb2814f4b24690a2b8a6346d7f1d288a38e85c7f5589f75d9",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 1005012,
+        "contributions": {
+          "src/shared/primordials.ts": 4666,
+          "src/shared/navigation-targets.ts": 1178,
+          "node_modules/parse5/dist/common/unicode.js": 3058,
+          "node_modules/parse5/dist/common/error-codes.js": 4805,
+          "node_modules/parse5/dist/tokenizer/preprocessor.js": 5155,
+          "node_modules/parse5/dist/common/token.js": 845,
+          "node_modules/entities/dist/decode-codepoint.js": 799,
+          "node_modules/entities/dist/internal/decode-shared.js": 3999,
+          "node_modules/entities/dist/generated/decode-data-html.js": 18612,
+          "node_modules/entities/dist/generated/decode-data-xml.js": 278,
+          "node_modules/entities/dist/internal/bin-trie-flags.js": 444,
+          "node_modules/entities/dist/decode.js": 18422,
+          "node_modules/parse5/dist/common/html.js": 17981,
+          "node_modules/parse5/dist/tokenizer/index.js": 88274,
+          "node_modules/parse5/dist/parser/open-element-stack.js": 10246,
+          "node_modules/parse5/dist/parser/formatting-element-list.js": 3841,
+          "node_modules/parse5/dist/tree-adapters/default.js": 4952,
+          "node_modules/parse5/dist/common/doctype.js": 4550,
+          "node_modules/parse5/dist/common/foreign-content.js": 6292,
+          "node_modules/parse5/dist/parser/index.js": 95060,
+          "node_modules/parse5/dist/index.js": 420,
+          "node_modules/entities/dist/escape.js": 877,
+          "node_modules/parse5/dist/serializer/index.js": 3909,
+          "src/shared/policy.ts": 3904,
+          "src/runtime/contexts/document-content.ts": 16135,
+          "node_modules/es-module-lexer/dist/lexer.asm.js": 209158,
+          "src/runtime/modules.ts": 974,
+          "node_modules/acorn/dist/acorn.mjs": 216339,
+          "src/shared/module-source.ts": 4576,
+          "src/runtime/enforcement/native-markup.ts": 8644,
+          "src/runtime/contexts/document-renderer.ts": 26570,
+          "src/runtime/intrinsics.ts": 17048,
+          "src/runtime/bindings.ts": 2155,
+          "src/runtime/contexts/document-surface.ts": 1266,
+          "src/shared/application-navigation.ts": 3552,
+          "src/runtime/contexts/model.ts": 34,
+          "src/runtime/contexts/document-protocol.ts": 5748,
+          "src/runtime/contexts/popup-factory.ts": 17297,
+          "src/runtime/storage/caches.ts": 1542,
+          "src/runtime/storage/indexed-db.ts": 1890,
+          "src/runtime/contexts/storage.ts": 872,
+          "src/runtime/contexts/worker-factory.ts": 9805,
+          "src/shared/shared-worker.ts": 266,
+          "src/runtime/contexts/shared-worker-factory.ts": 10108,
+          "src/runtime/contexts/worklet-factory.ts": 6792,
+          "src/runtime/enforcement/scripts.ts": 6190,
+          "src/runtime/publisher/scope.ts": 1535,
+          "src/runtime/publisher/protocol.ts": 1388,
+          "src/runtime/publisher/client.ts": 13007,
+          "src/runtime/resource-aliases.ts": 11556,
+          "src/runtime/enforcement/native.ts": 3383,
+          "src/runtime/enforcement/navigation.ts": 5512,
+          "src/runtime/enforcement/navigation-targets.ts": 4355,
+          "src/runtime/enforcement/resource-elements.ts": 2419,
+          "src/runtime/enforcement/inert-documents.ts": 5419,
+          "src/runtime/enforcement/dom.ts": 25367,
+          "src/runtime/enforcement/effects.ts": 4815,
+          "src/runtime/enforcement/web-storage.ts": 5553,
+          "src/runtime/contexts/document-factory.ts": 34170,
+          "src/runtime/contexts/window-realm.ts": 4181,
+          "src/runtime/contexts/document-guard.ts": 8502
+        }
+      },
+      "shared-worker-guard": {
+        "bytes": 298601,
+        "gzipBytes": 43262,
+        "sha256": "8f9f9b7a16598c522d2893ee3481d25d160eaef0470e7d9c9f08da74ebc25763",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 298601,
+        "contributions": {
+          "src/shared/primordials.ts": 4664,
+          "src/runtime/intrinsics.ts": 17041,
+          "src/runtime/bindings.ts": 2142,
+          "src/shared/application-navigation.ts": 412,
+          "src/runtime/contexts/model.ts": 34,
+          "src/runtime/enforcement/native.ts": 3422,
+          "src/runtime/enforcement/effects.ts": 4870,
+          "src/runtime/resource-aliases.ts": 11525,
+          "src/runtime/storage/caches.ts": 1536,
+          "src/runtime/storage/indexed-db.ts": 1911,
+          "src/runtime/contexts/storage.ts": 952,
+          "node_modules/es-module-lexer/dist/lexer.asm.js": 209152,
+          "src/runtime/modules.ts": 976,
+          "src/runtime/contexts/worker-factory.ts": 9787,
+          "src/shared/shared-worker.ts": 958,
+          "src/runtime/contexts/shared-worker-factory.ts": 10068,
+          "src/runtime/contexts/worker-realm.ts": 10636,
+          "src/runtime/contexts/shared-worker-guard.ts": 7703
+        }
+      },
+      "worklet-guard": {
+        "bytes": 31833,
+        "gzipBytes": 7093,
+        "sha256": "42d5d3f373a61870a682ac7eb7522ce7ab4236cb9b70acef4ef9e602bfd4561b",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 31833,
+        "contributions": {
+          "src/shared/primordials.ts": 3506,
+          "src/runtime/intrinsics.ts": 16092,
+          "src/runtime/bindings.ts": 1984,
+          "src/runtime/enforcement/native.ts": 3167,
+          "src/runtime/enforcement/effects.ts": 4549,
+          "src/runtime/contexts/worklet-types.ts": 32,
+          "src/runtime/contexts/worklet-guard.ts": 2206
+        }
+      },
+      "publisher-worker-guard": {
+        "bytes": 309962,
+        "gzipBytes": 45869,
+        "sha256": "d280af5d0a5b0ddddebfed42b5edf7dc63ce4ac25a18078b1c40347fb28bbe32",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 309962,
+        "contributions": {
+          "src/shared/primordials.ts": 4666,
+          "src/runtime/intrinsics.ts": 17037,
+          "src/runtime/bindings.ts": 2142,
+          "src/shared/application-navigation.ts": 412,
+          "src/runtime/contexts/model.ts": 34,
+          "src/runtime/enforcement/native.ts": 3376,
+          "src/runtime/enforcement/effects.ts": 4813,
+          "src/runtime/resource-aliases.ts": 11510,
+          "src/runtime/storage/caches.ts": 1524,
+          "src/runtime/storage/indexed-db.ts": 1876,
+          "src/runtime/contexts/storage.ts": 869,
+          "node_modules/es-module-lexer/dist/lexer.asm.js": 209152,
+          "src/runtime/modules.ts": 976,
+          "src/runtime/contexts/worker-factory.ts": 9768,
+          "src/shared/shared-worker.ts": 264,
+          "src/runtime/contexts/shared-worker-factory.ts": 10026,
+          "src/runtime/contexts/worker-realm.ts": 10561,
+          "src/runtime/publisher/events.ts": 7998,
+          "src/runtime/publisher/protocol.ts": 937,
+          "src/runtime/publisher/guard.ts": 11144
+        }
+      }
+    },
+    "deployedBundleTotals": {
+      "bytes": 3631962,
+      "gzipBytes": 647285
+    },
+    "nestedTrustedBundle": null
+  },
+  "current": {
+    "runtimeSource": {
+      "total": {
+        "files": 65,
+        "bytes": 524347,
+        "lines": 14357
+      },
+      "files": {
+        "src/runtime/admission.ts": {
+          "bytes": 6384,
+          "lines": 180,
+          "sha256": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff"
+        },
+        "src/runtime/bindings.ts": {
+          "bytes": 2682,
+          "lines": 90,
+          "sha256": "196ef724864fcc77b694c33ea9243b8597b9ea7ab3a9b751e74daf4f63fc3457"
+        },
+        "src/runtime/contexts/controller-store.ts": {
+          "bytes": 4159,
+          "lines": 123,
+          "sha256": "92f35bfec481f9ff704afef964826b35f70f9f49ce7607066238280cce887fe7"
+        },
+        "src/runtime/contexts/document-content-types.ts": {
+          "bytes": 2072,
+          "lines": 95,
+          "sha256": "780e8bdc129dc60600465765497751eabe831fc5859a1b55d62db46ff8054028"
+        },
+        "src/runtime/contexts/document-content.ts": {
+          "bytes": 16701,
+          "lines": 456,
+          "sha256": "f606b94f249c44ad2e09880a56bb87d4556d571108799b2ac4647d5496031034"
+        },
+        "src/runtime/contexts/document-controller.ts": {
+          "bytes": 11161,
+          "lines": 294,
+          "sha256": "bcf98b7f3c9a9ba9e9179253abd448196c953fb1e2b1eab8da7882e82912df0e"
+        },
+        "src/runtime/contexts/document-factory.ts": {
+          "bytes": 35576,
+          "lines": 945,
+          "sha256": "ab56ebf786b54fd14ec50613bd22c4e64e93f84299a5d68d0900746adaa2310d"
+        },
+        "src/runtime/contexts/document-guard.ts": {
+          "bytes": 9560,
+          "lines": 243,
+          "sha256": "584112c5379a3adf6caaed9be9c26cfdd55ce1d1c75d0637f50110e2b741ad93"
+        },
+        "src/runtime/contexts/document-intents.ts": {
+          "bytes": 13502,
+          "lines": 423,
+          "sha256": "4373aae1b9abe5d957b89b4acc511718905e8222c0a441da82d4306cbf751770"
+        },
+        "src/runtime/contexts/document-protocol.ts": {
+          "bytes": 7171,
+          "lines": 191,
+          "sha256": "5786f3d4a9493900d9506e59697c03227fce1f7e40dd85848c9e4f3162cf85c7"
+        },
+        "src/runtime/contexts/document-renderer.ts": {
+          "bytes": 30255,
+          "lines": 735,
+          "sha256": "77aeaa11fea9c572b745be4527bd1d96ff33f44309f2b800b3a8b588df44a52d"
+        },
+        "src/runtime/contexts/document-request.ts": {
+          "bytes": 5928,
+          "lines": 169,
+          "sha256": "5804477efe90c0d00a459e3c870fbabe7e7a962ec9f9fa90a020172452e4dffd"
+        },
+        "src/runtime/contexts/document-surface.ts": {
+          "bytes": 1660,
+          "lines": 46,
+          "sha256": "73780345316cb9e751e51ade3299253745651a859094384e7835abf2f3b20f10"
+        },
+        "src/runtime/contexts/model.ts": {
+          "bytes": 7363,
+          "lines": 210,
+          "sha256": "c50ebfc5efb0d96c7dd4484e2a270b5aa642c1342e6e5bf528cb2864631277c8"
+        },
+        "src/runtime/contexts/popup-factory.ts": {
+          "bytes": 19390,
+          "lines": 525,
+          "sha256": "4b0830100dd6b91b0d554835b36a220e93798b0b885d88588a1cbb36e86391c0"
+        },
+        "src/runtime/contexts/resources.ts": {
+          "bytes": 4178,
+          "lines": 116,
+          "sha256": "0d242e5dea0d5e8830a65fac7d87aae51cc9bd09db2c548eae82472c802a0fcd"
+        },
+        "src/runtime/contexts/shared-connections.ts": {
+          "bytes": 9611,
+          "lines": 291,
+          "sha256": "1e94a740b899b9f1600a3868391e62a58b24e7b2098d524ae2d3c550645194b1"
+        },
+        "src/runtime/contexts/shared-controller.ts": {
+          "bytes": 7938,
+          "lines": 209,
+          "sha256": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174"
+        },
+        "src/runtime/contexts/shared-worker-factory.ts": {
+          "bytes": 11453,
+          "lines": 298,
+          "sha256": "24e9cbffafcdf036811fe91177aa63bf2a122b303c4be829d2d79e7b8e94eb2a"
+        },
+        "src/runtime/contexts/shared-worker-guard.ts": {
+          "bytes": 8690,
+          "lines": 247,
+          "sha256": "d31d4fd3cae95383cabd3593370b9ecf7fa209fc829b3f97de0807c11a459738"
+        },
+        "src/runtime/contexts/storage.ts": {
+          "bytes": 1144,
+          "lines": 25,
+          "sha256": "35dba5f75e80958cb3f4e965e7fb4a69125bc13cfc61b7753a7a795f0b3fb23a"
+        },
+        "src/runtime/contexts/window-realm.ts": {
+          "bytes": 5718,
+          "lines": 184,
+          "sha256": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d"
+        },
+        "src/runtime/contexts/worker-aliases.ts": {
+          "bytes": 827,
+          "lines": 23,
+          "sha256": "70006fb7ef2acbbd230560984875c32251ebaf3c8c136a37b1188cddaf058061"
+        },
+        "src/runtime/contexts/worker-factory.ts": {
+          "bytes": 10790,
+          "lines": 287,
+          "sha256": "a91ac1819cea5a4611f8f0c63fbd4232f3764aa95dac6188b39909ad9045f4f2"
+        },
+        "src/runtime/contexts/worker-guard.ts": {
+          "bytes": 2526,
+          "lines": 71,
+          "sha256": "1cb3e8709dad51a8aecb291a508cf05c15e35e37d06342c0ca90421c4b362ae1"
+        },
+        "src/runtime/contexts/worker-realm.ts": {
+          "bytes": 11852,
+          "lines": 344,
+          "sha256": "edce33feb3f62d3d6295da029d71993526541ea71d34a5fdd7e196024bdcb2e2"
+        },
+        "src/runtime/contexts/worklet-controller.ts": {
+          "bytes": 8181,
+          "lines": 208,
+          "sha256": "268da6b2d90a980e34a5731450e2dd347fa44d68e44d9c142dd5468ac81b4ef3"
+        },
+        "src/runtime/contexts/worklet-factory.ts": {
+          "bytes": 7642,
+          "lines": 207,
+          "sha256": "612e22f99c30773826a6cae7ff05555edf5acd36353cc7e0e5972761228fa5bc"
+        },
+        "src/runtime/contexts/worklet-guard.ts": {
+          "bytes": 3120,
+          "lines": 80,
+          "sha256": "a26c494bba38ab190640551b59bff4c946edc3e6ebc03bba6167f0de4d48e9fb"
+        },
+        "src/runtime/contexts/worklet-source.ts": {
+          "bytes": 3977,
+          "lines": 126,
+          "sha256": "9ac644cde22403046f982cc1d88efc1f27b5556dd0d7e042b26a2ceebc9f3a46"
+        },
+        "src/runtime/contexts/worklet-store.ts": {
+          "bytes": 6512,
+          "lines": 183,
+          "sha256": "004262eb8eed4923bcaf8e9efab23842ec4df0243d929681f9d13ad4f2e3cdf9"
+        },
+        "src/runtime/contexts/worklet-types.ts": {
+          "bytes": 479,
+          "lines": 18,
+          "sha256": "9d6ab984d337bdc0ac65db031bd5232e1d469eee19e21a210f37b5b61267f257"
+        },
+        "src/runtime/document.ts": {
+          "bytes": 2518,
+          "lines": 73,
+          "sha256": "73d9c992ac25cb4b01435cc861497a8acdbec41bd396a52808fb2b89b9ebb951"
+        },
+        "src/runtime/enforcement/dom.ts": {
+          "bytes": 28640,
+          "lines": 718,
+          "sha256": "8c44c48581f9a40dc642340c2125938b1ad1f08f349e3504e98d5c6885540f7b"
+        },
+        "src/runtime/enforcement/effects.ts": {
+          "bytes": 5423,
+          "lines": 162,
+          "sha256": "df1d2356b250f13f19df8f525d6a19a31ff83e436b1a02f29be409e07cb80d3c"
+        },
+        "src/runtime/enforcement/inert-documents.ts": {
+          "bytes": 6101,
+          "lines": 171,
+          "sha256": "c5c02a7ae7b25bac49136e4cec6acec67d1f2e752d763ad7b3e8508d1eb41c5c"
+        },
+        "src/runtime/enforcement/native-markup.ts": {
+          "bytes": 9252,
+          "lines": 229,
+          "sha256": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105"
+        },
+        "src/runtime/enforcement/native.ts": {
+          "bytes": 3760,
+          "lines": 129,
+          "sha256": "e67d8b858933334efaa44b8823fd1176ba428c9e0613e72ed28c41af302803ac"
+        },
+        "src/runtime/enforcement/navigation-targets.ts": {
+          "bytes": 4781,
+          "lines": 130,
+          "sha256": "f7b5265d3d971c39d888abb99f837204e94d727d5df493ba38d54cc5bb6efd0b"
+        },
+        "src/runtime/enforcement/navigation.ts": {
+          "bytes": 6233,
+          "lines": 149,
+          "sha256": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd"
+        },
+        "src/runtime/enforcement/resource-elements.ts": {
+          "bytes": 2742,
+          "lines": 68,
+          "sha256": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234"
+        },
+        "src/runtime/enforcement/scripts.ts": {
+          "bytes": 7205,
+          "lines": 209,
+          "sha256": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb"
+        },
+        "src/runtime/enforcement/web-storage.ts": {
+          "bytes": 6249,
+          "lines": 180,
+          "sha256": "4a9f9afa52367f70f9ae544da11f657163636e2127f0984770cdaccc067a7b44"
+        },
+        "src/runtime/guard.ts": {
+          "bytes": 3957,
+          "lines": 102,
+          "sha256": "9809dc1ea180de3f3906825bc36ef66cdd9e8e51c33a44e1e5a3f217cc76af8f"
+        },
+        "src/runtime/intrinsics.ts": {
+          "bytes": 16721,
+          "lines": 464,
+          "sha256": "77be8492843077c3667132782cd1d9b68caa4c793d206dea7d858e4004977883"
+        },
+        "src/runtime/modules.ts": {
+          "bytes": 2667,
+          "lines": 78,
+          "sha256": "45062e9a74b48da2b74086a7f247f86e0202cd43f166c8084cbaf5fd5377c675"
+        },
+        "src/runtime/publisher/client.ts": {
+          "bytes": 15484,
+          "lines": 444,
+          "sha256": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf"
+        },
+        "src/runtime/publisher/controller.ts": {
+          "bytes": 26060,
+          "lines": 706,
+          "sha256": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff"
+        },
+        "src/runtime/publisher/events.ts": {
+          "bytes": 9543,
+          "lines": 281,
+          "sha256": "d054af683a6264a67aa2d375f38dca17079835226e5e4c6ebd7669f2e70c2ced"
+        },
+        "src/runtime/publisher/guard.ts": {
+          "bytes": 11863,
+          "lines": 309,
+          "sha256": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49"
+        },
+        "src/runtime/publisher/protocol.ts": {
+          "bytes": 2705,
+          "lines": 71,
+          "sha256": "2facf0d152606b30661d75fe68a7b86f6c3e73fb2125d61039889bb771ff9de4"
+        },
+        "src/runtime/publisher/scope.ts": {
+          "bytes": 1883,
+          "lines": 50,
+          "sha256": "35940cbf17448e39db66eb92f8a6f542b2a553a47f4c16d8ec517bd049d9d3fa"
+        },
+        "src/runtime/publisher/store.ts": {
+          "bytes": 9990,
+          "lines": 286,
+          "sha256": "c9ab45a206e482c1703024b2ab318afc5b0ff353080beb2522c3c6b9875b1d7d"
+        },
+        "src/runtime/pwa.ts": {
+          "bytes": 5341,
+          "lines": 175,
+          "sha256": "e0faa83a5a61406b5c8f029c2715e648923de694e814a6b5a33cd059f81ea267"
+        },
+        "src/runtime/resource-aliases.ts": {
+          "bytes": 13660,
+          "lines": 372,
+          "sha256": "c8dd9460b82fbf5a15df598f27b4978a90751ce8fd59d16978c6a41b6e0ca342"
+        },
+        "src/runtime/response-policy.ts": {
+          "bytes": 3542,
+          "lines": 106,
+          "sha256": "280861b1bae2af16a78711d9756ed69d4e6196be09a02a21d4b9f0f77857b6a4"
+        },
+        "src/runtime/storage.ts": {
+          "bytes": 4418,
+          "lines": 115,
+          "sha256": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d"
+        },
+        "src/runtime/storage/caches.ts": {
+          "bytes": 1973,
+          "lines": 50,
+          "sha256": "0703cc8ba12dcff604c390306d1606b48884454af8b8872b5001f606285785bb"
+        },
+        "src/runtime/storage/indexed-db.ts": {
+          "bytes": 2591,
+          "lines": 84,
+          "sha256": "b50afa20c7c27357c12f4cd7f04e9a444c1487bbbff5acdd7d720fc8cb822fd5"
+        },
+        "src/runtime/trusted/client.ts": {
+          "bytes": 1871,
+          "lines": 45,
+          "sha256": "a374280b5b69e02480e6267a15354c41e1acb446844304d6e21c3f4687be0dc4"
+        },
+        "src/runtime/trusted/context.ts": {
+          "bytes": 1629,
+          "lines": 37,
+          "sha256": "425bf7232a2ef83aba94d185f9b3d00c9da00ec450399fddeef10b43b2069ac7"
+        },
+        "src/runtime/trusted/entry.ts": {
+          "bytes": 2126,
+          "lines": 55,
+          "sha256": "106e8205a7091272c6f023b426afbf71eb30bfbffecbf5094c3a2340b2e4e824"
+        },
+        "src/runtime/trusted/fragment.ts": {
+          "bytes": 2467,
+          "lines": 76,
+          "sha256": "3dbc7e1ebc8cc3eab9422f22cbce64470e0aceda13ed6fae88dd2bd62fb5b3da"
+        },
+        "src/runtime/trusted/source.d.ts": {
+          "bytes": 92,
+          "lines": 4,
+          "sha256": "c1b77105780017c3577ad25d53840e61e9b670a32b62ef497d32f26590148722"
+        },
+        "src/runtime/worker.ts": {
+          "bytes": 22658,
+          "lines": 587,
+          "sha256": "3a7522482b7590baef2a78204e2f6468a2f985f751d6e110d287f4738ce14bc7"
+        }
+      }
+    },
+    "reachable": {
+      "total": {
+        "files": 98,
+        "bytes": 1165605,
+        "lines": 31542
+      },
+      "project": {
+        "files": 74,
+        "bytes": 562083,
+        "lines": 15469
+      },
+      "dependencies": {
+        "files": 24,
+        "bytes": 603522,
+        "lines": 16073
+      },
+      "files": {
+        "src/shared/primordials.ts": {
+          "bytes": 6212,
+          "lines": 170,
+          "sha256": "cab25b07a59697b7b1b40aa0a1f7bf8516812066760d5bc5748781d6dc95ca20",
+          "placement": "mixed-local-and-isolated"
+        },
+        "src/shared/runtime-url.ts": {
+          "bytes": 1988,
+          "lines": 67,
+          "sha256": "57744dce45f05a53651172647d8981ca0bfcc92cf20284f9c969c840e47f548a",
+          "placement": "local-executable"
+        },
+        "src/runtime/pwa.ts": {
+          "bytes": 5341,
+          "lines": 175,
+          "sha256": "e0faa83a5a61406b5c8f029c2715e648923de694e814a6b5a33cd059f81ea267",
+          "placement": "controller-only"
+        },
+        "src/runtime/storage.ts": {
+          "bytes": 4418,
+          "lines": 115,
+          "sha256": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d",
+          "placement": "controller-only"
+        },
+        "src/shared/policy.ts": {
+          "bytes": 3262,
+          "lines": 111,
+          "sha256": "8f3ee7a6dd7f0942d9d98819aaeca3282736b4e5d7a7982b96106d51a51c09cb",
+          "placement": "mixed-local-and-isolated"
+        },
+        "src/shared/application-navigation.ts": {
+          "bytes": 4325,
+          "lines": 111,
+          "sha256": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
+          "placement": "mixed-local-and-isolated"
+        },
+        "src/runtime/response-policy.ts": {
+          "bytes": 3542,
+          "lines": 106,
+          "sha256": "280861b1bae2af16a78711d9756ed69d4e6196be09a02a21d4b9f0f77857b6a4",
+          "placement": "controller-only"
+        },
+        "src/shared/navigation-targets.ts": {
+          "bytes": 1501,
+          "lines": 37,
+          "sha256": "2528c9e28b512664604fc198e640902a69d8262690495ab77eaa5a54ac587399",
+          "placement": "mixed-local-and-isolated"
+        },
+        "node_modules/parse5/dist/common/unicode.js": {
+          "bytes": 2989,
+          "lines": 62,
+          "sha256": "69a0a52be895d2bcf88850beead4a098c5305c0b5669d1e8a0fe26f621ea25c6",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/common/error-codes.js": {
+          "bytes": 4746,
+          "lines": 63,
+          "sha256": "b38ae5ac4f2a31ce2e1cfeca35cf7b89cc66736cd5be068cc433a3ccaca78be2",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/tokenizer/preprocessor.js": {
+          "bytes": 7021,
+          "lines": 196,
+          "sha256": "12199175a31eb461dcecefa10ce2536c69ab92cdd2a1f67da3ea20b214599ac1",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/common/token.js": {
+          "bytes": 834,
+          "lines": 20,
+          "sha256": "52dac9efba3a637771818d633a5cf1df30c7913d05ff23235150c88319ea035a",
+          "placement": "isolated-only"
+        },
+        "node_modules/entities/dist/decode-codepoint.js": {
+          "bytes": 2413,
+          "lines": 61,
+          "sha256": "dddf76e72987697316e647f046b2755dafe16308fe83159969b3155e0ebf3beb",
+          "placement": "isolated-only"
+        },
+        "node_modules/entities/dist/internal/decode-shared.js": {
+          "bytes": 8252,
+          "lines": 195,
+          "sha256": "cd26388e8ec3fdc2c4b212883e9ae460a4fe6dd37d80d0dacffd6b0087171b6b",
+          "placement": "isolated-only"
+        },
+        "node_modules/entities/dist/generated/decode-data-html.js": {
+          "bytes": 18811,
+          "lines": 5,
+          "sha256": "1ff1226550125bb8976dd032b2dcfc37ba311863dbf9ae69b4b16922f5a38ead",
+          "placement": "isolated-only"
+        },
+        "node_modules/entities/dist/generated/decode-data-xml.js": {
+          "bytes": 330,
+          "lines": 7,
+          "sha256": "e549a5fd573d540a4652c81fab6655f3418c34c1613a30ed245ca017d9a5b730",
+          "placement": "isolated-only"
+        },
+        "node_modules/entities/dist/internal/bin-trie-flags.js": {
+          "bytes": 2847,
+          "lines": 49,
+          "sha256": "8bb285f9ab41b9fd2525c83902c99b36e7c36da7cb7fa3be574d68f328183de5",
+          "placement": "isolated-only"
+        },
+        "node_modules/entities/dist/decode.js": {
+          "bytes": 49384,
+          "lines": 1132,
+          "sha256": "6ce0048039ae0f9dab6e21dd1309661bcfe7e3beabfab1f15cdd61adb91e20b7",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/common/html.js": {
+          "bytes": 17554,
+          "lines": 523,
+          "sha256": "e6cf93f387be70ddcd4f2bec67fbeb53161094f6306d834de461ec888a9dab76",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/tokenizer/index.js": {
+          "bytes": 98338,
+          "lines": 2712,
+          "sha256": "810ebc73056d41c9ed5e4718d0973b87bc90306ca010d0c8533ed81669f58a58",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/parser/open-element-stack.js": {
+          "bytes": 10918,
+          "lines": 324,
+          "sha256": "fe4b609a572c9aa06fbd45ac53632b3ad565168903f4126a6f98d5a9d1f42999",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/parser/formatting-element-list.js": {
+          "bytes": 4301,
+          "lines": 110,
+          "sha256": "a6e04b000b228a0bf7eba4e5462b343ec1e13dbfbe40bce913ade646bbde4461",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/tree-adapters/default.js": {
+          "bytes": 5232,
+          "lines": 173,
+          "sha256": "14b6408b0abb1c041e645644f977db34da280239be8a59a2eb3c9e282e89b7c4",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/common/doctype.js": {
+          "bytes": 4661,
+          "lines": 114,
+          "sha256": "855d8cd764782cdc73003a9847d03ed261c5158f6a6901e563ccd4d3b92c8b16",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/common/foreign-content.js": {
+          "bytes": 6299,
+          "lines": 228,
+          "sha256": "129a84a9d04b6050b6896de45a70e1ee468434e19bdd6486e3aef3405d137cac",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/parser/index.js": {
+          "bytes": 107124,
+          "lines": 3245,
+          "sha256": "23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d",
+          "placement": "isolated-only"
+        },
+        "node_modules/entities/dist/escape.js": {
+          "bytes": 6122,
+          "lines": 172,
+          "sha256": "880426162e6e6a1c65cb67cca4824c529c37192b51b0571927a81d33074f7302",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/serializer/index.js": {
+          "bytes": 5269,
+          "lines": 168,
+          "sha256": "bb11a62d05d463bf756814d89227ea889733d3808fe7ebe27cb4f607ed85a4c7",
+          "placement": "isolated-only"
+        },
+        "node_modules/parse5/dist/index.js": {
+          "bytes": 1355,
+          "lines": 42,
+          "sha256": "b825162aced2e79be8d68d45efb1f89ec34ed4189467195a071a0d7b694a19d4",
+          "placement": "isolated-only"
+        },
+        "src/runtime/contexts/document-content-types.ts": {
+          "bytes": 2072,
+          "lines": 95,
+          "sha256": "780e8bdc129dc60600465765497751eabe831fc5859a1b55d62db46ff8054028",
+          "placement": "mixed-local-and-isolated"
+        },
+        "src/runtime/contexts/document-content.ts": {
+          "bytes": 16701,
+          "lines": 456,
+          "sha256": "f606b94f249c44ad2e09880a56bb87d4556d571108799b2ac4647d5496031034",
+          "placement": "isolated-only"
+        },
+        "src/runtime/document.ts": {
+          "bytes": 2518,
+          "lines": 73,
+          "sha256": "73d9c992ac25cb4b01435cc861497a8acdbec41bd396a52808fb2b89b9ebb951",
+          "placement": "controller-only"
+        },
+        "src/runtime/admission.ts": {
+          "bytes": 6384,
+          "lines": 180,
+          "sha256": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/model.ts": {
+          "bytes": 7363,
+          "lines": 210,
+          "sha256": "c50ebfc5efb0d96c7dd4484e2a270b5aa642c1342e6e5bf528cb2864631277c8",
+          "placement": "mixed-local-and-isolated"
+        },
+        "src/runtime/contexts/worker-aliases.ts": {
+          "bytes": 827,
+          "lines": 23,
+          "sha256": "70006fb7ef2acbbd230560984875c32251ebaf3c8c136a37b1188cddaf058061",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/controller-store.ts": {
+          "bytes": 4159,
+          "lines": 123,
+          "sha256": "92f35bfec481f9ff704afef964826b35f70f9f49ce7607066238280cce887fe7",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/resources.ts": {
+          "bytes": 4178,
+          "lines": 116,
+          "sha256": "0d242e5dea0d5e8830a65fac7d87aae51cc9bd09db2c548eae82472c802a0fcd",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-surface.ts": {
+          "bytes": 1660,
+          "lines": 46,
+          "sha256": "73780345316cb9e751e51ade3299253745651a859094384e7835abf2f3b20f10",
+          "placement": "mixed-local-and-isolated"
+        },
+        "src/shared/document-data.ts": {
+          "bytes": 2191,
+          "lines": 59,
+          "sha256": "63983f145fe714b6b4bf5531d1d54b1a440726546014f4f09fc9c2b4891b27de",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-request.ts": {
+          "bytes": 5928,
+          "lines": 169,
+          "sha256": "5804477efe90c0d00a459e3c870fbabe7e7a962ec9f9fa90a020172452e4dffd",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-controller.ts": {
+          "bytes": 11161,
+          "lines": 294,
+          "sha256": "bcf98b7f3c9a9ba9e9179253abd448196c953fb1e2b1eab8da7882e82912df0e",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/document-intents.ts": {
+          "bytes": 13502,
+          "lines": 423,
+          "sha256": "4373aae1b9abe5d957b89b4acc511718905e8222c0a441da82d4306cbf751770",
+          "placement": "controller-only"
+        },
+        "src/shared/shared-worker.ts": {
+          "bytes": 1769,
+          "lines": 68,
+          "sha256": "628cd871c0853c1ecf8a750eccdffd8b1573f00559079ec7b313a756fb5ab672",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/shared-controller.ts": {
+          "bytes": 7938,
+          "lines": 209,
+          "sha256": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/shared-connections.ts": {
+          "bytes": 9611,
+          "lines": 291,
+          "sha256": "1e94a740b899b9f1600a3868391e62a58b24e7b2098d524ae2d3c550645194b1",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/worklet-types.ts": {
+          "bytes": 479,
+          "lines": 18,
+          "sha256": "9d6ab984d337bdc0ac65db031bd5232e1d469eee19e21a210f37b5b61267f257",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worklet-store.ts": {
+          "bytes": 6512,
+          "lines": 183,
+          "sha256": "004262eb8eed4923bcaf8e9efab23842ec4df0243d929681f9d13ad4f2e3cdf9",
+          "placement": "controller-only"
+        },
+        "node_modules/acorn/dist/acorn.mjs": {
+          "bytes": 234658,
+          "lines": 6341,
+          "sha256": "76254fc76529713b4dfd2532972d17a991ffd9aafeebb1f977445b5506b9fb0b",
+          "placement": "local-executable"
+        },
+        "src/shared/module-source.ts": {
+          "bytes": 5574,
+          "lines": 163,
+          "sha256": "d9af40f96c943132bbcb56c882207973bc3450c6aab6b50537b828dbede0bba1",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worklet-source.ts": {
+          "bytes": 3977,
+          "lines": 126,
+          "sha256": "9ac644cde22403046f982cc1d88efc1f27b5556dd0d7e042b26a2ceebc9f3a46",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/worklet-controller.ts": {
+          "bytes": 8181,
+          "lines": 208,
+          "sha256": "268da6b2d90a980e34a5731450e2dd347fa44d68e44d9c142dd5468ac81b4ef3",
+          "placement": "controller-only"
+        },
+        "src/runtime/publisher/store.ts": {
+          "bytes": 9990,
+          "lines": 286,
+          "sha256": "c9ab45a206e482c1703024b2ab318afc5b0ff353080beb2522c3c6b9875b1d7d",
+          "placement": "controller-only"
+        },
+        "src/runtime/publisher/protocol.ts": {
+          "bytes": 2705,
+          "lines": 71,
+          "sha256": "2facf0d152606b30661d75fe68a7b86f6c3e73fb2125d61039889bb771ff9de4",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/controller.ts": {
+          "bytes": 26060,
+          "lines": 706,
+          "sha256": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff",
+          "placement": "controller-only"
+        },
+        "src/runtime/worker.ts": {
+          "bytes": 22658,
+          "lines": 587,
+          "sha256": "3a7522482b7590baef2a78204e2f6468a2f985f751d6e110d287f4738ce14bc7",
+          "placement": "controller-only"
+        },
+        "node_modules/acorn-import-phases/src/plugin.cjs": {
+          "bytes": 3854,
+          "lines": 125,
+          "sha256": "224c073b127a06b34012f9ab5255f1c16448ce86861881d26aea98eafbbef167",
+          "placement": "local-executable"
+        },
+        "node_modules/acorn-import-phases/src/index.js": {
+          "bytes": 210,
+          "lines": 6,
+          "sha256": "028da70d9049bbc000d6069c633b61ea9a139c6b7ee74d11bd9c35963657e9de",
+          "placement": "local-executable"
+        },
+        "src/runtime/modules.ts": {
+          "bytes": 2667,
+          "lines": 78,
+          "sha256": "45062e9a74b48da2b74086a7f247f86e0202cd43f166c8084cbaf5fd5377c675",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/native-markup.ts": {
+          "bytes": 9252,
+          "lines": 229,
+          "sha256": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/document-renderer.ts": {
+          "bytes": 30255,
+          "lines": 735,
+          "sha256": "77aeaa11fea9c572b745be4527bd1d96ff33f44309f2b800b3a8b588df44a52d",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/document-protocol.ts": {
+          "bytes": 7171,
+          "lines": 191,
+          "sha256": "5786f3d4a9493900d9506e59697c03227fce1f7e40dd85848c9e4f3162cf85c7",
+          "placement": "mixed-local-and-isolated"
+        },
+        "src/runtime/intrinsics.ts": {
+          "bytes": 16721,
+          "lines": 464,
+          "sha256": "77be8492843077c3667132782cd1d9b68caa4c793d206dea7d858e4004977883",
+          "placement": "local-executable"
+        },
+        "src/runtime/bindings.ts": {
+          "bytes": 2682,
+          "lines": 90,
+          "sha256": "196ef724864fcc77b694c33ea9243b8597b9ea7ab3a9b751e74daf4f63fc3457",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/popup-factory.ts": {
+          "bytes": 19390,
+          "lines": 525,
+          "sha256": "4b0830100dd6b91b0d554835b36a220e93798b0b885d88588a1cbb36e86391c0",
+          "placement": "local-executable"
+        },
+        "src/runtime/storage/caches.ts": {
+          "bytes": 1973,
+          "lines": 50,
+          "sha256": "0703cc8ba12dcff604c390306d1606b48884454af8b8872b5001f606285785bb",
+          "placement": "local-executable"
+        },
+        "src/runtime/storage/indexed-db.ts": {
+          "bytes": 2591,
+          "lines": 84,
+          "sha256": "b50afa20c7c27357c12f4cd7f04e9a444c1487bbbff5acdd7d720fc8cb822fd5",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/storage.ts": {
+          "bytes": 1144,
+          "lines": 25,
+          "sha256": "35dba5f75e80958cb3f4e965e7fb4a69125bc13cfc61b7753a7a795f0b3fb23a",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worker-factory.ts": {
+          "bytes": 10790,
+          "lines": 287,
+          "sha256": "a91ac1819cea5a4611f8f0c63fbd4232f3764aa95dac6188b39909ad9045f4f2",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/shared-worker-factory.ts": {
+          "bytes": 11453,
+          "lines": 298,
+          "sha256": "24e9cbffafcdf036811fe91177aa63bf2a122b303c4be829d2d79e7b8e94eb2a",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worklet-factory.ts": {
+          "bytes": 7642,
+          "lines": 207,
+          "sha256": "612e22f99c30773826a6cae7ff05555edf5acd36353cc7e0e5972761228fa5bc",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/scripts.ts": {
+          "bytes": 7205,
+          "lines": 209,
+          "sha256": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/scope.ts": {
+          "bytes": 1883,
+          "lines": 50,
+          "sha256": "35940cbf17448e39db66eb92f8a6f542b2a553a47f4c16d8ec517bd049d9d3fa",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/client.ts": {
+          "bytes": 15484,
+          "lines": 444,
+          "sha256": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf",
+          "placement": "local-executable"
+        },
+        "src/runtime/resource-aliases.ts": {
+          "bytes": 13660,
+          "lines": 372,
+          "sha256": "c8dd9460b82fbf5a15df598f27b4978a90751ce8fd59d16978c6a41b6e0ca342",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/native.ts": {
+          "bytes": 3760,
+          "lines": 129,
+          "sha256": "e67d8b858933334efaa44b8823fd1176ba428c9e0613e72ed28c41af302803ac",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/navigation.ts": {
+          "bytes": 6233,
+          "lines": 149,
+          "sha256": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/navigation-targets.ts": {
+          "bytes": 4781,
+          "lines": 130,
+          "sha256": "f7b5265d3d971c39d888abb99f837204e94d727d5df493ba38d54cc5bb6efd0b",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/resource-elements.ts": {
+          "bytes": 2742,
+          "lines": 68,
+          "sha256": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/inert-documents.ts": {
+          "bytes": 6101,
+          "lines": 171,
+          "sha256": "c5c02a7ae7b25bac49136e4cec6acec67d1f2e752d763ad7b3e8508d1eb41c5c",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/dom.ts": {
+          "bytes": 28640,
+          "lines": 718,
+          "sha256": "8c44c48581f9a40dc642340c2125938b1ad1f08f349e3504e98d5c6885540f7b",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/effects.ts": {
+          "bytes": 5423,
+          "lines": 162,
+          "sha256": "df1d2356b250f13f19df8f525d6a19a31ff83e436b1a02f29be409e07cb80d3c",
+          "placement": "local-executable"
+        },
+        "src/runtime/enforcement/web-storage.ts": {
+          "bytes": 6249,
+          "lines": 180,
+          "sha256": "4a9f9afa52367f70f9ae544da11f657163636e2127f0984770cdaccc067a7b44",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/document-factory.ts": {
+          "bytes": 35576,
+          "lines": 945,
+          "sha256": "ab56ebf786b54fd14ec50613bd22c4e64e93f84299a5d68d0900746adaa2310d",
+          "placement": "local-executable"
+        },
+        "src/runtime/trusted/context.ts": {
+          "bytes": 1629,
+          "lines": 37,
+          "sha256": "425bf7232a2ef83aba94d185f9b3d00c9da00ec450399fddeef10b43b2069ac7",
+          "placement": "local-executable"
+        },
+        "src/runtime/trusted/client.ts": {
+          "bytes": 1871,
+          "lines": 45,
+          "sha256": "a374280b5b69e02480e6267a15354c41e1acb446844304d6e21c3f4687be0dc4",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/window-realm.ts": {
+          "bytes": 5718,
+          "lines": 184,
+          "sha256": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d",
+          "placement": "local-executable"
+        },
+        "src/runtime/guard.ts": {
+          "bytes": 3957,
+          "lines": 102,
+          "sha256": "9809dc1ea180de3f3906825bc36ef66cdd9e8e51c33a44e1e5a3f217cc76af8f",
+          "placement": "local-executable"
+        },
+        "src/bridge/connect.ts": {
+          "bytes": 7743,
+          "lines": 240,
+          "sha256": "bd35b868143935b8cfa4f7ce3227644c516b01f5ef82eea2b196e3183f17833b",
+          "placement": "controller-only"
+        },
+        "src/runtime/contexts/worker-realm.ts": {
+          "bytes": 11852,
+          "lines": 344,
+          "sha256": "edce33feb3f62d3d6295da029d71993526541ea71d34a5fdd7e196024bdcb2e2",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worker-guard.ts": {
+          "bytes": 2526,
+          "lines": 71,
+          "sha256": "1cb3e8709dad51a8aecb291a508cf05c15e35e37d06342c0ca90421c4b362ae1",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/document-guard.ts": {
+          "bytes": 9560,
+          "lines": 243,
+          "sha256": "584112c5379a3adf6caaed9be9c26cfdd55ce1d1c75d0637f50110e2b741ad93",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/shared-worker-guard.ts": {
+          "bytes": 8690,
+          "lines": 247,
+          "sha256": "d31d4fd3cae95383cabd3593370b9ecf7fa209fc829b3f97de0807c11a459738",
+          "placement": "local-executable"
+        },
+        "src/runtime/contexts/worklet-guard.ts": {
+          "bytes": 3120,
+          "lines": 80,
+          "sha256": "a26c494bba38ab190640551b59bff4c946edc3e6ebc03bba6167f0de4d48e9fb",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/events.ts": {
+          "bytes": 9543,
+          "lines": 281,
+          "sha256": "d054af683a6264a67aa2d375f38dca17079835226e5e4c6ebd7669f2e70c2ced",
+          "placement": "local-executable"
+        },
+        "src/runtime/publisher/guard.ts": {
+          "bytes": 11863,
+          "lines": 309,
+          "sha256": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49",
+          "placement": "local-executable"
+        },
+        "src/runtime/trusted/fragment.ts": {
+          "bytes": 2467,
+          "lines": 76,
+          "sha256": "3dbc7e1ebc8cc3eab9422f22cbce64470e0aceda13ed6fae88dd2bd62fb5b3da",
+          "placement": "isolated-only"
+        },
+        "src/shared/markup.ts": {
+          "bytes": 3263,
+          "lines": 90,
+          "sha256": "756cdc5565323f40ca5006e17429e3f8dbd5f68fe755eaf034c86110d5cc7475",
+          "placement": "isolated-only"
+        },
+        "src/runtime/trusted/entry.ts": {
+          "bytes": 2126,
+          "lines": 55,
+          "sha256": "106e8205a7091272c6f023b426afbf71eb30bfbffecbf5094c3a2340b2e4e824",
+          "placement": "isolated-only"
+        }
+      },
+      "placement": {
+        "local-executable": {
+          "files": 44,
+          "bytes": 575863,
+          "lines": 15601
+        },
+        "mixed-local-and-isolated": {
+          "files": 8,
+          "bytes": 33566,
+          "lines": 971
+        },
+        "isolated-only": {
+          "files": 25,
+          "bytes": 389357,
+          "lines": 10278
+        },
+        "controller-only": {
+          "files": 21,
+          "bytes": 166819,
+          "lines": 4692
+        }
+      }
+    },
+    "virtualDataModules": {
+      "trusted-policy:source": 338434
+    },
+    "bundles": {
+      "worker": {
+        "bytes": 687539,
+        "gzipBytes": 138869,
+        "sha256": "ce88eb1f9b3071f9ca38c8ba46bd44fedb20afca9e0ef4b51671fc7bb534cae2",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 687539,
+        "contributions": {
+          "src/shared/primordials.ts": 4679,
+          "src/shared/runtime-url.ts": 1441,
+          "src/runtime/pwa.ts": 4244,
+          "src/runtime/storage.ts": 3952,
+          "src/shared/policy.ts": 2574,
+          "src/shared/application-navigation.ts": 1523,
+          "src/runtime/response-policy.ts": 3193,
+          "src/shared/navigation-targets.ts": 1171,
+          "node_modules/parse5/dist/common/unicode.js": 3058,
+          "node_modules/parse5/dist/common/error-codes.js": 4805,
+          "node_modules/parse5/dist/tokenizer/preprocessor.js": 5155,
+          "node_modules/parse5/dist/common/token.js": 845,
+          "node_modules/entities/dist/decode-codepoint.js": 799,
+          "node_modules/entities/dist/internal/decode-shared.js": 3995,
+          "node_modules/entities/dist/generated/decode-data-html.js": 18612,
+          "node_modules/entities/dist/generated/decode-data-xml.js": 278,
+          "node_modules/entities/dist/internal/bin-trie-flags.js": 444,
+          "node_modules/entities/dist/decode.js": 18431,
+          "node_modules/parse5/dist/common/html.js": 17981,
+          "node_modules/parse5/dist/tokenizer/index.js": 88254,
+          "node_modules/parse5/dist/parser/open-element-stack.js": 10242,
+          "node_modules/parse5/dist/parser/formatting-element-list.js": 3841,
+          "node_modules/parse5/dist/tree-adapters/default.js": 4927,
+          "node_modules/parse5/dist/common/doctype.js": 4550,
+          "node_modules/parse5/dist/common/foreign-content.js": 6292,
+          "node_modules/parse5/dist/parser/index.js": 95050,
+          "node_modules/parse5/dist/index.js": 420,
+          "node_modules/entities/dist/escape.js": 877,
+          "node_modules/parse5/dist/serializer/index.js": 3906,
+          "src/runtime/contexts/document-content-types.ts": 47,
+          "src/runtime/contexts/document-content.ts": 15225,
+          "src/runtime/document.ts": 1773,
+          "src/runtime/admission.ts": 5601,
+          "src/runtime/contexts/model.ts": 5442,
+          "src/runtime/contexts/worker-aliases.ts": 433,
+          "src/runtime/contexts/controller-store.ts": 3592,
+          "src/runtime/contexts/resources.ts": 2952,
+          "src/runtime/contexts/document-surface.ts": 1268,
+          "src/shared/document-data.ts": 1999,
+          "src/runtime/contexts/document-request.ts": 5048,
+          "src/runtime/contexts/document-controller.ts": 9585,
+          "src/runtime/contexts/document-intents.ts": 10834,
+          "src/shared/shared-worker.ts": 961,
+          "src/runtime/contexts/shared-controller.ts": 6713,
+          "src/runtime/contexts/shared-connections.ts": 8326,
+          "src/runtime/contexts/worklet-types.ts": 34,
+          "src/runtime/contexts/worklet-store.ts": 5413,
+          "node_modules/acorn/dist/acorn.mjs": 216746,
+          "src/shared/module-source.ts": 4655,
+          "src/runtime/contexts/worklet-source.ts": 3196,
+          "src/runtime/contexts/worklet-controller.ts": 6564,
+          "src/runtime/publisher/store.ts": 8488,
+          "src/runtime/publisher/protocol.ts": 656,
+          "src/runtime/publisher/controller.ts": 22687,
+          "src/runtime/worker.ts": 19815
+        }
+      },
+      "guard": {
+        "bytes": 807613,
+        "gzipBytes": 163824,
+        "sha256": "e30cf28a755ce709d4ce07510db2f82c81852b1bb294b92dc7daebd79223596e",
+        "embeddedTrustedDataBytes": 326431,
+        "executableAndWrapperBytes": 481182,
+        "contributions": {
+          "node_modules/acorn-import-phases/src/plugin.cjs": 4437,
+          "src/shared/primordials.ts": 4666,
+          "src/shared/runtime-url.ts": 1063,
+          "src/runtime/contexts/document-content-types.ts": 47,
+          "src/shared/policy.ts": 1394,
+          "node_modules/acorn/dist/acorn.mjs": 216084,
+          "src/shared/module-source.ts": 4638,
+          "node_modules/acorn-import-phases/src/index.js": 214,
+          "src/runtime/modules.ts": 1918,
+          "src/runtime/enforcement/native-markup.ts": 8594,
+          "src/runtime/contexts/document-renderer.ts": 26537,
+          "src/runtime/contexts/document-surface.ts": 1266,
+          "src/shared/application-navigation.ts": 3552,
+          "src/runtime/contexts/document-protocol.ts": 4930,
+          "src/runtime/intrinsics.ts": 14511,
+          "src/runtime/bindings.ts": 2155,
+          "src/runtime/contexts/popup-factory.ts": 17229,
+          "src/runtime/storage/caches.ts": 1536,
+          "src/runtime/storage/indexed-db.ts": 1885,
+          "src/runtime/contexts/storage.ts": 869,
+          "src/runtime/contexts/worker-factory.ts": 9774,
+          "src/shared/shared-worker.ts": 266,
+          "src/runtime/contexts/shared-worker-factory.ts": 10094,
+          "src/runtime/contexts/worklet-factory.ts": 6772,
+          "src/runtime/enforcement/scripts.ts": 6164,
+          "src/runtime/publisher/scope.ts": 1535,
+          "src/runtime/publisher/protocol.ts": 1388,
+          "src/runtime/publisher/client.ts": 13003,
+          "src/runtime/resource-aliases.ts": 11311,
+          "src/runtime/enforcement/native.ts": 3282,
+          "src/runtime/enforcement/navigation.ts": 5482,
+          "src/shared/navigation-targets.ts": 557,
+          "src/runtime/enforcement/navigation-targets.ts": 4337,
+          "src/runtime/enforcement/resource-elements.ts": 2412,
+          "src/runtime/enforcement/inert-documents.ts": 5373,
+          "src/runtime/enforcement/dom.ts": 25324,
+          "src/runtime/enforcement/effects.ts": 4808,
+          "src/runtime/enforcement/web-storage.ts": 5499,
+          "src/runtime/contexts/document-factory.ts": 32761,
+          "trusted-policy:source": 326431,
+          "src/runtime/trusted/context.ts": 1312,
+          "src/runtime/trusted/client.ts": 1008,
+          "src/runtime/contexts/window-realm.ts": 4243,
+          "src/runtime/guard.ts": 3526
+        }
+      },
+      "connect": {
+        "bytes": 6637,
+        "gzipBytes": 1954,
+        "sha256": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 6637,
+        "contributions": {
+          "src/bridge/connect.ts": 6597
+        }
+      },
+      "worker-guard": {
+        "bytes": 305734,
+        "gzipBytes": 64728,
+        "sha256": "b8669c3f7f88e8b1b7498c67d4d0ff3fb6be91efaa5765db5c3a9c8edf838c0f",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 305734,
+        "contributions": {
+          "node_modules/acorn-import-phases/src/plugin.cjs": 4425,
+          "src/shared/primordials.ts": 4666,
+          "src/runtime/intrinsics.ts": 14500,
+          "src/runtime/bindings.ts": 2142,
+          "src/shared/application-navigation.ts": 412,
+          "src/runtime/contexts/model.ts": 34,
+          "src/runtime/enforcement/native.ts": 3277,
+          "src/runtime/enforcement/effects.ts": 4811,
+          "src/runtime/resource-aliases.ts": 11288,
+          "src/runtime/storage/caches.ts": 1524,
+          "src/runtime/storage/indexed-db.ts": 1878,
+          "src/runtime/contexts/storage.ts": 869,
+          "node_modules/acorn/dist/acorn.mjs": 215993,
+          "src/shared/module-source.ts": 2380,
+          "node_modules/acorn-import-phases/src/index.js": 214,
+          "src/runtime/modules.ts": 1921,
+          "src/runtime/contexts/worker-factory.ts": 9784,
+          "src/shared/shared-worker.ts": 266,
+          "src/runtime/contexts/shared-worker-factory.ts": 10080,
+          "src/runtime/contexts/worker-realm.ts": 10561,
+          "src/runtime/contexts/worker-guard.ts": 2244
+        }
+      },
+      "document-guard": {
+        "bytes": 813101,
+        "gzipBytes": 164759,
+        "sha256": "c09253e123d1bd24c799b109cfe32a97abe9945ccce93120f0eaffe17ccd2c5f",
+        "embeddedTrustedDataBytes": 326431,
+        "executableAndWrapperBytes": 486670,
+        "contributions": {
+          "node_modules/acorn-import-phases/src/plugin.cjs": 4437,
+          "src/shared/primordials.ts": 4666,
+          "src/runtime/contexts/document-content-types.ts": 47,
+          "src/shared/policy.ts": 1394,
+          "node_modules/acorn/dist/acorn.mjs": 216198,
+          "src/shared/module-source.ts": 4638,
+          "node_modules/acorn-import-phases/src/index.js": 214,
+          "src/runtime/modules.ts": 1918,
+          "src/runtime/enforcement/native-markup.ts": 8642,
+          "src/runtime/contexts/document-renderer.ts": 26537,
+          "src/runtime/intrinsics.ts": 14511,
+          "src/runtime/bindings.ts": 2155,
+          "src/runtime/contexts/document-surface.ts": 1266,
+          "src/shared/application-navigation.ts": 3552,
+          "src/runtime/contexts/model.ts": 34,
+          "src/runtime/contexts/document-protocol.ts": 5748,
+          "src/runtime/contexts/popup-factory.ts": 17297,
+          "src/runtime/storage/caches.ts": 1542,
+          "src/runtime/storage/indexed-db.ts": 1890,
+          "src/runtime/contexts/storage.ts": 872,
+          "src/runtime/contexts/worker-factory.ts": 9805,
+          "src/shared/shared-worker.ts": 266,
+          "src/runtime/contexts/shared-worker-factory.ts": 10108,
+          "src/runtime/contexts/worklet-factory.ts": 6792,
+          "src/runtime/enforcement/scripts.ts": 6190,
+          "src/runtime/publisher/scope.ts": 1535,
+          "src/runtime/publisher/protocol.ts": 1388,
+          "src/runtime/publisher/client.ts": 13007,
+          "src/runtime/resource-aliases.ts": 11347,
+          "src/runtime/enforcement/native.ts": 3284,
+          "src/runtime/enforcement/navigation.ts": 5505,
+          "src/shared/navigation-targets.ts": 557,
+          "src/runtime/enforcement/navigation-targets.ts": 4353,
+          "src/runtime/enforcement/resource-elements.ts": 2419,
+          "src/runtime/enforcement/inert-documents.ts": 5399,
+          "src/runtime/enforcement/dom.ts": 25387,
+          "src/runtime/enforcement/effects.ts": 4813,
+          "src/runtime/enforcement/web-storage.ts": 5517,
+          "src/runtime/contexts/document-factory.ts": 32908,
+          "trusted-policy:source": 326431,
+          "src/runtime/trusted/context.ts": 1315,
+          "src/runtime/trusted/client.ts": 1008,
+          "src/runtime/contexts/window-realm.ts": 4261,
+          "src/runtime/contexts/document-guard.ts": 8500
+        }
+      },
+      "shared-worker-guard": {
+        "bytes": 312335,
+        "gzipBytes": 65846,
+        "sha256": "1411339214261aa17fe9ce5009881f3ad1f6601db5b03b61a42bec333f4de5bd",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 312335,
+        "contributions": {
+          "node_modules/acorn-import-phases/src/plugin.cjs": 4425,
+          "src/shared/primordials.ts": 4666,
+          "src/runtime/intrinsics.ts": 14502,
+          "src/runtime/bindings.ts": 2142,
+          "src/shared/application-navigation.ts": 412,
+          "src/runtime/contexts/model.ts": 34,
+          "src/runtime/enforcement/native.ts": 3326,
+          "src/runtime/enforcement/effects.ts": 4868,
+          "src/runtime/resource-aliases.ts": 11316,
+          "src/runtime/storage/caches.ts": 1536,
+          "src/runtime/storage/indexed-db.ts": 1913,
+          "src/runtime/contexts/storage.ts": 952,
+          "node_modules/acorn/dist/acorn.mjs": 216010,
+          "src/shared/module-source.ts": 2380,
+          "node_modules/acorn-import-phases/src/index.js": 214,
+          "src/runtime/modules.ts": 1921,
+          "src/runtime/contexts/worker-factory.ts": 9806,
+          "src/shared/shared-worker.ts": 960,
+          "src/runtime/contexts/shared-worker-factory.ts": 10122,
+          "src/runtime/contexts/worker-realm.ts": 10636,
+          "src/runtime/contexts/shared-worker-guard.ts": 7722
+        }
+      },
+      "worklet-guard": {
+        "bytes": 29395,
+        "gzipBytes": 7048,
+        "sha256": "547b60f4d568b619fafb7dbd4b4e5f065761d8ed46b888c6d33128f7ea74ba2c",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 29395,
+        "contributions": {
+          "src/shared/primordials.ts": 3506,
+          "src/runtime/intrinsics.ts": 13745,
+          "src/runtime/bindings.ts": 1984,
+          "src/runtime/enforcement/native.ts": 3076,
+          "src/runtime/enforcement/effects.ts": 4549,
+          "src/runtime/contexts/worklet-types.ts": 32,
+          "src/runtime/contexts/worklet-guard.ts": 2206
+        }
+      },
+      "publisher-worker-guard": {
+        "bytes": 323708,
+        "gzipBytes": 68458,
+        "sha256": "f11246b9f0d057bcb50c6fb6b4a585e57f930b3c257d82674d375a38d4f5d7fe",
+        "embeddedTrustedDataBytes": 0,
+        "executableAndWrapperBytes": 323708,
+        "contributions": {
+          "node_modules/acorn-import-phases/src/plugin.cjs": 4425,
+          "src/shared/primordials.ts": 4668,
+          "src/runtime/intrinsics.ts": 14500,
+          "src/runtime/bindings.ts": 2142,
+          "src/shared/application-navigation.ts": 412,
+          "src/runtime/contexts/model.ts": 34,
+          "src/runtime/enforcement/native.ts": 3280,
+          "src/runtime/enforcement/effects.ts": 4811,
+          "src/runtime/resource-aliases.ts": 11303,
+          "src/runtime/storage/caches.ts": 1524,
+          "src/runtime/storage/indexed-db.ts": 1878,
+          "src/runtime/contexts/storage.ts": 869,
+          "node_modules/acorn/dist/acorn.mjs": 215993,
+          "src/shared/module-source.ts": 2380,
+          "node_modules/acorn-import-phases/src/index.js": 214,
+          "src/runtime/modules.ts": 1921,
+          "src/runtime/contexts/worker-factory.ts": 9787,
+          "src/shared/shared-worker.ts": 266,
+          "src/runtime/contexts/shared-worker-factory.ts": 10080,
+          "src/runtime/contexts/worker-realm.ts": 10561,
+          "src/runtime/publisher/events.ts": 8006,
+          "src/runtime/publisher/protocol.ts": 937,
+          "src/runtime/publisher/guard.ts": 11180
+        }
+      }
+    },
+    "deployedBundleTotals": {
+      "bytes": 3286062,
+      "gzipBytes": 675486
+    },
+    "nestedTrustedBundle": {
+      "bytes": 326856,
+      "gzipBytes": 63706,
+      "sha256": "cd3113afc320eff8695ac2d240d705acadada6c4c0d9aee7857ffa5f8f6acace",
+      "embeddedTrustedDataBytes": 0,
+      "executableAndWrapperBytes": 326856,
+      "contributions": {
+        "src/runtime/trusted/entry.ts": 1734,
+        "src/shared/primordials.ts": 3604,
+        "src/shared/navigation-targets.ts": 1157,
+        "node_modules/parse5/dist/common/unicode.js": 3058,
+        "node_modules/parse5/dist/common/error-codes.js": 4805,
+        "node_modules/parse5/dist/tokenizer/preprocessor.js": 5138,
+        "node_modules/parse5/dist/common/token.js": 840,
+        "node_modules/entities/dist/decode-codepoint.js": 799,
+        "node_modules/entities/dist/internal/decode-shared.js": 3987,
+        "node_modules/entities/dist/generated/decode-data-html.js": 18612,
+        "node_modules/entities/dist/generated/decode-data-xml.js": 278,
+        "node_modules/entities/dist/internal/bin-trie-flags.js": 444,
+        "node_modules/entities/dist/decode.js": 18369,
+        "node_modules/parse5/dist/common/html.js": 17981,
+        "node_modules/parse5/dist/tokenizer/index.js": 88240,
+        "node_modules/parse5/dist/parser/open-element-stack.js": 10211,
+        "node_modules/parse5/dist/parser/formatting-element-list.js": 3832,
+        "node_modules/parse5/dist/tree-adapters/default.js": 4879,
+        "node_modules/parse5/dist/common/doctype.js": 4550,
+        "node_modules/parse5/dist/common/foreign-content.js": 6260,
+        "node_modules/parse5/dist/parser/index.js": 94939,
+        "node_modules/parse5/dist/index.js": 420,
+        "node_modules/entities/dist/escape.js": 866,
+        "node_modules/parse5/dist/serializer/index.js": 3871,
+        "src/shared/policy.ts": 1388,
+        "src/runtime/contexts/document-content-types.ts": 47,
+        "src/runtime/contexts/document-content.ts": 15090,
+        "src/shared/application-navigation.ts": 412,
+        "src/runtime/contexts/document-protocol.ts": 3101,
+        "src/runtime/trusted/fragment.ts": 1805,
+        "src/shared/markup.ts": 2479
+      }
+    }
+  },
+  "delta": {
+    "runtimeSourceLines": 104,
+    "reachableLinesIncludingDependencies": 236,
+    "reachableBytesIncludingDependencies": -58411,
+    "deploymentBytes": -345900
+  }
+}

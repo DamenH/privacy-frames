@@ -78,16 +78,12 @@ export function createPolicyTools() {
   }
 
   function accessor(owner: object, key: PropertyKey, replacement: PropertyDescriptor) {
-    if (replacement.get === deny)
-      replacement = internalRecord({
-        ...replacement,
-        get: denial(owner, key, 'get') as () => never,
-      });
-    if (replacement.set === deny)
-      replacement = internalRecord({
-        ...replacement,
-        set: denial(owner, key, 'set') as () => never,
-      });
+    for (const kind of ['get', 'set'] as const)
+      if (replacement[kind] === deny)
+        replacement = internalRecord({
+          ...replacement,
+          [kind]: denial(owner, key, kind),
+        });
     const existing = descriptor(owner, key);
     if (!existing) return;
     if (!existing.configurable) {

@@ -224,20 +224,23 @@ export function resourceAliases({
       }
     },
   );
-  method(
-    Cache.prototype,
-    'put',
-    function (this: Cache, input: RequestInfo | URL, value: Response) {
-      return apply(nativePut, this, [logicalRequest(input), value]);
-    },
-  );
-  method(
-    Cache.prototype,
-    'match',
-    function (this: Cache, input: RequestInfo | URL, options?: CacheQueryOptions) {
-      return apply(nativeCacheMatch, this, [logicalRequest(input), options]);
-    },
-  );
+  // These operations differ only in the native method and second argument.
+  for (const [key, native] of [
+    ['put', nativePut],
+    ['match', nativeCacheMatch],
+    ['delete', nativeCacheDelete],
+  ] as const)
+    method(
+      Cache.prototype,
+      key,
+      function (
+        this: Cache,
+        input: RequestInfo | URL,
+        argument?: Response | CacheQueryOptions,
+      ) {
+        return apply(native, this, [logicalRequest(input), argument]);
+      },
+    );
   method(
     Cache.prototype,
     'matchAll',
@@ -247,13 +250,6 @@ export function resourceAliases({
         this,
         input === undefined ? [undefined, options] : [logicalRequest(input), options],
       );
-    },
-  );
-  method(
-    Cache.prototype,
-    'delete',
-    function (this: Cache, input: RequestInfo | URL, options?: CacheQueryOptions) {
-      return apply(nativeCacheDelete, this, [logicalRequest(input), options]);
     },
   );
   method(
