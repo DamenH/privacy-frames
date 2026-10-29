@@ -1,6 +1,6 @@
 {
   "provenance": {
-    "revision": "1a78033b48a64b72cd21b4467b96e7c7eba6a2f1",
+    "revision": "6dc326d6169831f9645dfd59e08b7cfc2a54bdf9",
     "probeSHA256": "427fb7d5446ee818d04f757dc753de2bc87f9b60a63daf6ecd164dbd647810e0",
     "node": "v26.2.0",
     "scope": "Isolated milestone probe; no runtime build used"
@@ -40,43 +40,43 @@
     },
     {
       "label": "guest and host copy 1048576",
-      "usedSize": 1791572,
+      "usedSize": 1781464,
       "totalSize": 4456448,
       "embedderHeapUsedSize": 1384832,
       "backingStorageSize": 2490587
     },
     {
       "label": "guest 4194304",
-      "usedSize": 1850316,
+      "usedSize": 1825932,
       "totalSize": 4718592,
       "embedderHeapUsedSize": 1384832,
       "backingStorageSize": 6684891
     },
     {
       "label": "guest and host copy 4194304",
-      "usedSize": 2024816,
+      "usedSize": 1826208,
       "totalSize": 5767168,
       "embedderHeapUsedSize": 1384832,
-      "backingStorageSize": 10944731
+      "backingStorageSize": 10879195
     },
     {
       "label": "guest 16777216",
-      "usedSize": 2048652,
+      "usedSize": 1829660,
       "totalSize": 5767168,
       "embedderHeapUsedSize": 1384832,
-      "backingStorageSize": 27721947
+      "backingStorageSize": 27656411
     },
     {
       "label": "guest and host copy 16777216",
-      "usedSize": 2065560,
+      "usedSize": 2020992,
       "totalSize": 6815744,
       "embedderHeapUsedSize": 1384832,
-      "backingStorageSize": 44564699
+      "backingStorageSize": 44499163
     },
     {
       "label": "worker round trip copied back",
-      "usedSize": 2013724,
-      "totalSize": 6815744,
+      "usedSize": 2067344,
+      "totalSize": 7077888,
       "embedderHeapUsedSize": 1384832,
       "backingStorageSize": 46203109
     }
@@ -84,7 +84,7 @@
   "policies": [
     {
       "policy": "none",
-      "url": "http://127.0.0.1:44025/?policy=none",
+      "url": "http://127.0.0.1:38909/?policy=none",
       "csp": null,
       "controls": {
         "hostFunction": "object",
@@ -132,7 +132,7 @@
     },
     {
       "policy": "explicit",
-      "url": "http://127.0.0.1:44025/?policy=explicit",
+      "url": "http://127.0.0.1:38909/?policy=explicit",
       "csp": "default-src 'self'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval'; worker-src 'self'; img-src 'self' data:",
       "controls": {
         "hostFunction": "object",
@@ -181,7 +181,7 @@
     {
       "policy": "none",
       "entry": "guest Promise callback",
-      "url": "http://127.0.0.1:44025/?policy=none",
+      "url": "http://127.0.0.1:38909/?policy=none",
       "capabilities": {
         "entry": "guest Promise callback",
         "document": "undefined",
@@ -229,7 +229,7 @@
     {
       "policy": "explicit",
       "entry": "guest Promise callback",
-      "url": "http://127.0.0.1:44025/?policy=explicit",
+      "url": "http://127.0.0.1:38909/?policy=explicit",
       "capabilities": {
         "entry": "guest Promise callback",
         "document": "undefined",
@@ -417,21 +417,21 @@
       },
       {
         "bytes": 1048576,
-        "milliseconds": 1.5799999833106995,
+        "milliseconds": 1.465000033378601,
         "calls": 16,
         "wireCharacters": 1398144,
         "correct": true
       },
       {
         "bytes": 4194304,
-        "milliseconds": 3.0049999952316284,
+        "milliseconds": 2.8950000405311584,
         "calls": 64,
         "wireCharacters": 5592576,
         "correct": true
       },
       {
         "bytes": 16777216,
-        "milliseconds": 8.925000011920929,
+        "milliseconds": 8.729999959468842,
         "calls": 256,
         "wireCharacters": 22370304,
         "correct": true
@@ -440,28 +440,28 @@
     "manualSizes": [
       {
         "bytes": 65536,
-        "milliseconds": 2.1399999856948853,
+        "milliseconds": 2.1549999713897705,
         "calls": 1,
         "wireCharacters": 87384,
         "correct": true
       },
       {
         "bytes": 1048576,
-        "milliseconds": 23.514999985694885,
+        "milliseconds": 23.680000007152557,
         "calls": 16,
         "wireCharacters": 1398144,
         "correct": true
       },
       {
         "bytes": 4194304,
-        "milliseconds": 88.40500003099442,
+        "milliseconds": 86.85500001907349,
         "calls": 64,
         "wireCharacters": 5592576,
         "correct": true
       },
       {
         "bytes": 16777216,
-        "milliseconds": 364.2699999809265,
+        "milliseconds": 362.5499999523163,
         "calls": 256,
         "wireCharacters": 22370304,
         "correct": true
@@ -480,9 +480,9 @@
       "workerChecksum": 133693440,
       "guestChecksum": 133693440,
       "expectedChecksum": 133693440,
-      "copyToHostMs": 0.675000011920929,
-      "workerRoundTripMs": 12.564999997615814,
-      "copyToGuestMs": 0.800000011920929,
+      "copyToHostMs": 0.6349999904632568,
+      "workerRoundTripMs": 12.264999985694885,
+      "copyToGuestMs": 0.9249999523162842,
       "outgoingCalls": 16,
       "returnCalls": 16
     }

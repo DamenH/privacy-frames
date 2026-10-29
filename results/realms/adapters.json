@@ -21,6 +21,10 @@
         "WebAssembly": "object",
         "structuredClone": "function"
       },
+      "wasm": {
+        "worked": false,
+        "error": "CompileError: WebAssembly.Module(): Wasm code generation disallowed by embedder"
+      },
       "documentDescriptor": null,
       "stored": "hello",
       "revoked": true
@@ -45,6 +49,10 @@
         "location": "object",
         "WebAssembly": "object",
         "structuredClone": "function"
+      },
+      "wasm": {
+        "worked": true,
+        "value": 201
       },
       "documentDescriptor": {
         "configurable": false,
@@ -73,6 +81,10 @@
         "location": "object",
         "WebAssembly": "object",
         "structuredClone": "function"
+      },
+      "wasm": {
+        "worked": true,
+        "value": 201
       },
       "documentDescriptor": {
         "configurable": false,

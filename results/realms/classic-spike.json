@@ -1,7 +1,7 @@
 {
   "provenance": {
-    "revision": "1a78033b48a64b72cd21b4467b96e7c7eba6a2f1",
-    "capturedAt": "2026-10-29T16:15:19.850Z",
+    "revision": "6dc326d6169831f9645dfd59e08b7cfc2a54bdf9",
+    "capturedAt": "2026-10-29T16:33:11.201Z",
     "runnerSHA256": "d3ef298aaa8f6c96bbd910ced55d09e9db6d0310c028377617b0055133090314",
     "scope": "Classic-script semantic research, isolated realm adapters. Candidate lowerings are deliberately unqualified; mismatches are recorded, not accepted as compatibility."
   },

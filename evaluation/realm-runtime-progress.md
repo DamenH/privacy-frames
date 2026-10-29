@@ -35,7 +35,8 @@ bridge. Full migration and deployment have not started.
   synchronous wrapped entry. Native guest Wasm compilation fails in both entry
   contexts, including deferred instantiate, with and without explicit permissive
   CSP. Guest structuredClone transfer crashes all four entry/policy combinations.
-  Host controls succeed.
+  Host controls succeed. The same Wasm fixture compiles and reads the expected
+  memory value in both Chromium and Firefox Near Membrane environments.
 - A primitive buffer path works without raw-object crossing: exact canvas pixels
   and a real 1 MiB worker round trip preserve detachment and bytes. One measured
   native-base64 run copied 4 MiB in about 3 ms and 16 MiB in about 8.9 ms.
@@ -66,5 +67,7 @@ with the prototype's narrower positive checks.
 
 `npm run test:realm-probes` reproduces the observations.
 `npm run test:realms` additionally runs the prerequisite qualification and exits
-unsuccessfully on the current classic/compiler/Wasm gaps. A passing diagnostic
+unsuccessfully on the current classic/compiler/Wasm gaps. A fresh full execution
+from checkpoint `6dc326d` completed all diagnostic runners and reached those
+three failing prerequisite checks. A passing diagnostic
 reproduction is not a migration pass.

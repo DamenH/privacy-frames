@@ -1,20 +1,21 @@
 {
   "provenance": {
-    "capturedAt": "2026-10-29T15:59:40.860Z",
-    "revision": "1a78033b48a64b72cd21b4467b96e7c7eba6a2f1",
-    "runnerSHA256": "adbe08152c8dfcc7b33e8c087c400489364dd8b015717a1f422c49bd19e04888",
-    "dirty": true,
+    "capturedAt": "2026-10-29T16:33:00.741Z",
+    "revision": "6dc326d6169831f9645dfd59e08b7cfc2a54bdf9",
+    "runnerSHA256": "b5cdb67c6f3f0a4b1a094840bea8e4bda5787e2afc864d5201f289bf12d034ef",
+    "dirty": false,
     "scope": "Isolated actual native engine spike; no production artifacts built or loaded."
   },
   "browser": "153.0.8010.12",
   "flags": [
     "--js-flags=--harmony-shadow-realm"
   ],
+  "crossOriginIsolationHeaders": false,
   "executable": "Playwright default headless shell",
   "systemRegisterProof": {
     "loaderVersion": "systemjs@6.15.1",
-    "emittedHarnessBytes": 225635,
-    "emittedHarnessSHA256": "3dd247fb556a3fb1e310917a703b674d041f5afff61fde5b6dd1893faeb85a3f",
+    "emittedHarnessBytes": 226788,
+    "emittedHarnessSHA256": "33a0d7988d9c2ff7491b879c7b914f1af16df93bb0fed0782d53fbe6c4931ab3",
     "fixtureCompilerOnly": true,
     "loaderBytes": 25321,
     "loaderLines": 745,
@@ -22,11 +23,11 @@
     "compilerVersion": "6.0.3",
     "compilerBytes": 9144216,
     "compilerLocation": "Node fixture preparation only; not shipped in browser or proposed as qualified production compiler",
-    "compiledSourceBytes": 3294,
+    "compiledSourceBytes": 3609,
     "boundary": "Guest module graphs, namespaces, cycles, TLA and promises remain guest-local; host source and resolution hooks accept and return strings only. Both adapters run the same loader source and hooks."
   },
   "invocation": "Actual HTTP document parser creates classic/module bootstrap scripts; native loading calls do not originate in page.evaluate or CDP.",
-  "origin": "http://127.0.0.1:38351",
+  "origin": "http://127.0.0.1:42791",
   "results": [
     {
       "case": "shared-native",
@@ -40,14 +41,14 @@
       "result": {
         "backend": "native",
         "requests": [
-          "http://127.0.0.1:38351/module.js",
-          "http://127.0.0.1:38351/cycle-a.js",
-          "http://127.0.0.1:38351/cycle-b.js",
-          "http://127.0.0.1:38351/await.js",
-          "http://127.0.0.1:38351/dynamic.js",
-          "http://127.0.0.1:38351/early-a.js",
-          "http://127.0.0.1:38351/early-b.js",
-          "http://127.0.0.1:38351/unadmitted.js"
+          "http://127.0.0.1:42791/module.js",
+          "http://127.0.0.1:42791/cycle-a.js",
+          "http://127.0.0.1:42791/cycle-b.js",
+          "http://127.0.0.1:42791/await.js",
+          "http://127.0.0.1:42791/dynamic.js",
+          "http://127.0.0.1:42791/early-a.js",
+          "http://127.0.0.1:42791/early-b.js",
+          "http://127.0.0.1:42791/unadmitted.js"
         ],
         "value": {
           "first": 1,
@@ -55,12 +56,20 @@
           "live": 2,
           "moduleIdentity": true,
           "namespaceObject": "object",
-          "identity": "http://127.0.0.1:38351/module.js",
+          "identity": "http://127.0.0.1:42791/module.js",
           "cycle": 5,
           "awaited": 42,
           "dynamic": 2,
           "earlyCycle": 42,
           "denied": true,
+          "moduleProbe": {
+            "document": "undefined",
+            "fetch": "undefined",
+            "hostSecret": "undefined",
+            "guestMarker": "guest",
+            "hostArray": "undefined",
+            "guestArray": "guest-array"
+          },
           "guestGlobals": "undefined:undefined"
         }
       }
@@ -77,14 +86,14 @@
       "result": {
         "backend": "membrane",
         "requests": [
-          "http://127.0.0.1:38351/module.js",
-          "http://127.0.0.1:38351/cycle-a.js",
-          "http://127.0.0.1:38351/cycle-b.js",
-          "http://127.0.0.1:38351/await.js",
-          "http://127.0.0.1:38351/dynamic.js",
-          "http://127.0.0.1:38351/early-a.js",
-          "http://127.0.0.1:38351/early-b.js",
-          "http://127.0.0.1:38351/unadmitted.js"
+          "http://127.0.0.1:42791/module.js",
+          "http://127.0.0.1:42791/cycle-a.js",
+          "http://127.0.0.1:42791/cycle-b.js",
+          "http://127.0.0.1:42791/await.js",
+          "http://127.0.0.1:42791/dynamic.js",
+          "http://127.0.0.1:42791/early-a.js",
+          "http://127.0.0.1:42791/early-b.js",
+          "http://127.0.0.1:42791/unadmitted.js"
         ],
         "value": {
           "first": 1,
@@ -92,12 +101,20 @@
           "live": 2,
           "moduleIdentity": true,
           "namespaceObject": "object",
-          "identity": "http://127.0.0.1:38351/module.js",
+          "identity": "http://127.0.0.1:42791/module.js",
           "cycle": 5,
           "awaited": 42,
           "dynamic": 2,
           "earlyCycle": 42,
           "denied": true,
+          "moduleProbe": {
+            "document": "object",
+            "fetch": "function",
+            "hostSecret": "undefined",
+            "guestMarker": "guest",
+            "hostArray": "undefined",
+            "guestArray": "guest-array"
+          },
           "guestGlobals": "object:function"
         }
       }
@@ -122,7 +139,7 @@
         "read": 1,
         "increment": 2,
         "live": 2,
-        "identity": "http://127.0.0.1:38351/module.js",
+        "identity": "http://127.0.0.1:42791/module.js",
         "cycle": 5,
         "awaited": 42,
         "dynamic": 2,
@@ -227,7 +244,7 @@
       "case": "importValue-classic",
       "crashed": true,
       "errors": [
-        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:38351/?case=importValue-classic\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:42791/?case=importValue-classic\", waiting until \"domcontentloaded\"\u001b[22m\n"
       ],
       "stages": [
         "calling native importValue"
@@ -241,7 +258,7 @@
       "case": "importValue-module",
       "crashed": true,
       "errors": [
-        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:38351/?case=importValue-module\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:42791/?case=importValue-module\", waiting until \"domcontentloaded\"\u001b[22m\n"
       ],
       "stages": [
         "calling native importValue"
@@ -255,7 +272,7 @@
       "case": "importValue-data",
       "crashed": true,
       "errors": [
-        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:38351/?case=importValue-data\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:42791/?case=importValue-data\", waiting until \"domcontentloaded\"\u001b[22m\n"
       ],
       "stages": [
         "calling native importValue"
@@ -269,7 +286,7 @@
       "case": "guest-import-classic",
       "crashed": true,
       "errors": [
-        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:38351/?case=guest-import-classic\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:42791/?case=guest-import-classic\", waiting until \"domcontentloaded\"\u001b[22m\n"
       ],
       "stages": [
         "calling guest import"
@@ -283,7 +300,7 @@
       "case": "guest-import-module",
       "crashed": true,
       "errors": [
-        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:38351/?case=guest-import-module\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:42791/?case=guest-import-module\", waiting until \"domcontentloaded\"\u001b[22m\n"
       ],
       "stages": [
         "calling guest import"
