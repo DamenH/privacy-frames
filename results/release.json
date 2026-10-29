@@ -1,129 +1,13 @@
 {
-  "status": "complete",
-  "verifiedOn": "2026-10-28T21:11:51.982878+00:00",
-  "implementationRevision": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
-  "managerPublicationRevision": "2dfcbc2e8be6d9ec64bc3c20789446b59977e14e",
-  "runtimePublicationRevision": "a9c2869408c38330d5b9d8b7031abeeedddf3741",
-  "installationPublicationRevision": "e8f71e6b9255a8bcb21b4fc0ba599f7aba0fbc05",
-  "publisherRevision": "2c26c40c77160af643ae053115a3975cc5a01ba0",
-  "hosting": {
-    "provider": "GitHub Pages",
-    "manager": "https://pf.damenh.com/",
-    "runtime": "https://apps.pf.damenh.com/",
-    "installation": "https://install.pf.damenh.com/",
-    "publishers": "https://privacy-frames.github.io/apps/",
-    "managerRun": 40763844471,
-    "runtimeRun": 40763816951,
-    "installationRun": 40763821000,
-    "publisherRun": 40728518629
-  },
-  "checks": {
-    "ciUnitTests": 182,
-    "ciJobs": "passed",
-    "publishedAssetsMatched": 59,
-    "publicApplications": 8,
-    "publicBrowserApplicationPairs": 16,
-    "selectedTasksAndOfflineChecks": "passed",
-    "publicCyberChefTextAndFiles": [
-      "chromium",
-      "firefox"
-    ],
-    "publicCyberChefCancellationAndSVG": [
-      "chromium"
-    ],
-    "publicPitchTraining": [
-      "chromium",
-      "firefox"
-    ],
-    "generalDeployedGroups": {
-      "chromium": 10,
-      "firefox": 10
-    },
-    "expectedOptionalPreparationErrors": {
-      "chromium": 1,
-      "firefox": 0
-    },
-    "unexpectedDeployedErrors": 0,
-    "calibratedNetworkControls": [
-      "HTTP",
-      "worker HTTP",
-      "TCP",
-      "DNS",
-      "STUN UDP"
-    ],
-    "confinedMarkerObservations": {
-      "TCP": 0,
-      "DNS": 0,
-      "STUN UDP": 0
-    },
-    "verificationHarnessUnitTests": 3,
-    "currentLocalUnitTests": 185
-  },
-  "limits": [
-    "Installed apps share storage and permission origin; namespaces are functional rather than a promised inter-application boundary.",
-    "Firefox CyberChef cancellation/SVG remains unverified because its native control is unreliable.",
-    "WebKit, real-device mobile and manual PWA installation UI are unverified.",
-    "General updates and information-flow control remain deferred.",
-    "Experiments cover the documented browser surface; they are not a machine-checked confinement proof."
-  ],
-  "receipts": [
-    {
-      "path": "results/assets.json",
-      "sha256": "8130740520a8811060bbfd46f97b3c90734825fc4e3c621e2215c1c56fc2b3ea"
-    },
-    {
-      "path": "results/evaluation/final-ci.json",
-      "sha256": "f1f2ca2b08ea0e5dc71c9341be0ef70165b8f0dd75081299283b8b8355cd4cfa"
-    },
-    {
-      "path": "results/evaluation/final-ci-receipts.json",
-      "sha256": "cb806e8a85adf5515e10164f6a3116a1dabeb4a05416c72dd1e55809d55811ad"
-    },
-    {
-      "path": "results/evaluation/compatibility-release-public.json",
-      "sha256": "fb7d94736c842f99c9dc0fde1ab0e531653da291ff0c7c3920f3558e3abe67b4"
-    },
-    {
-      "path": "results/evaluation/cyberchef-text-file-release-public.json",
-      "sha256": "48a0bb308ff57c8b74395f7ae13ab3479d9f65110f84945ee617cabbbfb20ece"
-    },
-    {
-      "path": "results/evaluation/cyberchef-cancel-release-public.json",
-      "sha256": "14ef73f26c5e8b4b67af901781e40de9a6bb6ed6330396b878745cc66274f9f8"
-    },
-    {
-      "path": "results/pitch-training-deployed.json",
-      "sha256": "83fe55148cdfbd8e3ddb88c9ff23899492e89d3758bd6f406f209be46a85763c"
-    },
-    {
-      "path": "results/deployed.json",
-      "sha256": "3f017eda0df58e56ff2999c9a5a58f161e033198f732533bb1af15c4d9ee881b"
-    },
-    {
-      "path": "results/network.json",
-      "sha256": "ba0f65173321a83e09f8faaf3541a396814fe1103b60b049754e078dbf64289c"
-    },
-    {
-      "path": "results/network-firefox.json",
-      "sha256": "fad3b00e86ae1817ca3cac2db838ab59350b7637cf3f4589fb9a2c0ecda62e8e"
-    }
-  ],
-  "verificationHarness": [
-    {
-      "path": "test/deployed.ts",
-      "sha256": "b43af0fba16a631b2ff9b3be36db23da8ed7e85e2a12178d1461f41f7f07de61"
-    },
-    {
-      "path": "test/helpers/installation-errors.ts",
-      "sha256": "7f439aa1bc53c3bdc59340e656c8a505ece691cf20a60ce5ceda00c46ccf7ffb"
-    },
-    {
-      "path": "test/helpers/worker-exceptions.ts",
-      "sha256": "5f3f436d983b29299f204d9e18696100503f35174953f535ba53ddbb6339b277"
-    },
-    {
-      "path": "test/installation-errors.test.ts",
-      "sha256": "631eaeebde2ff69421bf7754121b204e5d0c4effefcea08ef1aa2243acd39438"
-    }
+  "status": "verification-in-progress",
+  "change": "Explicit resource discovery with optional text/uri-list supplements; no publisher execution during installation",
+  "previousRelease": "evaluation/release-2dfcbc.json",
+  "publisherRevision": "f5de28d798237921e7d83467e9fa399dbb141b25",
+  "requirements": [
+    "Unit and browser regressions",
+    "Eight-app useful tasks and offline checks",
+    "Independent network controls",
+    "Same-source three-origin GitHub Pages publication",
+    "Public artifact and functional verification"
   ]
 }

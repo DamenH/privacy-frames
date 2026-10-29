@@ -4,16 +4,18 @@ import { compileDocumentContent } from './contexts/document-content.ts';
 import type {
   DownloadedResource,
   PreparedInstallation,
-  Preparation,
+  ResourceCaptureSummary,
   UnavailableResource,
 } from '../shared/types.ts';
 import { prepareRuntimeDocument } from './document.ts';
 import { listApps } from './storage.ts';
 
+function isObject(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
 function object(value: unknown): Record<string, unknown> {
-  if (!value || typeof value !== 'object' || Array.isArray(value))
-    throw new Error('Expected an object');
-  return value as Record<string, unknown>;
+  if (!isObject(value)) throw new Error('Expected an object');
+  return value;
 }
 
 function publicURL(value: unknown): string {
@@ -30,109 +32,51 @@ function publicURL(value: unknown): string {
   return url.href;
 }
 
-function preparation(value: unknown): Preparation {
+function captureSummary(value: unknown, resources: Set<string>): ResourceCaptureSummary {
   const input = object(value);
   if (
-    input.profile !== 'website-v1' ||
-    input.ended !== true ||
-    !Array.isArray(input.caches) ||
-    input.caches.length > 20
+    !Array.isArray(input.additionalResources) ||
+    input.additionalResources.length > LIMITS.files ||
+    !Array.isArray(input.unavailableResources) ||
+    input.unavailableResources.length > LIMITS.files
   )
-    throw new Error('Installation has not ended');
-  const caches = input.caches.map((value) => {
-    const cache = object(value);
-    if (
-      typeof cache.name !== 'string' ||
-      cache.name.length > 1000 ||
-      !Array.isArray(cache.urls) ||
-      cache.urls.length > LIMITS.files
-    )
-      throw new Error('Invalid installation cache');
-    return { name: cache.name, urls: cache.urls.map(publicURL) };
+    throw new Error('Invalid resource capture summary');
+  const listed = new Set<string>();
+  const additionalResources = input.additionalResources.map((value) => {
+    const url = publicURL(value);
+    if (listed.has(url) || !resources.has(url))
+      throw new Error('Additional resource was not captured');
+    listed.add(url);
+    return url;
   });
-  let serviceWorker: Preparation['serviceWorker'] = null;
-  if (input.serviceWorker !== null) {
-    const receipt = object(input.serviceWorker);
-    if (
-      receipt.profile !== 'precache-v1' ||
-      !Array.isArray(receipt.completed) ||
-      receipt.completed.length !== 2 ||
-      receipt.completed[0] !== 'install' ||
-      receipt.completed[1] !== 'activate'
-    )
-      throw new Error('Invalid preparation receipt');
-    serviceWorker = {
-      profile: 'precache-v1',
-      completed: ['install', 'activate'],
-      scriptURL: publicURL(receipt.scriptURL),
-      scope: publicURL(receipt.scope),
-    };
-  }
-  const inputOutcome = object(input.outcome);
   const unavailableResources: UnavailableResource[] = [];
-  if (input.unavailableResources !== undefined) {
+  const unavailable = new Set<string>();
+  for (const item of input.unavailableResources) {
+    const diagnostic = object(item);
+    const url = publicURL(diagnostic.url);
     if (
-      !Array.isArray(input.unavailableResources) ||
-      input.unavailableResources.length > LIMITS.files
+      unavailable.has(url) ||
+      resources.has(url) ||
+      (diagnostic.reason !== 'network' &&
+        diagnostic.reason !== 'http' &&
+        diagnostic.reason !== 'body') ||
+      (diagnostic.reason === 'http'
+        ? typeof diagnostic.status !== 'number' ||
+          !Number.isInteger(diagnostic.status) ||
+          diagnostic.status < 100 ||
+          diagnostic.status > 599 ||
+          (diagnostic.status >= 200 && diagnostic.status < 300)
+        : diagnostic.status !== undefined)
     )
-      throw new Error('Invalid unavailable resource diagnostics');
-    const seen = new Set<string>();
-    for (const item of input.unavailableResources) {
-      const diagnostic = object(item);
-      const url = publicURL(diagnostic.url);
-      if (
-        seen.has(url) ||
-        !['network', 'http', 'body'].includes(String(diagnostic.reason)) ||
-        (diagnostic.reason === 'http'
-          ? typeof diagnostic.status !== 'number' ||
-            !Number.isInteger(diagnostic.status) ||
-            diagnostic.status < 100 ||
-            diagnostic.status > 599 ||
-            (diagnostic.status >= 200 && diagnostic.status < 300)
-          : diagnostic.status !== undefined)
-      )
-        throw new Error('Invalid unavailable resource diagnostic');
-      seen.add(url);
-      unavailableResources.push({
-        url,
-        reason:
-          diagnostic.reason === 'network'
-            ? 'network'
-            : diagnostic.reason === 'http'
-              ? 'http'
-              : 'body',
-        ...(typeof diagnostic.status === 'number' ? { status: diagnostic.status } : {}),
-      });
-    }
+      throw new Error('Invalid unavailable resource diagnostic');
+    unavailable.add(url);
+    unavailableResources.push({
+      url,
+      reason: diagnostic.reason,
+      ...(typeof diagnostic.status === 'number' ? { status: diagnostic.status } : {}),
+    });
   }
-  let outcome: Preparation['outcome'];
-  if (inputOutcome.status === 'absent') {
-    outcome = { status: 'absent' };
-  } else if (inputOutcome.status === 'completed') {
-    outcome = { status: 'completed', scriptURL: publicURL(inputOutcome.scriptURL) };
-  } else if (inputOutcome.status === 'unsupported' || inputOutcome.status === 'failed') {
-    if (typeof inputOutcome.reason !== 'string' || inputOutcome.reason.length > 2000)
-      throw new Error('Invalid preparation diagnostic');
-    outcome = {
-      status: inputOutcome.status,
-      scriptURL: publicURL(inputOutcome.scriptURL),
-      reason: inputOutcome.reason,
-    };
-  } else throw new Error('Invalid preparation outcome');
-  if (outcome.status === 'completed') {
-    if (!serviceWorker || serviceWorker.scriptURL !== outcome.scriptURL)
-      throw new Error('Completed preparation requires its receipt');
-  } else if (serviceWorker || caches.length) {
-    throw new Error('Uncompleted preparation cannot publish worker authority or caches');
-  }
-  return {
-    profile: 'website-v1',
-    ended: true,
-    caches,
-    serviceWorker,
-    outcome,
-    unavailableResources,
-  };
+  return { additionalResources, unavailableResources };
 }
 
 export async function admitInstallation(
@@ -140,6 +84,8 @@ export async function admitInstallation(
   runtime: URL,
 ): Promise<PreparedInstallation> {
   const value = object(input);
+  if (value.format !== 'offline-resources-v1')
+    throw new Error('Unsupported installation format');
   const manifest = validateMetadata(value.manifest);
   const source = publicURL(value.source);
   const id = manifest.id + '-' + (await digest(new TextEncoder().encode(source)));
@@ -168,14 +114,15 @@ export async function admitInstallation(
     )
       throw new Error('Invalid resource');
     size += resource.bytes.byteLength;
-    if (size > LIMITS.bytes || (await digest(resource.bytes)) !== resource.sha256)
+    const sha256 = await digest(resource.bytes);
+    if (size > LIMITS.bytes || sha256 !== resource.sha256)
       throw new Error('Resource integrity or size check failed');
     resources.push({
       path,
       url,
       bytes: resource.bytes,
       contentType: resource.contentType,
-      sha256: resource.sha256 as string,
+      sha256,
       ...(resource.documentBase === undefined
         ? {}
         : { documentBase: publicURL(resource.documentBase) }),
@@ -183,18 +130,14 @@ export async function admitInstallation(
   }
   const entry = resources.find((resource) => resource.path === manifest.entry);
   if (!entry) throw new Error('Missing entry');
-  const receipt = preparation(value.preparation);
-  if (receipt.unavailableResources?.some((item) => urls.has(item.url)))
-    throw new Error('Unavailable resource is also installed');
-  for (const cache of receipt.caches)
-    for (const url of cache.urls)
-      if (!urls.has(url)) throw new Error('Cache contains an uninstalled resource');
+  const capture = captureSummary(value.capture, urls);
   let publisherManifest: PreparedInstallation['publisherManifest'] = null;
   if (value.publisherManifest) {
     const metadata = object(value.publisherManifest);
     publisherManifest = { url: publicURL(metadata.url), value: object(metadata.value) };
   }
   const app: PreparedInstallation = {
+    format: 'offline-resources-v1',
     id,
     manifest,
     source,
@@ -204,7 +147,7 @@ export async function admitInstallation(
     size,
     publisherManifest,
     installedAt: new Date().toISOString(),
-    preparation: receipt,
+    capture,
   };
   const aliases: [string, string][] = resources.map((resource) => [
     resource.url,
@@ -224,7 +167,7 @@ export async function admitInstallation(
           (resource.url === source ? app.documentBase : undefined) ||
           resource.url,
         aliases,
-        unavailableURLs: receipt.unavailableResources?.map((item) => item.url),
+        unavailableURLs: capture.unavailableResources.map((item) => item.url),
       });
   if (
     (await listApps()).some(

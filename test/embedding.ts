@@ -56,13 +56,8 @@ try {
           manifest,
           source,
           resources,
-          preparation: {
-            profile: 'website-v1',
-            outcome: { status: 'absent' },
-            ended: true,
-            caches: [],
-            serviceWorker: null,
-          },
+          format: 'offline-resources-v1',
+          capture: { additionalResources: [], unavailableResources: [] },
         };
         return new Promise((resolve) => {
           const channel = new MessageChannel();

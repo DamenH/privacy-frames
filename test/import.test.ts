@@ -154,12 +154,15 @@ test('unreadable or malformed optional publisher manifests preserve a valid docu
         }
         return new Response('Missing', { status: 404 });
       };
-      const installed = await downloadWebsite('https://publisher.test/demo/index.html', {
-        onProgress: (value) => progress.push(value),
-      });
+      const installed = await downloadWebsite(
+        { url: 'https://publisher.test/demo/index.html' },
+        {
+          onProgress: (value) => progress.push(value),
+        },
+      );
       assert.equal(installed.publisherManifest, null);
       assert.equal(installed.manifest.name, 'Fallback document');
-      assert.equal(installed.preparation.ended, true);
+      assert.equal(installed.format, 'offline-resources-v1');
       assert(
         progress.some((value) => value.startsWith('Optional manifest unavailable:')),
       );
@@ -281,9 +284,9 @@ test('publisher scripts cannot be overwritten by generated inline resource names
         });
       return new Response('Missing', { status: 404 });
     };
-    const installed = await downloadWebsite(
-      'https://publisher.test/collision/index.html',
-    );
+    const installed = await downloadWebsite({
+      url: 'https://publisher.test/collision/index.html',
+    });
     const declared = installed.resources.find((resource) => resource.url === declaredURL);
     const generated = installed.resources.filter(
       (resource) =>
@@ -325,7 +328,9 @@ test('secondary captured HTML collects its inline module and that module depende
         });
       return new Response('Missing', { status: 404 });
     };
-    const installed = await downloadWebsite('https://publisher.test/nested/index.html');
+    const installed = await downloadWebsite({
+      url: 'https://publisher.test/nested/index.html',
+    });
     const secondary = installed.resources.find(
       (resource) => resource.path === 'secondary.html',
     );
@@ -341,7 +346,7 @@ test('secondary captured HTML collects its inline module and that module depende
     assert(
       installed.resources.some((resource) => resource.path === 'secondary-dependency.js'),
     );
-    assert.equal(installed.preparation.ended, true);
+    assert.equal(installed.format, 'offline-resources-v1');
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -372,12 +377,14 @@ test('a standard webpage can install a streamed asset larger than the former 20 
         );
       return new Response('Missing', { status: 404 });
     };
-    const installed = await downloadWebsite('https://publisher.test/large/index.html');
+    const installed = await downloadWebsite({
+      url: 'https://publisher.test/large/index.html',
+    });
     const asset = installed.resources.find((resource) => resource.path === 'large.bin');
     assert(asset);
     assert.equal(asset.bytes.byteLength, chunks * chunk.byteLength);
     assert(installed.size > 20 * 1024 * 1024);
-    assert.equal(installed.preparation.ended, true);
+    assert.equal(installed.format, 'offline-resources-v1');
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -421,7 +428,7 @@ test('streamed installation bytes crossing 100 MiB abort even when content-lengt
       return new Response('Missing', { status: 404 });
     };
     await assert.rejects(
-      downloadWebsite('https://publisher.test/oversized/index.html'),
+      downloadWebsite({ url: 'https://publisher.test/oversized/index.html' }),
       /size limit/,
     );
     assert(assetSignal?.aborted);

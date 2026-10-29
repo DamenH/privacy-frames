@@ -5,14 +5,6 @@ import { chromium, firefox } from 'playwright';
 import type { Page } from 'playwright';
 import type { Installation } from '../src/shared/types.ts';
 import { checkBoundaryProbes, checkBoundaryProbeUI } from './helpers/boundary-probes.ts';
-import {
-  preparationErrorCategory,
-  type InstallationError,
-  type InstallationOutcome,
-  type PreparationWorkerDiagnostic,
-  type PreparationErrorCategory,
-} from './helpers/installation-errors.ts';
-import { observeWorkerExceptions } from './helpers/worker-exceptions.ts';
 const hostURL = process.env.HOST_URL || 'https://pf.damenh.com/';
 const report = { date: new Date().toISOString(), entry: hostURL, browsers: [] };
 try {
@@ -28,23 +20,28 @@ try {
       version: browser.version(),
       checks: [],
       errors: [] as string[],
-      errorEvents: [] as InstallationError[],
-      installations: [] as InstallationOutcome[],
-      workerDiagnostics: [] as PreparationWorkerDiagnostic[],
-      expectedPreparationErrors: [] as (InstallationError & {
-        category: PreparationErrorCategory;
-      })[],
-      unexpectedErrors: [] as InstallationError[],
+      errorEvents: [] as {
+        role: string;
+        phase: string;
+        installationURL?: string;
+        message: string;
+        name: string;
+        stack: string;
+        pageURL: string;
+      }[],
+      installations: [] as {
+        url: string;
+        status: string;
+        installationElapsedMs: number;
+        resourceListUsed: string | null;
+        capture: Installation['capture'];
+        resources: number;
+        bytes: number;
+      }[],
     };
     report.browsers.push(row);
     let phase = 'manager-startup';
     let installationURL: string | undefined;
-    let stopWorkerObserver: (() => Promise<void>) | undefined;
-    const installerWorkers: { url: string; installationURL: string }[] = [];
-    page.on('worker', (worker) => {
-      if (phase === 'installation' && installationURL)
-        installerWorkers.push({ url: worker.url(), installationURL });
-    });
     function observeErrors(target: Page, role: 'manager' | 'application', label = '') {
       target.on('pageerror', (error) => {
         row.errors.push(label + error.message);
@@ -56,9 +53,6 @@ try {
           name: error.name,
           stack: error.stack || '',
           pageURL: target.url(),
-          workerURLs: installerWorkers
-            .filter((worker) => worker.installationURL === installationURL)
-            .map((worker) => worker.url),
         });
       });
     }
@@ -83,13 +77,6 @@ try {
         3,
       );
       assert.deepEqual(config.managerOrigins, [base.origin]);
-      if (name === 'chromium')
-        stopWorkerObserver = await observeWorkerExceptions(
-          browser,
-          new URL('install-worker.js', config.installationURL).href,
-          (diagnostic) =>
-            row.workerDiagnostics.push({ ...diagnostic, phase, installationURL }),
-        );
       assert.equal(await page.locator('iframe').count(), 1);
       assert.equal(context.pages().length, 1);
       assert.equal(
@@ -105,6 +92,12 @@ try {
         phase = 'installation';
         installationURL = example.url;
         await page.locator('#app-url').fill(example.url);
+        const resourceListUsed = (await page.locator('#resource-list-url').count())
+          ? await page.locator('#resource-list-url').inputValue()
+          : null;
+        if (example.resourceListURL)
+          assert.equal(resourceListUsed, example.resourceListURL);
+        const installationStarted = performance.now();
         await page.locator('#install button').click();
         await page.waitForFunction(
           () =>
@@ -116,15 +109,16 @@ try {
         );
         const status = await page.locator('#status').textContent();
         assert.match(status, /^Installed /, example.url);
+        const installationElapsedMs = performance.now() - installationStarted;
         const bridge = page
           .frames()
           .find((frame) => frame.url().endsWith('/connect.html'));
         assert(bridge);
         const source = new URL(example.url);
         source.hash = '';
-        const outcome = await bridge.evaluate(async (source) => {
+        const capture = await bridge.evaluate(async (source) => {
           const database = await new Promise<IDBDatabase>((resolve, reject) => {
-            const request = indexedDB.open('privacy-frames-installations');
+            const request = indexedDB.open('privacy-frames-resources');
             request.onsuccess = () => resolve(request.result);
             request.onerror = () => reject(request.error);
           });
@@ -139,12 +133,24 @@ try {
             });
             const installation = records.find((record) => record.source === source);
             if (!installation) throw new Error('Installed metadata missing');
-            return installation.preparation.outcome;
+            if (installation.format !== 'offline-resources-v1')
+              throw new Error('Unexpected installation format');
+            return {
+              capture: installation.capture,
+              resources: installation.resources.length,
+              bytes: installation.size,
+            };
           } finally {
             database.close();
           }
         }, source.href);
-        row.installations.push({ url: example.url, status, outcome });
+        row.installations.push({
+          url: example.url,
+          status,
+          installationElapsedMs,
+          resourceListUsed,
+          ...capture,
+        });
       }
       phase = 'runtime';
       installationURL = undefined;
@@ -312,33 +318,7 @@ try {
       assert.equal(response.status(), 200);
       assert((await response.text()).includes('Threat model'));
       row.checks.push('Current standalone report delivered');
-      const installerWorkerURL = new URL('install-worker.js', config.installationURL)
-        .href;
-      const remainingDiagnostics = [...row.workerDiagnostics];
-      for (const error of row.errorEvents) {
-        const category = preparationErrorCategory(
-          error,
-          row.installations,
-          installerWorkerURL,
-          remainingDiagnostics,
-        );
-        if (!category) {
-          row.unexpectedErrors.push(error);
-          continue;
-        }
-        row.expectedPreparationErrors.push({ ...error, category });
-        const matching = remainingDiagnostics.findIndex(
-          (diagnostic) =>
-            diagnostic.phase === 'installation' &&
-            diagnostic.installationURL === error.installationURL &&
-            diagnostic.workerURL === installerWorkerURL &&
-            diagnostic.type === 'error' &&
-            diagnostic.message.includes(error.message),
-        );
-        // A single worker exception cannot explain two page errors.
-        if (matching >= 0) remainingDiagnostics.splice(matching, 1);
-      }
-      assert.deepEqual(row.unexpectedErrors, []);
+      assert.deepEqual(row.errors, []);
       if (name === 'chromium') {
         await page.screenshot({
           path: new URL('../results/desktop.png', import.meta.url).pathname,
@@ -357,7 +337,6 @@ try {
       row.failure = error.stack;
       throw error;
     } finally {
-      await stopWorkerObserver?.().catch(() => {});
       await context.close();
       await browser.close();
     }
@@ -373,9 +352,6 @@ try {
 }
 console.log(
   report.browsers
-    .map(
-      (row) =>
-        `${row.name}: ${row.checks.length} deployed groups passed; ${row.expectedPreparationErrors.length} optional preparation errors attributed`,
-    )
+    .map((row) => `${row.name}: ${row.checks.length} deployed groups passed`)
     .join('\n'),
 );

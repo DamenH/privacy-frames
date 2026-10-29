@@ -5,6 +5,7 @@ import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { servers } from './server.ts';
 import { testProvenance } from './provenance.ts';
+import { provideResourceList } from './resource-list-input.ts';
 
 const traffic: string[] = [],
   received: string[] = [];
@@ -187,6 +188,12 @@ try {
       await manager.goto('http://127.0.0.1:4210/privacy-frames/');
       await manager.getByText('Ready to install.', { exact: true }).waitFor();
       await manager.locator('#app-url').fill(publisherOrigin + '/worklet-lab/');
+      await provideResourceList(
+        manager,
+        ['processor.js', 'second.js', 'dependency.js', 'paint.js'].map(
+          (file) => publisherOrigin + '/worklet-lab/' + file,
+        ),
+      );
       await manager.locator('#install button').click();
       await manager.locator('[data-app="worklet-lab"]').waitFor();
       const opened = context.waitForEvent('page');

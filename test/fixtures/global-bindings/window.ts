@@ -13,7 +13,6 @@ prepareWindowRealm({
   installationGeneration: 'generation-a',
   source: location.origin + '/app/',
   aliases: [],
-  serviceWorker: null,
 });
 window.runGlobalBindingProbe = async () => ({
   bindings: bindingProbe(),

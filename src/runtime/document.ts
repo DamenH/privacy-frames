@@ -60,7 +60,7 @@ export function prepareRuntimeDocument(
     sourceURL: app.source,
     baseURL: documentBase,
     aliases,
-    unavailableURLs: app.preparation.unavailableResources?.map((item) => item.url),
+    unavailableURLs: app.capture.unavailableResources.map((item) => item.url),
   });
   // Runtime admission and the controller repeat this validation independently
   // of the installer. Only the prepared renderer consumes the source afterward.
@@ -70,7 +70,6 @@ export function prepareRuntimeDocument(
     documentBase,
     aliases,
     manifestURL: manifestURL(app, runtime).href,
-    serviceWorker: app.preparation.serviceWorker,
     document,
   });
 }

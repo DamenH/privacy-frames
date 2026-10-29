@@ -1,11 +1,12 @@
 import { installationReply } from '../../installation/session.ts';
+import type { InstallationRequest } from '../../shared/types.ts';
 
 /** A fresh cross-origin collector is used once, then removed before admission. */
 export class InstallationBridge {
   constructor(readonly base: URL) {}
 
   async install<T>(
-    url: string,
+    request: InstallationRequest,
     onProgress: (message: string) => void,
     admit: (installation: unknown) => Promise<T>,
   ): Promise<T> {
@@ -13,12 +14,15 @@ export class InstallationBridge {
     onProgress('Waiting for installation…');
     // Held through runtime admission, across manager tabs in this storage partition.
     return navigator.locks.request('privacy-frames-installation', async () => {
-      const installation = await this.prepare(url, onProgress);
+      const installation = await this.prepare(request, onProgress);
       return admit(installation);
     });
   }
 
-  private prepare(url: string, onProgress: (message: string) => void): Promise<unknown> {
+  private prepare(
+    request: InstallationRequest,
+    onProgress: (message: string) => void,
+  ): Promise<unknown> {
     const frame = document.createElement('iframe');
     frame.hidden = true;
     frame.id = 'installation-bridge';
@@ -58,7 +62,7 @@ export class InstallationBridge {
             if (reply.type === 'ready') {
               if (ready) throw new Error('Installation session was already started.');
               ready = true;
-              channel?.port1.postMessage({ type: 'prepare', session, url });
+              channel?.port1.postMessage({ type: 'prepare', session, request });
             } else {
               if (!ready) throw new Error('Installation session is not ready.');
               if (reply.type === 'progress') onProgress(reply.message);

@@ -14,10 +14,10 @@ globalThis.runPublisherStore=async()=>{
  const owner={application:'app',generation:'generation'};
  const store=new PublisherStore('publisher-store-fixture');
  const independent=new PublisherStore('publisher-store-fixture');
- const source={script:'https://publisher.invalid/foreground.js',scope:'https://publisher.invalid/',type:'classic',lifecycleCompleted:false};
+ const source={script:'https://publisher.invalid/foreground.js',scope:'https://publisher.invalid/',type:'classic',lifecycleCompleted:true};
  const record=await store.register(owner,source);
  const same=await independent.register(owner,source);
- const checks={sameRegistration:record.id===same.id};
+ const checks={sameRegistration:record.id===same.id,callerCannotCompleteLifecycle:record.lifecycleCompleted===false};
  try{await store.register(owner,{...source,script:'https://publisher.invalid/other.js'});checks.changedSource=false;}catch{checks.changedSource=true;}
  const executor={...owner,registration:record.id,browserClient:'actual-shared-worker',contextId:crypto.randomUUID(),parentClient:'actual-window'};
  await store.bind(executor);
@@ -29,6 +29,8 @@ globalThis.runPublisherStore=async()=>{
  checks.oneUse=winners.filter(Boolean).length===1;
  await store.activate(record.id,executor);
  checks.active=(await independent.byId(record.id)).state==='active';
+ checks.completedLifecycle=(await independent.byId(record.id)).lifecycleCompleted===true;
+ checks.reRegisterKeepsLifecycle=(await store.register(owner,source)).lifecycleCompleted===true;
  const replacement={...executor,browserClient:'new-native-worker',contextId:crypto.randomUUID()};
  await independent.bind(replacement);
  try{await store.activate(record.id,executor);checks.oldBinding=false;}catch{checks.oldBinding=true;}
@@ -37,6 +39,7 @@ globalThis.runPublisherStore=async()=>{
  checks.oldTicket=await store.consume(oldTicket,replacement)===undefined;
  const next=await independent.register(owner,source);
  checks.closedIdNeverReused=next.id!==record.id;
+ checks.newRegistrationNeedsLifecycle=next.lifecycleCompleted===false;
  checks.oldRegistration=await store.byId(record.id)===undefined;
  const fresh=await store.grant(next,replacement.parentClient);
  const nextExecutor={...replacement,registration:next.id};

@@ -14,30 +14,23 @@ export interface InstallationMetadata {
   name: string;
   entry: string;
 }
-export interface PrecacheReceipt {
-  scriptURL: string;
-  scope: string;
-  completed: ['install', 'activate'];
-  profile: 'precache-v1';
+export type ResourceListInput =
+  { kind: 'url'; url: string } | { kind: 'text'; text: string };
+export interface InstallationRequest {
+  url: string;
+  resourceList?: ResourceListInput;
 }
-export type PreparationOutcome =
-  | { status: 'absent' }
-  | { status: 'completed'; scriptURL: string }
-  | { status: 'unsupported' | 'failed'; scriptURL: string; reason: string };
 export interface UnavailableResource {
   url: string;
   reason: 'network' | 'http' | 'body';
   status?: number;
 }
-export interface Preparation {
-  profile: 'website-v1';
-  outcome: PreparationOutcome;
-  serviceWorker: PrecacheReceipt | null;
-  caches: { name: string; urls: string[] }[];
-  ended: true;
-  unavailableResources?: UnavailableResource[];
+export interface ResourceCaptureSummary {
+  additionalResources: string[];
+  unavailableResources: UnavailableResource[];
 }
 export interface Installation {
+  format: 'offline-resources-v1';
   id: string;
   documentBase?: string;
   manifest: InstallationMetadata;
@@ -46,7 +39,7 @@ export interface Installation {
   publisherManifest?: { url: string; value: Record<string, unknown> } | null;
   size: number;
   installedAt: string;
-  preparation: Preparation;
+  capture: ResourceCaptureSummary;
 }
 export interface PreparedInstallation extends Omit<Installation, 'resources'> {
   resources: DownloadedResource[];
@@ -56,7 +49,7 @@ export interface HostConfig {
   runtimeURL: string;
   installationURL: string;
   managerOrigins: string[];
-  examples: { name: string; url: string }[];
+  examples: { name: string; url: string; resourceListURL?: string }[];
 }
 export type ManagementOperation = 'install' | 'list' | 'remove' | 'events';
 export interface RuntimeEvent {

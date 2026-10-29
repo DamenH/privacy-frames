@@ -70,15 +70,23 @@ try {
             await manager.goto(host);
             await manager.getByText('Ready to install.', { exact: true }).waitFor();
             await manager.locator('#app-url').fill(source);
-            await manager.locator('#install button').click();
-            await manager.waitForFunction(
-              () =>
-                /^(Installed |Installation refused:)/.test(
-                  document.querySelector('#status')?.textContent || '',
-                ),
-              undefined,
-              { timeout: 330000 },
-            );
+            row.resourceListUsed = (await manager.locator('#resource-list-url').count())
+              ? await manager.locator('#resource-list-url').inputValue()
+              : null;
+            const installationStarted = performance.now();
+            try {
+              await manager.locator('#install button').click();
+              await manager.waitForFunction(
+                () =>
+                  /^(Installed |Installation refused:)/.test(
+                    document.querySelector('#status')?.textContent || '',
+                  ),
+                undefined,
+                { timeout: 330000 },
+              );
+            } finally {
+              row.installationElapsedMs = performance.now() - installationStarted;
+            }
             const status = await manager.locator('#status').innerText();
             row.installation = status;
             assert(status.startsWith('Installed '), status);

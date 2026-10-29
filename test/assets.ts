@@ -45,6 +45,7 @@ for (const [site, base, directory] of [
     'notes/index.html',
     'adversary/index.html',
     'ordinary/index.html',
+    'resource-lists/notes.uris',
   ]) {
     const response = await fetch(new URL(path, base), { cache: 'no-store' });
     assert.equal(
@@ -54,7 +55,14 @@ for (const [site, base, directory] of [
     );
   }
 }
-for (const id of ['notes', 'image', 'adversary', 'playground', 'ordinary']) {
+for (const id of [
+  'notes',
+  'image',
+  'adversary',
+  'playground',
+  'ordinary',
+  'resource-lists',
+]) {
   const base = `https://privacy-frames.github.io/apps/${id}/`;
   const directory = new URL('dist-examples/' + id + '/', root);
   for (const file of (await filesUnder(directory)).filter(
@@ -65,6 +73,8 @@ for (const id of ['notes', 'image', 'adversary', 'playground', 'ordinary']) {
     });
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('access-control-allow-origin'), '*');
+    if (file.endsWith('.uris'))
+      assert.match(response.headers.get('content-type') || '', /^text\/uri-list(?:;|$)/i);
     const bytes = Buffer.from(await response.arrayBuffer());
     assert.equal(
       sha(bytes),

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { chromium, firefox } from 'playwright';
 import { servers } from './server.ts';
+import { provideResourceList } from './resource-list-input.ts';
 const server = await servers(),
   results = [];
 try {
@@ -23,7 +24,13 @@ try {
       await manager.evaluate(() => {
         localStorage.setItem('private-manager-data', 'synthetic-canary');
       });
+      const captureStart = server.traffic.length;
       await manager.locator('#app-url').fill('http://127.0.0.1:4218/');
+      await provideResourceList(manager, [
+        'http://127.0.0.1:4218/dependency.js',
+        'http://127.0.0.1:4218/sw.js',
+        'http://127.0.0.1:4218/phase.json',
+      ]);
       await manager.locator('#install button').click();
       await manager.waitForFunction(() =>
         /^(Installed |Installation refused:)/.test(
@@ -31,27 +38,53 @@ try {
         ),
       );
       assert.match(await manager.locator('#status').textContent(), /^Installed /);
-      assert.equal(manager.workers().length, 0, 'Preparation worker survived completion');
+      assert.equal(manager.workers().length, 0, 'Capture created an application worker');
       assert.equal(
         await manager.evaluate(() => localStorage.getItem('private-manager-data')),
         'synthetic-canary',
       );
       checks.push(
-        'No-manifest website installation completes with no native browser authority in publisher install code and no surviving preparation worker',
+        'No-manifest installation captures an explicit resource list without executing application UI or service-worker code',
+      );
+      const runtimeBridgeRealm = manager
+        .frames()
+        .find((frame) => frame.url().endsWith('/connect.html'));
+      assert(runtimeBridgeRealm);
+      const beforeCaches = await runtimeBridgeRealm.evaluate(() => caches.keys());
+      assert(!beforeCaches.some((name) => name.endsWith(':ordinary-precache')));
+      assert.equal(context.pages().length, 1);
+      assert(
+        context
+          .serviceWorkers()
+          .every((worker) => !worker.url().startsWith('http://127.0.0.1:4218/')),
+      );
+      assert.equal(
+        server.traffic
+          .slice(captureStart)
+          .filter((request) => request.port === 4218 && request.path === '/phase.json')
+          .length,
+        1,
       );
       const opened = context.waitForEvent('page');
       await manager.locator('[data-app="ordinary"]').click();
       app = await opened;
-      app.on('pageerror', (e) => errors.push(e.message));
+      app.on('pageerror', (e) => {
+        errors.push(e.message);
+        console.error(name, e.stack || e.message);
+      });
       await app
         .getByText('Imported module: prepared; activated', { exact: true })
         .waitFor();
+      const phase = await app.evaluate(
+        async () => await (await fetch('/phase.json')).json(),
+      );
+      assert.equal(phase.phase, 'prepared');
+      assert.equal(phase.authority.document, false);
+      assert.equal(phase.authority.indexedDB, true);
       assert(
-        Object.values(
-          await app.evaluate(
-            async () => (await (await fetch('/phase.json')).json()).authority,
-          ),
-        ).every((value) => value === false),
+        (await runtimeBridgeRealm.evaluate(() => caches.keys())).some((name) =>
+          name.endsWith(':ordinary-precache'),
+        ),
       );
       const externalStart = server.traffic.length;
       await app.locator('#private').fill('private-website-marker-' + name);
@@ -66,10 +99,6 @@ try {
       checks.push(
         'Root-relative resources, module imports and generated cache content work without network fallback',
       );
-      const runtimeBridgeRealm = manager
-        .frames()
-        .find((frame) => frame.url().endsWith('/connect.html'));
-      assert(runtimeBridgeRealm);
       const nativeState = () =>
         runtimeBridgeRealm.evaluate(async () => ({
           controller: navigator.serviceWorker.controller?.scriptURL,
@@ -213,6 +242,7 @@ try {
       checks.push(
         'Virtual messaging cannot list host installations; virtual unregister preserves native registration/control and blocked unknown requests; offline reload and relaunch remain confined',
       );
+      const unreferencedStart = server.traffic.length;
       await manager.locator('#app-url').fill('http://127.0.0.1:4218/reject/');
       await manager.locator('#install button').click();
       await manager.locator('[data-app="reject"]').waitFor();
@@ -225,7 +255,7 @@ try {
       assert(bridge);
       const discarded = await bridge.evaluate(async () => {
         const database = await new Promise<IDBDatabase>((resolve, reject) => {
-          const request = indexedDB.open('privacy-frames-installations', 1);
+          const request = indexedDB.open('privacy-frames-resources', 1);
           request.onsuccess = () => resolve(request.result);
           request.onerror = () => reject(request.error);
         });
@@ -242,18 +272,31 @@ try {
           const record = records.find(
             (value) => value.source === 'http://127.0.0.1:4218/reject/',
           );
-          if (!record) throw new Error('Static fallback installation is missing');
-          return record.preparation;
+          if (!record) throw new Error('Capture-only installation is missing');
+          return {
+            format: record.format,
+            capture: record.capture,
+            resourceURLs: record.resources.map((resource) => resource.url),
+            legacyPreparation: 'preparation' in record,
+          };
         } finally {
           database.close();
         }
       });
-      assert.equal(discarded.outcome.status, 'failed');
-      assert.match(discarded.outcome.reason, /Installation deliberately rejected/);
-      assert.equal(discarded.serviceWorker, null);
-      assert.deepEqual(discarded.caches, []);
+      assert.equal(discarded.format, 'offline-resources-v1');
+      assert.equal(discarded.legacyPreparation, false);
+      assert.deepEqual(discarded.capture, {
+        additionalResources: [],
+        unavailableResources: [],
+      });
+      assert(!discarded.resourceURLs.includes('http://127.0.0.1:4218/reject/sw.js'));
+      assert(
+        !server.traffic
+          .slice(unreferencedStart)
+          .some((request) => request.port === 4218 && request.path === '/reject/sw.js'),
+      );
       checks.push(
-        'Rejected optional preparation terminates and publishes only the independent static graph, with no successful worker receipt or caches',
+        'An unreferenced service worker is neither downloaded nor executed, and capture metadata has no preparation state',
       );
       await manager.locator('#app-url').fill('http://127.0.0.1:4212/missing-entry.html');
       await manager.locator('#install button').click();
@@ -271,6 +314,9 @@ try {
         version: browser.version(),
         checks,
         authority,
+        phase,
+        beforeCaches,
+        capture: discarded,
         nativeBefore: before,
         nativeAfter: await nativeState(),
         afterUnregister,
@@ -278,6 +324,27 @@ try {
         httpControl,
       });
     } catch (error) {
+      if (app)
+        try {
+          const snapshot = await app.evaluate(async () => ({
+            phase: document.querySelector('#phase')?.textContent,
+            registrations: (await navigator.serviceWorker.getRegistrations()).map(
+              (registration) => ({
+                scope: registration.scope,
+                script: registration.active?.scriptURL,
+              }),
+            ),
+            caches: await Promise.all(
+              (await caches.keys()).map(async (name) => ({
+                name,
+                keys: (await (await caches.open(name)).keys()).map(
+                  (request) => request.url,
+                ),
+              })),
+            ),
+          }));
+          console.error(name, 'STARTUP', JSON.stringify(snapshot));
+        } catch {}
       results.push({
         name,
         checks,

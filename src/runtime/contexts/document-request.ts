@@ -53,7 +53,7 @@ export async function documentRequestInput(
     resource.url,
     resourceURL(app, resource.path, runtime).href,
   ]);
-  const unavailableURLs = app.preparation.unavailableResources?.map((item) => item.url);
+  const unavailableURLs = app.capture.unavailableResources.map((item) => item.url);
   if (kind === 'empty')
     return internalRecord({
       kind: 'html',

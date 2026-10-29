@@ -2,7 +2,7 @@
 
 The source separates the manager, installer and confined runtime onto three
 origins. The manager owns installation approval. The installer downloads public
-resources and runs restricted precaching. The runtime admits the resulting
+resources from declarations and optional URL lists. The runtime admits the resulting
 package and serves installed resources without network fallback.
 
 The configured sites are `pf.damenh.com`, `install.pf.damenh.com` and
@@ -16,7 +16,7 @@ application tasks and network checks.
 | --------------------------------- | ----------------------------------------------------------------------------- |
 | `src/manager/`, `src/manager.tsx` | React interface, installation approval and runtime connection                 |
 | `src/bridge/`                     | Authenticate management connections and forward fixed operations              |
-| `src/installation/`               | Installation sessions, resource capture and restricted precaching             |
+| `src/installation/`               | Installation sessions, declaration parsing and resource capture             |
 | `src/runtime/worker.ts`           | Authorize browser clients, admit installations and serve local resources      |
 | `src/runtime/guard.ts`            | Prepare the root application before its markup or scripts run                 |
 | `src/runtime/contexts/`           | Prepare documents, popups, workers, shared workers and worklets               |
@@ -36,17 +36,25 @@ origin, window and session before transferring a MessagePort. A host Web Lock
 serializes installations across manager tabs through runtime admission. The
 installer accepts one preparation request and is removed before admission.
 
-The existing importer runs on the installation origin. It does not execute the
-application UI. HTML, CSS, module references, bounded static loader discovery and
-restricted precaching feed the same resource collection. Publisher preparation
-receives a limited download broker and in-memory caches inside an SES compartment;
-the host-owned preparation worker is terminated before admission.
+The importer runs on the installation origin and never executes publisher code.
+HTML and CSS references and literal JavaScript imports feed one resource queue.
+The optional supplemental list uses `text/uri-list`, with absolute HTTPS URLs,
+comments and blank lines. Pasted or uploaded lists and fetched lists share the
+same parser. Lists are limited to 256 KiB; fetched lists are control data rather
+than installed assets. A catalog entry may select a list without adding
+publisher-specific branches to the importer.
 
-Downloads omit credentials and reject redirects. Missing ordinary dependencies
-are recorded while successful captures are retained. A missing entry document,
-failed host preparation, exceeded limit or invalid package still rejects the
-installation. Failed publisher precaching contributes no partial cache writes.
-The limits remain 1,000 resources and 100 MiB per installation.
+Downloads omit credentials and reject redirects, with at most six concurrent
+requests and a 30-second deadline per request. A missing entry document or listed
+resource rejects installation. Unavailable discovered dependencies are recorded
+while successful downloads are retained. Limits remain 1,000 resources and
+100 MiB, enforced while downloading and after document adaptation.
+
+There is one installation format, `offline-resources-v1`, and no legacy reader.
+Its capture record identifies supplied URLs and unavailable dependencies.
+Previously installed resource packages require reinstalling; private application
+storage is separate. Installation has no publisher execution worker, cache
+contributions, preparation receipts or inferred loader graphs.
 
 The runtime independently checks metadata, paths, markup, byte counts and digests
 before publishing an installation. Installation success establishes an admitted

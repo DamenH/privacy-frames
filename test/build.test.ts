@@ -68,7 +68,7 @@ test('configuration changes invalidate bootstrap and role builds expose only the
     await assert.rejects(access(join(output, 'install-worker.js')));
     await build('installation', 'https://second.example/');
     await access(join(output, 'installation.js'));
-    await access(join(output, 'install-worker.js'));
+    await assert.rejects(access(join(output, 'install-worker.js')));
     for (const entry of ['manager.js', 'sw.js', 'guard.js', 'connect.js'])
       await assert.rejects(access(join(output, entry)));
   } finally {

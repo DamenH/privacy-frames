@@ -325,15 +325,23 @@ for (const [name, engine] of Object.entries({ chromium, firefox })) {
               .getByText('Ready to install.', { exact: true })
               .waitFor({ timeout: 45000 });
             await page.locator('#app-url').fill(target.url);
-            await page.locator('#install button').click();
-            await page.waitForFunction(
-              () =>
-                /^(Installed |Installation refused:)/.test(
-                  document.querySelector('#status')?.textContent || '',
-                ),
-              {},
-              { timeout: 330000 },
-            );
+            state.resourceListUsed = (await page.locator('#resource-list-url').count())
+              ? await page.locator('#resource-list-url').inputValue()
+              : null;
+            const installationStarted = performance.now();
+            try {
+              await page.locator('#install button').click();
+              await page.waitForFunction(
+                () =>
+                  /^(Installed |Installation refused:)/.test(
+                    document.querySelector('#status')?.textContent || '',
+                  ),
+                {},
+                { timeout: 330000 },
+              );
+            } finally {
+              state.installationElapsedMs = performance.now() - installationStarted;
+            }
             const status = await page.locator('#status').innerText();
             state.installation = status;
             if (!status.startsWith('Installed ')) throw new Error(status);

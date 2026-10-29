@@ -42,7 +42,7 @@ const app = value => ({
   resources: [{ path, url: 'https://publisher.invalid/resource.txt', contentType: 'text/plain', sha256: 'fixture', bytes: encode(value) }],
   size: value.length,
   installedAt,
-  preparation: { profile: 'website-v1', outcome: { status: 'absent' }, serviceWorker: null, caches: [], ended: true },
+  format: 'offline-resources-v1', capture: { additionalResources: [], unavailableResources: [] },
 });
 window.runGenerationProbe = async () => {
   await putApp(app('initial bytes'));

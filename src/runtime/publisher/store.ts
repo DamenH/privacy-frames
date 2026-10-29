@@ -117,10 +117,7 @@ export class PublisherStore {
   }
   async register(
     owner: PublisherOwner,
-    source: Pick<
-      PublisherRegistration,
-      'script' | 'scope' | 'type' | 'lifecycleCompleted'
-    >,
+    source: Pick<PublisherRegistration, 'script' | 'scope' | 'type'>,
   ) {
     const database = await this.open();
     const tx = database.transaction('registrations', 'readwrite');
@@ -150,6 +147,7 @@ export class PublisherStore {
       ...source,
       id: mint(),
       state: 'registered',
+      lifecycleCompleted: false,
     });
     store.put(value);
     await done;

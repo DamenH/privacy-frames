@@ -39,13 +39,8 @@ const initial: StoredInstallation = {
   ],
   size: 1,
   installedAt: '2026-10-27',
-  preparation: {
-    profile: 'website-v1',
-    outcome: { status: 'absent' },
-    serviceWorker: null,
-    caches: [],
-    ended: true,
-  },
+  format: 'offline-resources-v1',
+  capture: { additionalResources: [], unavailableResources: [] },
 };
 function memory() {
   const records = new Map<string, StoredWorklet>();

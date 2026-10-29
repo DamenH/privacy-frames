@@ -1,6 +1,5 @@
 import { strings, ownDescriptor, internalRecord } from '../../shared/primordials.ts';
 import { parseDocumentSurface, type DocumentSurface } from './document-surface.ts';
-import type { PrecacheReceipt } from '../../shared/types.ts';
 import type { WindowContentMetadata } from './window-realm.ts';
 import type { DocumentContentInput } from './document-content.ts';
 import { CONTEXT_POLICY_VERSION } from './model.ts';
@@ -78,24 +77,6 @@ function aliases(value: unknown, applicationURL: string): [string, string][] {
     return [source, target];
   });
 }
-function receipt(value: unknown): PrecacheReceipt | null {
-  if (value === null) return null;
-  const completed = field(value, 'completed');
-  if (
-    field(value, 'profile') !== 'precache-v1' ||
-    !Array.isArray(completed) ||
-    completed.length !== 2 ||
-    completed[0] !== 'install' ||
-    completed[1] !== 'activate'
-  )
-    throw new Error('Invalid document precache receipt');
-  return internalRecord<PrecacheReceipt>({
-    profile: 'precache-v1',
-    completed: ['install', 'activate'],
-    scriptURL: address(field(value, 'scriptURL'), true),
-    scope: address(field(value, 'scope'), true),
-  });
-}
 export function parseDocumentRegistration(
   value: unknown,
   applicationURL: string,
@@ -131,7 +112,6 @@ export function parseWindowContentMetadata(
     ...(documentBase === undefined
       ? internalRecord({})
       : internalRecord({ documentBase: address(documentBase) })),
-    serviceWorker: receipt(field(value, 'serviceWorker')),
   });
 }
 export function parseInstalledDocument(value: unknown, applicationURL: string) {

@@ -5,6 +5,7 @@ import { chromium, firefox, type Page } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { servers } from './server.ts';
 import { testProvenance } from './provenance.ts';
+import { provideResourceList } from './resource-list-input.ts';
 
 const publisherURL = 'http://127.0.0.1:4344';
 const provenance = await testProvenance(import.meta.url);
@@ -203,6 +204,12 @@ try {
       await manager.getByText('Ready to install.', { exact: true }).waitFor();
       async function install(path: string, label: string) {
         await manager.locator('#app-url').fill(publisherURL + path);
+        await provideResourceList(
+          manager,
+          Object.keys(files)
+            .filter((file) => file.endsWith('.js') && !file.endsWith('/uninstalled.js'))
+            .map((file) => publisherURL + file.replace('/workers/', path)),
+        );
         await manager.locator('#install button').click();
         try {
           await manager.locator(`[data-app="${label}"]`).waitFor();

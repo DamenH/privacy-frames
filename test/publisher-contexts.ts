@@ -5,6 +5,7 @@ import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { servers } from './server.ts';
 import { testProvenance } from './provenance.ts';
+import { provideResourceList } from './resource-list-input.ts';
 const traffic: string[] = [],
   received: string[] = [];
 let receiverOrigin = '';
@@ -111,6 +112,12 @@ try {
       await manager.goto(host);
       await manager.getByText('Ready to install.', { exact: true }).waitFor();
       await manager.locator('#app-url').fill(publisherOrigin + '/publisher-lab/');
+      await provideResourceList(
+        manager,
+        ['foreground.js', 'foreground-module.js', 'library.js'].map(
+          (file) => publisherOrigin + '/publisher-lab/' + file,
+        ),
+      );
       await manager.locator('#install button').click();
       await manager.locator('[data-app="publisher-lab"]').waitFor();
       const opened = context.waitForEvent('page');
@@ -123,6 +130,16 @@ try {
       await app.waitForFunction(() => Reflect.get(window, 'publisherReady') === true);
       const startTraffic = traffic.length;
       received.length = 0;
+      const initialPublisherState = await app.evaluate(async () => ({
+        registrations: (await navigator.serviceWorker.getRegistrations()).length,
+        registration: (await navigator.serviceWorker.getRegistration()) ?? null,
+        controller: navigator.serviceWorker.controller,
+      }));
+      assert.deepEqual(initialPublisherState, {
+        registrations: 0,
+        registration: null,
+        controller: null,
+      });
       const registration = await app.evaluate(() =>
         Reflect.get(window, 'startPublisher')(),
       );

@@ -50,7 +50,6 @@ window.runInertProbe = async (receiver: string): Promise<ProbeResult> => {
     source: location.origin + '/app/',
     installationGeneration: 'generation-a',
     aliases: [[location.origin + '/local.svg', location.origin + '/local.svg']],
-    serviceWorker: null,
   });
   check(
     nativeInstruction.nodeType === 7,

@@ -194,25 +194,6 @@ worker.addEventListener('message', (event) => {
         const windows = await worker.clients.matchAll({ type: 'window' });
         if ((await Promise.all(windows.map((c) => runtimeIdentity(c)))).includes(app.id))
           throw new Error('Close application windows before replacing an installation');
-        for (const stage of app.preparation?.caches || []) {
-          if (
-            typeof stage.name !== 'string' ||
-            stage.name.length > 1000 ||
-            !Array.isArray(stage.urls)
-          )
-            throw new Error('Invalid installation cache');
-          const cache = await caches.open(`pf:${app.id}:` + stage.name);
-          for (const url of stage.urls) {
-            const resource = app.resources.find((r) => r.url === url);
-            if (!resource) throw new Error('Cache contains an uninstalled resource');
-            await cache.put(
-              new Request(url),
-              new Response(resource.bytes, {
-                headers: { 'Content-Type': resource.contentType || mime(resource.path) },
-              }),
-            );
-          }
-        }
         app.installedAt = new Date().toISOString();
         await putApp(app);
         value = { id: app.id };
@@ -554,7 +535,7 @@ worker.addEventListener('fetch', (event) => {
       }
       if (req.method === 'GET') {
         const original =
-          app.preparation?.ended && url.origin === BASE.origin
+          url.origin === BASE.origin
             ? new URL(url.pathname + url.search, new URL(app.source).origin).href
             : null;
         const resource = app.resources.find(

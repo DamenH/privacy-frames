@@ -94,14 +94,27 @@ export async function servers(options: { receiver?: boolean } = {}) {
           config.managerURL = 'http://127.0.0.1:4210/privacy-frames/';
           config.installationURL = 'http://127.0.0.1:4219/installation/';
           config.managerOrigins = ['http://127.0.0.1:4210'];
-          config.examples = [
-            { name: 'Notebook', url: 'http://127.0.0.1:4212/' },
-            { name: 'Image editor', url: 'http://127.0.0.1:4213/' },
-            { name: 'Hostile app', url: 'http://127.0.0.1:4215/' },
-            { name: 'Code playground', url: 'http://127.0.0.1:4217/' },
-          ];
+          config.examples = Object.entries(publisherApps).map(([port, name]) => ({
+            name,
+            url: 'http://127.0.0.1:' + port + '/',
+            resourceListURL: 'http://127.0.0.1:' + port + '/resource-list.uris',
+          }));
           response.setHeader('Content-Type', 'application/json');
           response.end(JSON.stringify(config));
+          return;
+        }
+
+        if (!trusted && relative === '/resource-list.uris') {
+          const app = publisherApps[port];
+          if (!app) throw new Error('Unknown publisher');
+          const list = await readFile(
+            path.join(publisher, 'resource-lists', app + '.uris'),
+            'utf8',
+          );
+          const original = 'https://privacy-frames.github.io/apps/' + app + '/';
+          const local = 'http://127.0.0.1:' + port + '/';
+          response.setHeader('Content-Type', 'text/uri-list');
+          response.end(list.split(original).join(local));
           return;
         }
 
@@ -110,6 +123,13 @@ export async function servers(options: { receiver?: boolean } = {}) {
           response.end(
             '<!doctype html><title>Broken</title><script src="missing.js"></script>',
           );
+          return;
+        }
+        // Independent fixture: admit a static JSON resource before testing the
+        // publisher worker's generated override of that same resource.
+        if (port === 4218 && relative === '/phase.json') {
+          response.setHeader('Content-Type', 'application/json');
+          response.end(JSON.stringify({ phase: 'captured-static', authority: {} }));
           return;
         }
         if (port === 4218 && relative === '/review/sw.js') {

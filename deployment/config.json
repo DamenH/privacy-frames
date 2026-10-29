@@ -6,23 +6,28 @@
   "examples": [
     {
       "name": "Notebook",
-      "url": "https://privacy-frames.github.io/apps/notes/"
+      "url": "https://privacy-frames.github.io/apps/notes/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/notes.uris"
     },
     {
       "name": "PhotoCraft",
-      "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/"
+      "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/photocraft.uris"
     },
     {
       "name": "Hostile app",
-      "url": "https://privacy-frames.github.io/apps/adversary/"
+      "url": "https://privacy-frames.github.io/apps/adversary/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/adversary.uris"
     },
     {
       "name": "Code playground",
-      "url": "https://privacy-frames.github.io/apps/playground/"
+      "url": "https://privacy-frames.github.io/apps/playground/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/playground.uris"
     },
     {
       "name": "Pitch Training",
-      "url": "https://damenh.github.io/pitch-training/"
+      "url": "https://damenh.github.io/pitch-training/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/pitch-training.uris"
     },
     {
       "name": "Wikipedia article",
@@ -30,23 +35,28 @@
     },
     {
       "name": "Excalidraw",
-      "url": "https://privacy-frames.github.io/apps/excalidraw/"
+      "url": "https://privacy-frames.github.io/apps/excalidraw/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/excalidraw.uris"
     },
     {
       "name": "Squoosh",
-      "url": "https://privacy-frames.github.io/apps/squoosh/"
+      "url": "https://privacy-frames.github.io/apps/squoosh/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/squoosh.uris"
     },
     {
       "name": "diagrams.net",
-      "url": "https://privacy-frames.github.io/apps/drawio/?offline=1"
+      "url": "https://privacy-frames.github.io/apps/drawio/?offline=1",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/drawio.uris"
     },
     {
       "name": "CyberChef",
-      "url": "https://gchq.github.io/CyberChef/"
+      "url": "https://gchq.github.io/CyberChef/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/cyberchef.uris"
     },
     {
       "name": "StackEdit",
-      "url": "https://privacy-frames.github.io/apps/stackedit/"
+      "url": "https://privacy-frames.github.io/apps/stackedit/",
+      "resourceListURL": "https://privacy-frames.github.io/apps/resource-lists/stackedit.uris"
     }
   ]
 }

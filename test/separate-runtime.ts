@@ -141,17 +141,12 @@ try {
           });
         }
         const pkg = {
+          format: 'offline-resources-v1',
           id: manifest.id + '-' + (await digest(new TextEncoder().encode(source))),
           manifest,
           source,
           resources,
-          preparation: {
-            profile: 'website-v1',
-            outcome: { status: 'absent' },
-            ended: true,
-            caches: [],
-            serviceWorker: null,
-          },
+          capture: { additionalResources: [], unavailableResources: [] },
         };
         return new Promise((resolve) => {
           const channel = new MessageChannel();
@@ -213,7 +208,7 @@ try {
         .getAttribute('data-installation');
       await bridge.evaluate(async (id) => {
         const db = await new Promise((resolve, reject) => {
-          const request = indexedDB.open('privacy-frames-installations', 1);
+          const request = indexedDB.open('privacy-frames-resources', 1);
           request.onsuccess = () => resolve(request.result);
           request.onerror = () => reject(request.error);
         });
@@ -235,7 +230,7 @@ try {
         .waitFor();
       await bridge.evaluate(async (id) => {
         const db = await new Promise((resolve) => {
-          const request = indexedDB.open('privacy-frames-installations', 1);
+          const request = indexedDB.open('privacy-frames-resources', 1);
           request.onsuccess = () => resolve(request.result);
         });
         await new Promise((resolve) => {

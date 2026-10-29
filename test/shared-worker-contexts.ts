@@ -5,6 +5,7 @@ import { chromium, firefox, type Page } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { servers } from './server.ts';
 import { testProvenance } from './provenance.ts';
+import { provideResourceList } from './resource-list-input.ts';
 const publisher = 'http://127.0.0.1:4352';
 const receiverOrigin = 'http://127.0.0.1:4353';
 const shared = `
@@ -166,6 +167,12 @@ try {
       await manager.getByText('Ready to install.', { exact: true }).waitFor();
       async function install(label: string) {
         await manager.locator('#app-url').fill(publisher + '/' + label + '/');
+        await provideResourceList(
+          manager,
+          Object.keys(files)
+            .filter((file) => file.endsWith('.js') && file !== '/unused.js')
+            .map((file) => publisher + file),
+        );
         await manager.locator('#install button').click();
         try {
           await manager.locator('[data-app="' + label + '"]').waitFor();
@@ -417,6 +424,12 @@ try {
       await first.close();
       await second.close();
       await manager.locator('#app-url').fill(publisher + '/first/');
+      await provideResourceList(
+        manager,
+        Object.keys(files)
+          .filter((file) => file.endsWith('.js') && file !== '/unused.js')
+          .map((file) => publisher + file),
+      );
       await manager.locator('#install button').click();
       await manager.getByText('Installed First.', { exact: true }).waitFor();
       const replacement = await open('first');

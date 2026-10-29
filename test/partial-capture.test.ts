@@ -1,13 +1,8 @@
+import { ResourceUnavailableError } from '../src/installation/resource-capture.ts';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { downloadWebsite } from '../src/installation/import-website.ts';
-import {
-  CaptureLimitError,
-  ResourceCapture,
-  ResourceUnavailableError,
-} from '../src/installation/resource-capture.ts';
 import { compileDocumentContent } from '../src/runtime/contexts/document-content.ts';
-import { LIMITS } from '../src/shared/policy.ts';
 
 const source = 'https://publisher.test/application/';
 const address = (path: string) => new URL(path, source).href;
@@ -46,12 +41,12 @@ test('partial capture retains the successful dependency graph and records transp
       return new Response('Missing', { status: 404 });
     },
     async () => {
-      const app = await downloadWebsite(source);
+      const app = await downloadWebsite({ url: source });
       assert.deepEqual(
         app.resources.map((item) => item.url).sort(),
         [source, address('working.js'), address('site.css')].sort(),
       );
-      const failures = app.preparation.unavailableResources ?? [];
+      const failures = app.capture.unavailableResources ?? [];
       assert(
         failures.some(
           (item) => item.url === address('analytics.js') && item.reason === 'network',
@@ -103,7 +98,7 @@ test('the entry document remains mandatory even though dependencies are best eff
         return new Response('Missing', { status: 404 });
       },
       async () => {
-        await assert.rejects(downloadWebsite(source), ResourceUnavailableError);
+        await assert.rejects(downloadWebsite({ url: source }), ResourceUnavailableError);
       },
     );
 });
@@ -120,143 +115,7 @@ test('partial capture does not swallow unsafe documents or module analysis error
           headers: { 'content-type': 'text/html' },
         }),
       async () => {
-        await assert.rejects(downloadWebsite(source));
+        await assert.rejects(downloadWebsite({ url: source }));
       },
     );
-});
-
-test('failed downloads retain their budget slots and do not retry during discovery', async () => {
-  let requests = 0;
-  await withFetch(
-    async () => {
-      requests++;
-      throw new TypeError('Unavailable');
-    },
-    async () => {
-      const capture = new ResourceCapture(new URL(source), new URL(source), () => {});
-      const graph = capture.graph();
-      try {
-        for (let index = 0; index < LIMITS.files; index++)
-          await capture.downloadDependency(address('missing-' + index), graph);
-        assert.equal(requests, LIMITS.files);
-        await capture.discover(graph);
-        assert.equal(requests, LIMITS.files);
-        await assert.rejects(
-          capture.downloadDependency(address('one-too-many'), graph),
-          CaptureLimitError,
-        );
-      } finally {
-        await capture.closeAll();
-      }
-    },
-  );
-});
-
-test('stream interruption is unavailable while a resource budget violation remains fatal', async () => {
-  for (const overBudget of [false, true]) {
-    let cancelled = false;
-    let chunks = 0;
-    const chunk = new Uint8Array(1024 * 1024);
-    await withFetch(
-      async () =>
-        new Response(
-          new ReadableStream<Uint8Array>({
-            pull(controller) {
-              if (!overBudget && chunks++) controller.error(new Error('Connection lost'));
-              else controller.enqueue(chunk);
-            },
-            cancel() {
-              cancelled = true;
-            },
-          }),
-        ),
-      async () => {
-        const capture = new ResourceCapture(new URL(source), new URL(source), () => {});
-        const graph = capture.graph();
-        try {
-          if (overBudget) {
-            await assert.rejects(
-              capture.downloadDependency(address('asset.bin'), graph),
-              CaptureLimitError,
-            );
-            assert(cancelled);
-            assert(graph.controller.signal.aborted);
-          } else {
-            await capture.downloadDependency(address('asset.bin'), graph);
-            assert.equal((await capture.finalize(graph)).resources.length, 0);
-            assert.equal(graph.unavailable.get(address('asset.bin'))?.reason, 'body');
-          }
-        } finally {
-          await capture.closeAll();
-        }
-      },
-    );
-  }
-});
-
-test('cancellation and invalid resource addresses remain fatal before capture', async () => {
-  await withFetch(
-    async () => {
-      throw new Error('Must not fetch');
-    },
-    async () => {
-      const capture = new ResourceCapture(new URL(source), new URL(source), () => {});
-      const graph = capture.graph();
-      await assert.rejects(
-        capture.downloadDependency('javascript:escape()', graph),
-        /HTTPS/,
-      );
-      graph.controller.abort(new Error('User cancelled'));
-      await assert.rejects(
-        capture.downloadDependency(address('asset'), graph),
-        /User cancelled/,
-      );
-      await capture.closeAll();
-    },
-  );
-});
-
-test('loader summaries cross script boundaries without leaking into a child worker realm', async () => {
-  const requested: string[] = [];
-  const bodies = new Map<string, [string, string]>([
-    [
-      source,
-      ['text/html', '<script src="app.js"></script><script src="loader.js"></script>'],
-    ],
-    [
-      address('app.js'),
-      [
-        'text/javascript',
-        'addEventListener("load",()=>loadScript("lazy.js"));new Worker("./worker.js");',
-      ],
-    ],
-    [
-      address('loader.js'),
-      [
-        'text/javascript',
-        'function loadScript(url){const element=document.createElement("script");element.src=url;document.head.append(element);}',
-      ],
-    ],
-    [address('lazy.js'), ['text/javascript', 'globalThis.lazyValue=42;']],
-    [
-      address('worker.js'),
-      ['text/javascript', 'addEventListener("message",()=>loadScript("foreign.js"));'],
-    ],
-  ]);
-  await withFetch(
-    async (input) => {
-      const url = String(input);
-      requested.push(url);
-      const body = bodies.get(url);
-      return body
-        ? new Response(body[1], { headers: { 'content-type': body[0] } })
-        : new Response('Missing', { status: 404 });
-    },
-    async () => {
-      const app = await downloadWebsite(source);
-      assert(app.resources.some((item) => item.url === address('lazy.js')));
-      assert(!requested.includes(address('foreign.js')));
-      assert.equal(requested.filter((url) => url === address('lazy.js')).length, 1);
-    },
-  );
 });

@@ -5,7 +5,7 @@ Excalidraw, diagrams.net, StackEdit and CyberChef. Each comparison runs a useful
 standalone task before attempting that task inside confinement. Installation,
 startup, task completion and offline execution are recorded separately.
 
-## Current public evidence
+## Previous release: public evidence
 
 The [complete public matrix](../results/evaluation/compatibility-release-public.json)
 passed all 16 browser/application rows: the standalone task, confined task and

@@ -372,17 +372,12 @@ export function createPublisherController(options: Options) {
       scope.password
     )
       throw new Error('Publisher scope is outside the app');
-    const receipt = app.preparation.serviceWorker;
     return store.register(
       internalRecord({ application: app.id, generation: app.generation }),
       internalRecord({
         script: resource.url,
         scope: scope.href,
         type: data.workerType,
-        lifecycleCompleted:
-          receipt?.scriptURL === resource.url &&
-          receipt.completed.includes('install') &&
-          receipt.completed.includes('activate'),
       }),
     );
   }
@@ -414,22 +409,12 @@ export function createPublisherController(options: Options) {
           const record = await registration(parent.app, data.payload);
           value = await launch(record, parent.client.id);
         } else if (operation === 'status') {
-          let record = await store.registration(
+          const record = await store.registration(
             internalRecord({
               application: parent.app.id,
               generation: parent.app.generation,
             }),
           );
-          const receipt = parent.app.preparation.serviceWorker;
-          if (!record && receipt)
-            record = await registration(
-              parent.app,
-              internalRecord({
-                script: receipt.scriptURL,
-                scope: receipt.scope,
-                workerType: 'classic',
-              }),
-            );
           value = record ? await launch(record, parent.client.id) : null;
         } else if (operation === 'attach') {
           const payload = publisherObject(data.payload),

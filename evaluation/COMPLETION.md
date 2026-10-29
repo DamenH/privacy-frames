@@ -1,4 +1,11 @@
-# Completion audit
+# Explicit-resource installation: verification in progress
+
+The replacement installer downloads declared resources and optional URL lists
+without executing publisher code. Its source and local checks are being verified;
+the public manager, runtime and installer still serve the previous release below.
+Those historical receipts do not verify the replacement.
+
+# Previous release audit
 
 The implementation is deployed on all three trusted origins. CI and public
 artifact checks, the public eight-app matrix and deeper CyberChef/Pitch Training

@@ -22,7 +22,7 @@ try {
       name === 'chromium' ? { executablePath: chromium.executablePath() } : {},
     );
     context.setDefaultTimeout(30000);
-    const row = { name, checks: [], pwas: [] };
+    const row = { name, checks: [], pwas: [], installations: [] };
     results.push(row);
     const installed = [];
     try {
@@ -38,15 +38,27 @@ try {
       row.checks.push('Automatic iframe connection creates no installation tab');
       async function install(url) {
         await page.locator('#app-url').fill(url);
-        await page.locator('#install button').click();
-        await page.waitForFunction(
-          () =>
-            /^(Installed |Installation refused:)/.test(
-              document.querySelector('#status').textContent,
-            ),
-          {},
-          { timeout: 120000 },
-        );
+        const resourceListUsed = (await page.locator('#resource-list-url').count())
+          ? await page.locator('#resource-list-url').inputValue()
+          : null;
+        const installationStarted = performance.now();
+        try {
+          await page.locator('#install button').click();
+          await page.waitForFunction(
+            () =>
+              /^(Installed |Installation refused:)/.test(
+                document.querySelector('#status').textContent,
+              ),
+            {},
+            { timeout: 120000 },
+          );
+        } finally {
+          row.installations.push({
+            url,
+            resourceListUsed,
+            installationElapsedMs: performance.now() - installationStarted,
+          });
+        }
         assert.match(await page.locator('#status').textContent(), /^Installed /);
       }
       async function open(id) {

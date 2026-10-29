@@ -1,3 +1,6 @@
+import type { InstallationRequest, ResourceListInput } from '../shared/types.ts';
+import { RESOURCE_LIST_BYTES, publicResourceURL } from './resource-list.ts';
+
 /** Only the trusted manager may start a preparation session. */
 export interface InstallationSession {
   type: 'pf-install-connect';
@@ -47,16 +50,40 @@ export function installationReply(value: unknown, session: string): Installation
   throw new Error('Invalid installation session response');
 }
 
-export function installationRequest(value: unknown, session: string): string {
+export function installationInput(value: unknown): InstallationRequest {
   if (
     !isRecord(value) ||
-    value.type !== 'prepare' ||
-    value.session !== session ||
     typeof value.url !== 'string' ||
+    !value.url.trim() ||
     value.url.length > 16384
   )
+    throw new Error('Invalid installation URL');
+  if (value.resourceList === undefined) return { url: value.url };
+  const list = value.resourceList;
+  let resourceList: ResourceListInput;
+  if (!isRecord(list)) throw new Error('Invalid resource list input');
+  if (list.kind === 'text' && typeof list.text === 'string') {
+    if (
+      list.text.length > RESOURCE_LIST_BYTES ||
+      new TextEncoder().encode(list.text).byteLength > RESOURCE_LIST_BYTES
+    )
+      throw new Error('Resource list exceeds 256 KiB');
+    resourceList = { kind: 'text', text: list.text };
+  } else if (list.kind === 'url' && typeof list.url === 'string') {
+    if (list.url.length > 16384) throw new Error('Invalid resource list URL');
+    publicResourceURL(list.url);
+    resourceList = { kind: 'url', url: list.url };
+  } else throw new Error('Invalid resource list input');
+  return { url: value.url, resourceList };
+}
+
+export function installationRequest(
+  value: unknown,
+  session: string,
+): InstallationRequest {
+  if (!isRecord(value) || value.type !== 'prepare' || value.session !== session)
     throw new Error('Invalid installation request');
-  return value.url;
+  return installationInput(value.request);
 }
 
 export function installationConfiguration(value: unknown, origin: string): string {

@@ -182,7 +182,7 @@ try {
         (await indexedDB.databases()).map((d) => d.name),
       );
       assert.equal(nativeNames.filter((n) => n.endsWith(':shared-name')).length, 2);
-      assert(nativeNames.includes('privacy-frames-installations'));
+      assert(nativeNames.includes('privacy-frames-resources'));
       await notes.reload({ waitUntil: 'commit' });
       await notes.waitForFunction(() =>
         document.querySelector('#mode')?.textContent.includes('network isolated'),

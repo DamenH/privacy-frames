@@ -2,7 +2,6 @@ import { internalRecord } from '../../shared/primordials.ts';
 import { sealRuntimeBindings } from '../bindings.ts';
 import { createPopupFactory } from './popup-factory.ts';
 import { prepareRuntimeIntrinsics } from '../intrinsics.ts';
-import type { PrecacheReceipt } from '../../shared/types.ts';
 import { scopeContextStorage } from './storage.ts';
 import { createWorkerFactory } from './worker-factory.ts';
 import { createSharedWorkerFactory } from './shared-worker-factory.ts';
@@ -21,7 +20,6 @@ import { createDocumentFactory } from './document-factory.ts';
 export interface WindowContentMetadata {
   installationGeneration: string;
   aliases: [string, string][];
-  serviceWorker: PrecacheReceipt | null;
   source: string;
   documentBase?: string;
 }

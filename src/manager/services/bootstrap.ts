@@ -1,5 +1,34 @@
 import type { HostConfig } from '../types';
-import { installationConfiguration } from '../../installation/session.ts';
+import {
+  installationConfiguration,
+  installationInput,
+  isRecord,
+} from '../../installation/session.ts';
+
+export function catalogExamples(value: unknown): HostConfig['examples'] {
+  if (!Array.isArray(value)) return [];
+  const examples: HostConfig['examples'] = [];
+  for (const item of value) {
+    if (!isRecord(item) || typeof item.name !== 'string' || typeof item.url !== 'string')
+      continue;
+    if (item.resourceListURL === undefined) {
+      examples.push({ name: item.name, url: item.url });
+      continue;
+    }
+    if (typeof item.resourceListURL !== 'string')
+      throw new Error('Invalid example resource list URL.');
+    installationInput({
+      url: item.url,
+      resourceList: { kind: 'url', url: item.resourceListURL },
+    });
+    examples.push({
+      name: item.name,
+      url: item.url,
+      resourceListURL: item.resourceListURL,
+    });
+  }
+  return examples;
+}
 
 export async function loadConfig(base: URL): Promise<HostConfig> {
   const response = await fetch(new URL('config.json', base));
@@ -29,15 +58,7 @@ export async function loadConfig(base: URL): Promise<HostConfig> {
     throw new Error('Application storage requires a separate runtime origin.');
   }
 
-  const examples = Array.isArray(value.examples)
-    ? value.examples.filter(
-        (item): item is { name: string; url: string } =>
-          item !== null &&
-          typeof item === 'object' &&
-          typeof item.name === 'string' &&
-          typeof item.url === 'string',
-      )
-    : [];
+  const examples = catalogExamples(value.examples);
 
   return {
     managerURL: manager.href,

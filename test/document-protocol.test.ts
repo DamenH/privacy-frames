@@ -30,7 +30,6 @@ const configuration = {
     installationGeneration: 'host-generation',
     aliases: [['https://publisher.test/asset.js', applicationURL + 'asset.js']],
     source: 'https://publisher.test/',
-    serviceWorker: null,
   },
 };
 
@@ -131,9 +130,6 @@ test('root documents validate content and metadata before installing resource al
     },
   ])
     assert.throws(() => parseInstalledDocument({ ...root, document }, applicationURL));
-  assert.throws(() =>
-    parseInstalledDocument({ ...root, serviceWorker: {} }, applicationURL),
-  );
   assert.throws(() =>
     parseInstalledDocument({ ...root, source: 'javascript:1' }, applicationURL),
   );

@@ -8,7 +8,7 @@ Three static websites separate the trusted manager, installer and runtime. The m
 
 ## Threat model
 
-The developer and the entire application may be malicious, including its installation code and dependencies. An application may try to disclose private input, create an unrestricted context, navigate away or recover a forbidden browser capability.
+The developer and the entire application may be malicious, including its dependencies. An application may try to disclose private input, create an unrestricted context, navigate away or recover a forbidden browser capability.
 
 The browser, host implementation, host dependencies and hosting origins are trusted. The user supplies private input only after installation. The configured origins are `pf.damenh.com` for the manager, `install.pf.damenh.com` for installation and `apps.pf.damenh.com` for execution. Publishers use other origins. Untrusted application interfaces never run on the manager origin.
 
@@ -16,13 +16,11 @@ The target is application-initiated network disclosure. Local display, playback 
 
 ## Installation
 
-The installer collects HTML, CSS and supported JavaScript dependencies without running the application's interface. Discovery follows static imports, supported loaders, worker entries and finite resource references. Cross-origin downloads require credential-free CORS access. Downloads reject redirects and enforce limits of 1,000 resources and 100 MiB as bytes arrive.
+The installer follows explicit HTML and CSS references and literal JavaScript imports. For resources selected by application logic, a user or publisher can supply a plain URL list. The manager accepts a list URL, file or pasted text; catalog entries can supply one automatically. The application itself remains unchanged.
 
-Individual transport failures are recorded, so an unavailable dependency need not prevent installation. The entry document remains mandatory; unsafe content, invalid metadata and exceeded limits fail admission. Unavailable scripts produce failure events, and execution can continue when the application tolerates them.
+No application code runs during installation. Downloads omit credentials, require CORS access and reject redirects. Limits of 1,000 resources and 100 MiB apply as bytes arrive. The entry document and explicitly listed resources must download successfully. Other unavailable dependencies are recorded; missing resources fail locally during execution.
 
-Optional publisher precaching runs in an [SES compartment](https://docs.endojs.org/documents/lockdown.html) inside a disposable worker. It receives a download broker and an in-memory cache interface, with no runtime user data, raw networking, native storage or context creation. Successful contributions undergo admission checks; failed contributions are discarded while independently captured resources remain available. The manager serializes installation sessions across its tabs.
-
-Preparation ends before execution begins. The runtime validates paths, content, counts and SHA-256 digests, then commits the installation to browser storage. The native service worker belongs to the host; publisher registration behavior is mediated. Installation transfers resource bytes and metadata, not running JavaScript state.
+The runtime validates paths, content, counts and SHA-256 digests before committing the installation. Installation transfers resource bytes and metadata, not running JavaScript state. Publisher service-worker events run later inside prepared, confined executors; they cannot replace the native host controller or enable network fallback.
 
 ## Confinement
 

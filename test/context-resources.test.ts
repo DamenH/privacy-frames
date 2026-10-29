@@ -27,13 +27,8 @@ const app: StoredInstallation = {
   ],
   size: 1,
   installedAt: '2026-10-27',
-  preparation: {
-    profile: 'website-v1',
-    outcome: { status: 'absent' },
-    serviceWorker: null,
-    caches: [],
-    ended: true,
-  },
+  format: 'offline-resources-v1',
+  capture: { additionalResources: [], unavailableResources: [] },
 };
 const directory = new URL(`__contexts/${context}/`, applicationURL(app, base));
 const resourceURL = new URL('resources/scripts/helper.js', directory).href;

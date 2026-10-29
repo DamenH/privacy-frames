@@ -51,7 +51,7 @@ try {
           channel.port1.postMessage({
             type: 'prepare',
             session,
-            url: 'http://127.0.0.1:4213/',
+            request: { url: 'http://127.0.0.1:4213/' },
           });
         };
         frame.contentWindow?.postMessage(

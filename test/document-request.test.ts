@@ -15,13 +15,8 @@ const app: StoredInstallation = {
   source: 'https://publisher.test/app/',
   size: 1,
   installedAt: 'fixture',
-  preparation: {
-    profile: 'website-v1',
-    outcome: { status: 'absent' },
-    serviceWorker: null,
-    caches: [],
-    ended: true,
-  },
+  format: 'offline-resources-v1',
+  capture: { additionalResources: [], unavailableResources: [] },
   resources: [
     {
       path: 'child.html',

@@ -54,6 +54,8 @@ try {
       context = await browser.newContext(),
       manager = await context.newPage();
     let runtimeOrigin;
+    let installationElapsedMs: number | undefined;
+    let resourceListUsed: string | null = null;
     const checks = [],
       errors = [],
       policyObservations = [];
@@ -63,15 +65,23 @@ try {
       await manager.locator('#refresh-apps').waitFor();
       await manager.getByText('Ready to install.', { exact: true }).waitFor();
       await manager.locator('#app-url').fill('https://damenh.github.io/pitch-training/');
-      await manager.locator('#install button').click();
-      await manager.waitForFunction(
-        () =>
-          /^(Installed |Installation refused:)/.test(
-            document.querySelector('#status').textContent,
-          ),
-        {},
-        { timeout: 90000 },
-      );
+      resourceListUsed = (await manager.locator('#resource-list-url').count())
+        ? await manager.locator('#resource-list-url').inputValue()
+        : null;
+      const installationStarted = performance.now();
+      try {
+        await manager.locator('#install button').click();
+        await manager.waitForFunction(
+          () =>
+            /^(Installed |Installation refused:)/.test(
+              document.querySelector('#status').textContent,
+            ),
+          {},
+          { timeout: 90000 },
+        );
+      } finally {
+        installationElapsedMs = performance.now() - installationStarted;
+      }
       assert.match(await manager.locator('#status').textContent(), /^Installed /);
       const installation = await manager
         .locator('[data-app="pitch-training"]')
@@ -85,7 +95,7 @@ try {
       const executableReceipt = await installer.evaluate(
         (id) =>
           new Promise((resolve, reject) => {
-            const request = indexedDB.open('privacy-frames-installations', 1);
+            const request = indexedDB.open('privacy-frames-resources', 1);
             request.onerror = () => reject(request.error);
             request.onsuccess = () => {
               const db = request.result,
@@ -153,7 +163,7 @@ try {
       assert.equal(worker.state, 'activated');
       assert.equal(worker.updateDenied, true);
       checks.push(
-        'Completed installation is available through mediated worker readiness; unsupported updates reject',
+        'The application registers its admitted worker and receives readiness; unsupported updates reject',
       );
       await app.evaluate(() => {
         window.audioProbe = [];
@@ -323,6 +333,8 @@ try {
         environment: deployed ? 'deployed' : 'local',
         version: browser.version(),
         checks,
+        installationElapsedMs,
+        resourceListUsed,
         worker,
         frequency,
         executableReceipt,
@@ -334,6 +346,8 @@ try {
       results.push({
         name,
         checks,
+        installationElapsedMs,
+        resourceListUsed,
         errors,
         body: app
           ? await app

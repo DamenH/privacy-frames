@@ -42,15 +42,47 @@ try {
   for (const [name, engine] of Object.entries({ chromium, firefox })) {
     const browser = await launch(engine);
     const context = await browser.newContext();
-    const row = { name, version: browser.version(), host: hostURL, checks: [] };
+    const row = {
+      name,
+      version: browser.version(),
+      host: hostURL,
+      checks: [],
+      installations: [],
+    };
     results.push(row);
     try {
       const manager = await context.newPage();
       await manager.goto(hostURL);
       await manager.getByText('Ready to install.', { exact: true }).waitFor();
       const start = server.traffic.length;
-      await manager.locator('#app-url').fill(fixture);
-      await manager.locator('#install button').click();
+      async function install(url: string) {
+        await manager.locator('#app-url').fill(url);
+        const resourceListUsed = (await manager.locator('#resource-list-url').count())
+          ? await manager.locator('#resource-list-url').inputValue()
+          : null;
+        const installationStarted = performance.now();
+        try {
+          await manager.locator('#install button').click();
+          await manager.waitForFunction(
+            () =>
+              /^(Installed |Installation refused:)/.test(
+                document.querySelector('#status')?.textContent || '',
+              ),
+            undefined,
+            { timeout: 120000 },
+          );
+        } finally {
+          row.installations.push({
+            url,
+            resourceListUsed,
+            installationElapsedMs: performance.now() - installationStarted,
+          });
+        }
+        const status = await manager.locator('#status').textContent();
+        assert(status?.startsWith('Installed '), status);
+        return status;
+      }
+      await install(fixture);
       await manager.locator('[data-app="wasm"]').waitFor();
       assert(
         !server.traffic.slice(start).some((request) => request.path.includes('app.json')),
@@ -114,18 +146,7 @@ try {
       );
       await app.close();
       if (process.env.EXTERNAL_WASM_URL) {
-        await manager.locator('#app-url').fill(process.env.EXTERNAL_WASM_URL);
-        await manager.locator('#install button').click();
-        await manager.waitForFunction(
-          () =>
-            /^(Installed |Installation refused:)/.test(
-              document.querySelector('#status').textContent,
-            ),
-          {},
-          { timeout: 120000 },
-        );
-        const message = await manager.locator('#status').textContent();
-        assert(message.startsWith('Installed '), message);
+        const message = await install(process.env.EXTERNAL_WASM_URL);
         const popup = context.waitForEvent('page');
         const appName = message.slice('Installed '.length, -1);
         await manager

@@ -5,7 +5,7 @@ export interface StoredInstallation extends Installation {
 }
 
 // This schema has no migration path. Metadata queries never load resource bodies.
-const DATABASE = 'privacy-frames-installations';
+const DATABASE = 'privacy-frames-resources';
 const METADATA = 'installations';
 const BODIES = 'resources';
 

@@ -37,19 +37,27 @@ TypeScript. Prettier defines source formatting.
 
 Paste its webpage URL into the manager and choose **Install**. Open the installed
 copy from the list. Publishers need readable cross-origin responses through CORS.
-The host discovers resources through standard webpage declarations, supported
-module dependencies and supported service-worker precaching. The total
+The host follows explicit HTML and CSS references and literal JavaScript imports.
+For dependencies loaded dynamically, provide an additional resource list by URL,
+file upload or pasted text. Lists use `text/uri-list`: one absolute HTTPS URL per
+line, with optional `#` comments. Catalog examples select their lists automatically. The total
 installation limit is 100 MiB, with at most 1,000 resources.
 
 A standard web app manifest can supply names, icons and launch preferences. The
 host generates a local manifest for each installation. There is no host-specific
 publisher manifest or application SDK.
 
-Publisher preparation ends before a fresh confined document starts. Application
-service workers cannot replace the host controller or provide network fallback.
-Ordinary dependency downloads may fail without discarding captured resources.
-The entry document, resource limits and admission checks remain mandatory.
-Missing resources fail locally during execution, without network fallback.
+No application code runs during installation. The installer downloads resources
+and parses their declarations; it does not guess filenames or evaluate loaders.
+An unavailable explicitly listed resource rejects installation. Unavailable
+automatically discovered dependencies are recorded, while successful downloads
+are retained. The entry document, resource limits and admission checks remain
+mandatory. Missing resources fail locally during execution.
+
+Application service-worker behavior runs inside confinement using admitted
+resources. It cannot replace the host controller or provide network fallback.
+Installations use one resource format; packages from the previous installer must
+be reinstalled. Private application storage is kept separately.
 
 ## Examples and tests
 

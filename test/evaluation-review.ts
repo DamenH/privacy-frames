@@ -55,6 +55,7 @@ try {
       const manager = await context.newPage();
       await manager.goto('http://127.0.0.1:4210/privacy-frames/');
       await manager.getByText('Ready to install.', { exact: true }).waitFor();
+      const captureStart = server.traffic.length;
       await manager.locator('#app-url').fill('http://127.0.0.1:4218/review/');
       await manager.locator('#install button').click();
       const link = manager.locator('[data-app="review"]');
@@ -86,8 +87,7 @@ try {
         }
         return { value, typeBlocked, cloneBlocked, executed: '__dataExecuted' in window };
       });
-      // Restricted installation ran this script, but the page never registered
-      // a foreground worker. A precache receipt must not invent registration.
+      // Capture never probes an unreferenced worker or invents a registration.
       const pendingRegistration = await app.evaluate(registrationStatus);
       assert.deepEqual(pendingRegistration, {
         registrations: 0,
@@ -98,9 +98,9 @@ try {
         .frames()
         .find((frame) => frame.url().endsWith('/connect.html'));
       assert(bridge);
-      const prepared = await bridge.evaluate(async () => {
+      const captured = await bridge.evaluate(async () => {
         const database = await new Promise<IDBDatabase>((resolve, reject) => {
-          const request = indexedDB.open('privacy-frames-installations');
+          const request = indexedDB.open('privacy-frames-resources');
           request.onsuccess = () => resolve(request.result);
           request.onerror = () => reject(request.error);
         });
@@ -117,18 +117,28 @@ try {
             (record) => record.source === 'http://127.0.0.1:4218/review/',
           );
           if (!installation) throw new Error('Review installation metadata missing');
-          return installation.preparation;
+          return {
+            format: installation.format,
+            capture: installation.capture,
+            resources: installation.resources.map((resource) => resource.url),
+            legacyPreparation: 'preparation' in installation,
+          };
         } finally {
           database.close();
         }
       });
-      assert.equal(prepared.outcome.status, 'completed');
-      assert.equal(
-        prepared.serviceWorker?.scriptURL,
-        'http://127.0.0.1:4218/review/sw.js',
+      assert.equal(captured.format, 'offline-resources-v1');
+      assert.equal(captured.legacyPreparation, false);
+      assert.deepEqual(captured.capture, {
+        additionalResources: [],
+        unavailableResources: [],
+      });
+      assert(!captured.resources.includes('http://127.0.0.1:4218/review/sw.js'));
+      assert(
+        !server.traffic
+          .slice(captureStart)
+          .some((request) => request.port === 4218 && request.path === '/review/sw.js'),
       );
-      assert.deepEqual(prepared.serviceWorker?.completed, ['install', 'activate']);
-      assert.equal(prepared.ended, true);
       assert.deepEqual(data, {
         value: { value: 42 },
         typeBlocked: true,
@@ -169,7 +179,7 @@ try {
         nativeAttribute,
         unrestricted,
         data,
-        prepared,
+        captured,
         pendingRegistration,
         nativeRegistration,
         controlMutation,

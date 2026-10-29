@@ -65,8 +65,8 @@ test('static documents, local sources and captured bases use one immutable resou
       : new Response('Not found', { status: 404 });
   };
   try {
-    const app = await downloadWebsite(source);
-    assert.equal(app.preparation.outcome.status, 'absent');
+    const app = await downloadWebsite({ url: source });
+    assert.equal(app.format, 'offline-resources-v1');
     assert.equal(app.documentBase, 'https://publisher.test/assets/');
     const child = app.resources.find((resource) => resource.url.endsWith('/child.html'))!;
     assert.equal(child.documentBase, 'https://publisher.test/child-assets/');

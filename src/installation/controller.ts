@@ -1,5 +1,4 @@
 import { downloadWebsite } from './import-website.ts';
-import { errorMessage } from './protocol.ts';
 import {
   installationConfiguration,
   installationRequest,
@@ -38,8 +37,8 @@ addEventListener('message', async (event: MessageEvent<unknown>) => {
       if (started) return;
       started = true;
       try {
-        const url = installationRequest(message.data, session);
-        const installation = await downloadWebsite(url, {
+        const input = installationRequest(message.data, session);
+        const installation = await downloadWebsite(input, {
           onProgress: (progress) =>
             port.postMessage({
               type: 'progress',
@@ -55,7 +54,7 @@ addEventListener('message', async (event: MessageEvent<unknown>) => {
         port.postMessage({
           type: 'failed',
           session,
-          error: errorMessage(error).slice(0, 2000),
+          error: (error instanceof Error ? error.message : String(error)).slice(0, 2000),
         });
       } finally {
         port.close();

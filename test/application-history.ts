@@ -5,6 +5,7 @@ import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { servers } from './server.ts';
 import { testProvenance } from './provenance.ts';
+import { provideResourceList } from './resource-list-input.ts';
 
 const host = process.env.HOST_URL || 'http://127.0.0.1:4210/privacy-frames/';
 const ownedHost = process.env.HOST_URL ? undefined : await servers({ receiver: false });
@@ -79,6 +80,7 @@ try {
       await manager.goto(host);
       await manager.getByText('Ready to install.', { exact: true }).waitFor();
       await manager.locator('#app-url').fill(outside + '/publisher/');
+      await provideResourceList(manager, [outside + '/publisher/worker.js']);
       await manager.locator('#install button').click();
       await manager
         .getByText('Installed History fixture.', { exact: true })

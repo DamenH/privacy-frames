@@ -281,7 +281,6 @@ export function createDocumentController(options: DocumentControllerOptions) {
           aliases: content.input.aliases.map(([source, mapped]) => [source, mapped]),
           source: app.source,
           documentBase: content.input.baseURL || content.input.sourceURL,
-          serviceWorker: app.preparation.serviceWorker,
         }),
       });
       return json(configuration);

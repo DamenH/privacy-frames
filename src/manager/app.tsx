@@ -2,15 +2,49 @@ import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { ApplicationList } from './components/application-list';
 import { useLibrary } from './hooks/use-library';
+import {
+  ResourceListInput,
+  type ResourceListUploadState,
+} from './components/resource-list-input';
+import {
+  catalogResourceList,
+  formInstallationRequest,
+  type ResourceListSelection,
+} from './installation-form';
 
 export function App() {
   const library = useLibrary();
   const [url, setURL] = useState('');
+  const [resourceOverride, setResourceOverride] = useState<ResourceListSelection | null>(
+    null,
+  );
+  const [inputError, setInputError] = useState('');
+  const [uploadState, setUploadState] = useState<ResourceListUploadState>({
+    reading: false,
+  });
   const urlInput = useRef<HTMLInputElement>(null);
+  const resourceList =
+    resourceOverride ?? catalogResourceList(url, library.config?.examples ?? []);
+
+  function selectURL(value: string) {
+    setURL(value);
+    setResourceOverride(null);
+    setInputError('');
+    setUploadState({ reading: false });
+  }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (await library.install(url)) setURL('');
+    if (uploadState.reading || uploadState.error) return;
+    setInputError('');
+    try {
+      const request = formInstallationRequest(url, resourceList);
+      if (await library.install(request)) selectURL('');
+    } catch (error) {
+      setInputError(
+        error instanceof Error ? error.message : 'Invalid installation input.',
+      );
+    }
   }
 
   return (
@@ -42,14 +76,39 @@ export function App() {
             required
             autoComplete="off"
             spellCheck={false}
+            disabled={library.installing || uploadState.reading}
             value={url}
-            onChange={(event) => setURL(event.target.value)}
+            onChange={(event) => selectURL(event.target.value)}
             className="min-w-0 flex-1 rounded-md border border-slate-700 bg-slate-900 px-3 py-3 text-sm text-slate-100 placeholder:text-slate-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
           />
-          <button type="submit" disabled={!library.ready || library.installing}>
+          <button
+            type="submit"
+            disabled={
+              !library.ready ||
+              library.installing ||
+              uploadState.reading ||
+              Boolean(uploadState.error)
+            }
+          >
             {library.installing ? 'Installing…' : 'Install'}
           </button>
         </div>
+        <ResourceListInput
+          value={resourceList}
+          onChange={(value) => {
+            setResourceOverride(value);
+            setInputError('');
+            setUploadState({ reading: false });
+          }}
+          disabled={library.installing || uploadState.reading}
+          onUploadStateChange={setUploadState}
+          automatic={resourceOverride === null}
+        />
+        {(inputError || uploadState.error) && (
+          <p role="alert" className="mt-3 text-xs text-red-300">
+            {inputError || uploadState.error}
+          </p>
+        )}
       </form>
 
       <p
@@ -73,8 +132,9 @@ export function App() {
               className="example"
               type="button"
               title={example.url}
+              disabled={library.installing || uploadState.reading}
               onClick={() => {
-                setURL(example.url);
+                selectURL(example.url);
                 urlInput.current?.focus();
               }}
             >

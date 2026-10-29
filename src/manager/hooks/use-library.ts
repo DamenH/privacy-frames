@@ -4,6 +4,8 @@ import { RuntimeBridge } from '../services/runtime-bridge';
 import { InstallationBridge } from '../services/installation-bridge';
 import { errorMessage } from '../types';
 import type { AppSummary, HostConfig, RuntimeObservation, Status } from '../types';
+import type { InstallationRequest } from '../../shared/types';
+import { installationInput } from '../../installation/session';
 
 export function useLibrary() {
   const [config, setConfig] = useState<HostConfig | null>(null);
@@ -46,13 +48,13 @@ export function useLibrary() {
     void start().catch((error: unknown) => report(errorMessage(error), true));
   }, []);
 
-  async function install(url: string): Promise<boolean> {
+  async function install(request: InstallationRequest): Promise<boolean> {
     setInstalling(true);
     try {
       await runtime().connect();
       if (!installer.current) throw new Error('Installation origin is not configured.');
       const result = await installer.current.install(
-        url.trim(),
+        installationInput(request),
         report,
         async (input) => {
           report('Installing…');
