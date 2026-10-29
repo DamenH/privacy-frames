@@ -1,0 +1,159 @@
+{
+  "revision": "6ea88b9cd67fa748b66c4787980ea1b747798c8b",
+  "contract": {
+    "path": "src/runtime/capabilities/wasm-contract.ts",
+    "sha256": "0f8c0e268bd7b649aaff432871f7c5cbbf038024a6f3955b1804fe1b1e8575f9",
+    "bytes": 14754,
+    "lines": 357
+  },
+  "scope": "Numeric imports/exports and one imported memory; guest owns native mirror, host compiles Wasm bytes only. Not a full WebAssembly facade or production integration.",
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "passed": true,
+      "native": {
+        "read": 201,
+        "written": 47,
+        "callbackSaw": 9,
+        "callbackResult": 36,
+        "callbackGrowth": 131072,
+        "callbackDetached": true,
+        "callbackWritten": 77,
+        "growPrevious": 2,
+        "wasmGrowDetached": true,
+        "pages": 3,
+        "originalDetached": true,
+        "exportIdentity": true,
+        "guestBuffer": true
+      },
+      "result": {
+        "read": 201,
+        "written": 47,
+        "callbackSaw": 9,
+        "callbackResult": 36,
+        "callbackGrowth": 131072,
+        "callbackDetached": true,
+        "callbackWritten": 77,
+        "growPrevious": 2,
+        "wasmGrowDetached": true,
+        "pages": 3,
+        "originalDetached": true,
+        "exportIdentity": true,
+        "guestBuffer": true
+      },
+      "elapsedMs": 67.08999997377396,
+      "metrics": {
+        "bytesToHost": 655360,
+        "bytesToGuest": 720896,
+        "copyCalls": 21,
+        "ffiCalls": 5
+      },
+      "unsupported": {
+        "invalidModule": true,
+        "oversizedMemory": true
+      },
+      "objectRejected": true,
+      "revoked": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "passed": true,
+      "native": {
+        "read": 201,
+        "written": 47,
+        "callbackSaw": 9,
+        "callbackResult": 36,
+        "callbackGrowth": 131072,
+        "callbackDetached": true,
+        "callbackWritten": 77,
+        "growPrevious": 2,
+        "wasmGrowDetached": true,
+        "pages": 3,
+        "originalDetached": true,
+        "exportIdentity": true,
+        "guestBuffer": true
+      },
+      "result": {
+        "read": 201,
+        "written": 47,
+        "callbackSaw": 9,
+        "callbackResult": 36,
+        "callbackGrowth": 131072,
+        "callbackDetached": true,
+        "callbackWritten": 77,
+        "growPrevious": 2,
+        "wasmGrowDetached": true,
+        "pages": 3,
+        "originalDetached": true,
+        "exportIdentity": true,
+        "guestBuffer": true
+      },
+      "elapsedMs": 71.93000000715256,
+      "metrics": {
+        "bytesToHost": 655360,
+        "bytesToGuest": 720896,
+        "copyCalls": 21,
+        "ffiCalls": 5
+      },
+      "unsupported": {
+        "invalidModule": true,
+        "oversizedMemory": true
+      },
+      "objectRejected": true,
+      "revoked": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "passed": true,
+      "native": {
+        "read": 201,
+        "written": 47,
+        "callbackSaw": 9,
+        "callbackResult": 36,
+        "callbackGrowth": 131072,
+        "callbackDetached": true,
+        "callbackWritten": 77,
+        "growPrevious": 2,
+        "wasmGrowDetached": true,
+        "pages": 3,
+        "originalDetached": true,
+        "exportIdentity": true,
+        "guestBuffer": true
+      },
+      "result": {
+        "read": 201,
+        "written": 47,
+        "callbackSaw": 9,
+        "callbackResult": 36,
+        "callbackGrowth": 131072,
+        "callbackDetached": true,
+        "callbackWritten": 77,
+        "growPrevious": 2,
+        "wasmGrowDetached": true,
+        "pages": 3,
+        "originalDetached": true,
+        "exportIdentity": true,
+        "guestBuffer": true
+      },
+      "elapsedMs": 59.91999999999999,
+      "metrics": {
+        "bytesToHost": 655360,
+        "bytesToGuest": 720896,
+        "copyCalls": 21,
+        "ffiCalls": 5
+      },
+      "unsupported": {
+        "invalidModule": true,
+        "oversizedMemory": true
+      },
+      "objectRejected": true,
+      "revoked": true
+    }
+  ]
+}

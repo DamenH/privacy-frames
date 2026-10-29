@@ -37,6 +37,13 @@ bridge. Full migration and deployment have not started.
   CSP. Guest structuredClone transfer crashes all four entry/policy combinations.
   Host controls succeed. The same Wasm fixture compiles and reads the expected
   memory value in both Chromium and Firefox Near Membrane environments.
+- A bounded Wasm capability works in all three modes. The host compiles Wasm
+  bytes with explicit guest callbacks; application JavaScript stays in the guest.
+  Native guest memory mirrors preserve callback mutation visibility and actual
+  buffer detachment. Five FFI calls copy 1,376,256 bytes in 21 batches. This adds
+  357 source lines for numeric imports/exports and one imported memory; defined
+  memory exports and the broader WebAssembly API remain unsupported. It is not
+  integrated into production or counted as full Wasm compatibility.
 - A primitive buffer path works without raw-object crossing: exact canvas pixels
   and a real 1 MiB worker round trip preserve detachment and bytes. One measured
   native-base64 run copied 4 MiB in about 3 ms and 16 MiB in about 8.9 ms.
@@ -52,7 +59,8 @@ bridge. Full migration and deployment have not started.
 
 `node test/realm-adapters.ts` and `node test/realm-dom.ts` exercise the current
 shared adapter/DOM contract. Loading, buffer and classic-script probes have
-separate runners and receipts under `results/realms/`; fallback authority has an
+separate runners and receipts under `results/realms/`. The bounded Wasm contract
+runner is `node test/realm-wasm-contract.ts`; fallback authority has an
 inventory, not a qualified enforcement profile. Their diagnostic
 success does not establish that Milestone 1 passed or that a replacement runtime
 is ready for deployment.
