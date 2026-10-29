@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { parse } from 'acorn';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import http from 'node:http';
@@ -224,7 +224,7 @@ const bundle = await build({
   stdin: {
     resolveDir: process.cwd(),
     loader: 'ts',
-    contents: `import {createApplicationRealm} from './src/runtime/realms/index.ts';
+    contents: `import {createApplicationRealm} from './test/realm-research/realms/index.ts';
       const pending=new Map();let requestId=0;
       window.addEventListener('message',event=>{if(event.source!==window||event.origin!==location.origin||event.data?.type!=='classic-lowered')return;const callback=pending.get(event.data.id);if(callback){pending.delete(event.data.id);callback(event.data)}});
       const compile=(source,strategy)=>new Promise((resolve,reject)=>{const id=++requestId;pending.set(id,message=>message.error?reject(new Error(message.error)):resolve(message.result));window.dispatchEvent(new CustomEvent('classic-compile',{detail:JSON.stringify({id,source,strategy})}));});

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateMarkup, validateMetadata, safePath } from '../src/shared/policy.ts';
+import { validateMetadata, safePath } from '../src/shared/policy.ts';
+import { validateMarkup } from '../src/shared/markup.ts';
 for (const html of [
   '<iframe>',
   '<IFRAME srcdoc="x">',

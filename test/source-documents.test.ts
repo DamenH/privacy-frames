@@ -4,7 +4,7 @@ import { downloadWebsite } from '../src/installation/import-website.ts';
 import { prepareDocument } from '../src/installation/document.ts';
 import { prepareRuntimeDocument } from '../src/runtime/document.ts';
 import { compileDocumentContent } from '../src/runtime/contexts/document-content.ts';
-import { validateMarkup } from '../src/shared/policy.ts';
+import { validateMarkup } from '../src/shared/markup.ts';
 
 const svg =
   '<svg xmlns="http://www.w3.org/2000/svg"><script><![CDATA[window.svgReady = true]]></script><script href="/assets/svg.js"></script></svg>';

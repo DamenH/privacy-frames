@@ -1,3 +1,4 @@
+import { createTrustedPolicy } from '../../../src/runtime/trusted/client.ts';
 import { createPolicyTools } from '../../../src/runtime/enforcement/native.ts';
 import {
   installDOMPolicy,
@@ -11,7 +12,14 @@ const mapURL = (input: unknown): string =>
     : String(input) === 'https://publisher.test/preloaded.js'
       ? '/admitted.js'
       : String(input);
-installDOMPolicy(tools, Element.prototype.getAttribute, undefined, undefined, mapURL);
+installDOMPolicy(
+  tools,
+  Element.prototype.getAttribute,
+  createTrustedPolicy(location.href),
+  undefined,
+  undefined,
+  mapURL,
+);
 installResourceAttributePolicy(tools, mapURL);
 
 declare global {

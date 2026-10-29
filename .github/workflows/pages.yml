@@ -1,7 +1,7 @@
 name: Test and publish host
 on:
   push:
-    branches: [main]
+    branches: [main, realm-runtime]
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,6 +27,7 @@ jobs:
           printf '%s\n' 'https://security.ubuntu.com/ubuntu/' | sudo tee /etc/apt/apt-mirrors-security.txt > /dev/null
       - run: npx playwright install --with-deps chromium firefox
         timeout-minutes: 10
+      - run: npm run test:trusted-runtime
       - run: npm test
       - run: npm run test:lifecycle
       - run: npm run test:review
@@ -53,7 +54,7 @@ jobs:
         with:
           path: dist-manager
   deploy:
-    if: vars.PAGES_ENABLED == 'true'
+    if: vars.PAGES_ENABLED == 'true' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:

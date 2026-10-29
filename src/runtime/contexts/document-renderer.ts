@@ -13,7 +13,7 @@ import {
   type ContentContext,
   type ContentHandler,
   type ContentScript,
-} from './document-content.ts';
+} from './document-content-types.ts';
 import type { ScriptPolicy } from '../enforcement/scripts.ts';
 import type { ResourceAliases } from '../resource-aliases.ts';
 import { isDataScript } from '../../shared/policy.ts';

@@ -1,7 +1,7 @@
 import { strings, ownDescriptor, internalRecord } from '../../shared/primordials.ts';
 import { parseDocumentSurface, type DocumentSurface } from './document-surface.ts';
 import type { WindowContentMetadata } from './window-realm.ts';
-import type { DocumentContentInput } from './document-content.ts';
+import type { DocumentContentInput } from './document-content-types.ts';
 import { CONTEXT_POLICY_VERSION } from './model.ts';
 import { LIMITS } from '../../shared/policy.ts';
 export interface DocumentRegistration extends DocumentSurface {

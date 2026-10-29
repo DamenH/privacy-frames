@@ -5,7 +5,6 @@ import {
   internalRecord,
 } from '../shared/primordials.ts';
 import { applicationIdentity, publicAlias } from '../shared/runtime-url.ts';
-import { compileDocumentContent } from './contexts/document-content.ts';
 import { createDocumentRenderer } from './contexts/document-renderer.ts';
 import { parseInstalledDocument } from './contexts/document-protocol.ts';
 import { prepareWindowRealm } from './contexts/window-realm.ts';
@@ -85,7 +84,7 @@ try {
       appURL.href,
     );
     realm.admitContent(data);
-    const compiled = compileDocumentContent(data.document);
+    const compiled = realm.policy.compile(data.document);
     renderer.prepare(compiled);
     await renderer.render(compiled);
     realm.documents?.settle();

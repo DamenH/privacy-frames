@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { testProvenance } from './provenance.ts';

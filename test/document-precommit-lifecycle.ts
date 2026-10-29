@@ -1,6 +1,6 @@
 import http from 'node:http';
 import assert from 'node:assert/strict';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { chromium, firefox } from 'playwright';

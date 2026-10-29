@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { compileDocumentContent } from '../src/runtime/contexts/document-content.ts';
 import {
-  compileDocumentContent,
   CONTENT_MARKER,
   type DocumentContentInput,
-} from '../src/runtime/contexts/document-content.ts';
-import { validateMarkup } from '../src/shared/policy.ts';
+} from '../src/runtime/contexts/document-content-types.ts';
+import { validateMarkup } from '../src/shared/markup.ts';
 
 const aliases = [
   ['https://publisher.test/assets/main.js', 'https://runtime.test/app/main.js'],

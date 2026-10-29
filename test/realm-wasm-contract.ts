@@ -3,7 +3,7 @@ import http from 'node:http';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 
@@ -104,8 +104,8 @@ const bundle = await build({
     resolveDir: process.cwd(),
     loader: 'ts',
     contents: `
-      import {createApplicationRealm} from './src/runtime/realms/index.ts';
-      import {createWasmContract,installWasmContract} from './src/runtime/capabilities/wasm-contract.ts';
+      import {createApplicationRealm} from './test/realm-research/realms/index.ts';
+      import {createWasmContract,installWasmContract} from './test/realm-research/capabilities/wasm-contract.ts';
       globalThis.runWasmProbe = backend => {
         const native = JSON.parse((0,eval)(${JSON.stringify(exercise)}));
         const bridge=createWasmContract();
@@ -212,7 +212,7 @@ try {
 } finally {
   server.closeAllConnections();
   await new Promise<void>((resolve) => server.close(() => resolve()));
-  const path = 'src/runtime/capabilities/wasm-contract.ts';
+  const path = 'test/realm-research/capabilities/wasm-contract.ts';
   const source = await readFile(path);
   await mkdir('results/realms', { recursive: true });
   await writeFile(

@@ -4,7 +4,7 @@ import { mkdir, writeFile, readFile, mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import ts from 'typescript';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { chromium } from 'playwright';
@@ -57,7 +57,7 @@ const loaderBundle = await build({
     resolveDir: process.cwd(),
     loader: 'ts',
     contents: `
-import {createApplicationRealm} from './src/runtime/realms/index.ts';
+import {createApplicationRealm} from './test/realm-research/realms/index.ts';
 const backend=location.search.includes('shared-native')?'native':'membrane';
 globalThis.__hostSecret='host-secret';Array.prototype.__hostRealmMarker='host-array';
 const realm=createApplicationRealm(backend);

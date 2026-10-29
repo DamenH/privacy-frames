@@ -16,6 +16,7 @@ import { installDOMPolicy, installResourceAttributePolicy } from '../enforcement
 import { installEffectPolicy } from '../enforcement/effects.ts';
 import { scopeWebStorage } from '../enforcement/web-storage.ts';
 import { createDocumentFactory } from './document-factory.ts';
+import { createTrustedPolicy } from '../trusted/client.ts';
 
 export interface WindowContentMetadata {
   installationGeneration: string;
@@ -42,6 +43,7 @@ export function prepareWindowRealm({
 }: WindowRealmOptions) {
   const rawGetAttribute = Element.prototype.getAttribute;
   const NativeURL = URL;
+  const policy = createTrustedPolicy(applicationURL);
   prepareRuntimeIntrinsics();
   const tools = createPolicyTools();
   const { method, accessor, descriptor, apply, fail, define } = tools;
@@ -102,7 +104,7 @@ export function prepareWindowRealm({
   const documents = enableDocumentContexts
     ? createDocumentFactory(
         tools,
-        internalRecord({ applicationURL, baseURL: () => resourceBase }),
+        internalRecord({ applicationURL, baseURL: () => resourceBase, policy }),
       )
     : undefined;
   const openPopup = enableDocumentContexts
@@ -125,7 +127,7 @@ export function prepareWindowRealm({
       open: openPopup,
     }),
   );
-  installDOMPolicy(tools, rawGetAttribute, scripts, documents, resources.mapURL);
+  installDOMPolicy(tools, rawGetAttribute, policy, scripts, documents, resources.mapURL);
   installEffectPolicy(
     tools,
     () => applicationWorker,
@@ -178,5 +180,5 @@ export function prepareWindowRealm({
     );
   }
 
-  return internalRecord({ tools, resources, scripts, documents, admitContent });
+  return internalRecord({ tools, resources, scripts, documents, admitContent, policy });
 }

@@ -5,7 +5,8 @@ import {
   isNavigationTarget,
   isUnsafeTargetMutation,
 } from '../../shared/navigation-targets.ts';
-import { validateMarkup, elementAllowed } from '../../shared/policy.ts';
+import { elementAllowed } from '../../shared/policy.ts';
+import type { TrustedPolicy } from '../trusted/client.ts';
 import type { PolicyTools } from './native.ts';
 import { installInertDocuments } from './inert-documents.ts';
 import { createNativeMarkupValidator } from './native-markup.ts';
@@ -16,6 +17,7 @@ import type { DocumentContextPolicy } from '../contexts/document-factory.ts';
 export function installDOMPolicy(
   tools: PolicyTools,
   rawGetAttr: typeof Element.prototype.getAttribute,
+  policy: TrustedPolicy,
   scripts?: ScriptPolicy,
   documents?: DocumentContextPolicy,
   mapResourceURL: (input: unknown) => string = String,
@@ -24,7 +26,7 @@ export function installDOMPolicy(
   const nativeSetAttribute = Element.prototype.setAttribute;
   const nativeMarkup = createNativeMarkupValidator(fail);
   const targets = installNavigationTargets(tools);
-  const inert = installInertDocuments(tools);
+  const inert = installInertDocuments(tools, policy);
   const resourceElements = createResourceElementPolicy(tools, mapResourceURL);
   // The read-only relList view must never call publisher-replaceable methods
   // with its private native token list as the receiver.
@@ -38,12 +40,12 @@ export function installDOMPolicy(
   const nativeType = descriptor(Node.prototype, 'nodeType')!.get!;
   const rangePrototype = Range.prototype;
   const NativeMetaElement = globalThis.HTMLMetaElement;
-  // Guard browser parsing before it can create nodes. Validators run with frozen JS intrinsics.
+  // Pure parsing is isolated; native construction and inspection remain local.
   const textHTML = (value: unknown, context: Element | ShadowRoot) => {
     const source = str(value);
     const text =
       documents && !inert.owns(context) ? documents.markup(source, context) : source;
-    validateMarkup(text);
+    policy.validateMarkup(text);
     nativeMarkup.fragment(text, context);
     return text;
   };

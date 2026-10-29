@@ -5,6 +5,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { appIcon } from './icons.ts';
 import { buildExamples } from './build-examples.ts';
+import { trustedPolicyPlugin } from './trusted-policy.ts';
 
 const root = resolve(import.meta.dirname, '..');
 const configPath = process.env.HOST_CONFIG || resolve(root, 'deployment/config.json');
@@ -22,10 +23,12 @@ for (const path of [
   'scripts/build-examples.ts',
   'scripts/icons.ts',
   'scripts/report.ts',
+  'scripts/trusted-policy.ts',
 ])
   hash.update(await readFile(resolve(root, path)));
 hash.update(JSON.stringify(config));
 const buildId = hash.digest('hex').slice(0, 16);
+const trustedPolicy = await trustedPolicyPlugin(root);
 const entries = {
   manager: 'src/manager.tsx',
   worker: 'src/runtime/worker.ts',
@@ -73,6 +76,7 @@ for (const role of roles) {
         : 'iife',
       target: 'es2022',
       jsx: 'automatic',
+      plugins: [trustedPolicy],
     });
   }
   await cp(

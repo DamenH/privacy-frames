@@ -7,7 +7,7 @@ import {
 } from '../../shared/primordials.ts';
 import type { PolicyTools } from '../enforcement/native.ts';
 import type { ResourceAliases } from '../resource-aliases.ts';
-import type { ChildDocumentSource } from './document-content.ts';
+import type { ChildDocumentSource } from './document-content-types.ts';
 import {
   parseDocumentRegistration,
   type DocumentRegistration,

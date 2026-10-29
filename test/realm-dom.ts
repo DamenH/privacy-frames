@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import http from 'node:http';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 
@@ -10,8 +10,8 @@ const bundle = await build({
     resolveDir: process.cwd(),
     loader: 'ts',
     contents: `
-      import {createApplicationRealm} from './src/runtime/realms/index.ts';
-      import {installDOMContract,createDOMContract} from './src/runtime/capabilities/dom-contract.ts';
+      import {createApplicationRealm} from './test/realm-research/realms/index.ts';
+      import {installDOMContract,createDOMContract} from './test/realm-research/capabilities/dom-contract.ts';
       globalThis.startRealm = backend => {
         const originalDocumentPrototype = Object.getPrototypeOf(document);
         const root = document.querySelector('#app');

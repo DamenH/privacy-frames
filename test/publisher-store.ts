@@ -3,7 +3,7 @@ import { createServer } from 'node:http';
 import { createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 const built = await build({

@@ -4,11 +4,11 @@ import {
   internalRecord,
 } from '../../shared/primordials.ts';
 import { parseDocumentSurface, type DocumentSurface } from './document-surface.ts';
+import { compileDocumentContent } from './document-content.ts';
 import {
-  compileDocumentContent,
   type CompiledDocumentContent,
   type DocumentContentInput,
-} from './document-content.ts';
+} from './document-content-types.ts';
 import { CONTEXT_POLICY_VERSION } from './model.ts';
 
 export interface DocumentIntentActor {

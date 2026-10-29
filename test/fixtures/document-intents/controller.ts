@@ -4,7 +4,7 @@ import {
   type DocumentIntentContent,
   type DocumentIntentMetadata,
 } from '../../../src/runtime/contexts/document-intents.ts';
-import type { DocumentContentInput } from '../../../src/runtime/contexts/document-content.ts';
+import type { DocumentContentInput } from '../../../src/runtime/contexts/document-content-types.ts';
 import { INTENT_DATABASE, type IntentProbe } from './types.ts';
 
 let checks = 0;

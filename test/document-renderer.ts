@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import http from 'node:http';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { compileDocumentContent } from '../src/runtime/contexts/document-content.ts';
@@ -149,7 +149,7 @@ const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', isSVG ? 'image/svg+xml' : 'text/html');
   res.setHeader(
     'Content-Security-Policy',
-    `default-src 'none';script-src 'self' blob: 'nonce-${nonce}';style-src 'unsafe-inline';connect-src 'none';img-src data:;worker-src ${origin}/service-worker.js;manifest-src 'self';object-src 'none';frame-src 'none'`,
+    `default-src 'none';script-src 'self' blob: 'unsafe-eval' 'nonce-${nonce}';style-src 'unsafe-inline';connect-src 'none';img-src data:;worker-src ${origin}/service-worker.js;manifest-src 'self';object-src 'none';frame-src 'none'`,
   );
   res.end(
     isSVG

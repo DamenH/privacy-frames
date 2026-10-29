@@ -1,8 +1,6 @@
 import { strings, internalRecord } from '../shared/primordials.ts';
-import {
-  compileDocumentContent,
-  type DocumentContentInput,
-} from './contexts/document-content.ts';
+import { compileDocumentContent } from './contexts/document-content.ts';
+import { type DocumentContentInput } from './contexts/document-content-types.ts';
 import { resourceURL } from '../shared/runtime-url.ts';
 import type { Installation } from '../shared/types.ts';
 import { manifestURL } from './pwa.ts';

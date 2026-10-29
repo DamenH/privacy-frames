@@ -21,6 +21,76 @@ const reflectionNamespace = Reflect;
 const extensibleCollections = internalSet<unknown>([Map.prototype, Set.prototype]);
 const datePrototype = Date.prototype;
 
+function mutableData(value: unknown): PropertyDescriptor {
+  return internalRecord({ value, writable: true, configurable: true });
+}
+
+function materializeMissing(target: object, source: object, except?: PropertyKey) {
+  for (const key of ownKeys(source))
+    if (key !== except && !hasOwn(target, key))
+      define(
+        target,
+        key,
+        internalRecord({ ...descriptor(source, key)!, configurable: true }),
+      );
+}
+
+function materializeAncestors(
+  target: object,
+  except?: PropertyKey,
+  ancestors?: Set<object>,
+) {
+  for (let parent = getPrototype(target); parent; parent = getPrototype(parent)) {
+    ancestors?.add(parent);
+    materializeMissing(target, parent, except);
+  }
+}
+
+/** Keep shared operations fixed while allowing ordinary own-instance overrides. */
+function shadowableMethod(
+  owner: object,
+  key: PropertyKey,
+  property: PropertyDescriptor,
+  profile: 'collection' | 'intrinsic',
+): PropertyDescriptor {
+  const original = property.value;
+  const accessor = internalRecord({
+    get method() {
+      return original;
+    },
+    set method(replacement: unknown) {
+      const receiver: object = this;
+      if (receiver === owner) {
+        // Browser tooling temporarily writes an already-undefined toJSON.
+        // Collections retain their stricter shared-prototype assignment rule.
+        if (profile === 'intrinsic' && replacement === original) return;
+        throw new NativeTypeError(
+          profile === 'collection'
+            ? 'Shared collection prototypes are immutable'
+            : 'Existing intrinsic methods are protected',
+        );
+      }
+      if (hasOwn(receiver, key)) {
+        if (!set(receiver, key, replacement, receiver))
+          throw new NativeTypeError('Instance property is immutable');
+      } else
+        define(
+          receiver,
+          key,
+          internalRecord({ ...mutableData(replacement), enumerable: true }),
+        );
+    },
+  });
+  const pair = descriptor(accessor, 'method')!;
+  define(pair.get!, 'originalValue', internalRecord({ value: original }));
+  return internalRecord({
+    get: pair.get,
+    set: pair.set,
+    enumerable: property.enumerable,
+    configurable: profile === 'collection',
+  });
+}
+
 export const languageGlobals = [
   'Object',
   'Function',
@@ -124,28 +194,15 @@ export function prepareRuntimeIntrinsics() {
   for (const key of ownKeys(Symbol)) {
     const value: unknown = descriptor(Symbol, key)?.value;
     if (typeof value === 'symbol' && !hasOwn(objectPrototype, value))
-      define(
-        objectPrototype,
-        value,
-        internalRecord({ value: undefined, writable: true, configurable: true }),
-      );
+      define(objectPrototype, value, mutableData(undefined));
   }
   for (const key of ['then', 'toJSON'])
-    define(
-      objectPrototype,
-      key,
-      internalRecord({ value: undefined, writable: true, configurable: true }),
-    );
+    define(objectPrototype, key, mutableData(undefined));
   // Browser promises can resolve native arrays before a trusted callback can
   // detach them from the application prototype. Reserve implicit hooks while
   // retaining ordinary own-instance shadowing below.
   for (const prototype of [arrayPrototype, stringPrototype, stringIteratorPrototype])
-    for (const key of ['then', 'toJSON'])
-      define(
-        prototype,
-        key,
-        internalRecord({ value: undefined, writable: true, configurable: true }),
-      );
+    for (const key of ['then', 'toJSON']) define(prototype, key, mutableData(undefined));
   const languageConstructors = internalSet<object>();
   for (const name of languageGlobals) {
     const constructor: unknown = Reflect.get(globalThis, name);
@@ -183,25 +240,12 @@ export function prepareRuntimeIntrinsics() {
       Symbol.asyncIterator,
       ...(languageConstructors.has(constructor) ? [] : ['toJSON']),
     ])
-      if (!(key in constructor))
-        define(
-          constructor,
-          key,
-          internalRecord({
-            value: undefined,
-            writable: true,
-            configurable: true,
-          }),
-        );
+      if (!(key in constructor)) define(constructor, key, mutableData(undefined));
     if (!hasOwn(constructor, Symbol.hasInstance))
       define(
         constructor,
         Symbol.hasInstance,
-        internalRecord({
-          value: functionPrototype[Symbol.hasInstance],
-          writable: true,
-          configurable: true,
-        }),
+        mutableData(functionPrototype[Symbol.hasInstance]),
       );
   }
   const objectSetPrototype = Object.setPrototypeOf;
@@ -245,21 +289,10 @@ export function prepareRuntimeIntrinsics() {
     );
   }
   for (const constructor of [...metadataFunctions, reflectionNamespace])
-    for (
-      let parent = Object.getPrototypeOf(constructor);
-      parent;
-      parent = Object.getPrototypeOf(parent)
-    )
-      for (const key of ownKeys(parent))
-        if (
-          !(isLanguageConstructor(constructor) && key === 'toJSON') &&
-          !hasOwn(constructor, key)
-        )
-          define(
-            constructor,
-            key,
-            internalRecord({ ...descriptor(parent, key)!, configurable: true }),
-          );
+    materializeAncestors(
+      constructor,
+      isLanguageConstructor(constructor) ? 'toJSON' : undefined,
+    );
   for (const key of [
     'then',
     'toJSON',
@@ -270,58 +303,22 @@ export function prepareRuntimeIntrinsics() {
     Symbol.hasInstance,
   ])
     if (!hasOwn(reflectionNamespace, key))
-      define(
-        reflectionNamespace,
-        key,
-        internalRecord({
-          value: undefined,
-          writable: true,
-          configurable: true,
-        }),
-      );
+      define(reflectionNamespace, key, mutableData(undefined));
   for (const prototype of [Map.prototype, Set.prototype]) {
-    for (const key of ownKeys(Object.prototype))
-      if (key !== 'toJSON' && !hasOwn(prototype, key))
-        define(
-          prototype,
-          key,
-          internalRecord({
-            ...descriptor(Object.prototype, key)!,
-            configurable: true,
-          }),
-        );
+    materializeMissing(prototype, objectPrototype, 'toJSON');
     for (const key of [
       'then',
       Symbol.toPrimitive,
       Symbol.isConcatSpreadable,
       Symbol.asyncIterator,
     ])
-      if (!hasOwn(prototype, key))
-        define(
-          prototype,
-          key,
-          internalRecord({ value: undefined, writable: true, configurable: true }),
-        );
+      if (!hasOwn(prototype, key)) define(prototype, key, mutableData(undefined));
   }
   // Metadata extensions must not shadow native operations inherited by binary
   // views. Materialize the same descriptors on each concrete prototype first.
   const binaryAncestors = internalSet<object>();
   for (const prototype of binaryPrototypes) {
-    for (
-      let parent = Object.getPrototypeOf(prototype);
-      parent;
-      parent = Object.getPrototypeOf(parent)
-    ) {
-      binaryAncestors.add(parent);
-      for (const key of ownKeys(parent)) {
-        if (!hasOwn(prototype, key))
-          define(
-            prototype,
-            key,
-            internalRecord({ ...descriptor(parent, key)!, configurable: true }),
-          );
-      }
-    }
+    materializeAncestors(prototype, undefined, binaryAncestors);
     for (const key of [
       'then',
       'toJSON',
@@ -330,12 +327,7 @@ export function prepareRuntimeIntrinsics() {
       Symbol.iterator,
       Symbol.asyncIterator,
     ])
-      if (!hasOwn(prototype, key))
-        define(
-          prototype,
-          key,
-          internalRecord({ value: undefined, writable: true, configurable: true }),
-        );
+      if (!hasOwn(prototype, key)) define(prototype, key, mutableData(undefined));
   }
   for (const constructor of typedConstructors)
     binaryAncestors.add(Object.getPrototypeOf(constructor));
@@ -354,43 +346,7 @@ export function prepareRuntimeIntrinsics() {
         typeof property.value !== 'function'
       )
         continue;
-      const original = property.value;
-      const accessor = internalRecord({
-        get method() {
-          return original;
-        },
-        set method(replacement: unknown) {
-          const receiver: object = this;
-          if (receiver === prototype)
-            throw new NativeTypeError('Shared collection prototypes are immutable');
-          if (hasOwn(receiver, key)) {
-            if (!set(receiver, key, replacement, receiver))
-              throw new NativeTypeError('Instance property is immutable');
-          } else
-            define(
-              receiver,
-              key,
-              internalRecord({
-                value: replacement,
-                writable: true,
-                configurable: true,
-                enumerable: true,
-              }),
-            );
-        },
-      });
-      const pair = descriptor(accessor, 'method')!;
-      define(pair.get!, 'originalValue', internalRecord({ value: original }));
-      define(
-        prototype,
-        key,
-        internalRecord({
-          get: pair.get,
-          set: pair.set,
-          enumerable: property.enumerable,
-          configurable: true,
-        }),
-      );
+      define(prototype, key, shadowableMethod(prototype, key, property, 'collection'));
     }
   }
   const prototypes = internalSet<object>();
@@ -422,15 +378,7 @@ export function prepareRuntimeIntrinsics() {
       if (!hasOwn(prototype, Symbol.iterator)) {
         const identity: unknown = Reflect.get(prototype, Symbol.iterator);
         if (typeof identity === 'function')
-          define(
-            prototype,
-            Symbol.iterator,
-            internalRecord({
-              value: identity,
-              writable: true,
-              configurable: true,
-            }),
-          );
+          define(prototype, Symbol.iterator, mutableData(identity));
       }
       prototypes.add(prototype);
       iteratorPrototypes.add(prototype);
@@ -497,49 +445,10 @@ export function prepareRuntimeIntrinsics() {
         property.configurable
       ) {
         if ('value' in property) {
-          const original = property.value;
-          const accessor = internalRecord({
-            get method() {
-              return original;
-            },
-            set method(replacement: unknown) {
-              const receiver: object = this;
-              if (receiver === value) {
-                // Assigning the existing value changes no authority. Browser
-                // tooling also temporarily writes an already-undefined toJSON.
-                if (replacement === original) return;
-                throw new NativeTypeError('Existing intrinsic methods are protected');
-              }
-              if (hasOwn(receiver, key)) {
-                if (!set(receiver, key, replacement, receiver))
-                  throw new NativeTypeError('Instance property is immutable');
-              } else
-                define(
-                  receiver,
-                  key,
-                  internalRecord({
-                    value: replacement,
-                    writable: true,
-                    configurable: true,
-                    enumerable: true,
-                  }),
-                );
-            },
-          });
-          const pair = descriptor(accessor, 'method')!;
-          define(pair.get!, 'originalValue', internalRecord({ value: original }));
-          visit(pair.get);
-          visit(pair.set);
-          define(
-            value,
-            key,
-            internalRecord({
-              get: pair.get,
-              set: pair.set,
-              configurable: false,
-              enumerable: property.enumerable,
-            }),
-          );
+          const replacement = shadowableMethod(value, key, property, 'intrinsic');
+          visit(replacement.get);
+          visit(replacement.set);
+          define(value, key, replacement);
         } else define(value, key, internalRecord({ ...property, configurable: false }));
       }
     }

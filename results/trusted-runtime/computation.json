@@ -1,0 +1,54 @@
+{
+  "revision": "8119a2381a733c1f281799aa07f52e981f27bb8c",
+  "testedAt": "2026-10-29T21:50:14.897Z",
+  "scope": "Isolated computation under confined CSP; production integration and complete confinement not yet qualified.",
+  "policySHA256": "e409d2a070ea84d85dd30ab3c3187ffa6567cfba09dcfba756e7390717842a42",
+  "policyBytes": 325732,
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "unaffected": true,
+      "refused": true,
+      "objectRejected": true,
+      "privateFrameRemoved": true,
+      "publisherNotExecuted": true,
+      "scriptPreserved": true,
+      "fragmentPrepared": true,
+      "nativeScriptBinding": true,
+      "nativeDefaultCancelled": true,
+      "nativeWasm": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "frame",
+      "unaffected": true,
+      "refused": true,
+      "objectRejected": true,
+      "privateFrameRemoved": true,
+      "publisherNotExecuted": true,
+      "scriptPreserved": true,
+      "fragmentPrepared": true,
+      "nativeScriptBinding": true,
+      "nativeDefaultCancelled": true,
+      "nativeWasm": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "frame",
+      "unaffected": true,
+      "refused": true,
+      "objectRejected": true,
+      "privateFrameRemoved": true,
+      "publisherNotExecuted": true,
+      "scriptPreserved": true,
+      "fragmentPrepared": true,
+      "nativeScriptBinding": true,
+      "nativeDefaultCancelled": true,
+      "nativeWasm": true
+    }
+  ]
+}

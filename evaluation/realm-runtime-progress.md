@@ -1,81 +1,74 @@
-# Realm runtime implementation progress
+# Trusted runtime isolation progress
 
-## Recovery
+## Direction and recovery
 
-Remote main is pinned by the annotated tag `pre-realm-runtime-2026-10-29` at
-`1a78033b48a64b72cd21b4467b96e7c7eba6a2f1`. The source and deployment pins are
-recorded in [realm-recovery.json](realm-recovery.json). Work is isolated on branch
-`realm-runtime`. The public sites and original working directory are unchanged.
+Application code stays in the native browser context. Our trusted computation and
+state move into private contexts where practical. Native effect hooks remain
+beside the application and keep their current hardening until their consumers
+have been audited. This follows the corrected [plan](realm-runtime-plan.md).
 
-## Current milestone
+Remote main is pinned by `pre-realm-runtime-2026-10-29` at
+`1a78033b48a64b72cd21b4467b96e7c7eba6a2f1`. Work is on `realm-runtime` in an
+isolated worktree. The public release has not been replaced. Deployment pins are
+in [realm-recovery.json](realm-recovery.json).
 
-Milestone 0 has reproducible dependency-aware code and bundle measurements in
-[realm-baseline.md](realm-baseline.md). The baseline runtime graph contains
-31,306 project/dependency lines. Near Membrane adds 5,248 dependency lines before
-shared bridge code; net simplification remains to be demonstrated.
+## Implemented candidate
 
-Milestone 1 has working bridge experiments but its prerequisite gate fails. The
-production entry points do not import the new experimental adapters or capability
-bridge. Full migration and deployment have not started.
+The root window, child HTML/SVG documents and popups now create private trusted
+computation before publisher execution. The computation receives serialized text
+and configuration and returns serialized results. Its callable and frame remain
+in bootstrap closures. Foreign error objects do not cross that interface.
 
-- Primitive/callable boundaries and independent intrinsics pass in native
-  Chromium, ordinary Chromium/Near Membrane and Firefox/Near Membrane.
-- One shared DOM bridge passes real layout, identity, reentrant callbacks and
-  synchronous checkbox default-action cancellation in all three modes. Revocation
-  blocks subsequent host operations; application Array changes leave host arrays
-  unchanged. Native Document prototypes remain unchanged.
-- Direct native module loading crashes the installed Chromium renderer, including
-  full Chromium, ordinary parser-created scripts, two tested flag combinations
-  and successful unrestricted module controls.
-- One guest-local SystemJS linker demonstrates live bindings, cycles, top-level
-  await and dynamic imports through primitive hooks on both adapters. A production
-  compiler and its code cost remain unresolved. TypeScript is used only to
-  prepare research fixtures, not as a shipped solution.
-- Native Function construction works from guest Promise callbacks, but fails in
-  synchronous wrapped entry. Native guest Wasm compilation fails in both entry
-  contexts, including deferred instantiate, with and without explicit permissive
-  CSP. Guest structuredClone transfer crashes all four entry/policy combinations.
-  Host controls succeed. The same Wasm fixture compiles and reads the expected
-  memory value in both Chromium and Firefox Near Membrane environments.
-- A bounded Wasm capability works in all three modes. The host compiles Wasm
-  bytes with explicit guest callbacks; application JavaScript stays in the guest.
-  Native guest memory mirrors preserve callback mutation visibility and actual
-  buffer detachment. Five FFI calls copy 1,376,256 bytes in 21 batches. This adds
-  357 source lines for numeric imports/exports and one imported memory; defined
-  memory exports and the broader WebAssembly API remain unsupported. It is not
-  integrated into production or counted as full Wasm compatibility.
-- A primitive buffer path works without raw-object crossing: exact canvas pixels
-  and a real 1 MiB worker round trip preserve detachment and bytes. One measured
-  native-base64 run copied 4 MiB in about 3 ms and 16 MiB in about 8.9 ms.
-- Near Membrane leaves native browser globals in its detached realm. An empty
-  global shape does not establish the required capability profile. Authority
-  qualification remains open.
-- Classic script controls were compared across four bounded strategies and three
-  profiles (228 rows). None preserves all 19 cases. Top-level declaration
-  lowering, continuation scopes and lexical-cell prototypes retain different gaps
-  in reflection, closures, strict declarations, eval or Function construction.
+Document compilation, context-markup parsing and dynamic markup validation execute
+in that private context. Local hooks acquire actual native DOM arguments and
+apply the result. Application scripts, modules, promises, layout, events and Wasm
+continue using the browser directly. Management, admission, resource responses and
+context authorization remain in the existing trusted host/service worker.
 
-## Reproduction
+The ordinary-browser implementation uses a detached private iframe with independent
+intrinsics. Its construction uses the HTML namespace even in SVG documents. A
+native ShadowRealm adapter passes the same computation fixture; it is not yet the
+production default. The existing runtime CSP permits trusted setup evaluation.
+The renderer fixture now includes that same permission; production CSP was not
+relaxed for this change.
 
-`node test/realm-adapters.ts` and `node test/realm-dom.ts` exercise the current
-shared adapter/DOM contract. Loading, buffer and classic-script probes have
-separate runners and receipts under `results/realms/`. The bounded Wasm contract
-runner is `node test/realm-wasm-contract.ts`; fallback authority has an
-inventory, not a qualified enforcement profile. Their diagnostic
-success does not establish that Milestone 1 passed or that a replacement runtime
-is ready for deployment.
+The document compiler now uses ordinary arrays, maps and records inside trusted
+execution. The old application-realm DOM/Wasm facades and adapters are retained
+under `test/realm-research`, outside production source. Near Membrane is a research
+dev dependency. Those experiments neither qualify nor block this corrected design.
 
-## Next actions
+## Verification so far
 
-The priority question is whether full native parity remains mandatory or a
-portable-first architecture may retain native mode as experimental. That answer
-changes the scope of the next implementation stage. Preserve the pending decision
-and complete independent checkpoint work; do not replace failed required gates
-with the prototype's narrower positive checks.
+- Type checking and formatting pass. The full `npm test` command passes after the
+  hardening refactor, including all 136 unit tests and core, context, storage,
+  installation, worker/worklet, publisher and prototype-confinement checks.
+- The shared computation fixture passes in native Chromium ShadowRealm, Chromium
+  iframe and Firefox iframe. Application script bindings, event cancellation and
+  native Wasm remain intact while application prototype mutation leaves the
+  private parser unchanged.
+- The independent integrated boundary fixture passes in Chromium and Firefox.
+  Its unrestricted control recovers a deliberately exposed foreign frame. The
+  guarded cases inspect coercion callbacks, indexed prototype hooks, errors,
+  stack data and own Window properties without finding a private frame or foreign
+  callable/object. These are scoped boundary checks, not a network proof.
+- HTML/XML parser-hook mutation, document-factory and committed HTML/native SVG
+  renderer controls pass in both browsers. The renderer fixture now permits the
+  trusted setup evaluation already allowed by production CSP.
+- The code-size audit includes the embedded trusted bundle and all its dependencies.
+  Both window guards have zero parse5/entities executable contributions. Root and
+  child executable/wrapper output each fall by about 315 KB. Combined maintained
+  production source is 86 lines larger and deployment bundles are 11,283 bytes
+  larger. Total code reduction has not been achieved.
 
-`npm run test:realm-probes` reproduces the observations.
-`npm run test:realms` additionally runs the prerequisite qualification and exits
-unsuccessfully on the current classic/compiler/Wasm gaps. A fresh full execution
-from checkpoint `6dc326d` completed all diagnostic runners and reached those
-three failing prerequisite checks. A passing diagnostic
-reproduction is not a migration pass.
+See `results/trusted-runtime/` and [the size audit](trusted-runtime-size.md).
+Existing component receipts are tied to their captured source/artifact hashes;
+the final release audit is still outstanding.
+
+## Remaining work
+
+Address the remaining total-code increase without weakening confinement or adding
+application-specific behavior. Code moved to a private context is still production
+code. Run the remaining lifecycle/network checks and the eight-application
+task/offline corpus against the final build. Complete CI,
+report revision and the deployment/public verification stages before claiming the
+goal achieved. Branch CI cannot deploy; deployment remains restricted to main.

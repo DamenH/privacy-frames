@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import http from 'node:http';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { chromium, firefox } from 'playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { launch } from './browser-profile.ts';
@@ -10,11 +10,11 @@ import { testProvenance } from './provenance.ts';
 // not full-runtime no-network claims; the independent receiver measures this gate.
 const bundle = await build({
   stdin: {
-    contents: `import {createPolicyTools} from './src/runtime/enforcement/native.ts';
+    contents: `import {createPolicyTools} from './src/runtime/enforcement/native.ts';import {createTrustedPolicy} from './src/runtime/trusted/client.ts';
 import {installDOMPolicy,installResourceAttributePolicy} from './src/runtime/enforcement/dom.ts';
 import {installNavigationPolicy} from './src/runtime/enforcement/navigation.ts';
 const tools=createPolicyTools();const get=Element.prototype.getAttribute;
-installDOMPolicy(tools,get);installResourceAttributePolicy(tools,String);installNavigationPolicy(tools);window.ready=true;`,
+installDOMPolicy(tools,get,createTrustedPolicy(location.href));installResourceAttributePolicy(tools,String);installNavigationPolicy(tools);window.ready=true;`,
     resolveDir: process.cwd(),
   },
   bundle: true,

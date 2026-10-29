@@ -1,10 +1,11 @@
 import { strings, internalArray, internalRecord } from '../../shared/primordials.ts';
-import { elementAllowed, validateMarkup } from '../../shared/policy.ts';
+import { elementAllowed } from '../../shared/policy.ts';
+import type { TrustedPolicy } from '../trusted/client.ts';
 import type { PolicyTools } from './native.ts';
 import { createNativeMarkupValidator } from './native-markup.ts';
 
 /** Native viewless documents are DOM construction containers, never execution realms. */
-export function installInertDocuments(tools: PolicyTools) {
+export function installInertDocuments(tools: PolicyTools, policy: TrustedPolicy) {
   const { apply, descriptor, method, accessor, fail, str } = tools;
   const nativeMarkup = createNativeMarkupValidator(fail);
   const documents = new WeakSet<object>();
@@ -149,7 +150,7 @@ export function installInertDocuments(tools: PolicyTools) {
           /<\?(?!xml(?:\s|\?>))/i.test(source))
       )
         fail('XML construction declarations are not admitted');
-      validateMarkup(source, internalRecord({ document: kind === 'text/html' }));
+      policy.validateMarkup(source, kind === 'text/html');
       const parsed: Document = register(apply(parse, this, [source, kind]));
       nativeMarkup.inspect(parsed);
       return parsed;

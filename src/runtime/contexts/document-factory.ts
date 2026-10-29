@@ -3,20 +3,12 @@ import {
   internalArray,
   math,
   internalRecord,
-  internalData,
   internalMap,
   internalSet,
 } from '../../shared/primordials.ts';
-import { normalizeNavigationAttributes } from '../../shared/navigation-targets.ts';
-import {
-  parseFragment,
-  serialize,
-  defaultTreeAdapter,
-  html as parserHTML,
-  type DefaultTreeAdapterTypes as Tree,
-} from 'parse5';
+import type { TrustedPolicy } from '../trusted/client.ts';
 import type { PolicyTools } from '../enforcement/native.ts';
-import type { ChildDocumentSource, ContentContext } from './document-content.ts';
+import type { ChildDocumentSource, ContentContext } from './document-content-types.ts';
 import {
   parseDocumentRegistration,
   type DocumentRegistration,
@@ -52,6 +44,7 @@ export interface DocumentContextPolicy {
 interface DocumentFactoryOptions {
   applicationURL: string;
   baseURL(): string;
+  policy: TrustedPolicy;
 }
 interface ManagedDocument {
   element: Element;
@@ -83,7 +76,7 @@ interface DeferredStartupAction {
   run(): void;
 }
 const PLACEHOLDER = 'data-privacy-document';
-const HTML = parserHTML.NS.HTML;
+const HTML = 'http://www.w3.org/1999/xhtml';
 /** Own native creation and publication; a pending iframe never enters app DOM. */
 export function createDocumentFactory(
   tools: PolicyTools,
@@ -862,52 +855,24 @@ export function createDocumentFactory(
       target = context as Element;
     }
     sameDocument(target);
-    const ns = apply(namespace, target, []);
-    const parentContext = defaultTreeAdapter.createElement(
-      apply(local, target, []),
-      ns === parserHTML.NS.SVG
-        ? parserHTML.NS.SVG
-        : ns === parserHTML.NS.MATHML
-          ? parserHTML.NS.MATHML
-          : HTML,
-      [],
+    const fragment = options.policy.fragment(
+      internalRecord({
+        text,
+        localName: apply(local, target, []),
+        namespace: apply(namespace, target, []),
+        markerPrefix: mint(),
+      }),
     );
-    const ast = internalData(parseFragment(parentContext, text, internalRecord({})));
-    function visit(parent: Tree.ParentNode) {
-      parent.childNodes = parent.childNodes.map((child) => {
-        if (!('tagName' in child)) return child;
-        normalizeNavigationAttributes(child.tagName, child.attrs);
-        if (child.attrs.some((item) => item.name === PLACEHOLDER))
-          fail('Reserved context marker');
-        if (child.namespaceURI === HTML && ['iframe', 'object'].includes(child.tagName)) {
-          if (child.attrs.some((item) => strings.startsWith(item.name, 'on')))
-            fail('Inline event handlers are not admitted');
-          const node: Element = apply(create, document, [child.tagName]);
-          const record = manage(node);
-          record.attributes = internalMap(
-            child.attrs.map((item) => [item.name, item.value]),
-          );
-          validateProfile(record);
-          const key = mint();
-          markupRecords.set(key, record);
-          const inert: Tree.Template = internalRecord({
-            ...defaultTreeAdapter.createElement('template', HTML, [
-              internalRecord({ name: PLACEHOLDER, value: key }),
-            ]),
-            nodeName: 'template',
-            tagName: 'template',
-            content: defaultTreeAdapter.createDocumentFragment(),
-          });
-          return inert;
-        }
-        visit(child);
-        if ('content' in child) visit(child.content as Tree.DocumentFragment);
-        return child;
-      });
+    for (const context of fragment.contexts) {
+      const node: Element = apply(create, document, [context.element]);
+      const record = manage(node);
+      record.attributes = internalMap(context.attributes);
+      validateProfile(record);
+      markupRecords.set(context.key, record);
     }
-    visit(ast);
-    return serialize(ast);
+    return fragment.html;
   }
+
   function afterMarkup(root: Node) {
     if (actualElement(root)) {
       const key = apply(getAttr, root, [PLACEHOLDER]);

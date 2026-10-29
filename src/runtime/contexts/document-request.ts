@@ -8,7 +8,7 @@ import { LIMITS, mime } from '../../shared/policy.ts';
 import { decodeDocumentDataURL, documentMediaKind } from '../../shared/document-data.ts';
 import { resourceURL } from '../../shared/runtime-url.ts';
 import type { StoredInstallation } from '../storage.ts';
-import type { DocumentContentInput } from './document-content.ts';
+import type { DocumentContentInput } from './document-content-types.ts';
 
 interface DocumentResourceStore {
   getResource(id: string, path: string, generation: string): Promise<ArrayBuffer>;

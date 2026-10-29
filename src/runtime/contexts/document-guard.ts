@@ -4,7 +4,6 @@ import {
   internalRecord,
 } from '../../shared/primordials.ts';
 import { createDocumentRenderer } from './document-renderer.ts';
-import { compileDocumentContent } from './document-content.ts';
 import { prepareWindowRealm } from './window-realm.ts';
 import {
   documentIdentifier,
@@ -151,7 +150,7 @@ async function start() {
 
   const input = parseDocumentContentInput(received, config);
 
-  const compiled = compileDocumentContent(input);
+  const compiled = realm.policy.compile(input);
 
   renderer.prepare(compiled);
 

@@ -2,7 +2,7 @@ import http from 'node:http';
 import assert from 'node:assert/strict';
 import { randomUUID, createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { build } from 'esbuild';
+import { build } from './build.ts';
 import { chromium, firefox } from 'playwright';
 import { launch } from './browser-profile.ts';
 import { testProvenance } from './provenance.ts';
@@ -15,6 +15,7 @@ const fixture = await build({
     sourcefile: 'document-factory-fixture.js',
     contents: `
 import { createPolicyTools } from './src/runtime/enforcement/native.ts';
+import {createTrustedPolicy} from './src/runtime/trusted/client.ts';
 import { createDocumentFactory } from './src/runtime/contexts/document-factory.ts';
 import { installDOMPolicy, installResourceAttributePolicy } from './src/runtime/enforcement/dom.ts';
 import { installScriptPolicy } from './src/runtime/enforcement/scripts.ts';
@@ -24,11 +25,12 @@ globalThis.readPhysicalSandbox = frame => Reflect.apply(rawGet, frame, ['sandbox
 const add = EventTarget.prototype.addEventListener;
 const nativePost = window.postMessage;
 const nativeParent = parent;
+const policy = createTrustedPolicy(location.origin + '/app/');
 const tools = createPolicyTools();
 const resources = { mapURL: value => String(value), isInstalledURL: () => false };
 const scripts = installScriptPolicy(tools, { nonce: 'fixture_nonce', ...resources });
-const documents = createDocumentFactory(tools, { applicationURL: location.origin + '/app/', baseURL: () => location.href });
-installDOMPolicy(tools, rawGet, scripts, documents);
+const documents = createDocumentFactory(tools, { applicationURL: location.origin + '/app/', baseURL: () => location.href, policy });
+installDOMPolicy(tools, rawGet, policy, scripts, documents);
 installResourceAttributePolicy(tools, resources.mapURL, scripts, documents);
 globalThis.waitForOwnedDocuments = () => documents.whenLoaded();
 if (config) {

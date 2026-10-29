@@ -32,10 +32,10 @@
     "test:history": "node test/application-history.ts && node test/launch-query.ts",
     "test:worker-root-aliases": "node test/worker-root-aliases.ts",
     "test:realm-probes": "node test/realm-adapters.ts && node test/realm-dom.ts && node test/realm-loading-spike.ts && node test/realm-classic-spike.ts && node test/realm-buffer-spike.ts && node test/realm-wasm-contract.ts",
-    "test:realms": "npm run test:realm-probes && node test/realm-qualification.ts"
+    "test:trusted-runtime": "node test/trusted-computation.ts && node test/trusted-boundary.ts",
+    "test:realm-research": "npm run test:realm-probes && node test/realm-qualification.ts"
   },
   "dependencies": {
-    "@locker/near-membrane-dom": "0.19.1",
     "acorn": "8.19.0",
     "css-tree": "^3.2.1",
     "es-module-lexer": "^3.0.4",
@@ -44,6 +44,7 @@
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@locker/near-membrane-dom": "0.19.1",
     "@tailwindcss/cli": "^4.3.3",
     "@types/css-tree": "^3.2.0",
     "@types/node": "^26.6.5",
