@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-29T10:45:07.744Z",
+  "date": "2026-10-29T23:27:18.543Z",
   "assets": [
     {
       "site": "manager",
@@ -19,7 +19,7 @@
     {
       "site": "manager",
       "file": "manager.js",
-      "sha256": "ff7959705803e7d8ceb993b66ced20f929f156ce5169253081dc23a4f9c4581e"
+      "sha256": "e623333e57ba30b0359bd8548e97efc428534541ccad53316ac07656e7f8d015"
     },
     {
       "site": "manager",
@@ -34,12 +34,12 @@
     {
       "site": "manager",
       "file": "report.html",
-      "sha256": "c47e59c6031da65c478b2444bf9240ab680908a21243255a9ffd663e8617f04b"
+      "sha256": "f8ae7bd8e4c781dee2a6ad135bd1fcc38186b7b2c1f54b9bb53a5bb0ac3ba654"
     },
     {
       "site": "manager",
       "file": "sw.js",
-      "sha256": "458c25fa30067bf812505d86717c6c4bfe13481c19af3207a8a6eb11a2b57cc3"
+      "sha256": "44678346edbd5dd05cc7258b68d6bce3e2e041234ede93b80d9022b7236a0bcc"
     },
     {
       "site": "runtime",
@@ -59,12 +59,12 @@
     {
       "site": "runtime",
       "file": "document-guard.js",
-      "sha256": "26663fb7793898ea8a740cbe0dd714791429db8ac11eeb3cada1068e3bc8b94b"
+      "sha256": "c7bb92138af58d4327c5953166f8a88df4e2a2721c83f0c93708f1862e70335d"
     },
     {
       "site": "runtime",
       "file": "guard.js",
-      "sha256": "2d9003e4617ae952f28358d1aae5172c8f7d3cc2b9a0e38e5f3b87609a59ff09"
+      "sha256": "e2bb36f422da6e8fe73ac34ebef1cfcf39c0fa023b34b540fd9896b39a8fb71d"
     },
     {
       "site": "runtime",
@@ -79,7 +79,7 @@
     {
       "site": "runtime",
       "file": "publisher-worker-guard.js",
-      "sha256": "16278c8706a3c527b7fdf59aa6672f25fc0836719b221468712a1643a4c42576"
+      "sha256": "8a2a2f552231bb1f3c1ed728be176c7010684c86ffd1f21bccdc0f25a5dcd174"
     },
     {
       "site": "runtime",
@@ -94,27 +94,27 @@
     {
       "site": "runtime",
       "file": "report.html",
-      "sha256": "c47e59c6031da65c478b2444bf9240ab680908a21243255a9ffd663e8617f04b"
+      "sha256": "f8ae7bd8e4c781dee2a6ad135bd1fcc38186b7b2c1f54b9bb53a5bb0ac3ba654"
     },
     {
       "site": "runtime",
       "file": "shared-worker-guard.js",
-      "sha256": "ab52741a5a63acf5b26ea53c2db111c32df61dcc1fae4beaf9e0893ce4a0c5f9"
+      "sha256": "1e6582d76235779e346c3df316821e4ea24a18f95b0bc43a8e09d2ab8f6cdfce"
     },
     {
       "site": "runtime",
       "file": "sw.js",
-      "sha256": "acdd43232496e96b2a4b9827914345f5755a8e080fc24935682ed35b2fe622d3"
+      "sha256": "0177edf83fb84e10bf93b3292d5ddde7a459a8107f41517c4671c51c571b17df"
     },
     {
       "site": "runtime",
       "file": "worker-guard.js",
-      "sha256": "c40e3e15df30ee45881bc461b2626a9c21f62348dffa55607fc86cf818af868e"
+      "sha256": "308abcdb6883fbcfcc46373079f70bac641119a06639b043f8957e382421a209"
     },
     {
       "site": "runtime",
       "file": "worklet-guard.js",
-      "sha256": "42d5d3f373a61870a682ac7eb7522ce7ab4236cb9b70acef4ef9e602bfd4561b"
+      "sha256": "547b60f4d568b619fafb7dbd4b4e5f065761d8ed46b888c6d33128f7ea74ba2c"
     },
     {
       "site": "installation",
@@ -129,7 +129,7 @@
     {
       "site": "installation",
       "file": "installation.js",
-      "sha256": "3ab0f84a466c65c6f407b7b6972fb00ae1d286627a9c9aaabd0268e4d78c1db3"
+      "sha256": "af0760b4a4824d6cfbf88cefb15927ca03675f376f24eef88df060f893d4fded"
     },
     {
       "site": "notes",
@@ -319,7 +319,7 @@
     {
       "site": "resource-lists",
       "file": "inventories.json",
-      "sha256": "2bafd902d5fef7db78d6553e23f08d728ee85f783e8b27fce73bd56c9169b74f"
+      "sha256": "c785867ea2b4af9ab961a33b6065e5eed75dc31b703f4cab9a7a35a9ba473f84"
     },
     {
       "site": "resource-lists",
@@ -339,7 +339,7 @@
     {
       "site": "resource-lists",
       "file": "pitch-training.uris",
-      "sha256": "d31e2b0440e25d02dcc793e7eb308c4bdfda84b60e1ed9aadc6e20c073a77165"
+      "sha256": "03b5ac4dfdc8fd24ae06f3cbd3e6c2d9cdf6c0795b57956da08caa30bec728d4"
     },
     {
       "site": "resource-lists",

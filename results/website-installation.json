@@ -33,7 +33,7 @@
       }
     },
     "beforeCaches": [
-      "pf-trusted-bootstrap-cfd75edd532d4bf1",
+      "pf-trusted-bootstrap-2a36101a764a4010",
       "pf-browser-contexts-v1",
       "pf-management-clients-v1"
     ],
@@ -73,7 +73,7 @@
       ]
     },
     "afterUnregister": {
-      "marker": "post-unregister-ce8606f5-a49e-43a0-8c98-9ab84a25c953",
+      "marker": "post-unregister-d691f625-6f34-4b52-8865-7eee8dc2cdc4",
       "outcomes": [
         true,
         true
@@ -82,7 +82,7 @@
     },
     "escapedAfterUnregister": [],
     "httpControl": {
-      "marker": "native-receiver-e9e17af8-1455-43ec-a870-122408c2ca90",
+      "marker": "native-receiver-51eb060f-9606-4fb0-9247-057dfa841538",
       "status": 200,
       "body": "diagnostic receiver"
     }
@@ -121,7 +121,7 @@
       }
     },
     "beforeCaches": [
-      "pf-trusted-bootstrap-cfd75edd532d4bf1",
+      "pf-trusted-bootstrap-2a36101a764a4010",
       "pf-management-clients-v1",
       "pf-browser-contexts-v1"
     ],
@@ -161,7 +161,7 @@
       ]
     },
     "afterUnregister": {
-      "marker": "post-unregister-87e981f8-5d9f-4e55-97cd-da98fa54128d",
+      "marker": "post-unregister-028330b2-dc5e-4080-a147-a4e69f12b412",
       "outcomes": [
         true,
         true
@@ -170,7 +170,7 @@
     },
     "escapedAfterUnregister": [],
     "httpControl": {
-      "marker": "native-receiver-6e9eb063-09fc-49be-b505-842f6a30a6c7",
+      "marker": "native-receiver-45d9ad40-9b71-49cd-96af-36830756b791",
       "status": 200,
       "body": "diagnostic receiver"
     }

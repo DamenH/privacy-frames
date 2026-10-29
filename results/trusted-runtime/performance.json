@@ -1,0 +1,390 @@
+{
+  "revision": "b8c5b8e08b3ee1a2644924923ad98457e4c0f3f5",
+  "testedAt": "2026-10-29T23:31:17.426Z",
+  "hashes": {
+    "test/trusted-performance.ts": "fb5d5a4386af52365232de4eeeea33802a015e0387ca589306aeda40899c5a90",
+    "src/runtime/trusted/context.ts": "425bf7232a2ef83aba94d185f9b3d00c9da00ec450399fddeef10b43b2069ac7",
+    "src/runtime/trusted/client.ts": "a374280b5b69e02480e6267a15354c41e1acb446844304d6e21c3f4687be0dc4",
+    "src/runtime/trusted/entry.ts": "106e8205a7091272c6f023b426afbf71eb30bfbffecbf5094c3a2340b2e4e824",
+    "src/runtime/trusted/fragment.ts": "3dbc7e1ebc8cc3eab9422f22cbce64470e0aceda13ed6fae88dd2bd62fb5b3da",
+    "src/runtime/contexts/document-content.ts": "f606b94f249c44ad2e09880a56bb87d4556d571108799b2ac4647d5496031034",
+    "scripts/trusted-policy.ts": "93cc9dffdee1683b74faa06251b4f8ab16eaf5294047b5783f156cb6417a5e36"
+  },
+  "scope": "Component timing on an ephemeral local fixture under sandbox CSP, using the production trusted-policy plugin. Direct compiler baseline, same-realm serialized dispatcher control and production private-policy client (both normalize local reply records) use the same current algorithms. No application startup or historical before/after claim; no timing pass threshold; script contents never execute. Logical UTF-8 wire volumes do not measure physical engine copies or peak memory.",
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "detached iframe",
+      "passed": true,
+      "timer": "performance.now; browser privacy precision may quantize short samples to zero",
+      "sourceUTF8Bytes": 325732,
+      "setup": {
+        "samples": 7,
+        "includes": "iframe creation, trusted bundle evaluation and frame detachment; excludes first operation",
+        "timingsMs": [
+          8,
+          3.5,
+          3.699999988079071,
+          7.5,
+          3.899999976158142,
+          3.5,
+          3.899999976158142
+        ],
+        "medianMs": 3.899999976158142
+      },
+      "workloads": [
+        {
+          "name": "small-document",
+          "operation": "document",
+          "samples": 7,
+          "warmupsPerPath": 1,
+          "includesLocalReplyNormalization": true,
+          "inputMarkupUTF8Bytes": 1630,
+          "requestUTF8Bytes": 1779,
+          "replyUTF8Bytes": 1870,
+          "outputEquivalent": true,
+          "wire": {
+            "primitiveCallsPerOperation": 1,
+            "stringDirections": 2,
+            "jsonStringifyPasses": 2,
+            "jsonParsePasses": 2,
+            "physicalStringCopies": "Not observable; payload byte counts are logical serialization volume, not measured memory copies",
+            "arrayBufferTransfers": 0
+          },
+          "timings": {
+            "directCompilerMs": [
+              0.8999999761581421,
+              0.5,
+              0.6000000238418579,
+              0.3999999761581421,
+              0.30000001192092896,
+              0.5,
+              0.30000001192092896
+            ],
+            "localSerializedDispatchMs": [
+              1.2000000476837158,
+              0.5,
+              0.3999999761581421,
+              0.6000000238418579,
+              0.5,
+              0.3999999761581421,
+              0.30000001192092896
+            ],
+            "privateTextBridgeMs": [
+              1.5,
+              0.8999999761581421,
+              1.399999976158142,
+              0.6000000238418579,
+              0.699999988079071,
+              0.5,
+              0.3999999761581421
+            ]
+          },
+          "medianMs": {
+            "directCompilerMs": 0.5,
+            "localSerializedDispatchMs": 0.5,
+            "privateTextBridgeMs": 0.699999988079071
+          }
+        },
+        {
+          "name": "one-MiB-inline-script-data",
+          "operation": "document",
+          "samples": 7,
+          "warmupsPerPath": 1,
+          "includesLocalReplyNormalization": true,
+          "inputMarkupUTF8Bytes": 1048639,
+          "requestUTF8Bytes": 1048788,
+          "replyUTF8Bytes": 1049132,
+          "outputEquivalent": true,
+          "wire": {
+            "primitiveCallsPerOperation": 1,
+            "stringDirections": 2,
+            "jsonStringifyPasses": 2,
+            "jsonParsePasses": 2,
+            "physicalStringCopies": "Not observable; payload byte counts are logical serialization volume, not measured memory copies",
+            "arrayBufferTransfers": 0
+          },
+          "timings": {
+            "directCompilerMs": [
+              27.100000023841858,
+              22.69999998807907,
+              24.30000001192093,
+              40.5,
+              17.19999998807907,
+              23.5,
+              23.899999976158142
+            ],
+            "localSerializedDispatchMs": [
+              29.099999964237213,
+              29.80000001192093,
+              29.19999998807907,
+              40.299999952316284,
+              23.30000001192093,
+              31.100000023841858,
+              30.400000035762787
+            ],
+            "privateTextBridgeMs": [
+              28.899999976158142,
+              32.39999997615814,
+              29.700000047683716,
+              30.399999976158142,
+              33.30000001192093,
+              30.399999976158142,
+              28
+            ]
+          },
+          "medianMs": {
+            "directCompilerMs": 23.899999976158142,
+            "localSerializedDispatchMs": 29.80000001192093,
+            "privateTextBridgeMs": 30.399999976158142
+          }
+        },
+        {
+          "name": "fragment",
+          "operation": "fragment",
+          "samples": 7,
+          "warmupsPerPath": 1,
+          "includesLocalReplyNormalization": true,
+          "inputMarkupUTF8Bytes": 2584,
+          "requestUTF8Bytes": 2689,
+          "replyUTF8Bytes": 2718,
+          "outputEquivalent": true,
+          "wire": {
+            "primitiveCallsPerOperation": 1,
+            "stringDirections": 2,
+            "jsonStringifyPasses": 2,
+            "jsonParsePasses": 2,
+            "physicalStringCopies": "Not observable; payload byte counts are logical serialization volume, not measured memory copies",
+            "arrayBufferTransfers": 0
+          },
+          "timings": {
+            "directCompilerMs": [
+              0.30000001192092896,
+              0.30000001192092896,
+              0.2999999523162842,
+              0.20000004768371582,
+              0.19999998807907104,
+              0.30000001192092896,
+              0.19999998807907104
+            ],
+            "localSerializedDispatchMs": [
+              0.30000001192092896,
+              0.30000001192092896,
+              0.20000004768371582,
+              0.3999999761581421,
+              0.30000001192092896,
+              0.30000001192092896,
+              0.30000001192092896
+            ],
+            "privateTextBridgeMs": [
+              0.699999988079071,
+              0.5,
+              0.5999999642372131,
+              0.30000001192092896,
+              0.2999999523162842,
+              0.30000001192092896,
+              0.30000001192092896
+            ]
+          },
+          "medianMs": {
+            "directCompilerMs": 0.2999999523162842,
+            "localSerializedDispatchMs": 0.30000001192092896,
+            "privateTextBridgeMs": 0.30000001192092896
+          }
+        }
+      ],
+      "framesRemoved": true,
+      "scriptDataNotExecuted": true,
+      "nativeBufferControl": true,
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "detached iframe",
+      "passed": true,
+      "timer": "performance.now; browser privacy precision may quantize short samples to zero",
+      "sourceUTF8Bytes": 325732,
+      "setup": {
+        "samples": 7,
+        "includes": "iframe creation, trusted bundle evaluation and frame detachment; excludes first operation",
+        "timingsMs": [
+          15,
+          14,
+          13,
+          13,
+          12,
+          13,
+          13
+        ],
+        "medianMs": 13
+      },
+      "workloads": [
+        {
+          "name": "small-document",
+          "operation": "document",
+          "samples": 7,
+          "warmupsPerPath": 1,
+          "includesLocalReplyNormalization": true,
+          "inputMarkupUTF8Bytes": 1630,
+          "requestUTF8Bytes": 1779,
+          "replyUTF8Bytes": 1870,
+          "outputEquivalent": true,
+          "wire": {
+            "primitiveCallsPerOperation": 1,
+            "stringDirections": 2,
+            "jsonStringifyPasses": 2,
+            "jsonParsePasses": 2,
+            "physicalStringCopies": "Not observable; payload byte counts are logical serialization volume, not measured memory copies",
+            "arrayBufferTransfers": 0
+          },
+          "timings": {
+            "directCompilerMs": [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0
+            ],
+            "localSerializedDispatchMs": [
+              1,
+              2,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "privateTextBridgeMs": [
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1
+            ]
+          },
+          "medianMs": {
+            "directCompilerMs": 1,
+            "localSerializedDispatchMs": 1,
+            "privateTextBridgeMs": 1
+          }
+        },
+        {
+          "name": "one-MiB-inline-script-data",
+          "operation": "document",
+          "samples": 7,
+          "warmupsPerPath": 1,
+          "includesLocalReplyNormalization": true,
+          "inputMarkupUTF8Bytes": 1048639,
+          "requestUTF8Bytes": 1048788,
+          "replyUTF8Bytes": 1049132,
+          "outputEquivalent": true,
+          "wire": {
+            "primitiveCallsPerOperation": 1,
+            "stringDirections": 2,
+            "jsonStringifyPasses": 2,
+            "jsonParsePasses": 2,
+            "physicalStringCopies": "Not observable; payload byte counts are logical serialization volume, not measured memory copies",
+            "arrayBufferTransfers": 0
+          },
+          "timings": {
+            "directCompilerMs": [
+              39,
+              32,
+              38,
+              31,
+              37,
+              32,
+              36
+            ],
+            "localSerializedDispatchMs": [
+              47,
+              51,
+              51,
+              47,
+              46,
+              48,
+              47
+            ],
+            "privateTextBridgeMs": [
+              47,
+              51,
+              51,
+              54,
+              49,
+              51,
+              47
+            ]
+          },
+          "medianMs": {
+            "directCompilerMs": 36,
+            "localSerializedDispatchMs": 47,
+            "privateTextBridgeMs": 51
+          }
+        },
+        {
+          "name": "fragment",
+          "operation": "fragment",
+          "samples": 7,
+          "warmupsPerPath": 1,
+          "includesLocalReplyNormalization": true,
+          "inputMarkupUTF8Bytes": 2584,
+          "requestUTF8Bytes": 2689,
+          "replyUTF8Bytes": 2718,
+          "outputEquivalent": true,
+          "wire": {
+            "primitiveCallsPerOperation": 1,
+            "stringDirections": 2,
+            "jsonStringifyPasses": 2,
+            "jsonParsePasses": 2,
+            "physicalStringCopies": "Not observable; payload byte counts are logical serialization volume, not measured memory copies",
+            "arrayBufferTransfers": 0
+          },
+          "timings": {
+            "directCompilerMs": [
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1
+            ],
+            "localSerializedDispatchMs": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "privateTextBridgeMs": [
+              2,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          "medianMs": {
+            "directCompilerMs": 1,
+            "localSerializedDispatchMs": 0,
+            "privateTextBridgeMs": 1
+          }
+        }
+      ],
+      "framesRemoved": true,
+      "scriptDataNotExecuted": true,
+      "nativeBufferControl": true,
+      "errors": []
+    }
+  ]
+}

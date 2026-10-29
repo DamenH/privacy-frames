@@ -11,7 +11,7 @@
       "Browser-denied microphone permission is handled without a capture stream",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation"
     ],
-    "installationElapsedMs": 2750.214804,
+    "installationElapsedMs": 1085.1272589999999,
     "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/pitch-training.uris",
     "worker": {
       "state": "activated",
@@ -21,12 +21,12 @@
     "frequency": 220.8,
     "executableReceipt": [
       {
-        "url": "https://damenh.github.io/pitch-training/assets/index-BbG6COy_.js",
-        "sha256": "505a1ef733a0f1b41082299726a8d2985a116106c03854d7cc1855a9e99de510"
+        "url": "https://damenh.github.io/pitch-training/assets/index-BvkNtD_8.js",
+        "sha256": "19f36372a1f4b908dc9a2be95089409d701cba17061d5624a325873bfc6ac717"
       },
       {
         "url": "https://damenh.github.io/pitch-training/sw.js",
-        "sha256": "68cc74174f0223912c77e1af2a818296dbfc0ca51a79a425e655e44be4be57cb"
+        "sha256": "9bbe40f76b382c14cbd319395e767b869f4a384fee8e9c2da3ce7f5a824128bf"
       }
     ],
     "maintenance": null,
@@ -70,35 +70,35 @@
       "Original public URL installs without a host manifest or application source changes and renders Svelte UI",
       "The application registers its admitted worker and receives readiness; unsupported updates reject",
       "Installed piano samples decode into nonzero buffers and play in a running audio context; exercise records history",
-      "Native microphone input reaches pitch analysis and capture stops; 1000.6 Hz detected",
+      "Native microphone input reaches pitch analysis and capture stops; 1002.1 Hz detected",
       "Settings, exercise history and IndexedDB score survive offline reload and hash navigation"
     ],
-    "installationElapsedMs": 1076.2693199999994,
+    "installationElapsedMs": 1140.7201079999995,
     "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/pitch-training.uris",
     "worker": {
       "state": "activated",
       "updateDenied": true,
       "script": "https://damenh.github.io/pitch-training/sw.js"
     },
-    "frequency": 1000.6,
+    "frequency": 1002.1,
     "executableReceipt": [
       {
-        "url": "https://damenh.github.io/pitch-training/assets/index-BbG6COy_.js",
-        "sha256": "505a1ef733a0f1b41082299726a8d2985a116106c03854d7cc1855a9e99de510"
+        "url": "https://damenh.github.io/pitch-training/assets/index-BvkNtD_8.js",
+        "sha256": "19f36372a1f4b908dc9a2be95089409d701cba17061d5624a325873bfc6ac717"
       },
       {
         "url": "https://damenh.github.io/pitch-training/sw.js",
-        "sha256": "68cc74174f0223912c77e1af2a818296dbfc0ca51a79a425e655e44be4be57cb"
+        "sha256": "9bbe40f76b382c14cbd319395e767b869f4a384fee8e9c2da3ce7f5a824128bf"
       }
     ],
     "maintenance": null,
     "policyObservations": [
       {
-        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 17933}]",
+        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 17925}]",
         "url": "https://apps.pf.damenh.com/sw.js"
       },
       {
-        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 17933}]",
+        "text": "[JavaScript Error: \"Failed to load ‘https://apps.pf.damenh.com/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"https://apps.pf.damenh.com/sw.js\" line: 17925}]",
         "url": "https://apps.pf.damenh.com/sw.js"
       }
     ],

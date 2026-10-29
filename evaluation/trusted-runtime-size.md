@@ -57,7 +57,7 @@ runtime comparison.
 An isolated-only input may also run in the trusted controller; the label means
 it is absent from every executor that shares an environment with application code.
 
-## Current development snapshot
+## Qualified source snapshot
 
 [The parser-consolidation receipt](../results/trusted-runtime/size-parser-consolidation.json)
 records stable source hash `3396b19b19ff4f671937191607c484881f23a7ea06ff57e8dc6d22d3cbf39471`.
@@ -108,8 +108,8 @@ intermediate source, not additional release verifications.
 
 ## Release status
 
-These are development measurements. The implementation is still changing, and
-the receipt does not qualify confinement, compatibility, startup cost or a public
-release. A later stable snapshot must include the full nested graph again and
-show separately whether total maintained code shrank and whether locally
-executable code shrank.
+The measured implementation is source `b8c5b8e08b3ee1a2644924923ad98457e4c0f3f5`.
+Its full CI and public verification are recorded in the
+[completion audit](trusted-runtime-completion.md). These fixed-build comparison
+bytes differ from public asset hashes. The gzip increase remains part of the
+result; smaller uncompressed bundles do not imply smaller compressed transfers.

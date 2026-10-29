@@ -1,4 +1,8 @@
-# Completion audit
+# Historical explicit-resource installer audit
+
+For the current release, see [trusted runtime completion](trusted-runtime-completion.md).
+The revisions below describe the previous release. Receipt paths shared with later
+runs may now contain newer evidence; use its indexed CI artifact for the historical record.
 
 The explicit-resource installer is deployed on all three trusted origins. No
 publisher code runs during installation. Automatic discovery follows HTML/CSS

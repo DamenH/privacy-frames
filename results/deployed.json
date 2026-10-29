@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-29T10:46:07.875Z",
+  "date": "2026-10-29T23:27:31.821Z",
   "entry": "https://pf.damenh.com/",
   "browsers": [
     {
@@ -23,7 +23,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/notes/",
           "status": "Installed Notes.",
-          "installationElapsedMs": 1505.4111630000002,
+          "installationElapsedMs": 914.1696530000004,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/notes.uris",
           "capture": {
             "additionalResources": [
@@ -43,7 +43,7 @@
         {
           "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
           "status": "Installed PhotoCraft.",
-          "installationElapsedMs": 1400.7045560000006,
+          "installationElapsedMs": 1107.8983720000006,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/photocraft.uris",
           "capture": {
             "additionalResources": [
@@ -58,7 +58,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/adversary/",
           "status": "Installed Adversary.",
-          "installationElapsedMs": 593.406516,
+          "installationElapsedMs": 293.6247939999994,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/adversary.uris",
           "capture": {
             "additionalResources": [
@@ -75,7 +75,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/playground/",
           "status": "Installed Playground.",
-          "installationElapsedMs": 573.1240719999996,
+          "installationElapsedMs": 292.95532300000013,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/playground.uris",
           "capture": {
             "additionalResources": [
@@ -91,15 +91,15 @@
         {
           "url": "https://damenh.github.io/pitch-training/",
           "status": "Installed Pitch Training.",
-          "installationElapsedMs": 576.3011239999996,
+          "installationElapsedMs": 558.8742490000004,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/pitch-training.uris",
           "capture": {
             "additionalResources": [
               "https://damenh.github.io/pitch-training/",
               "https://damenh.github.io/pitch-training/agents.txt",
               "https://damenh.github.io/pitch-training/apple-touch-icon.png",
-              "https://damenh.github.io/pitch-training/assets/index-BbG6COy_.js",
-              "https://damenh.github.io/pitch-training/assets/index-CFpHFoiS.css",
+              "https://damenh.github.io/pitch-training/assets/index-BvkNtD_8.js",
+              "https://damenh.github.io/pitch-training/assets/index-DqXB1q9b.css",
               "https://damenh.github.io/pitch-training/icon-192.png",
               "https://damenh.github.io/pitch-training/icon-512.png",
               "https://damenh.github.io/pitch-training/icon-maskable-512.png",
@@ -140,24 +140,24 @@
             "unavailableResources": []
           },
           "resources": 41,
-          "bytes": 1073368
+          "bytes": 1075259
         },
         {
           "url": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
           "status": "Installed Albert Einstein.",
-          "installationElapsedMs": 3345.7136679999994,
+          "installationElapsedMs": 2661.2473199999995,
           "resourceListUsed": null,
           "capture": {
             "additionalResources": [],
             "unavailableResources": []
           },
-          "resources": 76,
-          "bytes": 4589940
+          "resources": 79,
+          "bytes": 4470238
         },
         {
           "url": "https://privacy-frames.github.io/apps/excalidraw/",
           "status": "Installed Excalidraw Whiteboard.",
-          "installationElapsedMs": 15506.984549,
+          "installationElapsedMs": 12925.992656999999,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/excalidraw.uris",
           "capture": {
             "additionalResources": [
@@ -526,7 +526,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/squoosh/",
           "status": "Installed Squoosh.",
-          "installationElapsedMs": 4287.669425,
+          "installationElapsedMs": 1271.346426,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/squoosh.uris",
           "capture": {
             "additionalResources": [
@@ -615,7 +615,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/drawio/?offline=1",
           "status": "Installed Flowchart Maker & Online Diagram Software.",
-          "installationElapsedMs": 7490.883039000004,
+          "installationElapsedMs": 7192.522768999999,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/drawio.uris",
           "capture": {
             "additionalResources": [
@@ -756,7 +756,7 @@
         {
           "url": "https://gchq.github.io/CyberChef/",
           "status": "Installed CyberChef.",
-          "installationElapsedMs": 4157.671662999994,
+          "installationElapsedMs": 4923.496994000001,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/cyberchef.uris",
           "capture": {
             "additionalResources": [
@@ -833,12 +833,12 @@
             "unavailableResources": []
           },
           "resources": 75,
-          "bytes": 61612603
+          "bytes": 61612711
         },
         {
           "url": "https://privacy-frames.github.io/apps/stackedit/",
           "status": "Installed StackEdit.",
-          "installationElapsedMs": 4667.886277999998,
+          "installationElapsedMs": 5126.511263,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/stackedit.uris",
           "capture": {
             "additionalResources": [
@@ -1446,7 +1446,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/notes/",
           "status": "Installed Notes.",
-          "installationElapsedMs": 880.3381049999953,
+          "installationElapsedMs": 1346.3265339999998,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/notes.uris",
           "capture": {
             "additionalResources": [
@@ -1466,7 +1466,7 @@
         {
           "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
           "status": "Installed PhotoCraft.",
-          "installationElapsedMs": 1570.6007309999986,
+          "installationElapsedMs": 1365.1497400000007,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/photocraft.uris",
           "capture": {
             "additionalResources": [
@@ -1481,7 +1481,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/adversary/",
           "status": "Installed Adversary.",
-          "installationElapsedMs": 371.19760400000087,
+          "installationElapsedMs": 656.479081000005,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/adversary.uris",
           "capture": {
             "additionalResources": [
@@ -1498,7 +1498,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/playground/",
           "status": "Installed Playground.",
-          "installationElapsedMs": 372.83025700000144,
+          "installationElapsedMs": 622.1801190000042,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/playground.uris",
           "capture": {
             "additionalResources": [
@@ -1514,15 +1514,15 @@
         {
           "url": "https://damenh.github.io/pitch-training/",
           "status": "Installed Pitch Training.",
-          "installationElapsedMs": 606.8404410000003,
+          "installationElapsedMs": 722.6859909999985,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/pitch-training.uris",
           "capture": {
             "additionalResources": [
               "https://damenh.github.io/pitch-training/",
               "https://damenh.github.io/pitch-training/agents.txt",
               "https://damenh.github.io/pitch-training/apple-touch-icon.png",
-              "https://damenh.github.io/pitch-training/assets/index-BbG6COy_.js",
-              "https://damenh.github.io/pitch-training/assets/index-CFpHFoiS.css",
+              "https://damenh.github.io/pitch-training/assets/index-BvkNtD_8.js",
+              "https://damenh.github.io/pitch-training/assets/index-DqXB1q9b.css",
               "https://damenh.github.io/pitch-training/icon-192.png",
               "https://damenh.github.io/pitch-training/icon-512.png",
               "https://damenh.github.io/pitch-training/icon-maskable-512.png",
@@ -1563,24 +1563,24 @@
             "unavailableResources": []
           },
           "resources": 41,
-          "bytes": 1073368
+          "bytes": 1075259
         },
         {
           "url": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
           "status": "Installed Albert Einstein.",
-          "installationElapsedMs": 3708.381128000001,
+          "installationElapsedMs": 3310.0193970000037,
           "resourceListUsed": null,
           "capture": {
             "additionalResources": [],
             "unavailableResources": []
           },
-          "resources": 76,
-          "bytes": 4589940
+          "resources": 79,
+          "bytes": 4470238
         },
         {
           "url": "https://privacy-frames.github.io/apps/excalidraw/",
           "status": "Installed Excalidraw Whiteboard.",
-          "installationElapsedMs": 3340.181110000005,
+          "installationElapsedMs": 12918.375920000006,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/excalidraw.uris",
           "capture": {
             "additionalResources": [
@@ -1949,7 +1949,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/squoosh/",
           "status": "Installed Squoosh.",
-          "installationElapsedMs": 1851.2057740000018,
+          "installationElapsedMs": 3199.025765000013,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/squoosh.uris",
           "capture": {
             "additionalResources": [
@@ -2038,7 +2038,7 @@
         {
           "url": "https://privacy-frames.github.io/apps/drawio/?offline=1",
           "status": "Installed Flowchart Maker & Online Diagram Software.",
-          "installationElapsedMs": 3986.739121999999,
+          "installationElapsedMs": 6487.188884999996,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/drawio.uris",
           "capture": {
             "additionalResources": [
@@ -2179,7 +2179,7 @@
         {
           "url": "https://gchq.github.io/CyberChef/",
           "status": "Installed CyberChef.",
-          "installationElapsedMs": 3748.531706000009,
+          "installationElapsedMs": 4453.938196000003,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/cyberchef.uris",
           "capture": {
             "additionalResources": [
@@ -2256,12 +2256,12 @@
             "unavailableResources": []
           },
           "resources": 75,
-          "bytes": 61611940
+          "bytes": 61612711
         },
         {
           "url": "https://privacy-frames.github.io/apps/stackedit/",
           "status": "Installed StackEdit.",
-          "installationElapsedMs": 1920.1368159999984,
+          "installationElapsedMs": 1353.6834970000054,
           "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/stackedit.uris",
           "capture": {
             "additionalResources": [

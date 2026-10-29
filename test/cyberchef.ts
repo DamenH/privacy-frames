@@ -46,13 +46,13 @@ try {
           errors,
         };
         let finalWorkers: ReturnType<typeof observeCyberChefWorkers> | undefined;
+        let app = manager;
         const failedTasks: string[] = [];
         const progress: unknown[] = [];
         row.progress = progress;
         row.failedTasks = failedTasks;
         receipt.results.push(row);
         try {
-          let app = manager;
           let workers = observeCyberChefWorkers(app);
           if (mode === 'standalone') {
             const response = await app.goto(source, {
@@ -156,6 +156,15 @@ try {
         } catch (error) {
           failures++;
           row.failure = error instanceof Error ? error.stack : String(error);
+          row.failureState = await app
+            .evaluate(() => ({
+              ready: document.readyState,
+              search: document.querySelector<HTMLInputElement>('#search')?.value,
+              results: document.querySelectorAll('#search-results .operation').length,
+              recipe: document.querySelector('#rec-list')?.textContent?.slice(0, 500),
+              editors: document.querySelectorAll('[contenteditable=true]').length,
+            }))
+            .catch(() => null);
         } finally {
           if (finalWorkers)
             row.workers = {

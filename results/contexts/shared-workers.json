@@ -1,9 +1,9 @@
 {
   "provenance": {
-    "capturedAt": "2026-10-29T10:38:18.617Z",
-    "revision": "97f2b835609eedc95c9f52a470c7c32046f1b5fb",
+    "capturedAt": "2026-10-29T21:52:26.951Z",
+    "revision": "8119a2381a733c1f281799aa07f52e981f27bb8c",
     "dirty": true,
-    "sourceSHA256": "c5f450536309c213b11297f006363d332a5cafc6d250fc871b89b76c87586b2b",
+    "sourceSHA256": "1a9e4cdd7d60c57dd0ca504bf6f4e0004f55a8d35dd1c619e2a79ca2c60b2af1",
     "runner": "test/shared-worker-contexts.ts",
     "runnerSHA256": "599a1a789c92740a16e089cb109379264e7ca422ec6a5f965eb2f7430c59576b",
     "publisherRevision": "f5de28d798237921e7d83467e9fa399dbb141b25",
@@ -12,31 +12,31 @@
       "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
       "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
       "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
-      "dist-manager/manager.js": "ff7959705803e7d8ceb993b66ced20f929f156ce5169253081dc23a4f9c4581e",
+      "dist-manager/manager.js": "e623333e57ba30b0359bd8548e97efc428534541ccad53316ac07656e7f8d015",
       "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
       "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
       "dist-manager/report.html": "c47e59c6031da65c478b2444bf9240ab680908a21243255a9ffd663e8617f04b",
-      "dist-manager/sw.js": "458c25fa30067bf812505d86717c6c4bfe13481c19af3207a8a6eb11a2b57cc3",
+      "dist-manager/sw.js": "f915f725f80f355f42e5142a640f573961dd660dbf5e9cda67d35390f8ef5222",
       "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
       "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
       "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
-      "dist-runtime/document-guard.js": "26663fb7793898ea8a740cbe0dd714791429db8ac11eeb3cada1068e3bc8b94b",
-      "dist-runtime/guard.js": "2d9003e4617ae952f28358d1aae5172c8f7d3cc2b9a0e38e5f3b87609a59ff09",
+      "dist-runtime/document-guard.js": "f100383579ef7e022f881731fd22a1e783116f8f956a3d351f27bff6aeb5ca63",
+      "dist-runtime/guard.js": "ed0fc364374d626deef0b459575bf94d1d46bc4d73d436f53f7f9d19e5746d6a",
       "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
       "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
-      "dist-runtime/publisher-worker-guard.js": "16278c8706a3c527b7fdf59aa6672f25fc0836719b221468712a1643a4c42576",
+      "dist-runtime/publisher-worker-guard.js": "33645f9692b1dc220b61e25efcb74550b4518daa329d92b4ff8856d745179b95",
       "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
       "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
       "dist-runtime/report.html": "c47e59c6031da65c478b2444bf9240ab680908a21243255a9ffd663e8617f04b",
-      "dist-runtime/shared-worker-guard.js": "ab52741a5a63acf5b26ea53c2db111c32df61dcc1fae4beaf9e0893ce4a0c5f9",
-      "dist-runtime/sw.js": "acdd43232496e96b2a4b9827914345f5755a8e080fc24935682ed35b2fe622d3",
-      "dist-runtime/worker-guard.js": "c40e3e15df30ee45881bc461b2626a9c21f62348dffa55607fc86cf818af868e",
-      "dist-runtime/worklet-guard.js": "42d5d3f373a61870a682ac7eb7522ce7ab4236cb9b70acef4ef9e602bfd4561b",
+      "dist-runtime/shared-worker-guard.js": "9a5ae6f6fd30e6f95878f6ebe8c3dc06446112a901f9de7f7762528e0ff6fbeb",
+      "dist-runtime/sw.js": "f778fd8b7102b9afd21ffcb9b48c429d8e8f3aab085e70a3b9f800ecc73fee26",
+      "dist-runtime/worker-guard.js": "c78d75e366b0e4bf91d724a3c0c7516ce511be09a19cc191f2eeee5fcae60c0e",
+      "dist-runtime/worklet-guard.js": "e35a63bd6e91cd979495882ef5683b144d76159b6dbad5003b710d7a1a15c6b6",
       "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
       "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
-      "dist-installation/installation.js": "3ab0f84a466c65c6f407b7b6972fb00ae1d286627a9c9aaabd0268e4d78c1db3"
+      "dist-installation/installation.js": "546d1db9d8ff74cd2a7e98c72aa7d30117321dfeffa1109fe5fb259524a3f264"
     }
   },
   "browsers": [
@@ -329,8 +329,8 @@
         }
       },
       "newIdentity": {
-        "key": "privacy-shared-v1:[\"first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959\",\"504c27be-9444-4456-8bc9-08239d6a85c0\",\"http://127.0.0.1:4352/shared.js\",\"classic\",\"state\"]",
-        "generation": "504c27be-9444-4456-8bc9-08239d6a85c0"
+        "key": "privacy-shared-v1:[\"first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959\",\"e50e5da5-fe6d-4d11-adce-fd17a65438b3\",\"http://127.0.0.1:4352/shared.js\",\"classic\",\"state\"]",
+        "generation": "e50e5da5-fe6d-4d11-adce-fd17a65438b3"
       },
       "unaffectedOther": {
         "count": 2,
@@ -648,8 +648,8 @@
         }
       },
       "newIdentity": {
-        "key": "privacy-shared-v1:[\"first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959\",\"2b1044b9-c609-4478-afd4-2f8f282e8475\",\"http://127.0.0.1:4352/shared.js\",\"classic\",\"state\"]",
-        "generation": "2b1044b9-c609-4478-afd4-2f8f282e8475"
+        "key": "privacy-shared-v1:[\"first-1337f91e7ba8a7a25304d6450540f0f9d4404889323debe51e2f90e2062d0959\",\"e92a733e-ef95-43b5-8ab9-1a5cdc68d414\",\"http://127.0.0.1:4352/shared.js\",\"classic\",\"state\"]",
+        "generation": "e92a733e-ef95-43b5-8ab9-1a5cdc68d414"
       },
       "unaffectedOther": {
         "count": 2,
