@@ -135,7 +135,7 @@ export async function servers(options: { receiver?: boolean } = {}) {
         if (port === 4218 && relative === '/review/sw.js') {
           response.setHeader('Content-Type', 'text/javascript');
           response.end(
-            "self.publisherNamespace = 42; if (self !== globalThis || self.publisherNamespace !== 42 || ['postMessage', 'navigator', 'Worker', 'importScripts'].some(name => name in self)) throw new Error('Invalid preparation globals'); addEventListener('install', event => event.waitUntil(skipWaiting())); addEventListener('activate', event => event.waitUntil(clients.claim()));",
+            "throw new Error('Unreferenced publisher code must not execute');",
           );
           return;
         }

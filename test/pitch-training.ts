@@ -1,11 +1,13 @@
 import { launch } from './browser-profile.ts';
 import assert from 'node:assert/strict';
-import { writeFile, mkdtemp, rm } from 'node:fs/promises';
+import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { chromium, firefox } from 'playwright';
 import { servers } from './server.ts';
+import { provideResourceList } from './resource-list-input.ts';
+import { parseResourceList } from '../src/installation/resource-list.ts';
 const temporary = await mkdtemp(join(tmpdir(), 'pf-audio-')),
   tone = join(temporary, '220hz.wav');
 const frames = 44100 * 4,
@@ -68,6 +70,14 @@ try {
       resourceListUsed = (await manager.locator('#resource-list-url').count())
         ? await manager.locator('#resource-list-url').inputValue()
         : null;
+      if (!resourceListUsed) {
+        const list = await readFile(
+          new URL('../dist-examples/resource-lists/pitch-training.uris', import.meta.url),
+          'utf8',
+        );
+        await provideResourceList(manager, parseResourceList(list));
+        resourceListUsed = 'pasted:dist-examples/resource-lists/pitch-training.uris';
+      }
       const installationStarted = performance.now();
       try {
         await manager.locator('#install button').click();
@@ -147,7 +157,18 @@ try {
         'Original public URL installs without a host manifest or application source changes and renders Svelte UI',
       );
       const worker = await app.evaluate(async () => {
-        const registration = await navigator.serviceWorker.ready;
+        const registration = await new Promise<ServiceWorkerRegistration>(
+          (resolve, reject) => {
+            const timer = setTimeout(
+              () => reject(new Error('Application worker readiness timed out')),
+              30000,
+            );
+            navigator.serviceWorker.ready.then((registration) => {
+              clearTimeout(timer);
+              resolve(registration);
+            }, reject);
+          },
+        );
         let updateDenied = false;
         try {
           await registration.update();

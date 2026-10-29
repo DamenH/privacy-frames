@@ -8,29 +8,9 @@ import { isDataScript, isExecutableScriptType } from '../shared/policy.ts';
 import { compileDocumentContent } from '../runtime/contexts/document-content.ts';
 import { decodeDocumentDataURL } from '../shared/document-data.ts';
 
-export function cssReferences(text: string, base: string): string[] {
-  const urls: string[] = [];
-  for (const match of text.matchAll(
-    /url\(\s*(?:"([^"]*)"|'([^']*)'|([^\s)]*))\s*\)|@import\s+["']([^"']+)["']/gi,
-  )) {
-    const value = match[1] ?? match[2] ?? match[3] ?? match[4];
-    if (value && !/^(?:data:|blob:|#)/i.test(value)) urls.push(new URL(value, base).href);
-  }
-  return urls;
-}
-function absoluteCSS(text: string, base: string): string {
-  return text
-    .replace(/url\(\s*(?:"([^"]*)"|'([^']*)'|([^\s)]*))\s*\)/gi, (whole, a, b, c) => {
-      const value: string = a ?? b ?? c;
-      return /^(?:data:|blob:|#)/i.test(value)
-        ? whole
-        : `url(${JSON.stringify(new URL(value, base).href)})`;
-    })
-    .replace(
-      /(@import\s+)["']([^"']+)["']/gi,
-      (_whole, prefix, value) => prefix + JSON.stringify(new URL(value, base).href),
-    );
-}
+import { prepareCSS } from './css.ts';
+export { cssReferences } from './css.ts';
+
 const element = (node: Tree.Node): node is Tree.Element => 'tagName' in node;
 const attribute = (node: Tree.Element, name: string) =>
   node.attrs.find((attr) => attr.name === name)?.value;
@@ -196,8 +176,9 @@ function prepareSource(
             attr.value = new URL(attr.value, currentBase).href;
         }
         if (attr.name === 'style') {
-          attr.value = absoluteCSS(attr.value, currentBase);
-          cssReferences(attr.value, currentBase).forEach((url) => add(url, currentBase));
+          const css = prepareCSS(attr.value, currentBase, 'declarationList');
+          attr.value = css.text;
+          css.urls.forEach((url) => add(url, currentBase));
         }
       }
       if (['iframe', 'object'].includes(child.tagName)) {
@@ -284,10 +265,9 @@ function prepareSource(
       if (child.tagName === 'style')
         for (const node of child.childNodes)
           if ('value' in node) {
-            node.value = absoluteCSS(node.value, currentBase);
-            cssReferences(node.value, currentBase).forEach((url) =>
-              add(url, currentBase),
-            );
+            const css = prepareCSS(node.value, currentBase);
+            node.value = css.text;
+            css.urls.forEach((url) => add(url, currentBase));
           }
       walk(child, currentBase);
       if ('content' in child) walk(child.content as Tree.DocumentFragment, currentBase);

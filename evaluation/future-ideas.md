@@ -14,28 +14,34 @@ the browser enforce those distinctions. They would also change hosting,
 service-worker registration and management communication.
 
 The manager now coordinates installation on a separate origin and serializes
-sessions across its tabs. Preparation downloads resources and may run restricted
-publisher precaching. Interactive execution of the application interface remains
-future work.
+sessions across its tabs. Installation downloads declared resources and optional URL lists without running
+publisher code. Interactive resource discovery can be provided by a separate tool.
 
-## Interactive preparation and updates
+## Resource-list recorder
 
-A future preparation session could run an application with network access and
-exercise its features to discover additional resources. Its output would contain
-resource bytes and metadata. JavaScript memory, live DOM objects, workers and
-connections would not transfer; the confined application would start afresh.
+A separate tool could open an application in an ordinary browser and record
+successful resource downloads while the user exercises it. Dynamically
+constructed request URLs would be observed after the application constructs them.
+The tool would deduplicate downloadable HTTP resource URLs and export the same
+plain URL list accepted by the installer. Maintainers or third parties could
+publish recordings for the workflows they support.
 
-Preparation must remain separate from runtime user data, including during
-updates. Data migration would run inside confinement. Reusing a preparation origin
-would require ending surviving contexts and dealing with persistent storage and
-service workers. One active session simplifies capture ownership but does not
-provide that cleanup.
+The recorder is optional tooling outside the host. It can use browser automation
+or browser network instrumentation; the installer needs no knowledge of loaders
+or recording sessions. Incomplete recordings leave resources unavailable during
+confined execution. A recording cannot grant network fallback or bypass admission.
 
-A web app cannot inspect arbitrary response bodies merely by opening another
-origin. Interactive capture needs control of the preparation environment and
-CORS-readable resources. Publisher service workers may also compete with capture.
-Exercising selected features would still leave unvisited code paths that request
-uncaptured resources later.
+The tool should distinguish public downloads from authenticated responses,
+application-generated responses and temporary Blob URLs. Recording requests does
+not transfer running JavaScript state. Listed resources still need to be readable
+by the credential-free installer, and the application starts afresh in confinement.
+
+## Updates
+
+Updates would collect a new resource package separately from runtime user data.
+Private data migration would run inside confinement. The current implementation
+requires reinstalling resource packages and keeps private application storage
+separate.
 
 ## Prototype compatibility and runtime state
 

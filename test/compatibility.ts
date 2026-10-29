@@ -12,6 +12,9 @@ const server = deployed ? { close: async () => {} } : await servers(),
 const documentURL =
   process.env.DOCUMENT_URL || 'http://127.0.0.1:4218/document/index.html';
 const articleURL = 'https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html';
+const notesURL =
+  process.env.NOTES_URL ||
+  (deployed ? 'https://privacy-frames.github.io/apps/notes/' : 'http://127.0.0.1:4212/');
 const includeArticle = process.env.LIVE_ARTICLE === '1';
 try {
   for (const [name, engine] of Object.entries({ chromium, firefox })) {
@@ -160,7 +163,8 @@ try {
       const config = await page.evaluate(
         async () => await (await fetch('./config.json')).json(),
       );
-      const notes = config.examples.find((example) => example.name === 'Notebook');
+      const notes = config.examples.find((example) => example.url === notesURL);
+      assert(notes, 'Configured notes publisher is missing: ' + notesURL);
       await install(notes.url);
       const note = await open('notes');
       await note.waitForFunction(() =>
