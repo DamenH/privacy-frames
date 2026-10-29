@@ -1,0 +1,296 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-29T15:57:49.721Z",
+    "revision": "1a78033b48a64b72cd21b4467b96e7c7eba6a2f1",
+    "runnerSHA256": "338e86ac0334c3d2515a7f9dff781564859c25688b63dc5eec08e86fa81011df",
+    "dirty": true,
+    "scope": "Isolated actual native engine spike; no production artifacts built or loaded."
+  },
+  "browser": "153.0.8010.12",
+  "flags": [
+    "--js-flags=--harmony-shadow-realm",
+    "--enable-blink-features=ShadowRealm"
+  ],
+  "executable": "/home/damen/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
+  "systemRegisterProof": {
+    "loaderVersion": "systemjs@6.15.1",
+    "loaderBytes": 25321,
+    "loaderLines": 745,
+    "loaderSHA256": "7086ad72cf430583e0d4720b3a327261c99c633083b58c80ed58b0c3b8509f4a",
+    "compilerVersion": "6.0.3",
+    "compilerBytes": 9144216,
+    "compilerLocation": "Node fixture preparation only; not shipped in browser or proposed as qualified production compiler",
+    "compiledSourceBytes": 3294,
+    "boundary": "Guest module graphs, namespaces, cycles, TLA and promises remain guest-local; host source and resolution hooks accept and return strings only. Both adapters run the same loader source and hooks."
+  },
+  "invocation": "Actual HTTP document parser creates classic/module bootstrap scripts; native loading calls do not originate in page.evaluate or CDP.",
+  "origin": "http://127.0.0.1:43049",
+  "results": [
+    {
+      "case": "shared-native",
+      "crashed": false,
+      "errors": [],
+      "stages": [],
+      "requestTrace": [
+        "/?case=shared-native",
+        "/bootstrap.js?case=shared-native"
+      ],
+      "result": {
+        "backend": "native",
+        "requests": [
+          "http://127.0.0.1:43049/module.js",
+          "http://127.0.0.1:43049/cycle-a.js",
+          "http://127.0.0.1:43049/cycle-b.js",
+          "http://127.0.0.1:43049/await.js",
+          "http://127.0.0.1:43049/dynamic.js",
+          "http://127.0.0.1:43049/early-a.js",
+          "http://127.0.0.1:43049/early-b.js",
+          "http://127.0.0.1:43049/unadmitted.js"
+        ],
+        "value": {
+          "first": 1,
+          "increment": 2,
+          "live": 2,
+          "moduleIdentity": true,
+          "namespaceObject": "object",
+          "identity": "http://127.0.0.1:43049/module.js",
+          "cycle": 5,
+          "awaited": 42,
+          "dynamic": 2,
+          "earlyCycle": 42,
+          "denied": true,
+          "guestGlobals": "undefined:undefined"
+        }
+      }
+    },
+    {
+      "case": "shared-membrane",
+      "crashed": false,
+      "errors": [],
+      "stages": [],
+      "requestTrace": [
+        "/?case=shared-membrane",
+        "/bootstrap.js?case=shared-membrane"
+      ],
+      "result": {
+        "backend": "membrane",
+        "requests": [
+          "http://127.0.0.1:43049/module.js",
+          "http://127.0.0.1:43049/cycle-a.js",
+          "http://127.0.0.1:43049/cycle-b.js",
+          "http://127.0.0.1:43049/await.js",
+          "http://127.0.0.1:43049/dynamic.js",
+          "http://127.0.0.1:43049/early-a.js",
+          "http://127.0.0.1:43049/early-b.js",
+          "http://127.0.0.1:43049/unadmitted.js"
+        ],
+        "value": {
+          "first": 1,
+          "increment": 2,
+          "live": 2,
+          "moduleIdentity": true,
+          "namespaceObject": "object",
+          "identity": "http://127.0.0.1:43049/module.js",
+          "cycle": 5,
+          "awaited": 42,
+          "dynamic": 2,
+          "earlyCycle": 42,
+          "denied": true,
+          "guestGlobals": "object:function"
+        }
+      }
+    },
+    {
+      "case": "native-control",
+      "crashed": false,
+      "errors": [],
+      "stages": [],
+      "requestTrace": [
+        "/?case=native-control",
+        "/bootstrap.js?case=native-control",
+        "/module.js",
+        "/favicon.ico",
+        "/cycle-a.js",
+        "/cycle-b.js",
+        "/await.js",
+        "/dynamic.js",
+        "/early-a.js",
+        "/early-b.js"
+      ],
+      "result": {
+        "read": 1,
+        "increment": 2,
+        "live": 2,
+        "identity": "http://127.0.0.1:43049/module.js",
+        "cycle": 5,
+        "awaited": 42,
+        "dynamic": 2,
+        "earlyCycle": 42,
+        "namespaceObject": "object"
+      }
+    },
+    {
+      "case": "native-classic-control",
+      "crashed": false,
+      "errors": [],
+      "stages": [],
+      "requestTrace": [
+        "/?case=native-classic-control",
+        "/scope-first.js",
+        "/scope-second.js",
+        "/bootstrap.js?case=native-classic-control"
+      ],
+      "result": {
+        "lexical": 1,
+        "constant": 2,
+        "variable": 3,
+        "strictVariable": 5,
+        "lexicalOwn": false,
+        "variableOwn": true,
+        "order": "first,microtask,second"
+      }
+    },
+    {
+      "case": "evaluate",
+      "crashed": false,
+      "errors": [],
+      "stages": [],
+      "requestTrace": [
+        "/?case=evaluate",
+        "/bootstrap.js?case=evaluate"
+      ],
+      "result": {
+        "evaluations": [
+          {
+            "source": "let lexical=1;void 0"
+          },
+          {
+            "source": "typeof lexical",
+            "result": "undefined"
+          },
+          {
+            "source": "const constant=2;void 0"
+          },
+          {
+            "source": "typeof constant",
+            "result": "undefined"
+          },
+          {
+            "source": "var variable=3;void 0"
+          },
+          {
+            "source": "variable",
+            "result": 3
+          },
+          {
+            "source": "Object.hasOwn(globalThis,\"variable\")",
+            "result": true
+          },
+          {
+            "source": "Object.hasOwn(globalThis,\"lexical\")",
+            "result": false
+          },
+          {
+            "source": "let lexical=4;lexical",
+            "result": 4
+          },
+          {
+            "source": "\"use strict\";var strictVariable=5;void 0"
+          },
+          {
+            "source": "typeof strictVariable",
+            "result": "undefined"
+          },
+          {
+            "source": "var variable=6;variable",
+            "result": 6
+          },
+          {
+            "source": "globalThis.sequence=[];void 0"
+          },
+          {
+            "source": "sequence.push(\"first\");Promise.resolve().then(()=>sequence.push(\"microtask\"));void 0"
+          },
+          {
+            "source": "sequence.push(\"second\");sequence.join(\",\")",
+            "result": "first,second"
+          },
+          {
+            "source": "[typeof document,typeof fetch,typeof structuredClone,typeof Worker,typeof URL,typeof setTimeout].join(\",\")",
+            "result": "undefined,undefined,function,undefined,function,undefined"
+          }
+        ]
+      }
+    },
+    {
+      "case": "importValue-classic",
+      "crashed": true,
+      "errors": [
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:43049/?case=importValue-classic\", waiting until \"domcontentloaded\"\u001b[22m\n"
+      ],
+      "stages": [
+        "calling native importValue"
+      ],
+      "requestTrace": [
+        "/?case=importValue-classic",
+        "/bootstrap.js?case=importValue-classic"
+      ]
+    },
+    {
+      "case": "importValue-module",
+      "crashed": true,
+      "errors": [
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:43049/?case=importValue-module\", waiting until \"domcontentloaded\"\u001b[22m\n"
+      ],
+      "stages": [
+        "calling native importValue"
+      ],
+      "requestTrace": [
+        "/?case=importValue-module",
+        "/bootstrap.js?case=importValue-module"
+      ]
+    },
+    {
+      "case": "importValue-data",
+      "crashed": true,
+      "errors": [
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:43049/?case=importValue-data\", waiting until \"domcontentloaded\"\u001b[22m\n"
+      ],
+      "stages": [
+        "calling native importValue"
+      ],
+      "requestTrace": [
+        "/?case=importValue-data",
+        "/bootstrap.js?case=importValue-data"
+      ]
+    },
+    {
+      "case": "guest-import-classic",
+      "crashed": true,
+      "errors": [
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:43049/?case=guest-import-classic\", waiting until \"domcontentloaded\"\u001b[22m\n"
+      ],
+      "stages": [
+        "calling guest import"
+      ],
+      "requestTrace": [
+        "/?case=guest-import-classic",
+        "/bootstrap.js?case=guest-import-classic"
+      ]
+    },
+    {
+      "case": "guest-import-module",
+      "crashed": true,
+      "errors": [
+        "Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:43049/?case=guest-import-module\", waiting until \"domcontentloaded\"\u001b[22m\n"
+      ],
+      "stages": [
+        "calling guest import"
+      ],
+      "requestTrace": [
+        "/?case=guest-import-module",
+        "/bootstrap.js?case=guest-import-module"
+      ]
+    }
+  ]
+}

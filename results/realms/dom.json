@@ -1,0 +1,64 @@
+{
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "result": {
+        "clicked": true,
+        "sameTarget": true,
+        "sameThis": true,
+        "windowIdentity": true,
+        "width": 120,
+        "nodeIdentity": true,
+        "documentIdentity": true,
+        "reentrant": true
+      },
+      "revoked": {
+        "denied": true,
+        "hostPrototypeUnchanged": true,
+        "hostArrayUnaffected": true
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "result": {
+        "clicked": true,
+        "sameTarget": true,
+        "sameThis": true,
+        "windowIdentity": true,
+        "width": 120,
+        "nodeIdentity": true,
+        "documentIdentity": true,
+        "reentrant": true
+      },
+      "revoked": {
+        "denied": true,
+        "hostPrototypeUnchanged": true,
+        "hostArrayUnaffected": true
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "result": {
+        "clicked": true,
+        "sameTarget": true,
+        "sameThis": true,
+        "windowIdentity": true,
+        "width": 120,
+        "nodeIdentity": true,
+        "documentIdentity": true,
+        "reentrant": true
+      },
+      "revoked": {
+        "denied": true,
+        "hostPrototypeUnchanged": true,
+        "hostArrayUnaffected": true
+      }
+    }
+  ]
+}

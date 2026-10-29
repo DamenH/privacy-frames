@@ -1,0 +1,85 @@
+{
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "separate": true,
+      "objectRejected": true,
+      "callbackValue": 42,
+      "callbackObjectRejected": true,
+      "globals": {
+        "document": "undefined",
+        "window": "undefined",
+        "fetch": "undefined",
+        "Worker": "undefined",
+        "WebSocket": "undefined",
+        "RTCPeerConnection": "undefined",
+        "parent": "undefined",
+        "opener": "undefined",
+        "location": "undefined",
+        "WebAssembly": "object",
+        "structuredClone": "function"
+      },
+      "documentDescriptor": null,
+      "stored": "hello",
+      "revoked": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "separate": true,
+      "objectRejected": true,
+      "callbackValue": 42,
+      "callbackObjectRejected": true,
+      "globals": {
+        "document": "object",
+        "window": "object",
+        "fetch": "function",
+        "Worker": "undefined",
+        "WebSocket": "undefined",
+        "RTCPeerConnection": "undefined",
+        "parent": "object",
+        "opener": "object",
+        "location": "object",
+        "WebAssembly": "object",
+        "structuredClone": "function"
+      },
+      "documentDescriptor": {
+        "configurable": false,
+        "accessor": true
+      },
+      "stored": "hello",
+      "revoked": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "separate": true,
+      "objectRejected": true,
+      "callbackValue": 42,
+      "callbackObjectRejected": true,
+      "globals": {
+        "document": "object",
+        "window": "object",
+        "fetch": "function",
+        "Worker": "function",
+        "WebSocket": "function",
+        "RTCPeerConnection": "function",
+        "parent": "object",
+        "opener": "object",
+        "location": "object",
+        "WebAssembly": "object",
+        "structuredClone": "function"
+      },
+      "documentDescriptor": {
+        "configurable": false,
+        "accessor": true
+      },
+      "stored": "hello",
+      "revoked": true
+    }
+  ]
+}

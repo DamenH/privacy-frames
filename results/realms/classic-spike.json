@@ -1,0 +1,4396 @@
+{
+  "provenance": {
+    "revision": "1a78033b48a64b72cd21b4467b96e7c7eba6a2f1",
+    "capturedAt": "2026-10-29T16:15:19.850Z",
+    "runnerSHA256": "d3ef298aaa8f6c96bbd910ced55d09e9db6d0310c028377617b0055133090314",
+    "scope": "Classic-script semantic research, isolated realm adapters. Candidate lowerings are deliberately unqualified; mismatches are recorded, not accepted as compatibility."
+  },
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "lexicals-and-reflection",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "lexicals-and-reflection",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          true,
+          true,
+          true
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "lexicals-and-reflection",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "lexicals-and-reflection",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "forward-closure",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "forward-closure",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [],
+        "value": 7
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "forward-closure",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "forward-closure",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [],
+        "value": 7
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "temporal-dead-zone",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "temporal-dead-zone",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "undefined"
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "temporal-dead-zone",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "temporal-dead-zone",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "constant-assignment",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "constant-assignment",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "allowed"
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "constant-assignment",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "constant-assignment",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          true,
+          2
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          true,
+          2
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "strict-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "strict-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "strict-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          4,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "strict-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "destructuring",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "destructuring",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          true
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "destructuring",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "destructuring",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "UnsupportedPattern",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "direct-eval-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "direct-eval-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "direct-eval-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "direct-eval-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "direct-eval-local-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "direct-eval-local-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "direct-eval-local-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "direct-eval-local-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "indirect-eval-global-property",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "indirect-eval-global-property",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "indirect-eval-global-property",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "indirect-eval-global-property",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "Function-construction-native-control",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError:no access"
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "Function-construction-native-control",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError:no access"
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "Function-construction-native-control",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError:no access"
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "Function-construction-native-control",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError:no access"
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "Function-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "Function-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "Function-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "Function-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [],
+        "value": 13
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [],
+        "value": 13
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "dynamic-classic-script",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "dynamic-classic-script",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [],
+        "value": 17
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "dynamic-classic-script",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "dynamic-classic-script",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [],
+        "value": 17
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "failed-script-retains-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "TypeError",
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "failed-script-retains-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "failed-script-retains-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "failed-script-retains-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "sloppy-block-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "sloppy-block-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "sloppy-block-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "sloppy-block-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "TypeError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 1
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "native",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "lexicals-and-reflection",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "lexicals-and-reflection",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          true,
+          true,
+          true
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "lexicals-and-reflection",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "lexicals-and-reflection",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "forward-closure",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "forward-closure",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [],
+        "value": 7
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "forward-closure",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "forward-closure",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [],
+        "value": 7
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "temporal-dead-zone",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "temporal-dead-zone",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "undefined"
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "temporal-dead-zone",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "temporal-dead-zone",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "constant-assignment",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "constant-assignment",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "allowed"
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "constant-assignment",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "constant-assignment",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          true,
+          2
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          true,
+          2
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "strict-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "strict-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "strict-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          4,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "strict-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "destructuring",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "destructuring",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          true
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "destructuring",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "destructuring",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "UnsupportedPattern",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "direct-eval-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "direct-eval-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "direct-eval-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "direct-eval-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "direct-eval-local-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "direct-eval-local-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "direct-eval-local-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "direct-eval-local-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "indirect-eval-global-property",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": 23
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "indirect-eval-global-property",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": 23
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "indirect-eval-global-property",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": 23
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "indirect-eval-global-property",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": 23
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "Function-construction-native-control",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": 24
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "Function-construction-native-control",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": 24
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "Function-construction-native-control",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": 24
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "Function-construction-native-control",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": 24
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": 9
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "Function-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "Function-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": 9
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "Function-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "Function-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": 9
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [],
+        "value": 13
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [],
+        "value": 13
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "dynamic-classic-script",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "dynamic-classic-script",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [],
+        "value": 17
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "dynamic-classic-script",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "dynamic-classic-script",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [],
+        "value": 17
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "failed-script-retains-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "Error",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "failed-script-retains-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "failed-script-retains-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "failed-script-retains-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "sloppy-block-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "sloppy-block-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "sloppy-block-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "sloppy-block-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 1
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "backend": "membrane",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "lexicals-and-reflection",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "lexicals-and-reflection",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          true,
+          true,
+          true
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "lexicals-and-reflection",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "lexicals-and-reflection",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          3,
+          5,
+          "function",
+          false,
+          false,
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "forward-closure",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "forward-closure",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [],
+        "value": 7
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "forward-closure",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "forward-closure",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 7
+      },
+      "actual": {
+        "errors": [],
+        "value": 7
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "temporal-dead-zone",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "temporal-dead-zone",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "undefined"
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "temporal-dead-zone",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "temporal-dead-zone",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "ReferenceError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "constant-assignment",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "constant-assignment",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "allowed"
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "constant-assignment",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "constant-assignment",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "actual": {
+        "errors": [],
+        "value": "TypeError"
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          true,
+          2
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          true,
+          2
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "redeclaration-rejects-whole-script",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "actual": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": [
+          false,
+          1
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "strict-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "strict-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "strict-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          4,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "strict-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          4,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "destructuring",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "destructuring",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          true
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "destructuring",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "destructuring",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          11,
+          1,
+          "2,3",
+          false
+        ]
+      },
+      "actual": {
+        "errors": [
+          "UnsupportedPattern",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "direct-eval-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "direct-eval-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "direct-eval-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          12,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "direct-eval-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          12,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "direct-eval-local-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "direct-eval-local-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "direct-eval-local-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "direct-eval-local-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 2
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "indirect-eval-global-property",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": 23
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "indirect-eval-global-property",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": 23
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "indirect-eval-global-property",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": 23
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "indirect-eval-global-property",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 23
+      },
+      "actual": {
+        "errors": [],
+        "value": 23
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "Function-construction-native-control",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": 24
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "Function-construction-native-control",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": 24
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "Function-construction-native-control",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": 24
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "Function-construction-native-control",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 24
+      },
+      "actual": {
+        "errors": [],
+        "value": 24
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": 9
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "indirect-eval-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "Function-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "Function-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": 9
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "Function-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "Function-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [],
+        "value": 9
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "recovered-Function-global-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 9
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [],
+        "value": 13
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [],
+        "value": 13
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "closure-observes-future-eval-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 13
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "dynamic-classic-script",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "dynamic-classic-script",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [],
+        "value": 17
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "dynamic-classic-script",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "dynamic-classic-script",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": 17
+      },
+      "actual": {
+        "errors": [],
+        "value": 17
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "failed-script-retains-lexical",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "Error",
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "failed-script-retains-lexical",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "failed-script-retains-lexical",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "failed-script-retains-lexical",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "actual": {
+        "errors": [
+          "Error"
+        ],
+        "value": 18
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "sloppy-block-global-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "sloppy-block-global-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "matches": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "sloppy-block-global-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [],
+        "value": [
+          19,
+          false
+        ]
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "sloppy-block-global-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [],
+        "value": [
+          19,
+          true
+        ]
+      },
+      "actual": {
+        "errors": [
+          "ReferenceError"
+        ],
+        "value": null
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "evaluate",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 1
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "top-level-var",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "continuation",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "backend": "membrane",
+      "case": "lexical-conflicts-with-earlier-var",
+      "strategy": "scoped-cells",
+      "expected": {
+        "errors": [
+          "SyntaxError"
+        ],
+        "value": 1
+      },
+      "actual": {
+        "errors": [],
+        "value": 2
+      },
+      "matches": false
+    }
+  ]
+}

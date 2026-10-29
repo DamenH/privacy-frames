@@ -1,0 +1,12 @@
+{
+  "recordedAt": "2026-10-29T16:14:52.519444+00:00",
+  "hostRepository": "privacy-frames/host",
+  "remoteMain": "1a78033b48a64b72cd21b4467b96e7c7eba6a2f1",
+  "implementationSource": "97f2b835609eedc95c9f52a470c7c32046f1b5fb",
+  "recoveryTag": "pre-realm-runtime-2026-10-29",
+  "runtimePublisher": "234fba3b4469ca243d2208e22b90b62aedaebd25",
+  "installationPublisher": "5f460f4b8aca4c87f1512861e269108761ac46b2",
+  "appsPublisher": "f5de28d798237921e7d83467e9fa399dbb141b25",
+  "candidateBranch": "realm-runtime",
+  "deploymentChanged": false
+}

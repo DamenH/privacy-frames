@@ -1,0 +1,66 @@
+{
+  "testedAt": "2026-10-29T16:27:20.180Z",
+  "revision": "1a78033b48a64b72cd21b4467b96e7c7eba6a2f1",
+  "runnerSHA256": "d84889cb81cebc797b64e69a3e94093e3f89e84c00306a205471578b2b59dc52",
+  "scope": "First-milestone prerequisites only; passing would still require authority qualification, code reduction and full migration gates.",
+  "gates": {
+    "adapterBoundary": true,
+    "synchronousDOM": true,
+    "portableClassicSemantics": false,
+    "productionModuleCompiler": false,
+    "nativeGuestWasm": false,
+    "primitiveBufferCopy": true
+  },
+  "classicStrategies": {
+    "chromium/native/evaluate": {
+      "matching": 6,
+      "total": 19
+    },
+    "chromium/native/top-level-var": {
+      "matching": 7,
+      "total": 19
+    },
+    "chromium/native/continuation": {
+      "matching": 6,
+      "total": 19
+    },
+    "chromium/native/scoped-cells": {
+      "matching": 9,
+      "total": 19
+    },
+    "chromium/membrane/evaluate": {
+      "matching": 8,
+      "total": 19
+    },
+    "chromium/membrane/top-level-var": {
+      "matching": 12,
+      "total": 19
+    },
+    "chromium/membrane/continuation": {
+      "matching": 8,
+      "total": 19
+    },
+    "chromium/membrane/scoped-cells": {
+      "matching": 11,
+      "total": 19
+    },
+    "firefox/membrane/evaluate": {
+      "matching": 8,
+      "total": 19
+    },
+    "firefox/membrane/top-level-var": {
+      "matching": 12,
+      "total": 19
+    },
+    "firefox/membrane/continuation": {
+      "matching": 8,
+      "total": 19
+    },
+    "firefox/membrane/scoped-cells": {
+      "matching": 11,
+      "total": 19
+    }
+  },
+  "prerequisitesPassed": false,
+  "releaseQualification": "Not evaluated by this prerequisite runner"
+}

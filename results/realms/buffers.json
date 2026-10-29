@@ -1,0 +1,490 @@
+{
+  "provenance": {
+    "revision": "1a78033b48a64b72cd21b4467b96e7c7eba6a2f1",
+    "probeSHA256": "427fb7d5446ee818d04f757dc753de2bc87f9b60a63daf6ecd164dbd647810e0",
+    "node": "v26.2.0",
+    "scope": "Isolated milestone probe; no runtime build used"
+  },
+  "browser": "153.0.8010.12",
+  "flag": "--js-flags=--harmony-shadow-realm",
+  "method": "Native ShadowRealm; only primitives/callables cross its boundary. Base64 chunks copy bytes into destination-owned buffers.",
+  "heapScope": "Sampled main-isolate CDP heap/backing storage, not true process peak; worker memory excluded.",
+  "memory": [
+    {
+      "label": "initial",
+      "usedSize": 1049448,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 243
+    },
+    {
+      "label": "guest 65536",
+      "usedSize": 1057360,
+      "totalSize": 2097152,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 65779
+    },
+    {
+      "label": "guest and host copy 65536",
+      "usedSize": 1219364,
+      "totalSize": 2359296,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 196851
+    },
+    {
+      "label": "guest 1048576",
+      "usedSize": 1295196,
+      "totalSize": 2359296,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 1245427
+    },
+    {
+      "label": "guest and host copy 1048576",
+      "usedSize": 1791572,
+      "totalSize": 4456448,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 2490587
+    },
+    {
+      "label": "guest 4194304",
+      "usedSize": 1850316,
+      "totalSize": 4718592,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 6684891
+    },
+    {
+      "label": "guest and host copy 4194304",
+      "usedSize": 2024816,
+      "totalSize": 5767168,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 10944731
+    },
+    {
+      "label": "guest 16777216",
+      "usedSize": 2048652,
+      "totalSize": 5767168,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 27721947
+    },
+    {
+      "label": "guest and host copy 16777216",
+      "usedSize": 2065560,
+      "totalSize": 6815744,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 44564699
+    },
+    {
+      "label": "worker round trip copied back",
+      "usedSize": 2013724,
+      "totalSize": 6815744,
+      "embedderHeapUsedSize": 1384832,
+      "backingStorageSize": 46203109
+    }
+  ],
+  "policies": [
+    {
+      "policy": "none",
+      "url": "http://127.0.0.1:44025/?policy=none",
+      "csp": null,
+      "controls": {
+        "hostFunction": "object",
+        "hostWasm": {
+          "read": 201,
+          "originalDetached": 0,
+          "newBytes": 131072
+        },
+        "hostClone": {
+          "originalDetached": 0,
+          "cloneBytes": 16
+        },
+        "guestFunction": {
+          "Function": "TypeError: no access",
+          "structuredClone": "TypeError: no access",
+          "TextEncoder": "TypeError: no access",
+          "WebAssembly.Module": "TypeError: no access",
+          "eval": 4
+        },
+        "guestFactory": {
+          "worked": false,
+          "error": "TypeError: generated is not a function",
+          "directEval": 4,
+          "indirectExpressionType": "undefined",
+          "indirectSideEffect": false
+        },
+        "guestWasm": {
+          "worked": false,
+          "error": "CompileError: WebAssembly.Module(): Wasm code generation disallowed by embedder"
+        },
+        "guestMemory": {
+          "worked": true,
+          "originalDetached": 0,
+          "viewDetached": 0,
+          "newBytes": 131072,
+          "value": 71,
+          "guestBuffer": true
+        }
+      },
+      "guestClone": {
+        "worked": false,
+        "rendererCrashed": true,
+        "error": "Error: page.evaluate: Target crashed "
+      }
+    },
+    {
+      "policy": "explicit",
+      "url": "http://127.0.0.1:44025/?policy=explicit",
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval'; worker-src 'self'; img-src 'self' data:",
+      "controls": {
+        "hostFunction": "object",
+        "hostWasm": {
+          "read": 201,
+          "originalDetached": 0,
+          "newBytes": 131072
+        },
+        "hostClone": {
+          "originalDetached": 0,
+          "cloneBytes": 16
+        },
+        "guestFunction": {
+          "Function": "TypeError: no access",
+          "structuredClone": "TypeError: no access",
+          "TextEncoder": "TypeError: no access",
+          "WebAssembly.Module": "TypeError: no access",
+          "eval": 4
+        },
+        "guestFactory": {
+          "worked": false,
+          "error": "TypeError: generated is not a function",
+          "directEval": 4,
+          "indirectExpressionType": "undefined",
+          "indirectSideEffect": false
+        },
+        "guestWasm": {
+          "worked": false,
+          "error": "CompileError: WebAssembly.Module(): Wasm code generation disallowed by embedder"
+        },
+        "guestMemory": {
+          "worked": true,
+          "originalDetached": 0,
+          "viewDetached": 0,
+          "newBytes": 131072,
+          "value": 71,
+          "guestBuffer": true
+        }
+      },
+      "guestClone": {
+        "worked": false,
+        "rendererCrashed": true,
+        "error": "Error: page.evaluate: Target crashed "
+      }
+    },
+    {
+      "policy": "none",
+      "entry": "guest Promise callback",
+      "url": "http://127.0.0.1:44025/?policy=none",
+      "capabilities": {
+        "entry": "guest Promise callback",
+        "document": "undefined",
+        "window": "undefined",
+        "hostSampler": "undefined",
+        "constructors": {
+          "Function": "undefined",
+          "structuredClone": "undefined",
+          "TextEncoder": "undefined",
+          "WebAssembly.Module": "undefined",
+          "eval": 4
+        },
+        "factory": {
+          "worked": true,
+          "directEval": 4,
+          "nativeGuestFunction": true,
+          "nativeGuestObject": true,
+          "value": 73,
+          "ambient": "undefined",
+          "lexical": "undefined",
+          "constructed": 79,
+          "privateSentinel": 71
+        },
+        "wasm": {
+          "worked": false,
+          "error": "CompileError: WebAssembly.Module(): Wasm code generation disallowed by embedder"
+        },
+        "memory": {
+          "worked": true,
+          "originalDetached": 0,
+          "viewDetached": 0,
+          "newBytes": 131072,
+          "value": 71,
+          "guestBuffer": true
+        },
+        "asyncWasm": "CompileError: WebAssembly.instantiate(): Wasm code generation disallowed by embedder",
+        "callbackConstructor": "undefined"
+      },
+      "guestClone": {
+        "worked": false,
+        "rendererCrashed": true,
+        "error": "Error: page.evaluate: Target crashed "
+      }
+    },
+    {
+      "policy": "explicit",
+      "entry": "guest Promise callback",
+      "url": "http://127.0.0.1:44025/?policy=explicit",
+      "capabilities": {
+        "entry": "guest Promise callback",
+        "document": "undefined",
+        "window": "undefined",
+        "hostSampler": "undefined",
+        "constructors": {
+          "Function": "undefined",
+          "structuredClone": "undefined",
+          "TextEncoder": "undefined",
+          "WebAssembly.Module": "undefined",
+          "eval": 4
+        },
+        "factory": {
+          "worked": true,
+          "directEval": 4,
+          "nativeGuestFunction": true,
+          "nativeGuestObject": true,
+          "value": 73,
+          "ambient": "undefined",
+          "lexical": "undefined",
+          "constructed": 79,
+          "privateSentinel": 71
+        },
+        "wasm": {
+          "worked": false,
+          "error": "CompileError: WebAssembly.Module(): Wasm code generation disallowed by embedder"
+        },
+        "memory": {
+          "worked": true,
+          "originalDetached": 0,
+          "viewDetached": 0,
+          "newBytes": 131072,
+          "value": 71,
+          "guestBuffer": true
+        },
+        "asyncWasm": "CompileError: WebAssembly.instantiate(): Wasm code generation disallowed by embedder",
+        "callbackConstructor": "undefined"
+      },
+      "guestClone": {
+        "worked": false,
+        "rendererCrashed": true,
+        "error": "Error: page.evaluate: Target crashed "
+      }
+    }
+  ],
+  "progress": [
+    "buffer-spike: inventory {\"ArrayBuffer\":\"function\",\"SharedArrayBuffer\":\"undefined\",\"Uint8Array\":\"function\",\"Uint8ClampedArray\":\"function\",\"DataView\":\"function\",\"WebAssembly\":\"object\",\"structuredClone\":\"function\",\"Blob\":\"undefined\",\"File\":\"undefined\",\"Worker\":\"undefined\",\"MessageChannel\":\"undefined\",\"MessagePort\":\"undefined\",\"ReadableStream\":\"function\",\"TransformStream\":\"function\",\"OffscreenCanvas\":\"undefined\",\"ImageData\":\"undefined\",\"fetch\":\"undefined\",\"TextEncoder\":\"function\",\"TextDecoder\":\"function\",\"atob\":\"function\",\"btoa\":\"function\",\"performance\":\"undefined\",\"crypto\":\"undefined\",\"document\":\"undefined\",\"window\":\"undefined\",\"__realmHeapSample\":\"undefined\"}",
+    "buffer-spike: constructors {\"Function\":\"TypeError: no access\",\"structuredClone\":\"TypeError: no access\",\"TextEncoder\":\"TypeError: no access\",\"WebAssembly.Module\":\"TypeError: no access\",\"eval\":4}",
+    "buffer-spike: wasm {\"worked\":false,\"error\":\"CompileError: WebAssembly.Module(): Wasm code generation disallowed by embedder\"}"
+  ],
+  "result": {
+    "crossOriginIsolated": true,
+    "inventory": {
+      "ArrayBuffer": "function",
+      "SharedArrayBuffer": "undefined",
+      "Uint8Array": "function",
+      "Uint8ClampedArray": "function",
+      "DataView": "function",
+      "WebAssembly": "object",
+      "structuredClone": "function",
+      "Blob": "undefined",
+      "File": "undefined",
+      "Worker": "undefined",
+      "MessageChannel": "undefined",
+      "MessagePort": "undefined",
+      "ReadableStream": "function",
+      "TransformStream": "function",
+      "OffscreenCanvas": "undefined",
+      "ImageData": "undefined",
+      "fetch": "undefined",
+      "TextEncoder": "function",
+      "TextDecoder": "function",
+      "atob": "function",
+      "btoa": "function",
+      "performance": "undefined",
+      "crypto": "undefined",
+      "document": "undefined",
+      "window": "undefined",
+      "__realmHeapSample": "undefined"
+    },
+    "constructors": {
+      "Function": "TypeError: no access",
+      "structuredClone": "TypeError: no access",
+      "TextEncoder": "TypeError: no access",
+      "WebAssembly.Module": "TypeError: no access",
+      "eval": 4
+    },
+    "clone": {
+      "testedSeparately": true
+    },
+    "codecs": {
+      "guest": {
+        "toBase64": "function",
+        "setFromBase64": "function"
+      },
+      "host": {
+        "toBase64": "function",
+        "fromBase64": "function"
+      }
+    },
+    "factory": {
+      "worked": false,
+      "error": "TypeError: generated is not a function",
+      "directEval": 4,
+      "indirectExpressionType": "undefined",
+      "indirectSideEffect": false
+    },
+    "memory": {
+      "worked": true,
+      "originalDetached": 0,
+      "viewDetached": 0,
+      "newBytes": 131072,
+      "value": 71,
+      "guestBuffer": true
+    },
+    "wasm": {
+      "worked": false,
+      "error": "CompileError: WebAssembly.Module(): Wasm code generation disallowed by embedder"
+    },
+    "asyncWasm": "CompileError: WebAssembly.instantiate(): Wasm code generation disallowed by embedder",
+    "asyncCapabilities": {
+      "entry": "guest Promise callback",
+      "document": "undefined",
+      "window": "undefined",
+      "hostSampler": "undefined",
+      "constructors": {
+        "Function": "undefined",
+        "structuredClone": "undefined",
+        "TextEncoder": "undefined",
+        "WebAssembly.Module": "undefined",
+        "eval": 4
+      },
+      "factory": {
+        "worked": true,
+        "directEval": 4,
+        "nativeGuestFunction": true,
+        "nativeGuestObject": true,
+        "value": 73,
+        "ambient": "undefined",
+        "lexical": "undefined",
+        "constructed": 79,
+        "privateSentinel": 71
+      },
+      "wasm": {
+        "worked": false,
+        "error": "CompileError: WebAssembly.Module(): Wasm code generation disallowed by embedder"
+      },
+      "memory": {
+        "worked": true,
+        "originalDetached": 0,
+        "viewDetached": 0,
+        "newBytes": 131072,
+        "value": 71,
+        "guestBuffer": true
+      },
+      "asyncWasm": "CompileError: WebAssembly.instantiate(): Wasm code generation disallowed by embedder",
+      "callbackConstructor": "undefined"
+    },
+    "blocked": {
+      "rawBuffer": true,
+      "rawView": true,
+      "rawPromise": true,
+      "hostObjectArgument": true,
+      "hostObjectResult": true
+    },
+    "canvas": {
+      "pixels": [
+        201,
+        47,
+        89,
+        255
+      ],
+      "calls": 1,
+      "bytes": 4,
+      "source": "guest-native-typed-array"
+    },
+    "chunkBytes": 65536,
+    "sizes": [
+      {
+        "bytes": 65536,
+        "milliseconds": 0.12000000476837158,
+        "calls": 1,
+        "wireCharacters": 87384,
+        "correct": true
+      },
+      {
+        "bytes": 1048576,
+        "milliseconds": 1.5799999833106995,
+        "calls": 16,
+        "wireCharacters": 1398144,
+        "correct": true
+      },
+      {
+        "bytes": 4194304,
+        "milliseconds": 3.0049999952316284,
+        "calls": 64,
+        "wireCharacters": 5592576,
+        "correct": true
+      },
+      {
+        "bytes": 16777216,
+        "milliseconds": 8.925000011920929,
+        "calls": 256,
+        "wireCharacters": 22370304,
+        "correct": true
+      }
+    ],
+    "manualSizes": [
+      {
+        "bytes": 65536,
+        "milliseconds": 2.1399999856948853,
+        "calls": 1,
+        "wireCharacters": 87384,
+        "correct": true
+      },
+      {
+        "bytes": 1048576,
+        "milliseconds": 23.514999985694885,
+        "calls": 16,
+        "wireCharacters": 1398144,
+        "correct": true
+      },
+      {
+        "bytes": 4194304,
+        "milliseconds": 88.40500003099442,
+        "calls": 64,
+        "wireCharacters": 5592576,
+        "correct": true
+      },
+      {
+        "bytes": 16777216,
+        "milliseconds": 364.2699999809265,
+        "calls": 256,
+        "wireCharacters": 22370304,
+        "correct": true
+      }
+    ],
+    "worker": {
+      "bytes": 1048576,
+      "guestDetachment": {
+        "originalBytes": 0,
+        "viewBytes": 0,
+        "movedBytes": 1048576
+      },
+      "hostDetachedBytes": 0,
+      "workerDetachedBytes": 0,
+      "receivedBytes": 1048576,
+      "workerChecksum": 133693440,
+      "guestChecksum": 133693440,
+      "expectedChecksum": 133693440,
+      "copyToHostMs": 0.675000011920929,
+      "workerRoundTripMs": 12.564999997615814,
+      "copyToGuestMs": 0.800000011920929,
+      "outgoingCalls": 16,
+      "returnCalls": 16
+    }
+  }
+}

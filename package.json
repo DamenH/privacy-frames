@@ -30,9 +30,12 @@
     "test:publisher": "node test/publisher-store.ts && node test/cache-aliases.ts && node test/publisher-contexts.ts",
     "test:prototypes": "node test/prototype-confinement.ts",
     "test:history": "node test/application-history.ts && node test/launch-query.ts",
-    "test:worker-root-aliases": "node test/worker-root-aliases.ts"
+    "test:worker-root-aliases": "node test/worker-root-aliases.ts",
+    "test:realm-probes": "node test/realm-adapters.ts && node test/realm-dom.ts && node test/realm-loading-spike.ts && node test/realm-classic-spike.ts && node test/realm-buffer-spike.ts",
+    "test:realms": "npm run test:realm-probes && node test/realm-qualification.ts"
   },
   "dependencies": {
+    "@locker/near-membrane-dom": "0.19.1",
     "acorn": "8.19.0",
     "css-tree": "^3.2.1",
     "es-module-lexer": "^3.0.4",
