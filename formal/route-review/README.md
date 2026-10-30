@@ -47,9 +47,10 @@ row; it does not mean the member has a network effect. Claim links are manually
 selected, and the generator checks that they name existing claims. Unlinked rows
 remain `unverified`, even when their roles have been reviewed.
 
-This is a queue for 11 selected Webref specifications and two observed context
-classes. HTML and CSS algorithms, HTTP headers, browser UI, operating-system
-services, other specs, and additional execution contexts need separate inventories.
+This is a queue for 11 selected Webref specifications, with native observations
+from windows, dedicated workers, shared workers and service workers. HTML and
+CSS algorithms, HTTP headers, browser UI, operating-system services, other specs
+and additional execution contexts need separate inventories.
 Completing the queue would not show that the browser has no other channels.
 
 ## Reviewed routes
