@@ -1,0 +1,160 @@
+{
+  "scope": "Same-origin EventSource and sendBeacon in a prepared Window, with an independent receiver and a fixture service worker. Not installed-app lifecycle or worker coverage.",
+  "revision": "58a300ee4d76b7c86da21824f7957d3eb2468809",
+  "runnerSHA256": "74c45c5962800e83d67da0994cb8f1681bccb448d3ae88b88b9fdc93c72f3a89",
+  "bundleSHA256": "fc64ddd0bdb6157c692367065bb0c7d779100352598729604437d56635133e0b",
+  "sourceHashes": {
+    "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d",
+    "src/runtime/enforcement/effects.ts": "466c165e4ef9d82e2011c85cd2639e3f7e7152309c49fbb5c8962ed0fd1bb691",
+    "src/runtime/response-policy.ts": "f21946f76dd37233ea7e48dd969a59e09343315f3a044e4be66ae4324fb9efb2",
+    "scripts/trusted-policy.ts": "93cc9dffdee1683b74faa06251b4f8ab16eaf5294047b5783f156cb6417a5e36",
+    "package-lock.json": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed"
+  },
+  "completed": true,
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "observations": [
+        {
+          "phase": "native",
+          "kind": "eventsource",
+          "marker": "native-eventsource-967402d5-089a-4a14-a8fd-8d60935d1259",
+          "result": {
+            "result": "message"
+          },
+          "received": [
+            {
+              "url": "/sse?native-eventsource-967402d5-089a-4a14-a8fd-8d60935d1259",
+              "method": "GET",
+              "body": ""
+            }
+          ]
+        },
+        {
+          "phase": "native",
+          "kind": "beacon",
+          "marker": "native-beacon-efc06bd3-b067-4ef1-86c6-9646fb631a9d",
+          "result": {
+            "result": "true"
+          },
+          "received": [
+            {
+              "url": "/beacon?native-beacon-efc06bd3-b067-4ef1-86c6-9646fb631a9d",
+              "method": "POST",
+              "body": "native-beacon-efc06bd3-b067-4ef1-86c6-9646fb631a9d"
+            }
+          ]
+        },
+        {
+          "phase": "worker",
+          "kind": "eventsource",
+          "marker": "worker-eventsource-515987e2-9074-4c2c-abb5-663421a80191",
+          "result": {
+            "result": "error"
+          },
+          "received": []
+        },
+        {
+          "phase": "worker",
+          "kind": "beacon",
+          "marker": "worker-beacon-b78f337c-d00a-4065-bc80-4f750650f884",
+          "result": {
+            "result": "true"
+          },
+          "received": []
+        },
+        {
+          "phase": "prepared",
+          "kind": "eventsource",
+          "marker": "prepared-eventsource-295c8ec1-803d-4acd-b8c8-d39cd21fb34a",
+          "result": {
+            "result": "SecurityError"
+          },
+          "received": []
+        },
+        {
+          "phase": "prepared",
+          "kind": "beacon",
+          "marker": "prepared-beacon-e561a030-be43-455d-b678-04311a642720",
+          "result": {
+            "result": "SecurityError"
+          },
+          "received": []
+        }
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "observations": [
+        {
+          "phase": "native",
+          "kind": "eventsource",
+          "marker": "native-eventsource-eaea0a85-b47b-4344-b195-52de5295c56e",
+          "result": {
+            "result": "message"
+          },
+          "received": [
+            {
+              "url": "/sse?native-eventsource-eaea0a85-b47b-4344-b195-52de5295c56e",
+              "method": "GET",
+              "body": ""
+            }
+          ]
+        },
+        {
+          "phase": "native",
+          "kind": "beacon",
+          "marker": "native-beacon-e65a2aa8-500c-46bf-804e-6246bc8aec6c",
+          "result": {
+            "result": "true"
+          },
+          "received": [
+            {
+              "url": "/beacon?native-beacon-e65a2aa8-500c-46bf-804e-6246bc8aec6c",
+              "method": "POST",
+              "body": "native-beacon-e65a2aa8-500c-46bf-804e-6246bc8aec6c"
+            }
+          ]
+        },
+        {
+          "phase": "worker",
+          "kind": "eventsource",
+          "marker": "worker-eventsource-2a2a433e-9b65-4de1-ab84-f4a70cc1adc9",
+          "result": {
+            "result": "error"
+          },
+          "received": []
+        },
+        {
+          "phase": "worker",
+          "kind": "beacon",
+          "marker": "worker-beacon-56070b9c-f1d2-4d08-917d-9a5654e13de3",
+          "result": {
+            "result": "true"
+          },
+          "received": []
+        },
+        {
+          "phase": "prepared",
+          "kind": "eventsource",
+          "marker": "prepared-eventsource-b2f981cc-cde6-479c-a3ea-2c359e5d12b8",
+          "result": {
+            "result": "SecurityError"
+          },
+          "received": []
+        },
+        {
+          "phase": "prepared",
+          "kind": "beacon",
+          "marker": "prepared-beacon-88ee7dd5-71b2-4769-99b4-8e88343b5329",
+          "result": {
+            "result": "SecurityError"
+          },
+          "received": []
+        }
+      ]
+    }
+  ]
+}

@@ -74,6 +74,8 @@ same-origin connection when its denial is removed in an otherwise prepared windo
 The [publisher cache probe](cache-publisher.md) tests a native service-worker
 download and an installed virtual publisher's attempt to download an uninstalled
 resource.
+The [EventSource and beacon probe](eventsource-beacon.md) compares native
+receiver controls, service-worker blocking and prepared-window denial.
 The [static-route probe](publisher-routes.md) tests a native Chromium service
 worker's network route and the virtual publisher's synthetic install event.
 The [client-navigation probe](publisher-navigate.md) compares a native service

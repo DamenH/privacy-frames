@@ -55,6 +55,7 @@ jobs:
         timeout-minutes: 10
       - run: node formal/fedcm-conditional-probe.ts
       - run: node formal/hyperlink-auditing-probe.ts
+      - run: node formal/eventsource-beacon-probe.ts
       - run: node formal/reporting-probe.ts
       - run: node formal/modern-reporting-probe.ts
       - run: node formal/background-agents-probe.ts
@@ -68,6 +69,7 @@ jobs:
           path: |
             formal/evidence/fedcm-conditional.json
             formal/evidence/hyperlink-auditing.json
+            formal/evidence/eventsource-beacon.json
             formal/evidence/reporting.json
             formal/evidence/modern-reporting.json
             formal/evidence/background-agents.json
