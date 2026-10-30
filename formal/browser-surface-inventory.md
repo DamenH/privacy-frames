@@ -202,7 +202,7 @@ The comparison identified these concrete follow-ups:
 | Route                                  | Primary source / WPT starting point                                                                                                                                                                                                                                                                 | Current evidence or missing check                                                                                                                                                                                                                                          |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | FedCM static operations                | [FedCM IDL](https://github.com/web-platform-tests/wpt/blob/7e1243dd51da4162ea4a0b0e539b40db0144b22c/interfaces/fedcm.idl), [SW non-observation test](https://github.com/web-platform-tests/wpt/blob/7e1243dd51da4162ea4a0b0e539b40db0144b22c/fedcm/fedcm-not-observed-by-service-worker.https.html) | Conditional same-origin request reproduced below; current source blocks the static entry points and disables the policy feature.                                                                                                                                           |
-| Browser-generated reports              | [Reporting delivery](https://www.w3.org/TR/reporting-1/#attempt-delivery), [WPT reporting](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/reporting)                                                                                                       | Delivery uses `client=null` and skips SW. Runtime-generated responses omit reporting endpoints and publisher response-header forwarding is limited. Persisted endpoints, NEL and delayed report traffic still need attribution; no active reporting receiver control here. |
+| Browser-generated reports              | [Reporting delivery](https://www.w3.org/TR/reporting-1/#attempt-delivery), [WPT reporting](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/reporting)                                                                                                       | Modern delivery skips SW. [Calibrated tests](#modern-reporting-api-and-persisted-nel) cover selected full-Chromium reporting and persisted NEL cases; other types, lifecycles and Firefox remain open. |
 | Anchor/area auditing                   | [HTML hyperlink auditing](https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing), [WPT auditing](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/html/semantics/links/hyperlink-auditing)                                                    | The [receiver follow-up](#hyperlink-auditing-receiver-follow-up) calibrates native `ping` and observes service-worker mediation in the tested profiles.                                                                                                                    |
 | Deferred requests                      | [WPT fetch-later](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/fetch/fetch-later)                                                                                                                                                                        | Source denies fetchLater, but keepalive, deactivation, discard and background delivery require lifetime-aware controls. A zero receiver count before page closure is insufficient.                                                                                         |
 | Browser installation                   | [Web Install draft](https://wicg.github.io/install-element/)                                                                                                                                                                                                                                        | Draft manifest retrieval skips SW. Its active-sandbox rejection and manifest-src check are candidate controls for this runtime, not independently verified behavior here. `navigator.install` and declarative install elements need feature enumeration if present.        |
@@ -303,16 +303,14 @@ marker-bearing HTTP requests and show the requests in the worker log. Browser
 leaks. This is not a complete installed-controller/lifecycle or physical-user-click
 coverage claim.
 
-Modern Reporting API delivery and NEL remain **U**; the legacy CSP report-uri
-follow-up below has separate receiver evidence. The
+The ping fixture does not test modern reporting or NEL; separate receiver
+controls are described below. The
 [Reporting delivery algorithm](https://www.w3.org/TR/reporting-1/#attempt-delivery)
 uses a null client and skips service workers. Current host responses do not
 configure reporting endpoints, and publisher response forwarding admits only a
 small header set. That source constraint is not a native reporting receiver
 control. Legacy CSP reports, document-scoped Reporting API delivery and persisted
-NEL/Report-To state require distinct setup and delivery-time observations. No
-reporting escape or universal reporting containment was demonstrated by the ping
-fixture.
+NEL/Report-To state require distinct setup and delivery-time observations.
 
 ## Legacy CSP reporting receiver follow-up
 
@@ -358,14 +356,48 @@ algorithm has a null client and disables service workers. Native implementation
 behavior is recorded per browser rather than assuming that all `report`
 destinations have identical routing.
 
-Exploratory modern Reporting API controls generated queued Chromium reports but
-did not deliver to the loopback HTTP or temporary TLS receivers. NEL controls
-also lacked a successful report upload. Those zeros do not qualify containment.
-Persisted Report-To/NEL endpoint state, delivery after context destruction and
-other report types remain unverified. NEL's specification concerns actual
-[HTTP-network fetches](https://www.w3.org/TR/network-error-logging/#network-requests),
-which is distinct from an ordinary synthetic response; actual browser behavior
-still needs a calibrated receiver before that distinction closes a model route.
+Modern Reporting API and NEL now have separate calibrated controls below. Legacy
+reporting results do not establish their behavior.
+
+## Modern Reporting API and persisted NEL
+
+Run [the scoped fixture](modern-reporting-probe.ts) with
+`node formal/modern-reporting-probe.ts` after installing Playwright Chromium and
+making `openssl` available. The [receipt](evidence/modern-reporting.json) contains
+actual executable arguments, source and bundle hashes, document headers, worker
+observations, and independent HTTPS receiver bodies. It uses full Chromium
+153.0.8010.12, removes Playwright's `--disable-background-networking`, and enables
+short reporting delays. HTTPS uses a temporary certificate with an SPKI exception,
+matching the approach in the
+[WPT Chrome runner](https://github.com/web-platform-tests/wpt/blob/7e1243dd51da4162ea4a0b0e539b40db0144b22c/tools/wptrunner/wptrunner/browsers/chrome.py).
+It changes no system trust settings.
+
+| Scenario                                                                        | Independent receiver observation                                                                                                   |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Native modern CSP reporting                                                     | Actual `application/reports+json` POST contains the blocked-image marker                                                           |
+| Native NEL before prepared execution                                            | Success report contains the requested URL marker                                                                                   |
+| Actual preparation and production headers, with that NEL policy still active    | Unknown GET, POST and image requests are worker-blocked; no application marker reaches either HTTP receiver or reporting collector |
+| Actual preparation with fixture-added `Reporting-Endpoints` and CSP `report-to` | Modern CSP report carries the application-selected external image URL marker to the separate collector origin                      |
+| Native NEL after prepared execution                                             | Another requested URL marker reaches the reporting collector                                                                       |
+
+The modern reporting control bypasses the service worker despite the generated
+`connect-src 'self'` and `Connection-Allowlist: (response-origin)` policies. The
+application controls the violating image URL; the fixture controls the reporting
+endpoint and CSP directive. Current production responses supply neither reporting
+header. This is a demonstrated conditional browser-originated channel, not a
+current production escape. Deployment reporting configuration is part of the
+confinement assumptions.
+
+The NEL policy is deliberately seeded before preparation and remains active for
+the final native control on the same origin and browser context. The collector
+uses another origin so NEL does not recursively report its own uploads. Synthetic
+worker refusals produced no marker-bearing NEL upload in this test; the fixture
+rechecks that result after the final successful native upload. This covers the
+specific attempted GET, POST and image requests, not every network error,
+context lifecycle, persisted policy variant or browser implementation. Firefox
+modern reporting and NEL remain unverified. A sampled header-free deployment
+response does not establish the absence of policy on all routes or in persisted
+browser state.
 
 ## Optional background-networking reporting diagnostic
 
@@ -389,14 +421,9 @@ command as an additional uploader diagnostic; that command is not an application
 capability.
 
 Restoring background networking did not produce an observed modern/NEL upload in
-these profiles. Modern reports remained queued; successful endpoint registration
-and NEL policy-cache population were not established. These results do not show
-that background networking is irrelevant in other profiles or that confinement
-blocks those channels.
-
-The HTTPS profile uses a temporary self-signed certificate and a recorded SPKI
-certificate-error exception. It does not install a trusted root certificate.
-Browser reporting/header processing can differ under that exception, so this is
-not a calibrated trusted-HTTPS reporting setup. Shortened reporting delays bound
-the experiment; absent delivery is still not containment evidence. No prepared
-modern/NEL negative test is promoted without an active native uploader control.
+these earlier headless-shell profiles. Full Chromium subsequently delivered both
+native controls using the same SPKI approach, as recorded above. The executable
+choice therefore matters; the old zero-upload result is not containment evidence.
+The temporary certificate exception is not an installed trust anchor, but official
+WPT uses this exception for reporting tests and the new independent uploads
+calibrate this specific profile. The diagnostic remains outside default CI.

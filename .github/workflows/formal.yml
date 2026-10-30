@@ -50,6 +50,7 @@ jobs:
       - run: node formal/fedcm-conditional-probe.ts
       - run: node formal/hyperlink-auditing-probe.ts
       - run: node formal/reporting-probe.ts
+      - run: node formal/modern-reporting-probe.ts
       - uses: actions/upload-artifact@v4
         with:
           name: browser-effect-evidence
@@ -57,6 +58,7 @@ jobs:
             formal/evidence/fedcm-conditional.json
             formal/evidence/hyperlink-auditing.json
             formal/evidence/reporting.json
+            formal/evidence/modern-reporting.json
   webtransport:
     runs-on: ubuntu-latest
     steps:

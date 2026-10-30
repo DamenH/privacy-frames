@@ -28,14 +28,20 @@ remaining unpublished while its guard response was held. One run recorded the
 response timing out before the replacement controller activated; a later run did
 not capture the expected activation trace. The fixture is not a passing check of
 upgrade before publication and is not part of CI.
+A separate [test-only guard pause](startup/LOCAL-GUARD.md) passed the intended
+upgrade-before-publication schedule in Chromium and Firefox, with an early-release
+ordering control. It covers those instrumented schedules, not every interleaving.
 
 The receiver tests now include a working HTTP/3 WebTransport endpoint and
 native hyperlink-auditing and legacy CSP-reporting controls. In the tested
 configurations, the prepared environment blocked WebTransport and hyperlink
 auditing. Default prepared responses did not emit marker-bearing legacy CSP
 reports. With an artificial trusted reporting endpoint, Firefox delivered such a
-report outside the service worker. Modern reporting and persisted network-error
-logging remain uncalibrated; see the [surface inventory](browser-surface-inventory.md).
+report outside the service worker. Full Chromium also sent a modern CSP report
+under a test-injected trusted reporting configuration. A deliberately persisted
+NEL policy produced no application-marker traffic in the tested prepared case,
+with working before-and-after delivery controls. The [surface inventory](browser-surface-inventory.md)
+records the configurations and remaining gaps.
 
 ## What has been checked
 
