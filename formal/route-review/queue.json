@@ -1,7 +1,7 @@
 {
   "scope": "All rows in the bounded saved IDL join; unreviewed includes absent and unobserved names. Classifications and WPT links are manually selected review leads, not mediation tests or safety judgments.",
   "idlReportSHA256": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
-  "triageSHA256": "fdca0458941e3241f1fe30c712f9709ff9bbc4532a2a12a96e7cc9e794385a55",
+  "triageSHA256": "94bd839c9b201c3aafa82b10ff76c31fae6931562fed9956ea2c07f9b4c3f3ec",
   "generatorSHA256": "a02550f12080992cdf21a7476c8b8795c41615f7d2355a928fa1ca74269fd614",
   "webrefRevision": "6ac6259c96b11e0aea5c34a16822eb06add278c9",
   "snapshotRevision": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
@@ -80,8 +80,8 @@
   },
   "summary": {
     "rows": 263,
-    "manualRows": 258,
-    "unreviewedRows": 5,
+    "manualRows": 263,
+    "unreviewedRows": 0,
     "observedUnreviewedRows": 0
   },
   "rows": [
@@ -1684,11 +1684,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "body-consumption",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns a readable stream of decoded text chunks from the associated body.",
+      "prerequisites": "Requires a Body-including Request or Response; the pinned IDL mixin is not resolved to all snapshot objects, and browser support is unknown.",
+      "next": "Test stream state, cancellation and backpressure with an existing network-backed response; creation or reading is not proof of a new independent request."
     },
     {
       "id": "fetch|FetchLaterResult|activated|attribute|1",
@@ -5136,11 +5136,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "transport-configuration",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Gets or sets a nullable anticipated count of concurrent incoming bidirectional streams; the draft says the user agent should consider it in negotiations with the server.",
+      "prerequisites": "Requires a reachable native WebTransport object and implementation support; changing it does not guarantee the number of streams.",
+      "next": "Measure whether changes are externally observable via negotiation, timing or protocol limits; no disclosure has been established."
     },
     {
       "id": "webtransport|WebTransport|anticipatedConcurrentIncomingUnidirectionalStreams|attribute|1",
@@ -5158,11 +5158,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "transport-configuration",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Gets or sets a nullable anticipated count of concurrent incoming unidirectional streams; the draft says the user agent should consider it in negotiations with the server.",
+      "prerequisites": "Requires a reachable native WebTransport object and implementation support; changing it does not guarantee the number of streams.",
+      "next": "Measure whether changes are externally observable via negotiation, timing or protocol limits; no disclosure has been established."
     },
     {
       "id": "webtransport|WebTransport|close|operation|1",
@@ -5547,11 +5547,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Exposes the response headers of an established WebTransport session, initially null.",
+      "prerequisites": "Requires a reachable native WebTransport object and successful session setup to obtain server response headers.",
+      "next": "Check header exposure and downstream relay in actual browsers; a getter does not itself establish a new connection."
     },
     {
       "id": "webtransport|WebTransport|supportsReliableOnly|attribute|1",
@@ -5569,11 +5569,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Static feature query reports whether exclusively reliable sessions are supported.",
+      "prerequisites": "Requires an exposed native WebTransport constructor and implementation of the static property; the snapshot did not observe it.",
+      "next": "Measure browser availability and any effects of feature detection; do not infer support or a network request from the pinned IDL declaration."
     },
     {
       "id": "webtransport|WebTransportBidirectionalStream|readable|attribute|1",

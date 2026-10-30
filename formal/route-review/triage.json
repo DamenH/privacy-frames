@@ -2221,6 +2221,46 @@
       "effect": "Commits data on the writer according to the WebTransport writer algorithm.",
       "prerequisites": "Requires an accessible native writer and applicable stream state; implementation support is unknown.",
       "next": "Check precise buffering and transmission consequences against the current spec and receiver; do not assume it is a no-op or standalone upload."
+    },
+    {
+      "key": "fetch|Body|textStream|operation",
+      "class": "body-consumption",
+      "wpt": [],
+      "effect": "Returns a readable stream of decoded text chunks from the associated body.",
+      "prerequisites": "Requires a Body-including Request or Response; the pinned IDL mixin is not resolved to all snapshot objects, and browser support is unknown.",
+      "next": "Test stream state, cancellation and backpressure with an existing network-backed response; creation or reading is not proof of a new independent request."
+    },
+    {
+      "key": "webtransport|WebTransport|anticipatedConcurrentIncomingBidirectionalStreams|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets a nullable anticipated count of concurrent incoming bidirectional streams; the draft says the user agent should consider it in negotiations with the server.",
+      "prerequisites": "Requires a reachable native WebTransport object and implementation support; changing it does not guarantee the number of streams.",
+      "next": "Measure whether changes are externally observable via negotiation, timing or protocol limits; no disclosure has been established."
+    },
+    {
+      "key": "webtransport|WebTransport|anticipatedConcurrentIncomingUnidirectionalStreams|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets a nullable anticipated count of concurrent incoming unidirectional streams; the draft says the user agent should consider it in negotiations with the server.",
+      "prerequisites": "Requires a reachable native WebTransport object and implementation support; changing it does not guarantee the number of streams.",
+      "next": "Measure whether changes are externally observable via negotiation, timing or protocol limits; no disclosure has been established."
+    },
+    {
+      "key": "webtransport|WebTransport|responseHeaders|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes the response headers of an established WebTransport session, initially null.",
+      "prerequisites": "Requires a reachable native WebTransport object and successful session setup to obtain server response headers.",
+      "next": "Check header exposure and downstream relay in actual browsers; a getter does not itself establish a new connection."
+    },
+    {
+      "key": "webtransport|WebTransport|supportsReliableOnly|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Static feature query reports whether exclusively reliable sessions are supported.",
+      "prerequisites": "Requires an exposed native WebTransport constructor and implementation of the static property; the snapshot did not observe it.",
+      "next": "Measure browser availability and any effects of feature detection; do not infer support or a network request from the pinned IDL declaration."
     }
   ]
 }

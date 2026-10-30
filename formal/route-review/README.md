@@ -148,10 +148,9 @@ to test.
 All rows with an observed property name in this bounded snapshot now have a
 manual classification. This means their specified role and follow-up questions
 were recorded; it does not mean their effects, implementations or confinement
-were exhaustively analyzed. The previously unobserved rows were also reviewed against specification
-algorithms where possible. Five remain unreviewed because their algorithms or
-current applicability need further checking. An unobserved name is not evidence
-that a browser lacks the API.
+were exhaustively analyzed. The previously unobserved rows were also reviewed
+against specification algorithms. An unobserved name is not evidence that a
+browser lacks the API.
 In particular, the snapshot does not enumerate service-worker global objects,
 shared workers, worklets or WorkerNavigator, and covers only the recorded
 Chromium and Firefox versions.
@@ -170,11 +169,21 @@ publisher path to that authority has been demonstrated.
 [`Clients.openWindow`](https://w3c.github.io/ServiceWorker/#dom-clients-openwindow)
 and [`WindowClient.navigate`](https://w3c.github.io/ServiceWorker/#dom-windowclient-navigate)
 can cause navigation given their respective client and activation prerequisites.
-A positive native receiver control and a test of actual publisher reachability
-are needed before drawing a confinement conclusion.
+The [static-route probe](../publisher-routes.md) and [client-navigation probe](../publisher-navigate.md)
+compare native controls with the installed virtual publisher. Other routing,
+client acquisition and `openWindow` scenarios remain open.
 
 Body mixin methods expose and consume streams on Request and Response objects.
 A response body can already be backed by a network operation, so body reads
 should be reviewed alongside request lifecycle and cancellation, not simply
 dismissed as local. The pinned IDL does not resolve the mixin's full exposure
 for the captured contexts.
+
+The last five rows illustrate why an IDL join is a starting point. The pinned
+Webref Fetch data declares `Body.textStream()` on an interface mixin, but the
+snapshot does not resolve the mixin onto all applicable objects. The pinned
+WebTransport data declares two writable nullable anticipated-stream-count
+attributes, a nullable response-headers getter, and a static reliable-only
+feature query. The current drafts describe these operations; browser exposure
+and externally visible effects of stream-count negotiation remain to be tested.
+All 263 rows now have a manual role and follow-up, not a security verification.
