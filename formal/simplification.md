@@ -65,6 +65,11 @@ per context. Replayed readiness already performed no live-phase writes. The
 simplification removes a misleading phase-transition machine rather than
 loosening a browser API restriction.
 
+The cleanup was deployed from host revision
+`e01a8617a13648121f4cbd53bb945ae30407603e`. The live service worker and guards
+matched the locally tested build, and a fresh installed app passed the identity
+and sampled reporting-header checks.
+
 Deterministic tests cover an earlier queued close, closure or changed ownership
 from another registry during an awaited read, old-controller writes after
 closure, and unchanged duplicate-bind limitations. The Registry model now uses
