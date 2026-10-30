@@ -8,10 +8,12 @@ are in [the threat model](threat-model.md).
 
 ## What this work found
 
-A seeded FedCM connection exposed a real conditional escape in the earlier
-runtime. `IdentityCredential.disconnect` sent an application-selected marker
-to the runtime-origin server outside the service worker. A local fix disables
-the identity permission and the relevant static methods. It passed a calibrated
+A synthetic test with a seeded FedCM connection exposed a conditional escape in
+the earlier runtime: `IdentityCredential.disconnect` sent an application-selected
+marker to the runtime-origin server outside the service worker. The test did not
+establish how the required connection and identity-provider endpoints could be
+created in the deployed host. A fix disables the identity permission and the
+relevant static methods. It passed a calibrated
 receiver test, the existing browser suite and the local application corpus. The
 fix was first deployed from host revision `ebc6d0f784dd0943a8342879996e206eed86b271`;
 the [finding and reproduction](browser-surface-inventory.md#conditional-fedcm-receiver-finding-and-fix)
@@ -65,6 +67,8 @@ The registry comparison checks 10,000 sequential operation sequences against a
 TLC-generated graph. Separate deterministic tests exercise two registry instances
 sharing a storage stand-in. Chromium and Firefox tests exercise real IndexedDB
 replacement overlaps and selected network effects with independent receivers.
+The [admission comparison](admission/README.md) checks 32 selected input
+combinations in both browsers against a TLC model, with test-only mutations.
 The [generation comparison](confinement/generation-reads.md#partial-comparison-with-real-indexeddb-outcomes)
 checks 24 observed read/replacement pairs against possible modeled completions;
 it does not observe the transaction's internal timing.
@@ -75,6 +79,12 @@ The [model-to-implementation mapping](implementation-mapping.md) identifies whic
 code paths correspond to model actions and where that correspondence is missing.
 The [Web IDL report](idl-surface-report.md) joins selected standards to observed
 browser interface names and highlights members that still need review.
+The [claim ledger](claims/README.md) records enforcement, controls and open
+obligations separately, with a check for changes to the cited artifacts.
+
+The [Lean authority-graph proofs](lean/README.md) establish a conditional result
+for arbitrary finite reference chains and checked edge additions. They do not
+prove that the browser or runtime satisfies their premises.
 
 These checks do not compose into a proof that the implementation confines every
 browser effect. The abstract models assume that important browser and runtime

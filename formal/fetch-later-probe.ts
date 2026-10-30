@@ -11,33 +11,49 @@ import { trustedPolicyPlugin } from '../scripts/trusted-policy.ts';
 import { response } from '../src/runtime/response-policy.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const fixture = await build({
-  absWorkingDir: root,
-  stdin: {
-    resolveDir: root,
-    loader: 'ts',
-    contents: `
-      import { prepareWindowRealm } from './src/runtime/contexts/window-realm.ts';
-      const applicationURL = location.origin + location.pathname;
-      const realm = prepareWindowRealm({
-        application:'fetch-later-probe', applicationURL,
-        scriptNonce:'fixture', enableDocumentContexts:true,
+const fixtureSource = `
+  import { prepareWindowRealm } from './src/runtime/contexts/window-realm.ts';
+  const applicationURL = location.origin + location.pathname;
+  const realm = prepareWindowRealm({
+    application:'fetch-later-probe', applicationURL,
+    scriptNonce:'fixture', enableDocumentContexts:true,
+  });
+  realm.admitContent({installationGeneration:'generation', aliases:[], source:applicationURL});
+  globalThis.prepared = true;
+`;
+async function buildFixture(mutate: boolean) {
+  const mutation = {
+    name: 'test-only-remove-fetch-later-denial',
+    setup(builder) {
+      builder.onLoad({ filter: /[/\\]enforcement[/\\]effects\.ts$/ }, async (args) => {
+        const source = await readFile(args.path, 'utf8');
+        const needle = "    'fetchLater',\n";
+        assert.equal(source.split(needle).length, 2, 'Mutation anchor changed');
+        return { contents: source.replace(needle, ''), loader: 'ts' };
       });
-      realm.admitContent({installationGeneration:'generation', aliases:[], source:applicationURL});
-      globalThis.prepared = true;
-    `,
-  },
-  bundle: true,
-  write: false,
-  format: 'iife',
-  target: 'es2022',
-  plugins: [await trustedPolicyPlugin(root)],
-});
+    },
+  };
+  return build({
+    absWorkingDir: root,
+    stdin: {
+      resolveDir: root,
+      loader: 'ts',
+      contents: fixtureSource,
+    },
+    bundle: true,
+    write: false,
+    format: 'iife',
+    target: 'es2022',
+    plugins: [...(mutate ? [mutation] : []), await trustedPolicyPlugin(root)],
+  });
+}
+const fixture = await buildFixture(false);
+const faultFixture = await buildFixture(true);
 const sw = `
   self.addEventListener('install', () => self.skipWaiting());
   self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
   const events = [];
-  const setup = new Set(['/app/native', '/app/prepared/', '/app/fixture.js']);
+  const setup = new Set(['/app/native', '/app/prepared/', '/app/fault/', '/app/fixture.js', '/app/fault-fixture.js']);
   self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
     events.push({url:url.href, method:event.request.method});
@@ -70,7 +86,12 @@ const server = http.createServer(async (request, reply) => {
     reply.end(fixture.outputFiles[0].text);
     return;
   }
-  if (request.url === '/app/prepared/') {
+  if (request.url === '/app/fault-fixture.js') {
+    reply.setHeader('Content-Type', 'text/javascript');
+    reply.end(faultFixture.outputFiles[0].text);
+    return;
+  }
+  if (request.url === '/app/prepared/' || request.url === '/app/fault/') {
     for (const [name, value] of response('', 'text/html', 200, {
       scriptNonce: 'fixture',
       controllerSource: origin + '/app/sw.js',
@@ -78,7 +99,8 @@ const server = http.createServer(async (request, reply) => {
       frameSource: origin + '/__contexts/',
     }).headers)
       reply.setHeader(name, value);
-    reply.end('<!doctype html><script nonce="fixture" src="/app/fixture.js"></script>');
+    const script = request.url === '/app/fault/' ? 'fault-fixture.js' : 'fixture.js';
+    reply.end(`<!doctype html><script nonce="fixture" src="/app/${script}"></script>`);
     return;
   }
   reply.setHeader('Content-Type', 'text/html');
@@ -94,12 +116,15 @@ const receipt = {
   testedAt: new Date().toISOString(),
   origin,
   scope:
-    'fetchLater native delivery, page-close flush, blocking-worker behavior and actual current prepareWindowRealm. Private markers are created after preparation; each native control requires independent HTTP delivery. Firefox absence is recorded without a containment claim.',
+    'fetchLater native delivery, page-close flush, blocking-worker behavior and actual current prepareWindowRealm. A test-only bundle removes only the fetchLater denial and must disclose its marker after closing. Private markers are created after preparation; each native control requires independent HTTP delivery. Firefox absence is recorded without a containment claim.',
   runnerSHA256: createHash('sha256')
     .update(await readFile(fileURLToPath(import.meta.url)))
     .digest('hex'),
   fixtureSHA256: createHash('sha256')
     .update(fixture.outputFiles[0].contents)
+    .digest('hex'),
+  faultFixtureSHA256: createHash('sha256')
+    .update(faultFixture.outputFiles[0].contents)
     .digest('hex'),
   sourceHashes: Object.fromEntries(
     await Promise.all(
@@ -159,6 +184,7 @@ try {
         'native-worker-close',
         'prepared-immediate',
         'prepared-close',
+        'fault-close',
       ]) {
         if (profile === 'native-worker-close') {
           await observer.evaluate(async () => {
@@ -174,16 +200,24 @@ try {
           });
         }
         const page = await context.newPage();
-        const prepared = profile.startsWith('prepared');
+        const fault = profile === 'fault-close';
+        const prepared = profile.startsWith('prepared') || fault;
         const controlled = prepared || profile === 'native-worker-close';
         const navigation = await page.goto(
-          origin + (prepared ? '/app/prepared/' : controlled ? '/app/native' : '/native'),
+          origin +
+            (fault
+              ? '/app/fault/'
+              : prepared
+                ? '/app/prepared/'
+                : controlled
+                  ? '/app/native'
+                  : '/native'),
         );
         if (prepared) await page.waitForFunction(() => globalThis.prepared);
         const marker = profile + '-' + randomUUID();
         const start = traffic.length;
         const state = await page.evaluate(
-          async ({ marker, close, prepared }) => {
+          async ({ marker, close, prepared, fault }) => {
             const state = {
               mode: globalThis.privacyHost?.mode,
               call: null,
@@ -203,7 +237,7 @@ try {
             } catch (error) {
               state.call = { error: error.name, message: error.message };
             }
-            if (prepared) {
+            if (prepared && !fault) {
               try {
                 let target = window;
                 while (target && !Object.getOwnPropertyDescriptor(target, 'fetchLater'))
@@ -221,9 +255,10 @@ try {
             }
             return state;
           },
-          { marker, close: profile.endsWith('close'), prepared },
+          { marker, close: profile.endsWith('close'), prepared, fault },
         );
         const headers = await navigation.allHeaders();
+        if (prepared) assert.equal(state.mode, 'network-isolated');
         let beforeCloseTraffic;
         if (profile.endsWith('close')) {
           await page.waitForTimeout(200);
@@ -237,8 +272,10 @@ try {
           );
           await page.close();
         }
-        if (!prepared) await waitForDelivery(marker);
-        else {
+        if (!prepared || fault) {
+          if (fault) assert.equal(state.call.result, 'scheduled');
+          await waitForDelivery(marker);
+        } else {
           assert.equal(state.call.error, 'SecurityError');
           assert.equal(state.recovery, 'SecurityError');
           assert.equal(state.ordinaryFetch, 'SW blocked');
@@ -247,7 +284,7 @@ try {
         const markerTraffic = traffic
           .slice(start)
           .filter((item) => JSON.stringify(item).includes(marker));
-        if (prepared) assert.equal(markerTraffic.length, 0);
+        if (prepared && !fault) assert.equal(markerTraffic.length, 0);
         row.cases.push({
           profile,
           marker,
@@ -287,6 +324,15 @@ try {
       assert(
         !row.workerEvents.some((event) => event.url.includes(workerControl.marker)),
         'Native deferred control unexpectedly passed through worker',
+      );
+      const faultControl = row.cases.find((item) => item.profile === 'fault-close');
+      assert(
+        row.workerEvents.some((event) => new URL(event.url).pathname === '/app/fault/'),
+        'Mutated page was not observed under the blocking worker',
+      );
+      assert(
+        !row.workerEvents.some((event) => event.url.includes(faultControl.marker)),
+        'Mutated deferred request unexpectedly passed through worker',
       );
     } finally {
       await browser.close();

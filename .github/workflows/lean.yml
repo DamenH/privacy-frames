@@ -1,0 +1,28 @@
+name: Check authority-graph proofs
+on:
+  push:
+    branches: [main, confinement-model]
+    paths: ['formal/lean/**', '.github/workflows/lean.yml']
+  pull_request:
+    paths: ['formal/lean/**', '.github/workflows/lean.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/cache@v4
+        with:
+          path: .tools/lean-4.35.0-linux.tar.zst
+          key: lean-4.35.0-linux-7289597a44543246
+      - name: Fetch and verify the pinned Lean release
+        run: |
+          mkdir -p .tools
+          if [ ! -f .tools/lean-4.35.0-linux.tar.zst ]; then
+            curl -fL --retry 3 https://github.com/leanprover/lean4/releases/download/v4.35.0/lean-4.35.0-linux.tar.zst -o .tools/lean-4.35.0-linux.tar.zst
+          fi
+          printf '%s  %s\n' 7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d .tools/lean-4.35.0-linux.tar.zst | sha256sum -c -
+          tar --zstd -xf .tools/lean-4.35.0-linux.tar.zst -C .tools
+      - run: python3 formal/lean/check.py

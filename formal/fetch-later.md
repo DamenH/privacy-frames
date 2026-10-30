@@ -30,6 +30,13 @@ that the uploader still works. The fixture then rechecks all recorded traffic
 for prepared private markers. It asserts the three native deliveries, the
 pre-close zeros, the worker bypass observation, and the prepared zeros.
 
+The fixture also builds a test-only mutation that removes the `fetchLater`
+entry from the effect policy in memory. It otherwise runs the same preparation,
+response policy and blocking service worker. In Chromium, a request scheduled
+after preparation reaches the independent receiver after that page closes; the
+worker records the page but not the deferred request. The test fails unless this
+marker is actually delivered. The mutation is never applied to production code.
+
 Firefox 155 does not expose `fetchLater` in this profile. Its absence is recorded
 without claiming that a supported implementation was contained. The test covers
 these timing and page-close scenarios, not browser-process termination, session

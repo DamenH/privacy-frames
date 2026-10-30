@@ -1,0 +1,490 @@
+{
+  "scope": "32 selected malformed-input combinations per browser against actual admitInstallation; test-only mutations exercise validator omissions and a redundant URL check. No commit, browser identity, external network or complete validation proof.",
+  "modelSHA256": "2084e90a886edaebc03c6cce164fcfd9b458a4d9c5f2e57a2126cdc70436734a",
+  "runnerSHA256": "e33a1243ce69e634f06fe084ee905faf166a58cd9d3cd97fa49ade65d02e4a8a",
+  "sourceSHA256": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff",
+  "lockfileSHA256": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed",
+  "bundleSHA256": {
+    "safe": "0b715b2186074665e8b48129781247647df5b03a65c098c45ca8204b3cbaf8bc",
+    "hash": "e1217417ae576f128dfc9a3373065609c0ab4e52311672133cdfa4f7c87f1118",
+    "path": "7221013aff9450b84807a56db38f17009d2c46888efd8424410a0311f4d662ad",
+    "url": "1c193bcbec58424399ebb81a090ecd305bfbd6da6405b313396e71917c6f4897",
+    "pathURL": "251154b51474d137ec4c64ad13e21d778dc69abebd77c387229a6822612d9eaf",
+    "entry": "51dfcf9485e8e0aefd2db5d124bbc0e85df4928a88f312d1c8ce4f470d329418"
+  },
+  "revision": "0f0d43cda8bdfbeccfc5846cea7af1d4bba69e7b",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "observations": [
+        {
+          "bits": "10000",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10001",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10010",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10011",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10100",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10101",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10110",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "10111",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "11000",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11001",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11010",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11011",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11100",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11101",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11110",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Missing entry"
+        },
+        {
+          "bits": "11111",
+          "expected": "accepted",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "bits": "00000",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00001",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00010",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00011",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00100",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00101",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00110",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00111",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01000",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01001",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01010",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01011",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01100",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01101",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01110",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01111",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        }
+      ],
+      "faultResults": [
+        {
+          "mutation": "hash",
+          "bits": "01111",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "hash",
+          "bits": "10111",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "path",
+          "bits": "11011",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "url",
+          "bits": "11101",
+          "decision": "rejected",
+          "error": "Conflicting resource alias"
+        },
+        {
+          "mutation": "pathURL",
+          "bits": "11001",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "entry",
+          "bits": "11110",
+          "decision": "accepted",
+          "resources": 2
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "observations": [
+        {
+          "bits": "10000",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10001",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10010",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10011",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10100",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10101",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "10110",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "10111",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "11000",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11001",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11010",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11011",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11100",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11101",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Duplicate resource"
+        },
+        {
+          "bits": "11110",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Missing entry"
+        },
+        {
+          "bits": "11111",
+          "expected": "accepted",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "bits": "00000",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00001",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00010",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00011",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00100",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00101",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00110",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "00111",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01000",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01001",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01010",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01011",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01100",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01101",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01110",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        },
+        {
+          "bits": "01111",
+          "expected": "rejected",
+          "decision": "rejected",
+          "error": "Resource integrity or size check failed"
+        }
+      ],
+      "faultResults": [
+        {
+          "mutation": "hash",
+          "bits": "01111",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "hash",
+          "bits": "10111",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "path",
+          "bits": "11011",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "url",
+          "bits": "11101",
+          "decision": "rejected",
+          "error": "Conflicting resource alias"
+        },
+        {
+          "mutation": "pathURL",
+          "bits": "11001",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "entry",
+          "bits": "11110",
+          "decision": "accepted",
+          "resources": 2
+        }
+      ]
+    }
+  ]
+}

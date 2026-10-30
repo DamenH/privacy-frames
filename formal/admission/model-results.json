@@ -1,0 +1,93 @@
+{
+  "scope": "Bounded abstract admission predicate; not an implementation or browser proof.",
+  "image": "eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a",
+  "jarSHA256": "011267fca25d0752cf18894dd585cd28b96960c112ea8a20b823ea770e7e10cd",
+  "inputs": {
+    "Decision.tla": "864ae10e763c2406e633a9ef19a607b9f66a312b0e707b8c6c1e354051c92020",
+    "Entry.cfg": "093014f84dfafce7c532881e9dd210ae4f85fbf6a36912bf908231616e99c0f8",
+    "HashA.cfg": "d630711e5bc4c08346f1f1c18fe225acf1f64732f8c1640bc0611adac9c4ad78",
+    "HashB.cfg": "d1c0892b09cce4206635a5d9188484470ff658b28df4f1debd81c1c7ad1b8e72",
+    "Path.cfg": "e02b800a9b0cca7cd231832b854cfe5a2445b03eb667710a5515a97f2ee0e103",
+    "PathURL.cfg": "4965c859bea169278cb03ad5f917b497de135c3fbe855a27f089d6fd0cdf2959",
+    "Safe.cfg": "d2a6590deec406fc3d0c2a9695a6092a4f86fbe156fa987d7cc37edcbb1fb3ca",
+    "URL.cfg": "f6c3a28dd9f4514b8f3f7dcc520bc86a40ffb42a61a7f5d715a906481b71c7b9"
+  },
+  "results": [
+    {
+      "configuration": "Safe",
+      "exitCode": 0,
+      "expectedViolation": null,
+      "output": "TLC2 Version 2026.10.30.154139 (rev: 090e85c)\nWarning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the \"-XX:+UseParallelGC\" property.\n(Use the -nowarning option to disable this warning.)\nRunning breadth-first search Model-Checking with fp 28 and seed -7500230451776909172 with 1 worker on 16 cores with 7800MB heap and 64MB offheap memory [pid: 7] (Linux 7.0.0-38-generic amd64, Eclipse Adoptium 21.0.13 64bit, MSBDiskFPSet, DiskStateQueue).\nParsing file /work/formal/admission/Decision.tla\nParsing file /tmp/tlc-3170355426267078429/Naturals.tla (jar:file:/work/.tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)\nSemantic processing of module Naturals\nSemantic processing of module Decision\nLinting of module Decision\nStarting... (2026-10-30 18:28:12)\nComputing initial states...\nComputed 2 initial states...\nComputed 4 initial states...\nComputed 8 initial states...\nComputed 16 initial states...\nFinished computing initial states: 32 distinct states generated at 2026-10-30 18:28:12.\nModel checking completed. No error has been found.\n  Estimates of the probability that TLC did not check all reachable states\n  because two distinct states had the same fingerprint:\n  calculated (optimistic):  val = 0.0\n64 states generated, 64 distinct states found, 0 states left on queue.\nThe depth of the complete state graph search is 2.\nThe average outdegree of the complete state graph is 1 (minimum is 0, the maximum 1 and the 95th percentile is 1).\nFinished in 00s at (2026-10-30 18:28:12)\nstrict "
+    },
+    {
+      "configuration": "HashA",
+      "exitCode": 12,
+      "expectedViolation": "NoInvalidAdmission",
+      "output": "TLC2 Version 2026.10.30.154139 (rev: 090e85c)\nWarning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the \"-XX:+UseParallelGC\" property.\n(Use the -nowarning option to disable this warning.)\nRunning breadth-first search Model-Checking with fp 3 and seed -383733288226425255 with 1 worker on 16 cores with 7800MB heap and 64MB offheap memory [pid: 1] (Linux 7.0.0-38-generic amd64, Eclipse Adoptium 21.0.13 64bit, MSBDiskFPSet, DiskStateQueue).\nParsing file /work/formal/admission/Decision.tla\nParsing file /tmp/tlc-12748674878208678524/Naturals.tla (jar:file:/work/.tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)\nSemantic processing of module Naturals\nSemantic processing of module Decision\nLinting of module Decision\nStarting... (2026-10-30 18:28:13)\nComputing initial states...\nComputed 2 initial states...\nComputed 4 initial states...\nComputed 8 initial states...\nComputed 16 initial states...\nFinished computing initial states: 32 distinct states generated at 2026-10-30 18:28:13.\nError: Invariant NoInvalidAdmission is violated.\nError: The behavior up to this point is:\nState 1: <Initial predicate>\n/\\ decision = \"pending\"\n/\\ uniqueURL = TRUE\n/\\ hasEntry = TRUE\n/\\ uniquePath = TRUE\n/\\ hashA = FALSE\n/\\ hashB = TRUE\n\nState 2: <Decide line 16, col 11 to line 18, col 72 of module Decision>\n/\\ decision = \"accepted\"\n/\\ uniqueURL = TRUE\n/\\ hasEntry = TRUE\n/\\ uniquePath = TRUE\n/\\ hashA = FALSE\n/\\ hashB = TRUE\n\n48 states generated, 48 distinct states found, 31 states left on queue.\nThe depth of the complete state graph search is 2.\nFinished in 00s at (2026-10-30 18:28:13)\n"
+    },
+    {
+      "configuration": "HashB",
+      "exitCode": 12,
+      "expectedViolation": "NoInvalidAdmission",
+      "output": "TLC2 Version 2026.10.30.154139 (rev: 090e85c)\nWarning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the \"-XX:+UseParallelGC\" property.\n(Use the -nowarning option to disable this warning.)\nRunning breadth-first search Model-Checking with fp 29 and seed -6768724372598605916 with 1 worker on 16 cores with 7800MB heap and 64MB offheap memory [pid: 1] (Linux 7.0.0-38-generic amd64, Eclipse Adoptium 21.0.13 64bit, MSBDiskFPSet, DiskStateQueue).\nParsing file /work/formal/admission/Decision.tla\nParsing file /tmp/tlc-1390899373292887110/Naturals.tla (jar:file:/work/.tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)\nSemantic processing of module Naturals\nSemantic processing of module Decision\nLinting of module Decision\nStarting... (2026-10-30 18:28:13)\nComputing initial states...\nComputed 2 initial states...\nComputed 4 initial states...\nComputed 8 initial states...\nComputed 16 initial states...\nFinished computing initial states: 32 distinct states generated at 2026-10-30 18:28:13.\nError: Invariant NoInvalidAdmission is violated.\nError: The behavior up to this point is:\nState 1: <Initial predicate>\n/\\ decision = \"pending\"\n/\\ uniqueURL = TRUE\n/\\ hasEntry = TRUE\n/\\ uniquePath = TRUE\n/\\ hashA = TRUE\n/\\ hashB = FALSE\n\nState 2: <Decide line 16, col 11 to line 18, col 72 of module Decision>\n/\\ decision = \"accepted\"\n/\\ uniqueURL = TRUE\n/\\ hasEntry = TRUE\n/\\ uniquePath = TRUE\n/\\ hashA = TRUE\n/\\ hashB = FALSE\n\n56 states generated, 56 distinct states found, 31 states left on queue.\nThe depth of the complete state graph search is 2.\nFinished in 00s at (2026-10-30 18:28:13)\n"
+    },
+    {
+      "configuration": "Path",
+      "exitCode": 12,
+      "expectedViolation": "NoInvalidAdmission",
+      "output": "TLC2 Version 2026.10.30.154139 (rev: 090e85c)\nWarning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the \"-XX:+UseParallelGC\" property.\n(Use the -nowarning option to disable this warning.)\nRunning breadth-first search Model-Checking with fp 116 and seed -8003548997000543194 with 1 worker on 16 cores with 7800MB heap and 64MB offheap memory [pid: 1] (Linux 7.0.0-38-generic amd64, Eclipse Adoptium 21.0.13 64bit, MSBDiskFPSet, DiskStateQueue).\nParsing file /work/formal/admission/Decision.tla\nParsing file /tmp/tlc-1634602084067031974/Naturals.tla (jar:file:/work/.tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)\nSemantic processing of module Naturals\nSemantic processing of module Decision\nLinting of module Decision\nStarting... (2026-10-30 18:28:13)\nComputing initial states...\nComputed 2 initial states...\nComputed 4 initial states...\nComputed 8 initial states...\nComputed 16 initial states...\nFinished computing initial states: 32 distinct states generated at 2026-10-30 18:28:14.\nError: Invariant NoInvalidAdmission is violated.\nError: The behavior up to this point is:\nState 1: <Initial predicate>\n/\\ decision = \"pending\"\n/\\ uniqueURL = TRUE\n/\\ hasEntry = TRUE\n/\\ uniquePath = FALSE\n/\\ hashA = TRUE\n/\\ hashB = TRUE\n\nState 2: <Decide line 16, col 11 to line 18, col 72 of module Decision>\n/\\ decision = \"accepted\"\n/\\ uniqueURL = TRUE\n/\\ hasEntry = TRUE\n/\\ uniquePath = FALSE\n/\\ hashA = TRUE\n/\\ hashB = TRUE\n\n60 states generated, 60 distinct states found, 31 states left on queue.\nThe depth of the complete state graph search is 2.\nFinished in 00s at (2026-10-30 18:28:14)\n"
+    },
+    {
+      "configuration": "URL",
+      "exitCode": 12,
+      "expectedViolation": "NoInvalidAdmission",
+      "output": "TLC2 Version 2026.10.30.154139 (rev: 090e85c)\nWarning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the \"-XX:+UseParallelGC\" property.\n(Use the -nowarning option to disable this warning.)\nRunning breadth-first search Model-Checking with fp 47 and seed -3420436853069163036 with 1 worker on 16 cores with 7800MB heap and 64MB offheap memory [pid: 1] (Linux 7.0.0-38-generic amd64, Eclipse Adoptium 21.0.13 64bit, MSBDiskFPSet, DiskStateQueue).\nParsing file /work/formal/admission/Decision.tla\nParsing file /tmp/tlc-16671274944345862678/Naturals.tla (jar:file:/work/.tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)\nSemantic processing of module Naturals\nSemantic processing of module Decision\nLinting of module Decision\nStarting... (2026-10-30 18:28:14)\nComputing initial states...\nComputed 2 initial states...\nComputed 4 initial states...\nComputed 8 initial states...\nComputed 16 initial states...\nFinished computing initial states: 32 distinct states generated at 2026-10-30 18:28:14.\nError: Invariant NoInvalidAdmission is violated.\nError: The behavior up to this point is:\nState 1: <Initial predicate>\n/\\ decision = \"pending\"\n/\\ uniqueURL = FALSE\n/\\ hasEntry = TRUE\n/\\ uniquePath = TRUE\n/\\ hashA = TRUE\n/\\ hashB = TRUE\n\nState 2: <Decide line 16, col 11 to line 18, col 72 of module Decision>\n/\\ decision = \"accepted\"\n/\\ uniqueURL = FALSE\n/\\ hasEntry = TRUE\n/\\ uniquePath = TRUE\n/\\ hashA = TRUE\n/\\ hashB = TRUE\n\n62 states generated, 62 distinct states found, 31 states left on queue.\nThe depth of the complete state graph search is 2.\nFinished in 00s at (2026-10-30 18:28:14)\n"
+    },
+    {
+      "configuration": "PathURL",
+      "exitCode": 12,
+      "expectedViolation": "NoInvalidAdmission",
+      "output": "TLC2 Version 2026.10.30.154139 (rev: 090e85c)\nWarning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the \"-XX:+UseParallelGC\" property.\n(Use the -nowarning option to disable this warning.)\nRunning breadth-first search Model-Checking with fp 64 and seed -3929281852724021361 with 1 worker on 16 cores with 7800MB heap and 64MB offheap memory [pid: 1] (Linux 7.0.0-38-generic amd64, Eclipse Adoptium 21.0.13 64bit, MSBDiskFPSet, DiskStateQueue).\nParsing file /work/formal/admission/Decision.tla\nParsing file /tmp/tlc-1844402100442890803/Naturals.tla (jar:file:/work/.tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)\nSemantic processing of module Naturals\nSemantic processing of module Decision\nLinting of module Decision\nStarting... (2026-10-30 18:28:14)\nComputing initial states...\nComputed 2 initial states...\nComputed 4 initial states...\nComputed 8 initial states...\nComputed 16 initial states...\nFinished computing initial states: 32 distinct states generated at 2026-10-30 18:28:14.\nError: Invariant NoInvalidAdmission is violated.\nError: The behavior up to this point is:\nState 1: <Initial predicate>\n/\\ decision = \"pending\"\n/\\ uniqueURL = FALSE\n/\\ hasEntry = TRUE\n/\\ uniquePath = FALSE\n/\\ hashA = TRUE\n/\\ hashB = TRUE\n\nState 2: <Decide line 16, col 11 to line 18, col 72 of module Decision>\n/\\ decision = \"accepted\"\n/\\ uniqueURL = FALSE\n/\\ hasEntry = TRUE\n/\\ uniquePath = FALSE\n/\\ hashA = TRUE\n/\\ hashB = TRUE\n\n58 states generated, 58 distinct states found, 31 states left on queue.\nThe depth of the complete state graph search is 2.\nFinished in 00s at (2026-10-30 18:28:14)\n"
+    },
+    {
+      "configuration": "Entry",
+      "exitCode": 12,
+      "expectedViolation": "NoInvalidAdmission",
+      "output": "TLC2 Version 2026.10.30.154139 (rev: 090e85c)\nWarning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the \"-XX:+UseParallelGC\" property.\n(Use the -nowarning option to disable this warning.)\nRunning breadth-first search Model-Checking with fp 14 and seed -283257169141865741 with 1 worker on 16 cores with 7800MB heap and 64MB offheap memory [pid: 1] (Linux 7.0.0-38-generic amd64, Eclipse Adoptium 21.0.13 64bit, MSBDiskFPSet, DiskStateQueue).\nParsing file /work/formal/admission/Decision.tla\nParsing file /tmp/tlc-12117745179975325443/Naturals.tla (jar:file:/work/.tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)\nSemantic processing of module Naturals\nSemantic processing of module Decision\nLinting of module Decision\nStarting... (2026-10-30 18:28:15)\nComputing initial states...\nComputed 2 initial states...\nComputed 4 initial states...\nComputed 8 initial states...\nComputed 16 initial states...\nFinished computing initial states: 32 distinct states generated at 2026-10-30 18:28:15.\nError: Invariant NoInvalidAdmission is violated.\nError: The behavior up to this point is:\nState 1: <Initial predicate>\n/\\ decision = \"pending\"\n/\\ uniqueURL = TRUE\n/\\ hasEntry = FALSE\n/\\ uniquePath = TRUE\n/\\ hashA = TRUE\n/\\ hashB = TRUE\n\nState 2: <Decide line 16, col 11 to line 18, col 72 of module Decision>\n/\\ decision = \"accepted\"\n/\\ uniqueURL = TRUE\n/\\ hasEntry = FALSE\n/\\ uniquePath = TRUE\n/\\ hashA = TRUE\n/\\ hashB = TRUE\n\n63 states generated, 63 distinct states found, 31 states left on queue.\nThe depth of the complete state graph search is 2.\nFinished in 00s at (2026-10-30 18:28:15)\n"
+    }
+  ],
+  "cases": {
+    "00000": "rejected",
+    "00001": "rejected",
+    "00010": "rejected",
+    "00011": "rejected",
+    "00100": "rejected",
+    "00101": "rejected",
+    "00110": "rejected",
+    "00111": "rejected",
+    "01000": "rejected",
+    "01001": "rejected",
+    "01010": "rejected",
+    "01011": "rejected",
+    "01100": "rejected",
+    "01101": "rejected",
+    "01110": "rejected",
+    "01111": "rejected",
+    "10000": "rejected",
+    "10001": "rejected",
+    "10010": "rejected",
+    "10011": "rejected",
+    "10100": "rejected",
+    "10101": "rejected",
+    "10110": "rejected",
+    "10111": "rejected",
+    "11000": "rejected",
+    "11001": "rejected",
+    "11010": "rejected",
+    "11011": "rejected",
+    "11100": "rejected",
+    "11101": "rejected",
+    "11110": "rejected",
+    "11111": "accepted"
+  }
+}

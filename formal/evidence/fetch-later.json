@@ -1,10 +1,11 @@
 {
-  "revision": "d717d7a42bccdcb63c3efcb4baf334bb65aac96b",
-  "testedAt": "2026-10-30T16:08:38.109Z",
-  "origin": "http://127.0.0.1:34819",
-  "scope": "fetchLater native delivery, page-close flush, blocking-worker behavior and actual current prepareWindowRealm. Private markers are created after preparation; each native control requires independent HTTP delivery. Firefox absence is recorded without a containment claim.",
-  "runnerSHA256": "fb24900cd076feff2caa3738a219a3d11b42b706149344eb100143e568c699f9",
+  "revision": "0f0d43cda8bdfbeccfc5846cea7af1d4bba69e7b",
+  "testedAt": "2026-10-30T18:24:00.712Z",
+  "origin": "http://127.0.0.1:34153",
+  "scope": "fetchLater native delivery, page-close flush, blocking-worker behavior and actual current prepareWindowRealm. A test-only bundle removes only the fetchLater denial and must disclose its marker after closing. Private markers are created after preparation; each native control requires independent HTTP delivery. Firefox absence is recorded without a containment claim.",
+  "runnerSHA256": "8e4bb7a7a0badcc43ccc61670c6b2588699f67113b0f62d227674a3de4e1e3b7",
   "fixtureSHA256": "ec1a7a8ddecae9a15e8be702cfe583aa495e0fd3b0747e778c835b482d075ab4",
+  "faultFixtureSHA256": "ffe740846309b369d5bb1592b78d7e273ac264917e1ce4a49e3f32ee893bfc22",
   "sourceHashes": {
     "src/runtime/enforcement/effects.ts": "466c165e4ef9d82e2011c85cd2639e3f7e7152309c49fbb5c8962ed0fd1bb691",
     "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d"
@@ -17,7 +18,7 @@
       "cases": [
         {
           "profile": "native-immediate",
-          "marker": "native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5",
+          "marker": "native-immediate-7730bce0-6330-4be1-8bc4-10ef6440b6f3",
           "state": {
             "call": {
               "result": "scheduled",
@@ -31,21 +32,21 @@
             "connection": "keep-alive",
             "content-length": "53",
             "content-type": "text/html",
-            "date": "Fri, 30 Oct 2026 16:08:38 GMT",
+            "date": "Fri, 30 Oct 2026 18:24:00 GMT",
             "keep-alive": "timeout=5"
           },
           "markerTraffic": [
             {
-              "at": "2026-10-30T16:08:38.324Z",
-              "url": "/receiver?native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5",
+              "at": "2026-10-30T18:24:00.942Z",
+              "url": "/receiver?native-immediate-7730bce0-6330-4be1-8bc4-10ef6440b6f3",
               "method": "POST",
-              "body": "native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5"
+              "body": "native-immediate-7730bce0-6330-4be1-8bc4-10ef6440b6f3"
             }
           ]
         },
         {
           "profile": "native-close",
-          "marker": "native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2",
+          "marker": "native-close-ce5ba6ce-dbb8-407e-9bef-28ed7d6b7912",
           "state": {
             "call": {
               "result": "scheduled",
@@ -59,22 +60,22 @@
             "connection": "keep-alive",
             "content-length": "53",
             "content-type": "text/html",
-            "date": "Fri, 30 Oct 2026 16:08:38 GMT",
+            "date": "Fri, 30 Oct 2026 18:24:00 GMT",
             "keep-alive": "timeout=5"
           },
           "beforeCloseTraffic": [],
           "markerTraffic": [
             {
-              "at": "2026-10-30T16:08:38.570Z",
-              "url": "/receiver?native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2",
+              "at": "2026-10-30T18:24:01.189Z",
+              "url": "/receiver?native-close-ce5ba6ce-dbb8-407e-9bef-28ed7d6b7912",
               "method": "POST",
-              "body": "native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2"
+              "body": "native-close-ce5ba6ce-dbb8-407e-9bef-28ed7d6b7912"
             }
           ]
         },
         {
           "profile": "native-worker-close",
-          "marker": "native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8",
+          "marker": "native-worker-close-dc3fa8c2-3698-44a2-b502-2b31c1109103",
           "state": {
             "call": {
               "result": "scheduled",
@@ -88,22 +89,22 @@
             "connection": "keep-alive",
             "content-length": "53",
             "content-type": "text/html",
-            "date": "Fri, 30 Oct 2026 16:08:38 GMT",
+            "date": "Fri, 30 Oct 2026 18:24:01 GMT",
             "keep-alive": "timeout=5"
           },
           "beforeCloseTraffic": [],
           "markerTraffic": [
             {
-              "at": "2026-10-30T16:08:38.913Z",
-              "url": "/receiver?native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8",
+              "at": "2026-10-30T18:24:01.530Z",
+              "url": "/receiver?native-worker-close-dc3fa8c2-3698-44a2-b502-2b31c1109103",
               "method": "POST",
-              "body": "native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8"
+              "body": "native-worker-close-dc3fa8c2-3698-44a2-b502-2b31c1109103"
             }
           ]
         },
         {
           "profile": "prepared-immediate",
-          "marker": "prepared-immediate-69bea6af-da03-4bde-8650-6bf717827d0c",
+          "marker": "prepared-immediate-9dffa491-ccdf-4f89-a067-6c177047fe44",
           "state": {
             "mode": "network-isolated",
             "call": {
@@ -116,11 +117,11 @@
           "headers": {
             "connection": "keep-alive",
             "content-length": "70",
-            "date": "Fri, 30 Oct 2026 16:08:39 GMT",
+            "date": "Fri, 30 Oct 2026 18:24:01 GMT",
             "keep-alive": "timeout=5",
             "cache-control": "no-store",
             "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
-            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:34819/__contexts/ http://127.0.0.1:34819/app/sw.js; worker-src http://127.0.0.1:34819/__contexts/ http://127.0.0.1:34819/app/sw.js; form-action 'none'; base-uri 'none'",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:34153/__contexts/ http://127.0.0.1:34153/app/sw.js; worker-src http://127.0.0.1:34153/__contexts/ http://127.0.0.1:34153/app/sw.js; form-action 'none'; base-uri 'none'",
             "content-type": "text/html",
             "cross-origin-opener-policy": "same-origin",
             "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
@@ -133,7 +134,7 @@
         },
         {
           "profile": "prepared-close",
-          "marker": "prepared-close-d2359ee9-9031-4ab5-b71e-a01c0558d6e1",
+          "marker": "prepared-close-4b8f319b-aa6a-4bef-8ff6-5244aad595c9",
           "state": {
             "mode": "network-isolated",
             "call": {
@@ -146,11 +147,11 @@
           "headers": {
             "connection": "keep-alive",
             "content-length": "70",
-            "date": "Fri, 30 Oct 2026 16:08:40 GMT",
+            "date": "Fri, 30 Oct 2026 18:24:03 GMT",
             "keep-alive": "timeout=5",
             "cache-control": "no-store",
             "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
-            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:34819/__contexts/ http://127.0.0.1:34819/app/sw.js; worker-src http://127.0.0.1:34819/__contexts/ http://127.0.0.1:34819/app/sw.js; form-action 'none'; base-uri 'none'",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:34153/__contexts/ http://127.0.0.1:34153/app/sw.js; worker-src http://127.0.0.1:34153/__contexts/ http://127.0.0.1:34153/app/sw.js; form-action 'none'; base-uri 'none'",
             "content-type": "text/html",
             "cross-origin-opener-policy": "same-origin",
             "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
@@ -161,6 +162,44 @@
           },
           "beforeCloseTraffic": [],
           "markerTraffic": []
+        },
+        {
+          "profile": "fault-close",
+          "marker": "fault-close-8ad06ae3-6681-4869-8952-54db4791a456",
+          "state": {
+            "mode": "network-isolated",
+            "call": {
+              "result": "scheduled",
+              "activated": false
+            },
+            "recovery": null,
+            "ordinaryFetch": null
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "76",
+            "date": "Fri, 30 Oct 2026 18:24:05 GMT",
+            "keep-alive": "timeout=5",
+            "cache-control": "no-store",
+            "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:34153/__contexts/ http://127.0.0.1:34153/app/sw.js; worker-src http://127.0.0.1:34153/__contexts/ http://127.0.0.1:34153/app/sw.js; form-action 'none'; base-uri 'none'",
+            "content-type": "text/html",
+            "cross-origin-opener-policy": "same-origin",
+            "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+            "referrer-policy": "no-referrer",
+            "x-content-type-options": "nosniff",
+            "x-dns-prefetch-control": "off",
+            "x-frame-options": "DENY"
+          },
+          "beforeCloseTraffic": [],
+          "markerTraffic": [
+            {
+              "at": "2026-10-30T18:24:05.852Z",
+              "url": "/receiver?fault-close-8ad06ae3-6681-4869-8952-54db4791a456",
+              "method": "POST",
+              "body": "fault-close-8ad06ae3-6681-4869-8952-54db4791a456"
+            }
+          ]
         }
       ],
       "actualArguments": [
@@ -207,7 +246,7 @@
         "--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4",
         "--no-sandbox",
         "--enable-automation",
-        "--user-data-dir=/tmp/playwright_chromiumdev_profile-SiZZS1",
+        "--user-data-dir=/tmp/playwright_chromiumdev_profile-J81W8n",
         "--remote-debugging-pipe",
         "--no-startup-window",
         "--noerrdialogs",
@@ -219,56 +258,68 @@
         "--enable-unsafe-swiftshader"
       ],
       "finalControl": {
-        "marker": "native-after-cc7e1be1-dd6b-4fd1-9e9a-7b6ae80bfab9",
+        "marker": "native-after-10770311-f5c1-4421-8a87-6d11a30afd29",
         "delivered": true
       },
       "workerEvents": [
         {
-          "url": "http://127.0.0.1:34819/app/native",
+          "url": "http://127.0.0.1:34153/app/native",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/favicon.ico",
+          "url": "http://127.0.0.1:34153/favicon.ico",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/app/prepared/",
+          "url": "http://127.0.0.1:34153/app/prepared/",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/app/fixture.js",
+          "url": "http://127.0.0.1:34153/app/fixture.js",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/favicon.ico",
+          "url": "http://127.0.0.1:34153/favicon.ico",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/receiver?ordinary-prepared-immediate-69bea6af-da03-4bde-8650-6bf717827d0c",
+          "url": "http://127.0.0.1:34153/receiver?ordinary-prepared-immediate-9dffa491-ccdf-4f89-a067-6c177047fe44",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/app/prepared/",
+          "url": "http://127.0.0.1:34153/app/prepared/",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/app/fixture.js",
+          "url": "http://127.0.0.1:34153/app/fixture.js",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/favicon.ico",
+          "url": "http://127.0.0.1:34153/favicon.ico",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/receiver?ordinary-prepared-close-d2359ee9-9031-4ab5-b71e-a01c0558d6e1",
+          "url": "http://127.0.0.1:34153/receiver?ordinary-prepared-close-4b8f319b-aa6a-4bef-8ff6-5244aad595c9",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/app/native",
+          "url": "http://127.0.0.1:34153/app/fault/",
           "method": "GET"
         },
         {
-          "url": "http://127.0.0.1:34819/app/events",
+          "url": "http://127.0.0.1:34153/app/fault-fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34153/favicon.ico",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34153/app/native",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34153/app/events",
           "method": "GET"
         }
       ]
@@ -282,115 +333,133 @@
   ],
   "traffic": [
     {
-      "at": "2026-10-30T16:08:38.277Z",
+      "at": "2026-10-30T18:24:00.893Z",
       "url": "/native",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:38.287Z",
+      "at": "2026-10-30T18:24:00.906Z",
       "url": "/favicon.ico",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:38.311Z",
+      "at": "2026-10-30T18:24:00.928Z",
       "url": "/native",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:38.319Z",
+      "at": "2026-10-30T18:24:00.938Z",
       "url": "/favicon.ico",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:38.324Z",
-      "url": "/receiver?native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5",
+      "at": "2026-10-30T18:24:00.942Z",
+      "url": "/receiver?native-immediate-7730bce0-6330-4be1-8bc4-10ef6440b6f3",
       "method": "POST",
-      "body": "native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5"
+      "body": "native-immediate-7730bce0-6330-4be1-8bc4-10ef6440b6f3"
     },
     {
-      "at": "2026-10-30T16:08:38.350Z",
+      "at": "2026-10-30T18:24:00.969Z",
       "url": "/native",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:38.360Z",
+      "at": "2026-10-30T18:24:00.982Z",
       "url": "/favicon.ico",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:38.570Z",
-      "url": "/receiver?native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2",
+      "at": "2026-10-30T18:24:01.189Z",
+      "url": "/receiver?native-close-ce5ba6ce-dbb8-407e-9bef-28ed7d6b7912",
       "method": "POST",
-      "body": "native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2"
+      "body": "native-close-ce5ba6ce-dbb8-407e-9bef-28ed7d6b7912"
     },
     {
-      "at": "2026-10-30T16:08:38.674Z",
+      "at": "2026-10-30T18:24:01.293Z",
       "url": "/app/sw.js",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:38.696Z",
+      "at": "2026-10-30T18:24:01.311Z",
       "url": "/app/native",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:38.913Z",
-      "url": "/receiver?native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8",
+      "at": "2026-10-30T18:24:01.530Z",
+      "url": "/receiver?native-worker-close-dc3fa8c2-3698-44a2-b502-2b31c1109103",
       "method": "POST",
-      "body": "native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8"
+      "body": "native-worker-close-dc3fa8c2-3698-44a2-b502-2b31c1109103"
     },
     {
-      "at": "2026-10-30T16:08:39.028Z",
+      "at": "2026-10-30T18:24:01.643Z",
       "url": "/app/prepared/",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:39.038Z",
+      "at": "2026-10-30T18:24:01.655Z",
       "url": "/app/fixture.js",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:40.783Z",
+      "at": "2026-10-30T18:24:03.418Z",
       "url": "/app/prepared/",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:40.793Z",
+      "at": "2026-10-30T18:24:03.428Z",
       "url": "/app/fixture.js",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:42.726Z",
-      "url": "/receiver?native-after-cc7e1be1-dd6b-4fd1-9e9a-7b6ae80bfab9",
-      "method": "POST",
-      "body": "native-after-cc7e1be1-dd6b-4fd1-9e9a-7b6ae80bfab9"
+      "at": "2026-10-30T18:24:05.390Z",
+      "url": "/app/fault/",
+      "method": "GET",
+      "body": ""
     },
     {
-      "at": "2026-10-30T16:08:42.830Z",
+      "at": "2026-10-30T18:24:05.399Z",
+      "url": "/app/fault-fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T18:24:05.852Z",
+      "url": "/receiver?fault-close-8ad06ae3-6681-4869-8952-54db4791a456",
+      "method": "POST",
+      "body": "fault-close-8ad06ae3-6681-4869-8952-54db4791a456"
+    },
+    {
+      "at": "2026-10-30T18:24:05.952Z",
+      "url": "/receiver?native-after-10770311-f5c1-4421-8a87-6d11a30afd29",
+      "method": "POST",
+      "body": "native-after-10770311-f5c1-4421-8a87-6d11a30afd29"
+    },
+    {
+      "at": "2026-10-30T18:24:06.056Z",
       "url": "/app/native",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:43.526Z",
+      "at": "2026-10-30T18:24:06.814Z",
       "url": "/native",
       "method": "GET",
       "body": ""
     },
     {
-      "at": "2026-10-30T16:08:43.629Z",
+      "at": "2026-10-30T18:24:06.923Z",
       "url": "/favicon.ico",
       "method": "GET",
       "body": ""
