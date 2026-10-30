@@ -967,6 +967,700 @@
       "effect": "Returns the URL of the associated WebSocket.",
       "prerequisites": "Requires an accessible socket.",
       "next": "Check whether recovered objects reveal shared state; the getter is not a new connection."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|downloadTotal|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns the background fetch registration expected download total.",
+      "prerequisites": "Requires an accessible registration object representing an existing operation.",
+      "next": "Assess whether shared-origin operation state is exposed and how it could later be relayed; reading the property is not itself a new network request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|downloaded|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns the background fetch registration downloaded byte count.",
+      "prerequisites": "Requires an accessible registration object representing an existing operation.",
+      "next": "Assess whether shared-origin operation state is exposed and how it could later be relayed; reading the property is not itself a new network request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|failureReason|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns the background fetch registration failure reason.",
+      "prerequisites": "Requires an accessible registration object representing an existing operation.",
+      "next": "Assess whether shared-origin operation state is exposed and how it could later be relayed; reading the property is not itself a new network request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|id|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns the background fetch registration operation identifier.",
+      "prerequisites": "Requires an accessible registration object representing an existing operation.",
+      "next": "Assess whether shared-origin operation state is exposed and how it could later be relayed; reading the property is not itself a new network request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|recordsAvailable|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns the background fetch registration records availability.",
+      "prerequisites": "Requires an accessible registration object representing an existing operation.",
+      "next": "Assess whether shared-origin operation state is exposed and how it could later be relayed; reading the property is not itself a new network request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|result|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns the background fetch registration operation result.",
+      "prerequisites": "Requires an accessible registration object representing an existing operation.",
+      "next": "Assess whether shared-origin operation state is exposed and how it could later be relayed; reading the property is not itself a new network request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|uploadTotal|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns the background fetch registration expected upload total.",
+      "prerequisites": "Requires an accessible registration object representing an existing operation.",
+      "next": "Assess whether shared-origin operation state is exposed and how it could later be relayed; reading the property is not itself a new network request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|uploaded|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns the background fetch registration uploaded byte count.",
+      "prerequisites": "Requires an accessible registration object representing an existing operation.",
+      "next": "Assess whether shared-origin operation state is exposed and how it could later be relayed; reading the property is not itself a new network request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|onprogress|attribute",
+      "class": "event-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Sets or gets the callback for operation progress events.",
+      "prerequisites": "Requires a registration and progress events from an existing operation.",
+      "next": "Check the provenance of the registration and callback timing; observing progress does not itself start a fetch."
+    },
+    {
+      "key": "service-workers|ServiceWorkerContainer|oncontrollerchange|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets an event handler for controller changes.",
+      "prerequisites": "Requires access to a service-worker container and the relevant event.",
+      "next": "Check message source validation and generation changes; handler registration is not itself a network send."
+    },
+    {
+      "key": "service-workers|ServiceWorkerContainer|onmessage|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets an event handler for worker messages.",
+      "prerequisites": "Requires access to a service-worker container and the relevant event.",
+      "next": "Check message source validation and generation changes; handler registration is not itself a network send."
+    },
+    {
+      "key": "service-workers|ServiceWorkerContainer|onmessageerror|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets an event handler for message deserialization errors.",
+      "prerequisites": "Requires access to a service-worker container and the relevant event.",
+      "next": "Check message source validation and generation changes; handler registration is not itself a network send."
+    },
+    {
+      "key": "service-workers|ServiceWorkerContainer|startMessages|operation",
+      "class": "local-message-control",
+      "wpt": [],
+      "effect": "Enables the client message queue for receiving worker messages.",
+      "prerequisites": "Requires an accessible service-worker container and queued or future messages.",
+      "next": "Check message peer authority and callback behavior separately; starting the queue does not itself send to a network receiver."
+    },
+    {
+      "key": "credential-management-1|Credential|id|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Returns the credential identifier on an available credential object.",
+      "prerequisites": "Requires access to a credential object; concrete credential types and browser state affect the returned value.",
+      "next": "Determine reachable credential sources and any separate relay. This read is not an outbound request."
+    },
+    {
+      "key": "credential-management-1|Credential|type|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Returns the credential type on an available credential object.",
+      "prerequisites": "Requires access to a credential object; concrete credential types and browser state affect the returned value.",
+      "next": "Determine reachable credential sources and any separate relay. This read is not an outbound request."
+    },
+    {
+      "key": "credential-management-1|Credential|isConditionalMediationAvailable|operation",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Reports whether a credential type supports conditional mediation; credential types may override the default.",
+      "prerequisites": "Requires API exposure and depends on the specific interface and browser implementation.",
+      "next": "Review overrides and browser integrations for side effects; the base algorithm resolves false and does not itself prove a network send."
+    },
+    {
+      "key": "credential-management-1|FederatedCredential|constructor|constructor",
+      "class": "credential-construction",
+      "wpt": [],
+      "effect": "Constructs a federated credential from provided data.",
+      "prerequisites": "Requires API exposure and valid constructor input.",
+      "next": "Trace any later storage or credential-specific operations separately; construction alone does not establish an outbound request."
+    },
+    {
+      "key": "credential-management-1|FederatedCredential|protocol|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Returns the federated credential protocol.",
+      "prerequisites": "Requires access to a federated credential object.",
+      "next": "Assess credential acquisition and subsequent relay separately; property access alone does not transmit the value."
+    },
+    {
+      "key": "credential-management-1|FederatedCredential|provider|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Returns the federated credential provider.",
+      "prerequisites": "Requires access to a federated credential object.",
+      "next": "Assess credential acquisition and subsequent relay separately; property access alone does not transmit the value."
+    },
+    {
+      "key": "credential-management-1|PasswordCredential|constructor|constructor",
+      "class": "credential-construction",
+      "wpt": [],
+      "effect": "Constructs a password credential from either an HTML form or credential data.",
+      "prerequisites": "The input has two overloads with different conversion and validation; access to the source form or data is needed.",
+      "next": "Review both overloads and any later credential store or browser synchronization. Constructor use alone is not proof of egress."
+    },
+    {
+      "key": "credential-management-1|PasswordCredential|password|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Returns the password value held by the credential object.",
+      "prerequisites": "Requires access to a password credential; obtaining one has separate credential and user-mediation conditions.",
+      "next": "Test credential acquisition and any external relay separately; this getter is not a network send."
+    },
+    {
+      "key": "fedcm-1|IdentityCredential|configURL|attribute",
+      "class": "credential-state",
+      "wpt": [
+        "fedcm"
+      ],
+      "effect": "Returns the identity credential identity provider configuration URL.",
+      "prerequisites": "Requires a returned IdentityCredential; the FedCM request has separate policy, user and identity-provider state prerequisites.",
+      "next": "Examine actual credential reachability and any later transmission separately; reading does not itself trigger the token request."
+    },
+    {
+      "key": "fedcm-1|IdentityCredential|isAutoSelected|attribute",
+      "class": "credential-state",
+      "wpt": [
+        "fedcm"
+      ],
+      "effect": "Returns the identity credential whether the identity was automatically selected.",
+      "prerequisites": "Requires a returned IdentityCredential; the FedCM request has separate policy, user and identity-provider state prerequisites.",
+      "next": "Examine actual credential reachability and any later transmission separately; reading does not itself trigger the token request."
+    },
+    {
+      "key": "fedcm-1|IdentityCredential|token|attribute",
+      "class": "credential-state",
+      "wpt": [
+        "fedcm"
+      ],
+      "effect": "Returns the identity credential identity assertion token.",
+      "prerequisites": "Requires a returned IdentityCredential; the FedCM request has separate policy, user and identity-provider state prerequisites.",
+      "next": "Examine actual credential reachability and any later transmission separately; reading does not itself trigger the token request."
+    },
+    {
+      "key": "fetch|Request|cache|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request cache mode.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|credentials|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request credentials mode.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|destination|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request request destination.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|duplex|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request duplex mode.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|integrity|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request integrity metadata.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|isHistoryNavigation|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request history-navigation flag.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|isReloadNavigation|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request reload-navigation flag.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|method|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request HTTP method.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|mode|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request request mode.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|redirect|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request redirect mode.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|referrer|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request referrer.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|referrerPolicy|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request referrer policy.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|signal|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request abort signal.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fetch|Request|url|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Exposes the Request request URL.",
+      "prerequisites": "Requires access to a Request object; construction and consumption of requests are separate steps.",
+      "next": "Check how this state is preserved or constrained by actual fetch, cache or background request consumers; the getter itself is not a network send."
+    },
+    {
+      "key": "fedcm-1|IdentityCredentialError|constructor|constructor",
+      "class": "credential-construction",
+      "wpt": [],
+      "effect": "Constructs an error object carrying supplied message, error and URL values.",
+      "prerequisites": "Requires exposed API and valid arguments.",
+      "next": "Examine any later UI, navigation or other consumer of the error URL; constructing the error does not itself prove a request."
+    },
+    {
+      "key": "fedcm-1|IdentityCredentialError|error|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Reads the error object error.",
+      "prerequisites": "Requires an accessible IdentityCredentialError; it may be constructed by code or arise from an identity flow.",
+      "next": "Review the source and use of the value, especially any UI or navigation consumer; reading alone does not transmit it."
+    },
+    {
+      "key": "fedcm-1|IdentityCredentialError|url|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Reads the error object url.",
+      "prerequisites": "Requires an accessible IdentityCredentialError; it may be constructed by code or arise from an identity flow.",
+      "next": "Review the source and use of the value, especially any UI or navigation consumer; reading alone does not transmit it."
+    },
+    {
+      "key": "fetch|Headers|constructor|constructor",
+      "class": "request-construction",
+      "wpt": [],
+      "effect": "Constructs a Headers object from optional initial data.",
+      "prerequisites": "Requires input accepted by Web IDL conversion and header validation.",
+      "next": "Check each later request consumer and header guard; construction itself does not send headers."
+    },
+    {
+      "key": "fetch|Headers|get|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Queries the Headers object header list using get.",
+      "prerequisites": "Requires an accessible Headers object; response filtering and header visibility are separate conditions.",
+      "next": "Assess how header values reach other contexts or consumers; the local lookup is not itself a network send."
+    },
+    {
+      "key": "fetch|Headers|getSetCookie|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Queries the Headers object header list using getSetCookie.",
+      "prerequisites": "Requires an accessible Headers object; response filtering and header visibility are separate conditions.",
+      "next": "Assess how header values reach other contexts or consumers; the local lookup is not itself a network send."
+    },
+    {
+      "key": "fetch|Headers|has|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Queries the Headers object header list using has.",
+      "prerequisites": "Requires an accessible Headers object; response filtering and header visibility are separate conditions.",
+      "next": "Assess how header values reach other contexts or consumers; the local lookup is not itself a network send."
+    },
+    {
+      "key": "fetch|Response|clone|operation",
+      "class": "response-construction",
+      "wpt": [],
+      "effect": "Clones response state and body where the body is usable.",
+      "prerequisites": "Requires an accessible usable Response; disturbed or locked bodies can cause failure.",
+      "next": "Assess whether the clone later enters a worker response or other effect-producing consumer."
+    },
+    {
+      "key": "fetch|Response|constructor|constructor",
+      "class": "response-construction",
+      "wpt": [],
+      "effect": "Constructs a Response object with a supplied body and options.",
+      "prerequisites": "Requires valid response initialization and body input.",
+      "next": "Test whether a response later supplied to a browser-controlled consumer can change network effects; construction alone is not a fetch."
+    },
+    {
+      "key": "fetch|Response|error|operation",
+      "class": "response-construction",
+      "wpt": [],
+      "effect": "Creates a network-error Response object.",
+      "prerequisites": "Requires access to the Response static method.",
+      "next": "Inspect downstream response handling and fallback behavior; creation does not by itself perform a network request."
+    },
+    {
+      "key": "fetch|Response|json|operation",
+      "class": "response-construction",
+      "wpt": [],
+      "effect": "The static Response.json method serializes input and constructs a JSON Response.",
+      "prerequisites": "Requires serializable input and valid response initialization.",
+      "next": "The join marks this row static: instance body.json is a distinct inherited method outside this row. Test downstream consumers, rather than inferring a fetch."
+    },
+    {
+      "key": "fetch|Response|headers|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the Headers object associated with the Response.",
+      "prerequisites": "Requires an accessible Response and applicable filtered-response/header guard behavior.",
+      "next": "Review how accessible header values are used and whether any downstream consumer interprets them as a network instruction."
+    },
+    {
+      "key": "fetch|Response|ok|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns response whether status is an OK status.",
+      "prerequisites": "Requires an accessible Response; its type and origin can limit visible information.",
+      "next": "Consider redirects, response consumers and any subsequent relay separately; reading is not itself a fetch."
+    },
+    {
+      "key": "fetch|Response|redirected|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns response whether response URL history has multiple entries.",
+      "prerequisites": "Requires an accessible Response; its type and origin can limit visible information.",
+      "next": "Consider redirects, response consumers and any subsequent relay separately; reading is not itself a fetch."
+    },
+    {
+      "key": "fetch|Response|status|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns response HTTP status.",
+      "prerequisites": "Requires an accessible Response; its type and origin can limit visible information.",
+      "next": "Consider redirects, response consumers and any subsequent relay separately; reading is not itself a fetch."
+    },
+    {
+      "key": "fetch|Response|statusText|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns response status message.",
+      "prerequisites": "Requires an accessible Response; its type and origin can limit visible information.",
+      "next": "Consider redirects, response consumers and any subsequent relay separately; reading is not itself a fetch."
+    },
+    {
+      "key": "fetch|Response|type|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns response response filtering type.",
+      "prerequisites": "Requires an accessible Response; its type and origin can limit visible information.",
+      "next": "Consider redirects, response consumers and any subsequent relay separately; reading is not itself a fetch."
+    },
+    {
+      "key": "fetch|Response|url|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns response response URL.",
+      "prerequisites": "Requires an accessible Response; its type and origin can limit visible information.",
+      "next": "Consider redirects, response consumers and any subsequent relay separately; reading is not itself a fetch."
+    },
+    {
+      "key": "websockets|CloseEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a CloseEvent using supplied initialization values.",
+      "prerequisites": "Requires an exposed constructor and valid event data.",
+      "next": "A synthetic event is distinct from a network closing handshake; test consumers and live socket behavior separately."
+    },
+    {
+      "key": "websockets|CloseEvent|code|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "websocket-close"
+      ],
+      "effect": "Returns the event close code.",
+      "prerequisites": "Requires an accessible CloseEvent; it may be synthetic or caused by a socket closure.",
+      "next": "Determine event provenance and any subsequent relay; reading this field does not itself initiate a connection."
+    },
+    {
+      "key": "websockets|CloseEvent|reason|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "websocket-close"
+      ],
+      "effect": "Returns the event close reason.",
+      "prerequisites": "Requires an accessible CloseEvent; it may be synthetic or caused by a socket closure.",
+      "next": "Determine event provenance and any subsequent relay; reading this field does not itself initiate a connection."
+    },
+    {
+      "key": "websockets|CloseEvent|wasClean|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "websocket-close"
+      ],
+      "effect": "Returns the event clean-close flag.",
+      "prerequisites": "Requires an accessible CloseEvent; it may be synthetic or caused by a socket closure.",
+      "next": "Determine event provenance and any subsequent relay; reading this field does not itself initiate a connection."
+    },
+    {
+      "key": "websockets|WebSocket|binaryType|attribute",
+      "class": "socket-configuration",
+      "wpt": [],
+      "effect": "Gets or sets how incoming binary messages are represented to script.",
+      "prerequisites": "Requires a reachable native WebSocket object.",
+      "next": "Test access to the live socket and both send and close paths; changing binary representation is not itself a payload send."
+    },
+    {
+      "key": "websockets|WebSocket|bufferedAmount|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the socket queued bytes.",
+      "prerequisites": "Requires a reachable native WebSocket object.",
+      "next": "Investigate acquisition and live communication separately; a getter observation is not a connection or message test."
+    },
+    {
+      "key": "websockets|WebSocket|extensions|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the socket negotiated extensions.",
+      "prerequisites": "Requires a reachable native WebSocket object.",
+      "next": "Investigate acquisition and live communication separately; a getter observation is not a connection or message test."
+    },
+    {
+      "key": "websockets|WebSocket|protocol|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the socket negotiated protocol.",
+      "prerequisites": "Requires a reachable native WebSocket object.",
+      "next": "Investigate acquisition and live communication separately; a getter observation is not a connection or message test."
+    },
+    {
+      "key": "websockets|WebSocket|readyState|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the socket connection state.",
+      "prerequisites": "Requires a reachable native WebSocket object.",
+      "next": "Investigate acquisition and live communication separately; a getter observation is not a connection or message test."
+    },
+    {
+      "key": "webtransport|WebTransport|congestionControl|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the transport congestion-control mode.",
+      "prerequisites": "Requires a reachable native WebTransport object; browser support and connection state can affect values.",
+      "next": "Assess native session acquisition and other stream or datagram capabilities independently; a getter is not a payload send."
+    },
+    {
+      "key": "webtransport|WebTransport|protocol|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the transport negotiated application protocol.",
+      "prerequisites": "Requires a reachable native WebTransport object; browser support and connection state can affect values.",
+      "next": "Assess native session acquisition and other stream or datagram capabilities independently; a getter is not a payload send."
+    },
+    {
+      "key": "webtransport|WebTransport|reliability|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the transport transport reliability mode.",
+      "prerequisites": "Requires a reachable native WebTransport object; browser support and connection state can affect values.",
+      "next": "Assess native session acquisition and other stream or datagram capabilities independently; a getter is not a payload send."
+    },
+    {
+      "key": "webtransport|WebTransportDatagramDuplexStream|incomingMaxAge|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets incoming datagram expiration duration.",
+      "prerequisites": "Requires a reachable native datagram duplex object; setter validity and implementation support vary.",
+      "next": "Review effect on already queued datagrams and transmission timing. A property setter is not by itself proof that a peer receives data."
+    },
+    {
+      "key": "webtransport|WebTransportDatagramDuplexStream|incomingMaxBufferedDatagrams|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets incoming datagram buffering limit.",
+      "prerequisites": "Requires a reachable native datagram duplex object; setter validity and implementation support vary.",
+      "next": "Review effect on already queued datagrams and transmission timing. A property setter is not by itself proof that a peer receives data."
+    },
+    {
+      "key": "webtransport|WebTransportDatagramDuplexStream|outgoingMaxAge|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets outgoing datagram expiration duration.",
+      "prerequisites": "Requires a reachable native datagram duplex object; setter validity and implementation support vary.",
+      "next": "Review effect on already queued datagrams and transmission timing. A property setter is not by itself proof that a peer receives data."
+    },
+    {
+      "key": "webtransport|WebTransportDatagramDuplexStream|outgoingMaxBufferedDatagrams|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets outgoing datagram buffering limit.",
+      "prerequisites": "Requires a reachable native datagram duplex object; setter validity and implementation support vary.",
+      "next": "Review effect on already queued datagrams and transmission timing. A property setter is not by itself proof that a peer receives data."
+    },
+    {
+      "key": "webtransport|WebTransportDatagramDuplexStream|maxDatagramSize|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the maximum supported datagram size for the transport.",
+      "prerequisites": "Requires a reachable datagram duplex object and relevant connection state.",
+      "next": "Test actual datagram delivery through a separately acquired writable stream; reading this limit does not send a payload."
+    },
+    {
+      "key": "webtransport|WebTransportDatagramsWritable|sendGroup|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets the writable stream send group.",
+      "prerequisites": "Requires a reachable native writable stream; group assignment is constrained by its associated transport.",
+      "next": "Examine effects on scheduling of pending writes and any timing channels separately; assigning the property alone does not establish payload delivery."
+    },
+    {
+      "key": "webtransport|WebTransportDatagramsWritable|sendOrder|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets the writable stream send order.",
+      "prerequisites": "Requires a reachable native writable stream; group assignment is constrained by its associated transport.",
+      "next": "Examine effects on scheduling of pending writes and any timing channels separately; assigning the property alone does not establish payload delivery."
+    },
+    {
+      "key": "webtransport|WebTransportSendStream|sendGroup|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets the writable stream send group.",
+      "prerequisites": "Requires a reachable native writable stream; group assignment is constrained by its associated transport.",
+      "next": "Examine effects on scheduling of pending writes and any timing channels separately; assigning the property alone does not establish payload delivery."
+    },
+    {
+      "key": "webtransport|WebTransportSendStream|sendOrder|attribute",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Gets or sets the writable stream send order.",
+      "prerequisites": "Requires a reachable native writable stream; group assignment is constrained by its associated transport.",
+      "next": "Examine effects on scheduling of pending writes and any timing channels separately; assigning the property alone does not establish payload delivery."
+    },
+    {
+      "key": "webtransport|WebTransportError|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a WebTransportError with supplied error information.",
+      "prerequisites": "Requires exposed API and valid initialization data.",
+      "next": "Trace how errors are used by actual stream/session operations; constructing an error object alone is not a network send."
+    },
+    {
+      "key": "webtransport|WebTransportError|source|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the transport error source.",
+      "prerequisites": "Requires an accessible WebTransportError, which may be synthetic or produced by a transport.",
+      "next": "Assess error provenance and separately test any relay or protocol control action."
+    },
+    {
+      "key": "webtransport|WebTransportError|streamErrorCode|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the transport error streamErrorCode.",
+      "prerequisites": "Requires an accessible WebTransportError, which may be synthetic or produced by a transport.",
+      "next": "Assess error provenance and separately test any relay or protocol control action."
+    },
+    {
+      "key": "webtransport|WebTransportReceiveStream|getStats|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Gathers and returns statistics for the relevant transport object.",
+      "prerequisites": "Requires a reachable native object and an implementation exposing this method.",
+      "next": "Review potential information exposure and measure browser-specific behavior; this operation is not a native receiver calibration."
+    },
+    {
+      "key": "webtransport|WebTransportSendGroup|getStats|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Gathers and returns statistics for the relevant transport object.",
+      "prerequisites": "Requires a reachable native object and an implementation exposing this method.",
+      "next": "Review potential information exposure and measure browser-specific behavior; this operation is not a native receiver calibration."
+    },
+    {
+      "key": "webtransport|WebTransportSendStream|getStats|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Gathers and returns statistics for the relevant transport object.",
+      "prerequisites": "Requires a reachable native object and an implementation exposing this method.",
+      "next": "Review potential information exposure and measure browser-specific behavior; this operation is not a native receiver calibration."
     }
   ]
 }

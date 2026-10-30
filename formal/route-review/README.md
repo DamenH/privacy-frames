@@ -129,3 +129,34 @@ workers at different lifecycle states and can schedule unregistration. These
 are acquisition, integrity and lifecycle questions; property observations do
 not establish an outbound request. Sync tag reads and unregistration affect
 browser-owned state and warrant separate shared-origin analysis.
+
+The [Credential Management specification](https://w3c.github.io/webappsec-credential-management/#passwordcredential)
+provides two `PasswordCredential` constructor overloads: one takes a form and
+one takes data. The current join lacks overload signatures, so its shared review
+covers both without claiming identical validation. The resulting password and
+federated credential getters expose local credential state; effects of later
+storage, browser synchronization or a separate network relay remain open.
+
+[Background Fetch registration properties](https://wicg.github.io/background-fetch/#backgroundfetchregistration)
+expose an existing operation's identifier, progress and outcome, with a progress
+callback. Whether an app can access a native registration belonging to another
+actor is a distinct question from whether reading one of these properties causes
+a request. The Request attribute reviews likewise track metadata without treating
+its retrieval as delivery; the consuming network operation remains the boundary
+to test.
+
+All rows with an observed property name in this bounded snapshot now have a
+manual classification. This means their specified role and follow-up questions
+were recorded; it does not mean their effects, implementations or confinement
+were exhaustively analyzed. The remaining 76 rows lack an observed name in this
+snapshot and remain unreviewed. Some represent contexts or prototypes the
+snapshot did not capture, so they must not be treated as absent browser APIs.
+In particular, the snapshot does not enumerate service-worker global objects,
+shared workers, worklets or WorkerNavigator, and covers only the recorded
+Chromium and Firefox versions.
+
+Several remaining reviews concern [WebTransport scheduling and buffering](https://w3c.github.io/webtransport/#dom-webtransportdatagramswritable-sendorder).
+The configuration setters need a reachable transport object; changes may affect
+queued transmission or timing, which the current review has not measured. The
+static `Response.json` row in the join constructs a response; the inherited
+instance body-reading method is distinct and is not covered by that row.
