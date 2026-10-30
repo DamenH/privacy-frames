@@ -67,6 +67,8 @@ The [worker-registration probe](worker-registration.md) tests two getter routes
 in installed dedicated and shared workers with native Firefox acquisition controls.
 The [navigation-preload probe](navigation-preload.md) calibrates native header
 delivery and tests the installed app's two virtual preload interfaces.
+Its [fault control](navigation-preload-fault.md) shows a marker reaching the
+receiver when navigation cancellation is removed in a test bundle with preload enabled.
 The [deferred-fetch probe](fetch-later.md) confirms a native page-close upload
 and tests the prepared runtime against that route in Chromium. Removing its
 denial in a test build permits the upload.

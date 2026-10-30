@@ -1,0 +1,163 @@
+{
+  "scope": "Prepared window and generated response policy with a fixture service worker and deliberately pre-enabled navigation preload. A test-only source mutation removes the navigate-event cancellation. Not a production escape or installed-app lifecycle proof.",
+  "revision": "395fabe6079da72ade56d3bb0ed35c4dd330bb4c",
+  "runnerSHA256": "25191bf78bc8f2b887e044b731743968f8ca3823a6c14fc6c5229077ec95f3bc",
+  "normalBundleSHA256": "a2ef926f7f248a6be829e76470a5d0a8536b1ab00eed0f9de768a10924b0f2bd",
+  "faultBundleSHA256": "b9fb7be9ade928a2034ccfea169c1950e5d6f544271e15430aab41f70ac2dd8f",
+  "sourceHashes": {
+    "src/runtime/enforcement/navigation.ts": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd",
+    "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d",
+    "src/runtime/response-policy.ts": "f21946f76dd37233ea7e48dd969a59e09343315f3a044e4be66ae4324fb9efb2",
+    "scripts/trusted-policy.ts": "93cc9dffdee1683b74faa06251b4f8ab16eaf5294047b5783f156cb6417a5e36",
+    "package-lock.json": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed"
+  },
+  "completed": true,
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "seeded": "seed-e5c23f4c-2aa1-4718-84ce-7cfbad70f49d",
+      "cases": [
+        {
+          "kind": "native",
+          "marker": "native-8d3b7d1d-6af7-4a4e-8d06-2d9f63e08d11",
+          "before": "http://127.0.0.1:37395/native/",
+          "after": "http://127.0.0.1:37395/target?native-8d3b7d1d-6af7-4a4e-8d06-2d9f63e08d11",
+          "received": [
+            {
+              "url": "/target?native-8d3b7d1d-6af7-4a4e-8d06-2d9f63e08d11",
+              "preload": "seed-e5c23f4c-2aa1-4718-84ce-7cfbad70f49d"
+            }
+          ],
+          "workerObserved": true
+        },
+        {
+          "kind": "normal",
+          "marker": "normal-f1937e61-df15-4f5e-a4eb-2808ea0287a9",
+          "before": "http://127.0.0.1:37395/app/normal/",
+          "after": "http://127.0.0.1:37395/app/normal/",
+          "received": [],
+          "workerObserved": false,
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "65",
+            "date": "Fri, 30 Oct 2026 19:53:01 GMT",
+            "keep-alive": "timeout=5",
+            "cache-control": "no-store",
+            "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:37395/__contexts/ http://127.0.0.1:37395/sw.js; worker-src http://127.0.0.1:37395/__contexts/ http://127.0.0.1:37395/sw.js; form-action 'none'; base-uri 'none'",
+            "content-type": "text/html",
+            "cross-origin-opener-policy": "same-origin",
+            "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+            "referrer-policy": "no-referrer",
+            "x-content-type-options": "nosniff",
+            "x-dns-prefetch-control": "off",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "kind": "fault",
+          "marker": "fault-7a34597a-7609-44c7-bcc7-98422bcd7389",
+          "before": "http://127.0.0.1:37395/app/fault/",
+          "after": "http://127.0.0.1:37395/target?fault-7a34597a-7609-44c7-bcc7-98422bcd7389",
+          "received": [
+            {
+              "url": "/target?fault-7a34597a-7609-44c7-bcc7-98422bcd7389",
+              "preload": "seed-e5c23f4c-2aa1-4718-84ce-7cfbad70f49d"
+            }
+          ],
+          "workerObserved": true,
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "64",
+            "date": "Fri, 30 Oct 2026 19:53:02 GMT",
+            "keep-alive": "timeout=5",
+            "cache-control": "no-store",
+            "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:37395/__contexts/ http://127.0.0.1:37395/sw.js; worker-src http://127.0.0.1:37395/__contexts/ http://127.0.0.1:37395/sw.js; form-action 'none'; base-uri 'none'",
+            "content-type": "text/html",
+            "cross-origin-opener-policy": "same-origin",
+            "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+            "referrer-policy": "no-referrer",
+            "x-content-type-options": "nosniff",
+            "x-dns-prefetch-control": "off",
+            "x-frame-options": "DENY"
+          }
+        }
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "seeded": "seed-bd6de35e-3af5-49b1-a0d5-e9088c356ca7",
+      "cases": [
+        {
+          "kind": "native",
+          "marker": "native-02bc686b-fd1e-433b-b232-bdf84825374b",
+          "before": "http://127.0.0.1:37395/native/",
+          "after": "http://127.0.0.1:37395/target?native-02bc686b-fd1e-433b-b232-bdf84825374b",
+          "received": [
+            {
+              "url": "/target?native-02bc686b-fd1e-433b-b232-bdf84825374b",
+              "preload": "seed-bd6de35e-3af5-49b1-a0d5-e9088c356ca7"
+            }
+          ],
+          "workerObserved": true
+        },
+        {
+          "kind": "normal",
+          "marker": "normal-2fcb4df0-2697-4177-9c0d-5ce053400bab",
+          "before": "http://127.0.0.1:37395/app/normal/",
+          "after": "http://127.0.0.1:37395/app/normal/",
+          "received": [],
+          "workerObserved": false,
+          "headers": {
+            "cache-control": "no-store",
+            "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:37395/__contexts/ http://127.0.0.1:37395/sw.js; worker-src http://127.0.0.1:37395/__contexts/ http://127.0.0.1:37395/sw.js; form-action 'none'; base-uri 'none'",
+            "content-type": "text/html",
+            "cross-origin-opener-policy": "same-origin",
+            "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+            "referrer-policy": "no-referrer",
+            "x-content-type-options": "nosniff",
+            "x-dns-prefetch-control": "off",
+            "x-frame-options": "DENY",
+            "date": "Fri, 30 Oct 2026 19:53:05 GMT",
+            "connection": "keep-alive",
+            "keep-alive": "timeout=5",
+            "content-length": "65"
+          }
+        },
+        {
+          "kind": "fault",
+          "marker": "fault-60612bad-c808-4dbd-a7a3-180b09cc9bef",
+          "before": "http://127.0.0.1:37395/app/fault/",
+          "after": "http://127.0.0.1:37395/target?fault-60612bad-c808-4dbd-a7a3-180b09cc9bef",
+          "received": [
+            {
+              "url": "/target?fault-60612bad-c808-4dbd-a7a3-180b09cc9bef",
+              "preload": "seed-bd6de35e-3af5-49b1-a0d5-e9088c356ca7"
+            }
+          ],
+          "workerObserved": true,
+          "headers": {
+            "cache-control": "no-store",
+            "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:37395/__contexts/ http://127.0.0.1:37395/sw.js; worker-src http://127.0.0.1:37395/__contexts/ http://127.0.0.1:37395/sw.js; form-action 'none'; base-uri 'none'",
+            "content-type": "text/html",
+            "cross-origin-opener-policy": "same-origin",
+            "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+            "referrer-policy": "no-referrer",
+            "x-content-type-options": "nosniff",
+            "x-dns-prefetch-control": "off",
+            "x-frame-options": "DENY",
+            "date": "Fri, 30 Oct 2026 19:53:06 GMT",
+            "connection": "keep-alive",
+            "keep-alive": "timeout=5",
+            "content-length": "64"
+          }
+        }
+      ]
+    }
+  ]
+}

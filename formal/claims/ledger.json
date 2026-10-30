@@ -33,6 +33,7 @@
     "formal/evidence/hyperlink-auditing.json": "4deb55ac64e514eb55b7b00233c4281db617a2b0802ff48f0a2317761111b766",
     "formal/evidence/idl-surface-report.json": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
     "formal/evidence/modern-reporting.json": "c8f4038654445ca9da6c98a50244bafe8b6bd0fec6012eef62070319c4acd7b1",
+    "formal/evidence/navigation-preload-fault.json": "7e94153409b126bf74691ccb92c96420d5eac703b140c03aa4b594af71c5bbda",
     "formal/evidence/navigation-preload.json": "fa33250529cffbfce5dfe791ec228356b40d2e6162b7a2765787458c00a70df4",
     "formal/evidence/publisher-navigate.json": "c6577e96384b8316e4f3841bb0dce562b1eb791a4ca7b31d9ffc2cabcc9d53fb",
     "formal/evidence/publisher-routes.json": "0d18dbd4f211c056f77e2ff7c9e513c65414d17df627902fc5fa3573a50fcccd",
@@ -48,6 +49,8 @@
     "formal/lean/CapabilityBoundary.lean": "5cf557978cf54255fded00ba991b90db7e54056e39f81a769f016c32ace7cf23",
     "formal/lean/README.md": "e0f71cc0ca90052045d6b1611bb33bf6f4d62732031f66099052ab4c46935d01",
     "formal/lean/Reachability.lean": "b643cfdbf2042d135ce5bb94204dcbd9921e5f898b1ee44baed24c4e4a49d0ab",
+    "formal/navigation-preload-fault.md": "3d618f15ee6a02631543f46817f4bb848218832134ffab16455e8c94c67c559d",
+    "formal/navigation-preload-fault.ts": "25191bf78bc8f2b887e044b731743968f8ca3823a6c14fc6c5229077ec95f3bc",
     "formal/navigation-preload-probe.ts": "3dc4b881d114035db87de556354dce9a5a5cac60e2c5fa3d115ae92500470803",
     "formal/navigation-preload.md": "c01f884802d23dae9bfc59fe70d0ecc90683422045c3d9d61246fb0190b9a862",
     "formal/path-audit/README.md": "5b5631af02f28dc1eac8b03eb1f7e7f5d955af5124baa186f92257509834355c",
@@ -1288,6 +1291,15 @@
             "formal/navigation-preload-probe.ts",
             "formal/evidence/navigation-preload.json"
           ]
+        },
+        {
+          "kind": "fault_control",
+          "description": "With deliberately enabled fixture preload, removing only navigation-event cancellation permits a marker request in both browsers; ordinary preparation blocks it with generated headers retained.",
+          "paths": [
+            "formal/navigation-preload-fault.md",
+            "formal/navigation-preload-fault.ts",
+            "formal/evidence/navigation-preload-fault.json"
+          ]
         }
       ],
       "open_obligations": [
@@ -1299,7 +1311,7 @@
       "control_status": {
         "native_control": "recorded",
         "confined_test": "recorded",
-        "fault_control": "not-recorded"
+        "fault_control": "recorded"
       }
     },
     {
