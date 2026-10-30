@@ -19,9 +19,21 @@ Removing the cancellation action fails extraction; weakening OR to AND fails
 the proof. `result.json` saves source/checker hashes, the generated proof and its
 axiom report. No production source changes are required by this experiment.
 
+`Expression.lean` adds restricted left-to-right, short-circuit semantics with
+explicit abrupt completion. The checker generates a second expression tree
+from the same TypeScript condition. The kernel checks that a cross-document
+event requests cancellation regardless of whether the unevaluated route
+predicate would return or throw. It also checks the actual failure behavior:
+a throwing native same-document getter propagates an exception, as does a
+throwing route predicate for a same-document event. Cancellation here means
+the recognized call is requested, not that the browser has performed it.
+An eager-evaluation mutation preserves the Boolean result on successful inputs
+but invalidates the exception-sensitive theorem and is rejected.
+
 This is a restricted source correspondence check, not a formal JavaScript
 semantics. The TypeScript parser, extractor and expression translation are trusted.
-It assumes the two predicates produce primitive Booleans without exceptions and
+The Boolean theorem assumes primitive-Boolean inputs without exceptions. The
+second theorem accounts for predicate exceptions, but both still assume
 that the checked capture expressions resolve to their intended native operations
 in an uncontaminated setup environment. It does
 not establish that the handler is installed before application code, that it
@@ -35,8 +47,8 @@ local marker request with deliberately enabled preload. This empirical evidence
 supports the selected browser contract; it is not a proof over all executions.
 
 Remaining work for the complete path is to check the captured native bindings,
-setup ordering and callback reachability, formalize the short-circuit and
-exception behavior at the predicate boundary, and specify the browser rule that
+setup ordering and callback reachability, establish valid native getter behavior
+for genuine events, and specify the browser rule that
 relates cancellation to navigation/preload delivery. A stronger translation
 argument must also replace trust in this small extractor if the intended result
 requires a machine-checked JavaScript-to-proof connection.

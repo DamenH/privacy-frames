@@ -9,7 +9,7 @@ import ts from 'typescript';
 const root = resolve(import.meta.dirname, '../..');
 const sourcePath = resolve(root, 'src/runtime/enforcement/navigation.ts');
 const text = await readFile(sourcePath, 'utf8');
-function extract(input: string): string {
+function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): string {
   const file = ts.createSourceFile(
     sourcePath,
     input,
@@ -113,20 +113,23 @@ function extract(input: string): string {
   function expression(node: ts.Expression): string {
     if (ts.isParenthesizedExpression(node)) return expression(node.expression);
     const atom = normalized(node);
-    if (atom === 'apply(nativeSameDocument,destination,[])') return 'sameDocument';
+    if (atom === 'apply(nativeSameDocument,destination,[])')
+      return mode === 'boolean' ? 'sameDocument' : 'Expr.sameDocument';
     if (atom === 'inDocument(apply(nativeDestinationURL,destination,[]))')
-      return 'allowedRoute';
+      return mode === 'boolean' ? 'allowedRoute' : 'Expr.allowedRoute';
     if (
       ts.isPrefixUnaryExpression(node) &&
       node.operator === ts.SyntaxKind.ExclamationToken
     )
-      return `(Bool.not ${expression(node.operand)})`;
+      return `(${mode === 'boolean' ? 'Bool.not' : 'Expr.neg'} ${expression(node.operand)})`;
     if (ts.isBinaryExpression(node)) {
       const op = node.operatorToken.kind;
       assert(
         op === ts.SyntaxKind.BarBarToken || op === ts.SyntaxKind.AmpersandAmpersandToken,
         'Unsupported boolean operator',
       );
+      if (mode === 'semantics')
+        return `(Expr.${op === ts.SyntaxKind.BarBarToken ? 'disjunction' : 'conjunction'} ${expression(node.left)} ${expression(node.right)})`;
       return `(${expression(node.left)} ${op === ts.SyntaxKind.BarBarToken ? '||' : '&&'} ${expression(node.right)})`;
     }
     throw new Error('Unsupported condition: ' + atom);
@@ -164,6 +167,44 @@ assert.equal(
   "'cancellation_exact' does not depend on any axioms",
 );
 assert.equal(verified.stderr, '');
+const semantics = await readFile(
+  resolve(root, 'formal/implementation-navigation/Expression.lean'),
+  'utf8',
+);
+const tree = extract(text, 'semantics');
+const semanticProof =
+  semantics +
+  `\nopen NavigationSource\ndef actualTree : Expr := ${tree}\n\ntheorem crossDocument_requests_cancellation (route : Result) :\n action (eval (.ok false) route actualTree) = .requestCancellation := by\n cases route with\n | error e => cases e; rfl\n | ok b => cases b <;> rfl\n\ntheorem sameDocument_route_exception :\n action (eval (.ok true) (.error ()) actualTree) = .throwException := by rfl\n\ntheorem native_getter_exception (route : Result) :\n action (eval (.error ()) route actualTree) = .throwException := by rfl\n\n#print axioms crossDocument_requests_cancellation\n#print axioms sameDocument_route_exception\n#print axioms native_getter_exception\n`;
+const semanticPath = resolve(directory, 'ActualSemantics.lean');
+await writeFile(semanticPath, semanticProof);
+const semanticResult = spawnSync(executable, ['--trust=0', semanticPath], {
+  encoding: 'utf8',
+});
+assert.equal(semanticResult.status, 0, semanticResult.stdout + semanticResult.stderr);
+assert.equal(semanticResult.stderr, '');
+assert.equal(
+  semanticResult.stdout.trim(),
+  [
+    "'crossDocument_requests_cancellation' does not depend on any axioms",
+    "'sameDocument_route_exception' does not depend on any axioms",
+    "'native_getter_exception' does not depend on any axioms",
+  ].join('\n'),
+);
+const lazyBranch = 'if ← eval sameDocument allowedRoute left then return true';
+assert.equal(semanticProof.split(lazyBranch).length, 2);
+const eagerProof = semanticProof.replace(
+  lazyBranch,
+  'if ← eval sameDocument allowedRoute left then do\n        let _ ← eval sameDocument allowedRoute right\n        return true',
+);
+const eagerPath = resolve(directory, 'EagerFault.lean');
+await writeFile(eagerPath, eagerProof);
+const eagerResult = spawnSync(executable, ['--trust=0', eagerPath], { encoding: 'utf8' });
+assert.notEqual(eagerResult.status, 0, 'Eager evaluation fault incorrectly proved');
+assert(
+  eagerResult.stdout.includes('rfl') &&
+    eagerResult.stdout.includes('requestCancellation'),
+  eagerResult.stdout + eagerResult.stderr,
+);
 // A missing action must fail source extraction. A weakened condition must fail proof checking.
 assert.equal(text.split('apply(prevent, event, []);').length, 3, 'Action anchor changed');
 assert.throws(
@@ -192,12 +233,16 @@ const receipt = {
   checkerSHA256: sha(await readFile(import.meta.filename, 'utf8')),
   generatedLean: lean,
   generatedLeanSHA256: sha(lean),
+  semanticDefinitionSHA256: sha(semantics),
+  generatedSemanticProof: semanticProof,
+  semanticProofOutput: semanticResult.stdout.trim(),
   proofOutput: verified.stdout.trim(),
   faultControls: {
     wrongNativeAction: 'source-rejected',
     wrongEventName: 'source-rejected',
     missingAction: 'source-rejected',
     weakenedCondition: 'proof-rejected',
+    eagerEvaluation: 'semantic-proof-rejected',
   },
   completed: true,
 };
