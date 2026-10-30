@@ -61,7 +61,8 @@ model traces were rerun against this published digest. A later replacement will
 fail the hash check until reviewed.
 The separate [formal workflow](../../.github/workflows/formal.yml) runs the
 model checks, registry comparison and its wrong-owner fault control on pushes
-and pull requests. It does not run the browser evidence suite.
+and pull requests. Its browser jobs also run selected receiver, startup and
+implementation-comparison fixtures; they do not cover every documented route.
 The lifecycle safe run explores 114 distinct states; the admission safe run
 explores 47. The registry run explores 8 states. These are separate models; their invariants have not been composed into a proof of the whole runtime. These finite
 checks do not establish completeness of modeled browser actions.
