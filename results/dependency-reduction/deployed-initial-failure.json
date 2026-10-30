@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-30T13:31:10.260Z",
+  "entry": "https://pf.damenh.com/",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "checks": [
+        "Dedicated dark manager, separate runtime and exact production management origin"
+      ],
+      "errors": [],
+      "errorEvents": [],
+      "installations": [
+        {
+          "url": "https://privacy-frames.github.io/apps/notes/",
+          "status": "Installed Notes.",
+          "installationElapsedMs": 1176.063317,
+          "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/notes.uris",
+          "capture": {
+            "additionalResources": [
+              "https://privacy-frames.github.io/apps/notes/app.css",
+              "https://privacy-frames.github.io/apps/notes/app.js",
+              "https://privacy-frames.github.io/apps/notes/article.json",
+              "https://privacy-frames.github.io/apps/notes/cover.svg",
+              "https://privacy-frames.github.io/apps/notes/index.html",
+              "https://privacy-frames.github.io/apps/notes/manifest.webmanifest",
+              "https://privacy-frames.github.io/apps/notes/sw.js"
+            ],
+            "unavailableResources": []
+          },
+          "resources": 8,
+          "bytes": 682089
+        },
+        {
+          "url": "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/",
+          "status": "Installed PhotoCraft.",
+          "installationElapsedMs": 2226.1996019999997,
+          "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/photocraft.uris",
+          "capture": {
+            "additionalResources": [
+              "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/photocraft-web-72921900975c7e6f.js",
+              "https://share.damenh.com/craft/hVO5F2d3gEg2c4hY5/photocraft-web-72921900975c7e6f_bg.wasm"
+            ],
+            "unavailableResources": []
+          },
+          "resources": 4,
+          "bytes": 24875030
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/adversary/",
+          "status": "Installed Adversary.",
+          "installationElapsedMs": 326.02279,
+          "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/adversary.uris",
+          "capture": {
+            "additionalResources": [
+              "https://privacy-frames.github.io/apps/adversary/app.css",
+              "https://privacy-frames.github.io/apps/adversary/app.js",
+              "https://privacy-frames.github.io/apps/adversary/index.html",
+              "https://privacy-frames.github.io/apps/adversary/worklet.js"
+            ],
+            "unavailableResources": []
+          },
+          "resources": 5,
+          "bytes": 12723
+        },
+        {
+          "url": "https://privacy-frames.github.io/apps/playground/",
+          "status": "Installed Playground.",
+          "installationElapsedMs": 309.8358909999997,
+          "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/playground.uris",
+          "capture": {
+            "additionalResources": [
+              "https://privacy-frames.github.io/apps/playground/app.css",
+              "https://privacy-frames.github.io/apps/playground/app.js",
+              "https://privacy-frames.github.io/apps/playground/index.html"
+            ],
+            "unavailableResources": []
+          },
+          "resources": 4,
+          "bytes": 6130
+        },
+        {
+          "url": "https://damenh.github.io/pitch-training/",
+          "status": "Installed Pitch Training.",
+          "installationElapsedMs": 2993.594782000001,
+          "resourceListUsed": "https://privacy-frames.github.io/apps/resource-lists/pitch-training.uris",
+          "capture": {
+            "additionalResources": [
+              "https://damenh.github.io/pitch-training/",
+              "https://damenh.github.io/pitch-training/agents.txt",
+              "https://damenh.github.io/pitch-training/apple-touch-icon.png",
+              "https://damenh.github.io/pitch-training/assets/index-BvkNtD_8.js",
+              "https://damenh.github.io/pitch-training/assets/index-DqXB1q9b.css",
+              "https://damenh.github.io/pitch-training/icon-192.png",
+              "https://damenh.github.io/pitch-training/icon-512.png",
+              "https://damenh.github.io/pitch-training/icon-maskable-512.png",
+              "https://damenh.github.io/pitch-training/icon.svg",
+              "https://damenh.github.io/pitch-training/index.html",
+              "https://damenh.github.io/pitch-training/manifest.webmanifest",
+              "https://damenh.github.io/pitch-training/samples/piano/A1.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/A2.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/A3.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/A4.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/A5.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/A6.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/A7.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/C1.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/C2.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/C3.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/C4.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/C5.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/C6.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/C7.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Ds1.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Ds2.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Ds3.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Ds4.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Ds5.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Ds6.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Ds7.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Fs1.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Fs2.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Fs3.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Fs4.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Fs5.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Fs6.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/Fs7.mp3",
+              "https://damenh.github.io/pitch-training/samples/piano/LICENSE.txt",
+              "https://damenh.github.io/pitch-training/sw.js"
+            ],
+            "unavailableResources": []
+          },
+          "resources": 41,
+          "bytes": 1075259
+        },
+        {
+          "url": "https://en.wikipedia.org/w/rest.php/v1/page/Albert_Einstein/html",
+          "status": "Installed Albert Einstein.",
+          "installationElapsedMs": 4893.266979,
+          "resourceListUsed": null,
+          "capture": {
+            "additionalResources": [],
+            "unavailableResources": []
+          },
+          "resources": 76,
+          "bytes": 3837913
+        }
+      ],
+      "failure": "AssertionError [ERR_ASSERTION]: https://privacy-frames.github.io/apps/excalidraw/\n    at file:///home/damen/Projects/privacy-frames-dependency-reduction/test/deployed.ts:111:16"
+    }
+  ],
+  "manager": "https://pf.damenh.com/"
+}

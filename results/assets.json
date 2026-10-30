@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-29T23:27:18.543Z",
+  "date": "2026-10-30T13:30:45.051Z",
   "assets": [
     {
       "site": "manager",
@@ -19,7 +19,7 @@
     {
       "site": "manager",
       "file": "manager.js",
-      "sha256": "e623333e57ba30b0359bd8548e97efc428534541ccad53316ac07656e7f8d015"
+      "sha256": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730"
     },
     {
       "site": "manager",
@@ -34,12 +34,12 @@
     {
       "site": "manager",
       "file": "report.html",
-      "sha256": "f8ae7bd8e4c781dee2a6ad135bd1fcc38186b7b2c1f54b9bb53a5bb0ac3ba654"
+      "sha256": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7"
     },
     {
       "site": "manager",
       "file": "sw.js",
-      "sha256": "44678346edbd5dd05cc7258b68d6bce3e2e041234ede93b80d9022b7236a0bcc"
+      "sha256": "efacd37b78b7429372118f8b8c81cf930e403e5f735b0a97051c20464c136b90"
     },
     {
       "site": "runtime",
@@ -59,12 +59,12 @@
     {
       "site": "runtime",
       "file": "document-guard.js",
-      "sha256": "c7bb92138af58d4327c5953166f8a88df4e2a2721c83f0c93708f1862e70335d"
+      "sha256": "f9c52e931657f32a3a869a0aee642c22fe0180d9645498431eebb7da6f6b48d0"
     },
     {
       "site": "runtime",
       "file": "guard.js",
-      "sha256": "e2bb36f422da6e8fe73ac34ebef1cfcf39c0fa023b34b540fd9896b39a8fb71d"
+      "sha256": "7978e5f0a862754a447eb4c80001f215d706727d06a6cff941690c7f3f02e856"
     },
     {
       "site": "runtime",
@@ -79,7 +79,7 @@
     {
       "site": "runtime",
       "file": "publisher-worker-guard.js",
-      "sha256": "8a2a2f552231bb1f3c1ed728be176c7010684c86ffd1f21bccdc0f25a5dcd174"
+      "sha256": "cf3f0d5a2bbc330108ca22de8007f468976675f03a3a95f6b8ff0cba9ded9a10"
     },
     {
       "site": "runtime",
@@ -94,27 +94,27 @@
     {
       "site": "runtime",
       "file": "report.html",
-      "sha256": "f8ae7bd8e4c781dee2a6ad135bd1fcc38186b7b2c1f54b9bb53a5bb0ac3ba654"
+      "sha256": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7"
     },
     {
       "site": "runtime",
       "file": "shared-worker-guard.js",
-      "sha256": "1e6582d76235779e346c3df316821e4ea24a18f95b0bc43a8e09d2ab8f6cdfce"
+      "sha256": "7b516fd22ae0741bb0e55e016efee2a5b4a51a7be89f1c581faa1eca5bdeefdb"
     },
     {
       "site": "runtime",
       "file": "sw.js",
-      "sha256": "0177edf83fb84e10bf93b3292d5ddde7a459a8107f41517c4671c51c571b17df"
+      "sha256": "af34e72a9f5a815e9891153d3f05fea995ab466366cb8d950b54e9cf23a77aeb"
     },
     {
       "site": "runtime",
       "file": "worker-guard.js",
-      "sha256": "308abcdb6883fbcfcc46373079f70bac641119a06639b043f8957e382421a209"
+      "sha256": "bb8b8d07577c7765e97ec874fdfd3b3e98e92bc19e33e9e21f73778ace2ccff0"
     },
     {
       "site": "runtime",
       "file": "worklet-guard.js",
-      "sha256": "547b60f4d568b619fafb7dbd4b4e5f065761d8ed46b888c6d33128f7ea74ba2c"
+      "sha256": "00d9fb417775e7a38d58a1f0a0164bddc5270e13a998b125e1c5cdd3dc926cd4"
     },
     {
       "site": "installation",
@@ -129,7 +129,7 @@
     {
       "site": "installation",
       "file": "installation.js",
-      "sha256": "af0760b4a4824d6cfbf88cefb15927ca03675f376f24eef88df060f893d4fded"
+      "sha256": "dee2c1e7be73e58a6c30a4c12a9e38ffce4b2221bd8a5c3a2f50923e22da18e6"
     },
     {
       "site": "notes",

@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://apps.pf.damenh.com/guard.js",
+    "sha256": "7978e5f0a862754a447eb4c80001f215d706727d06a6cff941690c7f3f02e856",
+    "server": "GitHub.com"
+  },
+  {
+    "url": "https://apps.pf.damenh.com/sw.js",
+    "sha256": "af34e72a9f5a815e9891153d3f05fea995ab466366cb8d950b54e9cf23a77aeb",
+    "server": "GitHub.com"
+  },
+  {
+    "url": "https://apps.pf.damenh.com/document-guard.js",
+    "sha256": "f9c52e931657f32a3a869a0aee642c22fe0180d9645498431eebb7da6f6b48d0",
+    "server": "GitHub.com"
+  },
+  {
+    "url": "https://install.pf.damenh.com/installation.js",
+    "sha256": "dee2c1e7be73e58a6c30a4c12a9e38ffce4b2221bd8a5c3a2f50923e22da18e6",
+    "server": "GitHub.com"
+  }
+]
