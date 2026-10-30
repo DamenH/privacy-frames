@@ -1,12 +1,12 @@
 {
   "scope": "Native dedicated and shared worker registration acquisition on a seeded publisher origin and actual installed worker acquisition against the host runtime. API absence is not containment. No direct background request, all-context or universal authority claim.",
   "provenance": {
-    "capturedAt": "2026-10-30T19:19:32.422Z",
-    "revision": "98e971a44e30ec0610637bf47fb2346eca7f0e10",
+    "capturedAt": "2026-10-30T19:20:31.998Z",
+    "revision": "2a3adebd83e8c54a674604d7fd7094d0b3b0414f",
     "dirty": true,
     "sourceSHA256": "05331956de4dc8e219a375fd9d6f7363f8e93bd22a16cd3cc881a9078069ace9",
     "runner": "formal/worker-registration-probe.ts",
-    "runnerSHA256": "9bd4e4e4db64b49f9a35ad279336a5e7de362d2a85672cc5f4280e33b0fda84a",
+    "runnerSHA256": "6bcad99b4fe18781e077fc7f45406b8eb5d3b52c18bc2ab57383d7e2c138cb50",
     "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
     "artifacts": {
       "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",

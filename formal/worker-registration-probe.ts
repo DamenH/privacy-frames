@@ -112,6 +112,18 @@ try {
         await manager.locator('#app-url').fill(origin + '/worker-app/');
         await provideResourceList(manager, [origin + '/worker-app/worker.js']);
         await manager.locator('#install button').click();
+        await manager.waitForFunction(
+          () =>
+            /^(Installed |Installation refused:)/.test(
+              document.querySelector('#status')?.textContent || '',
+            ),
+          undefined,
+          { timeout: 120000 },
+        );
+        assert.match(
+          (await manager.locator('#status').textContent()) ?? '',
+          /^Installed /,
+        );
         await manager.locator('[data-app="worker-app"]').waitFor();
         const opened = context.waitForEvent('page');
         await manager.locator('[data-app="worker-app"]').click();
@@ -153,6 +165,8 @@ try {
           nativeResult,
           actual,
         });
+        await app.close();
+        await manager.close();
       }
       await context.close();
     } finally {
