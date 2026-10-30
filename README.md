@@ -95,6 +95,8 @@ npm run test:assets
 
 [Compatibility results](evaluation/compatibility.md) link each comparison to its
 receipts and tested revision. Receipts record browser versions and scope in `results/`.
+The [confinement verification results](formal/RESULTS.md) describe the models,
+receiver tests, findings and remaining gaps.
 
 ## Deployment
 
