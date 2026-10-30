@@ -57,6 +57,7 @@ jobs:
       - run: node formal/modern-reporting-probe.ts
       - run: node formal/background-agents-probe.ts
       - run: node formal/fetch-later-probe.ts
+      - run: node formal/web-install-probe.ts
       - uses: actions/upload-artifact@v4
         with:
           name: browser-effect-evidence
@@ -67,6 +68,7 @@ jobs:
             formal/evidence/modern-reporting.json
             formal/evidence/background-agents.json
             formal/evidence/fetch-later.json
+            formal/evidence/web-install.json
   webtransport:
     runs-on: ubuntu-latest
     steps:

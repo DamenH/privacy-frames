@@ -50,6 +50,8 @@ pre-existing native service-worker registration, with working Chromium sync and
 background-fetch controls. Periodic sync remains uncalibrated.
 The [deferred-fetch probe](fetch-later.md) confirms a native page-close upload
 and tests the prepared runtime against that route in Chromium.
+An [experimental Web Install probe](web-install.md) observes native manifest
+requests bypassing the service worker and tests the prepared sandbox's denial.
 
 ## What has been checked
 
