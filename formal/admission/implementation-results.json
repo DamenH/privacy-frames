@@ -1,18 +1,20 @@
 {
-  "scope": "32 selected malformed-input combinations per browser against actual admitInstallation; test-only mutations exercise validator omissions and a redundant URL check. No commit, browser identity, external network or complete validation proof.",
-  "modelSHA256": "2084e90a886edaebc03c6cce164fcfd9b458a4d9c5f2e57a2126cdc70436734a",
-  "runnerSHA256": "e33a1243ce69e634f06fe084ee905faf166a58cd9d3cd97fa49ade65d02e4a8a",
-  "sourceSHA256": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff",
+  "scope": "32 selected malformed-input combinations per browser against actual admitInstallation; test-only mutations exercise omissions and redundant URL and canonical path checks. No commit, browser identity, external network or complete validation proof.",
+  "modelSHA256": "a55c1e6cecd803b18bba88778899e7f57142de3dbd1bb9e87b8330b921e1be63",
+  "runnerSHA256": "f914fa369c1d1c06bb1b158b400aea684651095dcacd075b62c2e2bfa8c98f56",
+  "sourceSHA256": "91adf341c8cb8da8341c13d3718f11fb60f431000186c74635a8f7f5d910f124",
   "lockfileSHA256": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed",
   "bundleSHA256": {
-    "safe": "0b715b2186074665e8b48129781247647df5b03a65c098c45ca8204b3cbaf8bc",
-    "hash": "e1217417ae576f128dfc9a3373065609c0ab4e52311672133cdfa4f7c87f1118",
-    "path": "7221013aff9450b84807a56db38f17009d2c46888efd8424410a0311f4d662ad",
-    "url": "1c193bcbec58424399ebb81a090ecd305bfbd6da6405b313396e71917c6f4897",
-    "pathURL": "251154b51474d137ec4c64ad13e21d778dc69abebd77c387229a6822612d9eaf",
-    "entry": "51dfcf9485e8e0aefd2db5d124bbc0e85df4928a88f312d1c8ce4f470d329418"
+    "safe": "47203e4c313b77b17c6bcbd84b5dd710da188d85d46550fa24071994f54dad61",
+    "hash": "fea3370abcfa88885f44741046ad0f05b44f3516e75d00e2725b3c7416a9ea16",
+    "path": "58bf1a5c2bb395f13f5c35089f4936ecb594f66b4597ce5a14c937b01641afbe",
+    "url": "3dcd97145a4624714e34d097a19baf38cf3299d1ccfc667de5283dbacae14fb2",
+    "pathURL": "9db72534c85c0a8976ac061b9b787eabd7a2db8deb0331cb8195dc175891c8ff",
+    "pathCanonical": "b8038e668c6bef9c7b82308e52453e40c0ea697f92b463788384d378ab033d8d",
+    "pathURLCanonical": "8478d8e8199dece9c94c02218f40c811d434484fa446c6c23d1a83f427b62942",
+    "entry": "c271eddaeace9b412c6c590988a24dde7a31b639307f18e6bee79dd4f2affc97"
   },
-  "revision": "0f0d43cda8bdfbeccfc5846cea7af1d4bba69e7b",
+  "revision": "49898b6d992e969d789db639dd6914ff1ced4a78",
   "results": [
     {
       "browser": "chromium",
@@ -227,8 +229,8 @@
         {
           "mutation": "path",
           "bits": "11011",
-          "decision": "accepted",
-          "resources": 2
+          "decision": "rejected",
+          "error": "Duplicate resolved resource path"
         },
         {
           "mutation": "url",
@@ -238,6 +240,18 @@
         },
         {
           "mutation": "pathURL",
+          "bits": "11001",
+          "decision": "rejected",
+          "error": "Duplicate resolved resource path"
+        },
+        {
+          "mutation": "pathCanonical",
+          "bits": "11011",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "pathURLCanonical",
           "bits": "11001",
           "decision": "accepted",
           "resources": 2
@@ -463,8 +477,8 @@
         {
           "mutation": "path",
           "bits": "11011",
-          "decision": "accepted",
-          "resources": 2
+          "decision": "rejected",
+          "error": "Duplicate resolved resource path"
         },
         {
           "mutation": "url",
@@ -474,6 +488,18 @@
         },
         {
           "mutation": "pathURL",
+          "bits": "11001",
+          "decision": "rejected",
+          "error": "Duplicate resolved resource path"
+        },
+        {
+          "mutation": "pathCanonical",
+          "bits": "11011",
+          "decision": "accepted",
+          "resources": 2
+        },
+        {
+          "mutation": "pathURLCanonical",
           "bits": "11001",
           "decision": "accepted",
           "resources": 2

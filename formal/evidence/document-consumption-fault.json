@@ -1,0 +1,178 @@
+{
+  "scope": "Actual document controller and real IndexedDB with simulated browser clients and in-memory context storage. Test-only in-memory mutation deletes exactly the post-consumption isCurrent guard. This is authority/content delivery, not a network-leak demonstration.",
+  "revision": "49898b6d992e969d789db639dd6914ff1ced4a78",
+  "runnerSHA256": "33f222968437c3646eba8e4267b5bca67d65fabcc253bf0be788665793b67ec1",
+  "sourceHashes": {
+    "src/runtime/contexts/document-controller.ts": "ca269260ec3cb34cd963bf59d3ba6596554ddecb646013aea8ecd73e35e03812",
+    "src/runtime/contexts/document-intents.ts": "4373aae1b9abe5d957b89b4acc511718905e8222c0a441da82d4306cbf751770",
+    "src/runtime/contexts/model.ts": "6b5905338c313754d25fa392deb5b604771794c55a6d72f9dfbae6a7bb8c48b4",
+    "src/runtime/storage.ts": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d",
+    "test/document-consumption-race.ts": "16d3c13a51144f99bfb2ed4ebd1e81b6afef59c00d835eaa3818c9e165011b23",
+    "package-lock.json": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed"
+  },
+  "normalBundleSHA256": "d59cf2f2b0a7bb0cde9388a4bceb0f2b62291003f7fa98a05a466f6bb03963bf",
+  "faultBundleSHA256": "860155d150ec1152ebfcba58147a8b95f295900f0fc819363a8dd9b08fefd025",
+  "completed": true,
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "profiles": [
+        {
+          "profile": "normal",
+          "results": [
+            {
+              "scenario": "unchanged",
+              "consumedBeforeMutation": true,
+              "validations": 1,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            },
+            {
+              "scenario": "closed",
+              "consumedBeforeMutation": true,
+              "validations": 1,
+              "type": "error",
+              "status": 0,
+              "body": ""
+            },
+            {
+              "scenario": "owner-changed",
+              "consumedBeforeMutation": true,
+              "validations": 1,
+              "type": "error",
+              "status": 0,
+              "body": ""
+            },
+            {
+              "scenario": "generation-changed",
+              "consumedBeforeMutation": true,
+              "validations": 1,
+              "type": "error",
+              "status": 0,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "profile": "fault",
+          "results": [
+            {
+              "scenario": "unchanged",
+              "consumedBeforeMutation": true,
+              "validations": 0,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            },
+            {
+              "scenario": "closed",
+              "consumedBeforeMutation": true,
+              "validations": 0,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            },
+            {
+              "scenario": "owner-changed",
+              "consumedBeforeMutation": true,
+              "validations": 0,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            },
+            {
+              "scenario": "generation-changed",
+              "consumedBeforeMutation": true,
+              "validations": 0,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "profiles": [
+        {
+          "profile": "normal",
+          "results": [
+            {
+              "scenario": "unchanged",
+              "consumedBeforeMutation": true,
+              "validations": 1,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            },
+            {
+              "scenario": "closed",
+              "consumedBeforeMutation": true,
+              "validations": 1,
+              "type": "error",
+              "status": 0,
+              "body": ""
+            },
+            {
+              "scenario": "owner-changed",
+              "consumedBeforeMutation": true,
+              "validations": 1,
+              "type": "error",
+              "status": 0,
+              "body": ""
+            },
+            {
+              "scenario": "generation-changed",
+              "consumedBeforeMutation": true,
+              "validations": 1,
+              "type": "error",
+              "status": 0,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "profile": "fault",
+          "results": [
+            {
+              "scenario": "unchanged",
+              "consumedBeforeMutation": true,
+              "validations": 0,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            },
+            {
+              "scenario": "closed",
+              "consumedBeforeMutation": true,
+              "validations": 0,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            },
+            {
+              "scenario": "owner-changed",
+              "consumedBeforeMutation": true,
+              "validations": 0,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            },
+            {
+              "scenario": "generation-changed",
+              "consumedBeforeMutation": true,
+              "validations": 0,
+              "type": "default",
+              "status": 200,
+              "body": "{\"kind\":\"html\",\"text\":\"<p>Admitted private document</p>\",\"sourceURL\":\"https://publisher.invalid/\",\"aliases\":[]}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

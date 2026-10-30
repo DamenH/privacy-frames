@@ -1,0 +1,61 @@
+{
+  "scope": "A normal installation accepts a foreign-resolving resource alias; document startup rejects it before publisher code. Receiver calibration is native, with a test certificate. This is not an exhaustive egress proof.",
+  "revision": "49898b6d992e969d789db639dd6914ff1ced4a78",
+  "runnerSHA256": "f3cf6006ea6a42af4140612f8d9b9bbcd594a00be4fc73338c2dadafb2acab13",
+  "artifactSHA256": {
+    "src/shared/policy.ts": "8f3ee7a6dd7f0942d9d98819aaeca3282736b4e5d7a7982b96106d51a51c09cb",
+    "src/shared/runtime-url.ts": "57744dce45f05a53651172647d8981ca0bfcc92cf20284f9c969c840e47f548a",
+    "src/runtime/admission.ts": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff",
+    "src/runtime/document.ts": "73d9c992ac25cb4b01435cc861497a8acdbec41bd396a52808fb2b89b9ebb951",
+    "src/runtime/contexts/document-protocol.ts": "5786f3d4a9493900d9506e59697c03227fce1f7e40dd85848c9e4f3162cf85c7",
+    "src/installation/resource-capture.ts": "452f772b0bfc02317c39c21fd628be5f2461ba91962aa9198b948d1b537553d1",
+    "dist-runtime/guard.js": "5e4961bb6eb78775af658b1c949cded25c70bb78b717ea0098df4da25c9260d4",
+    "dist-runtime/sw.js": "e707c2389e684633bf7eb053c76c4f5b659254994d7b413a37c59b36cae2bf67",
+    "dist-installation/installation.js": "dee2c1e7be73e58a6c30a4c12a9e38ffce4b2221bd8a5c3a2f50923e22da18e6"
+  },
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "status": "Installed Colon fixture.",
+      "installed": {
+        "path": "https:127.0.0.1:46579",
+        "url": "http://127.0.0.1:40409/https:127.0.0.1:46579"
+      },
+      "mapped": "https://127.0.0.1:46579/",
+      "nativeReceiver": true,
+      "ordinaryInstallationStarted": true,
+      "csp": "sandbox allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-ae74f444dc0940e48bc0504b2af16570'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:4211/runtime/epaJGq953yQ/colon-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; worker-src http://127.0.0.1:4211/runtime/epaJGq953yQ/colon-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; form-action 'none'; base-uri 'none'",
+      "consoleMessages": [
+        "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "Error: Document resource leaves its application\n    at http://127.0.0.1:4211/runtime/guard.js:7134:15\n    at Array.map (<anonymous>)\n    at aliases (http://127.0.0.1:4211/runtime/guard.js:7128:18)\n    at parseWindowContentMetadata (http://127.0.0.1:4211/runtime/guard.js:7162:16)\n    at parseInstalledDocument (http://127.0.0.1:4211/runtime/guard.js:7169:10)\n    at start (http://127.0.0.1:4211/runtime/guard.js:21126:21)"
+      ],
+      "errorPage": "Application could not start\n\nReload or reinstall this application.",
+      "workerEvents": [],
+      "confinedResult": "Document resource leaves its application; publisher script did not execute",
+      "confinedReceiver": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "status": "Installed Colon fixture.",
+      "installed": {
+        "path": "https:127.0.0.1:46579",
+        "url": "http://127.0.0.1:40409/https:127.0.0.1:46579"
+      },
+      "mapped": "https://127.0.0.1:46579/",
+      "nativeReceiver": true,
+      "ordinaryInstallationStarted": true,
+      "csp": "sandbox allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-714f7a492d884c909c3e9af9dc6905fa'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:4211/runtime/epaJGq953yQ/colon-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; worker-src http://127.0.0.1:4211/runtime/epaJGq953yQ/colon-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; form-action 'none'; base-uri 'none'",
+      "consoleMessages": [
+        "[JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 17900}]",
+        "Error"
+      ],
+      "errorPage": "Application could not start\n\nReload or reinstall this application.",
+      "workerEvents": [],
+      "confinedResult": "Document resource leaves its application; publisher script did not execute",
+      "confinedReceiver": []
+    }
+  ]
+}

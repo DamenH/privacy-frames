@@ -1,8 +1,8 @@
 {
   "scope": "All rows in the bounded saved IDL join; unreviewed includes absent and unobserved names. Classifications and WPT links are manually selected review leads, not mediation tests or safety judgments.",
   "idlReportSHA256": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
-  "triageSHA256": "c37e456592b88146dba02f1cfe7e59031dff650c406b03a8815124a0f72df185",
-  "generatorSHA256": "dbe6390c3eba2ee44c7d8e1ba2d1b7f6b3eb3a21498c1ad4975c770918864863",
+  "triageSHA256": "d6660f352c2cedabefae01c01ced9f1b9f3419545e06c263508673613abb658f",
+  "generatorSHA256": "a02550f12080992cdf21a7476c8b8795c41615f7d2355a928fa1ca74269fd614",
   "webrefRevision": "6ac6259c96b11e0aea5c34a16822eb06add278c9",
   "snapshotRevision": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
   "browsers": [
@@ -36,13 +36,53 @@
       "path": "fedcm/fedcm-not-observed-by-service-worker.https.html",
       "sha256": "21f3e51bdfe38c36c3517dbbcc67f401719c4c743e6ff14e9f45787078ef0f24",
       "why": "Example of FedCM requests that the service worker does not observe; it does not establish publisher access to a seeded runtime identity."
+    },
+    "cache-add": {
+      "path": "service-workers/cache-storage/cache-add.https.any.js",
+      "sha256": "32069a21f7ab1421c4119f07b90e74d022affafeb7e02785518b15baeeacbe8c",
+      "why": "Cache.add/addAll behavior in Window and worker; not a test of runtime interception."
+    },
+    "background-fetch-upload": {
+      "path": "background-fetch/fetch-uploads.https.window.js",
+      "sha256": "97e90a7b2789fd4de667f042a05e63881bb4eb59d290bdec5ab160c4684827e4",
+      "why": "Tests background fetch with request uploads; related fixtures and browser support are still required."
+    },
+    "fedcm-userinfo": {
+      "path": "fedcm/fedcm-userinfo.https.html",
+      "sha256": "a3551e2c94f5a8de67c50b1e837cc64276c8255ec6a4bdfae3975edf95c1ce5e",
+      "why": "FedCM getUserInfo scenarios; does not establish the relevant state is reachable in the deployed runtime."
+    },
+    "preload-headers": {
+      "path": "service-workers/service-worker/navigation-preload/request-headers.https.html",
+      "sha256": "2a37f4d908de4018da2f60a31605f24c456473e6f0a65353713442465f68d1db",
+      "why": "Navigation preload request-header behavior; not a test of app access to native registration."
+    },
+    "websocket-close": {
+      "path": "websockets/Close-1000-reason.any.js",
+      "sha256": "3cce8e620f18b3b3bc26b388a9de222869457243f417853c415455c258d1264d",
+      "why": "WebSocket close reason behavior; the pinned case is not a runtime confinement test."
+    },
+    "websocket-send": {
+      "path": "websockets/Send-0byte-data.any.js",
+      "sha256": "5c2dd387c75a73d08736aed827de4a466c30444880080554b47fa70450b3513c",
+      "why": "Native WebSocket send behavior; it does not by itself calibrate application-secret delivery."
+    },
+    "webtransport-connect": {
+      "path": "webtransport/connect.https.any.js",
+      "sha256": "0c9342d56b8cd6dd58e532c5e21fe54820eb5cfe7b58825ebaf4008508e2a87c",
+      "why": "Connection setup examples in Window and worker; the test and its server dependencies are not executed here."
+    },
+    "serviceworker-register": {
+      "path": "service-workers/service-worker/register-default-scope.https.html",
+      "sha256": "847ff4be209c6afef8f70cea2061601bbf98c5be4cb65152c002fc4b74540460",
+      "why": "Native service worker registration and default scope behavior; does not test runtime virtualization."
     }
   },
   "summary": {
     "rows": 263,
-    "manualRows": 4,
-    "unreviewedRows": 259,
-    "observedUnreviewedRows": 183
+    "manualRows": 37,
+    "unreviewedRows": 226,
+    "observedUnreviewedRows": 150
   },
   "rows": [
     {
@@ -63,6 +103,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -83,6 +125,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -104,9 +148,13 @@
         "status": "seeded-native-acquisition-control",
         "path": "formal/background-agents.md"
       },
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry-conditional",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Schedules background requests and can include request bodies; requests can outlive the initiating page.",
+      "prerequisites": "Requires a native registration with an active worker and permission not denied; the draft rejects no-cors requests.",
+      "next": "Determine native registration reachability in prepared workers and test upload receiver and lifecycle behavior; earlier probe used seeded registration and a download."
     },
     {
       "id": "background-fetch|BackgroundFetchManager|get|operation|1",
@@ -124,9 +172,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns a registration for an existing background fetch identified by id, or null.",
+      "prerequisites": "Requires a native BackgroundFetchManager and an existing matching operation.",
+      "next": "Check reachability of recovered registrations and what their accessible methods or results permit."
     },
     {
       "id": "background-fetch|BackgroundFetchManager|getIds|operation|1",
@@ -144,9 +196,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "state-observation",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns ids of existing background fetches associated with the registration.",
+      "prerequisites": "Requires a native manager; observing ids alone is not a network transmission.",
+      "next": "Assess shared-origin information exposure separately from the network egress claim."
     },
     {
       "id": "background-fetch|BackgroundFetchRecord|request|attribute|1",
@@ -166,6 +222,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -186,6 +244,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -206,6 +266,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -226,6 +288,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -246,6 +310,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -266,6 +332,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -286,6 +354,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -306,6 +376,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -326,6 +398,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -346,6 +420,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -366,6 +442,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -386,6 +464,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -406,6 +486,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -426,6 +508,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -446,6 +530,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -466,6 +552,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -486,6 +574,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -506,6 +596,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -526,6 +618,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -546,6 +640,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -569,6 +665,8 @@
       },
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -589,6 +687,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -612,6 +712,8 @@
       },
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -632,6 +734,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -652,6 +756,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -672,6 +778,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -692,6 +800,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -713,9 +823,11 @@
         "status": "seeded-native-acquisition-control",
         "path": "formal/background-agents.md"
       },
-      "classification": "unreviewed",
+      "classification": "background-agent",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Registers a tagged sync event on the associated worker; the method itself is not evidence of an outbound request.",
+      "prerequisites": "Requires an active worker, enabled sync and a qualifying top-level or auxiliary client. A worker handler needs its own network authority to transmit.",
+      "next": "Test native registration recovery, event delivery and an independently observed network receiver."
     },
     {
       "id": "beacon|Navigator|sendBeacon|operation|1",
@@ -740,6 +852,8 @@
       "selectedWpt": [
         "beacon"
       ],
+      "effect": null,
+      "prerequisites": null,
       "next": "Calibrate native receipt and prepared-context denial across the relevant browsers and contexts."
     },
     {
@@ -760,6 +874,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -780,6 +896,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -800,6 +918,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -820,6 +940,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -840,6 +962,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -863,6 +987,8 @@
       },
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -888,6 +1014,8 @@
       "selectedWpt": [
         "fedcm"
       ],
+      "effect": null,
+      "prerequisites": null,
       "next": "Separate synthetic seeded FedCM state from any demonstrated route to that state on the deployed runtime."
     },
     {
@@ -911,6 +1039,8 @@
       },
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -934,6 +1064,8 @@
       },
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -954,6 +1086,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -974,6 +1108,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -994,6 +1130,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1014,6 +1152,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1034,6 +1174,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1054,6 +1196,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1074,6 +1218,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1094,6 +1240,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1115,9 +1263,13 @@
         "status": "conditional-receiver-escape-fixed",
         "path": "formal/fedcm-conditional-probe.ts"
       },
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry-conditional",
+      "selectedWpt": [
+        "fedcm"
+      ],
+      "effect": "The FedCM disconnect algorithm can send an identity-provider request; existing local test used seeded state.",
+      "prerequisites": "Depends on browser feature exposure, policy and appropriate prior connection and provider state.",
+      "next": "Establish publisher-controlled setup of the exact prerequisite on the deployed runtime before describing a real exploit."
     },
     {
       "id": "fedcm-1|IdentityCredential|isAutoSelected|attribute|1",
@@ -1137,6 +1289,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1157,6 +1311,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1177,6 +1333,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1197,6 +1355,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1217,6 +1377,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1235,9 +1397,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "identity-dialog-effect",
+      "selectedWpt": [
+        "fedcm"
+      ],
+      "effect": "Signals completion of a relevant identity-provider dialog and can close the dialog.",
+      "prerequisites": "Requires a qualifying identity dialog context and pending flow.",
+      "next": "Examine state reachability and any resulting effects; closing a dialog alone does not establish a network transmission."
     },
     {
       "id": "fedcm-1|IdentityProvider|getUserInfo|operation|1",
@@ -1258,9 +1424,13 @@
         "status": "source-denial-unverified-receiver",
         "path": "src/runtime/enforcement/effects.ts"
       },
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry-conditional",
+      "selectedWpt": [
+        "fedcm-userinfo"
+      ],
+      "effect": "The FedCM algorithm obtains identity-provider data including an accounts fetch.",
+      "prerequisites": "Requires policy permission, config same-origin with the document, a non-top-level context and either connected state or third-party cookie access, among other checks.",
+      "next": "Establish native receiver control and whether required state and context are attainable from this runtime; do not infer from a seeded disconnect test."
     },
     {
       "id": "fedcm-1|IdentityProvider|resolve|operation|1",
@@ -1278,9 +1448,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "identity-dialog-effect",
+      "selectedWpt": [
+        "fedcm"
+      ],
+      "effect": "Signals a pending identity-provider dialog result with token and optional account id to the browser-mediated FedCM flow.",
+      "prerequisites": "Requires a qualifying identity dialog context and pending flow; exact runtime reachability remains unestablished.",
+      "next": "Determine whether such a dialog can be reached and whether a value can reach an external principal; do not treat the API as an automatic network send."
     },
     {
       "id": "fetch|Body|arrayBuffer|operation|1",
@@ -1300,6 +1474,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1320,6 +1496,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1340,6 +1518,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1360,6 +1540,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1380,6 +1562,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1400,6 +1584,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1420,6 +1606,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1440,6 +1628,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1460,6 +1650,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1480,6 +1672,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1500,6 +1694,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1520,6 +1716,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1540,6 +1738,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1560,6 +1760,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1580,6 +1782,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1600,6 +1804,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1620,6 +1826,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1640,6 +1848,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1660,6 +1870,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1680,6 +1892,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1700,6 +1914,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1720,6 +1936,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1740,6 +1958,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1760,6 +1980,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1780,6 +2002,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1800,6 +2024,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1820,6 +2046,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1840,6 +2068,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1860,6 +2090,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1880,6 +2112,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1900,6 +2134,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1920,6 +2156,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1940,6 +2178,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1960,6 +2200,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -1980,6 +2222,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2000,6 +2244,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2020,6 +2266,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2040,6 +2288,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2060,6 +2310,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2080,6 +2332,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2100,6 +2354,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2120,6 +2376,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2140,6 +2398,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2160,6 +2420,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2180,6 +2442,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2200,6 +2464,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2220,6 +2486,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2245,6 +2513,8 @@
       "selectedWpt": [
         "fetch-later"
       ],
+      "effect": null,
+      "prerequisites": null,
       "next": "Extend the calibrated probe to remaining contexts and delayed-delivery lifecycles."
     },
     {
@@ -2268,6 +2538,8 @@
       },
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2288,6 +2560,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2308,6 +2582,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2328,6 +2604,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2349,9 +2627,11 @@
         "status": "permission-control-unavailable",
         "path": "formal/background-agents.md"
       },
-      "classification": "unreviewed",
+      "classification": "background-agent",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Registers recurring periodic sync work that can later dispatch a worker event; the call itself is not evidence of a network send.",
+      "prerequisites": "Requires the associated native registration, an active worker, browser permission and other user-agent conditions.",
+      "next": "Obtain a working permission/event native control, then test acquisition and a handler with independent receiver observation."
     },
     {
       "id": "periodic-background-sync|PeriodicSyncManager|unregister|operation|1",
@@ -2371,6 +2651,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2391,6 +2673,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2412,9 +2696,11 @@
         "status": "permission-control-unavailable",
         "path": "formal/background-agents.md"
       },
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Exposes the manager that can register periodic events for the associated service worker registration.",
+      "prerequisites": "Requires a native registration and exposed API.",
+      "next": "Establish reachability from prepared contexts, then separately test registration and event effects."
     },
     {
       "id": "reporting-1|ReportingObserver|constructor|constructor|1",
@@ -2437,6 +2723,8 @@
       },
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2457,6 +2745,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2477,6 +2767,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2497,6 +2789,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2515,9 +2809,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "The standard fetches supplied HTTP(S) GET requests before storing responses; URL values may carry data.",
+      "prerequisites": "Requires a usable Cache object and accepted request. A service-worker global sets the fetch service-workers mode to none.",
+      "next": "Calibrate receiver behavior in each context and test runtime mediation, including native Cache recovery and service-worker execution."
     },
     {
       "id": "service-workers|Cache|addAll|operation|1",
@@ -2535,9 +2833,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "The standard fetches supplied HTTP(S) GET requests before storing responses; URL values may carry data.",
+      "prerequisites": "Requires a usable Cache object and accepted request. A service-worker global sets the fetch service-workers mode to none.",
+      "next": "Calibrate receiver behavior in each context and test runtime mediation, including native Cache recovery and service-worker execution."
     },
     {
       "id": "service-workers|Cache|delete|operation|1",
@@ -2557,6 +2859,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2577,6 +2881,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2597,6 +2903,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2617,6 +2925,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2637,6 +2947,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2657,6 +2969,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2677,6 +2991,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2697,6 +3013,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2717,6 +3035,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2735,9 +3055,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Returns or creates a named Cache object; subsequent Cache.add/addAll may issue fetches.",
+      "prerequisites": "Requires a usable native CacheStorage object and storage access.",
+      "next": "Test native object and method recovery across Window and worker contexts."
     },
     {
       "id": "service-workers|Client|frameType|attribute|1",
@@ -2757,6 +3081,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2777,6 +3103,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2797,6 +3125,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2817,6 +3147,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2837,6 +3169,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2857,6 +3191,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2877,6 +3213,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2897,6 +3235,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2917,6 +3257,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2937,6 +3279,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2957,6 +3301,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2977,6 +3323,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -2997,6 +3345,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3017,6 +3367,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3037,6 +3389,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3057,6 +3411,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3077,6 +3433,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3097,6 +3455,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3117,6 +3477,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3137,6 +3499,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3157,6 +3521,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3177,6 +3543,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3197,6 +3565,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3217,6 +3587,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3237,6 +3609,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3257,6 +3631,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3277,6 +3653,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3297,6 +3675,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3317,6 +3697,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3335,9 +3717,14 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "deferred-network-configuration",
+      "selectedWpt": [
+        "navigation-preload",
+        "preload-headers"
+      ],
+      "effect": "Enables navigation preload on the associated registration; subsequent qualifying navigation may issue a preload request.",
+      "prerequisites": "Requires access to the native manager and an active worker; a qualifying navigation must occur.",
+      "next": "Observe network delivery and native access under startup and transition races."
     },
     {
       "id": "service-workers|NavigationPreloadManager|getState|operation|1",
@@ -3357,6 +3744,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3375,9 +3764,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "deferred-network-configuration",
+      "selectedWpt": [
+        "preload-headers"
+      ],
+      "effect": "Sets the registration preload header value, potentially carrying caller-controlled bytes on a subsequent preload.",
+      "prerequisites": "Requires a valid normalized header value, active worker, native manager access, and a qualifying enabled preload navigation.",
+      "next": "Calibrate header delivery with an independent receiver and then test native object acquisition and confinement races."
     },
     {
       "id": "service-workers|Navigator|serviceWorker|attribute|1",
@@ -3395,9 +3788,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "serviceworker-register"
+      ],
+      "effect": "Returns a service-worker container providing registration and controller access.",
+      "prerequisites": "Requires an exposed navigator and the relevant secure-context/browser conditions.",
+      "next": "Verify all paths to the native container are replaced or guarded in supported contexts."
     },
     {
       "id": "service-workers|ServiceWorker|onstatechange|attribute|1",
@@ -3417,6 +3814,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3435,9 +3834,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-relay",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Queues a message to a worker; a recipient may act on the payload using its own authority.",
+      "prerequisites": "Requires a reachable worker object and a handler that accepts and acts on the message; postMessage alone is not an outbound request.",
+      "next": "Review native worker and manager authorization and test malformed and attacker-origin messages against a receiver."
     },
     {
       "id": "service-workers|ServiceWorker|postMessage|operation|2",
@@ -3455,9 +3856,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-relay",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Queues a message to a worker; a recipient may act on the payload using its own authority.",
+      "prerequisites": "Requires a reachable worker object and a handler that accepts and acts on the message; postMessage alone is not an outbound request.",
+      "next": "Review native worker and manager authorization and test malformed and attacker-origin messages against a receiver."
     },
     {
       "id": "service-workers|ServiceWorker|scriptURL|attribute|1",
@@ -3477,6 +3880,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3497,6 +3902,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3515,9 +3922,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns the active controller object, if any; it can receive postMessage.",
+      "prerequisites": "Requires the native container and an active controller; access is not itself a network send.",
+      "next": "Test native controller recovery and whether the actual handler accepts app-originated messages."
     },
     {
       "id": "service-workers|ServiceWorkerContainer|getRegistration|operation|1",
@@ -3535,9 +3944,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns or resolves native service-worker registration objects for the client or matching storage key.",
+      "prerequisites": "Requires the native container and relevant existing registration; ready waits for an active worker.",
+      "next": "Calibrate object recovery and downstream registration abilities separately; a returned registration alone is not a network transmission."
     },
     {
       "id": "service-workers|ServiceWorkerContainer|getRegistrations|operation|1",
@@ -3555,9 +3966,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns or resolves native service-worker registration objects for the client or matching storage key.",
+      "prerequisites": "Requires the native container and relevant existing registration; ready waits for an active worker.",
+      "next": "Calibrate object recovery and downstream registration abilities separately; a returned registration alone is not a network transmission."
     },
     {
       "id": "service-workers|ServiceWorkerContainer|oncontrollerchange|attribute|1",
@@ -3577,6 +3990,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3597,6 +4012,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3617,6 +4034,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3635,9 +4054,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns or resolves native service-worker registration objects for the client or matching storage key.",
+      "prerequisites": "Requires the native container and relevant existing registration; ready waits for an active worker.",
+      "next": "Calibrate object recovery and downstream registration abilities separately; a returned registration alone is not a network transmission."
     },
     {
       "id": "service-workers|ServiceWorkerContainer|register|operation|1",
@@ -3658,9 +4079,13 @@
         "status": "virtualized-registration",
         "path": "test/publisher-contexts.ts"
       },
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "browser-agent-trigger",
+      "selectedWpt": [
+        "serviceworker-register"
+      ],
+      "effect": "Requests registration or update of a service worker from a script URL, which may cause script retrieval and create future event-handling authority.",
+      "prerequisites": "Native container access, valid URL/scope, secure context and browser registration conditions are required.",
+      "next": "Test native method recovery, receiver requests and registration state in all supported contexts."
     },
     {
       "id": "service-workers|ServiceWorkerContainer|startMessages|operation|1",
@@ -3680,6 +4105,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3700,6 +4127,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3720,6 +4149,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3740,6 +4171,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3760,6 +4193,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3780,6 +4215,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3800,6 +4237,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3820,6 +4259,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3840,6 +4281,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3860,6 +4303,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3880,6 +4325,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3900,6 +4347,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3922,6 +4371,8 @@
       "selectedWpt": [
         "navigation-preload"
       ],
+      "effect": null,
+      "prerequisites": null,
       "next": "Test whether application code can acquire native control and affect a preload request or headers after confinement."
     },
     {
@@ -3942,6 +4393,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3962,6 +4415,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -3985,6 +4440,8 @@
       },
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4006,9 +4463,11 @@
         "status": "denial-and-lifecycle-tests",
         "path": "test/website-installation.ts"
       },
-      "classification": "unreviewed",
+      "classification": "browser-agent-trigger",
       "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Triggers the service worker update algorithm, which may fetch worker scripts.",
+      "prerequisites": "Requires access to a native registration and update conditions; request control and secret-bearing components need separate assessment.",
+      "next": "Observe actual update requests and determine whether app data can influence URL, headers or body after startup."
     },
     {
       "id": "service-workers|ServiceWorkerRegistration|updateViaCache|attribute|1",
@@ -4028,6 +4487,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4048,6 +4509,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4068,6 +4531,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4088,6 +4553,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4108,6 +4575,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4128,6 +4597,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4148,6 +4619,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4166,9 +4639,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Exposes the CacheStorage object for the relevant storage key.",
+      "prerequisites": "Requires an exposed caches attribute and storage access; reading it is not itself a network send.",
+      "next": "Trace native CacheStorage recovery and isolate the fetch-producing Cache.add/addAll operations."
     },
     {
       "id": "service-workers|WorkerNavigator|serviceWorker|attribute|1",
@@ -4188,6 +4665,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4208,6 +4687,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4228,6 +4709,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4248,6 +4731,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4268,6 +4753,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4288,6 +4775,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4308,6 +4797,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4326,9 +4817,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry-conditional",
+      "selectedWpt": [
+        "websocket-close"
+      ],
+      "effect": "May initiate a WebSocket closing handshake with a caller-supplied close reason and code.",
+      "prerequisites": "Requires an accessible native socket and connection state where a closing handshake is sent; reason length and code are restricted.",
+      "next": "Use a receiver that records the close reason and test acquired sockets under confinement."
     },
     {
       "id": "websockets|WebSocket|constructor|constructor|1",
@@ -4349,9 +4844,13 @@
         "status": "source-and-receiver-tests",
         "path": "test/prototype-confinement.ts"
       },
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry",
+      "selectedWpt": [
+        "websocket-send"
+      ],
+      "effect": "Constructing a WebSocket starts establishing a connection to a URL with optional protocols.",
+      "prerequisites": "Requires an exposed native constructor, a valid URL, applicable browser policy and a reachable server.",
+      "next": "Test same-origin and external receiver cases and native constructor-recovery paths in each execution context."
     },
     {
       "id": "websockets|WebSocket|extensions|attribute|1",
@@ -4371,6 +4870,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4391,6 +4892,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4411,6 +4914,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4431,6 +4936,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4451,6 +4958,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4471,6 +4980,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4491,6 +5002,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4509,9 +5022,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry",
+      "selectedWpt": [
+        "websocket-send"
+      ],
+      "effect": "Queues data for transmission over a WebSocket when the connection is open.",
+      "prerequisites": "Requires a usable native socket object and an open connection; otherwise data may be rejected or discarded according to state.",
+      "next": "Test recovery or transfer of existing socket objects and receiver-calibrated data delivery."
     },
     {
       "id": "websockets|WebSocket|url|attribute|1",
@@ -4531,6 +5048,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4551,6 +5070,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4571,6 +5092,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4591,6 +5114,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4611,6 +5136,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4631,6 +5158,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4652,9 +5181,13 @@
         "status": "independent-receiver",
         "path": "formal/webtransport/README.md"
       },
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry",
+      "selectedWpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Initiates establishment of a WebTransport session to the specified HTTPS URL.",
+      "prerequisites": "Requires an exposed native constructor, allowed policy and a reachable supporting endpoint.",
+      "next": "Extend native-receiver and fault-control tests across all supported contexts and constructor recovery paths."
     },
     {
       "id": "webtransport|WebTransport|createBidirectionalStream|operation|1",
@@ -4672,9 +5205,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Creates an outgoing transport stream whose writable side can send bytes once the session and stream permit it.",
+      "prerequisites": "Requires a usable WebTransport object and a session able to create the requested stream.",
+      "next": "Test acquisition and actual writes against a native receiver, including nested contexts."
     },
     {
       "id": "webtransport|WebTransport|createSendGroup|operation|1",
@@ -4694,6 +5231,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4712,9 +5251,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Creates an outgoing transport stream whose writable side can send bytes once the session and stream permit it.",
+      "prerequisites": "Requires a usable WebTransport object and a session able to create the requested stream.",
+      "next": "Test acquisition and actual writes against a native receiver, including nested contexts."
     },
     {
       "id": "webtransport|WebTransport|datagrams|attribute|1",
@@ -4732,9 +5275,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Returns the session datagram duplex stream, from which a writable datagram stream can be created.",
+      "prerequisites": "Requires access to a native WebTransport session; obtaining the object alone is not a datagram send.",
+      "next": "Test native session acquisition and a receiver-observed datagram write under confinement."
     },
     {
       "id": "webtransport|WebTransport|draining|attribute|1",
@@ -4754,6 +5301,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4774,6 +5323,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4794,6 +5345,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4814,6 +5367,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4834,6 +5389,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4854,6 +5411,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4874,6 +5433,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4894,6 +5455,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4914,6 +5477,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4934,6 +5499,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4954,6 +5521,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4974,6 +5543,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -4992,9 +5563,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Creates a writable stream that can send datagrams through its transport.",
+      "prerequisites": "Requires access to a usable native datagram duplex object and session.",
+      "next": "Test exposure in the target browser versions and receiver-observed writes; the pinned WPT case tests connection setup only."
     },
     {
       "id": "webtransport|WebTransportDatagramDuplexStream|incomingMaxAge|attribute|1",
@@ -5014,6 +5589,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5034,6 +5611,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5054,6 +5633,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5074,6 +5655,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5094,6 +5677,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5114,6 +5699,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5134,6 +5721,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5154,6 +5743,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5174,6 +5765,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5194,6 +5787,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5214,6 +5809,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5234,6 +5831,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5254,6 +5853,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5274,6 +5875,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5294,6 +5897,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5314,6 +5919,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5334,6 +5941,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5354,6 +5963,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     },
     {
@@ -5374,6 +5985,8 @@
       "priorReviewPointer": null,
       "classification": "unreviewed",
       "selectedWpt": [],
+      "effect": null,
+      "prerequisites": null,
       "next": "Review the standard algorithm, reachable contexts and potential effects."
     }
   ]

@@ -1,5 +1,5 @@
 import { digest, LIMITS, safePath, validateMetadata } from '../shared/policy.ts';
-import { publicAlias, resourceURL } from '../shared/runtime-url.ts';
+import { applicationURL, publicAlias, resourceURL } from '../shared/runtime-url.ts';
 import { compileDocumentContent } from './contexts/document-content.ts';
 import type {
   DownloadedResource,
@@ -149,10 +149,16 @@ export async function admitInstallation(
     installedAt: new Date().toISOString(),
     capture,
   };
-  const aliases: [string, string][] = resources.map((resource) => [
-    resource.url,
-    resourceURL(app, resource.path, runtime).href,
-  ]);
+  const appURL = applicationURL(app, runtime).href;
+  const resolvedPaths = new Set<string>();
+  const aliases: [string, string][] = resources.map((resource) => {
+    const resolved = resourceURL(app, resource.path, runtime).href;
+    if (resolved === appURL || !resolved.startsWith(appURL))
+      throw new Error('Resource path leaves its application');
+    if (resolvedPaths.has(resolved)) throw new Error('Duplicate resolved resource path');
+    resolvedPaths.add(resolved);
+    return [resource.url, resolved];
+  });
   for (const resource of resources)
     if (
       resource.path.endsWith('.html') ||

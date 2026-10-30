@@ -43,7 +43,8 @@ export function resourceURL(
   path: string,
   base: string | URL,
 ): URL {
-  return new URL(path, applicationURL(app, base));
+  // A first path segment containing ':' is a filename, not a URL scheme.
+  return new URL(`./${path}`, applicationURL(app, base));
 }
 
 export function applicationIdentity(

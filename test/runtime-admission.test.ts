@@ -29,6 +29,19 @@ globalThis.runAdmission = async () => {
   await new Promise((resolve,reject)=>{const tx=legacy.transaction('installations','readwrite');tx.objectStore('installations').put({id:'legacy',preparation:{ended:true}});tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});legacy.close();
   const checks={legacyMetadataIgnored:(await getApp('legacy'))===undefined&&(await listApps()).length===0};
   const admitted=await admitInstallation(input,runtime);
+  const withPaths=async(paths, entry='index.html')=>{
+    const variantResources=await Promise.all(paths.map((path,i)=>resource(path,i===0?'<title>Fixture</title>':'data',i===0?'text/html':'text/plain')));
+    // URLs remain distinct even when the paths canonicalize to the same URL.
+    variantResources.forEach((item,i)=>item.url='https://publisher.test/resource-'+i);
+    return {...input,manifest:{...input.manifest,entry},resources:variantResources,capture:{additionalResources:[],unavailableResources:[]}};
+  };
+  const accept=async(paths,entry)=>{try{await admitInstallation(await withPaths(paths,entry),runtime);return true;}catch{return false;}};
+  const rejectWith=async(paths,reason)=>{try{await admitInstallation(await withPaths(paths),runtime);return false;}catch(error){return error.message===reason;}};
+  checks.relativeSchemeNames=await accept(['index.html','http:example.test','https:example.test','nested/file.js']);
+  checks.schemeNamedEntry=await accept(['https:entry.html'],'https:entry.html');
+  checks.normalizedCollision=await rejectWith(['index.html','a\\nb.js','ab.js'],'Duplicate resolved resource path');
+  checks.normalizedEscape=await rejectWith(['index.html','x/.\\n./.\\n./escape.js'],'Resource path leaves its application');
+  checks.normalizedAppRoot=await rejectWith(['index.html','x/.\\n.'],'Resource path leaves its application');
   checks.format=admitted.format==='offline-resources-v1';
   checks.capture=admitted.capture.additionalResources[0]===resources[1].url&&admitted.capture.unavailableResources[0].status===404;
   checks.noLegacyAuthority=!Object.hasOwn(admitted,'preparation')&&!Object.hasOwn(admitted,'serviceWorker');

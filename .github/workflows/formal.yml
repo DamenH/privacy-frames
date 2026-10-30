@@ -91,7 +91,11 @@ jobs:
       - run: npx playwright install --with-deps chromium firefox
         timeout-minutes: 10
       - run: npm run build
+      - run: node --test test/runtime-admission.test.ts
+      - run: node test/resource-paths.ts
+      - run: node formal/cache-publisher-probe.ts
       - run: node test/document-consumption-race.ts
+      - run: node formal/document-consumption-fault.ts
       - run: node test/context-generation.ts
       - run: cp results/contexts/generation.json formal/evidence/generation-overlaps.json
       - run: node formal/webtransport/run.ts
@@ -116,5 +120,7 @@ jobs:
             formal/evidence/generation-overlaps.json
             formal/confinement/generation-implementation-traces.json
             results/contexts/document-consumption-race.json
+            formal/evidence/document-consumption-fault.json
+            formal/evidence/cache-publisher.json
             formal/admission/model-results.json
             formal/admission/implementation-results.json

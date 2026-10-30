@@ -56,6 +56,8 @@ def main():
             'priorReviewPointer': row['review'],
             'classification': review['class'] if review else 'unreviewed',
             'selectedWpt': review['wpt'] if review else [],
+            'effect': review.get('effect') if review else None,
+            'prerequisites': review.get('prerequisites') if review else None,
             'next': review['next'] if review else 'Review the standard algorithm, reachable contexts and potential effects.',
         })
     if set(reviews) != matched:

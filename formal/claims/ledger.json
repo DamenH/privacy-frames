@@ -3,16 +3,22 @@
   "scope": "Claims are review obligations, not a blanket confinement certification. Evidence is specific to its saved revision, browser, state and receiver; source digests detect drift, not proof.",
   "source_baseline": "0f0d43cda8bdfbeccfc5846cea7af1d4bba69e7b",
   "artifact_sha256": {
-    "formal/admission/implementation-results.json": "f7e5fe3d9703e0b5c1f8f45b61774f8f24efb767969b2d67bb178b4634c9f66b",
-    "formal/admission/model-results.json": "2084e90a886edaebc03c6cce164fcfd9b458a4d9c5f2e57a2126cdc70436734a",
+    "formal/admission/implementation-results.json": "8484858f6f903ad46049999cf79634027e5f53cd1c6c7a89d7b27cf2606daa4d",
+    "formal/admission/model-results.json": "a55c1e6cecd803b18bba88778899e7f57142de3dbd1bb9e87b8330b921e1be63",
     "formal/browser-features.json": "7ed31f047c607772cfdaffed193310c9b14ee4f071dbb37412521ef4af7b443b",
     "formal/browser-surface-inventory.md": "fb21718dd5eb7065e8e45285d902a46f271d95261f9b73b4d861957bcbd09650",
+    "formal/cache-publisher-probe.ts": "d9e62ba13a689710995fad436edb67b8478db385779e693e9803dd4c3e71107e",
+    "formal/cache-publisher.md": "40806e691be0d844c497dc0238ff07ef3b2bb2282cfe3df22b2c11a1db730f77",
     "formal/confinement/generation-implementation-traces.json": "2a247110329dc6b5c809ef36874f32e565bbd6ab3192b788f00a3f8a706ed618",
     "formal/confinement/generation-read-traces.json": "d4e0da312d365953a9d0187fc8e830f22fe6c4afb4be4352d8f0dd8ebc065f55",
     "formal/confinement/traces.json": "0b6ac66c20d708836c50b6a6454cfe51afbe6cef558fdc98653d59bf96983e29",
+    "formal/document-consumption-fault.md": "d7d72f130cc6e78ed38e230a0f585f303a3b6f7451016d78bfc6d5bebcdbff8e",
+    "formal/document-consumption-fault.ts": "33f222968437c3646eba8e4267b5bca67d65fabcc253bf0be788665793b67ec1",
     "formal/evidence/background-agents.json": "dc81ab722d2e40d58de06faab78a32aeda2cfdd3b8b04e4a66ceb9fc1ff9af39",
+    "formal/evidence/cache-publisher.json": "676b5354c06595a86475b50941ee5cb270c68cbd63a3999910639440f72755c7",
     "formal/evidence/contexts-document-contexts.json": "92351579f6812f49be82f317fb5fbf49850be64019bd1e7a1be31c4edd2f81b7",
     "formal/evidence/contexts-prototype-confinement.json": "2036fd1e0cc6ac47fc1e8042a5f9c65861efc5788bab1062b2185af0054cc8e0",
+    "formal/evidence/document-consumption-fault.json": "ac89b66f67e8b5fc2114f0b0c2ca17108cb69e194b3ad4e4d905f7cb5d6982ac",
     "formal/evidence/fedcm-conditional.json": "67a51d93242a3e007dd08f723931e01504f6c21426dd3e21a3f87de6c36d9b4b",
     "formal/evidence/fetch-later.json": "e0dd9907ac7c33b5f9aac19a06fe0cdb50f5643c56ddc1c90adad24597a52364",
     "formal/evidence/generation-overlaps.json": "4aa7a3b7632cf06fa1e2b4f8424d2f791e14aa652a741322f3a6226ee99524bb",
@@ -30,6 +36,9 @@
     "formal/lean/CapabilityBoundary.lean": "5cf557978cf54255fded00ba991b90db7e54056e39f81a769f016c32ace7cf23",
     "formal/lean/README.md": "e0f71cc0ca90052045d6b1611bb33bf6f4d62732031f66099052ab4c46935d01",
     "formal/lean/Reachability.lean": "b643cfdbf2042d135ce5bb94204dcbd9921e5f898b1ee44baed24c4e4a49d0ab",
+    "formal/path-audit/README.md": "5b5631af02f28dc1eac8b03eb1f7e7f5d955af5124baa186f92257509834355c",
+    "formal/path-audit/colon-resource.json": "dc3027f4f491ba35e6d01a4f65ec71035b74b2f58c78ff518f5d687addeda011",
+    "formal/path-audit/colon-resource.ts": "f3cf6006ea6a42af4140612f8d9b9bbcd594a00be4fc73338c2dadafb2acab13",
     "formal/startup/lifecycle-comparison.json": "b71354b1facad0ba503250f93157a603481e6df90039d4f2107f6f2269a66200",
     "formal/web-install-sandbox-fault.md": "dc874f193288fa6f0cbc393d607a49c55e416b1c203267051c0484a3e5a4e3bc",
     "formal/web-install-sandbox-fault.ts": "fb0b0483480215ae9ec55dd8da10b57c2db855e4375c0c7c45a1f07dfed9232b",
@@ -39,7 +48,7 @@
     "src/bridge/connect.ts": "bd35b868143935b8cfa4f7ce3227644c516b01f5ef82eea2b196e3183f17833b",
     "src/installation/session.ts": "0381b435c49234134d1cb0f20d4e86503fd64ae4e416a5823e26f61e7aaf3f20",
     "src/manager/services/bootstrap.ts": "17176349ebf2d4f1f2fe9662e0e737b5da3f50a52eef7f84b21102158ab16427",
-    "src/runtime/admission.ts": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff",
+    "src/runtime/admission.ts": "91adf341c8cb8da8341c13d3718f11fb60f431000186c74635a8f7f5d910f124",
     "src/runtime/contexts/document-content.ts": "f606b94f249c44ad2e09880a56bb87d4556d571108799b2ac4647d5496031034",
     "src/runtime/contexts/document-controller.ts": "ca269260ec3cb34cd963bf59d3ba6596554ddecb646013aea8ecd73e35e03812",
     "src/runtime/contexts/document-factory.ts": "84b805def5952bcaa319aa34495320c56d0faa76bd869d2b6d5dd78e5e8a4e4f",
@@ -71,6 +80,7 @@
     "src/runtime/storage.ts": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d",
     "src/runtime/worker.ts": "7fba94edacc170650ff8445a0220eb9e365df7590b5d8625d632315251811046",
     "src/shared/application-navigation.ts": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
+    "src/shared/runtime-url.ts": "26503f8994b0307030dddb9f843f6bd438573869b7ab01226565c865c9e3c24f",
     "test/application-history.ts": "44707c8287539c836044bc77b75df4edabfc1cd5ad509803766c31d4962f3a79",
     "test/context-navigation.ts": "b646e2913b5db49f76685326b9e357196e09f837a5a45f17a9bfaaa8c22ae62b",
     "test/dynamic-scripts.ts": "5c960cd9340eac2b6423ed7009e39e074aaad40832ee1d446aa77cb5db7226ca",
@@ -82,7 +92,8 @@
     "test/publisher-events.test.ts": "f6235008bcdce5550b875f3293926037182b604c9c177abe6a7b0cf435981bce",
     "test/publisher-store.ts": "e7a7e7220d56a9a2cf083f8ea5212e6701f7fdd69e4609740284705b1b8481b6",
     "test/resource-elements.ts": "e7082661829bf046a0f4664627b4b022adbe7599ff275dbc270d417d0b6499f9",
-    "test/runtime-admission.test.ts": "ebf0692ed2db0b667243cd6efdb9bc7f05667dc32ce618347343ff0652cee1aa",
+    "test/resource-paths.ts": "32b969ab510351efd0187c53f9cb8b3527153ab815f86a413b87222380f70a4a",
+    "test/runtime-admission.test.ts": "075a2f522137e40dee5153492cc5e0c1f7a1fc63a0e056bef51f2ca5a6a7c6a1",
     "test/shared-connections.ts": "7865484cd0ac7c55cc20a2fe70d9e10b1d42a690388232dcae4dc5149c82a56f",
     "test/shared-worker-contexts.ts": "599a1a789c92740a16e089cb109379264e7ca422ec6a5f965eb2f7430c59576b",
     "test/storage-proxy-receiver.ts": "9799b444c603c66cb414ae7efc226a3438ffd4b6f17c74082523904b17b91640",
@@ -1237,6 +1248,124 @@
       "control_status": {
         "native_control": "not-recorded",
         "confined_test": "not-recorded",
+        "fault_control": "not-recorded"
+      }
+    },
+    {
+      "id": "document_consumption_authority",
+      "title": "Revalidation after consuming a document intent",
+      "disposition": "reviewed-scoped",
+      "preconditions": "A document intent is consumed and authority changes before the body is delivered.",
+      "enforcement": "Revalidate the context identity after intent consumption and refuse content if it no longer matches.",
+      "source_paths": [
+        "src/runtime/contexts/document-controller.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "confined_test",
+          "description": "Real controller and IndexedDB with simulated client identities: unchanged authority returns content; changed ownership, closure or generation returns an empty error.",
+          "paths": [
+            "formal/document-consumption-fault.ts",
+            "formal/document-consumption-fault.md",
+            "formal/evidence/document-consumption-fault.json"
+          ]
+        },
+        {
+          "kind": "fault_control",
+          "description": "Removing only the post-consumption guard in the test bundle returns the content after those authority changes in both tested browsers.",
+          "paths": [
+            "formal/document-consumption-fault.ts",
+            "formal/document-consumption-fault.md",
+            "formal/evidence/document-consumption-fault.json"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "Simulated browser-client identities and context storage do not establish browser identity, all races or network disclosure.",
+        "The test covers the selected document handler and cannot establish equivalent checks for other context types."
+      ],
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "recorded",
+        "fault_control": "recorded"
+      }
+    },
+    {
+      "id": "canonical_resource_paths",
+      "title": "Canonical installed resource paths",
+      "disposition": "reviewed-scoped",
+      "preconditions": "An installation supplies resource paths resolved against its application address.",
+      "enforcement": "Resolve each resource as relative to the application and reject paths escaping the application directory or colliding after URL normalization.",
+      "source_paths": [
+        "src/runtime/admission.ts",
+        "src/shared/runtime-url.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "historical_control",
+          "description": "Before the fix, a normally installed scheme-like path resolved outside its application and caused startup to fail closed in Chromium and Firefox.",
+          "paths": [
+            "formal/path-audit/README.md",
+            "formal/path-audit/colon-resource.ts",
+            "formal/path-audit/colon-resource.json"
+          ]
+        },
+        {
+          "kind": "confined_test",
+          "description": "The runtime admission suite checks normal paths, scheme-like names and entries, normalization escapes and collisions in both browsers. The installer fixture checks colon-named and nested resource loading.",
+          "paths": [
+            "test/runtime-admission.test.ts",
+            "test/resource-paths.ts"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "Historical pre-fix reproducer has different expected behavior on the fixed source.",
+        "Tests and the bounded admission model do not prove every browser URL parsing or storage path."
+      ],
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "recorded",
+        "fault_control": "not-recorded"
+      }
+    },
+    {
+      "id": "publisher_cache_download",
+      "title": "Cache downloads from a virtual publisher",
+      "disposition": "reviewed-scoped",
+      "preconditions": "A publisher worker acquires Cache and attempts to download an uninstalled same-origin resource.",
+      "enforcement": "Publisher code runs in a prepared shared worker; Cache add operations require installed resources.",
+      "source_paths": [
+        "src/runtime/resource-aliases.ts",
+        "src/runtime/publisher/guard.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "native_control",
+          "description": "A native ServiceWorkerGlobalScope downloads a marker using Cache.add, and a separate unrestricted fetch calibrates the runtime-origin receiver.",
+          "paths": [
+            "formal/cache-publisher.md",
+            "formal/cache-publisher-probe.ts",
+            "formal/evidence/cache-publisher.json"
+          ]
+        },
+        {
+          "kind": "confined_test",
+          "description": "An installed virtual publisher in SharedWorkerGlobalScope fails Cache.addAll for an uninstalled same-origin URL; no marker reaches the receiver in either tested browser.",
+          "paths": [
+            "formal/cache-publisher.md",
+            "formal/cache-publisher-probe.ts",
+            "formal/evidence/cache-publisher.json"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "The test does not establish which defense caused rejection, all native service-worker acquisition paths, or every cache operation.",
+        "The native control confirms network delivery but does not observe bypass with a separate intercepting service worker."
+      ],
+      "control_status": {
+        "native_control": "recorded",
+        "confined_test": "recorded",
         "fault_control": "not-recorded"
       }
     }

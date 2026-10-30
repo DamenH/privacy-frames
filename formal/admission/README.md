@@ -22,12 +22,14 @@ not exhaustive tests of every input or proof of the JavaScript implementation.
 
 The runner also builds test-only mutations from the actual source. Omitting
 the digest comparison admits each independently tampered resource; omitting
-the path check or missing-entry refusal also admits its invalid case. Removing only the
-duplicate-URL check does **not** produce acceptance: a later resource-alias
-validation independently rejects that particular fixture. Removing both path
-and URL checks admits a fixture with identical paths and URLs, demonstrating
-why that layered result must not be mistaken for a mutation-test failure. These
-mutations change only isolated generated bundles, not production source.
+the missing-entry refusal also admits its invalid case. Removing only the
+duplicate-URL check still rejects that fixture through a later alias check.
+The canonical-path check now independently rejects fixtures with duplicate raw
+paths even if the raw path check, or both the raw path and URL checks, are
+removed. When that canonical check is also removed, those fixtures are accepted.
+The TLA+ fault configurations abstract the checks under test and do not model
+these additional implementation checks. Mutations affect isolated generated
+bundles, not production source.
 
 `model-results.json` records TLC output, expected fault counterexamples and
 model/config hashes. `implementation-results.json` records browser versions,
