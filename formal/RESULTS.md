@@ -25,6 +25,13 @@ stale resource capability is refused. Browser reachability and other possible
 consequences remain open. The [implementation mapping](implementation-mapping.md#duplicate-binding-dispatcher-reachability-and-consequences)
 describes the actual dispatcher checks.
 
+A captured resource whose filename looked like a URL scheme could resolve
+outside its application directory. Both tested browsers refused to start the
+app before its code ran; no request to the receiver was observed. Resource
+paths now resolve as relative paths, and admission checks their canonical
+location and uniqueness. The [path audit](path-audit/README.md) records the
+original reproduction and the tests for the correction.
+
 An [exploratory controller-update fixture](startup/README.md) observed a child
 remaining unpublished while its guard response was held. One run recorded the
 response timing out before the replacement controller activated; a later run did
@@ -51,9 +58,16 @@ The [background-agent probe](background-agents.md) also tests recovery of a
 pre-existing native service-worker registration, with working Chromium sync and
 background-fetch controls. Periodic sync remains uncalibrated.
 The [deferred-fetch probe](fetch-later.md) confirms a native page-close upload
-and tests the prepared runtime against that route in Chromium.
+and tests the prepared runtime against that route in Chromium. Removing its
+denial in a test build permits the upload.
 An [experimental Web Install probe](web-install.md) observes native manifest
 requests bypassing the service worker and tests the prepared sandbox's denial.
+Removing the sandbox in a test response permits the tested manifest requests.
+The [WebSocket fault control](websocket-fault.md) similarly demonstrates a
+same-origin connection when its denial is removed in an otherwise prepared window.
+The [publisher cache probe](cache-publisher.md) tests a native service-worker
+download and an installed virtual publisher's attempt to download an uninstalled
+resource.
 
 ## What has been checked
 
@@ -79,6 +93,8 @@ The [model-to-implementation mapping](implementation-mapping.md) identifies whic
 code paths correspond to model actions and where that correspondence is missing.
 The [Web IDL report](idl-surface-report.md) joins selected standards to observed
 browser interface names and highlights members that still need review.
+Its [review queue](route-review/README.md) tracks individual rows and selected
+Web Platform Test leads without treating those leads as passing runtime tests.
 The [claim ledger](claims/README.md) records enforcement, controls and open
 obligations separately, with a check for changes to the cited artifacts.
 
