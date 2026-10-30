@@ -32,7 +32,29 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
       result += scanner.getTokenText();
     return result;
   };
+  const nativeHelpers = file.statements.filter(
+    (statement) =>
+      ts.isImportDeclaration(statement) &&
+      ts.isStringLiteral(statement.moduleSpecifier) &&
+      statement.moduleSpecifier.text === '../../shared/primordials.ts',
+  );
+  assert.equal(nativeHelpers.length, 1, 'Native helper import changed');
+  const helperImport = nativeHelpers[0];
+  assert(ts.isImportDeclaration(helperImport));
+  const helperNames = helperImport.importClause?.namedBindings;
+  assert(helperNames && ts.isNamedImports(helperNames));
+  assert(
+    helperNames.elements.some(
+      (element) =>
+        element.name.text === 'ownDescriptor' &&
+        !element.propertyName &&
+        !element.isTypeOnly,
+    ),
+    'Descriptor helper binding changed',
+  );
   const captures = new Map<string, string>([
+    ['apply', 'Reflect.apply'],
+    ['descriptor', 'ownDescriptor'],
     ['prevent', 'Event.prototype.preventDefault'],
     ['nativeAdd', 'EventTarget.prototype.addEventListener'],
     ['nav', 'window.navigation'],
@@ -48,6 +70,15 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
     .filter((node) => node.name?.text === 'prepareNavigationPolicy');
   assert.equal(policyFunctions.length, 1, 'Navigation installer changed');
   assert(policyFunctions[0].body, 'Navigation installer body missing');
+  assert.equal(
+    policyFunctions[0].parameters.length,
+    1,
+    'Navigation preparation received external tools',
+  );
+  assert.equal(
+    normalized(policyFunctions[0].parameters[0]),
+    'options:NavigationOptions=internalRecord({})',
+  );
   const lastStatement = policyFunctions[0].body.statements.at(-1);
   assert(
     lastStatement &&
@@ -62,6 +93,12 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
     ),
     'Navigation finalizer became asynchronous',
   );
+  assert.equal(
+    lastStatement.expression.parameters.length,
+    2,
+    'Finalizer tool boundary changed',
+  );
+  assert.equal(normalized(lastStatement.expression.parameters[0]), 'tools:PolicyTools');
   assert(
     !policyFunctions[0].modifiers?.some(
       (modifier) => modifier.kind === ts.SyntaxKind.AsyncKeyword,
@@ -162,10 +199,11 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
   return expression(statements[1].expression);
 }
 const expression = extract(text);
-const finalizerAnchor = '  return (\n    open?:';
+const finalizerAnchor = '  return (\n    tools: PolicyTools,';
 assert.equal(text.split(finalizerAnchor).length, 2);
 assert.throws(
-  () => extract(text.replace(finalizerAnchor, '  return async (\n    open?:')),
+  () =>
+    extract(text.replace(finalizerAnchor, '  return async (\n    tools: PolicyTools,')),
   /Navigation finalizer became asynchronous/,
 );
 assert.throws(
@@ -174,6 +212,15 @@ assert.throws(
       text.replace('Event.prototype.preventDefault', 'Event.prototype.stopPropagation'),
     ),
   /Captured binding changed/,
+);
+assert.throws(
+  () =>
+    extract(text.replace('const apply = Reflect.apply;', 'const apply = Reflect.get;')),
+  /Captured binding changed/,
+);
+assert.throws(
+  () => extract(text.replace('../../shared/primordials.ts', './native.ts')),
+  /Native helper import changed/,
 );
 assert.throws(
   () => extract(text.replace("'navigate',", "'navi gate',")),
@@ -270,6 +317,8 @@ const receipt = {
   proofOutput: verified.stdout.trim(),
   faultControls: {
     wrongNativeAction: 'source-rejected',
+    wrongNativeApply: 'source-rejected',
+    wrongDescriptorImport: 'source-rejected',
     wrongEventName: 'source-rejected',
     missingAction: 'source-rejected',
     weakenedCondition: 'proof-rejected',

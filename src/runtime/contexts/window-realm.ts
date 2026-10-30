@@ -41,17 +41,8 @@ export function prepareWindowRealm({
   enableDocumentContexts = false,
   scriptNonce,
 }: WindowRealmOptions) {
-  const rawGetAttribute = Element.prototype.getAttribute;
-  const NativeURL = URL;
-  prepareRuntimeIntrinsics();
-  const tools = createPolicyTools();
-  const { method, accessor, descriptor, apply, fail, define } = tools;
-  let applicationWorker: unknown = null;
-  let resourceBase = applicationURL;
   let sourceURL = applicationURL;
-  let sharedIdentity: SharedWorkerIdentity | undefined;
   const finishNavigationPolicy = prepareNavigationPolicy(
-    tools,
     internalRecord({
       documentURL: documentURL || applicationURL,
       ...(!documentURL
@@ -59,6 +50,14 @@ export function prepareWindowRealm({
         : internalRecord({})),
     }),
   );
+  const rawGetAttribute = Element.prototype.getAttribute;
+  const NativeURL = URL;
+  prepareRuntimeIntrinsics();
+  const tools = createPolicyTools();
+  const { method, accessor, descriptor, apply, fail, define } = tools;
+  let applicationWorker: unknown = null;
+  let resourceBase = applicationURL;
+  let sharedIdentity: SharedWorkerIdentity | undefined;
   const policy = createTrustedPolicy(applicationURL);
   const resources = resourceAliases(
     internalRecord({
@@ -126,7 +125,7 @@ export function prepareWindowRealm({
         }),
       )
     : undefined;
-  finishNavigationPolicy(openPopup);
+  finishNavigationPolicy(tools, openPopup);
   installDOMPolicy(tools, rawGetAttribute, policy, scripts, documents, resources.mapURL);
   installEffectPolicy(
     tools,

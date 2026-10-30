@@ -1,8 +1,8 @@
 {
-  "completed": "2026-10-30T20:45:44.883Z",
+  "completed": "2026-10-30T21:09:54.134Z",
   "image": "ghcr.io/gillianplatform/gillian@sha256:ce41de968aba0964774e1929416ce60b9c3b770d2e58f96e63990b629cfe2ed6",
   "source": "src/runtime/enforcement/navigation.ts",
-  "sourceSHA256": "9bb56df013fd1e139dd1385b0aa55e67386926ca97ab7f58181820374b50fa63",
+  "sourceSHA256": "e60f90df91431d3b5616482af935442ca1a41bbe86bc9d5998a98373ae166e8c",
   "checkerSHA256": "3fe55b28e050ab03cfc27c5aa5b3ad0bcd984712da2541fae35e08ebe02709b0",
   "handlerSHA256": "998529cc9a000aeb67b9f936e2b023bd83b8124a60db718736e9acb3e0fef418",
   "typescriptVersion": "6.0.3",
@@ -15,40 +15,40 @@
       "expectedSuccess": true,
       "exitCode": 0,
       "fixtureSHA256": "6a6572d2f1e5c4f1934aaf3e3c01824276c5650cdaf7852a71e8bbfc4d6fd4ef",
-      "outputSHA256": "40739a5b12c8a56cd2050394f81d310ee3bcbadfeb129c9ddb802df0dd2cb3c4",
-      "outputSummary": "Compilation time: 0.011941s\nTotal time (Compilation + Symbolic testing): 0.435917s\nSuccess!\n"
+      "outputSHA256": "6fe2d491632810d6ce3e663775f7d2106207beebbfd262eb9287969fce3c22af",
+      "outputSummary": "Compilation time: 0.029486s\nTotal time (Compilation + Symbolic testing): 0.755382s\nSuccess!\n"
     },
     {
       "name": "negative-control",
       "expectedSuccess": false,
       "exitCode": 1,
       "fixtureSHA256": "7d02f9d8807f04074b673999a8be3f4d4aa50e6944a6631db20f73762aa2bddc",
-      "outputSHA256": "9f21e2866c56c4f00d7f54441c12acdf0e38f8e8cd202906daa7ee5640501873",
-      "outputSummary": "Compilation time: 0.011832s\nTotal time (Compilation + Symbolic testing): 0.439621s\nErrors occurred!\nAnalysis failures!\n1. Here's a counterexample: [  ]\nHere's an example of a final error state: FAILURE TERMINATION: Procedure main, Command 28 [negative-control.js 2:1-24]\n                                          Errors: Pure assertion failed: (#gen__0 and (! #gen__0))\n                                          FINAL STATE:"
+      "outputSHA256": "632df61bc49bc131ad14ad6f197a88328118848af90c491711b048dbfe738798",
+      "outputSummary": "Compilation time: 0.018332s\nTotal time (Compilation + Symbolic testing): 0.747303s\nErrors occurred!\nAnalysis failures!\n1. Here's a counterexample: [  ]\nHere's an example of a final error state: FAILURE TERMINATION: Procedure main, Command 28 [negative-control.js 2:1-24]\n                                          Errors: Pure assertion failed: (#gen__0 and (! #gen__0))\n                                          FINAL STATE:"
     },
     {
       "name": "actual-handler",
       "expectedSuccess": true,
       "exitCode": 0,
       "fixtureSHA256": "c2cecc84577e45aa9a8ea295ae66cc66b8098bab420b469613751f4a5e6972e0",
-      "outputSHA256": "14ea22b52797963d371491bd5041de248c87285d47ab3c8ef5f43f07c1d39621",
-      "outputSummary": "Compilation time: 0.015092s\nTotal time (Compilation + Symbolic testing): 2.799587s\nSuccess!\n"
+      "outputSHA256": "a4d0ad49188832fc68d1955174ffb5cdfc79141ca8810b8d026bd42e5054bc92",
+      "outputSummary": "Compilation time: 0.031957s\nTotal time (Compilation + Symbolic testing): 3.131315s\nSuccess!\n"
     },
     {
       "name": "missing-cancellation",
       "expectedSuccess": false,
       "exitCode": 1,
       "fixtureSHA256": "5a430657b3c7b684fd37987cbd996b20739e29aa05a3e6d32df6c68d1a162c64",
-      "outputSHA256": "1fdaaa935ca60f00ea297c5ffeb6a6d7d44247b2f2d783a1ccb183f49a3cfe60",
-      "outputSummary": "Compilation time: 0.015510s\nTotal time (Compilation + Symbolic testing): 2.678265s\nErrors occurred!\nAnalysis failures!\n1. Here's a counterexample: [ (#gen__5: false) ]\nHere's an example of a final error state: FAILURE TERMINATION: Procedure main, Command 614 [missing-cancellation.js 62:1-25]\n                                          Errors: Pure assertion failed: (false == (! #gen__1))\n                                          FINAL STATE:"
+      "outputSHA256": "b8fac58e1b410952917f896e082eb747a257c0b9e18b0f8e1bd61402eb9dd9e5",
+      "outputSummary": "Compilation time: 0.016481s\nTotal time (Compilation + Symbolic testing): 2.702025s\nErrors occurred!\nAnalysis failures!\n1. Here's a counterexample: [ (#gen__5: false) ]\nHere's an example of a final error state: FAILURE TERMINATION: Procedure main, Command 614 [missing-cancellation.js 62:1-25]\n                                          Errors: Pure assertion failed: (false == (! #gen__1))\n                                          FINAL STATE:"
     },
     {
       "name": "weakened-condition",
       "expectedSuccess": false,
       "exitCode": 1,
       "fixtureSHA256": "aaa089a8ee143f6418b48b1f2e3c2d2f814b277f14beda1f53555682a69b5408",
-      "outputSHA256": "24a87ac9034bd4013ce0835e2d271dad16a3d3ed7931331f1b9335653d1ba45f",
-      "outputSummary": "Compilation time: 0.015687s\nTotal time (Compilation + Symbolic testing): 2.796114s\nErrors occurred!\nAnalysis failures!\n1. Here's a counterexample: [  ]\nHere's an example of a final error state: FAILURE TERMINATION: Procedure main, Command 614 [weakened-condition.js 62:1-25]\n                                          Errors: Pure assertion failed: (false == #gen__5)\n                                          FINAL STATE:"
+      "outputSHA256": "ce35e7d36c10d9469fbf8ddad4c0daffd6f82d00b6b3044edf26bb2814a9a260",
+      "outputSummary": "Compilation time: 0.016547s\nTotal time (Compilation + Symbolic testing): 2.804978s\nErrors occurred!\nAnalysis failures!\n1. Here's a counterexample: [  ]\nHere's an example of a final error state: FAILURE TERMINATION: Procedure main, Command 614 [weakened-condition.js 62:1-25]\n                                          Errors: Pure assertion failed: (false == #gen__5)\n                                          FINAL STATE:"
     }
   ]
 }

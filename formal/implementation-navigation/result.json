@@ -1,8 +1,8 @@
 {
   "scope": "Restricted source-derived boolean decision and exact cancellation action, not a JavaScript semantics or browser proof.",
   "source": "src/runtime/enforcement/navigation.ts",
-  "sourceSHA256": "9bb56df013fd1e139dd1385b0aa55e67386926ca97ab7f58181820374b50fa63",
-  "checkerSHA256": "25b76a42199601c8ce3b7db50bddbd93d6918ab121e94ec4997a6d69392b8983",
+  "sourceSHA256": "e60f90df91431d3b5616482af935442ca1a41bbe86bc9d5998a98373ae166e8c",
+  "checkerSHA256": "58c1b0bb8204483fa81fcd51060940796b39c922b55d825dd86999b5deb5c712",
   "generatedLean": "def actualDecision (sameDocument allowedRoute : Bool) : Bool := ((Bool.not sameDocument) || (Bool.not allowedRoute))\n\ntheorem cancellation_exact (sameDocument allowedRoute : Bool) :\n actualDecision sameDocument allowedRoute = !(sameDocument && allowedRoute) := by\n cases sameDocument <;> cases allowedRoute <;> decide\n\n#print axioms cancellation_exact\n",
   "generatedLeanSHA256": "afee15bb1cc26c236433baf51ded30993b863a6cb4d8f809c5cc5fe5e54e6378",
   "semanticDefinitionSHA256": "45e39bd82a01a24e8cfce5b5a53bd6be43522e1193b85f9aaecc23ac6caa9907",
@@ -11,6 +11,8 @@
   "proofOutput": "'cancellation_exact' does not depend on any axioms",
   "faultControls": {
     "wrongNativeAction": "source-rejected",
+    "wrongNativeApply": "source-rejected",
+    "wrongDescriptorImport": "source-rejected",
     "wrongEventName": "source-rejected",
     "missingAction": "source-rejected",
     "weakenedCondition": "proof-rejected",

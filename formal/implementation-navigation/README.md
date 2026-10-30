@@ -8,8 +8,9 @@ cancellation action. It accepts only a small Boolean-expression language over
 the two recognized predicates. Extra handler statements and unknown expressions
 are rejected. It generates the Lean expression from that source condition and
 checks the theorem for every pair of Boolean inputs with `--trust=0`.
-It also checks the six constant capture expressions for the listener, navigation
-object, cancellation method and destination getters. A changed native action
+It also checks eight constant capture expressions, including `Reflect.apply`,
+the imported descriptor helper, listener, navigation object, cancellation method
+and destination getters. A changed native action
 or event name fails extraction. Token normalization preserves string contents.
 
 The result establishes that the extracted condition cancels exactly when the
@@ -88,10 +89,11 @@ also trusted. Source/build/dependency changes trigger the proof workflow.
 The production initialization is now split: `prepareNavigationPolicy` installs
 cancellation early and returns a finalizer for the remaining navigation hooks.
 The realm calls the finalizer after native popup capture. The source-order check
-requires cancellation before the private parser and all context factories, and
-rejects moving parser evaluation earlier. This reduces the helper behavior that
-must be trusted before cancellation; intrinsic preparation and policy-tool
-construction remain before it. The whole sandbox still requires all effects
+requires cancellation before intrinsic preparation, policy-tool construction,
+the private parser and all context factories. It rejects moving either
+initialization routine or parser evaluation earlier. The early stage captures
+its native calls directly; the finalizer receives tools only after their
+construction and native popup capture. The whole sandbox still requires all effects
 and publication policies to finish before application execution.
 The two-stage source check also requires a synchronous returned finalizer and
 its exact connection to the popup factory. An async-finalizer mutation and a
@@ -122,3 +124,9 @@ The [installed-app test](installed.md) adds ordinary installation and root start
 to the receiver experiment, using the actual root guard and service worker.
 It checks the served guard bytes and records the intentionally enabled preload
 state separately from the runtime's ordinary disabled state.
+
+The [native-capture compatibility receipt](compatibility-native-capture.json)
+records all eight applications passing native and confined tasks in both
+browsers after moving cancellation before intrinsic and tool preparation.
+The tested build remained stable. As with the earlier compatibility receipt,
+source and artifact hashes identify the uncommitted inputs used by the run.

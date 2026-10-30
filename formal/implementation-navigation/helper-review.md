@@ -1,11 +1,13 @@
 # Preparation helper obligations
 
 The selected root path begins in a trusted shell before publisher markup is
-rendered. The navigation listener now installs immediately after intrinsic and
-policy-tool preparation, before the private parser and all application context
-factories. The source-order checker rejects moving these helpers before it.
-The listener's inputs are initial root metadata and native event operations;
-no publisher markup is required to install it.
+rendered. The navigation listener now installs before intrinsic preparation,
+policy-tool construction, the private parser and all application context
+factories. The early installer captures native operations directly; its returned
+finalizer receives policy tools after native popup capture. The source-order
+checker rejects moving either initialization routine ahead of cancellation.
+It permits only the `sourceURL = applicationURL` metadata binding before the
+early call in the realm function; an added call there is rejected.
 
 The private parser still uses private-frame eval in
 `src/runtime/trusted/context.ts`. The helper creates an empty iframe, reads its
@@ -31,13 +33,23 @@ bindings are trusted for the source check.
 
 Navigation preparation now has two stages. `prepareNavigationPolicy` captures
 navigation state and installs the listener, then returns a finalizer for the
-remaining hooks. `prepareWindowRealm` calls that finalizer after the popup
-factory captures native window.open. This preserves that native capture while
-moving cancellation ahead of private parser evaluation. The checker enforces
-the order relative to the parser, context factories and popup capture.
+remaining hooks. `prepareWindowRealm` calls that finalizer with the policy tools
+and popup function after the popup factory captures native window.open. The
+early stage uses captured `Reflect.apply` and the imported `ownDescriptor`,
+without constructing the broader tool object. The checker enforces both native
+capture expressions, the helper import and the two stages' argument boundary.
 
-The intrinsic and policy-tool preparation before the listener still need effect
-summaries. Helpers after listener installation also need transitive summaries covering
-constructor callbacks, returned closures, delayed initialization and the exact
-point publisher-controlled bytes first become executable. A list of top-level
-calls or passing browser examples does not prove these summaries.
+Before listener installation, the early stage constructs metadata records,
+reads native descriptors and location state, and invokes captured URL operations.
+`ownDescriptor` uses captured `Object.getOwnPropertyDescriptor` and detaches the
+result through `internalRecord`; `internalRecord` uses captured
+`Object.setPrototypeOf`. These operations require genuine native objects and
+plain host metadata in an uncontaminated realm. Module initialization also
+precedes entry to the realm function. The source checks do not prove those
+native-operation contracts or all import-time effects.
+
+Helpers after listener installation still need transitive summaries covering
+constructor callbacks, returned closures, delayed initialization and the point
+publisher-controlled bytes first become executable. The intrinsic and policy-tool
+routines are now in this later group; their bodies no longer precede navigation
+cancellation.

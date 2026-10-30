@@ -132,14 +132,36 @@ function verify(guardSource: string, realmSource: string) {
     'Navigation installation is not a direct statement',
   );
   const navIndex = statements.indexOf(navigationCalls[0]);
+  assert.equal(navIndex, 1, 'Unreviewed realm prelude before navigation');
+  const prefix = statements[0];
+  assert(ts.isVariableStatement(prefix));
+  assert.equal(prefix.declarationList.declarations.length, 1);
+  const sourceBinding = prefix.declarationList.declarations[0];
+  assert(
+    ts.isIdentifier(sourceBinding.name) &&
+      sourceBinding.name.text === 'sourceURL' &&
+      sourceBinding.initializer &&
+      ts.isIdentifier(sourceBinding.initializer) &&
+      sourceBinding.initializer.text === 'applicationURL',
+    'Realm prelude is not the approved metadata binding',
+  );
   const navStatement = navigationCalls[0];
   assert(ts.isVariableStatement(navStatement));
+  const navCall = navStatement.declarationList.declarations[0].initializer;
+  assert(navCall && ts.isCallExpression(navCall));
+  assert.equal(
+    navCall.arguments.length,
+    1,
+    'Early navigation received tool dependencies',
+  );
   const binding = navStatement.declarationList.declarations[0].name;
   assert(
     ts.isIdentifier(binding) && binding.text === 'finishNavigationPolicy',
     'Navigation finalizer binding changed',
   );
   for (const helper of [
+    'prepareRuntimeIntrinsics',
+    'createPolicyTools',
     'createTrustedPolicy',
     'resourceAliases',
     'createPublisherContainer',
@@ -168,10 +190,12 @@ function verify(guardSource: string, realmSource: string) {
   const finalize = finalizers[0];
   assert(ts.isExpressionStatement(finalize) && ts.isCallExpression(finalize.expression));
   assert(
-    finalize.expression.arguments.length === 1 &&
+    finalize.expression.arguments.length === 2 &&
       ts.isIdentifier(finalize.expression.arguments[0]) &&
-      finalize.expression.arguments[0].text === 'openPopup',
-    'Native popup finalizer argument changed',
+      finalize.expression.arguments[0].text === 'tools' &&
+      ts.isIdentifier(finalize.expression.arguments[1]) &&
+      finalize.expression.arguments[1].text === 'openPopup',
+    'Tool or native popup finalizer argument changed',
   );
   const popup = calls(prepare.body, 'createPopupFactory')[0];
   const popupIndex = statements.findIndex(
@@ -207,10 +231,26 @@ assert.throws(
   () =>
     verify(
       guard,
-      realm.replace('finishNavigationPolicy(openPopup)', 'finishNavigationPolicy()'),
+      realm.replace(
+        'finishNavigationPolicy(tools, openPopup)',
+        'finishNavigationPolicy(tools)',
+      ),
     ),
-  /Native popup finalizer argument changed/,
+  /Tool or native popup finalizer argument changed/,
 );
+for (const line of [
+  '  prepareRuntimeIntrinsics();\n',
+  '  const tools = createPolicyTools();\n',
+]) {
+  assert.equal(realm.split(line).length, 2, 'Early helper anchor changed');
+  const early = realm
+    .replace(line, '')
+    .replace(
+      '  const finishNavigationPolicy = prepareNavigationPolicy(',
+      line + '  const finishNavigationPolicy = prepareNavigationPolicy(',
+    );
+  assert.throws(() => verify(guard, early), /Unreviewed realm prelude before navigation/);
+}
 const parserLine = '  const policy = createTrustedPolicy(applicationURL);\n';
 assert.equal(realm.split(parserLine).length, 2);
 const parserEarly = realm
@@ -221,7 +261,7 @@ const parserEarly = realm
   );
 assert.throws(
   () => verify(guard, parserEarly),
-  /Helper precedes navigation cancellation/,
+  /Unreviewed realm prelude before navigation/,
 );
 const preparation = 'const realm = prepareWindowRealm(';
 assert.equal(guard.split(preparation).length, 2, 'Preparation anchor changed');
@@ -235,16 +275,15 @@ assert.throws(
 );
 const install = '  const finishNavigationPolicy = prepareNavigationPolicy(';
 assert.equal(realm.split(install).length, 2, 'Installation anchor changed');
+const finalize = '  finishNavigationPolicy(tools, openPopup);';
+assert.equal(realm.split(finalize).length, 2, 'Finalization anchor changed');
 assert.throws(
-  () =>
-    verify(
-      guard,
-      realm.replace(
-        install,
-        '  return;\n  const finishNavigationPolicy = prepareNavigationPolicy(',
-      ),
-    ),
+  () => verify(guard, realm.replace(finalize, '  return;\n' + finalize)),
   /early or missing direct return/,
+);
+assert.throws(
+  () => verify(guard, realm.replace(install, '  unreviewedSetup();\n' + install)),
+  /Unreviewed realm prelude before navigation/,
 );
 const hash = (s: string) => createHash('sha256').update(s).digest('hex');
 await writeFile(
@@ -261,6 +300,9 @@ await writeFile(
         earlyReturn: 'rejected',
         parserBeforeCancellation: 'rejected',
         missingPopupArgument: 'rejected',
+        intrinsicsBeforeCancellation: 'rejected',
+        toolsBeforeCancellation: 'rejected',
+        unknownPreludeCall: 'rejected',
       },
       completed: true,
     },

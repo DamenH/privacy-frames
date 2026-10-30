@@ -1,5 +1,9 @@
 import type { PolicyTools } from './native.ts';
-import { internalArray, internalRecord } from '../../shared/primordials.ts';
+import {
+  internalArray,
+  internalRecord,
+  ownDescriptor,
+} from '../../shared/primordials.ts';
 import {
   applicationHistoryURL,
   isApplicationRoute,
@@ -12,12 +16,9 @@ interface NavigationOptions {
 }
 
 /** Cancel document exits before application handlers can observe the event. */
-export function prepareNavigationPolicy(
-  tools: PolicyTools,
-  options: NavigationOptions = internalRecord({}),
-) {
-  const { apply, descriptor, method, accessor, propertyOwner, deny, fail, str, array } =
-    tools;
+export function prepareNavigationPolicy(options: NavigationOptions = internalRecord({})) {
+  const apply = Reflect.apply;
+  const descriptor = ownDescriptor;
   const prevent = Event.prototype.preventDefault;
   const nativeAdd = EventTarget.prototype.addEventListener;
   const NativeURL = URL;
@@ -65,8 +66,10 @@ export function prepareNavigationPolicy(
     internalRecord({ capture: true }),
   ]);
   return (
+    tools: PolicyTools,
     open?: (url?: unknown, target?: unknown, features?: unknown) => Window | null,
   ) => {
+    const { method, accessor, propertyOwner, deny, fail, str, array } = tools;
     const modifier = internalArray(['ctrlKey', 'metaKey', 'shiftKey', 'altKey']).map(
       (k) => descriptor(MouseEvent.prototype, k)!.get!,
     );
