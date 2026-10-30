@@ -76,6 +76,8 @@ download and an installed virtual publisher's attempt to download an uninstalled
 resource.
 The [static-route probe](publisher-routes.md) tests a native Chromium service
 worker's network route and the virtual publisher's synthetic install event.
+The [client-navigation probe](publisher-navigate.md) compares a native service
+worker's ability to navigate a controlled client with the virtual client's facade.
 
 ## What has been checked
 

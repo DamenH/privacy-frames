@@ -95,6 +95,7 @@ jobs:
       - run: node test/resource-paths.ts
       - run: node formal/cache-publisher-probe.ts
       - run: node formal/publisher-routes-probe.ts
+      - run: node formal/publisher-navigate-probe.ts
       - run: node test/document-consumption-race.ts
       - run: node formal/document-consumption-fault.ts
       - run: node test/context-generation.ts
@@ -124,5 +125,6 @@ jobs:
             formal/evidence/document-consumption-fault.json
             formal/evidence/cache-publisher.json
             formal/evidence/publisher-routes.json
+            formal/evidence/publisher-navigate.json
             formal/admission/model-results.json
             formal/admission/implementation-results.json

@@ -25,6 +25,7 @@
     "formal/evidence/hyperlink-auditing.json": "4deb55ac64e514eb55b7b00233c4281db617a2b0802ff48f0a2317761111b766",
     "formal/evidence/idl-surface-report.json": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
     "formal/evidence/modern-reporting.json": "c8f4038654445ca9da6c98a50244bafe8b6bd0fec6012eef62070319c4acd7b1",
+    "formal/evidence/publisher-navigate.json": "c6577e96384b8316e4f3841bb0dce562b1eb791a4ca7b31d9ffc2cabcc9d53fb",
     "formal/evidence/publisher-routes.json": "0d18dbd4f211c056f77e2ff7c9e513c65414d17df627902fc5fa3573a50fcccd",
     "formal/evidence/reporting.json": "e556ea9e7749c6f6ebd958cad2b8bacffd33d79420192bf35225b093afbb895d",
     "formal/evidence/results-network-firefox.json": "3fd2c99728bd4ee6e5a2ad247bc1ed356f6978889e4ab5eb4a3d93c1a16a8ba0",
@@ -42,6 +43,8 @@
     "formal/path-audit/colon-resource.ts": "f3cf6006ea6a42af4140612f8d9b9bbcd594a00be4fc73338c2dadafb2acab13",
     "formal/path-lean/CanonicalAdmission.lean": "cf14edd75cba77f68487108a14b7493e3e7248ce15a527c15987faf5100c5df7",
     "formal/path-lean/README.md": "cbbf9c1f702bddff98bdcd4b2145ced3ba0f32bb99b6f481c8756bc0d7bd6210",
+    "formal/publisher-navigate-probe.ts": "f41c6506dd78607706de9b4b95e3af683c43cf135a118a8f0ba46bd25a1347e4",
+    "formal/publisher-navigate.md": "b4b36a7b1e6b910e21e628ed6616cb962ee284f6bba092cb03f437672bbed2a4",
     "formal/publisher-routes-probe.ts": "50aeef31a5dc7c92f1b7351869f6927fc0df90dfaf81318ade5e0112520ed4f8",
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
     "formal/route-review/README.md": "58eb90cb6f341c8aa9f0536b78d1a3ea94f46e16533c1049c02c683e7eb11c31",
@@ -1421,10 +1424,28 @@
             "formal/publisher-routes-probe.ts",
             "formal/evidence/publisher-routes.json"
           ]
+        },
+        {
+          "kind": "native_control",
+          "description": "A genuine service worker obtains an existing window client and navigates it to a marker receiver in Chromium and Firefox.",
+          "paths": [
+            "formal/publisher-navigate.md",
+            "formal/publisher-navigate-probe.ts",
+            "formal/evidence/publisher-navigate.json"
+          ]
+        },
+        {
+          "kind": "confined_test",
+          "description": "An installed virtual publisher obtains its facade client but cannot call navigate; neither browser delivers the marker to the runtime receiver.",
+          "paths": [
+            "formal/publisher-navigate.md",
+            "formal/publisher-navigate-probe.ts",
+            "formal/evidence/publisher-navigate.json"
+          ]
         }
       ],
       "open_obligations": [
-        "Calibrate race-network sources and worker client navigation under their prerequisites; Firefox lacked addRoutes in the tested profile.",
+        "Calibrate race-network sources and clients.openWindow under their prerequisites; Firefox lacked addRoutes in the tested profile.",
         "Test whether installed applications can acquire native installation and client authority in all supported contexts and lifecycle states.",
         "The virtual publisher facade is not by itself proof that every native acquisition route is closed."
       ],
