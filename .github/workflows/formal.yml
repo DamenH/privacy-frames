@@ -49,12 +49,14 @@ jobs:
         timeout-minutes: 10
       - run: node formal/fedcm-conditional-probe.ts
       - run: node formal/hyperlink-auditing-probe.ts
+      - run: node formal/reporting-probe.ts
       - uses: actions/upload-artifact@v4
         with:
           name: browser-effect-evidence
           path: |
             formal/evidence/fedcm-conditional.json
             formal/evidence/hyperlink-auditing.json
+            formal/evidence/reporting.json
   webtransport:
     runs-on: ubuntu-latest
     steps:

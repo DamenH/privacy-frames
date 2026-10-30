@@ -78,7 +78,7 @@ all concurrent replacement histories remain **U** unless separately calibrated.
 | DNS-prefetch, preconnect, preload/prefetch/prerender/modulepreload and speculation rules: uncontrolled runtime insertion denied | Markup/script/element policies above; DNS-prefetch response header in [response-policy.ts](../src/runtime/response-policy.ts)                                                                                                                                       | **R:** [network.ts](../test/network.ts) attempts these routes and calibrates actual private/control DNS sends. **U:** every browser speculative-connection mechanism and all header-initiated variants.                                                                                                                      |
 | WebSocket and WebSocketStream: denied, including same-origin recovery routes                                                    | [effects.ts](../src/runtime/enforcement/effects.ts), protected globals/prototypes                                                                                                                                                                                   | **R:** [prototype-confinement.ts](../test/prototype-confinement.ts) observes runtime-origin upgrades with unsafe native controls; [network.ts](../test/network.ts) observes external upgrades. CSP and same-origin allowlisting alone cannot supply this restriction. Stream-specific native calibration is **U**.           |
 | RTCPeerConnection/RTCDataChannel and prefixed RTC APIs: denied                                                                  | Named constructors and `RTC`/`webkitRTC` scan in [effects.ts](../src/runtime/enforcement/effects.ts)                                                                                                                                                                | **R:** [network.ts](../test/network.ts) has active STUN UDP controls. **U:** separately calibrated TURN, peer-data and every constructor-recovery route. The hook's universal effectiveness remains an implementation obligation.                                                                                            |
-| WebTransport, TCPSocket, UDPSocket: denied where exposed                                                                        | [effects.ts](../src/runtime/enforcement/effects.ts)                                                                                                                                                                                                                 | **R:** [WebTransport receiver test](webtransport/README.md) uses a working HTTP/3 endpoint and observes no confined UDP in Chromium and Firefox. Direct TCP/UDP socket APIs lack equivalent native controls.                                                                                                             |
+| WebTransport, TCPSocket, UDPSocket: denied where exposed                                                                        | [effects.ts](../src/runtime/enforcement/effects.ts)                                                                                                                                                                                                                 | **R:** [WebTransport receiver test](webtransport/README.md) uses a working HTTP/3 endpoint and observes no confined UDP in Chromium and Firefox. Direct TCP/UDP socket APIs lack equivalent native controls.                                                                                                                 |
 | EventSource, sendBeacon, fetchLater and pending beacons: denied                                                                 | [effects.ts](../src/runtime/enforcement/effects.ts)                                                                                                                                                                                                                 | **S/L:** source deny list and general boundary probes. API-specific active controls, deferred delivery and browser shutdown behavior are **U**.                                                                                                                                                                              |
 | Speech synthesis/recognition, remote playback/presentation and URL-bearing media artwork: denied; local Web Audio retained      | [effects.ts](../src/runtime/enforcement/effects.ts)                                                                                                                                                                                                                 | **L:** [helpers/boundary-probes.ts](../test/helpers/boundary-probes.ts), [pitch-training.ts](../test/pitch-training.ts). No active remote speech/casting/OS artwork receiver is established by those functional assertions.                                                                                                  |
 | WebAssembly: native computation, imported effects use the same environment                                                      | CSP and prepared environment; [modules.ts](../src/runtime/modules.ts)                                                                                                                                                                                               | **L/R:** [wasm.ts](../test/wasm.ts) checks tasks/imported network attempts. It does not prove that engine execution has no implementation defects.                                                                                                                                                                           |
@@ -203,7 +203,7 @@ The comparison identified these concrete follow-ups:
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | FedCM static operations                | [FedCM IDL](https://github.com/web-platform-tests/wpt/blob/7e1243dd51da4162ea4a0b0e539b40db0144b22c/interfaces/fedcm.idl), [SW non-observation test](https://github.com/web-platform-tests/wpt/blob/7e1243dd51da4162ea4a0b0e539b40db0144b22c/fedcm/fedcm-not-observed-by-service-worker.https.html) | Conditional same-origin request reproduced below; current source blocks the static entry points and disables the policy feature.                                                                                                                                           |
 | Browser-generated reports              | [Reporting delivery](https://www.w3.org/TR/reporting-1/#attempt-delivery), [WPT reporting](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/reporting)                                                                                                       | Delivery uses `client=null` and skips SW. Runtime-generated responses omit reporting endpoints and publisher response-header forwarding is limited. Persisted endpoints, NEL and delayed report traffic still need attribution; no active reporting receiver control here. |
-| Anchor/area auditing                   | [HTML hyperlink auditing](https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing), [WPT auditing](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/html/semantics/links/hyperlink-auditing)                                                    | The [receiver follow-up](#hyperlink-auditing-receiver-follow-up) calibrates native `ping` and observes service-worker mediation in the tested profiles.                                                                                   |
+| Anchor/area auditing                   | [HTML hyperlink auditing](https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing), [WPT auditing](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/html/semantics/links/hyperlink-auditing)                                                    | The [receiver follow-up](#hyperlink-auditing-receiver-follow-up) calibrates native `ping` and observes service-worker mediation in the tested profiles.                                                                                                                    |
 | Deferred requests                      | [WPT fetch-later](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/fetch/fetch-later)                                                                                                                                                                        | Source denies fetchLater, but keepalive, deactivation, discard and background delivery require lifetime-aware controls. A zero receiver count before page closure is insufficient.                                                                                         |
 | Browser installation                   | [Web Install draft](https://wicg.github.io/install-element/)                                                                                                                                                                                                                                        | Draft manifest retrieval skips SW. Its active-sandbox rejection and manifest-src check are candidate controls for this runtime, not independently verified behavior here. `navigator.install` and declarative install elements need feature enumeration if present.        |
 | Header-driven and alternate networking | [Connection Allowlist WPT](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/connection-allowlist/tentative)                                                                                                                                                  | Contains early-hints/link-header, worker/SW, WebRTC, WebSocket, WebTransport and payment-manifest cases. Import relevant cases with working receivers; our existing header fixture does not cover every one of them.                                                       |
@@ -303,7 +303,8 @@ marker-bearing HTTP requests and show the requests in the worker log. Browser
 leaks. This is not a complete installed-controller/lifecycle or physical-user-click
 coverage claim.
 
-Browser-generated reporting remains a separate **U**. The
+Modern Reporting API delivery and NEL remain **U**; the legacy CSP report-uri
+follow-up below has separate receiver evidence. The
 [Reporting delivery algorithm](https://www.w3.org/TR/reporting-1/#attempt-delivery)
 uses a null client and skips service workers. Current host responses do not
 configure reporting endpoints, and publisher response forwarding admits only a
@@ -312,3 +313,56 @@ control. Legacy CSP reports, document-scoped Reporting API delivery and persiste
 NEL/Report-To state require distinct setup and delivery-time observations. No
 reporting escape or universal reporting containment was demonstrated by the ping
 fixture.
+
+## Legacy CSP reporting receiver follow-up
+
+[The scoped fixture](reporting-probe.ts), run with `node formal/reporting-probe.ts`,
+uses actual current preparation and generated response headers. Its
+[receipt](evidence/reporting.json) records source/runner/bundle hashes, browser
+versions, exact document headers, worker observations and independent HTTP bodies.
+The test worker allows only fixed setup GETs without query strings; ordinary
+application fetches and attempted report uploads receive 403.
+
+Native `report-uri` controls in Chromium 153.0.8010.12 and Firefox 155.0 deliver
+`application/csp-report` POSTs containing an application-selected blocked image
+URL marker. The browsers then differ:
+
+| Context                                                      | Chromium                                                | Firefox                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------- |
+| Native reporting document, no worker                         | Marker report reaches HTTP                              | Marker report reaches HTTP                              |
+| Same reporting document under blocking worker                | Worker observes and refuses report; no marker HTTP      | Report bypasses worker and reaches HTTP                 |
+| Actual prepared environment, production headers              | No marker HTTP; metadata injection raises SecurityError | No marker HTTP; metadata injection raises SecurityError |
+| Actual prepared environment with fixture-injected report-uri | Worker observes/refuses report                          | Marker report bypasses worker and reaches HTTP          |
+
+The last row is an adverse **trusted-header configuration** control. Production
+responses do not contain that directive; the fixture adds it solely to establish
+the browser route. The attacker controls an image URL that triggers a violation,
+not the receiver configuration. Thus the test demonstrates a browser-originated
+channel when reporting is configured, not a default production escape.
+
+No application path to configure report-uri, report-to, Reporting-Endpoints or NEL
+was identified in the reviewed production source. In addition to generated
+headers in [response-policy.ts](../src/runtime/response-policy.ts),
+[document-content.ts](../src/runtime/contexts/document-content.ts),
+[markup.ts](../src/shared/markup.ts) and
+[native-markup.ts](../src/runtime/enforcement/native-markup.ts) restrict policy
+metadata. [Publisher response forwarding](../src/runtime/publisher/controller.ts)
+accepts only content-language, cache-control, expires, last-modified, etag and
+vary from application response headers. The dynamic metadata probe confirms one
+blocked injection route; it is not an exhaustive proof over every DOM operation.
+
+Legacy report-uri must not be conflated with modern Reporting API delivery. The
+[CSP legacy request algorithm](https://www.w3.org/TR/CSP3/#report-violation)
+uses the violating environment as its client; the modern reporting delivery
+algorithm has a null client and disables service workers. Native implementation
+behavior is recorded per browser rather than assuming that all `report`
+destinations have identical routing.
+
+Exploratory modern Reporting API controls generated queued Chromium reports but
+did not deliver to the loopback HTTP or temporary TLS receivers. NEL controls
+also lacked a successful report upload. Those zeros do not qualify containment.
+Persisted Report-To/NEL endpoint state, delivery after context destruction and
+other report types remain unverified. NEL's specification concerns actual
+[HTTP-network fetches](https://www.w3.org/TR/network-error-logging/#network-requests),
+which is distinct from an ordinary synthetic response; actual browser behavior
+still needs a calibrated receiver before that distinction closes a model route.

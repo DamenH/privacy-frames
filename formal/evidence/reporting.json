@@ -1,0 +1,579 @@
+{
+  "revision": "792aaa33ce47658d1564c13c574006b04e0c2533",
+  "testedAt": "2026-10-30T15:04:07.556Z",
+  "origin": "http://127.0.0.1:39177",
+  "runnerSHA256": "a2c32d7f0be2a751fb1784865fb4a015cdc3e5b2b0498e3943c36e493b218e94",
+  "fixtureSHA256": "b1a8d57caee56eaff5b1febd482a4ade6781921d97ab77b6c7540766a1d4548a",
+  "policySourceSHA256": "f21946f76dd37233ea7e48dd969a59e09343315f3a044e4be66ae4324fb9efb2",
+  "sourceHashes": {
+    "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d",
+    "src/runtime/publisher/controller.ts": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff",
+    "src/runtime/enforcement/native-markup.ts": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105",
+    "src/shared/markup.ts": "756cdc5565323f40ca5006e17429e3f8dbd5f68fe755eaf034c86110d5cc7475"
+  },
+  "scope": "Legacy CSP report-uri, native positive controls and actual prepareWindowRealm. Reporting endpoint is injected only into adverse control responses, never production. Fixture SW refuses unknown application fetches; HTTP observer independently receives native reports. Modern Reporting API and NEL are not qualified by this fixture.",
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "profile": "native",
+      "marker": "private-marker-chromium-native",
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "21",
+        "content-security-policy": "img-src 'none'; report-uri /report?profile=native",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 15:04:07 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "state": {
+        "ordinaryFetch": null,
+        "meta": null
+      },
+      "observed": [
+        {
+          "url": "/report?profile=native",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"document-uri\":\"http://127.0.0.1:39177/native\",\"referrer\":\"\",\"violated-directive\":\"img-src\",\"effective-directive\":\"img-src\",\"original-policy\":\"img-src 'none'; report-uri /report?profile=native\",\"disposition\":\"enforce\",\"blocked-uri\":\"https://private-marker-chromium-native.invalid/payload\",\"status-code\":200,\"script-sample\":\"\"}}",
+          "type": "application/csp-report"
+        }
+      ],
+      "reports": [
+        {
+          "url": "/report?profile=native",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"document-uri\":\"http://127.0.0.1:39177/native\",\"referrer\":\"\",\"violated-directive\":\"img-src\",\"effective-directive\":\"img-src\",\"original-policy\":\"img-src 'none'; report-uri /report?profile=native\",\"disposition\":\"enforce\",\"blocked-uri\":\"https://private-marker-chromium-native.invalid/payload\",\"status-code\":200,\"script-sample\":\"\"}}",
+          "type": "application/csp-report"
+        }
+      ],
+      "events": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "profile": "native-SW",
+      "marker": "private-marker-chromium-native-sw",
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "21",
+        "content-security-policy": "img-src 'none'; report-uri /report?profile=native-SW",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 15:04:07 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "state": {
+        "ordinaryFetch": null,
+        "meta": null
+      },
+      "observed": [],
+      "reports": [],
+      "events": [
+        {
+          "url": "http://127.0.0.1:39177/native-SW",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/report?profile=native-SW",
+          "method": "POST"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "profile": "prepared",
+      "marker": "private-marker-chromium-prepared",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "72",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 15:04:08 GMT",
+        "keep-alive": "timeout=5",
+        "cache-control": "no-store",
+        "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+        "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; worker-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; form-action 'none'; base-uri 'none'",
+        "cross-origin-opener-policy": "same-origin",
+        "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+        "referrer-policy": "no-referrer",
+        "x-content-type-options": "nosniff",
+        "x-dns-prefetch-control": "off",
+        "x-frame-options": "DENY"
+      },
+      "state": {
+        "mode": "network-isolated",
+        "ordinaryFetch": "SW blocked",
+        "meta": "SecurityError"
+      },
+      "observed": [],
+      "reports": [],
+      "events": [
+        {
+          "url": "http://127.0.0.1:39177/native-SW",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/report?profile=native-SW",
+          "method": "POST"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/prepared/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/unknown-local?private-marker-chromium-prepared",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "profile": "prepared-reporting-control",
+      "marker": "private-marker-chromium-prepared-reporting-control",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "72",
+        "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; worker-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; form-action 'none'; base-uri 'none'; report-uri /report?profile=prepared-reporting-control",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 15:04:08 GMT",
+        "keep-alive": "timeout=5",
+        "cache-control": "no-store",
+        "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+        "cross-origin-opener-policy": "same-origin",
+        "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+        "referrer-policy": "no-referrer",
+        "x-content-type-options": "nosniff",
+        "x-dns-prefetch-control": "off",
+        "x-frame-options": "DENY"
+      },
+      "state": {
+        "mode": "network-isolated",
+        "ordinaryFetch": "SW blocked",
+        "meta": "SecurityError"
+      },
+      "observed": [],
+      "reports": [],
+      "events": [
+        {
+          "url": "http://127.0.0.1:39177/native-SW",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/report?profile=native-SW",
+          "method": "POST"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/prepared/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/unknown-local?private-marker-chromium-prepared",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/prepared-reporting-control/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/unknown-local?private-marker-chromium-prepared-reporting-control",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/report?profile=prepared-reporting-control",
+          "method": "POST"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "profile": "native",
+      "marker": "private-marker-firefox-native",
+      "headers": {
+        "cache-control": "no-store",
+        "content-security-policy": "img-src 'none'; report-uri /report?profile=native",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 15:04:10 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "content-length": "21"
+      },
+      "state": {
+        "ordinaryFetch": null,
+        "meta": null
+      },
+      "observed": [
+        {
+          "url": "/report?profile=native",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"blocked-uri\":\"http://127.0.0.1:39177/favicon.ico\",\"column-number\":20,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native\",\"effective-directive\":\"img-src\",\"line-number\":229,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native\",\"referrer\":\"\",\"source-file\":\"resource\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+          "type": "application/csp-report"
+        },
+        {
+          "url": "/report?profile=native",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-native.invalid/payload\",\"column-number\":38,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native\",\"effective-directive\":\"img-src\",\"line-number\":17,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native\",\"referrer\":\"\",\"source-file\":\"debugger eval code line 311 > eval\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+          "type": "application/csp-report"
+        }
+      ],
+      "reports": [
+        {
+          "url": "/report?profile=native",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-native.invalid/payload\",\"column-number\":38,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native\",\"effective-directive\":\"img-src\",\"line-number\":17,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native\",\"referrer\":\"\",\"source-file\":\"debugger eval code line 311 > eval\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+          "type": "application/csp-report"
+        }
+      ],
+      "events": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "profile": "native-SW",
+      "marker": "private-marker-firefox-native-sw",
+      "headers": {
+        "cache-control": "no-store",
+        "content-security-policy": "img-src 'none'; report-uri /report?profile=native-SW",
+        "content-type": "text/html",
+        "date": "Fri, 30 Oct 2026 15:04:10 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "content-length": "21"
+      },
+      "state": {
+        "ordinaryFetch": null,
+        "meta": null
+      },
+      "observed": [
+        {
+          "url": "/report?profile=native-SW",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"blocked-uri\":\"http://127.0.0.1:39177/favicon.ico\",\"column-number\":20,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native-SW\",\"effective-directive\":\"img-src\",\"line-number\":229,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native-SW\",\"referrer\":\"\",\"source-file\":\"resource\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+          "type": "application/csp-report"
+        },
+        {
+          "url": "/report?profile=native-SW",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-native-sw.invalid/payload\",\"column-number\":38,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native-SW\",\"effective-directive\":\"img-src\",\"line-number\":17,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native-SW\",\"referrer\":\"\",\"source-file\":\"debugger eval code line 311 > eval\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+          "type": "application/csp-report"
+        }
+      ],
+      "reports": [
+        {
+          "url": "/report?profile=native-SW",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-native-sw.invalid/payload\",\"column-number\":38,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native-SW\",\"effective-directive\":\"img-src\",\"line-number\":17,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native-SW\",\"referrer\":\"\",\"source-file\":\"debugger eval code line 311 > eval\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+          "type": "application/csp-report"
+        }
+      ],
+      "events": [
+        {
+          "url": "http://127.0.0.1:39177/native-SW",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "profile": "prepared",
+      "marker": "private-marker-firefox-prepared",
+      "headers": {
+        "cache-control": "no-store",
+        "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+        "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; worker-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; form-action 'none'; base-uri 'none'",
+        "content-type": "text/html",
+        "cross-origin-opener-policy": "same-origin",
+        "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+        "referrer-policy": "no-referrer",
+        "x-content-type-options": "nosniff",
+        "x-dns-prefetch-control": "off",
+        "x-frame-options": "DENY",
+        "date": "Fri, 30 Oct 2026 15:04:10 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "content-length": "72"
+      },
+      "state": {
+        "mode": "network-isolated",
+        "ordinaryFetch": "SW blocked",
+        "meta": "SecurityError"
+      },
+      "observed": [],
+      "reports": [],
+      "events": [
+        {
+          "url": "http://127.0.0.1:39177/native-SW",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/prepared/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/favicon.ico",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/unknown-local?private-marker-firefox-prepared",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "profile": "prepared-reporting-control",
+      "marker": "private-marker-firefox-prepared-reporting-control",
+      "headers": {
+        "cache-control": "no-store",
+        "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+        "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; worker-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; form-action 'none'; base-uri 'none'; report-uri /report?profile=prepared-reporting-control",
+        "content-type": "text/html",
+        "cross-origin-opener-policy": "same-origin",
+        "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+        "referrer-policy": "no-referrer",
+        "x-content-type-options": "nosniff",
+        "x-dns-prefetch-control": "off",
+        "x-frame-options": "DENY",
+        "date": "Fri, 30 Oct 2026 15:04:11 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=5",
+        "content-length": "72"
+      },
+      "state": {
+        "mode": "network-isolated",
+        "ordinaryFetch": "SW blocked",
+        "meta": "SecurityError"
+      },
+      "observed": [
+        {
+          "url": "/report?profile=prepared-reporting-control",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-prepared-reporting-control.invalid/payload\",\"column-number\":20,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/prepared-reporting-control/\",\"effective-directive\":\"img-src\",\"line-number\":8700,\"original-policy\":\"sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; worker-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; form-action 'none'; base-uri 'none'; report-uri http://127.0.0.1:39177/report?profile=prepared-reporting-control\",\"referrer\":\"\",\"source-file\":\"http://127.0.0.1:39177/fixture.js\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+          "type": "application/csp-report"
+        }
+      ],
+      "reports": [
+        {
+          "url": "/report?profile=prepared-reporting-control",
+          "method": "POST",
+          "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-prepared-reporting-control.invalid/payload\",\"column-number\":20,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/prepared-reporting-control/\",\"effective-directive\":\"img-src\",\"line-number\":8700,\"original-policy\":\"sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; worker-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; form-action 'none'; base-uri 'none'; report-uri http://127.0.0.1:39177/report?profile=prepared-reporting-control\",\"referrer\":\"\",\"source-file\":\"http://127.0.0.1:39177/fixture.js\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+          "type": "application/csp-report"
+        }
+      ],
+      "events": [
+        {
+          "url": "http://127.0.0.1:39177/native-SW",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/prepared/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/favicon.ico",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/unknown-local?private-marker-firefox-prepared",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/prepared-reporting-control/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/favicon.ico",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/unknown-local?private-marker-firefox-prepared-reporting-control",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:39177/events",
+          "method": "GET"
+        }
+      ]
+    }
+  ],
+  "traffic": [
+    {
+      "url": "/native",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/report?profile=native",
+      "method": "POST",
+      "body": "{\"csp-report\":{\"document-uri\":\"http://127.0.0.1:39177/native\",\"referrer\":\"\",\"violated-directive\":\"img-src\",\"effective-directive\":\"img-src\",\"original-policy\":\"img-src 'none'; report-uri /report?profile=native\",\"disposition\":\"enforce\",\"blocked-uri\":\"https://private-marker-chromium-native.invalid/payload\",\"status-code\":200,\"script-sample\":\"\"}}",
+      "type": "application/csp-report"
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/native-SW",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/prepared/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/prepared-reporting-control/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/native",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/report?profile=native",
+      "method": "POST",
+      "body": "{\"csp-report\":{\"blocked-uri\":\"http://127.0.0.1:39177/favicon.ico\",\"column-number\":20,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native\",\"effective-directive\":\"img-src\",\"line-number\":229,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native\",\"referrer\":\"\",\"source-file\":\"resource\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+      "type": "application/csp-report"
+    },
+    {
+      "url": "/report?profile=native",
+      "method": "POST",
+      "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-native.invalid/payload\",\"column-number\":38,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native\",\"effective-directive\":\"img-src\",\"line-number\":17,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native\",\"referrer\":\"\",\"source-file\":\"debugger eval code line 311 > eval\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+      "type": "application/csp-report"
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/native-SW",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/report?profile=native-SW",
+      "method": "POST",
+      "body": "{\"csp-report\":{\"blocked-uri\":\"http://127.0.0.1:39177/favicon.ico\",\"column-number\":20,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native-SW\",\"effective-directive\":\"img-src\",\"line-number\":229,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native-SW\",\"referrer\":\"\",\"source-file\":\"resource\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+      "type": "application/csp-report"
+    },
+    {
+      "url": "/report?profile=native-SW",
+      "method": "POST",
+      "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-native-sw.invalid/payload\",\"column-number\":38,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/native-SW\",\"effective-directive\":\"img-src\",\"line-number\":17,\"original-policy\":\"img-src 'none'; report-uri http://127.0.0.1:39177/report?profile=native-SW\",\"referrer\":\"\",\"source-file\":\"debugger eval code line 311 > eval\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+      "type": "application/csp-report"
+    },
+    {
+      "url": "/prepared/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/prepared-reporting-control/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/report?profile=prepared-reporting-control",
+      "method": "POST",
+      "body": "{\"csp-report\":{\"blocked-uri\":\"https://private-marker-firefox-prepared-reporting-control.invalid/payload\",\"column-number\":20,\"disposition\":\"enforce\",\"document-uri\":\"http://127.0.0.1:39177/prepared-reporting-control/\",\"effective-directive\":\"img-src\",\"line-number\":8700,\"original-policy\":\"sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; worker-src http://127.0.0.1:39177/__contexts/ http://127.0.0.1:39177/sw.js; form-action 'none'; base-uri 'none'; report-uri http://127.0.0.1:39177/report?profile=prepared-reporting-control\",\"referrer\":\"\",\"source-file\":\"http://127.0.0.1:39177/fixture.js\",\"status-code\":200,\"violated-directive\":\"img-src\"}}",
+      "type": "application/csp-report"
+    }
+  ]
+}
