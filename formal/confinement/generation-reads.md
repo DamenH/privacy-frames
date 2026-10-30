@@ -95,10 +95,49 @@ IndexedDB connections. The copied
 [`generation-overlaps.json`](../evidence/generation-overlaps.json) records those
 Chromium/Firefox observations. It accepts an old snapshot or rejection during
 an overlap and requires a completed replacement to reject subsequent old-epoch
-reads. Those observations are not automatically checked against TLA+ traces.
+reads. The partial comparison below now checks these outcomes against the safe TLC graph.
 
 The model does not include installation authorization, resource digests, browser
 client identity, controller restart, child closure, private-data erasure, worker
 termination, network channels, transaction aborts or multiple replacements.
 Its snapshot invariants are independent of the separate lifecycle and admission
 models until a composition or refinement argument connects them.
+
+## Partial comparison with real IndexedDB outcomes
+
+Run the browser fixture before the comparison to record current source behavior:
+
+```sh
+node test/context-generation.ts
+cp results/contexts/generation.json formal/evidence/generation-overlaps.json
+python3 formal/confinement/generation-trace-test.py
+```
+
+`generate-generation-graph.py` obtains 286 states and 482 labeled edges directly
+from TLC. The comparison reads the copied `formal/evidence/generation-overlaps.json`. For each of
+24 observed overlap/stale-read pairs, it searches this graph for a completion
+with the observed outcomes. The browser fixture checks actual byte equality
+before recording `old-generation`; that label is projected to provenance tag 0.
+Each iteration treats its previous and replacement UUIDs as epochs 0 and 1.
+There is no claim that all fourteen UUIDs fit one two-epoch model execution.
+
+The projection requires the first invocation before the replacement commit. The
+second invocation must follow both replacement completion and the first result.
+Its expected epoch remains 0. Both an old first result and a refused first read
+have possible completions. For each observed pair, four altered outcomes are
+refused under every completion: first delivery of replacement bytes, first
+delivery of missing bytes, and either old or new bytes returned to the stale
+second request. The run accepted 24 observed pairs and rejected 96 altered
+outcomes. Both valid first-result alternatives also have explicit reachability
+checks, so rejection of all observations cannot pass the comparison.
+
+The browser does not expose the transaction snapshot or validation events to this
+fixture. The completion is an existential explanation of observations, not a
+reconstruction of actual internal timing. The comparison omits the fixture's
+intermediate fresh-generation read, and does not check arbitrary multi-read
+histories, transaction aborts or multiple replacements within one trace.
+`generation-implementation-traces.json` records witnesses, input hashes, fixture
+hash and browser provenance; `generation-read-graph.json` records model/tool
+hashes. Changing a rejected outcome cannot be excused by choosing another hidden
+linearization, but an accepted outcome does not prove the implementation used the
+modeled transaction structure.

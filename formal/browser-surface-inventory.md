@@ -173,6 +173,14 @@ This is a discovery aid. It does not classify a name as a network capability,
 execute each API, inspect every object returned by a getter, or enumerate every
 context type. An unchanged snapshot is not proof of complete mediation.
 
+The [bounded Web IDL join](idl-surface-report.md) compares members from selected
+pinned specifications with that snapshot and links a small set of reviewed
+members to evidence. Its remaining observed members are review candidates, not
+automatically network effects or vulnerabilities.
+The [background-agent probe](background-agents.md) follows up on native
+registration recovery with working Chromium background-fetch and one-shot sync
+controls; periodic sync still lacks a working permission control.
+
 ## Standards and WPT follow-up
 
 Sources were inspected on 30 October 2026. WPT paths below are pinned to

@@ -1,0 +1,523 @@
+{
+  "scope": "Partial outcome correspondence; transaction linearization and validation are inferred, not observed",
+  "inputs": {
+    "formal/confinement/generation-read-graph.json": "34d2e079a70e4efbbd5ee289d025764c43f66d06a7d44b8ad45be3d5f38f31ac",
+    "formal/evidence/generation-overlaps.json": "4aa7a3b7632cf06fa1e2b4f8424d2f791e14aa652a741322f3a6226ee99524bb",
+    "test/context-generation.ts": "420e089490b55970ecb02bf8471e276383fb55aacad2194c379439d9359584c9",
+    "src/runtime/storage.ts": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d",
+    "formal/confinement/generation-trace-test.py": "d796d6ed0202bbd0fd0e43e9537e0423569394af3cdfcaeb97f0f2bcf8184b18"
+  },
+  "browserProvenance": {
+    "capturedAt": "2026-10-30T16:00:16.200Z",
+    "revision": "35a6ad1a68e3aff649ec2be4d503d2779d56a56e",
+    "dirty": true,
+    "sourceSHA256": "cf673e0a02c25f0fbd5bb1a7c2ef9d08a44d5559a3c5ce41700468bd8dd1628e",
+    "runner": "test/context-generation.ts",
+    "runnerSHA256": "420e089490b55970ecb02bf8471e276383fb55aacad2194c379439d9359584c9",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-manager/sw.js": "b63fc1662ce7f9078c3e7e16c6f7d47346ec761935c3b3911d6f6e04579d2591",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "117d37a809d044b70d56927dbf2aa798250cb6e5ff7fe8b2913de91842425c62",
+      "dist-runtime/guard.js": "5e4961bb6eb78775af658b1c949cded25c70bb78b717ea0098df4da25c9260d4",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "dist-runtime/sw.js": "d1885da3cb387df8fb9db3cfbaa6ceca42cfa736a30fb00d656454e88994e80e",
+      "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "dee2c1e7be73e58a6c30a4c12a9e38ffce4b2221bd8a5c3a2f50923e22da18e6"
+    }
+  },
+  "fixtureSHA256": "73f3ab3cabc2e2d0b094cd8fc942d7363b79a62b9c6053eaef79ab519813b123",
+  "observationsChecked": 24,
+  "faultyOutcomesRejected": 96,
+  "samples": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 0,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 1,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 2,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 3,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 4,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 5,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 6,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 7,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 8,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 9,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 10,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "iteration": 11,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 0,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 1,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 2,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 3,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 4,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 5,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 6,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 7,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 8,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 9,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 10,
+      "observation": {
+        "read": "old-generation",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-1454768236198372798",
+        "-1101948596343196210",
+        "9032056386362088908",
+        "-4927336506748485874",
+        "-1572920209136798604",
+        "1571751143556400420",
+        "-9021419669468740924"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "iteration": 11,
+      "observation": {
+        "read": "rejected",
+        "staleReadRejected": true
+      },
+      "possibleCompletion": [
+        "-5956074167409251151",
+        "-882977500976379908",
+        "-8969662295115380152",
+        "7622129301350354805",
+        "221716102418170669",
+        "-551373634283235428",
+        "-482142848113033192",
+        "7948172124296579064"
+      ]
+    }
+  ]
+}

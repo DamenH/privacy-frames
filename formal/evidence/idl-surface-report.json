@@ -1,0 +1,5561 @@
+{
+  "scope": "Bounded member-name join, not an effect detector, reachability proof, runtime-policy test or complete WebIDL inventory. Unannotated means absent from this curated ledger, not absent from all project tests. No automatic WPT pass or containment inference.",
+  "webrefRevision": "6ac6259c96b11e0aea5c34a16822eb06add278c9",
+  "snapshotRevision": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
+  "snapshotSHA256": "7ed31f047c607772cfdaffed193310c9b14ee4f071dbb37412521ef4af7b443b",
+  "generatorSHA256": "8eeda8e366b11251745ad984e8eaf7e2fab6787a56f748a646ee1a4020c27ffc",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "name": "firefox",
+      "version": "155.0"
+    }
+  ],
+  "inputs": {
+    "beacon": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/beacon.json",
+      "sha256": "c2ab06ec5b14a5592197d6cbfe18188573f2f789d12b0a5d03a0394051814983"
+    },
+    "fetch": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/fetch.json",
+      "sha256": "06a9b9349c3565698f1cd4b6487aafd7f4a019d111916a5c5c49461d08cd283d"
+    },
+    "websockets": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/websockets.json",
+      "sha256": "f802955dd2b37bd0e47c8684bb29539dc3b983d6c7d9f6b398179bbec3aed484"
+    },
+    "webtransport": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/webtransport.json",
+      "sha256": "4eb3186a47b44236f6e061e637e349833ce061558d800315ed0d3955013d0f0e"
+    },
+    "service-workers": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/service-workers.json",
+      "sha256": "a10a3c9b84ee1bea97a3e9d85c98114f090060232c6ddf055542919da71272a7"
+    },
+    "background-fetch": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/background-fetch.json",
+      "sha256": "ae881c18ee79d9f2c905a45798517568023d082327a4bfd12e4b6f756322bc63"
+    },
+    "background-sync": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/background-sync.json",
+      "sha256": "996708324e91224a3dc453bf288e6ea49a802cab0763d28a22843ef9471df3fd"
+    },
+    "periodic-background-sync": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/periodic-background-sync.json",
+      "sha256": "a110c36ecc5fb8f5b5572edc72262ef572a05950fe3df98a7dd52a265f7df5d1"
+    },
+    "credential-management-1": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/credential-management-1.json",
+      "sha256": "b7923be1dba24f37ca89bed7d6c0b42791ff86490e46f0b8734d8c7010171002"
+    },
+    "fedcm-1": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/fedcm-1.json",
+      "sha256": "0f8859d9e0dcc26251ed6e824ad7b65b4111f2261eb42a7ab5ff743f60f6a913"
+    },
+    "reporting-1": {
+      "url": "https://raw.githubusercontent.com/w3c/webref/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idlparsed/reporting-1.json",
+      "sha256": "2943a6c4d67e1135dcc090c3729dc2c7cc8fe1ea4661cd26552cb4ac34e3fe91"
+    }
+  },
+  "summary": {
+    "specifications": 11,
+    "memberRows": 263,
+    "observedUnannotatedRows": 166
+  },
+  "observedUnannotatedCandidates": [
+    "BackgroundFetchManager.get",
+    "BackgroundFetchManager.getIds",
+    "BackgroundFetchRecord.request",
+    "BackgroundFetchRecord.responseReady",
+    "BackgroundFetchRegistration.abort",
+    "BackgroundFetchRegistration.downloadTotal",
+    "BackgroundFetchRegistration.downloaded",
+    "BackgroundFetchRegistration.failureReason",
+    "BackgroundFetchRegistration.id",
+    "BackgroundFetchRegistration.match",
+    "BackgroundFetchRegistration.matchAll",
+    "BackgroundFetchRegistration.onprogress",
+    "BackgroundFetchRegistration.recordsAvailable",
+    "BackgroundFetchRegistration.result",
+    "BackgroundFetchRegistration.uploadTotal",
+    "BackgroundFetchRegistration.uploaded",
+    "SyncManager.getTags",
+    "Credential.id",
+    "Credential.isConditionalMediationAvailable",
+    "Credential.type",
+    "FederatedCredential.constructor",
+    "FederatedCredential.protocol",
+    "FederatedCredential.provider",
+    "Navigator.credentials",
+    "PasswordCredential.constructor",
+    "PasswordCredential.constructor",
+    "PasswordCredential.password",
+    "IdentityCredential.configURL",
+    "IdentityCredential.isAutoSelected",
+    "IdentityCredential.token",
+    "IdentityCredentialError.constructor",
+    "IdentityCredentialError.error",
+    "IdentityCredentialError.url",
+    "IdentityProvider.close",
+    "IdentityProvider.resolve",
+    "FetchLaterResult.activated",
+    "Headers.append",
+    "Headers.constructor",
+    "Headers.delete",
+    "Headers.get",
+    "Headers.getSetCookie",
+    "Headers.has",
+    "Headers.set",
+    "Request.cache",
+    "Request.clone",
+    "Request.constructor",
+    "Request.credentials",
+    "Request.destination",
+    "Request.duplex",
+    "Request.headers",
+    "Request.integrity",
+    "Request.isHistoryNavigation",
+    "Request.isReloadNavigation",
+    "Request.keepalive",
+    "Request.method",
+    "Request.mode",
+    "Request.redirect",
+    "Request.referrer",
+    "Request.referrerPolicy",
+    "Request.signal",
+    "Request.url",
+    "Response.clone",
+    "Response.constructor",
+    "Response.error",
+    "Response.headers",
+    "Response.json",
+    "Response.ok",
+    "Response.redirect",
+    "Response.redirected",
+    "Response.status",
+    "Response.statusText",
+    "Response.type",
+    "Response.url",
+    "PeriodicSyncManager.getTags",
+    "PeriodicSyncManager.unregister",
+    "ReportingObserver.disconnect",
+    "ReportingObserver.observe",
+    "ReportingObserver.takeRecords",
+    "Cache.add",
+    "Cache.addAll",
+    "Cache.delete",
+    "Cache.keys",
+    "Cache.match",
+    "Cache.matchAll",
+    "Cache.put",
+    "CacheStorage.delete",
+    "CacheStorage.has",
+    "CacheStorage.keys",
+    "CacheStorage.match",
+    "CacheStorage.open",
+    "NavigationPreloadManager.disable",
+    "NavigationPreloadManager.enable",
+    "NavigationPreloadManager.getState",
+    "NavigationPreloadManager.setHeaderValue",
+    "Navigator.serviceWorker",
+    "ServiceWorker.onstatechange",
+    "ServiceWorker.postMessage",
+    "ServiceWorker.postMessage",
+    "ServiceWorker.scriptURL",
+    "ServiceWorker.state",
+    "ServiceWorkerContainer.controller",
+    "ServiceWorkerContainer.getRegistration",
+    "ServiceWorkerContainer.getRegistrations",
+    "ServiceWorkerContainer.oncontrollerchange",
+    "ServiceWorkerContainer.onmessage",
+    "ServiceWorkerContainer.onmessageerror",
+    "ServiceWorkerContainer.ready",
+    "ServiceWorkerContainer.startMessages",
+    "ServiceWorkerRegistration.active",
+    "ServiceWorkerRegistration.installing",
+    "ServiceWorkerRegistration.navigationPreload",
+    "ServiceWorkerRegistration.onupdatefound",
+    "ServiceWorkerRegistration.scope",
+    "ServiceWorkerRegistration.updateViaCache",
+    "ServiceWorkerRegistration.waiting",
+    "WindowOrWorkerGlobalScope.caches",
+    "CloseEvent.code",
+    "CloseEvent.constructor",
+    "CloseEvent.reason",
+    "CloseEvent.wasClean",
+    "WebSocket.binaryType",
+    "WebSocket.bufferedAmount",
+    "WebSocket.close",
+    "WebSocket.extensions",
+    "WebSocket.onclose",
+    "WebSocket.onerror",
+    "WebSocket.onmessage",
+    "WebSocket.onopen",
+    "WebSocket.protocol",
+    "WebSocket.readyState",
+    "WebSocket.send",
+    "WebSocket.url",
+    "WebTransport.close",
+    "WebTransport.closed",
+    "WebTransport.congestionControl",
+    "WebTransport.createBidirectionalStream",
+    "WebTransport.createSendGroup",
+    "WebTransport.createUnidirectionalStream",
+    "WebTransport.datagrams",
+    "WebTransport.draining",
+    "WebTransport.exportKeyingMaterial",
+    "WebTransport.getStats",
+    "WebTransport.incomingBidirectionalStreams",
+    "WebTransport.incomingUnidirectionalStreams",
+    "WebTransport.protocol",
+    "WebTransport.ready",
+    "WebTransport.reliability",
+    "WebTransportBidirectionalStream.readable",
+    "WebTransportBidirectionalStream.writable",
+    "WebTransportDatagramDuplexStream.createWritable",
+    "WebTransportDatagramDuplexStream.incomingMaxAge",
+    "WebTransportDatagramDuplexStream.incomingMaxBufferedDatagrams",
+    "WebTransportDatagramDuplexStream.maxDatagramSize",
+    "WebTransportDatagramDuplexStream.outgoingMaxAge",
+    "WebTransportDatagramDuplexStream.outgoingMaxBufferedDatagrams",
+    "WebTransportDatagramDuplexStream.readable",
+    "WebTransportDatagramsWritable.sendGroup",
+    "WebTransportDatagramsWritable.sendOrder",
+    "WebTransportError.constructor",
+    "WebTransportError.source",
+    "WebTransportError.streamErrorCode",
+    "WebTransportReceiveStream.getStats",
+    "WebTransportSendGroup.getStats",
+    "WebTransportSendStream.getStats",
+    "WebTransportSendStream.sendGroup",
+    "WebTransportSendStream.sendOrder"
+  ],
+  "rows": [
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchevent-backgroundfetchevent",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchEvent",
+      "member": "registration",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchevent-registration",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchManager",
+      "member": "fetch",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchmanager-fetch",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "seeded-native-acquisition-control",
+        "path": "formal/background-agents.md"
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchManager",
+      "member": "get",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchmanager-get",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchManager",
+      "member": "getIds",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchmanager-getids",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRecord",
+      "member": "request",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchrecord-request",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRecord",
+      "member": "responseReady",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchrecord-responseready",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "abort",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-abort",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "downloadTotal",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-downloadtotal",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "downloaded",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-downloaded",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "failureReason",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-failurereason",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "id",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-id",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "match",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-match",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "matchAll",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-matchall",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "onprogress",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-onprogress",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "recordsAvailable",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-recordsavailable",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "result",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-result",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "uploadTotal",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-uploadtotal",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "uploaded",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-uploaded",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchUpdateUIEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchupdateuievent-backgroundfetchupdateuievent",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchUpdateUIEvent",
+      "member": "updateUI",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchupdateuievent-updateui",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onbackgroundfetchabort",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerglobalscope-onbackgroundfetchabort",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onbackgroundfetchclick",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerglobalscope-onbackgroundfetchclick",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onbackgroundfetchfail",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerglobalscope-onbackgroundfetchfail",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onbackgroundfetchsuccess",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerglobalscope-onbackgroundfetchsuccess",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerRegistration",
+      "member": "backgroundFetch",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerregistration-backgroundfetch",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": {
+        "status": "seeded-native-acquisition-control",
+        "path": "formal/background-agents.md"
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onsync",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-serviceworkerglobalscope-onsync",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-sync",
+      "interface": "ServiceWorkerRegistration",
+      "member": "sync",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-serviceworkerregistration-sync",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": {
+        "status": "seeded-native-acquisition-control",
+        "path": "formal/background-agents.md"
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncevent-syncevent",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncEvent",
+      "member": "lastChance",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncevent-lastchance",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncEvent",
+      "member": "tag",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncevent-tag",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncManager",
+      "member": "getTags",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncmanager-gettags",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncManager",
+      "member": "register",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncmanager-register",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "seeded-native-acquisition-control",
+        "path": "formal/background-agents.md"
+      }
+    },
+    {
+      "spec": "beacon",
+      "interface": "Navigator",
+      "member": "sendBeacon",
+      "kind": "operation",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://w3c.github.io/beacon/#dom-navigator-sendbeacon",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": {
+        "status": "source-and-receiver-tests",
+        "path": "test/run.ts"
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "Credential",
+      "member": "id",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credential-id",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "Credential",
+      "member": "isConditionalMediationAvailable",
+      "kind": "operation",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credential-isconditionalmediationavailable",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "Credential",
+      "member": "type",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credential-type",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialUserData",
+      "member": "iconURL",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialuserdata-iconurl",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialUserData",
+      "member": "name",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialuserdata-name",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialsContainer",
+      "member": "create",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-create",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "source-denial-unverified-receiver",
+        "path": "src/runtime/enforcement/effects.ts"
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialsContainer",
+      "member": "get",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-get",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "conditional-fedcm-control",
+        "path": "formal/fedcm-conditional-probe.ts"
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialsContainer",
+      "member": "preventSilentAccess",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-preventsilentaccess",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "source-denial-unverified-receiver",
+        "path": "src/runtime/enforcement/effects.ts"
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialsContainer",
+      "member": "store",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-store",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "source-denial-unverified-receiver",
+        "path": "src/runtime/enforcement/effects.ts"
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "FederatedCredential",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-federatedcredential-federatedcredential",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "FederatedCredential",
+      "member": "protocol",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-federatedcredential-protocol",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "FederatedCredential",
+      "member": "provider",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-federatedcredential-provider",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "Navigator",
+      "member": "credentials",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-navigator-credentials",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "PasswordCredential",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-passwordcredential-passwordcredential",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "PasswordCredential",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-passwordcredential-passwordcredential-data",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "PasswordCredential",
+      "member": "password",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-passwordcredential-password",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredential",
+      "member": "configURL",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredential-configurl",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredential",
+      "member": "disconnect",
+      "kind": "operation",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredential-disconnect",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "conditional-receiver-escape-fixed",
+        "path": "formal/fedcm-conditional-probe.ts"
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredential",
+      "member": "isAutoSelected",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredential-isautoselected",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredential",
+      "member": "token",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredential-token",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredentialError",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredentialerror-identitycredentialerror",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredentialError",
+      "member": "error",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredentialerror-error",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredentialError",
+      "member": "url",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredentialerror-url",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityProvider",
+      "member": "close",
+      "kind": "operation",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identityprovider-close",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityProvider",
+      "member": "getUserInfo",
+      "kind": "operation",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identityprovider-getuserinfo",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "source-denial-unverified-receiver",
+        "path": "src/runtime/enforcement/effects.ts"
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityProvider",
+      "member": "resolve",
+      "kind": "operation",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identityprovider-resolve",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "arrayBuffer",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-arraybuffer",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "blob",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-blob",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "body",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-body",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "bodyUsed",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-bodyused",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "bytes",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-bytes",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "formData",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-formdata",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "json",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-json",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "text",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-text",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "textStream",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-textstream",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "FetchLaterResult",
+      "member": "activated",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-fetchlaterresult-activated",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "append",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-append",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "delete",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-delete",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "get",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-get",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "getSetCookie",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-getsetcookie",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "has",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-has",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "set",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-set",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "cache",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-cache",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "clone",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-clone",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "credentials",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-credentials",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "destination",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-destination",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "duplex",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-duplex",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "headers",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-headers",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "integrity",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-integrity",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "isHistoryNavigation",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-ishistorynavigation",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "isReloadNavigation",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-isreloadnavigation",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "keepalive",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-keepalive",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "method",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-method",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "mode",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-mode",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "redirect",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-redirect",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "referrer",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-referrer",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "referrerPolicy",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-referrerpolicy",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "signal",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-signal",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "url",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-url",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "clone",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-clone",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "error",
+      "kind": "operation",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-error",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "headers",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-headers",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "json",
+      "kind": "operation",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-json",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "ok",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-ok",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "redirect",
+      "kind": "operation",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-redirect",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "redirected",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-redirected",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "status",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-status",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "statusText",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-statustext",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "type",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-type",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "url",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-url",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "fetch",
+      "interface": "Window",
+      "member": "fetchLater",
+      "kind": "operation",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-window-fetchlater",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "context-not-applicable"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "context-not-applicable"
+        }
+      },
+      "review": {
+        "status": "source-denial-no-calibrated-control",
+        "path": "src/runtime/enforcement/effects.ts"
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "WindowOrWorkerGlobalScope",
+      "member": "fetch",
+      "kind": "operation",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-global-fetch",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": {
+        "status": "source-and-receiver-tests",
+        "path": "test/network.ts"
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncevent-periodicsyncevent",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncEvent",
+      "member": "tag",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncevent-tag",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncManager",
+      "member": "getTags",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncmanager-gettags",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncManager",
+      "member": "register",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncmanager-register",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": {
+        "status": "permission-control-unavailable",
+        "path": "formal/background-agents.md"
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncManager",
+      "member": "unregister",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncmanager-unregister",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onperiodicsync",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-serviceworkerglobalscope-onperiodicsync",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "ServiceWorkerRegistration",
+      "member": "periodicSync",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-serviceworkerregistration-periodicsync",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": {
+        "status": "permission-control-unavailable",
+        "path": "formal/background-agents.md"
+      }
+    },
+    {
+      "spec": "reporting-1",
+      "interface": "ReportingObserver",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/reporting/#dom-reportingobserver-reportingobserver",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": {
+        "status": "observer-is-not-upload-entry-point",
+        "path": "formal/modern-reporting-probe.ts"
+      }
+    },
+    {
+      "spec": "reporting-1",
+      "interface": "ReportingObserver",
+      "member": "disconnect",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/reporting/#dom-reportingobserver-disconnect",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "reporting-1",
+      "interface": "ReportingObserver",
+      "member": "observe",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/reporting/#dom-reportingobserver-observe",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "reporting-1",
+      "interface": "ReportingObserver",
+      "member": "takeRecords",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/reporting/#dom-reportingobserver-takerecords",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "add",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-add",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "addAll",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-addall",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "delete",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-delete",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "keys",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-keys",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "match",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-match",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "matchAll",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-matchall",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "put",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-put",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "delete",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-delete",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "has",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-has",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "keys",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-keys",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "match",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-match",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "open",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-open",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "frameType",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-frametype",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "id",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-id",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "postMessage",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-postmessage",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "postMessage",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-postmessage-message-options",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "type",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-type",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "url",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-url",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Clients",
+      "member": "claim",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-clients-claim",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Clients",
+      "member": "get",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-clients-get",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Clients",
+      "member": "matchAll",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-clients-matchall",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Clients",
+      "member": "openWindow",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-clients-openwindow",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendableevent-extendableevent",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableEvent",
+      "member": "waitUntil",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendableevent-waituntil",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-extendablemessageevent",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "data",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-data",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "lastEventId",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-lasteventid",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "origin",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-origin",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "ports",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-ports",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "source",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-source",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "clientId",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-clientid",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-fetchevent",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "handled",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-handled",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "preloadResponse",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-preloadresponse",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "replacesClientId",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-replacesclientid",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "request",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-request",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "respondWith",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-respondwith",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "resultingClientId",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-resultingclientid",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "InstallEvent",
+      "member": "addRoutes",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-installevent-addroutes",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "InstallEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-installevent-installevent",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "NavigationPreloadManager",
+      "member": "disable",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-disable",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "NavigationPreloadManager",
+      "member": "enable",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-enable",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "NavigationPreloadManager",
+      "member": "getState",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-getstate",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "NavigationPreloadManager",
+      "member": "setHeaderValue",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-setheadervalue",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Navigator",
+      "member": "serviceWorker",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#navigator-service-worker-attribute",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "onstatechange",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-onstatechange",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "postMessage",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-postmessage",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "postMessage",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-postmessage-message-options",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "scriptURL",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-scripturl",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "state",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-state",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "controller",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-controller",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "getRegistration",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-getregistration",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "getRegistrations",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-getregistrations",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "oncontrollerchange",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-oncontrollerchange",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "onmessage",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-onmessage",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "onmessageerror",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-onmessageerror",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "ready",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-ready",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "register",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-register",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": {
+        "status": "virtualized-registration",
+        "path": "test/publisher-contexts.ts"
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "startMessages",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-startmessages",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "clients",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-clients",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onactivate",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-onactivate",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onfetch",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-onfetch",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "oninstall",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-oninstall",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onmessage",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-onmessage",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onmessageerror",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-onmessageerror",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "registration",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-registration",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "serviceWorker",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-serviceworker",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "skipWaiting",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-skipwaiting",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "active",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-active",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "installing",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-installing",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "navigationPreload",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-navigationpreload",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "onupdatefound",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-onupdatefound",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "scope",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-scope",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "unregister",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-unregister",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": {
+        "status": "virtualized-registration",
+        "path": "test/website-installation.ts"
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "update",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-update",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": {
+        "status": "denial-and-lifecycle-tests",
+        "path": "test/website-installation.ts"
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "updateViaCache",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-updateviacache",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "waiting",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-waiting",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "ancestorOrigins",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-ancestororigins",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "focus",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-focus",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "focused",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-focused",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "navigate",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-navigate",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "visibilityState",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-visibilitystate",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowOrWorkerGlobalScope",
+      "member": "caches",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#global-caches-attribute",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WorkerNavigator",
+      "member": "serviceWorker",
+      "kind": "attribute",
+      "static": false,
+      "partial": true,
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#navigator-service-worker-attribute",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "CloseEvent",
+      "member": "code",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-closeevent-code",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "CloseEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-closeevent-closeevent",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "CloseEvent",
+      "member": "reason",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-closeevent-reason",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "CloseEvent",
+      "member": "wasClean",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-closeevent-wasclean",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "binaryType",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-binarytype",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "bufferedAmount",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-bufferedamount",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "close",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-close",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-websocket",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": {
+        "status": "source-and-receiver-tests",
+        "path": "test/prototype-confinement.ts"
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "extensions",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-extensions",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "onclose",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-onclose",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "onerror",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-onerror",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "onmessage",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-onmessage",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "onopen",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-onopen",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "protocol",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-protocol",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "readyState",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-readystate",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "send",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-send",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "url",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-url",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "anticipatedConcurrentIncomingBidirectionalStreams",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-anticipatedconcurrentincomingbidirectionalstreams",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "anticipatedConcurrentIncomingUnidirectionalStreams",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-anticipatedconcurrentincomingunidirectionalstreams",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "close",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-close",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "closed",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-closed",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "congestionControl",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-congestioncontrol",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-webtransport",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": {
+        "status": "independent-receiver",
+        "path": "formal/webtransport/README.md"
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "createBidirectionalStream",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-createbidirectionalstream",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "createSendGroup",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-createsendgroup",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "createUnidirectionalStream",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-createunidirectionalstream",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "datagrams",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-datagrams",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "draining",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-draining",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "exportKeyingMaterial",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-exportkeyingmaterial",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "getStats",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-getstats",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "incomingBidirectionalStreams",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-incomingbidirectionalstreams",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "incomingUnidirectionalStreams",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-incomingunidirectionalstreams",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "protocol",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-protocol",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "ready",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-ready",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "reliability",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-reliability",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "responseHeaders",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-responseheaders",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "supportsReliableOnly",
+      "kind": "attribute",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-supportsreliableonly",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportBidirectionalStream",
+      "member": "readable",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportbidirectionalstream-readable",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportBidirectionalStream",
+      "member": "writable",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportbidirectionalstream-writable",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "createWritable",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-createwritable",
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "incomingMaxAge",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-incomingmaxage",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "incomingMaxBufferedDatagrams",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-incomingmaxbuffereddatagrams",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "maxDatagramSize",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-maxdatagramsize",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "outgoingMaxAge",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-outgoingmaxage",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "outgoingMaxBufferedDatagrams",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-outgoingmaxbuffereddatagrams",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "readable",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-readable",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramsWritable",
+      "member": "sendGroup",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramswritable-sendgroup",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramsWritable",
+      "member": "sendOrder",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramswritable-sendorder",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportError",
+      "member": "constructor",
+      "kind": "constructor",
+      "static": true,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransporterror-webtransporterror",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportError",
+      "member": "source",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransporterror-source",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportError",
+      "member": "streamErrorCode",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransporterror-streamerrorcode",
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportReceiveStream",
+      "member": "getStats",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportreceivestream-getstats",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendGroup",
+      "member": "getStats",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendgroup-getstats",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendStream",
+      "member": "getStats",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendstream-getstats",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendStream",
+      "member": "getWriter",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendstream-getwriter",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendStream",
+      "member": "sendGroup",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendstream-sendgroup",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendStream",
+      "member": "sendOrder",
+      "kind": "attribute",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendstream-sendorder",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportWriter",
+      "member": "atomicWrite",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportwriter-atomicwrite",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportWriter",
+      "member": "commit",
+      "kind": "operation",
+      "static": false,
+      "partial": false,
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportwriter-commit",
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "review": null
+    }
+  ]
+}

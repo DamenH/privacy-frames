@@ -18,6 +18,11 @@ element. A guarded implementation could then use the existing
 path matters for frames: removing a source may initiate navigation and needs
 the document factory's handling.
 This candidate has not yet been implemented or tested.
+The current recommendation is to retain the restriction: the adapter would add
+code, and the recorded compatibility corpus does not identify this operation as
+a blocker. Directly enabling native removal would bypass the existing JavaScript
+wrapper for managed frame sources. A changed physical source could affect the
+frame lifecycle; no escape has been demonstrated from that route.
 
 The implementation would need to convert arguments once before resolving the
 owner, capture native methods before application code, preserve missing-attribute

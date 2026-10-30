@@ -45,6 +45,9 @@ under a test-injected trusted reporting configuration. A deliberately persisted
 NEL policy produced no application-marker traffic in the tested prepared case,
 with working before-and-after delivery controls. The [surface inventory](browser-surface-inventory.md)
 records the configurations and remaining gaps.
+The [background-agent probe](background-agents.md) also tests recovery of a
+pre-existing native service-worker registration, with working Chromium sync and
+background-fetch controls. Periodic sync remains uncalibrated.
 
 ## What has been checked
 
@@ -58,8 +61,13 @@ The registry comparison checks 10,000 sequential operation sequences against a
 TLC-generated graph. Separate deterministic tests exercise two registry instances
 sharing a storage stand-in. Chromium and Firefox tests exercise real IndexedDB
 replacement overlaps and selected network effects with independent receivers.
+The [generation comparison](confinement/generation-reads.md#partial-comparison-with-real-indexeddb-outcomes)
+checks 24 observed read/replacement pairs against possible modeled completions;
+it does not observe the transaction's internal timing.
 The [model-to-implementation mapping](implementation-mapping.md) identifies which
 code paths correspond to model actions and where that correspondence is missing.
+The [Web IDL report](idl-surface-report.md) joins selected standards to observed
+browser interface names and highlights members that still need review.
 
 These checks do not compose into a proof that the implementation confines every
 browser effect. The abstract models assume that important browser and runtime
