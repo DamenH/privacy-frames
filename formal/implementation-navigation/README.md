@@ -17,7 +17,8 @@ destination is not both same-document and an allowed route. The proof is derived
 from the implementation expression, rather than a separately maintained copy.
 Removing the cancellation action fails extraction; weakening OR to AND fails
 the proof. `result.json` saves source/checker hashes, the generated proof and its
-axiom report. No production source changes are required by this experiment.
+axiom report. The production initialization was subsequently split into the two
+stages described below to reduce the pre-cancellation helper assumptions.
 
 `Expression.lean` adds restricted left-to-right, short-circuit semantics with
 explicit abrupt completion. The checker generates a second expression tree
@@ -96,3 +97,10 @@ The two-stage source check also requires a synchronous returned finalizer and
 its exact connection to the popup factory. An async-finalizer mutation and a
 missing popup argument are rejected. This checks the recognized connection;
 it does not prove arbitrary finalizer effects or aliased control flow.
+
+The [compatibility receipt](compatibility-early-cancellation.json) records all
+eight applications passing selected native and confined tasks in Chromium and
+Firefox after the initialization change. Its checkout revision predates the
+source commit because the change was being tested uncommitted; source and build
+hashes identify the tested inputs, and the build remained stable throughout.
+This is compatibility evidence, separate from receiver tests and proofs.
