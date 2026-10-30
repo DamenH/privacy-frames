@@ -6,6 +6,14 @@ import { chromium } from 'playwright';
 const browser = await chromium.launch();
 try {
   const context = await browser.newContext();
+  // These direct responses can seed origin-wide browser reporting state. This
+  // samples deployed paths; it cannot inspect policies retained from older visits.
+  for (const path of ['', 'connect.html', 'sw.js', 'guard.js']) {
+    const direct = await context.request.get('https://apps.pf.damenh.com/' + path);
+    assert.equal(direct.status(), 200, path);
+    for (const header of ['report-to', 'reporting-endpoints', 'nel'])
+      assert.equal(direct.headers()[header], undefined, `${path}: ${header}`);
+  }
   const page = await context.newPage();
   await page.goto('https://pf.damenh.com/');
   await page.getByText('Ready to install.', { exact: true }).waitFor();
@@ -45,8 +53,13 @@ try {
   assert(
     response?.headers()['permissions-policy']?.includes('identity-credentials-get=()'),
   );
+  for (const header of ['report-to', 'reporting-endpoints', 'nel'])
+    assert.equal(response?.headers()[header], undefined, `application: ${header}`);
+  assert(
+    !/\breport-(?:to|uri)\b/i.test(response?.headers()['content-security-policy'] ?? ''),
+  );
   console.log(
-    `Live installed app identity checks passed in Chromium ${browser.version()}`,
+    `Live identity and sampled reporting-header checks passed in Chromium ${browser.version()}`,
   );
 } finally {
   await browser.close();

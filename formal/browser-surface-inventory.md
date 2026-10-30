@@ -399,6 +399,11 @@ modern reporting and NEL remain unverified. A sampled header-free deployment
 response does not establish the absence of policy on all routes or in persisted
 browser state.
 
+The [live check](live-identity-check.ts) also samples direct runtime responses and
+an installed application response for reporting headers and CSP reporting
+directives. Those samples passed on October 30, 2026. They do not inspect earlier
+responses, untested routes or reporting policies already stored in a browser.
+
 ## Optional background-networking reporting diagnostic
 
 [The native diagnostic](reporting-background-probe.ts) compares ordinary
