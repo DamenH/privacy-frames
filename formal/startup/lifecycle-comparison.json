@@ -1,11 +1,11 @@
 {
   "scope": "Partial-observation completion against the unchanged TLC LifecycleSafe graph. Root startup is assumed; child Publish is inferred. This is not whole-runtime refinement or proof of all model invariants.",
-  "generatedAt": "2026-10-30T15:48:05.106Z",
+  "generatedAt": "2026-10-30T15:50:12.630Z",
   "inputs": {
     "browserReceiptSHA256": "805b0f8cc5501f25dd2af03ef4121b83252d383f58f700beb91ac326f90df7b4",
-    "graphSHA256": "e8d7efe8600c54315de25440f9e606d8c8706a52375e35fd9ee783e1b8b0e2a4",
+    "graphSHA256": "c60fc56e53753c1ee30f0271e46d993564ddf95e7e2562dd2b6bf79ddea7cb51",
     "checkerSHA256": "a0c556ff05fb05abad0975348e1f0ed3b322e74d19fc4cb0fefb270eca55dff7",
-    "generatorSHA256": "9e1be0702d0d74241c62be2d0b1d44c382e91c96c169cccb31835b9bc47d8748"
+    "generatorSHA256": "bc4e7cbe04addc4b9a1a844321ac615c16bfe6f2df21575e5204a284b0b40931"
   },
   "assumptions": [
     "The root has completed Prepare/Publish/Run before the fixture invokes child creation; these transitions were not separately observed.",
@@ -76,8 +76,8 @@
           "action": "CreateRoot",
           "origin": "native root binding",
           "time": 1793374301683,
-          "from": "950806059909039291",
-          "to": "-2378239071810432803",
+          "from": "5143237660575939140",
+          "to": "-6408261023358110099",
           "state": {
             "network": false,
             "epoch": 0,
@@ -103,8 +103,8 @@
         {
           "action": "Prepare(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "-2378239071810432803",
-          "to": "-2371577578347737867",
+          "from": "-6408261023358110099",
+          "to": "-1856289681426889788",
           "state": {
             "network": false,
             "epoch": 0,
@@ -130,8 +130,8 @@
         {
           "action": "Publish(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "-2371577578347737867",
-          "to": "8852646364853558772",
+          "from": "-1856289681426889788",
+          "to": "9117598633505041506",
           "state": {
             "network": false,
             "epoch": 0,
@@ -157,8 +157,8 @@
         {
           "action": "Run(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "8852646364853558772",
-          "to": "7872015648939584485",
+          "from": "9117598633505041506",
+          "to": "6683748801097591807",
           "state": {
             "network": false,
             "epoch": 0,
@@ -185,8 +185,8 @@
           "action": "CreateChild(child,root)",
           "origin": "native child binding with actual owner",
           "time": 1793374301953,
-          "from": "7872015648939584485",
-          "to": "5699947815860596377",
+          "from": "6683748801097591807",
+          "to": "8739128431783762953",
           "state": {
             "network": false,
             "epoch": 0,
@@ -213,8 +213,8 @@
           "action": "Prepare(child)",
           "origin": "trusted local-guard pause point",
           "time": 1793374302159,
-          "from": "5699947815860596377",
-          "to": "4120565042479191946",
+          "from": "8739128431783762953",
+          "to": "9012030092769002810",
           "state": {
             "network": false,
             "epoch": 0,
@@ -241,22 +241,22 @@
           "action": null,
           "origin": "native controller upgrade; NOT installation Replace",
           "time": 1793374302299,
-          "from": "4120565042479191946",
-          "to": "4120565042479191946"
+          "from": "9012030092769002810",
+          "to": "9012030092769002810"
         },
         {
           "action": null,
           "origin": "test pause release; original handshake still required",
           "time": 1793374302307,
-          "from": "4120565042479191946",
-          "to": "4120565042479191946"
+          "from": "9012030092769002810",
+          "to": "9012030092769002810"
         },
         {
           "action": "Publish(child)",
           "origin": "INFERRED between release and application probe",
           "time": 1793374302309,
-          "from": "4120565042479191946",
-          "to": "-2764708309411289604",
+          "from": "9012030092769002810",
+          "to": "-9135108552466480897",
           "state": {
             "network": false,
             "epoch": 0,
@@ -283,8 +283,8 @@
           "action": "Run(child)",
           "origin": "fixed application probe",
           "time": 1793374302309,
-          "from": "-2764708309411289604",
-          "to": "8277897298722316962",
+          "from": "-9135108552466480897",
+          "to": "-4376544546518563192",
           "state": {
             "network": false,
             "epoch": 0,
@@ -370,8 +370,8 @@
           "action": "CreateRoot",
           "origin": "native root binding",
           "time": 1793374303416,
-          "from": "950806059909039291",
-          "to": "-2378239071810432803",
+          "from": "5143237660575939140",
+          "to": "-6408261023358110099",
           "state": {
             "network": false,
             "epoch": 0,
@@ -397,8 +397,8 @@
         {
           "action": "Prepare(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "-2378239071810432803",
-          "to": "-2371577578347737867",
+          "from": "-6408261023358110099",
+          "to": "-1856289681426889788",
           "state": {
             "network": false,
             "epoch": 0,
@@ -424,8 +424,8 @@
         {
           "action": "Publish(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "-2371577578347737867",
-          "to": "8852646364853558772",
+          "from": "-1856289681426889788",
+          "to": "9117598633505041506",
           "state": {
             "network": false,
             "epoch": 0,
@@ -451,8 +451,8 @@
         {
           "action": "Run(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "8852646364853558772",
-          "to": "7872015648939584485",
+          "from": "9117598633505041506",
+          "to": "6683748801097591807",
           "state": {
             "network": false,
             "epoch": 0,
@@ -479,8 +479,8 @@
           "action": "CreateChild(child,root)",
           "origin": "native child binding with actual owner",
           "time": 1793374303686,
-          "from": "7872015648939584485",
-          "to": "5699947815860596377",
+          "from": "6683748801097591807",
+          "to": "8739128431783762953",
           "state": {
             "network": false,
             "epoch": 0,
@@ -507,8 +507,8 @@
           "action": "Prepare(child)",
           "origin": "trusted local-guard pause point",
           "time": 1793374303887,
-          "from": "5699947815860596377",
-          "to": "4120565042479191946",
+          "from": "8739128431783762953",
+          "to": "9012030092769002810",
           "state": {
             "network": false,
             "epoch": 0,
@@ -535,15 +535,15 @@
           "action": null,
           "origin": "test pause release; original handshake still required",
           "time": 1793374303903,
-          "from": "4120565042479191946",
-          "to": "4120565042479191946"
+          "from": "9012030092769002810",
+          "to": "9012030092769002810"
         },
         {
           "action": "Publish(child)",
           "origin": "INFERRED between release and application probe",
           "time": 1793374303908,
-          "from": "4120565042479191946",
-          "to": "-2764708309411289604",
+          "from": "9012030092769002810",
+          "to": "-9135108552466480897",
           "state": {
             "network": false,
             "epoch": 0,
@@ -570,8 +570,8 @@
           "action": "Run(child)",
           "origin": "fixed application probe",
           "time": 1793374303908,
-          "from": "-2764708309411289604",
-          "to": "8277897298722316962",
+          "from": "-9135108552466480897",
+          "to": "-4376544546518563192",
           "state": {
             "network": false,
             "epoch": 0,
@@ -598,8 +598,8 @@
           "action": null,
           "origin": "native controller upgrade; NOT installation Replace",
           "time": 1793374304047,
-          "from": "8277897298722316962",
-          "to": "8277897298722316962"
+          "from": "-4376544546518563192",
+          "to": "-4376544546518563192"
         }
       ]
     },
@@ -664,8 +664,8 @@
           "action": "CreateRoot",
           "origin": "native root binding",
           "time": 1793374306283,
-          "from": "950806059909039291",
-          "to": "-2378239071810432803",
+          "from": "5143237660575939140",
+          "to": "-6408261023358110099",
           "state": {
             "network": false,
             "epoch": 0,
@@ -691,8 +691,8 @@
         {
           "action": "Prepare(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "-2378239071810432803",
-          "to": "-2371577578347737867",
+          "from": "-6408261023358110099",
+          "to": "-1856289681426889788",
           "state": {
             "network": false,
             "epoch": 0,
@@ -718,8 +718,8 @@
         {
           "action": "Publish(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "-2371577578347737867",
-          "to": "8852646364853558772",
+          "from": "-1856289681426889788",
+          "to": "9117598633505041506",
           "state": {
             "network": false,
             "epoch": 0,
@@ -745,8 +745,8 @@
         {
           "action": "Run(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "8852646364853558772",
-          "to": "7872015648939584485",
+          "from": "9117598633505041506",
+          "to": "6683748801097591807",
           "state": {
             "network": false,
             "epoch": 0,
@@ -773,8 +773,8 @@
           "action": "CreateChild(child,root)",
           "origin": "native child binding with actual owner",
           "time": 1793374306537,
-          "from": "7872015648939584485",
-          "to": "5699947815860596377",
+          "from": "6683748801097591807",
+          "to": "8739128431783762953",
           "state": {
             "network": false,
             "epoch": 0,
@@ -801,8 +801,8 @@
           "action": "Prepare(child)",
           "origin": "trusted local-guard pause point",
           "time": 1793374306722,
-          "from": "5699947815860596377",
-          "to": "4120565042479191946",
+          "from": "8739128431783762953",
+          "to": "9012030092769002810",
           "state": {
             "network": false,
             "epoch": 0,
@@ -829,22 +829,22 @@
           "action": null,
           "origin": "native controller upgrade; NOT installation Replace",
           "time": 1793374307643,
-          "from": "4120565042479191946",
-          "to": "4120565042479191946"
+          "from": "9012030092769002810",
+          "to": "9012030092769002810"
         },
         {
           "action": null,
           "origin": "test pause release; original handshake still required",
           "time": 1793374307757,
-          "from": "4120565042479191946",
-          "to": "4120565042479191946"
+          "from": "9012030092769002810",
+          "to": "9012030092769002810"
         },
         {
           "action": "Publish(child)",
           "origin": "INFERRED between release and application probe",
           "time": 1793374307774,
-          "from": "4120565042479191946",
-          "to": "-2764708309411289604",
+          "from": "9012030092769002810",
+          "to": "-9135108552466480897",
           "state": {
             "network": false,
             "epoch": 0,
@@ -871,8 +871,8 @@
           "action": "Run(child)",
           "origin": "fixed application probe",
           "time": 1793374307774,
-          "from": "-2764708309411289604",
-          "to": "8277897298722316962",
+          "from": "-9135108552466480897",
+          "to": "-4376544546518563192",
           "state": {
             "network": false,
             "epoch": 0,
@@ -958,8 +958,8 @@
           "action": "CreateRoot",
           "origin": "native root binding",
           "time": 1793374310120,
-          "from": "950806059909039291",
-          "to": "-2378239071810432803",
+          "from": "5143237660575939140",
+          "to": "-6408261023358110099",
           "state": {
             "network": false,
             "epoch": 0,
@@ -985,8 +985,8 @@
         {
           "action": "Prepare(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "-2378239071810432803",
-          "to": "-2371577578347737867",
+          "from": "-6408261023358110099",
+          "to": "-1856289681426889788",
           "state": {
             "network": false,
             "epoch": 0,
@@ -1012,8 +1012,8 @@
         {
           "action": "Publish(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "-2371577578347737867",
-          "to": "8852646364853558772",
+          "from": "-1856289681426889788",
+          "to": "9117598633505041506",
           "state": {
             "network": false,
             "epoch": 0,
@@ -1039,8 +1039,8 @@
         {
           "action": "Run(root)",
           "origin": "UNOBSERVED root-startup prefix assumption",
-          "from": "8852646364853558772",
-          "to": "7872015648939584485",
+          "from": "9117598633505041506",
+          "to": "6683748801097591807",
           "state": {
             "network": false,
             "epoch": 0,
@@ -1067,8 +1067,8 @@
           "action": "CreateChild(child,root)",
           "origin": "native child binding with actual owner",
           "time": 1793374310387,
-          "from": "7872015648939584485",
-          "to": "5699947815860596377",
+          "from": "6683748801097591807",
+          "to": "8739128431783762953",
           "state": {
             "network": false,
             "epoch": 0,
@@ -1095,8 +1095,8 @@
           "action": "Prepare(child)",
           "origin": "trusted local-guard pause point",
           "time": 1793374310574,
-          "from": "5699947815860596377",
-          "to": "4120565042479191946",
+          "from": "8739128431783762953",
+          "to": "9012030092769002810",
           "state": {
             "network": false,
             "epoch": 0,
@@ -1123,15 +1123,15 @@
           "action": null,
           "origin": "test pause release; original handshake still required",
           "time": 1793374310590,
-          "from": "4120565042479191946",
-          "to": "4120565042479191946"
+          "from": "9012030092769002810",
+          "to": "9012030092769002810"
         },
         {
           "action": "Publish(child)",
           "origin": "INFERRED between release and application probe",
           "time": 1793374310604,
-          "from": "4120565042479191946",
-          "to": "-2764708309411289604",
+          "from": "9012030092769002810",
+          "to": "-9135108552466480897",
           "state": {
             "network": false,
             "epoch": 0,
@@ -1158,8 +1158,8 @@
           "action": "Run(child)",
           "origin": "fixed application probe",
           "time": 1793374310604,
-          "from": "-2764708309411289604",
-          "to": "8277897298722316962",
+          "from": "-9135108552466480897",
+          "to": "-4376544546518563192",
           "state": {
             "network": false,
             "epoch": 0,
@@ -1186,8 +1186,8 @@
           "action": null,
           "origin": "native controller upgrade; NOT installation Replace",
           "time": 1793374311365,
-          "from": "8277897298722316962",
-          "to": "8277897298722316962"
+          "from": "-4376544546518563192",
+          "to": "-4376544546518563192"
         }
       ]
     }

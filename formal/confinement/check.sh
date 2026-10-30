@@ -3,7 +3,7 @@ set -eu
 root=$(CDPATH= cd -- "$(dirname "$0")/../.." && pwd)
 jar="$root/.tools/tla2tools.jar"
 [ -f "$jar" ] || { echo 'Missing .tools/tla2tools.jar (TLA+ v1.8.0)' >&2; exit 1; }
-printf '%s  %s\n' fc6878c603f0fdc18b9fe3e5bf51860cb90ab5b1154e3c371660c036d6bdd63e "$jar" | sha256sum -c - >/dev/null
+printf '%s  %s\n' 011267fca25d0752cf18894dd585cd28b96960c112ea8a20b823ea770e7e10cd "$jar" | sha256sum -c - >/dev/null
 image='eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a'
 out=$(mktemp -d)
 trap 'rm -rf "$out"' EXIT

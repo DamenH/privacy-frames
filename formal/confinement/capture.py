@@ -33,7 +33,7 @@ expected = {
     'RegistryRaceUnique': 'UniqueSuccessfulBinding',
 }
 jar = root / '.tools/tla2tools.jar'
-assert hashlib.sha256(jar.read_bytes()).hexdigest() == 'fc6878c603f0fdc18b9fe3e5bf51860cb90ab5b1154e3c371660c036d6bdd63e'
+assert hashlib.sha256(jar.read_bytes()).hexdigest() == '011267fca25d0752cf18894dd585cd28b96960c112ea8a20b823ea770e7e10cd'
 results = []
 for config, invariant in expected.items():
     module = next(name for name in ('Lifecycle', 'Admission', 'RegistryRace', 'Registry') if config.startswith(name))

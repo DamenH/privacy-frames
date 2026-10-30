@@ -53,6 +53,11 @@ node --test formal/confinement/registry-concurrency-test.ts
 ```
 
 The scripts check the jar hash and use a pinned Java image without network access.
+The pinned jar SHA-256 is
+`011267fca25d0752cf18894dd585cd28b96960c112ea8a20b823ea770e7e10cd`.
+The upstream v1.8.0 asset changed on October 30, 2026; the checks and saved
+model traces were rerun against this published digest. A later replacement will
+fail the hash check until reviewed.
 The separate [formal workflow](../../.github/workflows/formal.yml) runs the
 model checks, registry comparison and its wrong-owner fault control on pushes
 and pull requests. It does not run the browser evidence suite.
