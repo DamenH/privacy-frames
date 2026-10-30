@@ -4,7 +4,7 @@
     "src/runtime/guard.ts": "9809dc1ea180de3f3906825bc36ef66cdd9e8e51c33a44e1e5a3f217cc76af8f",
     "src/runtime/contexts/window-realm.ts": "2cbc11f9e1420e45e060a8e89201f80b7417482b5ec6827e5461176260f70f4b"
   },
-  "checkerSHA256": "b834a2035e5f33465cf4ab5547b29bd9308122c67c2343327e63c213bcf92b8f",
+  "checkerSHA256": "a5349887acc7b025b5a983d319bee82e2b785a13599f3901e8f65014f0e94256",
   "result": {
     "rootPreparationStatement": 10,
     "rootContentStartStatement": 15,
@@ -15,7 +15,8 @@
   "faultControls": {
     "earlyStart": "rejected",
     "earlyReturn": "rejected",
-    "parserBeforeCancellation": "rejected"
+    "parserBeforeCancellation": "rejected",
+    "missingPopupArgument": "rejected"
   },
   "completed": true
 }

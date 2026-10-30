@@ -92,3 +92,7 @@ rejects moving parser evaluation earlier. This reduces the helper behavior that
 must be trusted before cancellation; intrinsic preparation and policy-tool
 construction remain before it. The whole sandbox still requires all effects
 and publication policies to finish before application execution.
+The two-stage source check also requires a synchronous returned finalizer and
+its exact connection to the popup factory. An async-finalizer mutation and a
+missing popup argument are rejected. This checks the recognized connection;
+it does not prove arbitrary finalizer effects or aliased control flow.

@@ -132,6 +132,13 @@ function verify(guardSource: string, realmSource: string) {
     'Navigation installation is not a direct statement',
   );
   const navIndex = statements.indexOf(navigationCalls[0]);
+  const navStatement = navigationCalls[0];
+  assert(ts.isVariableStatement(navStatement));
+  const binding = navStatement.declarationList.declarations[0].name;
+  assert(
+    ts.isIdentifier(binding) && binding.text === 'finishNavigationPolicy',
+    'Navigation finalizer binding changed',
+  );
   for (const helper of [
     'createTrustedPolicy',
     'resourceAliases',
@@ -158,6 +165,14 @@ function verify(guardSource: string, realmSource: string) {
       ts.isExpressionStatement(s) && callNamed(s.expression, 'finishNavigationPolicy'),
   );
   assert.equal(finalizers.length, 1, 'Missing navigation finalization');
+  const finalize = finalizers[0];
+  assert(ts.isExpressionStatement(finalize) && ts.isCallExpression(finalize.expression));
+  assert(
+    finalize.expression.arguments.length === 1 &&
+      ts.isIdentifier(finalize.expression.arguments[0]) &&
+      finalize.expression.arguments[0].text === 'openPopup',
+    'Native popup finalizer argument changed',
+  );
   const popup = calls(prepare.body, 'createPopupFactory')[0];
   const popupIndex = statements.findIndex(
     (s) => s.pos <= popup.pos && s.end >= popup.end,
@@ -188,6 +203,14 @@ function verify(guardSource: string, realmSource: string) {
   };
 }
 const result = verify(guard, realm);
+assert.throws(
+  () =>
+    verify(
+      guard,
+      realm.replace('finishNavigationPolicy(openPopup)', 'finishNavigationPolicy()'),
+    ),
+  /Native popup finalizer argument changed/,
+);
 const parserLine = '  const policy = createTrustedPolicy(applicationURL);\n';
 assert.equal(realm.split(parserLine).length, 2);
 const parserEarly = realm
@@ -237,6 +260,7 @@ await writeFile(
         earlyStart: 'rejected',
         earlyReturn: 'rejected',
         parserBeforeCancellation: 'rejected',
+        missingPopupArgument: 'rejected',
       },
       completed: true,
     },

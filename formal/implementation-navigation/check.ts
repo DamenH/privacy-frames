@@ -47,6 +47,21 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
     .filter(ts.isFunctionDeclaration)
     .filter((node) => node.name?.text === 'prepareNavigationPolicy');
   assert.equal(policyFunctions.length, 1, 'Navigation installer changed');
+  assert(policyFunctions[0].body, 'Navigation installer body missing');
+  const lastStatement = policyFunctions[0].body.statements.at(-1);
+  assert(
+    lastStatement &&
+      ts.isReturnStatement(lastStatement) &&
+      lastStatement.expression &&
+      ts.isArrowFunction(lastStatement.expression),
+    'Navigation finalizer shape changed',
+  );
+  assert(
+    !lastStatement.expression.modifiers?.some(
+      (modifier) => modifier.kind === ts.SyntaxKind.AsyncKeyword,
+    ),
+    'Navigation finalizer became asynchronous',
+  );
   assert(
     !policyFunctions[0].modifiers?.some(
       (modifier) => modifier.kind === ts.SyntaxKind.AsyncKeyword,
@@ -147,6 +162,12 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
   return expression(statements[1].expression);
 }
 const expression = extract(text);
+const finalizerAnchor = '  return (\n    open?:';
+assert.equal(text.split(finalizerAnchor).length, 2);
+assert.throws(
+  () => extract(text.replace(finalizerAnchor, '  return async (\n    open?:')),
+  /Navigation finalizer became asynchronous/,
+);
 assert.throws(
   () =>
     extract(
@@ -253,6 +274,7 @@ const receipt = {
     missingAction: 'source-rejected',
     weakenedCondition: 'proof-rejected',
     eagerEvaluation: 'semantic-proof-rejected',
+    asynchronousFinalizer: 'source-rejected',
   },
   completed: true,
 };
