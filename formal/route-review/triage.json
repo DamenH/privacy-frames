@@ -1661,6 +1661,566 @@
       "effect": "Gathers and returns statistics for the relevant transport object.",
       "prerequisites": "Requires a reachable native object and an implementation exposing this method.",
       "next": "Review potential information exposure and measure browser-specific behavior; this operation is not a native receiver calibration."
+    },
+    {
+      "key": "fetch|Body|arrayBuffer|operation",
+      "class": "body-consumption",
+      "wpt": [],
+      "effect": "Consumes and converts an associated request or response body.",
+      "prerequisites": "Requires a body-bearing Request or Response and a usable body stream; a response body may still be arriving.",
+      "next": "Investigate stream backpressure, cancellation and underlying request lifecycle; consumption itself is distinct from constructing the request."
+    },
+    {
+      "key": "fetch|Body|blob|operation",
+      "class": "body-consumption",
+      "wpt": [],
+      "effect": "Consumes and converts an associated request or response body.",
+      "prerequisites": "Requires a body-bearing Request or Response and a usable body stream; a response body may still be arriving.",
+      "next": "Investigate stream backpressure, cancellation and underlying request lifecycle; consumption itself is distinct from constructing the request."
+    },
+    {
+      "key": "fetch|Body|bytes|operation",
+      "class": "body-consumption",
+      "wpt": [],
+      "effect": "Consumes and converts an associated request or response body.",
+      "prerequisites": "Requires a body-bearing Request or Response and a usable body stream; a response body may still be arriving.",
+      "next": "Investigate stream backpressure, cancellation and underlying request lifecycle; consumption itself is distinct from constructing the request."
+    },
+    {
+      "key": "fetch|Body|formData|operation",
+      "class": "body-consumption",
+      "wpt": [],
+      "effect": "Consumes and converts an associated request or response body.",
+      "prerequisites": "Requires a body-bearing Request or Response and a usable body stream; a response body may still be arriving.",
+      "next": "Investigate stream backpressure, cancellation and underlying request lifecycle; consumption itself is distinct from constructing the request."
+    },
+    {
+      "key": "fetch|Body|json|operation",
+      "class": "body-consumption",
+      "wpt": [],
+      "effect": "Consumes and converts an associated request or response body.",
+      "prerequisites": "Requires a body-bearing Request or Response and a usable body stream; a response body may still be arriving.",
+      "next": "Investigate stream backpressure, cancellation and underlying request lifecycle; consumption itself is distinct from constructing the request."
+    },
+    {
+      "key": "fetch|Body|text|operation",
+      "class": "body-consumption",
+      "wpt": [],
+      "effect": "Consumes and converts an associated request or response body.",
+      "prerequisites": "Requires a body-bearing Request or Response and a usable body stream; a response body may still be arriving.",
+      "next": "Investigate stream backpressure, cancellation and underlying request lifecycle; consumption itself is distinct from constructing the request."
+    },
+    {
+      "key": "fetch|Body|body|attribute",
+      "class": "body-state",
+      "wpt": [],
+      "effect": "Exposes the body stream or its used state.",
+      "prerequisites": "Requires an accessible body-bearing object.",
+      "next": "Review who controls and consumes the stream, including a response backed by ongoing delivery; getter access is not a standalone request."
+    },
+    {
+      "key": "fetch|Body|bodyUsed|attribute",
+      "class": "body-state",
+      "wpt": [],
+      "effect": "Exposes the body stream or its used state.",
+      "prerequisites": "Requires an accessible body-bearing object.",
+      "next": "Review who controls and consumes the stream, including a response backed by ongoing delivery; getter access is not a standalone request."
+    },
+    {
+      "key": "service-workers|Clients|openWindow|operation",
+      "class": "context-and-navigation",
+      "wpt": [],
+      "effect": "Creates a top-level browsing context and navigates it to the supplied URL.",
+      "prerequisites": "Requires a native service-worker Clients object, valid URL, and transient activation in a same-origin Window under the current algorithm.",
+      "next": "Receiver-calibrate whether native authority is reachable from publisher execution and how navigation is mediated."
+    },
+    {
+      "key": "service-workers|WindowClient|navigate|operation",
+      "class": "navigation",
+      "wpt": [],
+      "effect": "Navigates an existing window client to the supplied URL.",
+      "prerequisites": "Requires a native WindowClient controlled by the relevant worker, a valid non-about:blank URL, and an active document.",
+      "next": "Test recovery and receiver-observed navigation separately from virtual publisher behavior."
+    },
+    {
+      "key": "service-workers|Clients|claim|operation",
+      "class": "browser-agent-control",
+      "wpt": [],
+      "effect": "An active native service worker claims eligible clients under its registration.",
+      "prerequisites": "Requires native service-worker execution and an active worker; client matching and storage-key rules apply.",
+      "next": "Test whether publisher code can acquire native worker authority or influence a trusted worker claim; a successful claim is not by itself network disclosure."
+    },
+    {
+      "key": "service-workers|Clients|get|operation",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Obtains service-worker client references based on client identifier.",
+      "prerequisites": "Requires a native Clients object and clients permitted by the service-worker matching algorithm.",
+      "next": "Test whether publisher executors obtain native references and whether their messages or navigations can reach another principal."
+    },
+    {
+      "key": "service-workers|Clients|matchAll|operation",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Obtains service-worker client references based on matching options.",
+      "prerequisites": "Requires a native Clients object and clients permitted by the service-worker matching algorithm.",
+      "next": "Test whether publisher executors obtain native references and whether their messages or navigations can reach another principal."
+    },
+    {
+      "key": "service-workers|Client|postMessage|operation",
+      "class": "authority-relay",
+      "wpt": [],
+      "effect": "Posts a message, with optional transferable objects, to a worker client.",
+      "prerequisites": "Requires a reachable native Client and a recipient whose message handler acts on the payload.",
+      "next": "Review both overloads and actual recipient authorization; a message is an egress path only if the recipient has relevant independent authority."
+    },
+    {
+      "key": "service-workers|Client|frameType|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the client frameType.",
+      "prerequisites": "Requires a reachable native Client object.",
+      "next": "Determine client identity exposure and subsequent use in native get, messaging and navigation; the getter does not itself send a request."
+    },
+    {
+      "key": "service-workers|Client|id|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the client id.",
+      "prerequisites": "Requires a reachable native Client object.",
+      "next": "Determine client identity exposure and subsequent use in native get, messaging and navigation; the getter does not itself send a request."
+    },
+    {
+      "key": "service-workers|Client|type|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the client type.",
+      "prerequisites": "Requires a reachable native Client object.",
+      "next": "Determine client identity exposure and subsequent use in native get, messaging and navigation; the getter does not itself send a request."
+    },
+    {
+      "key": "service-workers|Client|url|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the client url.",
+      "prerequisites": "Requires a reachable native Client object.",
+      "next": "Determine client identity exposure and subsequent use in native get, messaging and navigation; the getter does not itself send a request."
+    },
+    {
+      "key": "service-workers|WindowClient|ancestorOrigins|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the window client ancestorOrigins.",
+      "prerequisites": "Requires a reachable native WindowClient.",
+      "next": "Examine local browser state exposure and callback effects separately; this getter is not a network request."
+    },
+    {
+      "key": "service-workers|WindowClient|focused|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the window client focused.",
+      "prerequisites": "Requires a reachable native WindowClient.",
+      "next": "Examine local browser state exposure and callback effects separately; this getter is not a network request."
+    },
+    {
+      "key": "service-workers|WindowClient|visibilityState|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the window client visibilityState.",
+      "prerequisites": "Requires a reachable native WindowClient.",
+      "next": "Examine local browser state exposure and callback effects separately; this getter is not a network request."
+    },
+    {
+      "key": "service-workers|WindowClient|focus|operation",
+      "class": "ui-effect",
+      "wpt": [],
+      "effect": "Requests focus of the associated window client.",
+      "prerequisites": "Requires a reachable native WindowClient and browser focus/activation conditions.",
+      "next": "Check host UI and focus lifecycle interactions; focusing does not by itself demonstrate network egress."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|clients|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Exposes the native Clients object for the service worker global.",
+      "prerequisites": "Requires access to a native service-worker global; the recorded snapshot did not enumerate it.",
+      "next": "Test publisher worker isolation and downstream openWindow, claim and client messaging independently."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|registration|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Exposes the current native service-worker registration.",
+      "prerequisites": "Requires access to a native service-worker global.",
+      "next": "Assess whether the executor can acquire this native object and exercise its downstream authority."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|serviceWorker|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Exposes the current native service worker object.",
+      "prerequisites": "Requires access to a native service-worker global.",
+      "next": "Assess whether the executor can acquire this native object and exercise its downstream authority."
+    },
+    {
+      "key": "service-workers|WorkerNavigator|serviceWorker|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Exposes a service-worker container on eligible worker navigators.",
+      "prerequisites": "Requires an implementation exposing this attribute and a worker in which its access is permitted. Snapshot did not enumerate WorkerNavigator.",
+      "next": "Measure exposure and native container recovery across worker contexts; do not infer support or absence from this snapshot."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|skipWaiting|operation",
+      "class": "browser-agent-control",
+      "wpt": [],
+      "effect": "Requests that the associated waiting worker proceed toward activation.",
+      "prerequisites": "Requires native service-worker execution and relevant registration lifecycle state.",
+      "next": "Test concurrent update and activation handling, particularly controller changes before release."
+    },
+    {
+      "key": "service-workers|InstallEvent|addRoutes|operation",
+      "class": "browser-route-configuration",
+      "wpt": [],
+      "effect": "Registers static routing rules for the worker, including network and race-network-and-fetch-handler sources.",
+      "prerequisites": "Requires an actual native install event and implementation support; a constructed event is not equivalent to a live installation.",
+      "next": "Determine whether app code can influence a native install event or host worker rules, and calibrate subsequent requests at an independent receiver."
+    },
+    {
+      "key": "service-workers|FetchEvent|respondWith|operation",
+      "class": "response-routing",
+      "wpt": [],
+      "effect": "Supplies a response promise for a dispatched fetch event and extends event lifetime.",
+      "prerequisites": "Requires a relevant dispatched native fetch event; calling after the permitted dispatch or twice fails.",
+      "next": "Trace synthetic and redirect responses through the actual browser consumer and check downstream network mediation."
+    },
+    {
+      "key": "service-workers|ExtendableEvent|waitUntil|operation",
+      "class": "browser-agent-lifecycle",
+      "wpt": [],
+      "effect": "Adds a lifetime promise to an extendable event, delaying event completion.",
+      "prerequisites": "Requires an event in a state that accepts lifetime promises.",
+      "next": "Check the handling of native versus logical events and effects scheduled across lifecycle boundaries; lifetime extension is not itself an outbound request."
+    },
+    {
+      "key": "service-workers|ExtendableEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a synthetic ExtendableEvent using supplied event initialization.",
+      "prerequisites": "Requires exposed constructor and valid initialization; constructed events are not automatically trusted browser-dispatched events.",
+      "next": "Distinguish synthetic event object creation from native lifecycle authority and test event provenance."
+    },
+    {
+      "key": "service-workers|ExtendableMessageEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a synthetic ExtendableMessageEvent using supplied event initialization.",
+      "prerequisites": "Requires exposed constructor and valid initialization; constructed events are not automatically trusted browser-dispatched events.",
+      "next": "Distinguish synthetic event object creation from native lifecycle authority and test event provenance."
+    },
+    {
+      "key": "service-workers|FetchEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a synthetic FetchEvent using supplied event initialization.",
+      "prerequisites": "Requires exposed constructor and valid initialization; constructed events are not automatically trusted browser-dispatched events.",
+      "next": "Distinguish synthetic event object creation from native lifecycle authority and test event provenance."
+    },
+    {
+      "key": "service-workers|InstallEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a synthetic InstallEvent using supplied event initialization.",
+      "prerequisites": "Requires exposed constructor and valid initialization; constructed events are not automatically trusted browser-dispatched events.",
+      "next": "Distinguish synthetic event object creation from native lifecycle authority and test event provenance."
+    },
+    {
+      "key": "service-workers|ExtendableMessageEvent|data|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes a message event data.",
+      "prerequisites": "Requires an accessible message event; its content and source can be synthetic or browser-delivered.",
+      "next": "Test sender identity, transferred port ownership and authorization before using the data or reference."
+    },
+    {
+      "key": "service-workers|ExtendableMessageEvent|lastEventId|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes a message event lastEventId.",
+      "prerequisites": "Requires an accessible message event; its content and source can be synthetic or browser-delivered.",
+      "next": "Test sender identity, transferred port ownership and authorization before using the data or reference."
+    },
+    {
+      "key": "service-workers|ExtendableMessageEvent|origin|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes a message event origin.",
+      "prerequisites": "Requires an accessible message event; its content and source can be synthetic or browser-delivered.",
+      "next": "Test sender identity, transferred port ownership and authorization before using the data or reference."
+    },
+    {
+      "key": "service-workers|ExtendableMessageEvent|ports|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes a message event ports.",
+      "prerequisites": "Requires an accessible message event; its content and source can be synthetic or browser-delivered.",
+      "next": "Test sender identity, transferred port ownership and authorization before using the data or reference."
+    },
+    {
+      "key": "service-workers|ExtendableMessageEvent|source|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes a message event source.",
+      "prerequisites": "Requires an accessible message event; its content and source can be synthetic or browser-delivered.",
+      "next": "Test sender identity, transferred port ownership and authorization before using the data or reference."
+    },
+    {
+      "key": "service-workers|FetchEvent|clientId|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes the fetch event clientId.",
+      "prerequisites": "Requires an accessible fetch event; synthetic init values and browser-created event state differ.",
+      "next": "Trace actual request, client identity and preload provenance; review any pre-existing network effects separately."
+    },
+    {
+      "key": "service-workers|FetchEvent|handled|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes the fetch event handled.",
+      "prerequisites": "Requires an accessible fetch event; synthetic init values and browser-created event state differ.",
+      "next": "Trace actual request, client identity and preload provenance; review any pre-existing network effects separately."
+    },
+    {
+      "key": "service-workers|FetchEvent|preloadResponse|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes the fetch event preloadResponse.",
+      "prerequisites": "Requires an accessible fetch event; synthetic init values and browser-created event state differ.",
+      "next": "Trace actual request, client identity and preload provenance; review any pre-existing network effects separately."
+    },
+    {
+      "key": "service-workers|FetchEvent|replacesClientId|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes the fetch event replacesClientId.",
+      "prerequisites": "Requires an accessible fetch event; synthetic init values and browser-created event state differ.",
+      "next": "Trace actual request, client identity and preload provenance; review any pre-existing network effects separately."
+    },
+    {
+      "key": "service-workers|FetchEvent|request|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes the fetch event request.",
+      "prerequisites": "Requires an accessible fetch event; synthetic init values and browser-created event state differ.",
+      "next": "Trace actual request, client identity and preload provenance; review any pre-existing network effects separately."
+    },
+    {
+      "key": "service-workers|FetchEvent|resultingClientId|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Exposes the fetch event resultingClientId.",
+      "prerequisites": "Requires an accessible fetch event; synthetic init values and browser-created event state differ.",
+      "next": "Trace actual request, client identity and preload provenance; review any pre-existing network effects separately."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|onactivate|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the service worker onactivate handler.",
+      "prerequisites": "Requires access to the relevant global and a dispatched event.",
+      "next": "Distinguish the virtual publisher event surface from a native service-worker global, and verify handler authority at dispatch."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|onfetch|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the service worker onfetch handler.",
+      "prerequisites": "Requires access to the relevant global and a dispatched event.",
+      "next": "Distinguish the virtual publisher event surface from a native service-worker global, and verify handler authority at dispatch."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|oninstall|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the service worker oninstall handler.",
+      "prerequisites": "Requires access to the relevant global and a dispatched event.",
+      "next": "Distinguish the virtual publisher event surface from a native service-worker global, and verify handler authority at dispatch."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|onmessage|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the service worker onmessage handler.",
+      "prerequisites": "Requires access to the relevant global and a dispatched event.",
+      "next": "Distinguish the virtual publisher event surface from a native service-worker global, and verify handler authority at dispatch."
+    },
+    {
+      "key": "service-workers|ServiceWorkerGlobalScope|onmessageerror|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the service worker onmessageerror handler.",
+      "prerequisites": "Requires access to the relevant global and a dispatched event.",
+      "next": "Distinguish the virtual publisher event surface from a native service-worker global, and verify handler authority at dispatch."
+    },
+    {
+      "key": "background-fetch|ServiceWorkerGlobalScope|onbackgroundfetchabort|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the handler for the corresponding background-fetch event.",
+      "prerequisites": "Requires a browser exposing the event on a reachable native service-worker global and relevant background state.",
+      "next": "Test native event delivery and handler authority with a working browser control; callback assignment is not itself a request."
+    },
+    {
+      "key": "background-fetch|ServiceWorkerGlobalScope|onbackgroundfetchclick|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the handler for the corresponding background-fetch event.",
+      "prerequisites": "Requires a browser exposing the event on a reachable native service-worker global and relevant background state.",
+      "next": "Test native event delivery and handler authority with a working browser control; callback assignment is not itself a request."
+    },
+    {
+      "key": "background-fetch|ServiceWorkerGlobalScope|onbackgroundfetchfail|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the handler for the corresponding background-fetch event.",
+      "prerequisites": "Requires a browser exposing the event on a reachable native service-worker global and relevant background state.",
+      "next": "Test native event delivery and handler authority with a working browser control; callback assignment is not itself a request."
+    },
+    {
+      "key": "background-fetch|ServiceWorkerGlobalScope|onbackgroundfetchsuccess|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the handler for the corresponding background-fetch event.",
+      "prerequisites": "Requires a browser exposing the event on a reachable native service-worker global and relevant background state.",
+      "next": "Test native event delivery and handler authority with a working browser control; callback assignment is not itself a request."
+    },
+    {
+      "key": "background-sync|ServiceWorkerGlobalScope|onsync|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the handler for one-shot background sync events.",
+      "prerequisites": "Requires reachable native service-worker global, registration and event delivery.",
+      "next": "Calibrate event delivery and independently test handler network authority."
+    },
+    {
+      "key": "periodic-background-sync|ServiceWorkerGlobalScope|onperiodicsync|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the handler for periodic sync events.",
+      "prerequisites": "Requires reachable native service-worker global and a successful periodic registration/event.",
+      "next": "Establish a positive permission and event control before drawing a conclusion about the handler."
+    },
+    {
+      "key": "background-sync|SyncEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a synthetic sync event with specified initialization.",
+      "prerequisites": "Requires constructor exposure; synthetic events do not establish a browser-registered background event.",
+      "next": "Distinguish actual browser event dispatch and associated worker authority from synthetic dispatch."
+    },
+    {
+      "key": "background-sync|SyncEvent|tag|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the event registration tag.",
+      "prerequisites": "Requires an accessible sync event; it may be synthetic or browser-delivered.",
+      "next": "Review shared state and any later relay, as well as event provenance."
+    },
+    {
+      "key": "periodic-background-sync|PeriodicSyncEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a synthetic sync event with specified initialization.",
+      "prerequisites": "Requires constructor exposure; synthetic events do not establish a browser-registered background event.",
+      "next": "Distinguish actual browser event dispatch and associated worker authority from synthetic dispatch."
+    },
+    {
+      "key": "periodic-background-sync|PeriodicSyncEvent|tag|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the event registration tag.",
+      "prerequisites": "Requires an accessible sync event; it may be synthetic or browser-delivered.",
+      "next": "Review shared state and any later relay, as well as event provenance."
+    },
+    {
+      "key": "background-sync|SyncEvent|lastChance|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the sync event last-chance flag.",
+      "prerequisites": "Requires an accessible SyncEvent, which could be synthetic.",
+      "next": "Review event provenance and worker behavior separately."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a synthetic background-fetch event.",
+      "prerequisites": "Requires constructor exposure and valid init; synthetic events are not necessarily trusted or active.",
+      "next": "Distinguish browser-created events and their registration authority from synthetic objects."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchUpdateUIEvent|constructor|constructor",
+      "class": "event-construction",
+      "wpt": [],
+      "effect": "Constructs a synthetic background-fetch event.",
+      "prerequisites": "Requires constructor exposure and valid init; synthetic events are not necessarily trusted or active.",
+      "next": "Distinguish browser-created events and their registration authority from synthetic objects."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchEvent|registration|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Exposes the registration associated with a background-fetch event.",
+      "prerequisites": "Requires an accessible event with an associated registration.",
+      "next": "Determine native event provenance and test subsequent record access and abort authority."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchUpdateUIEvent|updateUI|operation",
+      "class": "browser-ui-effect",
+      "wpt": [],
+      "effect": "Requests an update of background fetch UI, including the supplied UI options.",
+      "prerequisites": "The draft requires a trusted, active event whose UI has not already been updated.",
+      "next": "Analyze option processing and potential resource loads in the browser implementation; do not infer network activity from the method name."
+    },
+    {
+      "key": "credential-management-1|CredentialUserData|iconURL|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Returns the credential user data iconURL.",
+      "prerequisites": "Requires an accessible credential implementing the mixin; the snapshot does not resolve all mixin exposure.",
+      "next": "Review browser credential UI and icon consumption separately, including any browser-owned network effects."
+    },
+    {
+      "key": "credential-management-1|CredentialUserData|name|attribute",
+      "class": "credential-state",
+      "wpt": [],
+      "effect": "Returns the credential user data name.",
+      "prerequisites": "Requires an accessible credential implementing the mixin; the snapshot does not resolve all mixin exposure.",
+      "next": "Review browser credential UI and icon consumption separately, including any browser-owned network effects."
+    },
+    {
+      "key": "webtransport|WebTransportSendStream|getWriter|operation",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Obtains a writer for an accessible outgoing WebTransport send stream.",
+      "prerequisites": "Requires an unlocked send stream and browser support for the particular writer interface.",
+      "next": "Calibrate whether obtained writers can be reached by untrusted code and write bytes to a native receiver."
+    },
+    {
+      "key": "webtransport|WebTransportWriter|atomicWrite|operation",
+      "class": "network-entry-conditional",
+      "wpt": [],
+      "effect": "Writes a chunk subject to atomic flow-control semantics; other errors can occur after partial delivery.",
+      "prerequisites": "Requires an accessible WebTransportWriter and a usable live stream; browser support for this writer is unknown.",
+      "next": "Calibrate actual partial and successful delivery against a receiver in relevant execution contexts."
+    },
+    {
+      "key": "webtransport|WebTransportWriter|commit|operation",
+      "class": "transport-configuration",
+      "wpt": [],
+      "effect": "Commits data on the writer according to the WebTransport writer algorithm.",
+      "prerequisites": "Requires an accessible native writer and applicable stream state; implementation support is unknown.",
+      "next": "Check precise buffering and transmission consequences against the current spec and receiver; do not assume it is a no-op or standalone upload."
     }
   ]
 }

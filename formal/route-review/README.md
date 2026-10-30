@@ -148,15 +148,33 @@ to test.
 All rows with an observed property name in this bounded snapshot now have a
 manual classification. This means their specified role and follow-up questions
 were recorded; it does not mean their effects, implementations or confinement
-were exhaustively analyzed. The remaining 76 rows lack an observed name in this
-snapshot and remain unreviewed. Some represent contexts or prototypes the
-snapshot did not capture, so they must not be treated as absent browser APIs.
+were exhaustively analyzed. The previously unobserved rows were also reviewed against specification
+algorithms where possible. Five remain unreviewed because their algorithms or
+current applicability need further checking. An unobserved name is not evidence
+that a browser lacks the API.
 In particular, the snapshot does not enumerate service-worker global objects,
 shared workers, worklets or WorkerNavigator, and covers only the recorded
 Chromium and Firefox versions.
 
-Several remaining reviews concern [WebTransport scheduling and buffering](https://w3c.github.io/webtransport/#dom-webtransportdatagramswritable-sendorder).
+Several reviews concern [WebTransport scheduling and buffering](https://w3c.github.io/webtransport/#dom-webtransportdatagramswritable-sendorder).
 The configuration setters need a reachable transport object; changes may affect
 queued transmission or timing, which the current review has not measured. The
 static `Response.json` row in the join constructs a response; the inherited
 instance body-reading method is distinct and is not covered by that row.
+
+Review of the unobserved rows identified native service-worker operations
+that merit focused tests. [`InstallEvent.addRoutes`](https://w3c.github.io/ServiceWorker/#dom-installevent-addroutes)
+can configure static sources including network and racing network with the
+fetch handler. This requires the relevant native installation authority; no
+publisher path to that authority has been demonstrated.
+[`Clients.openWindow`](https://w3c.github.io/ServiceWorker/#dom-clients-openwindow)
+and [`WindowClient.navigate`](https://w3c.github.io/ServiceWorker/#dom-windowclient-navigate)
+can cause navigation given their respective client and activation prerequisites.
+A positive native receiver control and a test of actual publisher reachability
+are needed before drawing a confinement conclusion.
+
+Body mixin methods expose and consume streams on Request and Response objects.
+A response body can already be backed by a network operation, so body reads
+should be reviewed alongside request lifecycle and cancellation, not simply
+dismissed as local. The pinned IDL does not resolve the mixin's full exposure
+for the captured contexts.

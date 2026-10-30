@@ -41,6 +41,8 @@
     "formal/path-audit/colon-resource.ts": "f3cf6006ea6a42af4140612f8d9b9bbcd594a00be4fc73338c2dadafb2acab13",
     "formal/path-lean/CanonicalAdmission.lean": "cf14edd75cba77f68487108a14b7493e3e7248ce15a527c15987faf5100c5df7",
     "formal/path-lean/README.md": "cbbf9c1f702bddff98bdcd4b2145ced3ba0f32bb99b6f481c8756bc0d7bd6210",
+    "formal/route-review/README.md": "58eb90cb6f341c8aa9f0536b78d1a3ea94f46e16533c1049c02c683e7eb11c31",
+    "formal/route-review/triage.json": "fdca0458941e3241f1fe30c712f9709ff9bbc4532a2a12a96e7cc9e794385a55",
     "formal/startup/lifecycle-comparison.json": "b71354b1facad0ba503250f93157a603481e6df90039d4f2107f6f2269a66200",
     "formal/web-install-sandbox-fault.md": "dc874f193288fa6f0cbc393d607a49c55e416b1c203267051c0484a3e5a4e3bc",
     "formal/web-install-sandbox-fault.ts": "fb0b0483480215ae9ec55dd8da10b57c2db855e4375c0c7c45a1f07dfed9232b",
@@ -76,6 +78,7 @@
     "src/runtime/modules.ts": "45062e9a74b48da2b74086a7f247f86e0202cd43f166c8084cbaf5fd5377c675",
     "src/runtime/publisher/client.ts": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf",
     "src/runtime/publisher/controller.ts": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff",
+    "src/runtime/publisher/events.ts": "d054af683a6264a67aa2d375f38dca17079835226e5e4c6ebd7669f2e70c2ced",
     "src/runtime/publisher/guard.ts": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49",
     "src/runtime/resource-aliases.ts": "c8dd9460b82fbf5a15df598f27b4978a90751ce8fd59d16978c6a41b6e0ca342",
     "src/runtime/response-policy.ts": "f21946f76dd37233ea7e48dd969a59e09343315f3a044e4be66ae4324fb9efb2",
@@ -1376,6 +1379,37 @@
       "control_status": {
         "native_control": "recorded",
         "confined_test": "recorded",
+        "fault_control": "not-recorded"
+      }
+    },
+    {
+      "id": "native_worker_static_routes",
+      "title": "Native service-worker routing and client navigation",
+      "disposition": "unverified",
+      "preconditions": "Application code obtains a native service-worker installation event or a native service-worker client with the relevant navigation and activation authority.",
+      "enforcement": "Publisher service-worker behavior is emulated in a prepared worker and its openWindow facade is unsupported; native service-worker registration access is restricted.",
+      "source_paths": [
+        "src/runtime/publisher/events.ts",
+        "src/runtime/enforcement/effects.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "discovery",
+          "description": "The standards review identifies static network routes and native worker client navigation as conditional effects. It does not establish application access to those native objects.",
+          "paths": [
+            "formal/route-review/README.md",
+            "formal/route-review/triage.json"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "Calibrate native receiver controls for addRoutes network sources and worker client navigation under their prerequisites.",
+        "Test whether installed applications can acquire native installation and client authority in all supported contexts and lifecycle states.",
+        "The virtual publisher facade is not by itself proof that every native acquisition route is closed."
+      ],
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "not-recorded",
         "fault_control": "not-recorded"
       }
     }
