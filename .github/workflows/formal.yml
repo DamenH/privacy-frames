@@ -76,7 +76,10 @@ jobs:
       - run: node formal/webtransport/run.ts
         env:
           PF_WEBTRANSPORT_PYTHON: python
+      - run: node formal/startup/local-run.ts
       - uses: actions/upload-artifact@v4
         with:
           name: webtransport-evidence
-          path: formal/webtransport/results.json
+          path: |
+            formal/webtransport/results.json
+            formal/startup/local-results.json

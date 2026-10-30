@@ -1,5 +1,9 @@
 # Paused child startup during a controller update
 
+The separate [local guard matrix](LOCAL-GUARD.md) now exercises actual controller
+upgrade before publication in both browsers. The older server-response experiment
+below remains exploratory and is not its CI entry point.
+
 Run from the repository root with the existing built manager, runtime and
 installation artifacts:
 
