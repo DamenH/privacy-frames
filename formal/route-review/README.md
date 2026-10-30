@@ -73,8 +73,10 @@ its network authority are a separate step.
 
 The [navigation preload algorithm](https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-setheadervalue)
 stores an application-supplied header value on an active registration. A
-subsequent enabled preload could carry that value. Native manager acquisition,
-timing and delivery under confinement require receiver tests.
+subsequent enabled preload could carry that value. The
+[preload probe](../navigation-preload.md) calibrates native delivery and tests
+two virtual interfaces. Runtime-origin persistent state and app-triggered
+navigations remain open.
 
 [FedCM getUserInfo](https://w3c-fedid.github.io/FedCM/#dom-identityprovider-getuserinfo)
 has several prerequisites, including same-origin configuration, a non-top-level
