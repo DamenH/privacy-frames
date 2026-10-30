@@ -107,6 +107,9 @@ obligations separately, with a check for changes to the cited artifacts.
 The [Lean authority-graph proofs](lean/README.md) establish a conditional result
 for arbitrary finite reference chains and checked edge additions. They do not
 prove that the browser or runtime satisfies their premises.
+The [canonical path loop proof](path-lean/README.md) checks an abstract
+version of the admission rule for arbitrary finite inputs. Its correspondence
+to TypeScript and browser URL behavior is not machine-verified.
 
 These checks do not compose into a proof that the implementation confines every
 browser effect. The abstract models assume that important browser and runtime

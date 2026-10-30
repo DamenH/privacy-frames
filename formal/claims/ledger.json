@@ -39,6 +39,8 @@
     "formal/path-audit/README.md": "5b5631af02f28dc1eac8b03eb1f7e7f5d955af5124baa186f92257509834355c",
     "formal/path-audit/colon-resource.json": "dc3027f4f491ba35e6d01a4f65ec71035b74b2f58c78ff518f5d687addeda011",
     "formal/path-audit/colon-resource.ts": "f3cf6006ea6a42af4140612f8d9b9bbcd594a00be4fc73338c2dadafb2acab13",
+    "formal/path-lean/CanonicalAdmission.lean": "cf14edd75cba77f68487108a14b7493e3e7248ce15a527c15987faf5100c5df7",
+    "formal/path-lean/README.md": "cbbf9c1f702bddff98bdcd4b2145ced3ba0f32bb99b6f481c8756bc0d7bd6210",
     "formal/startup/lifecycle-comparison.json": "b71354b1facad0ba503250f93157a603481e6df90039d4f2107f6f2269a66200",
     "formal/web-install-sandbox-fault.md": "dc874f193288fa6f0cbc393d607a49c55e416b1c203267051c0484a3e5a4e3bc",
     "formal/web-install-sandbox-fault.ts": "fb0b0483480215ae9ec55dd8da10b57c2db855e4375c0c7c45a1f07dfed9232b",
@@ -1316,6 +1318,14 @@
           "paths": [
             "test/runtime-admission.test.ts",
             "test/resource-paths.ts"
+          ]
+        },
+        {
+          "kind": "formal_theorem",
+          "description": "Kernel-checked unbounded abstract loop: successful acceptance implies each target passes the supplied scope predicate and is unique. The mapping to JavaScript is by inspection and does not prove browser URL semantics.",
+          "paths": [
+            "formal/path-lean/README.md",
+            "formal/path-lean/CanonicalAdmission.lean"
           ]
         }
       ],

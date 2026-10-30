@@ -2,9 +2,9 @@ name: Check authority-graph proofs
 on:
   push:
     branches: [main, confinement-model]
-    paths: ['formal/lean/**', '.github/workflows/lean.yml']
+    paths: ['formal/lean/**', 'formal/path-lean/**', '.github/workflows/lean.yml']
   pull_request:
-    paths: ['formal/lean/**', '.github/workflows/lean.yml']
+    paths: ['formal/lean/**', 'formal/path-lean/**', '.github/workflows/lean.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -26,3 +26,4 @@ jobs:
           printf '%s  %s\n' 7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d .tools/lean-4.35.0-linux.tar.zst | sha256sum -c -
           tar --zstd -xf .tools/lean-4.35.0-linux.tar.zst -C .tools
       - run: python3 formal/lean/check.py
+      - run: python3 formal/path-lean/check.py
