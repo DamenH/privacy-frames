@@ -2291,6 +2291,10 @@
     "service-workers|InstallEvent|addRoutes|operation": {
       "claim": "native_worker_static_routes",
       "disposition": "unverified"
+    },
+    "service-workers|WorkerNavigator|serviceWorker|attribute": {
+      "claim": "background_agents",
+      "disposition": "enforced-scoped"
     }
   }
 }
