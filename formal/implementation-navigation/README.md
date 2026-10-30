@@ -107,11 +107,12 @@ source commit because the change was being tested uncommitted; source and build
 hashes identify the tested inputs, and the build remained stable throughout.
 This is compatibility evidence, separate from receiver tests and proofs.
 
-The two-stage initialization was deployed from host revision
-`772480e600d2d60e3b691caba0c59c790e9e5612`. The live service worker and four
-checked guards matched the locally tested build. A fresh Chromium installation
-passed the identity and sampled reporting-header checks. These live checks do
-not replace the local fault controls or prove every browser path.
+The [native-capture deployment receipt](deployment-native-capture.json) records
+runtime publication from host revision
+`0d6a8dbec8623d985540b679a22e9d03f2ff2d8a`. All eight checked public scripts,
+including the service worker and window/context guards, matched the stable
+tested build. A fresh Chromium profile installed the public Notes app and passed
+the live identity and sampled reporting-header checks.
 
 The [Gillian-JS experiment](gillian.md) analyzes the extracted callback as ES5
 JavaScript under explicit native-operation contracts. It checks cancellation,

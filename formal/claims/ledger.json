@@ -47,10 +47,11 @@
     "formal/evidence/worker-registration.json": "c81c512d2bc4cacca244e30e9f8c215e8288bf676ee64ba9e994d09ff5fb0da5",
     "formal/idl-surface-report.md": "e78ca56cb8a7093ec49a0cb23eff21443eb76529492911adc2dbd7a8959973e3",
     "formal/implementation-navigation/Expression.lean": "45e39bd82a01a24e8cfce5b5a53bd6be43522e1193b85f9aaecc23ac6caa9907",
-    "formal/implementation-navigation/README.md": "a80f89330503865261803a1dd40b76545d5c02ba38f5b94b659220f03e975f18",
+    "formal/implementation-navigation/README.md": "22c367fa529865234faaf1ccc585cc8eaf8fa67e922336f81ca4d36f56b5bcd5",
     "formal/implementation-navigation/browser-contract.md": "528c14befe4e40280d7167908ec227083b6ccf797d99c0db4ddf13c4ceb9033c",
     "formal/implementation-navigation/check.ts": "58c1b0bb8204483fa81fcd51060940796b39c922b55d825dd86999b5deb5c712",
     "formal/implementation-navigation/compatibility-native-capture.json": "76715722227a714210a4bb4c71ba46126d0617b00c28a946df8c980786ad6200",
+    "formal/implementation-navigation/deployment-native-capture.json": "afd8aa03c57d7b71212ef9129fa4011cfeb35291d11c3014da4da1499aac5d80",
     "formal/implementation-navigation/gillian-check.ts": "3fe55b28e050ab03cfc27c5aa5b3ad0bcd984712da2541fae35e08ebe02709b0",
     "formal/implementation-navigation/gillian-result.json": "0eb634a27a01c70f92c9e2fcab7f0b27649ce81749683128e58d5aa8570157d9",
     "formal/implementation-navigation/gillian.md": "d31e0676b8069e98d2ab30622de4075188da986fdbf330d35c9565ed8993af3a",
@@ -64,6 +65,7 @@
     "formal/lean/CapabilityBoundary.lean": "5cf557978cf54255fded00ba991b90db7e54056e39f81a769f016c32ace7cf23",
     "formal/lean/README.md": "e0f71cc0ca90052045d6b1611bb33bf6f4d62732031f66099052ab4c46935d01",
     "formal/lean/Reachability.lean": "b643cfdbf2042d135ce5bb94204dcbd9921e5f898b1ee44baed24c4e4a49d0ab",
+    "formal/live-identity-check.ts": "61d983fcecc0f91b22d1bd1bf8156d932ce7591dde90ea5a6c9941e96ad418ea",
     "formal/navigation-preload-fault.md": "3d618f15ee6a02631543f46817f4bb848218832134ffab16455e8c94c67c559d",
     "formal/navigation-preload-fault.ts": "7c28c22ec047dfa7f6aee479c29df0ea37169ed38c27d5c5c20cfe22f8ec9c63",
     "formal/navigation-preload-probe.ts": "3dc4b881d114035db87de556354dce9a5a5cac60e2c5fa3d115ae92500470803",
@@ -1663,6 +1665,14 @@
           "description": "The complete eight-app corpus passed native and confined tasks in Chromium and Firefox after moving native cancellation capture before intrinsic/tool preparation. Source and artifact hashes identify the tested uncommitted inputs; this is compatibility evidence, separate from receiver tests and proofs.",
           "paths": [
             "formal/implementation-navigation/compatibility-native-capture.json"
+          ]
+        },
+        {
+          "kind": "discovery",
+          "description": "The deployed runtime is pinned to the tested native-capture revision. Eight direct public script bodies match the stable corpus build. A fresh Chromium profile installed the public Notes app and passed identity/reporting policy samples; this deployment check does not constitute a live navigation receiver proof.",
+          "paths": [
+            "formal/implementation-navigation/deployment-native-capture.json",
+            "formal/live-identity-check.ts"
           ]
         }
       ],

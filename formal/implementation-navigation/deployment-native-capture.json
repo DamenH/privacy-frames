@@ -1,0 +1,75 @@
+{
+  "sourceRevision": "0d6a8dbec8623d985540b679a22e9d03f2ff2d8a",
+  "runtimePointerCommit": "c488e2424b500eaac9e2526310cd7e58c4f5906e",
+  "pagesRun": 41130705438,
+  "checkedAt": "2026-10-30T21:25:05.728842+00:00",
+  "method": "SHA-256 of direct HTTPS response bodies compared to the stable tested local build, requesting cache revalidation",
+  "files": [
+    {
+      "path": "sw.js",
+      "status": 200,
+      "expectedSHA256": "f094ba1e3e4bd71220643fd93a15709c850a75a9a74a752d1b18e76c7cea13b2",
+      "liveSHA256": "f094ba1e3e4bd71220643fd93a15709c850a75a9a74a752d1b18e76c7cea13b2",
+      "matches": true
+    },
+    {
+      "path": "guard.js",
+      "status": 200,
+      "expectedSHA256": "b3d425cb66832427780b45d76372bebf10c0c05e072eaacdffe3bf4e88e41da4",
+      "liveSHA256": "b3d425cb66832427780b45d76372bebf10c0c05e072eaacdffe3bf4e88e41da4",
+      "matches": true
+    },
+    {
+      "path": "document-guard.js",
+      "status": 200,
+      "expectedSHA256": "de79a51c4dfe47911d0f6351c318f1f5e20933f6a54df28ccdbf951ca5ecab90",
+      "liveSHA256": "de79a51c4dfe47911d0f6351c318f1f5e20933f6a54df28ccdbf951ca5ecab90",
+      "matches": true
+    },
+    {
+      "path": "worker-guard.js",
+      "status": 200,
+      "expectedSHA256": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "liveSHA256": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "matches": true
+    },
+    {
+      "path": "shared-worker-guard.js",
+      "status": 200,
+      "expectedSHA256": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "liveSHA256": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "matches": true
+    },
+    {
+      "path": "worklet-guard.js",
+      "status": 200,
+      "expectedSHA256": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "liveSHA256": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "matches": true
+    },
+    {
+      "path": "publisher-worker-guard.js",
+      "status": 200,
+      "expectedSHA256": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "liveSHA256": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "matches": true
+    },
+    {
+      "path": "connect.js",
+      "status": 200,
+      "expectedSHA256": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "liveSHA256": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "matches": true
+    }
+  ],
+  "completed": true,
+  "liveCheck": {
+    "runner": "formal/live-identity-check.ts",
+    "runnerSHA256": "61d983fcecc0f91b22d1bd1bf8156d932ce7591dde90ea5a6c9941e96ad418ea",
+    "browser": "Chromium",
+    "version": "153.0.8010.12",
+    "output": "Live identity and sampled reporting-header checks passed in Chromium 153.0.8010.12",
+    "scope": "Fresh public Notes installation, native identity denial and sampled deployed reporting/permissions headers; not a live navigation receiver test"
+  },
+  "completedAt": "2026-10-30T21:26:46.473714+00:00"
+}
