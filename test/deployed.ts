@@ -177,7 +177,12 @@ try {
       let app = await launch('notes');
       await app.locator('#note').fill('Synthetic deployed private note');
       await app.locator('#save').click();
-      await app.reload({ waitUntil: 'commit' });
+      const confinedResponse = await app.reload({ waitUntil: 'commit' });
+      assert.equal(
+        confinedResponse?.headers()['connection-allowlist'],
+        '(response-origin); redirects=block; webrtc=block',
+        'Installed document must carry the browser connection policy',
+      );
       await app.waitForFunction(() =>
         document.querySelector('#mode')?.textContent.includes('network isolated'),
       );
@@ -187,7 +192,7 @@ try {
       );
       await app.close();
       row.checks.push(
-        'Readable app URL, native notes, persistent scoped storage and no opener',
+        'Readable app URL, native notes, persistent scoped storage, connection policy and no opener',
       );
       const photoCraftLink = page
         .locator('.app-card')

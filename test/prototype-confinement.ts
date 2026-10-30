@@ -9,7 +9,7 @@ import { servers } from './server.ts';
 
 // Own the listeners: an independently running server cannot provide the
 // in-process upgrade observations required by this fixture.
-const hostServer = await servers({ receiver: false });
+const hostServer = await servers({ receiver: false, acceptWebSockets: true });
 
 const requests: { path: string; upgrade: boolean }[] = [];
 let publisher = '';
@@ -28,6 +28,7 @@ function sameOriginSocket(target, context) {
   try {
     const socket = new target.WebSocket('ws://127.0.0.1:4211/runtime/__prototype-upgrade?marker=' + socketMarker + '&context=' + context);
     socket.onerror = () => {};
+    socket.onopen = () => socket.close();
     return 'constructed';
   } catch { return 'rejected'; }
 }
@@ -154,6 +155,10 @@ try {
                   'ws://127.0.0.1:4211/runtime/__prototype-upgrade?marker=' + marker,
                 );
                 socket.onerror = () => resolve('receiver-or-handshake-error');
+                socket.onopen = () => {
+                  socket.close();
+                  resolve('receiver-open');
+                };
                 setTimeout(() => resolve('timed-out'), 5000);
               } catch {
                 resolve('constructor-rejected');
@@ -171,6 +176,7 @@ try {
           outcome,
           upgrades,
         });
+        assert.equal(outcome, 'receiver-open', 'Native socket control must open');
         assert.equal(
           upgrades.length,
           1,

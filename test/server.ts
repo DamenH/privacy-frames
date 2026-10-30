@@ -1,4 +1,6 @@
 import http from 'node:http';
+import { createHash } from 'node:crypto';
+import type { Duplex } from 'node:stream';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -32,12 +34,17 @@ export interface UpgradeObservation {
 
 /** Static files only, with the same separate manager/runtime roles as deployment. */
 export async function servers(
-  options: { receiver?: boolean; publicExamples?: boolean } = {},
+  options: {
+    receiver?: boolean;
+    publicExamples?: boolean;
+    acceptWebSockets?: boolean;
+  } = {},
 ) {
   const traffic: RequestObservation[] = [];
   const connections: Array<{ port: number; time: number }> = [];
   const upgrades: UpgradeObservation[] = [];
   const listeners: http.Server[] = [];
+  const upgradedSockets = new Set<Duplex>();
   const publisherApps: Record<number, string> = {
     4212: 'notes',
     4213: 'image',
@@ -193,7 +200,29 @@ export async function servers(
         time: Date.now(),
       });
       traffic.push({ port, path: request.url ?? '/', method: 'UPGRADE' });
-      socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n');
+      if (!options.acceptWebSockets) {
+        socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n');
+        return;
+      }
+      // Successful native controls avoid browser backoff after failed handshakes.
+      upgradedSockets.add(socket);
+      socket.once('close', () => upgradedSockets.delete(socket));
+      socket.on('error', (error) => {
+        const code = 'code' in error ? String(error.code) : '';
+        if (code !== 'ECONNRESET' && code !== 'EPIPE') throw error;
+      });
+      const accept = createHash('sha1')
+        .update(
+          String(request.headers['sec-websocket-key']) +
+            '258EAFA5-E914-47DA-95CA-C5AB0DC85B11',
+        )
+        .digest('base64');
+      socket.write(
+        'HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: ' +
+          accept +
+          '\r\n\r\n',
+      );
+      socket.once('data', () => socket.end(Buffer.from([0x88, 0x00])));
     });
     await new Promise<void>((resolve, reject) => {
       server.once('error', reject);
@@ -207,6 +236,7 @@ export async function servers(
     connections,
     upgrades,
     close: async () => {
+      for (const socket of upgradedSockets) socket.destroy();
       await Promise.all(
         listeners.map(
           (server) =>
