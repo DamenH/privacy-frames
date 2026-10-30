@@ -1,0 +1,79 @@
+{
+  "scope": "Native worker registration acquisition on a seeded publisher origin and actual installed dedicated-worker acquisition against the host runtime. API absence is not containment. No direct background request, all-context or universal authority claim.",
+  "provenance": {
+    "capturedAt": "2026-10-30T19:18:23.334Z",
+    "revision": "2e057607d173db0993a6321bb15c37904dbd9244",
+    "dirty": true,
+    "sourceSHA256": "05331956de4dc8e219a375fd9d6f7363f8e93bd22a16cd3cc881a9078069ace9",
+    "runner": "formal/worker-registration-probe.ts",
+    "runnerSHA256": "21d006cf59339f8605c5635a8995b2cd7b006d4b7f8c7e95a089bf8bebc11f1a",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-manager/sw.js": "47683c5a69dd3eb9c2ef3b383f04598b3262e8191dd38c9ab80217afce791c6f",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "117d37a809d044b70d56927dbf2aa798250cb6e5ff7fe8b2913de91842425c62",
+      "dist-runtime/guard.js": "5e4961bb6eb78775af658b1c949cded25c70bb78b717ea0098df4da25c9260d4",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "dist-runtime/sw.js": "60a83e8bc57b7e6543f030291f62bc797834cd5848a9e7f759782c428e40cc45",
+      "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "6cd0a3f3f4494dee2db059f3b1a5feb62017a39399a22e2d3774d0319fa1e3f3"
+    }
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "nativeResult": {
+        "hasMember": false,
+        "container": "missing",
+        "prototypeGetter": "undefined",
+        "prototypeResult": "missing"
+      },
+      "actual": {
+        "hasMember": false,
+        "container": "missing",
+        "prototypeGetter": "undefined",
+        "prototypeResult": "missing"
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "nativeResult": {
+        "hasMember": true,
+        "container": "available",
+        "registrations": 1,
+        "prototypeGetter": "function",
+        "prototypeResult": "available"
+      },
+      "actual": {
+        "hasMember": true,
+        "getterError": "SecurityError",
+        "prototypeGetter": "function",
+        "prototypeError": "SecurityError"
+      }
+    }
+  ],
+  "completed": true
+}

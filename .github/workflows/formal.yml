@@ -103,6 +103,7 @@ jobs:
       - run: node formal/cache-publisher-probe.ts
       - run: node formal/publisher-routes-probe.ts
       - run: node formal/publisher-navigate-probe.ts
+      - run: node formal/worker-registration-probe.ts
       - run: node test/document-consumption-race.ts
       - run: node formal/document-consumption-fault.ts
       - run: node test/context-generation.ts
@@ -133,5 +134,6 @@ jobs:
             formal/evidence/cache-publisher.json
             formal/evidence/publisher-routes.json
             formal/evidence/publisher-navigate.json
+            formal/evidence/worker-registration.json
             formal/admission/model-results.json
             formal/admission/implementation-results.json
