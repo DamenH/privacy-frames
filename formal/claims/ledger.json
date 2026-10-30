@@ -45,6 +45,7 @@
     "formal/path-lean/README.md": "cbbf9c1f702bddff98bdcd4b2145ced3ba0f32bb99b6f481c8756bc0d7bd6210",
     "formal/publisher-navigate-probe.ts": "f41c6506dd78607706de9b4b95e3af683c43cf135a118a8f0ba46bd25a1347e4",
     "formal/publisher-navigate.md": "b4b36a7b1e6b910e21e628ed6616cb962ee284f6bba092cb03f437672bbed2a4",
+    "formal/publisher-open-window-limitation.md": "2650ca4cb3cdbfddd02b4b02191cf59354c020b540355950130c7670db47a283",
     "formal/publisher-routes-probe.ts": "50aeef31a5dc7c92f1b7351869f6927fc0df90dfaf81318ade5e0112520ed4f8",
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
     "formal/route-review/README.md": "375484044ece902c107d92d735baa69b0ea9e942f57a4ea1ce0f643b86cc5d97",
@@ -1441,6 +1442,13 @@
             "formal/publisher-navigate.md",
             "formal/publisher-navigate-probe.ts",
             "formal/evidence/publisher-navigate.json"
+          ]
+        },
+        {
+          "kind": "discovery",
+          "description": "A native Chromium openWindow calibration following a real click was rejected with InvalidAccessError; no native positive or paired confinement result is claimed.",
+          "paths": [
+            "formal/publisher-open-window-limitation.md"
           ]
         }
       ],
