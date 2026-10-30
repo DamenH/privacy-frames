@@ -7,11 +7,9 @@ on:
         'formal/lean/**',
         'formal/path-lean/**',
         'formal/implementation-navigation/**',
-        'src/runtime/enforcement/navigation.ts',
-        'src/runtime/guard.ts',
-        'src/runtime/contexts/window-realm.ts',
-        'src/runtime/trusted/client.ts',
-        'src/runtime/trusted/context.ts',
+        'src/**',
+        'scripts/**',
+        'package-lock.json',
         '.github/workflows/lean.yml',
       ]
   pull_request:
@@ -20,11 +18,9 @@ on:
         'formal/lean/**',
         'formal/path-lean/**',
         'formal/implementation-navigation/**',
-        'src/runtime/enforcement/navigation.ts',
-        'src/runtime/guard.ts',
-        'src/runtime/contexts/window-realm.ts',
-        'src/runtime/trusted/client.ts',
-        'src/runtime/trusted/context.ts',
+        'src/**',
+        'scripts/**',
+        'package-lock.json',
         '.github/workflows/lean.yml',
       ]
   workflow_dispatch:
@@ -57,3 +53,4 @@ jobs:
       - run: node formal/implementation-navigation/check.ts
       - run: node formal/implementation-navigation/setup-check.ts
       - run: node formal/implementation-navigation/trusted-source-check.ts
+      - run: node formal/implementation-navigation/build-source-check.ts

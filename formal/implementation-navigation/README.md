@@ -73,3 +73,13 @@ The [helper review](helper-review.md) records the private parser's known executi
 operation and its source-origin check. It also explains why moving the complete
 navigation installer earlier would change a native popup capture. This check
 narrows one helper assumption; it does not prove every preparation helper safe.
+
+`node formal/implementation-navigation/build-source-check.ts` builds a fixture
+through the real virtual-import plugin and decodes its generated data export
+without evaluating it. The exported string must exactly match an independently
+built trusted entry and wrapper. The receipt records every trusted-entry input
+hash, the plugin, lockfile, compiler version and output hashes. Executable export
+initialization, cyclic aliases and a substituted source are negative controls.
+This checks provenance and byte correspondence, not esbuild correctness or the
+behavior of the resulting program. TypeScript's parsing of literal values is
+also trusted. Source/build/dependency changes trigger the proof workflow.

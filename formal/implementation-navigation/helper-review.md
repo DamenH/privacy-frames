@@ -20,9 +20,10 @@ evaluation reference, and the known eval call has exactly that argument and
 receiver. Changes to the import, caller argument or evaluation argument are
 rejected. The receipt pins both source files and the checker.
 
-This establishes a restricted source-origin property. It does not establish
-that the bundler implements the virtual import correctly, that the imported
-program never evaluates publisher text, that arbitrary helpers have no execution
+This establishes a restricted source-origin property. The separate build-source
+check confirms the actual virtual import's bytes match a reconstructed trusted
+entry bundle. Compiler correctness remains assumed. These checks do not establish
+that the imported program never evaluates publisher text, that arbitrary helpers have no execution
 effects, or that frame construction obeys the expected browser behavior. Those
 remain proof obligations. The parser, extractor and uncontaminated initial native
 bindings are trusted for the source check.
