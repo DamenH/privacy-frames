@@ -1,0 +1,20 @@
+{
+  "scope": "Restricted source-origin check for the known private-frame evaluation call. Does not prove build substitution, all helper effects, browser semantics or absence of all other execution paths.",
+  "sourceHashes": {
+    "src/runtime/trusted/client.ts": "a374280b5b69e02480e6267a15354c41e1acb446844304d6e21c3f4687be0dc4",
+    "src/runtime/trusted/context.ts": "425bf7232a2ef83aba94d185f9b3d00c9da00ec450399fddeef10b43b2069ac7"
+  },
+  "checkerSHA256": "ab821ef2a4b36bb4406118666428c2b52c19fb1db8bc3d0a67c840a621d96a16",
+  "result": {
+    "importModule": "trusted:policy-source",
+    "contextArgument": "source",
+    "evaluationArgument": "source",
+    "sourceReferencesPerFile": 2
+  },
+  "faultControls": {
+    "publisherImport": "rejected",
+    "applicationArgument": "rejected",
+    "evaluationArgument": "rejected"
+  },
+  "completed": true
+}

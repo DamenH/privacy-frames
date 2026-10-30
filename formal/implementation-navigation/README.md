@@ -68,3 +68,8 @@ These checks do not prove arbitrary helper semantics, aliasing, import side effe
 all control flow, or browser parser ordering. In particular, trusted preparation
 helpers must not execute publisher code. The result covers the root entry path;
 child document startup has separate preparation and publication obligations.
+
+The [helper review](helper-review.md) records the private parser's known execution
+operation and its source-origin check. It also explains why moving the complete
+navigation installer earlier would change a native popup capture. This check
+narrows one helper assumption; it does not prove every preparation helper safe.
