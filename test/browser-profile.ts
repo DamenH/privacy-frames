@@ -1,8 +1,11 @@
 // Playwright deliberately relaxes storage privacy. Restore those browser
 // protections for confinement tests instead of treating automation defaults as
 // evidence that embedded and top-level state necessarily share a partition.
-let chromiumDisabled;
-async function options(engine, extra = {}) {
+import type { BrowserType } from 'playwright';
+
+type BrowserOptions = NonNullable<Parameters<BrowserType['launchPersistentContext']>[1]>;
+let chromiumDisabled: string | undefined;
+async function options(engine: BrowserType, extra: BrowserOptions = {}) {
   if (engine.name() === 'firefox')
     return {
       ...extra,
@@ -29,6 +32,9 @@ async function options(engine, extra = {}) {
       await probe.close();
     }
   }
+  if (!chromiumDisabled) throw new Error('Chromium disabled-feature defaults missing');
+  if (extra.ignoreDefaultArgs === true)
+    throw new Error('Confinement profile requires browser default arguments');
   const parts = chromiumDisabled
     .slice('--disable-features='.length)
     .split(',')
@@ -39,9 +45,13 @@ async function options(engine, extra = {}) {
     args: [...(extra.args || []), '--disable-features=' + parts.join(',')],
   };
 }
-export async function launch(engine, extra = {}) {
+export async function launch(engine: BrowserType, extra: BrowserOptions = {}) {
   return engine.launch(await options(engine, extra));
 }
-export async function launchPersistent(engine, directory, extra = {}) {
+export async function launchPersistent(
+  engine: BrowserType,
+  directory: string,
+  extra: BrowserOptions = {},
+) {
   return engine.launchPersistentContext(directory, await options(engine, extra));
 }

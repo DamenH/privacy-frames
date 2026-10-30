@@ -117,3 +117,8 @@ exceptions, evaluation order and call receivers without using the restricted
 Lean expression translation. The actual callback passes; removing cancellation
 or weakening the condition causes assertion failures. This is whole-program
 symbolic testing, not a proof certificate or a complete browser model.
+
+The [installed-app test](installed.md) adds ordinary installation and root startup
+to the receiver experiment, using the actual root guard and service worker.
+It checks the served guard bytes and records the intentionally enabled preload
+state separately from the runtime's ordinary disabled state.

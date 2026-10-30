@@ -23,6 +23,7 @@ interface RequestObservation {
   path: string;
   method: string;
   origin?: string;
+  navigationPreload?: string;
 }
 
 export interface UpgradeObservation {
@@ -38,6 +39,7 @@ export async function servers(
     receiver?: boolean;
     publicExamples?: boolean;
     acceptWebSockets?: boolean;
+    runtimeFiles?: ReadonlyMap<string, Uint8Array>;
   } = {},
 ) {
   const traffic: RequestObservation[] = [];
@@ -63,6 +65,10 @@ export async function servers(
         path: request.url ?? '/',
         method: request.method ?? 'GET',
         origin: request.headers.origin,
+        navigationPreload:
+          typeof request.headers['service-worker-navigation-preload'] === 'string'
+            ? request.headers['service-worker-navigation-preload']
+            : undefined,
       });
       response.setHeader('Access-Control-Allow-Origin', '*');
       response.setHeader('Cache-Control', 'no-store');
@@ -180,7 +186,9 @@ export async function servers(
           : path.join(publisher, publisherApps[port]);
         const filename = path.resolve(base, `.${relative}`);
         if (!filename.startsWith(base + path.sep)) throw new Error('Invalid path');
-        const bytes = await readFile(filename);
+        const bytes =
+          (port === 4211 ? options.runtimeFiles?.get(relative) : undefined) ??
+          (await readFile(filename));
         response.setHeader(
           'Content-Type',
           mediaTypes[path.extname(filename)] ?? 'application/octet-stream',

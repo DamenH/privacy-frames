@@ -1,0 +1,363 @@
+{
+  "scope": "Actual installation, service-worker-generated root shell, root guard and application-created same-window same-origin link. Trusted test setup deliberately enables real navigation preload after installation disables it. Synthetic data is entered only after startup. The altered build removes only navigate-event cancellation in the root guard. This is a configured preload stress test, not a deployed escape or all-navigation proof.",
+  "provenance": {
+    "capturedAt": "2026-10-30T20:58:27.001Z",
+    "revision": "498f9cfb77e3a37cb53eff478f5c9c670374dd37",
+    "dirty": true,
+    "sourceSHA256": "0e6978c83e995c57bfe072c0c5187f03c65ca695bd13645539293a76ecdc2a0e",
+    "runner": "formal/implementation-navigation/installed-run.ts",
+    "runnerSHA256": "4c96614a645a78f114625c28a58f78b51a4a17e0235286df9c65a9595d4e9316",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-manager/sw.js": "55ed1b655ef6d8f3b329e0ad98c8eb3380265587e72fa01b1bb171a318827c65",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "ac25b68c541a0a779335f10212d795d6b00abb9b76bc70a8f0b6303b3119c9cd",
+      "dist-runtime/guard.js": "1e17de49bfe7c93babde7c0117f6ecc488df1bc5fdab066424fa989136290ffb",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "dist-runtime/sw.js": "07721e1669365a3b6530fa921a0b699bd7761b1cbdc7d517330207bb03ed7f7c",
+      "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "6cd0a3f3f4494dee2db059f3b1a5feb62017a39399a22e2d3774d0319fa1e3f3"
+    }
+  },
+  "sourceSHA256": "9bb56df013fd1e139dd1385b0aa55e67386926ca97ab7f58181820374b50fa63",
+  "normalGuardSHA256": "1e17de49bfe7c93babde7c0117f6ecc488df1bc5fdab066424fa989136290ffb",
+  "alteredGuardSHA256": "41212be49a6f6a104b995e908b322e369705b7dbb70d193e0b559c10c361a5a6",
+  "applicationScriptSHA256": "dfea9620455d114ed1b01ee653d9954d36633c42bf10c4b5f6715d9945212fc6",
+  "observationMilliseconds": 800,
+  "completed": true,
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "cases": [
+        {
+          "profile": "native",
+          "installationStatus": null,
+          "mode": "native",
+          "marker": "chromium-native-501b1bfa-a293-487f-8edc-9004fe2d3b9c",
+          "before": "http://127.0.0.1:38179/",
+          "after": "http://127.0.0.1:4211/runtime/navigation-receiver?value=chromium-native-501b1bfa-a293-487f-8edc-9004fe2d3b9c",
+          "requests": [
+            {
+              "port": 4211,
+              "path": "/runtime/navigation-receiver?value=chromium-native-501b1bfa-a293-487f-8edc-9004fe2d3b9c",
+              "method": "GET"
+            }
+          ],
+          "navigationResponses": [
+            {
+              "url": "http://127.0.0.1:4211/runtime/navigation-receiver?value=chromium-native-501b1bfa-a293-487f-8edc-9004fe2d3b9c",
+              "status": 404,
+              "fromServiceWorker": false,
+              "navigationRequest": true
+            }
+          ],
+          "requestFailures": [],
+          "eventObservations": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": false,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ]
+        },
+        {
+          "profile": "normal",
+          "installationStatus": "Installed Installed navigation fixture.",
+          "preload": {
+            "before": {
+              "enabled": false,
+              "headerValue": "true"
+            },
+            "after": {
+              "enabled": true,
+              "headerValue": "installed-fixture-8b36b7f4-cc01-4c78-a26b-0ed3f5aac555"
+            },
+            "header": "installed-fixture-8b36b7f4-cc01-4c78-a26b-0ed3f5aac555"
+          },
+          "mode": "network-isolated",
+          "startup": {
+            "rootFromServiceWorker": true,
+            "guardFromServiceWorker": true,
+            "contentFromServiceWorker": true,
+            "servedGuardSHA256": "1e17de49bfe7c93babde7c0117f6ecc488df1bc5fdab066424fa989136290ffb",
+            "headers": {
+              "cache-control": "no-store",
+              "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+              "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fd24b2d9d1ea41ba8dadaf919e42cdb8'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; worker-src http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; form-action 'none'; base-uri 'none'",
+              "content-type": "text/html",
+              "cross-origin-opener-policy": "same-origin",
+              "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+              "referrer-policy": "no-referrer",
+              "x-content-type-options": "nosniff",
+              "x-dns-prefetch-control": "off",
+              "x-frame-options": "DENY"
+            }
+          },
+          "marker": "chromium-normal-a1af5b92-b5ba-43d8-8e6f-549f8c6d7264",
+          "before": "http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/",
+          "after": "http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/",
+          "requests": [],
+          "navigationResponses": [],
+          "requestFailures": [],
+          "eventObservations": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": true,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ]
+        },
+        {
+          "profile": "altered",
+          "installationStatus": "Installed Installed navigation fixture.",
+          "preload": {
+            "before": {
+              "enabled": false,
+              "headerValue": "true"
+            },
+            "after": {
+              "enabled": true,
+              "headerValue": "installed-fixture-1ea81dd1-3a36-4b1e-bba4-350d4fdfb1d0"
+            },
+            "header": "installed-fixture-1ea81dd1-3a36-4b1e-bba4-350d4fdfb1d0"
+          },
+          "mode": "network-isolated",
+          "startup": {
+            "rootFromServiceWorker": true,
+            "guardFromServiceWorker": true,
+            "contentFromServiceWorker": true,
+            "servedGuardSHA256": "41212be49a6f6a104b995e908b322e369705b7dbb70d193e0b559c10c361a5a6",
+            "headers": {
+              "cache-control": "no-store",
+              "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+              "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-a71c0f97553b485caf3da43c9ca8c89f'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; worker-src http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; form-action 'none'; base-uri 'none'",
+              "content-type": "text/html",
+              "cross-origin-opener-policy": "same-origin",
+              "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+              "referrer-policy": "no-referrer",
+              "x-content-type-options": "nosniff",
+              "x-dns-prefetch-control": "off",
+              "x-frame-options": "DENY"
+            }
+          },
+          "marker": "chromium-altered-c31c4750-fb72-4d4f-a79b-1b651c446cc7",
+          "before": "http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/",
+          "after": "chrome-error://chromewebdata/",
+          "requests": [
+            {
+              "port": 4211,
+              "path": "/runtime/navigation-receiver?value=chromium-altered-c31c4750-fb72-4d4f-a79b-1b651c446cc7",
+              "method": "GET",
+              "navigationPreload": "installed-fixture-1ea81dd1-3a36-4b1e-bba4-350d4fdfb1d0"
+            }
+          ],
+          "navigationResponses": [
+            {
+              "url": "http://127.0.0.1:4211/runtime/navigation-receiver?value=chromium-altered-c31c4750-fb72-4d4f-a79b-1b651c446cc7",
+              "status": 404,
+              "fromServiceWorker": false,
+              "navigationRequest": false
+            }
+          ],
+          "requestFailures": [
+            {
+              "url": "http://127.0.0.1:4211/runtime/navigation-receiver?value=chromium-altered-c31c4750-fb72-4d4f-a79b-1b651c446cc7",
+              "error": "net::ERR_FAILED"
+            }
+          ],
+          "eventObservations": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": false,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "cases": [
+        {
+          "profile": "native",
+          "installationStatus": null,
+          "mode": "native",
+          "marker": "firefox-native-87bfaca7-10bf-45dd-ab54-4ebcf18927be",
+          "before": "http://127.0.0.1:38179/",
+          "after": "http://127.0.0.1:4211/runtime/navigation-receiver?value=firefox-native-87bfaca7-10bf-45dd-ab54-4ebcf18927be",
+          "requests": [
+            {
+              "port": 4211,
+              "path": "/runtime/navigation-receiver?value=firefox-native-87bfaca7-10bf-45dd-ab54-4ebcf18927be",
+              "method": "GET"
+            }
+          ],
+          "navigationResponses": [
+            {
+              "url": "http://127.0.0.1:4211/runtime/navigation-receiver?value=firefox-native-87bfaca7-10bf-45dd-ab54-4ebcf18927be",
+              "status": 404,
+              "fromServiceWorker": false,
+              "navigationRequest": true
+            }
+          ],
+          "requestFailures": [],
+          "eventObservations": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": false,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ]
+        },
+        {
+          "profile": "normal",
+          "installationStatus": "Installed Installed navigation fixture.",
+          "preload": {
+            "before": {
+              "enabled": false,
+              "headerValue": "true"
+            },
+            "after": {
+              "enabled": true,
+              "headerValue": "installed-fixture-834e8c89-4864-44ae-b810-76d6025613b0"
+            },
+            "header": "installed-fixture-834e8c89-4864-44ae-b810-76d6025613b0"
+          },
+          "mode": "network-isolated",
+          "startup": {
+            "rootFromServiceWorker": true,
+            "guardFromServiceWorker": true,
+            "contentFromServiceWorker": true,
+            "servedGuardSHA256": "1e17de49bfe7c93babde7c0117f6ecc488df1bc5fdab066424fa989136290ffb",
+            "headers": {
+              "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+              "x-frame-options": "DENY",
+              "x-dns-prefetch-control": "off",
+              "referrer-policy": "no-referrer",
+              "cross-origin-opener-policy": "same-origin",
+              "cache-control": "no-store",
+              "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+              "x-content-type-options": "nosniff",
+              "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-89788457e5dd49d39cf9d562ae5f0707'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; worker-src http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; form-action 'none'; base-uri 'none'",
+              "content-type": "text/html"
+            }
+          },
+          "marker": "firefox-normal-69ea698b-47c3-4dcc-a603-19edd6d70ced",
+          "before": "http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/",
+          "after": "http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/",
+          "requests": [],
+          "navigationResponses": [],
+          "requestFailures": [],
+          "eventObservations": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": true,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ]
+        },
+        {
+          "profile": "altered",
+          "installationStatus": "Installed Installed navigation fixture.",
+          "preload": {
+            "before": {
+              "enabled": false,
+              "headerValue": "true"
+            },
+            "after": {
+              "enabled": true,
+              "headerValue": "installed-fixture-f0119b0f-5bd9-4068-a9e9-edefbb00a1a8"
+            },
+            "header": "installed-fixture-f0119b0f-5bd9-4068-a9e9-edefbb00a1a8"
+          },
+          "mode": "network-isolated",
+          "startup": {
+            "rootFromServiceWorker": true,
+            "guardFromServiceWorker": true,
+            "contentFromServiceWorker": true,
+            "servedGuardSHA256": "41212be49a6f6a104b995e908b322e369705b7dbb70d193e0b559c10c361a5a6",
+            "headers": {
+              "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+              "x-frame-options": "DENY",
+              "x-dns-prefetch-control": "off",
+              "referrer-policy": "no-referrer",
+              "cross-origin-opener-policy": "same-origin",
+              "cache-control": "no-store",
+              "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+              "x-content-type-options": "nosniff",
+              "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-4c1ee43828134607bda7de26eab9ed25'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; worker-src http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/__contexts/ http://127.0.0.1:4211/runtime/sw.js; form-action 'none'; base-uri 'none'",
+              "content-type": "text/html"
+            }
+          },
+          "marker": "firefox-altered-3bcad19b-6272-4f7a-b112-0de9c0282885",
+          "before": "http://127.0.0.1:4211/runtime/25GLoziRhxw/installed-navigation-fixture/",
+          "after": "http://127.0.0.1:4211/runtime/navigation-receiver?value=firefox-altered-3bcad19b-6272-4f7a-b112-0de9c0282885",
+          "requests": [
+            {
+              "port": 4211,
+              "path": "/runtime/navigation-receiver?value=firefox-altered-3bcad19b-6272-4f7a-b112-0de9c0282885",
+              "method": "GET",
+              "navigationPreload": "installed-fixture-f0119b0f-5bd9-4068-a9e9-edefbb00a1a8"
+            },
+            {
+              "port": 4211,
+              "path": "/runtime/navigation-receiver?value=firefox-altered-3bcad19b-6272-4f7a-b112-0de9c0282885",
+              "method": "GET"
+            }
+          ],
+          "navigationResponses": [
+            {
+              "url": "http://127.0.0.1:4211/runtime/navigation-receiver?value=firefox-altered-3bcad19b-6272-4f7a-b112-0de9c0282885",
+              "status": 404,
+              "fromServiceWorker": false,
+              "navigationRequest": true
+            }
+          ],
+          "requestFailures": [],
+          "eventObservations": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": false,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

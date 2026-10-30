@@ -47,13 +47,16 @@
     "formal/evidence/worker-registration.json": "c81c512d2bc4cacca244e30e9f8c215e8288bf676ee64ba9e994d09ff5fb0da5",
     "formal/idl-surface-report.md": "e78ca56cb8a7093ec49a0cb23eff21443eb76529492911adc2dbd7a8959973e3",
     "formal/implementation-navigation/Expression.lean": "45e39bd82a01a24e8cfce5b5a53bd6be43522e1193b85f9aaecc23ac6caa9907",
-    "formal/implementation-navigation/README.md": "6d61b59368c3e324034f94d748d9f62690a22c6363fd0d259ef9f5e34c472892",
-    "formal/implementation-navigation/browser-contract.md": "4c9bf61b23d77296f41f2a5d68c3195bfa7b22609ab70e8ac4024a924ed0b5d8",
+    "formal/implementation-navigation/README.md": "9653fc15d7214e22c63161bdfa29a2b1e3d2a2f7397c443f47f5976c54e5b104",
+    "formal/implementation-navigation/browser-contract.md": "60df32d02efaf2c00dc699c0a4d7bd57a98ba3b5f21bc9e294a29d7588f3872d",
     "formal/implementation-navigation/check.ts": "25b76a42199601c8ce3b7db50bddbd93d6918ab121e94ec4997a6d69392b8983",
     "formal/implementation-navigation/gillian-check.ts": "3fe55b28e050ab03cfc27c5aa5b3ad0bcd984712da2541fae35e08ebe02709b0",
     "formal/implementation-navigation/gillian-result.json": "849ba39592171cc8d09e2a1c9a5a8e46523a116cbd70f88c742f485aa73d9a74",
     "formal/implementation-navigation/gillian.md": "d31e0676b8069e98d2ab30622de4075188da986fdbf330d35c9565ed8993af3a",
     "formal/implementation-navigation/helper-review.md": "af406d73675e58790e98984579bdf6b6b20a2b7a79ce755077c7a96b684373ee",
+    "formal/implementation-navigation/installed-result.json": "c8ac798048bfb9cbbe74a6e469332f8e55ac3ed113f415f3a34085200ea41b83",
+    "formal/implementation-navigation/installed-run.ts": "4c96614a645a78f114625c28a58f78b51a4a17e0235286df9c65a9595d4e9316",
+    "formal/implementation-navigation/installed.md": "c9be2329ed3e1ac7c7a4d3458589af05711e4844a1214d0dbd81abd274922b1b",
     "formal/implementation-navigation/result.json": "00e26e59d80532c98f35f2c131ef3abaea48d3032e2334c61e8cbae8a86890af",
     "formal/implementation-navigation/setup-check.ts": "a5349887acc7b025b5a983d319bee82e2b785a13599f3901e8f65014f0e94256",
     "formal/implementation-navigation/setup-result.json": "9c06bbe4508968dc232112edb5a8b9e4be201e8cb56e963838ff9b2bef09bd8b",
@@ -123,6 +126,7 @@
     "src/shared/application-navigation.ts": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
     "src/shared/runtime-url.ts": "26503f8994b0307030dddb9f843f6bd438573869b7ab01226565c865c9e3c24f",
     "test/application-history.ts": "44707c8287539c836044bc77b75df4edabfc1cd5ad509803766c31d4962f3a79",
+    "test/browser-profile.ts": "c161489dfce9c3124474d1416440c9876b0a8fce329d2f09fa16f99af744e3a0",
     "test/context-navigation.ts": "43096a006aef95ced97fa7818eb332edebbc1dea2ae94ffd002de68cbcea217b",
     "test/dynamic-scripts.ts": "5c960cd9340eac2b6423ed7009e39e074aaad40832ee1d446aa77cb5db7226ca",
     "test/installation-origin.ts": "6e8325505153a757266dc0f5a8b9e1ddc174493edc259d4212f4d26946d541ce",
@@ -135,6 +139,7 @@
     "test/resource-elements.ts": "e7082661829bf046a0f4664627b4b022adbe7599ff275dbc270d417d0b6499f9",
     "test/resource-paths.ts": "32b969ab510351efd0187c53f9cb8b3527153ab815f86a413b87222380f70a4a",
     "test/runtime-admission.test.ts": "075a2f522137e40dee5153492cc5e0c1f7a1fc63a0e056bef51f2ca5a6a7c6a1",
+    "test/server.ts": "860d8d4362f40bd4eec8c7c1cd876dfdd66df65be1bd3a8a11cc71fa8b36217c",
     "test/shared-connections.ts": "7865484cd0ac7c55cc20a2fe70d9e10b1d42a690388232dcae4dc5149c82a56f",
     "test/shared-worker-contexts.ts": "599a1a789c92740a16e089cb109379264e7ca422ec6a5f965eb2f7430c59576b",
     "test/storage-proxy-receiver.ts": "9799b444c603c66cb414ae7efc226a3438ffd4b6f17c74082523904b17b91640",
@@ -1618,6 +1623,39 @@
             "formal/implementation-navigation/gillian-check.ts",
             "formal/implementation-navigation/gillian-result.json"
           ]
+        },
+        {
+          "kind": "native_control",
+          "description": "An ordinary publisher page creates a link containing synthetic input entered after startup; the independent runtime HTTP receiver observes its marker without a preload header in Chromium and Firefox.",
+          "paths": [
+            "formal/implementation-navigation/installed.md",
+            "formal/implementation-navigation/installed-run.ts",
+            "formal/implementation-navigation/installed-result.json",
+            "test/server.ts",
+            "test/browser-profile.ts"
+          ]
+        },
+        {
+          "kind": "confined_test",
+          "description": "The real installer, service worker and byte-matched root guard run the same app. Trusted test setup enables native preload after the runtime bridge disables it. The selected genuine event is prevented and no marker reaches the HTTP receiver during the saved interval.",
+          "paths": [
+            "formal/implementation-navigation/installed.md",
+            "formal/implementation-navigation/installed-run.ts",
+            "formal/implementation-navigation/installed-result.json",
+            "test/server.ts",
+            "test/browser-profile.ts"
+          ]
+        },
+        {
+          "kind": "fault_control",
+          "description": "Only root navigate-event cancellation is removed in a test guard. Under deliberately enabled preload, the installed app produces an unprevented genuine event and a seeded preload marker at the independent receiver in both browsers. Firefox also records an additional unseeded request whose cause remains unproved.",
+          "paths": [
+            "formal/implementation-navigation/installed.md",
+            "formal/implementation-navigation/installed-run.ts",
+            "formal/implementation-navigation/installed-result.json",
+            "test/server.ts",
+            "test/browser-profile.ts"
+          ]
         }
       ],
       "open_obligations": [
@@ -1627,8 +1665,8 @@
         "The Gillian experiment trusts callback extraction, TypeScript ES5 compilation, Gillian semantics and solver, and native-operation contracts; it does not discharge complete mediation or browser behavior."
       ],
       "control_status": {
-        "native_control": "not-recorded",
-        "confined_test": "not-recorded",
+        "native_control": "recorded",
+        "confined_test": "recorded",
         "fault_control": "recorded"
       }
     }
