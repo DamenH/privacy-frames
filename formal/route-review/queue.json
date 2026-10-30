@@ -1,7 +1,7 @@
 {
   "scope": "All rows in the bounded saved IDL join; unreviewed includes absent and unobserved names. Classifications and WPT links are manually selected review leads, not mediation tests or safety judgments.",
   "idlReportSHA256": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
-  "triageSHA256": "d6660f352c2cedabefae01c01ced9f1b9f3419545e06c263508673613abb658f",
+  "triageSHA256": "4bdb0ceeee4329b028504dae59cd861acc0a2fa22e3cb81f26824a3df14b88a3",
   "generatorSHA256": "a02550f12080992cdf21a7476c8b8795c41615f7d2355a928fa1ca74269fd614",
   "webrefRevision": "6ac6259c96b11e0aea5c34a16822eb06add278c9",
   "snapshotRevision": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
@@ -80,9 +80,9 @@
   },
   "summary": {
     "rows": 263,
-    "manualRows": 37,
-    "unreviewedRows": 226,
-    "observedUnreviewedRows": 150
+    "manualRows": 103,
+    "unreviewedRows": 160,
+    "observedUnreviewedRows": 84
   },
   "rows": [
     {
@@ -220,11 +220,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "state-observation",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Exposes the request associated with a background fetch record.",
+      "prerequisites": "Requires a reachable record object from an existing operation.",
+      "next": "Check data visibility and later relays separately; reading the property alone is not network transmission."
     },
     {
       "id": "background-fetch|BackgroundFetchRecord|responseReady|attribute|1",
@@ -242,11 +244,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "state-observation",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns a promise for the background record response when available.",
+      "prerequisites": "Requires a reachable record and eventual completion or failure.",
+      "next": "Check whether the response belongs to app-accessible state and whether another route can transmit it."
     },
     {
       "id": "background-fetch|BackgroundFetchRegistration|abort|operation|1",
@@ -264,11 +268,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "background-agent-control",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Sets the operation abort state and affects an existing background fetch.",
+      "prerequisites": "Requires a reachable BackgroundFetchRegistration and an operation whose state permits abort.",
+      "next": "Assess cross-context integrity and interaction with in-flight traffic; do not treat abort alone as proof of a new outbound request."
     },
     {
       "id": "background-fetch|BackgroundFetchRegistration|downloadTotal|attribute|1",
@@ -374,11 +380,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Looks up record objects from an existing background fetch; the returned record can expose request and eventual response state.",
+      "prerequisites": "Requires a reachable BackgroundFetchRegistration with records available and a matching record.",
+      "next": "Check whether preexisting native registrations are exposed and whether records can reveal shared-origin data."
     },
     {
       "id": "background-fetch|BackgroundFetchRegistration|matchAll|operation|1",
@@ -396,11 +404,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Looks up record objects from an existing background fetch; the returned record can expose request and eventual response state.",
+      "prerequisites": "Requires a reachable BackgroundFetchRegistration with records available and a matching record.",
+      "next": "Check whether preexisting native registrations are exposed and whether records can reveal shared-origin data."
     },
     {
       "id": "background-fetch|BackgroundFetchRegistration|onprogress|attribute|1",
@@ -663,11 +673,13 @@
         "status": "seeded-native-acquisition-control",
         "path": "formal/background-agents.md"
       },
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Exposes the BackgroundFetchManager associated with the service worker registration.",
+      "prerequisites": "Requires a native registration and an exposed browser implementation.",
+      "next": "Test native manager and registration acquisition in each supported context before concluding that fetch is reachable."
     },
     {
       "id": "background-sync|ServiceWorkerGlobalScope|onsync|attribute|1",
@@ -710,11 +722,11 @@
         "status": "seeded-native-acquisition-control",
         "path": "formal/background-agents.md"
       },
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns the one-shot sync manager for the associated registration.",
+      "prerequisites": "Requires a native registration and API exposure in the browser.",
+      "next": "Test native object recovery and separately test sync event and handler authority."
     },
     {
       "id": "background-sync|SyncEvent|constructor|constructor|1",
@@ -798,11 +810,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns tags for existing sync registrations associated with the worker registration.",
+      "prerequisites": "Requires an accessible native manager and relevant registered tags.",
+      "next": "Assess shared-origin state exposure and separately inspect any later relay; this operation is not a network send."
     },
     {
       "id": "background-sync|SyncManager|register|operation|1",
@@ -985,11 +997,11 @@
         "status": "source-denial-unverified-receiver",
         "path": "src/runtime/enforcement/effects.ts"
       },
-      "classification": "unreviewed",
+      "classification": "credential-operation-conditional",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Runs credential creation and dispatches to credential-type-specific mechanisms.",
+      "prerequisites": "Depends on the selected credential type, policy, browser state and potentially user mediation; the generic API does not establish one uniform network behavior.",
+      "next": "Trace enabled credential extensions and their platform side effects; calibrate any claimed egress with a receiver."
     },
     {
       "id": "credential-management-1|CredentialsContainer|get|operation|1",
@@ -1037,11 +1049,11 @@
         "status": "source-denial-unverified-receiver",
         "path": "src/runtime/enforcement/effects.ts"
       },
-      "classification": "unreviewed",
+      "classification": "credential-store",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Sets the origin prevent-silent-access flag in the credential store.",
+      "prerequisites": "Requires the exposed API and applicable user-agent behavior; it is origin-scoped state.",
+      "next": "Consider shared-origin effects on other apps and browser synchronization separately; the standard algorithm does not itself prove an outbound request."
     },
     {
       "id": "credential-management-1|CredentialsContainer|store|operation|1",
@@ -1062,11 +1074,11 @@
         "status": "source-denial-unverified-receiver",
         "path": "src/runtime/enforcement/effects.ts"
       },
-      "classification": "unreviewed",
+      "classification": "credential-store",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Runs credential storage, potentially involving the user agent credential manager.",
+      "prerequisites": "Requires a supplied credential and applicable origin, browser and user conditions.",
+      "next": "Investigate browser/vendor synchronization and local authority separately; the generic specification does not prove a network request."
     },
     {
       "id": "credential-management-1|FederatedCredential|constructor|constructor|1",
@@ -1150,11 +1162,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Exposes a CredentialsContainer whose methods invoke credential-type-specific algorithms.",
+      "prerequisites": "Requires an exposed navigator and browser support.",
+      "next": "Review concrete credential extensions and platform integrations; obtaining the container alone is not an outbound request."
     },
     {
       "id": "credential-management-1|PasswordCredential|constructor|constructor|1",
@@ -1670,11 +1682,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "state-observation",
+      "selectedWpt": [
+        "fetch-later"
+      ],
+      "effect": "Reports whether a deferred fetch has been activated.",
+      "prerequisites": "Requires a FetchLaterResult from a successfully created deferred request; observing this property is not itself a request.",
+      "next": "Test deferred activation and independent receiver delivery under lifecycle transitions."
     },
     {
       "id": "fetch|Headers|append|operation|1",
@@ -1692,11 +1706,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "request-construction",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Modifies the associated header list subject to validation and its guard; changing it does not itself issue a request.",
+      "prerequisites": "Requires a Headers object and a guard that permits the operation.",
+      "next": "Test the changed header when the associated request is consumed by each relevant effect route."
     },
     {
       "id": "fetch|Headers|constructor|constructor|1",
@@ -1736,11 +1750,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "request-construction",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Modifies the associated header list subject to validation and its guard; changing it does not itself issue a request.",
+      "prerequisites": "Requires a Headers object and a guard that permits the operation.",
+      "next": "Test the changed header when the associated request is consumed by each relevant effect route."
     },
     {
       "id": "fetch|Headers|get|operation|1",
@@ -1824,11 +1838,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "request-construction",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Modifies the associated header list subject to validation and its guard; changing it does not itself issue a request.",
+      "prerequisites": "Requires a Headers object and a guard that permits the operation.",
+      "next": "Test the changed header when the associated request is consumed by each relevant effect route."
     },
     {
       "id": "fetch|Request|cache|attribute|1",
@@ -1868,11 +1882,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "request-construction",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Clones request state and body stream subject to body usability; the clone is not itself sent.",
+      "prerequisites": "Requires a usable Request whose body is not unusable.",
+      "next": "Check that copied request metadata and bodies remain mediated at the eventual consumer."
     },
     {
       "id": "fetch|Request|constructor|constructor|1",
@@ -1890,11 +1904,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "request-construction",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Constructs a Request from input and initialization options; constructing it alone is not a network send.",
+      "prerequisites": "Requires valid request input and permitted options, including method/body restrictions.",
+      "next": "Test how a constructed Request flows into fetch, Cache.add, and background operations; do not infer delivery from construction."
     },
     {
       "id": "fetch|Request|credentials|attribute|1",
@@ -1978,11 +1992,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "request-construction",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Provides a Headers object holding the request header list subject to its guard.",
+      "prerequisites": "Requires access to the Request object; a mutable header is transmitted only if a later operation sends the request.",
+      "next": "Test header propagation and filtering at the actual request boundary."
     },
     {
       "id": "fetch|Request|integrity|attribute|1",
@@ -2066,11 +2080,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "request-state",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Reports whether the request is flagged keepalive, which may permit it to outlast its initiating context.",
+      "prerequisites": "Requires a Request; actual delayed delivery additionally requires a fetch using it and applicable keepalive constraints.",
+      "next": "Calibrate unload and page-close delivery separately from ordinary fetch mediation."
     },
     {
       "id": "fetch|Request|method|attribute|1",
@@ -2374,11 +2388,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "response-construction",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Creates a response object with redirect status and Location; construction itself does not follow the URL.",
+      "prerequisites": "Requires a parseable URL and permitted redirect status.",
+      "next": "Test whether an app-controlled response can be used by any consumer that follows its Location without network mediation."
     },
     {
       "id": "fetch|Response|redirected|attribute|1",
@@ -2536,11 +2550,11 @@
         "status": "source-and-receiver-tests",
         "path": "test/network.ts"
       },
-      "classification": "unreviewed",
+      "classification": "network-entry",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Starts fetching a constructed request; its URL, headers and body can encode caller-provided data.",
+      "prerequisites": "Requires an exposed fetch and a request accepted by the relevant fetch and browser policy algorithms.",
+      "next": "Test cache-only mediation including redirects, keepalive and all relevant contexts with native and receiver controls."
     },
     {
       "id": "periodic-background-sync|PeriodicSyncEvent|constructor|constructor|1",
@@ -2602,11 +2616,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns tags for existing sync registrations associated with the worker registration.",
+      "prerequisites": "Requires an accessible native manager and relevant registered tags.",
+      "next": "Assess shared-origin state exposure and separately inspect any later relay; this operation is not a network send."
     },
     {
       "id": "periodic-background-sync|PeriodicSyncManager|register|operation|1",
@@ -2649,11 +2663,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "background-agent-control",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Unregisters a tagged periodic synchronization registration.",
+      "prerequisites": "Requires an accessible manager and matching background registration.",
+      "next": "Test whether app access affects shared background work; this is an integrity and availability question."
     },
     {
       "id": "periodic-background-sync|ServiceWorkerGlobalScope|onperiodicsync|attribute|1",
@@ -2721,11 +2735,11 @@
         "status": "observer-is-not-upload-entry-point",
         "path": "formal/modern-reporting-probe.ts"
       },
-      "classification": "unreviewed",
+      "classification": "local-observer",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Constructs an observer and stores its callback and options.",
+      "prerequisites": "Requires browser exposure and, for notifications, reports made available to the observer.",
+      "next": "Review report visibility and callbacks separately from endpoint delivery; these methods are not the reporting-upload algorithm."
     },
     {
       "id": "reporting-1|ReportingObserver|disconnect|operation|1",
@@ -2743,11 +2757,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "local-observer",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Stops observer notifications.",
+      "prerequisites": "Requires browser exposure and, for notifications, reports made available to the observer.",
+      "next": "Review report visibility and callbacks separately from endpoint delivery; these methods are not the reporting-upload algorithm."
     },
     {
       "id": "reporting-1|ReportingObserver|observe|operation|1",
@@ -2765,11 +2779,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "local-observer",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Registers an observer to receive local report notifications.",
+      "prerequisites": "Requires browser exposure and, for notifications, reports made available to the observer.",
+      "next": "Review report visibility and callbacks separately from endpoint delivery; these methods are not the reporting-upload algorithm."
     },
     {
       "id": "reporting-1|ReportingObserver|takeRecords|operation|1",
@@ -2787,11 +2801,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "local-observer",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns and empties the observer report queue.",
+      "prerequisites": "Requires browser exposure and, for notifications, reports made available to the observer.",
+      "next": "Review report visibility and callbacks separately from endpoint delivery; these methods are not the reporting-upload algorithm."
     },
     {
       "id": "service-workers|Cache|add|operation|1",
@@ -2857,11 +2871,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-write",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Deletes matching cache entries.",
+      "prerequisites": "Requires a reachable Cache object and matching entries.",
+      "next": "Assess whether app-controlled deletion can affect trusted worker resources or another app; this is an integrity and availability question."
     },
     {
       "id": "service-workers|Cache|keys|operation|1",
@@ -2879,11 +2895,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-read",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Queries stored cache entries and returns matching responses or requests; the lookup algorithm is not Cache.add network fetching.",
+      "prerequisites": "Requires a reachable Cache object and matching stored entries; storage-key scope matters.",
+      "next": "Assess recovered host cache access and any use of returned data by another context; storage namespaces are not a confidentiality guarantee."
     },
     {
       "id": "service-workers|Cache|match|operation|1",
@@ -2901,11 +2919,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-read",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Queries stored cache entries and returns matching responses or requests; the lookup algorithm is not Cache.add network fetching.",
+      "prerequisites": "Requires a reachable Cache object and matching stored entries; storage-key scope matters.",
+      "next": "Assess recovered host cache access and any use of returned data by another context; storage namespaces are not a confidentiality guarantee."
     },
     {
       "id": "service-workers|Cache|matchAll|operation|1",
@@ -2923,11 +2943,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-read",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Queries stored cache entries and returns matching responses or requests; the lookup algorithm is not Cache.add network fetching.",
+      "prerequisites": "Requires a reachable Cache object and matching stored entries; storage-key scope matters.",
+      "next": "Assess recovered host cache access and any use of returned data by another context; storage namespaces are not a confidentiality guarantee."
     },
     {
       "id": "service-workers|Cache|put|operation|1",
@@ -2945,11 +2967,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-write",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Stores a supplied Request/Response pair in a cache after validation and body handling.",
+      "prerequisites": "Requires a usable Cache object, acceptable request and response and writable cache storage.",
+      "next": "Test whether an untrusted app can affect host-controlled cache entries or later served responses; do not equate storage mutation with immediate egress."
     },
     {
       "id": "service-workers|CacheStorage|delete|operation|1",
@@ -2967,11 +2991,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-write",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Deletes a named cache from the storage-key cache map.",
+      "prerequisites": "Requires reachable CacheStorage and an existing cache name.",
+      "next": "Check whether host assets or other app state can be affected; deletion itself is not network egress."
     },
     {
       "id": "service-workers|CacheStorage|has|operation|1",
@@ -2989,11 +3015,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-read",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Queries cache names or matches responses within the storage key.",
+      "prerequisites": "Requires reachable native CacheStorage and relevant existing entries.",
+      "next": "Assess which cache names and data are reachable, and whether another actor can relay stored bytes."
     },
     {
       "id": "service-workers|CacheStorage|keys|operation|1",
@@ -3011,11 +3039,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-read",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Queries cache names or matches responses within the storage key.",
+      "prerequisites": "Requires reachable native CacheStorage and relevant existing entries.",
+      "next": "Assess which cache names and data are reachable, and whether another actor can relay stored bytes."
     },
     {
       "id": "service-workers|CacheStorage|match|operation|1",
@@ -3033,11 +3063,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "storage-read",
+      "selectedWpt": [
+        "cache-add"
+      ],
+      "effect": "Queries cache names or matches responses within the storage key.",
+      "prerequisites": "Requires reachable native CacheStorage and relevant existing entries.",
+      "next": "Assess which cache names and data are reachable, and whether another actor can relay stored bytes."
     },
     {
       "id": "service-workers|CacheStorage|open|operation|1",
@@ -3695,11 +3727,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "browser-agent-control",
+      "selectedWpt": [
+        "navigation-preload"
+      ],
+      "effect": "Disables preload for the associated registration.",
+      "prerequisites": "Requires a native manager and an active associated worker.",
+      "next": "Check recovery and concurrency with navigations, including host setup and app startup."
     },
     {
       "id": "service-workers|NavigationPreloadManager|enable|operation|1",
@@ -3742,11 +3776,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "state-observation",
+      "selectedWpt": [
+        "preload-headers"
+      ],
+      "effect": "Returns the current enabled flag and configured navigation preload header value.",
+      "prerequisites": "Requires a native manager and accessible associated registration.",
+      "next": "Check whether exposing the header could reveal shared state; the call is not a request."
     },
     {
       "id": "service-workers|NavigationPreloadManager|setHeaderValue|operation|1",
@@ -3812,11 +3848,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "event-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Sets or gets a worker lifecycle event handler.",
+      "prerequisites": "Requires a worker object and a subsequent state change.",
+      "next": "Check whether callback execution can cross the runtime generation boundary; setting it is not itself an outgoing request."
     },
     {
       "id": "service-workers|ServiceWorker|postMessage|operation|1",
@@ -3878,11 +3914,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns the worker script URL.",
+      "prerequisites": "Requires an accessible ServiceWorker object.",
+      "next": "Separate local state access from subsequent use of postMessage or other authority."
     },
     {
       "id": "service-workers|ServiceWorker|state|attribute|1",
@@ -3900,11 +3936,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns the worker lifecycle state.",
+      "prerequisites": "Requires an accessible ServiceWorker object.",
+      "next": "Separate local state access from subsequent use of postMessage or other authority."
     },
     {
       "id": "service-workers|ServiceWorkerContainer|controller|attribute|1",
@@ -4323,11 +4359,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns a service-worker object for the named lifecycle state, if one exists.",
+      "prerequisites": "Requires an accessible registration and a worker in the corresponding lifecycle state.",
+      "next": "Test native reference acquisition and message authorization through each lifecycle state."
     },
     {
       "id": "service-workers|ServiceWorkerRegistration|installing|attribute|1",
@@ -4345,11 +4381,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns a service-worker object for the named lifecycle state, if one exists.",
+      "prerequisites": "Requires an accessible registration and a worker in the corresponding lifecycle state.",
+      "next": "Test native reference acquisition and message authorization through each lifecycle state."
     },
     {
       "id": "service-workers|ServiceWorkerRegistration|navigationPreload|attribute|1",
@@ -4391,11 +4427,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "event-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Sets or gets an event handler for registration update discovery.",
+      "prerequisites": "Requires an accessible registration and a subsequent update event for invocation.",
+      "next": "Consider timing and possible callbacks during transitions; setting a handler does not itself trigger an update."
     },
     {
       "id": "service-workers|ServiceWorkerRegistration|scope|attribute|1",
@@ -4413,11 +4449,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns registration scope URL.",
+      "prerequisites": "Requires an accessible registration.",
+      "next": "Check exposure through recovered registration; reading alone does not initiate an update or disclose data off-device."
     },
     {
       "id": "service-workers|ServiceWorkerRegistration|unregister|operation|1",
@@ -4438,11 +4474,13 @@
         "status": "virtualized-registration",
         "path": "test/website-installation.ts"
       },
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "browser-agent-control",
+      "selectedWpt": [
+        "serviceworker-register"
+      ],
+      "effect": "Schedules removal of the associated native service-worker registration.",
+      "prerequisites": "Requires an accessible native registration; lifecycle and existing clients affect the resulting state.",
+      "next": "Test whether app code can unregister the controlling worker and what happens on subsequent navigation; this is not itself proof of network disclosure."
     },
     {
       "id": "service-workers|ServiceWorkerRegistration|update|operation|1",
@@ -4485,11 +4523,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns registration update cache mode.",
+      "prerequisites": "Requires an accessible registration.",
+      "next": "Check exposure through recovered registration; reading alone does not initiate an update or disclose data off-device."
     },
     {
       "id": "service-workers|ServiceWorkerRegistration|waiting|attribute|1",
@@ -4507,11 +4545,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns a service-worker object for the named lifecycle state, if one exists.",
+      "prerequisites": "Requires an accessible registration and a worker in the corresponding lifecycle state.",
+      "next": "Test native reference acquisition and message authorization through each lifecycle state."
     },
     {
       "id": "service-workers|WindowClient|ancestorOrigins|attribute|1",
@@ -4890,11 +4928,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "event-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Sets or gets the callback for connection close.",
+      "prerequisites": "Requires an accessible native socket and the corresponding event.",
+      "next": "Test provenance and callback handling on recovered sockets; registering a callback is not itself payload transmission."
     },
     {
       "id": "websockets|WebSocket|onerror|attribute|1",
@@ -4912,11 +4950,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "event-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Sets or gets the callback for connection error.",
+      "prerequisites": "Requires an accessible native socket and the corresponding event.",
+      "next": "Test provenance and callback handling on recovered sockets; registering a callback is not itself payload transmission."
     },
     {
       "id": "websockets|WebSocket|onmessage|attribute|1",
@@ -4934,11 +4972,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "event-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Sets or gets the callback for received message.",
+      "prerequisites": "Requires an accessible native socket and the corresponding event.",
+      "next": "Test provenance and callback handling on recovered sockets; registering a callback is not itself payload transmission."
     },
     {
       "id": "websockets|WebSocket|onopen|attribute|1",
@@ -4956,11 +4994,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "event-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Sets or gets the callback for connection open.",
+      "prerequisites": "Requires an accessible native socket and the corresponding event.",
+      "next": "Test provenance and callback handling on recovered sockets; registering a callback is not itself payload transmission."
     },
     {
       "id": "websockets|WebSocket|protocol|attribute|1",
@@ -5046,11 +5084,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns the URL of the associated WebSocket.",
+      "prerequisites": "Requires an accessible socket.",
+      "next": "Check whether recovered objects reveal shared state; the getter is not a new connection."
     },
     {
       "id": "webtransport|WebTransport|anticipatedConcurrentIncomingBidirectionalStreams|attribute|1",
@@ -5112,11 +5150,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "network-entry-conditional",
+      "selectedWpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Terminates a session with close information; browser/protocol mapping determines what the remote peer receives.",
+      "prerequisites": "Requires an accessible native transport and a state in which it can be closed.",
+      "next": "Calibrate which close information reaches the server, under each transport protocol; do not infer a working leak from the method name."
     },
     {
       "id": "webtransport|WebTransport|closed|attribute|1",
@@ -5134,11 +5174,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns a promise for session closure and possible close information.",
+      "prerequisites": "Requires an accessible WebTransport object and relevant state changes.",
+      "next": "Examine associated callbacks and peer-provided data; the getter does not itself establish a payload transfer."
     },
     {
       "id": "webtransport|WebTransport|congestionControl|attribute|1",
@@ -5229,11 +5269,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Creates a send-group object for coordinating transport sends.",
+      "prerequisites": "Requires an accessible WebTransport session; implementation/version support varies.",
+      "next": "Review how the group can be assigned to writers and whether session acquisition is possible; creation itself is not a payload send."
     },
     {
       "id": "webtransport|WebTransport|createUnidirectionalStream|operation|1",
@@ -5299,11 +5339,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns a promise for the session draining state.",
+      "prerequisites": "Requires an accessible WebTransport object and relevant state changes.",
+      "next": "Examine associated callbacks and peer-provided data; the getter does not itself establish a payload transfer."
     },
     {
       "id": "webtransport|WebTransport|exportKeyingMaterial|operation|1",
@@ -5321,11 +5361,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Derives and returns TLS exporter bytes for the session using caller-supplied inputs.",
+      "prerequisites": "Requires an accessible transport and applicable session state; support and details are browser dependent.",
+      "next": "Review session material exposure and side effects in actual implementations; do not infer network transmission from derivation."
     },
     {
       "id": "webtransport|WebTransport|getStats|operation|1",
@@ -5343,11 +5383,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns transport statistics gathered by the user agent.",
+      "prerequisites": "Requires an accessible native WebTransport object and supported operation.",
+      "next": "Assess what information stats expose; network access is tied to session establishment and other operations, not proven by this read."
     },
     {
       "id": "webtransport|WebTransport|incomingBidirectionalStreams|attribute|1",
@@ -5365,11 +5405,13 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
-      "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Returns a readable stream yielding server-initiated bidirectional streams with both readable and writable sides.",
+      "prerequisites": "Requires access to a WebTransport object and server-created streams in a live session.",
+      "next": "Test acquisition of an incoming stream and its writable side with a receiver; reading this property alone sends no payload."
     },
     {
       "id": "webtransport|WebTransport|incomingUnidirectionalStreams|attribute|1",
@@ -5387,11 +5429,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns a readable stream of server-initiated receive streams.",
+      "prerequisites": "Requires an accessible session and incoming streams.",
+      "next": "Assess how received bytes become available; a separate writable capability is needed to transmit."
     },
     {
       "id": "webtransport|WebTransport|protocol|attribute|1",
@@ -5431,11 +5473,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "state-observation",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns a promise for session readiness.",
+      "prerequisites": "Requires an accessible WebTransport object and relevant state changes.",
+      "next": "Examine associated callbacks and peer-provided data; the getter does not itself establish a payload transfer."
     },
     {
       "id": "webtransport|WebTransport|reliability|attribute|1",
@@ -5519,11 +5561,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns the readable stream of a bidirectional transport stream.",
+      "prerequisites": "Requires a reachable bidirectional stream object and appropriate transport state.",
+      "next": "Test actual reads and subsequent uses; obtaining the property is not itself payload transmission."
     },
     {
       "id": "webtransport|WebTransportBidirectionalStream|writable|attribute|1",
@@ -5541,11 +5583,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns the writable stream of a bidirectional transport stream.",
+      "prerequisites": "Requires a reachable bidirectional stream object and appropriate transport state.",
+      "next": "Test actual writes at an independent receiver; obtaining the property is not itself payload transmission."
     },
     {
       "id": "webtransport|WebTransportDatagramDuplexStream|createWritable|operation|1",
@@ -5697,11 +5739,11 @@
         }
       },
       "priorReviewPointer": null,
-      "classification": "unreviewed",
+      "classification": "authority-acquisition",
       "selectedWpt": [],
-      "effect": null,
-      "prerequisites": null,
-      "next": "Review the standard algorithm, reachable contexts and potential effects."
+      "effect": "Returns the incoming datagram readable stream.",
+      "prerequisites": "Requires a reachable datagram duplex object and active session to receive data.",
+      "next": "Assess data provenance and other outbound capabilities separately."
     },
     {
       "id": "webtransport|WebTransportDatagramsWritable|sendGroup|attribute|1",

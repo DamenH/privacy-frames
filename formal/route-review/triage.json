@@ -397,6 +397,576 @@
       "effect": "Signals completion of a relevant identity-provider dialog and can close the dialog.",
       "prerequisites": "Requires a qualifying identity dialog context and pending flow.",
       "next": "Examine state reachability and any resulting effects; closing a dialog alone does not establish a network transmission."
+    },
+    {
+      "key": "fetch|WindowOrWorkerGlobalScope|fetch|operation",
+      "class": "network-entry",
+      "wpt": [],
+      "effect": "Starts fetching a constructed request; its URL, headers and body can encode caller-provided data.",
+      "prerequisites": "Requires an exposed fetch and a request accepted by the relevant fetch and browser policy algorithms.",
+      "next": "Test cache-only mediation including redirects, keepalive and all relevant contexts with native and receiver controls."
+    },
+    {
+      "key": "fetch|Request|constructor|constructor",
+      "class": "request-construction",
+      "wpt": [],
+      "effect": "Constructs a Request from input and initialization options; constructing it alone is not a network send.",
+      "prerequisites": "Requires valid request input and permitted options, including method/body restrictions.",
+      "next": "Test how a constructed Request flows into fetch, Cache.add, and background operations; do not infer delivery from construction."
+    },
+    {
+      "key": "fetch|Request|clone|operation",
+      "class": "request-construction",
+      "wpt": [],
+      "effect": "Clones request state and body stream subject to body usability; the clone is not itself sent.",
+      "prerequisites": "Requires a usable Request whose body is not unusable.",
+      "next": "Check that copied request metadata and bodies remain mediated at the eventual consumer."
+    },
+    {
+      "key": "fetch|Request|keepalive|attribute",
+      "class": "request-state",
+      "wpt": [],
+      "effect": "Reports whether the request is flagged keepalive, which may permit it to outlast its initiating context.",
+      "prerequisites": "Requires a Request; actual delayed delivery additionally requires a fetch using it and applicable keepalive constraints.",
+      "next": "Calibrate unload and page-close delivery separately from ordinary fetch mediation."
+    },
+    {
+      "key": "fetch|Request|headers|attribute",
+      "class": "request-construction",
+      "wpt": [],
+      "effect": "Provides a Headers object holding the request header list subject to its guard.",
+      "prerequisites": "Requires access to the Request object; a mutable header is transmitted only if a later operation sends the request.",
+      "next": "Test header propagation and filtering at the actual request boundary."
+    },
+    {
+      "key": "fetch|Headers|append|operation",
+      "class": "request-construction",
+      "wpt": [],
+      "effect": "Modifies the associated header list subject to validation and its guard; changing it does not itself issue a request.",
+      "prerequisites": "Requires a Headers object and a guard that permits the operation.",
+      "next": "Test the changed header when the associated request is consumed by each relevant effect route."
+    },
+    {
+      "key": "fetch|Headers|set|operation",
+      "class": "request-construction",
+      "wpt": [],
+      "effect": "Modifies the associated header list subject to validation and its guard; changing it does not itself issue a request.",
+      "prerequisites": "Requires a Headers object and a guard that permits the operation.",
+      "next": "Test the changed header when the associated request is consumed by each relevant effect route."
+    },
+    {
+      "key": "fetch|Headers|delete|operation",
+      "class": "request-construction",
+      "wpt": [],
+      "effect": "Modifies the associated header list subject to validation and its guard; changing it does not itself issue a request.",
+      "prerequisites": "Requires a Headers object and a guard that permits the operation.",
+      "next": "Test the changed header when the associated request is consumed by each relevant effect route."
+    },
+    {
+      "key": "fetch|Response|redirect|operation",
+      "class": "response-construction",
+      "wpt": [],
+      "effect": "Creates a response object with redirect status and Location; construction itself does not follow the URL.",
+      "prerequisites": "Requires a parseable URL and permitted redirect status.",
+      "next": "Test whether an app-controlled response can be used by any consumer that follows its Location without network mediation."
+    },
+    {
+      "key": "fetch|FetchLaterResult|activated|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "fetch-later"
+      ],
+      "effect": "Reports whether a deferred fetch has been activated.",
+      "prerequisites": "Requires a FetchLaterResult from a successfully created deferred request; observing this property is not itself a request.",
+      "next": "Test deferred activation and independent receiver delivery under lifecycle transitions."
+    },
+    {
+      "key": "service-workers|Cache|match|operation",
+      "class": "storage-read",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Queries stored cache entries and returns matching responses or requests; the lookup algorithm is not Cache.add network fetching.",
+      "prerequisites": "Requires a reachable Cache object and matching stored entries; storage-key scope matters.",
+      "next": "Assess recovered host cache access and any use of returned data by another context; storage namespaces are not a confidentiality guarantee."
+    },
+    {
+      "key": "service-workers|Cache|matchAll|operation",
+      "class": "storage-read",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Queries stored cache entries and returns matching responses or requests; the lookup algorithm is not Cache.add network fetching.",
+      "prerequisites": "Requires a reachable Cache object and matching stored entries; storage-key scope matters.",
+      "next": "Assess recovered host cache access and any use of returned data by another context; storage namespaces are not a confidentiality guarantee."
+    },
+    {
+      "key": "service-workers|Cache|keys|operation",
+      "class": "storage-read",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Queries stored cache entries and returns matching responses or requests; the lookup algorithm is not Cache.add network fetching.",
+      "prerequisites": "Requires a reachable Cache object and matching stored entries; storage-key scope matters.",
+      "next": "Assess recovered host cache access and any use of returned data by another context; storage namespaces are not a confidentiality guarantee."
+    },
+    {
+      "key": "service-workers|Cache|put|operation",
+      "class": "storage-write",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Stores a supplied Request/Response pair in a cache after validation and body handling.",
+      "prerequisites": "Requires a usable Cache object, acceptable request and response and writable cache storage.",
+      "next": "Test whether an untrusted app can affect host-controlled cache entries or later served responses; do not equate storage mutation with immediate egress."
+    },
+    {
+      "key": "service-workers|Cache|delete|operation",
+      "class": "storage-write",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Deletes matching cache entries.",
+      "prerequisites": "Requires a reachable Cache object and matching entries.",
+      "next": "Assess whether app-controlled deletion can affect trusted worker resources or another app; this is an integrity and availability question."
+    },
+    {
+      "key": "service-workers|CacheStorage|match|operation",
+      "class": "storage-read",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Queries cache names or matches responses within the storage key.",
+      "prerequisites": "Requires reachable native CacheStorage and relevant existing entries.",
+      "next": "Assess which cache names and data are reachable, and whether another actor can relay stored bytes."
+    },
+    {
+      "key": "service-workers|CacheStorage|has|operation",
+      "class": "storage-read",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Queries cache names or matches responses within the storage key.",
+      "prerequisites": "Requires reachable native CacheStorage and relevant existing entries.",
+      "next": "Assess which cache names and data are reachable, and whether another actor can relay stored bytes."
+    },
+    {
+      "key": "service-workers|CacheStorage|keys|operation",
+      "class": "storage-read",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Queries cache names or matches responses within the storage key.",
+      "prerequisites": "Requires reachable native CacheStorage and relevant existing entries.",
+      "next": "Assess which cache names and data are reachable, and whether another actor can relay stored bytes."
+    },
+    {
+      "key": "service-workers|CacheStorage|delete|operation",
+      "class": "storage-write",
+      "wpt": [
+        "cache-add"
+      ],
+      "effect": "Deletes a named cache from the storage-key cache map.",
+      "prerequisites": "Requires reachable CacheStorage and an existing cache name.",
+      "next": "Check whether host assets or other app state can be affected; deletion itself is not network egress."
+    },
+    {
+      "key": "background-fetch|ServiceWorkerRegistration|backgroundFetch|attribute",
+      "class": "authority-acquisition",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Exposes the BackgroundFetchManager associated with the service worker registration.",
+      "prerequisites": "Requires a native registration and an exposed browser implementation.",
+      "next": "Test native manager and registration acquisition in each supported context before concluding that fetch is reachable."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|match|operation",
+      "class": "authority-acquisition",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Looks up record objects from an existing background fetch; the returned record can expose request and eventual response state.",
+      "prerequisites": "Requires a reachable BackgroundFetchRegistration with records available and a matching record.",
+      "next": "Check whether preexisting native registrations are exposed and whether records can reveal shared-origin data."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|matchAll|operation",
+      "class": "authority-acquisition",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Looks up record objects from an existing background fetch; the returned record can expose request and eventual response state.",
+      "prerequisites": "Requires a reachable BackgroundFetchRegistration with records available and a matching record.",
+      "next": "Check whether preexisting native registrations are exposed and whether records can reveal shared-origin data."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRegistration|abort|operation",
+      "class": "background-agent-control",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Sets the operation abort state and affects an existing background fetch.",
+      "prerequisites": "Requires a reachable BackgroundFetchRegistration and an operation whose state permits abort.",
+      "next": "Assess cross-context integrity and interaction with in-flight traffic; do not treat abort alone as proof of a new outbound request."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRecord|request|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Exposes the request associated with a background fetch record.",
+      "prerequisites": "Requires a reachable record object from an existing operation.",
+      "next": "Check data visibility and later relays separately; reading the property alone is not network transmission."
+    },
+    {
+      "key": "background-fetch|BackgroundFetchRecord|responseReady|attribute",
+      "class": "state-observation",
+      "wpt": [
+        "background-fetch-upload"
+      ],
+      "effect": "Returns a promise for the background record response when available.",
+      "prerequisites": "Requires a reachable record and eventual completion or failure.",
+      "next": "Check whether the response belongs to app-accessible state and whether another route can transmit it."
+    },
+    {
+      "key": "credential-management-1|Navigator|credentials|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Exposes a CredentialsContainer whose methods invoke credential-type-specific algorithms.",
+      "prerequisites": "Requires an exposed navigator and browser support.",
+      "next": "Review concrete credential extensions and platform integrations; obtaining the container alone is not an outbound request."
+    },
+    {
+      "key": "credential-management-1|CredentialsContainer|create|operation",
+      "class": "credential-operation-conditional",
+      "wpt": [],
+      "effect": "Runs credential creation and dispatches to credential-type-specific mechanisms.",
+      "prerequisites": "Depends on the selected credential type, policy, browser state and potentially user mediation; the generic API does not establish one uniform network behavior.",
+      "next": "Trace enabled credential extensions and their platform side effects; calibrate any claimed egress with a receiver."
+    },
+    {
+      "key": "credential-management-1|CredentialsContainer|store|operation",
+      "class": "credential-store",
+      "wpt": [],
+      "effect": "Runs credential storage, potentially involving the user agent credential manager.",
+      "prerequisites": "Requires a supplied credential and applicable origin, browser and user conditions.",
+      "next": "Investigate browser/vendor synchronization and local authority separately; the generic specification does not prove a network request."
+    },
+    {
+      "key": "credential-management-1|CredentialsContainer|preventSilentAccess|operation",
+      "class": "credential-store",
+      "wpt": [],
+      "effect": "Sets the origin prevent-silent-access flag in the credential store.",
+      "prerequisites": "Requires the exposed API and applicable user-agent behavior; it is origin-scoped state.",
+      "next": "Consider shared-origin effects on other apps and browser synchronization separately; the standard algorithm does not itself prove an outbound request."
+    },
+    {
+      "key": "webtransport|WebTransport|close|operation",
+      "class": "network-entry-conditional",
+      "wpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Terminates a session with close information; browser/protocol mapping determines what the remote peer receives.",
+      "prerequisites": "Requires an accessible native transport and a state in which it can be closed.",
+      "next": "Calibrate which close information reaches the server, under each transport protocol; do not infer a working leak from the method name."
+    },
+    {
+      "key": "service-workers|ServiceWorkerRegistration|active|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Returns a service-worker object for the named lifecycle state, if one exists.",
+      "prerequisites": "Requires an accessible registration and a worker in the corresponding lifecycle state.",
+      "next": "Test native reference acquisition and message authorization through each lifecycle state."
+    },
+    {
+      "key": "service-workers|ServiceWorkerRegistration|installing|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Returns a service-worker object for the named lifecycle state, if one exists.",
+      "prerequisites": "Requires an accessible registration and a worker in the corresponding lifecycle state.",
+      "next": "Test native reference acquisition and message authorization through each lifecycle state."
+    },
+    {
+      "key": "service-workers|ServiceWorkerRegistration|waiting|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Returns a service-worker object for the named lifecycle state, if one exists.",
+      "prerequisites": "Requires an accessible registration and a worker in the corresponding lifecycle state.",
+      "next": "Test native reference acquisition and message authorization through each lifecycle state."
+    },
+    {
+      "key": "service-workers|ServiceWorkerRegistration|unregister|operation",
+      "class": "browser-agent-control",
+      "wpt": [
+        "serviceworker-register"
+      ],
+      "effect": "Schedules removal of the associated native service-worker registration.",
+      "prerequisites": "Requires an accessible native registration; lifecycle and existing clients affect the resulting state.",
+      "next": "Test whether app code can unregister the controlling worker and what happens on subsequent navigation; this is not itself proof of network disclosure."
+    },
+    {
+      "key": "service-workers|ServiceWorkerRegistration|scope|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns registration scope URL.",
+      "prerequisites": "Requires an accessible registration.",
+      "next": "Check exposure through recovered registration; reading alone does not initiate an update or disclose data off-device."
+    },
+    {
+      "key": "service-workers|ServiceWorkerRegistration|updateViaCache|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns registration update cache mode.",
+      "prerequisites": "Requires an accessible registration.",
+      "next": "Check exposure through recovered registration; reading alone does not initiate an update or disclose data off-device."
+    },
+    {
+      "key": "service-workers|ServiceWorkerRegistration|onupdatefound|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets an event handler for registration update discovery.",
+      "prerequisites": "Requires an accessible registration and a subsequent update event for invocation.",
+      "next": "Consider timing and possible callbacks during transitions; setting a handler does not itself trigger an update."
+    },
+    {
+      "key": "service-workers|ServiceWorker|scriptURL|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the worker script URL.",
+      "prerequisites": "Requires an accessible ServiceWorker object.",
+      "next": "Separate local state access from subsequent use of postMessage or other authority."
+    },
+    {
+      "key": "service-workers|ServiceWorker|state|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the worker lifecycle state.",
+      "prerequisites": "Requires an accessible ServiceWorker object.",
+      "next": "Separate local state access from subsequent use of postMessage or other authority."
+    },
+    {
+      "key": "service-workers|ServiceWorker|onstatechange|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets a worker lifecycle event handler.",
+      "prerequisites": "Requires a worker object and a subsequent state change.",
+      "next": "Check whether callback execution can cross the runtime generation boundary; setting it is not itself an outgoing request."
+    },
+    {
+      "key": "service-workers|NavigationPreloadManager|disable|operation",
+      "class": "browser-agent-control",
+      "wpt": [
+        "navigation-preload"
+      ],
+      "effect": "Disables preload for the associated registration.",
+      "prerequisites": "Requires a native manager and an active associated worker.",
+      "next": "Check recovery and concurrency with navigations, including host setup and app startup."
+    },
+    {
+      "key": "service-workers|NavigationPreloadManager|getState|operation",
+      "class": "state-observation",
+      "wpt": [
+        "preload-headers"
+      ],
+      "effect": "Returns the current enabled flag and configured navigation preload header value.",
+      "prerequisites": "Requires a native manager and accessible associated registration.",
+      "next": "Check whether exposing the header could reveal shared state; the call is not a request."
+    },
+    {
+      "key": "background-sync|ServiceWorkerRegistration|sync|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Returns the one-shot sync manager for the associated registration.",
+      "prerequisites": "Requires a native registration and API exposure in the browser.",
+      "next": "Test native object recovery and separately test sync event and handler authority."
+    },
+    {
+      "key": "background-sync|SyncManager|getTags|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns tags for existing sync registrations associated with the worker registration.",
+      "prerequisites": "Requires an accessible native manager and relevant registered tags.",
+      "next": "Assess shared-origin state exposure and separately inspect any later relay; this operation is not a network send."
+    },
+    {
+      "key": "periodic-background-sync|PeriodicSyncManager|getTags|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns tags for existing sync registrations associated with the worker registration.",
+      "prerequisites": "Requires an accessible native manager and relevant registered tags.",
+      "next": "Assess shared-origin state exposure and separately inspect any later relay; this operation is not a network send."
+    },
+    {
+      "key": "periodic-background-sync|PeriodicSyncManager|unregister|operation",
+      "class": "background-agent-control",
+      "wpt": [],
+      "effect": "Unregisters a tagged periodic synchronization registration.",
+      "prerequisites": "Requires an accessible manager and matching background registration.",
+      "next": "Test whether app access affects shared background work; this is an integrity and availability question."
+    },
+    {
+      "key": "reporting-1|ReportingObserver|constructor|constructor",
+      "class": "local-observer",
+      "wpt": [],
+      "effect": "Constructs an observer and stores its callback and options.",
+      "prerequisites": "Requires browser exposure and, for notifications, reports made available to the observer.",
+      "next": "Review report visibility and callbacks separately from endpoint delivery; these methods are not the reporting-upload algorithm."
+    },
+    {
+      "key": "reporting-1|ReportingObserver|observe|operation",
+      "class": "local-observer",
+      "wpt": [],
+      "effect": "Registers an observer to receive local report notifications.",
+      "prerequisites": "Requires browser exposure and, for notifications, reports made available to the observer.",
+      "next": "Review report visibility and callbacks separately from endpoint delivery; these methods are not the reporting-upload algorithm."
+    },
+    {
+      "key": "reporting-1|ReportingObserver|disconnect|operation",
+      "class": "local-observer",
+      "wpt": [],
+      "effect": "Stops observer notifications.",
+      "prerequisites": "Requires browser exposure and, for notifications, reports made available to the observer.",
+      "next": "Review report visibility and callbacks separately from endpoint delivery; these methods are not the reporting-upload algorithm."
+    },
+    {
+      "key": "reporting-1|ReportingObserver|takeRecords|operation",
+      "class": "local-observer",
+      "wpt": [],
+      "effect": "Returns and empties the observer report queue.",
+      "prerequisites": "Requires browser exposure and, for notifications, reports made available to the observer.",
+      "next": "Review report visibility and callbacks separately from endpoint delivery; these methods are not the reporting-upload algorithm."
+    },
+    {
+      "key": "webtransport|WebTransport|incomingBidirectionalStreams|attribute",
+      "class": "authority-acquisition",
+      "wpt": [
+        "webtransport-connect"
+      ],
+      "effect": "Returns a readable stream yielding server-initiated bidirectional streams with both readable and writable sides.",
+      "prerequisites": "Requires access to a WebTransport object and server-created streams in a live session.",
+      "next": "Test acquisition of an incoming stream and its writable side with a receiver; reading this property alone sends no payload."
+    },
+    {
+      "key": "webtransport|WebTransport|incomingUnidirectionalStreams|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Returns a readable stream of server-initiated receive streams.",
+      "prerequisites": "Requires an accessible session and incoming streams.",
+      "next": "Assess how received bytes become available; a separate writable capability is needed to transmit."
+    },
+    {
+      "key": "webtransport|WebTransportBidirectionalStream|readable|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Returns the readable stream of a bidirectional transport stream.",
+      "prerequisites": "Requires a reachable bidirectional stream object and appropriate transport state.",
+      "next": "Test actual reads and subsequent uses; obtaining the property is not itself payload transmission."
+    },
+    {
+      "key": "webtransport|WebTransportBidirectionalStream|writable|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Returns the writable stream of a bidirectional transport stream.",
+      "prerequisites": "Requires a reachable bidirectional stream object and appropriate transport state.",
+      "next": "Test actual writes at an independent receiver; obtaining the property is not itself payload transmission."
+    },
+    {
+      "key": "webtransport|WebTransportDatagramDuplexStream|readable|attribute",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Returns the incoming datagram readable stream.",
+      "prerequisites": "Requires a reachable datagram duplex object and active session to receive data.",
+      "next": "Assess data provenance and other outbound capabilities separately."
+    },
+    {
+      "key": "webtransport|WebTransport|createSendGroup|operation",
+      "class": "authority-acquisition",
+      "wpt": [],
+      "effect": "Creates a send-group object for coordinating transport sends.",
+      "prerequisites": "Requires an accessible WebTransport session; implementation/version support varies.",
+      "next": "Review how the group can be assigned to writers and whether session acquisition is possible; creation itself is not a payload send."
+    },
+    {
+      "key": "webtransport|WebTransport|exportKeyingMaterial|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Derives and returns TLS exporter bytes for the session using caller-supplied inputs.",
+      "prerequisites": "Requires an accessible transport and applicable session state; support and details are browser dependent.",
+      "next": "Review session material exposure and side effects in actual implementations; do not infer network transmission from derivation."
+    },
+    {
+      "key": "webtransport|WebTransport|getStats|operation",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns transport statistics gathered by the user agent.",
+      "prerequisites": "Requires an accessible native WebTransport object and supported operation.",
+      "next": "Assess what information stats expose; network access is tied to session establishment and other operations, not proven by this read."
+    },
+    {
+      "key": "webtransport|WebTransport|ready|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns a promise for session readiness.",
+      "prerequisites": "Requires an accessible WebTransport object and relevant state changes.",
+      "next": "Examine associated callbacks and peer-provided data; the getter does not itself establish a payload transfer."
+    },
+    {
+      "key": "webtransport|WebTransport|closed|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns a promise for session closure and possible close information.",
+      "prerequisites": "Requires an accessible WebTransport object and relevant state changes.",
+      "next": "Examine associated callbacks and peer-provided data; the getter does not itself establish a payload transfer."
+    },
+    {
+      "key": "webtransport|WebTransport|draining|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns a promise for the session draining state.",
+      "prerequisites": "Requires an accessible WebTransport object and relevant state changes.",
+      "next": "Examine associated callbacks and peer-provided data; the getter does not itself establish a payload transfer."
+    },
+    {
+      "key": "websockets|WebSocket|onopen|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the callback for connection open.",
+      "prerequisites": "Requires an accessible native socket and the corresponding event.",
+      "next": "Test provenance and callback handling on recovered sockets; registering a callback is not itself payload transmission."
+    },
+    {
+      "key": "websockets|WebSocket|onmessage|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the callback for received message.",
+      "prerequisites": "Requires an accessible native socket and the corresponding event.",
+      "next": "Test provenance and callback handling on recovered sockets; registering a callback is not itself payload transmission."
+    },
+    {
+      "key": "websockets|WebSocket|onclose|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the callback for connection close.",
+      "prerequisites": "Requires an accessible native socket and the corresponding event.",
+      "next": "Test provenance and callback handling on recovered sockets; registering a callback is not itself payload transmission."
+    },
+    {
+      "key": "websockets|WebSocket|onerror|attribute",
+      "class": "event-observation",
+      "wpt": [],
+      "effect": "Sets or gets the callback for connection error.",
+      "prerequisites": "Requires an accessible native socket and the corresponding event.",
+      "next": "Test provenance and callback handling on recovered sockets; registering a callback is not itself payload transmission."
+    },
+    {
+      "key": "websockets|WebSocket|url|attribute",
+      "class": "state-observation",
+      "wpt": [],
+      "effect": "Returns the URL of the associated WebSocket.",
+      "prerequisites": "Requires an accessible socket.",
+      "next": "Check whether recovered objects reveal shared state; the getter is not a new connection."
     }
   ]
 }

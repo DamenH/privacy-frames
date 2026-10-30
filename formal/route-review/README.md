@@ -89,3 +89,43 @@ outbound request. Likewise, [periodic sync registration](https://wicg.github.io/
 schedules events and requires the receiving worker to have a further means of
 communication. Whether an app can reach these native objects remains a runtime
 question, not a conclusion drawn from their presence in the native snapshot.
+
+A `Request` or redirect `Response` can carry a URL or headers without sending
+anything on construction. The effect occurs when another operation consumes it.
+In particular, a synthetic redirect used by a worker or navigation needs its
+own consumer and mediation analysis. `Request.keepalive` also calls for a
+lifecycle-specific delivery check rather than inference from a normal fetch.
+See the [Fetch Standard](https://fetch.spec.whatwg.org/#request-class) and its
+[redirect response construction](https://fetch.spec.whatwg.org/#dom-response-redirect).
+
+[Cache lookup and mutation](https://w3c.github.io/ServiceWorker/#cache-interface)
+have a different role from `Cache.add`: `match` reads stored responses and
+`put` stores supplied responses. Access to host cache objects could affect
+integrity or expose shared state even when the lookup itself is not a request.
+The [publisher cache probe](../cache-publisher.md) demonstrates a native worker
+fetch control and a negative result for a particular virtual publisher scenario;
+it does not prove native-worker reachability is impossible or identify which
+layer rejected the confined request.
+
+The [credential container](https://w3c.github.io/webappsec-credential-management/#credentialscontainer)
+dispatches creation to type-specific mechanisms and interacts with a
+user-agent credential store. Its generic methods do not establish a uniform
+network behavior. Browser or vendor synchronization, and any effects of
+individual credential extensions, remain separate questions. Likewise,
+[WebTransport close](https://w3c.github.io/webtransport/#dom-webtransport-close)
+accepts close information; what a peer receives must be measured for the
+protocol in use before treating it as a data channel.
+
+An incoming [WebTransport bidirectional stream](https://w3c.github.io/webtransport/#dom-webtransport-incomingbidirectionalstreams)
+has a writable side as well as a readable side. Thus, review of sending
+capabilities must include streams initiated by the peer, not only the app's
+`createBidirectionalStream` calls. Whether a confined app can obtain such a
+native session or stream still needs an implementation-level test.
+
+The [ReportingObserver methods](https://www.w3.org/TR/reporting-1/#interface-reportingobserver)
+control local report observation and are distinct from the browser's report
+delivery algorithm. Similarly, a native service-worker registration exposes
+workers at different lifecycle states and can schedule unregistration. These
+are acquisition, integrity and lifecycle questions; property observations do
+not establish an outbound request. Sync tag reads and unregistration affect
+browser-owned state and warrant separate shared-origin analysis.

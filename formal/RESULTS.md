@@ -33,6 +33,10 @@ location and uniqueness. The [path audit](path-audit/README.md) records the
 original reproduction and the tests for the correction. The [eight-app corpus](evidence/compatibility-after-canonical-paths.json)
 passed in both browsers against the fixed build; its receipt records the build
 hashes because the source change was uncommitted when the run started.
+The runtime was deployed from host revision
+`fdb2dae51f27a5ad378589cc1a523d0d3f2518e1`. Its live service worker and four
+guard files matched the tested build, and a fresh installation passed the
+identity and sampled reporting-header checks.
 
 An [exploratory controller-update fixture](startup/README.md) observed a child
 remaining unpublished while its guard response was held. One run recorded the
