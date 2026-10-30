@@ -12,3 +12,6 @@ results/*.png
 dist-examples/
 
 publisher-source/
+
+.tools/
+formal/confinement/states/
