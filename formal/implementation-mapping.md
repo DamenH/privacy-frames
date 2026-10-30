@@ -1,21 +1,22 @@
 # Model-to-implementation mapping
 
-This mapping reads runtime source at
-`2449929b26adc7dad41b54c9d4de2c4b3bdb0a69`. Line links refer to that source layout.
-The TLA+ actions describe selected design decisions; none is generated from
-TypeScript. A narrow Registry trace comparison now exists. There is no refinement
-relation for the combined runtime or browser boundary.
+This mapping describes the verification worktree, including the live-phase
+bookkeeping simplification documented below. Individual receipts pin the exact
+source and artifact hashes they checked. Line links are navigation aids, not a
+claim that the TLA+ actions are generated from TypeScript. A narrow Registry trace
+comparison exists; there is no refinement relation for the combined runtime and
+browser boundary.
 
 ## Meaning of the modeled states
 
-`Lifecycle.Prepare` must mean that the local execution environment has installed
-its restrictions. It must not mean that the controller's `ContextIdentity.state`
-has become `ready` or `running`. The controller changes those fields when serving
-root content ([worker.ts:511](../src/runtime/worker.ts#L511)) or consuming child
-content ([document-controller.ts:288](../src/runtime/contexts/document-controller.ts#L288)),
-before the guard has finished preparing and rendering the application. Worker
-resource readiness is explicitly bookkeeping
-([model.ts:127](../src/runtime/contexts/model.ts#L127)).
+`Lifecycle.Prepare` means that the local execution environment has installed
+its restrictions. It does not mean that the controller's ContextIdentity has a
+particular live phase label. Those serialized labels remain valid for normal
+controller updates, but readiness and content delivery no longer advance them.
+The controller now revalidates effective identity/capability after asynchronous
+work without writing diagnostic phase transitions
+([model.ts](../src/runtime/contexts/model.ts)). The local guard still prepares the
+realm before application execution and publication.
 
 `Publish` concerns access to execution authority, not every returned JavaScript
 handle. The worker factory returns a native Worker handle before its ready
@@ -150,27 +151,41 @@ projection.
 
 ## Narrow Registry implementation conformance
 
-[Registry.tla](confinement/Registry.tla) separates one context's binding state
-from owner/other closure requests. `Bind` maps to
-[ContextRegistry.bind](../src/runtime/contexts/model.ts#L58), `Ready` to
-[markResourceReady](../src/runtime/contexts/model.ts#L128), and owner/other close
-actions to [closeChild](../src/runtime/contexts/model.ts#L170). The invariants
-exclude binding after an owner close request, revival of a closed identity and
-closing an existing identity on behalf of another parent.
+[Registry.tla](confinement/Registry.tla) separates one context's effective binding
+state from owner/other closure requests. `Bind` maps to `ContextRegistry.bind`;
+`Revalidate` abstracts `isCurrent` and `isCapabilityCurrent`; owner/other close
+actions map to `closeChild`. The current implementation no longer writes live
+phase transitions. Persisted `preparing`, `ready` and `running` labels all project
+to `bound`; they neither grant authority nor establish guard preparation. A
+closed effective record is unavailable. `ReviveClosed` injects acceptance of a
+closed binding, rather than an obsolete phase rewrite. The invariants exclude
+binding after an owner close request, accepting closed authority and closing an
+existing identity on behalf of another parent.
 
-The [trace test](confinement/registry-trace-test.ts#L48) enumerates all 10,000
+The [trace test](confinement/registry-trace-test.ts) enumerates all 10,000
 length-four sequences over ten operations against actual ContextRegistry code.
 Its [receipt](confinement/registry-implementation-traces.json) records 40,000
-transitions checked against the TLC-generated fourteen-state graph or accepted as
+transitions checked against the TLC-generated eight-state graph or accepted as
 stuttering. The receipt hashes the tested source and model inputs. This is a
 finite sequential safety comparison; allowing stuttering does not require every
-model-permitted operation to succeed in the implementation.
+model-permitted operation to succeed in the implementation. Explicit result
+assertions require current live authority to succeed and closed, absent or
+mismatched authority to fail.
 
-The enumerated operations include direct state transitions, wrong browser-client
-IDs and wrong URLs. After each operation the test checks both direct and
-empty-caller bearer capabilities, including rejection of a different client.
-It does not test the bearer's unguessability or its use by the browser. A
-wrong-owner mutation is checked separately and must fail.
+The enumerated operations include both revalidation forms, wrong browser-client
+IDs, wrong URLs, stale context IDs and stale installation generations. After
+each operation the test checks direct and empty-caller bearer capabilities,
+including rejection of a different client. Supplemental seeded-record checks
+exercise all four persisted phase labels and each authority-stamp field, and
+reject a closed expected identity, and require revalidation to perform no storage
+writes. These seeds are not additional
+TLC transitions. The test does not establish bearer secrecy or browser identity.
+A wrong-owner mutation is checked separately and must fail.
+
+`CloseOwner` is an atomic abstract completion, not the point where the caller
+enqueues a close request. This sequential comparison does not establish queue
+ordering or cross-instance linearizability; deterministic implementation tests
+exercise selected such schedules separately.
 
 The test's `Replace` constructs another ContextRegistry over the same in-memory
 store. It represents loss of the registry object's mutation queue, not the
@@ -201,26 +216,49 @@ node --test formal/confinement/registry-concurrency-test.ts
 ```
 
 The tests use actual ContextRegistry and controller-store code with shared
-in-memory CacheStorage responses. Promise gates select the write interleaving;
-timeouts only detect a schedule that is no longer reachable. Both tests restore
-the global CacheStorage binding and release pending operations on failure.
+in-memory CacheStorage responses. Promise gates select reads and writes;
+bounded waits distinguish a missing checkpoint from a failed assertion. Each
+schedule releases and settles pending operations and restores CacheStorage on
+failure.
 
-One schedule pauses a ready write in the old registry, completes owner closure
-through another registry, then releases the old write. The old promise fulfills
-and the raw record becomes ready. Effective storage reads remain closed, and
-both registry resolution and resource-capability lookup refuse the identity.
-Closure correctness therefore depends on the separate tombstones, not on the
-raw record state or the old operation's acknowledgement.
+The queued-close test in
+[context-model.test.ts](../test/context-model.test.ts) holds closure before its
+tombstone is committed, then queues both revalidation forms. Neither can pass
+the earlier close; both reject after the gate releases. Across independent
+registries, other schedules pause an already-read live snapshot, commit closure
+through another registry, then release the old read. A second effective read
+rejects the identity/capability without writing any record. Separate schedules
+change application, parent, context ID or generation between those reads and
+require rejection.
 
-The second schedule makes both registries validate the same absent browser
-client with different context identifiers before either writes. Both binds
-fulfill; the later context wins the client record and both context indexes point
-to that client. The superseded context's capability is refused because the
-indexed identity no longer matches. This demonstrates that the registry queues
-do not provide cross-instance binding uniqueness. It does not establish that a
-browser or the trusted bootstrap dispatcher produces those two bindings. The
-test characterizes a current limitation; a later atomic-binding improvement
-would require changing the characterization.
+A previous-release controller is modeled by pausing its raw ready-phase storage
+write. A newer registry closes the context before that write finishes. The old
+write can leave the raw record ready; effective reads remain closed through the
+unchanged tombstones. The new implementation itself no longer performs that
+phase write. This checks existing controller overlap without adding a migration
+branch or deleting stored application data.
+
+The independently runnable handler test uses real browser IndexedDB for
+installations and document intents:
+
+```sh
+node test/document-consumption-race.ts
+```
+
+It invokes the actual document controller with simulated trusted Client/FetchEvent
+and context-store inputs. A bounded gate pauses after persistent intent
+consumption. The unchanged control returns its exact text; closure, changed
+parent or changed context generation before final validation produces an error
+response without a body. Chromium and Firefox pass. This tests the
+consume-to-revalidation ordering, not native browser client authentication.
+
+Another schedule makes both registries validate the same absent browser client
+with different context identifiers before either writes. Both binds fulfill; the
+later context wins the client record and both context indexes point to that
+client. The superseded context's capability is refused because the indexed
+identity no longer matches. Per-instance queues still do not provide
+cross-instance binding uniqueness. The test does not establish that the browser
+or trusted dispatcher produces those two bindings.
 
 A concurrency model needs two operation program counters, their read snapshots,
 raw records/indexes and monotonic closure markers. Its authorization projection

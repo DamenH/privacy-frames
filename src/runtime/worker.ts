@@ -518,16 +518,11 @@ worker.addEventListener('fetch', (event) => {
           root.installationGeneration !== app.generation
         )
           return Response.error();
-        if (root.state === 'preparing') await contexts.transition(client, 'ready');
-        const current = await contexts.resolve(client);
-        if (current?.state === 'ready') await contexts.transition(client, 'running');
+        const bytes = await getResource(app.id, app.manifest.entry, app.generation);
+        if (!(await contexts.isCurrent(client, root))) return Response.error();
         return response(
           JSON.stringify({
-            ...prepareRuntimeDocument(
-              app,
-              await getResource(app.id, app.manifest.entry, app.generation),
-              BASE,
-            ),
+            ...prepareRuntimeDocument(app, bytes, BASE),
             installationGeneration: app.generation,
           }),
           'application/json',

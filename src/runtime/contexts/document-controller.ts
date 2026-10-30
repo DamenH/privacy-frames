@@ -287,8 +287,7 @@ export function createDocumentController(options: DocumentControllerOptions) {
     }
     const content = await intents.consume(key, actual.client.id, app.generation);
     if (!content) return Response.error();
-    if (identity.state === 'preparing') await contexts.transition(actual.client, 'ready');
-    await contexts.transition(actual.client, 'running');
+    if (!(await contexts.isCurrent(actual.client, identity))) return Response.error();
     return json(content.input);
   };
 }

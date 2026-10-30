@@ -1,0 +1,204 @@
+import http from 'node:http';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { chromium, firefox } from 'playwright';
+import { build } from './build.ts';
+import { launch } from './browser-profile.ts';
+import { testProvenance } from './provenance.ts';
+
+interface ConsumptionResult {
+  scenario: string;
+  consumedBeforeMutation: boolean;
+  validations: number;
+  type: string;
+  status: number;
+  body: string;
+}
+declare global {
+  interface Window {
+    runConsumptionRace(): Promise<ConsumptionResult[]>;
+  }
+}
+
+// Run independently: node test/document-consumption-race.ts
+// Receipt: results/contexts/document-consumption-race.json
+// This trusted fixture calls the actual controller and real IndexedDB stores.
+// Client/FetchEvent identities and ContextStorage are stand-ins: this does not
+// test browser authentication, CacheStorage concurrency or physical publication.
+const compiled = await build({
+  stdin: {
+    resolveDir: process.cwd(),
+    sourcefile: 'document-consumption-race-fixture.js',
+    contents: `
+import { createDocumentController } from './src/runtime/contexts/document-controller.ts';
+import { DocumentIntentStore } from './src/runtime/contexts/document-intents.ts';
+import { ContextRegistry, CONTEXT_POLICY_VERSION } from './src/runtime/contexts/model.ts';
+import { getApp, putApp } from './src/runtime/storage.ts';
+import { applicationURL } from './src/shared/runtime-url.ts';
+const check = (value, message) => { if (!value) throw new Error(message); };
+function gate() {
+  let release, entered;
+  const blocked = new Promise(resolve => { release = resolve; });
+  const waiting = new Promise(resolve => { entered = resolve; });
+  return { release, entered, blocked, waiting };
+}
+async function bounded(promise) {
+  let timer;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Race fixture timed out')), 5000); }),
+    ]);
+  } finally { clearTimeout(timer); }
+}
+window.runConsumptionRace = async () => {
+  const id = 'consumption-' + '1'.repeat(64);
+  await putApp({
+    id, manifest: { id: 'consumption', name: 'Consumption', entry: 'index.html' },
+    source: 'https://publisher.invalid/', resources: [], size: 0,
+    installedAt: new Date().toISOString(), format: 'offline-resources-v1',
+    capture: { additionalResources: [], unavailableResources: [] },
+  });
+  const app = await getApp(id);
+  check(app, 'Stored installation missing');
+  const base = new URL('/runtime/', location.origin);
+  const results = [];
+  for (const scenario of ['unchanged', 'closed', 'owner-changed', 'generation-changed']) {
+    const records = new Map();
+    const closures = new Set();
+    const key = (parent, application, context) => JSON.stringify([parent, application, context]);
+    const storage = {
+      async get(client) {
+        const value = records.get(client);
+        return value && closures.has(key(value.parent, value.application, value.id))
+          ? { ...value, state: 'closed' } : value;
+      },
+      async put(client, value) { records.set(client, value); },
+      async lookupByContext(context) { return [...records].find(([, value]) => value.id === context)?.[0]; },
+      async isClosureRequested(parent, application, context) { return closures.has(key(parent, application, context)); },
+      async requestClosure(parent, application, context) { closures.add(key(parent, application, context)); },
+    };
+    const contexts = new ContextRegistry(storage);
+    const otherController = new ContextRegistry(storage);
+    const intents = new DocumentIntentStore({ databaseName: 'consumption-race-' + scenario });
+    const input = { kind: 'html', text: '<p>Admitted private document</p>', sourceURL: app.source, aliases: [] };
+    const intent = await intents.issue({ application: id, installationGeneration: app.generation, parentClient: 'parent' }, input);
+    const target = new URL('__contexts/' + intent.id + '/document.html', applicationURL(app, base));
+    check(await intents.bind(intent, 'child', app.generation), 'Intent binding failed');
+    await contexts.bind('child', {
+      policyVersion: CONTEXT_POLICY_VERSION, id: intent.id, application: id,
+      installationGeneration: app.generation, parent: 'parent', kind: 'window',
+      state: 'preparing', url: target.href,
+    });
+    let validations = 0;
+    const validate = contexts.isCurrent.bind(contexts);
+    contexts.isCurrent = (...args) => { validations++; return validate(...args); };
+    const child = { id: 'child', url: target.href, type: 'window' };
+    const controller = createDocumentController({
+      base, contexts, intents,
+      async client(clientId) { return clientId === 'child' ? child : undefined; },
+      async application() { return id; }, async bootstrap() { return undefined; },
+    });
+    const paused = gate();
+    const consume = intents.consume.bind(intents);
+    intents.consume = async (...args) => {
+      const content = await consume(...args);
+      check(content, 'Actual consumption did not return content');
+      paused.entered();
+      await paused.blocked;
+      return content;
+    };
+    const pending = controller({
+      request: new Request(new URL('content', target)), clientId: 'child', resultingClientId: '',
+    });
+    try {
+      await bounded(paused.waiting);
+      const consumedBeforeMutation = (await intents.inspect(intent.id)).state === 'consumed';
+      check(consumedBeforeMutation, 'Pause did not follow persisted consumption');
+      if (scenario === 'closed')
+        check(await otherController.closeChild('parent', id, intent.id), 'Concurrent close failed');
+      if (scenario === 'owner-changed' || scenario === 'generation-changed') {
+        const current = records.get('child');
+        records.set('child', { ...current, ...(scenario === 'owner-changed'
+          ? { parent: 'different-parent' } : { installationGeneration: 'different-generation' }) });
+      }
+      paused.release();
+      const response = await bounded(pending);
+      check(response, 'Controller did not handle content request');
+      results.push({ scenario, consumedBeforeMutation, validations,
+        type: response.type, status: response.status, body: await response.text() });
+    } finally {
+      paused.release();
+      await bounded(Promise.allSettled([pending]));
+      intents.consume = consume;
+    }
+  }
+  return results;
+};`,
+  },
+  bundle: true,
+  write: false,
+  format: 'iife',
+  target: 'es2022',
+});
+const script = compiled.outputFiles[0].contents;
+const server = http.createServer((request, response) => {
+  response.setHeader(
+    'Content-Type',
+    request.url === '/fixture.js' ? 'text/javascript' : 'text/html',
+  );
+  response.end(
+    request.url === '/fixture.js'
+      ? script
+      : '<!doctype html><title>Consumption race</title><script src="/fixture.js"></script>',
+  );
+});
+await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+const address = server.address();
+assert(address && typeof address !== 'string');
+const evidence = {
+  provenance: await testProvenance(import.meta.url),
+  fixtureSHA256: createHash('sha256').update(script).digest('hex'),
+  scope:
+    'Actual document controller post-consumption revalidation with real IndexedDB; simulated client identities and in-memory context storage',
+  browsers: [] as { name: string; version: string; results: ConsumptionResult[] }[],
+};
+try {
+  for (const [name, engine] of Object.entries({ chromium, firefox })) {
+    const browser = await launch(engine);
+    try {
+      const page = await browser.newPage();
+      await page.goto(`http://127.0.0.1:${address.port}/`);
+      const results = await page.evaluate(() => window.runConsumptionRace());
+      assert.equal(results.length, 4);
+      for (const result of results) {
+        assert.equal(result.consumedBeforeMutation, true);
+        assert.equal(result.validations, 1);
+        if (result.scenario === 'unchanged') {
+          assert.equal(result.status, 200);
+          assert.equal(JSON.parse(result.body).text, '<p>Admitted private document</p>');
+        } else {
+          assert.equal(result.type, 'error');
+          assert.equal(result.status, 0);
+          assert.equal(result.body, '');
+        }
+      }
+      evidence.browsers.push({ name, version: browser.version(), results });
+      console.log(
+        `${name}: unchanged content succeeds; post-consume close/owner/generation changes refused`,
+      );
+    } finally {
+      await browser.close();
+    }
+  }
+  await mkdir('results/contexts', { recursive: true });
+  await writeFile(
+    'results/contexts/document-consumption-race.json',
+    JSON.stringify(evidence, null, 2) + '\n',
+  );
+} finally {
+  await new Promise<void>((resolve, reject) =>
+    server.close((error) => (error ? reject(error) : resolve())),
+  );
+}

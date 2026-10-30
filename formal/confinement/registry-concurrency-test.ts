@@ -85,7 +85,10 @@ function pauseWrites(storage: ContextStorage) {
   return paused;
 }
 
-async function waitForWrite(paused: ReturnType<typeof gate>, operation: Promise<void>) {
+async function waitForWrite(
+  paused: ReturnType<typeof gate>,
+  operation: Promise<unknown>,
+) {
   let timer: ReturnType<typeof setTimeout> | undefined;
   try {
     await Promise.race([
@@ -111,7 +114,9 @@ test('a late ready write from another registry cannot defeat effective closure',
     await first.bind('client', identity());
 
     const paused = pauseWrites(firstStore);
-    const ready = first.transition({ id: 'client', url: identity().url }, 'ready');
+    // A controller from the previous release can still finish this persisted
+    // phase write while a newer controller has already closed the identity.
+    const ready = firstStore.put('client', { ...identity(), state: 'ready' });
     try {
       await waitForWrite(paused, ready);
       assert.equal(await replacement.closeChild('owner', 'application', 'context'), true);
@@ -134,6 +139,102 @@ test('a late ready write from another registry cannot defeat effective closure',
     const restarted = new ContextRegistry(controllerContextStorage(base));
     assert.equal(await restarted.resourceCapability('context', 'client'), undefined);
   });
+});
+
+for (const mode of ['identity', 'capability'] as const) {
+  test(`a closure from another controller during ${mode} revalidation is rejected without writes`, async () => {
+    await sharedCache(async (raw) => {
+      const firstStore = controllerContextStorage(base);
+      const replacement = new ContextRegistry(controllerContextStorage(base));
+      const first = new ContextRegistry(firstStore);
+      const value = {
+        ...identity(),
+        kind: mode === 'identity' ? ('window' as const) : ('dedicated-worker' as const),
+      };
+      await first.bind('client', value);
+      const expected = await first.resourceCapability('context', 'client');
+      const paused = gate();
+      const get = firstStore.get;
+      let pause = true,
+        writes = 0;
+      firstStore.get = async (client) => {
+        const snapshot = await get(client);
+        if (pause) {
+          pause = false;
+          paused.started();
+          await paused.blocked;
+        }
+        return snapshot;
+      };
+      firstStore.put = async () => {
+        writes++;
+        throw new Error('Validation performed a write');
+      };
+      const checking =
+        mode === 'identity'
+          ? first.isCurrent({ id: 'client', url: value.url }, value)
+          : first.isCapabilityCurrent('context', 'client', expected!);
+      try {
+        await waitForWrite(paused, checking);
+        assert.equal(
+          await replacement.closeChild('owner', 'application', 'context'),
+          true,
+        );
+      } finally {
+        paused.release();
+        await Promise.allSettled([checking]);
+      }
+      assert.equal(await checking, false);
+      assert.equal(writes, 0);
+      const stored = await raw('client');
+      assert(stored && typeof stored === 'object' && 'state' in stored);
+      assert.equal(stored.state, 'closed');
+    });
+  });
+}
+
+test('changed authority stamps during asynchronous revalidation are rejected', async () => {
+  for (const mode of ['identity', 'capability'] as const) {
+    for (const change of [
+      { installationGeneration: 'other-generation' },
+      { application: 'other-application' },
+      { parent: 'other-owner' },
+      { id: 'other-context' },
+    ]) {
+      await sharedCache(async () => {
+        const firstStore = controllerContextStorage(base);
+        const otherStore = controllerContextStorage(base);
+        const first = new ContextRegistry(firstStore);
+        await first.bind('client', identity());
+        const expected = await first.resourceCapability('context', 'client');
+        assert(expected);
+        const paused = gate();
+        const get = firstStore.get;
+        let pause = true;
+        firstStore.get = async (client) => {
+          const snapshot = await get(client);
+          if (pause) {
+            pause = false;
+            paused.started();
+            await paused.blocked;
+          }
+          return snapshot;
+        };
+        const checking =
+          mode === 'identity'
+            ? first.isCurrent({ id: 'client', url: identity().url }, identity())
+            : first.isCapabilityCurrent('context', 'client', expected);
+        try {
+          await waitForWrite(paused, checking);
+          await otherStore.put('client', { ...identity(), ...change });
+        } finally {
+          paused.release();
+          await Promise.allSettled([checking]);
+        }
+        assert.equal(await checking, false, mode + ':' + JSON.stringify(change));
+      });
+    }
+  }
 });
 
 test('independent registry queues do not make binding uniqueness atomic', async () => {

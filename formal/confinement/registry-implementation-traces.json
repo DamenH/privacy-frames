@@ -1,20 +1,22 @@
 {
   "scope": "10000 length-four sequential operation traces against the actual ContextRegistry, using an in-memory ContextStorage. No browser guard, native client identity or concurrent storage interleaving is verified.",
   "modelInputs": {
-    "Registry.tla": "e6826dad4a079ed08507242d654fdc21701b6889756135bde0f41e7a66e6ee20",
+    "Registry.tla": "4b89307d020b709af34d184878b4dcc539cdb92ff97c79a05fc6461bc157fc70",
     "RegistrySafe.cfg": "b57ee34f56fb880aef4df07b8d4c552ab6fd166b1c9bbb9e445960c77a7eb9ae"
   },
-  "runnerSHA256": "eaa48f8a6d9bee38bd4f58b3ca351f1bcab47fc94d0b6df2f4ef37d84208e55a",
-  "sourceSHA256": "c50ebfc5efb0d96c7dd4484e2a270b5aa642c1342e6e5bf528cb2864631277c8",
+  "runnerSHA256": "22a056bdaa37f15be52db6cc9a70fc1b16f514339bc57a2657cb30da45c96eb6",
+  "sourceSHA256": "6b5905338c313754d25fa392deb5b604771794c55a6d72f9dfbae6a7bb8c48b4",
+  "boundAbstraction": "Persisted preparing/ready/running all project to bound; no guard readiness is inferred",
+  "supplementalChecks": "All four stored phase labels, seven changed authority fields, closed expected identity, wrong capability client, and no validation writes",
   "sequences": 10000,
   "transitions": 40000,
   "samples": [
     {
       "sequence": [
         "Bind",
-        "Ready",
+        "Current",
         "CloseOwner",
-        "Ready"
+        "CapabilityCurrent"
       ],
       "trace": [
         {
@@ -29,7 +31,7 @@
           },
           "outcome": "bound",
           "after": {
-            "state": "preparing",
+            "state": "bound",
             "closedByOwner": false,
             "closedByOther": false,
             "badBind": false,
@@ -43,9 +45,9 @@
           }
         },
         {
-          "action": "Ready",
+          "action": "Current",
           "before": {
-            "state": "preparing",
+            "state": "bound",
             "closedByOwner": false,
             "closedByOther": false,
             "badBind": false,
@@ -54,7 +56,7 @@
           },
           "outcome": true,
           "after": {
-            "state": "running",
+            "state": "bound",
             "closedByOwner": false,
             "closedByOther": false,
             "badBind": false,
@@ -70,7 +72,7 @@
         {
           "action": "CloseOwner",
           "before": {
-            "state": "running",
+            "state": "bound",
             "closedByOwner": false,
             "closedByOther": false,
             "badBind": false,
@@ -93,7 +95,7 @@
           }
         },
         {
-          "action": "Ready",
+          "action": "CapabilityCurrent",
           "before": {
             "state": "closed",
             "closedByOwner": true,
@@ -124,7 +126,7 @@
         "CloseOwner",
         "Replace",
         "Bind",
-        "Ready"
+        "Current"
       ],
       "trace": [
         {
@@ -203,7 +205,7 @@
           }
         },
         {
-          "action": "Ready",
+          "action": "Current",
           "before": {
             "state": "absent",
             "closedByOwner": true,
@@ -233,7 +235,7 @@
       "sequence": [
         "CloseOther",
         "Bind",
-        "Ready",
+        "CapabilityCurrent",
         "CloseOwner"
       ],
       "trace": [
@@ -274,7 +276,7 @@
           },
           "outcome": "bound",
           "after": {
-            "state": "preparing",
+            "state": "bound",
             "closedByOwner": false,
             "closedByOther": true,
             "badBind": false,
@@ -288,9 +290,9 @@
           }
         },
         {
-          "action": "Ready",
+          "action": "CapabilityCurrent",
           "before": {
-            "state": "preparing",
+            "state": "bound",
             "closedByOwner": false,
             "closedByOther": true,
             "badBind": false,
@@ -299,7 +301,7 @@
           },
           "outcome": true,
           "after": {
-            "state": "running",
+            "state": "bound",
             "closedByOwner": false,
             "closedByOther": true,
             "badBind": false,
@@ -315,7 +317,7 @@
         {
           "action": "CloseOwner",
           "before": {
-            "state": "running",
+            "state": "bound",
             "closedByOwner": false,
             "closedByOther": true,
             "badBind": false,

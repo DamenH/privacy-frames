@@ -66,6 +66,9 @@ replacement overlaps and selected network effects with independent receivers.
 The [generation comparison](confinement/generation-reads.md#partial-comparison-with-real-indexeddb-outcomes)
 checks 24 observed read/replacement pairs against possible modeled completions;
 it does not observe the transaction's internal timing.
+The [context-state cleanup](simplification.md#context-liveness-bookkeeping)
+removes live-phase bookkeeping writes while retaining queued authority checks
+and closure markers; its race tests and compatibility results are documented there.
 The [model-to-implementation mapping](implementation-mapping.md) identifies which
 code paths correspond to model actions and where that correspondence is missing.
 The [Web IDL report](idl-surface-report.md) joins selected standards to observed

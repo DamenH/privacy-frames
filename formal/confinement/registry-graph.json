@@ -1,11 +1,11 @@
 {
   "scope": "TLC finite registry graph; atomic storage and single identity abstraction",
   "inputs": {
-    "Registry.tla": "e6826dad4a079ed08507242d654fdc21701b6889756135bde0f41e7a66e6ee20",
+    "Registry.tla": "4b89307d020b709af34d184878b4dcc539cdb92ff97c79a05fc6461bc157fc70",
     "RegistrySafe.cfg": "b57ee34f56fb880aef4df07b8d4c552ab6fd166b1c9bbb9e445960c77a7eb9ae"
   },
   "nodes": {
-    "5073224363655815246": {
+    "1941937155262625019": {
       "state": "absent",
       "badBind": false,
       "badClose": false,
@@ -13,15 +13,15 @@
       "closedByOwner": false,
       "badRevive": false
     },
-    "-4070639765522426238": {
-      "state": "preparing",
+    "-6300925154021621774": {
+      "state": "bound",
       "badBind": false,
       "badClose": false,
       "closedByOther": false,
       "closedByOwner": false,
       "badRevive": false
     },
-    "-131053587838264138": {
+    "-1512378612591659684": {
       "state": "absent",
       "badBind": false,
       "badClose": false,
@@ -29,7 +29,7 @@
       "closedByOwner": true,
       "badRevive": false
     },
-    "-1055920125260715872": {
+    "5478176706726548933": {
       "state": "absent",
       "badBind": false,
       "badClose": false,
@@ -37,15 +37,7 @@
       "closedByOwner": false,
       "badRevive": false
     },
-    "-4037935338430076543": {
-      "state": "running",
-      "badBind": false,
-      "badClose": false,
-      "closedByOther": false,
-      "closedByOwner": false,
-      "badRevive": false
-    },
-    "-1759804109690436578": {
+    "-6114451323073992821": {
       "state": "closed",
       "badBind": false,
       "badClose": false,
@@ -53,23 +45,7 @@
       "closedByOwner": true,
       "badRevive": false
     },
-    "7720903015377952107": {
-      "state": "ready",
-      "badBind": false,
-      "badClose": false,
-      "closedByOther": false,
-      "closedByOwner": false,
-      "badRevive": false
-    },
-    "6906897460354021606": {
-      "state": "closed",
-      "badBind": false,
-      "badClose": false,
-      "closedByOther": false,
-      "closedByOwner": false,
-      "badRevive": false
-    },
-    "5265077282752812120": {
+    "-4758138118469741470": {
       "state": "absent",
       "badBind": false,
       "badClose": false,
@@ -77,266 +53,122 @@
       "closedByOwner": true,
       "badRevive": false
     },
-    "8123656050849947244": {
-      "state": "preparing",
+    "-109251007393210676": {
+      "state": "bound",
       "badBind": false,
       "badClose": false,
       "closedByOther": true,
       "closedByOwner": false,
       "badRevive": false
     },
-    "8127158550801228143": {
-      "state": "running",
-      "badBind": false,
-      "badClose": false,
-      "closedByOther": true,
-      "closedByOwner": false,
-      "badRevive": false
-    },
-    "5813236637484240112": {
+    "-157525004809992523": {
       "state": "closed",
       "badBind": false,
       "badClose": false,
       "closedByOther": true,
       "closedByOwner": true,
-      "badRevive": false
-    },
-    "-2587035468278164091": {
-      "state": "ready",
-      "badBind": false,
-      "badClose": false,
-      "closedByOther": true,
-      "closedByOwner": false,
-      "badRevive": false
-    },
-    "-1664904467539349496": {
-      "state": "closed",
-      "badBind": false,
-      "badClose": false,
-      "closedByOther": true,
-      "closedByOwner": false,
       "badRevive": false
     }
   },
   "edges": [
     {
-      "from": "5073224363655815246",
-      "to": "-4070639765522426238",
+      "from": "1941937155262625019",
+      "to": "-6300925154021621774",
       "action": "Bind"
     },
     {
-      "from": "5073224363655815246",
-      "to": "-131053587838264138",
+      "from": "1941937155262625019",
+      "to": "-1512378612591659684",
       "action": "CloseOwner"
     },
     {
-      "from": "5073224363655815246",
-      "to": "-1055920125260715872",
+      "from": "1941937155262625019",
+      "to": "5478176706726548933",
       "action": "CloseOther"
     },
     {
-      "from": "-4070639765522426238",
-      "to": "-4037935338430076543",
-      "action": "Ready"
+      "from": "-6300925154021621774",
+      "to": "-6300925154021621774",
+      "action": "Revalidate"
     },
     {
-      "from": "-4070639765522426238",
-      "to": "-1759804109690436578",
+      "from": "-6300925154021621774",
+      "to": "-6114451323073992821",
       "action": "CloseOwner"
     },
     {
-      "from": "-4070639765522426238",
-      "to": "-4070639765522426238",
+      "from": "-6300925154021621774",
+      "to": "-6300925154021621774",
       "action": "CloseOther"
     },
     {
-      "from": "-4070639765522426238",
-      "to": "7720903015377952107",
-      "action": "TransitionReady"
-    },
-    {
-      "from": "-4070639765522426238",
-      "to": "6906897460354021606",
-      "action": "TransitionClosed"
-    },
-    {
-      "from": "-131053587838264138",
-      "to": "-131053587838264138",
+      "from": "-1512378612591659684",
+      "to": "-1512378612591659684",
       "action": "CloseOwner"
     },
     {
-      "from": "-131053587838264138",
-      "to": "5265077282752812120",
+      "from": "-1512378612591659684",
+      "to": "-4758138118469741470",
       "action": "CloseOther"
     },
     {
-      "from": "-1055920125260715872",
-      "to": "8123656050849947244",
+      "from": "5478176706726548933",
+      "to": "-109251007393210676",
       "action": "Bind"
     },
     {
-      "from": "-1055920125260715872",
-      "to": "5265077282752812120",
+      "from": "5478176706726548933",
+      "to": "-4758138118469741470",
       "action": "CloseOwner"
     },
     {
-      "from": "-1055920125260715872",
-      "to": "-1055920125260715872",
+      "from": "5478176706726548933",
+      "to": "5478176706726548933",
       "action": "CloseOther"
     },
     {
-      "from": "-4037935338430076543",
-      "to": "-1759804109690436578",
+      "from": "-6114451323073992821",
+      "to": "-6114451323073992821",
       "action": "CloseOwner"
     },
     {
-      "from": "-4037935338430076543",
-      "to": "-4037935338430076543",
+      "from": "-6114451323073992821",
+      "to": "-6114451323073992821",
       "action": "CloseOther"
     },
     {
-      "from": "-4037935338430076543",
-      "to": "6906897460354021606",
-      "action": "TransitionClosed"
-    },
-    {
-      "from": "-1759804109690436578",
-      "to": "-1759804109690436578",
+      "from": "-4758138118469741470",
+      "to": "-4758138118469741470",
       "action": "CloseOwner"
     },
     {
-      "from": "-1759804109690436578",
-      "to": "-1759804109690436578",
+      "from": "-4758138118469741470",
+      "to": "-4758138118469741470",
       "action": "CloseOther"
     },
     {
-      "from": "7720903015377952107",
-      "to": "-4037935338430076543",
-      "action": "Ready"
+      "from": "-109251007393210676",
+      "to": "-109251007393210676",
+      "action": "Revalidate"
     },
     {
-      "from": "7720903015377952107",
-      "to": "-1759804109690436578",
+      "from": "-109251007393210676",
+      "to": "-157525004809992523",
       "action": "CloseOwner"
     },
     {
-      "from": "7720903015377952107",
-      "to": "7720903015377952107",
+      "from": "-109251007393210676",
+      "to": "-109251007393210676",
       "action": "CloseOther"
     },
     {
-      "from": "7720903015377952107",
-      "to": "-4037935338430076543",
-      "action": "TransitionRunning"
-    },
-    {
-      "from": "7720903015377952107",
-      "to": "6906897460354021606",
-      "action": "TransitionClosed"
-    },
-    {
-      "from": "6906897460354021606",
-      "to": "-1759804109690436578",
+      "from": "-157525004809992523",
+      "to": "-157525004809992523",
       "action": "CloseOwner"
     },
     {
-      "from": "6906897460354021606",
-      "to": "6906897460354021606",
-      "action": "CloseOther"
-    },
-    {
-      "from": "5265077282752812120",
-      "to": "5265077282752812120",
-      "action": "CloseOwner"
-    },
-    {
-      "from": "5265077282752812120",
-      "to": "5265077282752812120",
-      "action": "CloseOther"
-    },
-    {
-      "from": "8123656050849947244",
-      "to": "8127158550801228143",
-      "action": "Ready"
-    },
-    {
-      "from": "8123656050849947244",
-      "to": "5813236637484240112",
-      "action": "CloseOwner"
-    },
-    {
-      "from": "8123656050849947244",
-      "to": "8123656050849947244",
-      "action": "CloseOther"
-    },
-    {
-      "from": "8123656050849947244",
-      "to": "-2587035468278164091",
-      "action": "TransitionReady"
-    },
-    {
-      "from": "8123656050849947244",
-      "to": "-1664904467539349496",
-      "action": "TransitionClosed"
-    },
-    {
-      "from": "8127158550801228143",
-      "to": "5813236637484240112",
-      "action": "CloseOwner"
-    },
-    {
-      "from": "8127158550801228143",
-      "to": "8127158550801228143",
-      "action": "CloseOther"
-    },
-    {
-      "from": "8127158550801228143",
-      "to": "-1664904467539349496",
-      "action": "TransitionClosed"
-    },
-    {
-      "from": "5813236637484240112",
-      "to": "5813236637484240112",
-      "action": "CloseOwner"
-    },
-    {
-      "from": "5813236637484240112",
-      "to": "5813236637484240112",
-      "action": "CloseOther"
-    },
-    {
-      "from": "-2587035468278164091",
-      "to": "8127158550801228143",
-      "action": "Ready"
-    },
-    {
-      "from": "-2587035468278164091",
-      "to": "5813236637484240112",
-      "action": "CloseOwner"
-    },
-    {
-      "from": "-2587035468278164091",
-      "to": "-2587035468278164091",
-      "action": "CloseOther"
-    },
-    {
-      "from": "-2587035468278164091",
-      "to": "8127158550801228143",
-      "action": "TransitionRunning"
-    },
-    {
-      "from": "-2587035468278164091",
-      "to": "-1664904467539349496",
-      "action": "TransitionClosed"
-    },
-    {
-      "from": "-1664904467539349496",
-      "to": "5813236637484240112",
-      "action": "CloseOwner"
-    },
-    {
-      "from": "-1664904467539349496",
-      "to": "-1664904467539349496",
+      "from": "-157525004809992523",
+      "to": "-157525004809992523",
       "action": "CloseOther"
     }
   ]

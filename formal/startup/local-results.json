@@ -1,10 +1,10 @@
 {
-  "date": "2026-10-30T15:31:40.432Z",
+  "date": "2026-10-30T16:21:53.017Z",
   "provenance": {
-    "capturedAt": "2026-10-30T15:31:40.462Z",
-    "revision": "37c00647802756ce71be47e8bdeeeeb8f2e5f8f5",
+    "capturedAt": "2026-10-30T16:21:53.042Z",
+    "revision": "ba0418bcb8bb16f79d740dfa6a1d23d33482b08d",
     "dirty": true,
-    "sourceSHA256": "d9a2637a58ac14639414d9410cd62f748b5b267d5e93996215b8692edb57536f",
+    "sourceSHA256": "74a737601aab9ba7bed696659be7345862091c924acaef87d9d4de89a15a901b",
     "runner": "formal/startup/local-run.ts",
     "runnerSHA256": "0300b61e02fd99427365797fa9986cbf5a552b0f70a6600469cf01237aaa9f53",
     "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
@@ -17,13 +17,13 @@
       "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
       "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
       "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
-      "dist-manager/sw.js": "59c6ea8cfc027e9edc09f0b749db95da7d973e738e79ed6777524e487646b011",
+      "dist-manager/sw.js": "a607f5af51942b5bdbd13efa363453be5f234cdb818f2b97dfc36d31500935cc",
       "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
       "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
       "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
-      "dist-runtime/document-guard.js": "2a7cc135e164621f75a40d1088fb49dfe516e6ef31d348ab9d71c73b76bb506d",
-      "dist-runtime/guard.js": "d45c7178a6c125635f55be17a17ff8f5a7f78e65a60537b61eb0273239162f01",
+      "dist-runtime/document-guard.js": "117d37a809d044b70d56927dbf2aa798250cb6e5ff7fe8b2913de91842425c62",
+      "dist-runtime/guard.js": "5e4961bb6eb78775af658b1c949cded25c70bb78b717ea0098df4da25c9260d4",
       "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
       "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
       "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
@@ -31,7 +31,7 @@
       "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
       "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
       "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
-      "dist-runtime/sw.js": "5b5329562c7b81cbe31c4d40459b7a857d8e2f7ce19d9c7a2eaaf5150f33227e",
+      "dist-runtime/sw.js": "e707c2389e684633bf7eb053c76c4f5b659254994d7b413a37c59b36cae2bf67",
       "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
       "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
       "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -41,32 +41,32 @@
     }
   },
   "scope": "Test-only child guard pause after completed HTTP shell and preparation, before private guarded notification; same-URL native update and actual early-release control. Fixed application probes witness publication/prepared features, not every guard postcondition.",
-  "instrumentedSourceSHA256": "8ae124da8fe56b9c0ef81dcc47a8a431950ea05e2b4cedf6fda525b81bc21878",
+  "instrumentedSourceSHA256": "d05c18f74103ebec8fcec4eb5a8e52310ac6682bece8843524634757e965235e",
   "guardSourceSHA256": "88fec10f3e0c3e2237e47ff9e076ba1a59719f4080b590590b5477f12909f0fa",
-  "guardBundleSHA256": "11e57153971b3847f0069a909e5ecd744cb733de7d0c3e8003fea9789c3b2502",
+  "guardBundleSHA256": "4d6ebbcbd357dea9e09b523034621d5de12ffe262481960956ef57285a7dd97c",
   "localGateSHA256": "71751ad579acba043aa39f46dc160ab752b417b385b75ce1981b37b3be0f1a00",
   "observerSHA256": "c4c555116818fe5e4f0864e1e0b555c6bfdb31bb00ec63f1f8a7f1ab13125ac1",
   "bundles": {
-    "A": "296e43fa326b06dc52a9651e0bbb033773487b849db9542f5c91273ecf9cc729",
-    "B": "d8948afba0c44a7db4f57035c48b020047f23b29c5b7386a7e2cf8dc8937dda3"
+    "A": "77fa450b07e9ea7f6bc97fda239b3195a907ec6cebe9b0afd6389c3c1cb814ac",
+    "B": "130e8ed556f0af0a71d4c6a184b56e12d7c889a4b01493da2d469743a720dbf9"
   },
   "browsers": [
     {
       "name": "chromium",
       "version": "153.0.8010.12",
       "schedule": "upgrade-before-release",
-      "contextId": "f43cdc82-2c31-40a2-8bf4-18fc441c48b7",
+      "contextId": "7178490c-31d1-4bc0-9ddc-d409911d5d80",
       "ordering": {
-        "pausedAt": 1793374302159,
-        "changedAt": 1793374302299,
-        "releasedAt": 1793374302307,
-        "startedAt": 1793374302309
+        "pausedAt": 1793377314752,
+        "changedAt": 1793377314904,
+        "releasedAt": 1793377314914,
+        "startedAt": 1793377314917
       },
       "orderingAccepted": true,
       "probe": {
         "type": "startup-marker",
         "label": "local",
-        "startedAt": 1793374302309,
+        "startedAt": 1793377314917,
         "gateMarker": false,
         "published": true,
         "prepared": true,
@@ -77,140 +77,140 @@
         {
           "kind": "controller-activate",
           "build": "correspondence-A",
-          "time": 1793374300922
+          "time": 1793377313511
         },
         {
           "kind": "native-fetch",
           "trusted": true,
-          "client": "a4cf0609-e0a4-4c87-8fd8-feda707c380d",
-          "resulting": "cb0b264b-adb2-4882-ab85-0ce7503f7f99",
+          "client": "bbb6c7e5-9f64-4349-9805-cab9c10d3743",
+          "resulting": "f09a2317-17a8-435d-84b3-75b43753c82c",
           "url": "http://127.0.0.1:4211/runtime/connect.html",
           "destination": "iframe",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374300924
+          "time": 1793377313513
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "b706857c-b2b3-46a8-8ff4-fb08a07b1c3e",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "resulting": "e75d0030-b22a-4270-9f00-a849e9d65770",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "destination": "document",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374301680
+          "time": 1793377314276
         },
         {
           "kind": "bind-start",
-          "client": "b706857c-b2b3-46a8-8ff4-fb08a07b1c3e",
-          "context": "3bf82c7e-f4f5-49fd-b3a0-efd1ca2dbcd0",
+          "client": "e75d0030-b22a-4270-9f00-a849e9d65770",
+          "context": "43b057a4-a909-4b83-a96c-c0c576768b6a",
           "parent": null,
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "8f71990e-3dc4-429e-bc4b-48014c6cf7a3",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "59d88d54-5d4f-414f-bdf2-78bc92c96285",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "build": "correspondence-A",
-          "time": 1793374301681
+          "time": 1793377314277
         },
         {
           "kind": "bind-success",
-          "client": "b706857c-b2b3-46a8-8ff4-fb08a07b1c3e",
-          "context": "3bf82c7e-f4f5-49fd-b3a0-efd1ca2dbcd0",
+          "client": "e75d0030-b22a-4270-9f00-a849e9d65770",
+          "context": "43b057a4-a909-4b83-a96c-c0c576768b6a",
           "parent": null,
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "8f71990e-3dc4-429e-bc4b-48014c6cf7a3",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "59d88d54-5d4f-414f-bdf2-78bc92c96285",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "build": "correspondence-A",
-          "time": 1793374301683
+          "time": 1793377314280
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__document-intents",
-          "client": "b706857c-b2b3-46a8-8ff4-fb08a07b1c3e",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__document-intents",
+          "client": "e75d0030-b22a-4270-9f00-a849e9d65770",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374301947
+          "time": 1793377314543
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/f43cdc82-2c31-40a2-8bf4-18fc441c48b7/document.html",
+          "resulting": "74f8bb50-421e-4d84-9dd3-5912e0717241",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/7178490c-31d1-4bc0-9ddc-d409911d5d80/document.html",
           "destination": "iframe",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374301950
+          "time": 1793377314546
         },
         {
           "kind": "bind-start",
-          "client": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
-          "context": "f43cdc82-2c31-40a2-8bf4-18fc441c48b7",
-          "parent": "b706857c-b2b3-46a8-8ff4-fb08a07b1c3e",
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "8f71990e-3dc4-429e-bc4b-48014c6cf7a3",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/f43cdc82-2c31-40a2-8bf4-18fc441c48b7/document.html",
+          "client": "74f8bb50-421e-4d84-9dd3-5912e0717241",
+          "context": "7178490c-31d1-4bc0-9ddc-d409911d5d80",
+          "parent": "e75d0030-b22a-4270-9f00-a849e9d65770",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "59d88d54-5d4f-414f-bdf2-78bc92c96285",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/7178490c-31d1-4bc0-9ddc-d409911d5d80/document.html",
           "build": "correspondence-A",
-          "time": 1793374301952
+          "time": 1793377314548
         },
         {
           "kind": "bind-success",
-          "client": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
-          "context": "f43cdc82-2c31-40a2-8bf4-18fc441c48b7",
-          "parent": "b706857c-b2b3-46a8-8ff4-fb08a07b1c3e",
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "8f71990e-3dc4-429e-bc4b-48014c6cf7a3",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/f43cdc82-2c31-40a2-8bf4-18fc441c48b7/document.html",
+          "client": "74f8bb50-421e-4d84-9dd3-5912e0717241",
+          "context": "7178490c-31d1-4bc0-9ddc-d409911d5d80",
+          "parent": "e75d0030-b22a-4270-9f00-a849e9d65770",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "59d88d54-5d4f-414f-bdf2-78bc92c96285",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/7178490c-31d1-4bc0-9ddc-d409911d5d80/document.html",
           "build": "correspondence-A",
-          "time": 1793374301953
+          "time": 1793377314549
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/f43cdc82-2c31-40a2-8bf4-18fc441c48b7/document.html",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/7178490c-31d1-4bc0-9ddc-d409911d5d80/document.html",
           "client": "",
-          "resulting": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
+          "resulting": "74f8bb50-421e-4d84-9dd3-5912e0717241",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374301954
+          "time": 1793377314550
         },
         {
           "kind": "native-fetch",
           "trusted": true,
-          "client": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
+          "client": "74f8bb50-421e-4d84-9dd3-5912e0717241",
           "resulting": "",
-          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=f43cdc82-2c31-40a2-8bf4-18fc441c48b7",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=7178490c-31d1-4bc0-9ddc-d409911d5d80",
           "destination": "script",
           "mode": "no-cors",
           "build": "correspondence-A",
-          "time": 1793374301956
+          "time": 1793377314553
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=f43cdc82-2c31-40a2-8bf4-18fc441c48b7",
-          "client": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=7178490c-31d1-4bc0-9ddc-d409911d5d80",
+          "client": "74f8bb50-421e-4d84-9dd3-5912e0717241",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374301958
+          "time": 1793377314554
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/f43cdc82-2c31-40a2-8bf4-18fc441c48b7/configuration",
-          "client": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/7178490c-31d1-4bc0-9ddc-d409911d5d80/configuration",
+          "client": "74f8bb50-421e-4d84-9dd3-5912e0717241",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374301983
+          "time": 1793377314579
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/f43cdc82-2c31-40a2-8bf4-18fc441c48b7/content",
-          "client": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/7178490c-31d1-4bc0-9ddc-d409911d5d80/content",
+          "client": "74f8bb50-421e-4d84-9dd3-5912e0717241",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374302155
+          "time": 1793377314745
         }
       ],
       "logs": []
@@ -219,18 +219,18 @@
       "name": "chromium",
       "version": "153.0.8010.12",
       "schedule": "early-release-control",
-      "contextId": "b8b1cf0f-cb44-45a7-ac26-83e51ac43f89",
+      "contextId": "f6827186-ac8e-4ee9-98ec-55f4b49fee1a",
       "ordering": {
-        "pausedAt": 1793374303887,
-        "changedAt": 1793374304047,
-        "releasedAt": 1793374303903,
-        "startedAt": 1793374303908
+        "pausedAt": 1793377316473,
+        "changedAt": 1793377316633,
+        "releasedAt": 1793377316485,
+        "startedAt": 1793377316488
       },
       "orderingAccepted": false,
       "probe": {
         "type": "startup-marker",
         "label": "local",
-        "startedAt": 1793374303908,
+        "startedAt": 1793377316488,
         "gateMarker": false,
         "published": true,
         "prepared": true,
@@ -241,140 +241,140 @@
         {
           "kind": "controller-activate",
           "build": "correspondence-A",
-          "time": 1793374302676
+          "time": 1793377315259
         },
         {
           "kind": "native-fetch",
           "trusted": true,
-          "client": "1638acfc-156b-49a4-a139-6c2ab2a7b73a",
-          "resulting": "e7a9a07b-633f-4021-9c22-96e2a6986ad1",
+          "client": "69aba63f-f52c-4d7a-872d-bcb94f55c8a8",
+          "resulting": "02ed7260-332b-4bad-902a-9d7b929b37ee",
           "url": "http://127.0.0.1:4211/runtime/connect.html",
           "destination": "iframe",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374302677
+          "time": 1793377315260
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "f53be8a5-cda4-4dc0-bae7-b894f23d0b46",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "resulting": "f6ec90ee-5121-429d-bde2-5ba6d61be3b6",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "destination": "document",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374303413
+          "time": 1793377316009
         },
         {
           "kind": "bind-start",
-          "client": "f53be8a5-cda4-4dc0-bae7-b894f23d0b46",
-          "context": "95264714-e047-4e7c-84ec-c8efcfdf25b2",
+          "client": "f6ec90ee-5121-429d-bde2-5ba6d61be3b6",
+          "context": "429cbc36-1fed-404b-b196-a4588f735762",
           "parent": null,
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "fc5a6ab4-418d-4cb2-ad2b-0bae9c0fa2b7",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "46a4c5da-26cf-4063-94ac-4538c430b490",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "build": "correspondence-A",
-          "time": 1793374303414
+          "time": 1793377316010
         },
         {
           "kind": "bind-success",
-          "client": "f53be8a5-cda4-4dc0-bae7-b894f23d0b46",
-          "context": "95264714-e047-4e7c-84ec-c8efcfdf25b2",
+          "client": "f6ec90ee-5121-429d-bde2-5ba6d61be3b6",
+          "context": "429cbc36-1fed-404b-b196-a4588f735762",
           "parent": null,
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "fc5a6ab4-418d-4cb2-ad2b-0bae9c0fa2b7",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "46a4c5da-26cf-4063-94ac-4538c430b490",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "build": "correspondence-A",
-          "time": 1793374303416
+          "time": 1793377316012
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__document-intents",
-          "client": "f53be8a5-cda4-4dc0-bae7-b894f23d0b46",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__document-intents",
+          "client": "f6ec90ee-5121-429d-bde2-5ba6d61be3b6",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374303680
+          "time": 1793377316259
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "d5a026f1-6739-420f-8d17-92b0ea91860e",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b8b1cf0f-cb44-45a7-ac26-83e51ac43f89/document.html",
+          "resulting": "bfeeca6b-65fe-4ebe-a429-c751d1d0c065",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/f6827186-ac8e-4ee9-98ec-55f4b49fee1a/document.html",
           "destination": "iframe",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374303683
+          "time": 1793377316262
         },
         {
           "kind": "bind-start",
-          "client": "d5a026f1-6739-420f-8d17-92b0ea91860e",
-          "context": "b8b1cf0f-cb44-45a7-ac26-83e51ac43f89",
-          "parent": "f53be8a5-cda4-4dc0-bae7-b894f23d0b46",
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "fc5a6ab4-418d-4cb2-ad2b-0bae9c0fa2b7",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b8b1cf0f-cb44-45a7-ac26-83e51ac43f89/document.html",
+          "client": "bfeeca6b-65fe-4ebe-a429-c751d1d0c065",
+          "context": "f6827186-ac8e-4ee9-98ec-55f4b49fee1a",
+          "parent": "f6ec90ee-5121-429d-bde2-5ba6d61be3b6",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "46a4c5da-26cf-4063-94ac-4538c430b490",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/f6827186-ac8e-4ee9-98ec-55f4b49fee1a/document.html",
           "build": "correspondence-A",
-          "time": 1793374303685
+          "time": 1793377316264
         },
         {
           "kind": "bind-success",
-          "client": "d5a026f1-6739-420f-8d17-92b0ea91860e",
-          "context": "b8b1cf0f-cb44-45a7-ac26-83e51ac43f89",
-          "parent": "f53be8a5-cda4-4dc0-bae7-b894f23d0b46",
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "fc5a6ab4-418d-4cb2-ad2b-0bae9c0fa2b7",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b8b1cf0f-cb44-45a7-ac26-83e51ac43f89/document.html",
+          "client": "bfeeca6b-65fe-4ebe-a429-c751d1d0c065",
+          "context": "f6827186-ac8e-4ee9-98ec-55f4b49fee1a",
+          "parent": "f6ec90ee-5121-429d-bde2-5ba6d61be3b6",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "46a4c5da-26cf-4063-94ac-4538c430b490",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/f6827186-ac8e-4ee9-98ec-55f4b49fee1a/document.html",
           "build": "correspondence-A",
-          "time": 1793374303686
+          "time": 1793377316266
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b8b1cf0f-cb44-45a7-ac26-83e51ac43f89/document.html",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/f6827186-ac8e-4ee9-98ec-55f4b49fee1a/document.html",
           "client": "",
-          "resulting": "d5a026f1-6739-420f-8d17-92b0ea91860e",
+          "resulting": "bfeeca6b-65fe-4ebe-a429-c751d1d0c065",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374303687
+          "time": 1793377316266
         },
         {
           "kind": "native-fetch",
           "trusted": true,
-          "client": "d5a026f1-6739-420f-8d17-92b0ea91860e",
+          "client": "bfeeca6b-65fe-4ebe-a429-c751d1d0c065",
           "resulting": "",
-          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=b8b1cf0f-cb44-45a7-ac26-83e51ac43f89",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=f6827186-ac8e-4ee9-98ec-55f4b49fee1a",
           "destination": "script",
           "mode": "no-cors",
           "build": "correspondence-A",
-          "time": 1793374303690
+          "time": 1793377316269
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=b8b1cf0f-cb44-45a7-ac26-83e51ac43f89",
-          "client": "d5a026f1-6739-420f-8d17-92b0ea91860e",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=f6827186-ac8e-4ee9-98ec-55f4b49fee1a",
+          "client": "bfeeca6b-65fe-4ebe-a429-c751d1d0c065",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374303691
+          "time": 1793377316271
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b8b1cf0f-cb44-45a7-ac26-83e51ac43f89/configuration",
-          "client": "d5a026f1-6739-420f-8d17-92b0ea91860e",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/f6827186-ac8e-4ee9-98ec-55f4b49fee1a/configuration",
+          "client": "bfeeca6b-65fe-4ebe-a429-c751d1d0c065",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374303715
+          "time": 1793377316296
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b8b1cf0f-cb44-45a7-ac26-83e51ac43f89/content",
-          "client": "d5a026f1-6739-420f-8d17-92b0ea91860e",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/f6827186-ac8e-4ee9-98ec-55f4b49fee1a/content",
+          "client": "bfeeca6b-65fe-4ebe-a429-c751d1d0c065",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374303882
+          "time": 1793377316464
         }
       ],
       "logs": []
@@ -383,18 +383,18 @@
       "name": "firefox",
       "version": "155.0",
       "schedule": "upgrade-before-release",
-      "contextId": "b81d6b46-0198-4b68-ae6c-63b5d2fa3be0",
+      "contextId": "fce4524e-f5d6-4ff4-8138-72038d2d7c0e",
       "ordering": {
-        "pausedAt": 1793374306722,
-        "changedAt": 1793374307643,
-        "releasedAt": 1793374307757,
-        "startedAt": 1793374307774
+        "pausedAt": 1793377319348,
+        "changedAt": 1793377320275,
+        "releasedAt": 1793377320385,
+        "startedAt": 1793377320402
       },
       "orderingAccepted": true,
       "probe": {
         "type": "startup-marker",
         "label": "local",
-        "startedAt": 1793374307774,
+        "startedAt": 1793377320402,
         "gateMarker": false,
         "published": true,
         "prepared": true,
@@ -405,145 +405,145 @@
         {
           "kind": "controller-activate",
           "build": "correspondence-A",
-          "time": 1793374305321
+          "time": 1793377317960
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "0f9046b9-24c1-4e8c-a048-751263a52c70",
+          "resulting": "60d937a9-fc67-4cad-8fd1-df3298f1c7a3",
           "url": "http://127.0.0.1:4211/runtime/connect.html",
           "destination": "iframe",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374305324
+          "time": 1793377317962
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "2fb2015a-fa45-4eba-b390-1620af827f9f",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "resulting": "e753f348-ce25-40c5-b618-5a277d698390",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "destination": "document",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374306280
+          "time": 1793377318904
         },
         {
           "kind": "bind-start",
-          "client": "2fb2015a-fa45-4eba-b390-1620af827f9f",
-          "context": "4d07caa6-d95c-4f39-b2e1-64467b297f24",
+          "client": "e753f348-ce25-40c5-b618-5a277d698390",
+          "context": "db1f7720-36bf-4d64-86e3-f0745f3fc782",
           "parent": null,
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "3363fc71-e751-4e9e-9e28-61b368bbb868",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "d0dc7edf-a3e2-439c-a3ad-ee5854d0b2d6",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "build": "correspondence-A",
-          "time": 1793374306282
+          "time": 1793377318907
         },
         {
           "kind": "bind-success",
-          "client": "2fb2015a-fa45-4eba-b390-1620af827f9f",
-          "context": "4d07caa6-d95c-4f39-b2e1-64467b297f24",
+          "client": "e753f348-ce25-40c5-b618-5a277d698390",
+          "context": "db1f7720-36bf-4d64-86e3-f0745f3fc782",
           "parent": null,
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "3363fc71-e751-4e9e-9e28-61b368bbb868",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "d0dc7edf-a3e2-439c-a3ad-ee5854d0b2d6",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "build": "correspondence-A",
-          "time": 1793374306283
+          "time": 1793377318908
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__document-intents",
-          "client": "2fb2015a-fa45-4eba-b390-1620af827f9f",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__document-intents",
+          "client": "e753f348-ce25-40c5-b618-5a277d698390",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374306526
+          "time": 1793377319151
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b81d6b46-0198-4b68-ae6c-63b5d2fa3be0/document.html",
+          "resulting": "a14000ec-8ede-4054-abaa-f063d929910f",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/fce4524e-f5d6-4ff4-8138-72038d2d7c0e/document.html",
           "destination": "iframe",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374306531
+          "time": 1793377319165
         },
         {
           "kind": "bind-start",
-          "client": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
-          "context": "b81d6b46-0198-4b68-ae6c-63b5d2fa3be0",
-          "parent": "2fb2015a-fa45-4eba-b390-1620af827f9f",
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "3363fc71-e751-4e9e-9e28-61b368bbb868",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b81d6b46-0198-4b68-ae6c-63b5d2fa3be0/document.html",
+          "client": "a14000ec-8ede-4054-abaa-f063d929910f",
+          "context": "fce4524e-f5d6-4ff4-8138-72038d2d7c0e",
+          "parent": "e753f348-ce25-40c5-b618-5a277d698390",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "d0dc7edf-a3e2-439c-a3ad-ee5854d0b2d6",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/fce4524e-f5d6-4ff4-8138-72038d2d7c0e/document.html",
           "build": "correspondence-A",
-          "time": 1793374306535
+          "time": 1793377319170
         },
         {
           "kind": "bind-success",
-          "client": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
-          "context": "b81d6b46-0198-4b68-ae6c-63b5d2fa3be0",
-          "parent": "2fb2015a-fa45-4eba-b390-1620af827f9f",
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "3363fc71-e751-4e9e-9e28-61b368bbb868",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b81d6b46-0198-4b68-ae6c-63b5d2fa3be0/document.html",
+          "client": "a14000ec-8ede-4054-abaa-f063d929910f",
+          "context": "fce4524e-f5d6-4ff4-8138-72038d2d7c0e",
+          "parent": "e753f348-ce25-40c5-b618-5a277d698390",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "d0dc7edf-a3e2-439c-a3ad-ee5854d0b2d6",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/fce4524e-f5d6-4ff4-8138-72038d2d7c0e/document.html",
           "build": "correspondence-A",
-          "time": 1793374306537
+          "time": 1793377319171
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b81d6b46-0198-4b68-ae6c-63b5d2fa3be0/document.html",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/fce4524e-f5d6-4ff4-8138-72038d2d7c0e/document.html",
           "client": "",
-          "resulting": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
+          "resulting": "a14000ec-8ede-4054-abaa-f063d929910f",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374306537
+          "time": 1793377319172
         },
         {
           "kind": "native-fetch",
           "trusted": true,
-          "client": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
+          "client": "a14000ec-8ede-4054-abaa-f063d929910f",
           "resulting": "",
-          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=b81d6b46-0198-4b68-ae6c-63b5d2fa3be0",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=fce4524e-f5d6-4ff4-8138-72038d2d7c0e",
           "destination": "script",
           "mode": "no-cors",
           "build": "correspondence-A",
-          "time": 1793374306548
+          "time": 1793377319176
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=b81d6b46-0198-4b68-ae6c-63b5d2fa3be0",
-          "client": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=fce4524e-f5d6-4ff4-8138-72038d2d7c0e",
+          "client": "a14000ec-8ede-4054-abaa-f063d929910f",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374306550
+          "time": 1793377319179
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b81d6b46-0198-4b68-ae6c-63b5d2fa3be0/configuration",
-          "client": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/fce4524e-f5d6-4ff4-8138-72038d2d7c0e/configuration",
+          "client": "a14000ec-8ede-4054-abaa-f063d929910f",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374306582
+          "time": 1793377319210
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/b81d6b46-0198-4b68-ae6c-63b5d2fa3be0/content",
-          "client": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/fce4524e-f5d6-4ff4-8138-72038d2d7c0e/content",
+          "client": "a14000ec-8ede-4054-abaa-f063d929910f",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374306719
+          "time": 1793377319345
         },
         {
           "kind": "controller-activate",
           "build": "correspondence-B",
-          "time": 1793374307644
+          "time": 1793377320275
         }
       ],
       "logs": []
@@ -552,18 +552,18 @@
       "name": "firefox",
       "version": "155.0",
       "schedule": "early-release-control",
-      "contextId": "3f680432-ebe3-4d16-95d5-32f639f530e0",
+      "contextId": "17ff1898-1030-496c-9a01-2f7ac946f1fe",
       "ordering": {
-        "pausedAt": 1793374310574,
-        "changedAt": 1793374311365,
-        "releasedAt": 1793374310590,
-        "startedAt": 1793374310604
+        "pausedAt": 1793377323179,
+        "changedAt": 1793377324107,
+        "releasedAt": 1793377323198,
+        "startedAt": 1793377323232
       },
       "orderingAccepted": false,
       "probe": {
         "type": "startup-marker",
         "label": "local",
-        "startedAt": 1793374310604,
+        "startedAt": 1793377323232,
         "gateMarker": false,
         "published": true,
         "prepared": true,
@@ -574,145 +574,145 @@
         {
           "kind": "controller-activate",
           "build": "correspondence-A",
-          "time": 1793374309257
+          "time": 1793377321886
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "9c6a68cb-3ad9-4a40-b4b1-88ddd8fbcb50",
+          "resulting": "19c47334-1257-43e9-a990-340bda62f960",
           "url": "http://127.0.0.1:4211/runtime/connect.html",
           "destination": "iframe",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374309259
+          "time": 1793377321888
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "b977bf8d-7e96-471a-bd18-80b2da55e0ec",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "resulting": "cfa0a18e-e8c0-458b-9527-41be5c49bf34",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "destination": "document",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374310117
+          "time": 1793377322746
         },
         {
           "kind": "bind-start",
-          "client": "b977bf8d-7e96-471a-bd18-80b2da55e0ec",
-          "context": "d68dae75-10d5-4894-ae47-8fb613a962d2",
+          "client": "cfa0a18e-e8c0-458b-9527-41be5c49bf34",
+          "context": "1469be8d-034c-4d81-8757-860d67a35251",
           "parent": null,
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "e32ab4a9-6866-4942-9ae4-7bee48337fbb",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "c80cabea-bca2-474e-860a-cbf388019f6d",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "build": "correspondence-A",
-          "time": 1793374310119
+          "time": 1793377322749
         },
         {
           "kind": "bind-success",
-          "client": "b977bf8d-7e96-471a-bd18-80b2da55e0ec",
-          "context": "d68dae75-10d5-4894-ae47-8fb613a962d2",
+          "client": "cfa0a18e-e8c0-458b-9527-41be5c49bf34",
+          "context": "1469be8d-034c-4d81-8757-860d67a35251",
           "parent": null,
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "e32ab4a9-6866-4942-9ae4-7bee48337fbb",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "c80cabea-bca2-474e-860a-cbf388019f6d",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/",
           "build": "correspondence-A",
-          "time": 1793374310120
+          "time": 1793377322750
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__document-intents",
-          "client": "b977bf8d-7e96-471a-bd18-80b2da55e0ec",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__document-intents",
+          "client": "cfa0a18e-e8c0-458b-9527-41be5c49bf34",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374310364
+          "time": 1793377322992
         },
         {
           "kind": "native-fetch",
           "trusted": true,
           "client": "",
-          "resulting": "0af5fe09-118e-416b-9a47-9f2df8629458",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/3f680432-ebe3-4d16-95d5-32f639f530e0/document.html",
+          "resulting": "c2c2c63d-7f5b-4c29-9a91-60bf6090816a",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/17ff1898-1030-496c-9a01-2f7ac946f1fe/document.html",
           "destination": "iframe",
           "mode": "navigate",
           "build": "correspondence-A",
-          "time": 1793374310369
+          "time": 1793377322996
         },
         {
           "kind": "bind-start",
-          "client": "0af5fe09-118e-416b-9a47-9f2df8629458",
-          "context": "3f680432-ebe3-4d16-95d5-32f639f530e0",
-          "parent": "b977bf8d-7e96-471a-bd18-80b2da55e0ec",
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "e32ab4a9-6866-4942-9ae4-7bee48337fbb",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/3f680432-ebe3-4d16-95d5-32f639f530e0/document.html",
+          "client": "c2c2c63d-7f5b-4c29-9a91-60bf6090816a",
+          "context": "17ff1898-1030-496c-9a01-2f7ac946f1fe",
+          "parent": "cfa0a18e-e8c0-458b-9527-41be5c49bf34",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "c80cabea-bca2-474e-860a-cbf388019f6d",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/17ff1898-1030-496c-9a01-2f7ac946f1fe/document.html",
           "build": "correspondence-A",
-          "time": 1793374310385
+          "time": 1793377323000
         },
         {
           "kind": "bind-success",
-          "client": "0af5fe09-118e-416b-9a47-9f2df8629458",
-          "context": "3f680432-ebe3-4d16-95d5-32f639f530e0",
-          "parent": "b977bf8d-7e96-471a-bd18-80b2da55e0ec",
-          "application": "startup-lab-d0974631a804e21f5bd14b051d0cada3cc7b1c01a360289cc97ca67675720599",
-          "generation": "e32ab4a9-6866-4942-9ae4-7bee48337fbb",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/3f680432-ebe3-4d16-95d5-32f639f530e0/document.html",
+          "client": "c2c2c63d-7f5b-4c29-9a91-60bf6090816a",
+          "context": "17ff1898-1030-496c-9a01-2f7ac946f1fe",
+          "parent": "cfa0a18e-e8c0-458b-9527-41be5c49bf34",
+          "application": "startup-lab-bcb0a6a53a7d3f5dc838b63fe96e41fa4b382809a80796e8d69fb8115397b83c",
+          "generation": "c80cabea-bca2-474e-860a-cbf388019f6d",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/17ff1898-1030-496c-9a01-2f7ac946f1fe/document.html",
           "build": "correspondence-A",
-          "time": 1793374310387
+          "time": 1793377323002
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/3f680432-ebe3-4d16-95d5-32f639f530e0/document.html",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/17ff1898-1030-496c-9a01-2f7ac946f1fe/document.html",
           "client": "",
-          "resulting": "0af5fe09-118e-416b-9a47-9f2df8629458",
+          "resulting": "c2c2c63d-7f5b-4c29-9a91-60bf6090816a",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374310388
+          "time": 1793377323002
         },
         {
           "kind": "native-fetch",
           "trusted": true,
-          "client": "0af5fe09-118e-416b-9a47-9f2df8629458",
+          "client": "c2c2c63d-7f5b-4c29-9a91-60bf6090816a",
           "resulting": "",
-          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=3f680432-ebe3-4d16-95d5-32f639f530e0",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=17ff1898-1030-496c-9a01-2f7ac946f1fe",
           "destination": "script",
           "mode": "no-cors",
           "build": "correspondence-A",
-          "time": 1793374310391
+          "time": 1793377323012
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=3f680432-ebe3-4d16-95d5-32f639f530e0",
-          "client": "0af5fe09-118e-416b-9a47-9f2df8629458",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=17ff1898-1030-496c-9a01-2f7ac946f1fe",
+          "client": "c2c2c63d-7f5b-4c29-9a91-60bf6090816a",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374310394
+          "time": 1793377323015
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/3f680432-ebe3-4d16-95d5-32f639f530e0/configuration",
-          "client": "0af5fe09-118e-416b-9a47-9f2df8629458",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/17ff1898-1030-496c-9a01-2f7ac946f1fe/configuration",
+          "client": "c2c2c63d-7f5b-4c29-9a91-60bf6090816a",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374310427
+          "time": 1793377323045
         },
         {
           "kind": "document-response",
-          "url": "http://127.0.0.1:4211/runtime/0JdGMagE4h8/startup-lab/__contexts/3f680432-ebe3-4d16-95d5-32f639f530e0/content",
-          "client": "0af5fe09-118e-416b-9a47-9f2df8629458",
+          "url": "http://127.0.0.1:4211/runtime/vLCmpTp9P10/startup-lab/__contexts/17ff1898-1030-496c-9a01-2f7ac946f1fe/content",
+          "client": "c2c2c63d-7f5b-4c29-9a91-60bf6090816a",
           "resulting": "",
           "status": 200,
           "build": "correspondence-A",
-          "time": 1793374310570
+          "time": 1793377323175
         },
         {
           "kind": "controller-activate",
           "build": "correspondence-B",
-          "time": 1793374311366
+          "time": 1793377324107
         }
       ],
       "logs": []

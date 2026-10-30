@@ -164,7 +164,7 @@ test('readiness is replayable and concurrent but grants no authority after closu
     Array.from({ length: 8 }, () => f.request(readyURL)),
   );
   assert(responses.every((response) => response?.status === 200));
-  assert.equal(f.records.get('actual-worker')?.state, 'running');
+  assert.equal(f.records.get('actual-worker')?.state, 'preparing');
   assert.equal((await f.request(readyURL, 'actual-worker'))?.status, 200);
   assert.equal((await f.request(readyURL, 'other'))?.type, 'error');
   assert.equal((await f.request(readyURL, '', 'script'))?.type, 'error');

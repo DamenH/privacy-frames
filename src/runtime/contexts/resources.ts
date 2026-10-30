@@ -80,7 +80,7 @@ export async function contextResourceResponse(
   if (match[2] === 'ready') {
     if (url.href !== new URL('ready', directory).href || event.request.destination !== '')
       return deny('ready-shape');
-    if (!(await registry.markResourceReady(match[1], event.clientId)))
+    if (!(await registry.isCapabilityCurrent(match[1], event.clientId, capability)))
       return deny('ready-state');
     return response('', 'text/plain');
   }

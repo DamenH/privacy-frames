@@ -45,7 +45,7 @@ for (const edge of graph.edges) {
   assert(nodes.has(edge.from) && nodes.has(edge.to));
   edges.add(JSON.stringify([nodes.get(edge.from), edge.action, nodes.get(edge.to)]));
 }
-assert(nodes.size >= 10);
+assert(nodes.size >= 6);
 const identity: ContextIdentity = {
   policyVersion: CONTEXT_POLICY_VERSION,
   installationGeneration: 'generation',
@@ -58,18 +58,19 @@ const identity: ContextIdentity = {
 };
 const actions = [
   'Bind',
-  'Ready',
+  'Current',
+  'CapabilityCurrent',
   'CloseOwner',
   'CloseOther',
   'Replace',
-  'TransitionReady',
-  'TransitionRunning',
-  'TransitionClosed',
+  'StaleGeneration',
+  'StaleIdentity',
   'WrongClient',
   'WrongURL',
 ] as const;
 type Action = (typeof actions)[number];
 const samples: object[] = [];
+let checkedStoredPhases = false;
 let count = 0,
   transitions = 0;
 async function exercise(sequence: readonly Action[]) {
@@ -77,6 +78,7 @@ async function exercise(sequence: readonly Action[]) {
   const closures = new Set<string>();
   const key = (parent: string, app: string, context: string) =>
     JSON.stringify([parent, app, context]);
+  let writes = 0;
   const storage: ContextStorage = {
     async get(client) {
       const entry = records.get(client);
@@ -85,6 +87,7 @@ async function exercise(sequence: readonly Action[]) {
         : entry;
     },
     async put(client, value) {
+      writes++;
       records.set(client, value);
     },
     async lookupByContext(context) {
@@ -99,7 +102,11 @@ async function exercise(sequence: readonly Action[]) {
   };
   let registry = new ContextRegistry(storage);
   const snapshot = () => ({
-    state: records.get('client')?.state ?? 'absent',
+    state: records.get('client')
+      ? records.get('client')?.state === 'closed'
+        ? 'closed'
+        : 'bound'
+      : 'absent',
     closedByOwner: closures.has(key('owner', 'app', 'context')),
     closedByOther: closures.has(key('other', 'app', 'context')),
     badBind: false,
@@ -115,8 +122,13 @@ async function exercise(sequence: readonly Action[]) {
         await registry.bind('client', { ...identity });
         outcome = 'bound';
       }
-      if (action === 'Ready')
-        outcome = await registry.markResourceReady('context', 'client');
+      if (action === 'Current')
+        outcome = await registry.isCurrent({ id: 'client', url: identity.url }, identity);
+      if (action === 'CapabilityCurrent')
+        outcome = await registry.isCapabilityCurrent('context', 'client', {
+          client: 'client',
+          identity,
+        });
       if (action === 'CloseOwner')
         outcome = await registry.closeChild('owner', 'app', 'context');
       if (action === 'CloseOther')
@@ -125,29 +137,32 @@ async function exercise(sequence: readonly Action[]) {
           'app',
           'context',
         );
-      if (action === 'TransitionReady') {
-        await registry.transition({ id: 'client', url: identity.url }, 'ready');
-        outcome = 'transitioned';
-      }
-      if (action === 'TransitionRunning') {
-        await registry.transition({ id: 'client', url: identity.url }, 'running');
-        outcome = 'transitioned';
-      }
-      if (action === 'TransitionClosed') {
-        await registry.transition({ id: 'client', url: identity.url }, 'closed');
-        outcome = 'transitioned';
-      }
-      if (action === 'WrongClient') {
-        await registry.transition({ id: 'other-client', url: identity.url }, 'closed');
-        outcome = 'transitioned';
-      }
-      if (action === 'WrongURL') {
-        await registry.transition(
-          { id: 'client', url: 'https://runtime.test/wrong' },
-          'closed',
+      if (action === 'StaleGeneration' || action === 'StaleIdentity') {
+        const stale = {
+          ...identity,
+          ...(action === 'StaleGeneration'
+            ? { installationGeneration: 'stale-generation' }
+            : { id: 'stale-context' }),
+        };
+        outcome = await registry.isCurrent({ id: 'client', url: identity.url }, stale);
+        assert.equal(
+          await registry.isCapabilityCurrent('context', 'client', {
+            client: 'client',
+            identity: stale,
+          }),
+          false,
         );
-        outcome = 'transitioned';
       }
+      if (action === 'WrongClient')
+        outcome = await registry.isCurrent(
+          { id: 'other-client', url: identity.url },
+          identity,
+        );
+      if (action === 'WrongURL')
+        outcome = await registry.isCurrent(
+          { id: 'client', url: 'https://runtime.test/wrong' },
+          identity,
+        );
       if (action === 'Replace') {
         registry = new ContextRegistry(storage);
         outcome = 'replaced';
@@ -164,14 +179,68 @@ async function exercise(sequence: readonly Action[]) {
       assert.equal(stored.installationGeneration, identity.installationGeneration);
       assert.equal(stored.url, identity.url);
     }
-    const live =
-      ['preparing', 'ready', 'running'].includes(after.state) && !after.closedByOwner;
+    const live = after.state === 'bound' && !after.closedByOwner;
     const direct = await registry.resourceCapability('context', 'client');
     const bearer = await registry.resourceCapability('context', '');
     const stranger = await registry.resourceCapability('context', 'other-client');
     assert.equal(Boolean(direct), live);
     assert.equal(Boolean(bearer), live);
     assert.equal(stranger, undefined);
+    if (live && stored && !checkedStoredPhases) {
+      // Persistent protocol labels are intentionally retained. This supplemental
+      // seed check verifies all of them; they are one bound state in the graph.
+      const beforeChecks = writes;
+      for (const state of ['preparing', 'ready', 'running', 'closed'] as const) {
+        records.set('client', { ...stored, state });
+        const expected = state !== 'closed';
+        assert.equal(
+          await registry.isCurrent({ id: 'client', url: identity.url }, identity),
+          expected,
+        );
+        assert.equal(
+          await registry.isCapabilityCurrent('context', 'client', {
+            client: 'client',
+            identity,
+          }),
+          expected,
+        );
+      }
+      records.set('client', stored);
+      const changedAuthority: Partial<ContextIdentity>[] = [
+        { id: 'other-context' },
+        { application: 'other-application' },
+        { installationGeneration: 'other-generation' },
+        { parent: 'other-parent' },
+        { kind: 'shared-worker' },
+        { policyVersion: CONTEXT_POLICY_VERSION + 1 },
+        { url: 'https://runtime.test/other-worker' },
+        { state: 'closed' },
+      ];
+      for (const changed of changedAuthority) {
+        const stale = { ...identity, ...changed };
+        assert.equal(
+          await registry.isCurrent({ id: 'client', url: identity.url }, stale),
+          false,
+        );
+        assert.equal(
+          await registry.isCapabilityCurrent('context', 'client', {
+            client: 'client',
+            identity: stale,
+          }),
+          false,
+        );
+      }
+      assert.equal(
+        await registry.isCapabilityCurrent('context', 'client', {
+          client: 'wrong-client',
+          identity,
+        }),
+        false,
+      );
+      assert.equal(writes, beforeChecks, 'Authority validation must not rewrite phases');
+      checkedStoredPhases = true;
+    }
+
     const from = canonical(before),
       to = canonical(after);
     assert(
@@ -184,11 +253,11 @@ async function exercise(sequence: readonly Action[]) {
       'registry model mismatch: ' +
         JSON.stringify({ sequence, action, before, after, outcome }),
     );
-    if (action === 'WrongClient' || action === 'WrongURL')
-      assert(String(outcome).startsWith('rejected:'));
-    if (action === 'CloseOther' && before.state !== 'absent')
+    if (['WrongClient', 'WrongURL', 'StaleGeneration', 'StaleIdentity'].includes(action))
       assert.equal(outcome, false);
-    if (action === 'Ready' && ['absent', 'closed'].includes(before.state))
+    if (action === 'Current' || action === 'CapabilityCurrent')
+      assert.equal(outcome, live);
+    if (action === 'CloseOther' && before.state !== 'absent')
       assert.equal(outcome, false);
     if (action === 'Bind' && before.closedByOwner)
       assert(String(outcome).startsWith('rejected:'));
@@ -207,9 +276,9 @@ async function exercise(sequence: readonly Action[]) {
   }
   count++;
   if (
-    sequence.join(',') === 'CloseOwner,Replace,Bind,Ready' ||
-    sequence.join(',') === 'Bind,Ready,CloseOwner,Ready' ||
-    sequence.join(',') === 'CloseOther,Bind,Ready,CloseOwner'
+    sequence.join(',') === 'CloseOwner,Replace,Bind,Current' ||
+    sequence.join(',') === 'Bind,Current,CloseOwner,CapabilityCurrent' ||
+    sequence.join(',') === 'CloseOther,Bind,CapabilityCurrent,CloseOwner'
   )
     samples.push({ sequence, trace });
 }
@@ -222,6 +291,7 @@ async function enumerate(prefix: Action[], depth: number): Promise<void> {
 }
 await enumerate([], 4);
 assert.equal(count, 10000);
+assert.equal(checkedStoredPhases, true);
 assert.equal(samples.length, 3);
 await writeFile(
   'formal/confinement/registry-implementation-traces.json',
@@ -236,6 +306,10 @@ await writeFile(
       sourceSHA256: createHash('sha256')
         .update(await readFile('src/runtime/contexts/model.ts'))
         .digest('hex'),
+      boundAbstraction:
+        'Persisted preparing/ready/running all project to bound; no guard readiness is inferred',
+      supplementalChecks:
+        'All four stored phase labels, seven changed authority fields, closed expected identity, wrong capability client, and no validation writes',
       sequences: count,
       transitions,
       samples,

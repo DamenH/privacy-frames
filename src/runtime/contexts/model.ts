@@ -37,6 +37,22 @@ export interface ContextStorage {
   requestClosure(parent: string, application: string, context: string): Promise<void>;
 }
 
+// Live phase labels remain valid in the persistent protocol. They do not grant
+// readiness; the local guard establishes preparation before application execution.
+function sameAuthority(current: ContextIdentity | undefined, expected: ContextIdentity) {
+  return (
+    !!current &&
+    expected.state !== 'closed' &&
+    current.id === expected.id &&
+    current.application === expected.application &&
+    current.installationGeneration === expected.installationGeneration &&
+    current.parent === expected.parent &&
+    current.kind === expected.kind &&
+    current.policyVersion === expected.policyVersion &&
+    current.url === expected.url
+  );
+}
+
 /** Only the browser-facing controller creates identity bindings. */
 export class ContextRegistry {
   private readonly storage: ContextStorage;
@@ -124,46 +140,32 @@ export class ContextRegistry {
     return identity?.id === context ? internalRecord({ client, identity }) : undefined;
   }
 
-  /** Synchronization is idempotent bookkeeping, not evidence of trusted execution. */
-  markResourceReady(context: string, caller: string): Promise<boolean> {
-    return this.mutate(async () => {
-      const capability = await this.resourceCapability(context, caller);
-      if (!capability) return false;
-      if (capability.identity.state === 'preparing')
-        await this.storage.put(
-          capability.client,
-          internalRecord({
-            ...capability.identity,
-            state: 'ready',
-          }),
-        );
-      const current = await this.resourceCapability(context, caller);
-      if (!current) return false;
-      if (current.identity.state === 'ready')
-        await this.storage.put(
-          current.client,
-          internalRecord({
-            ...current.identity,
-            state: 'running',
-          }),
-        );
-      return !!(await this.resourceCapability(context, caller));
-    });
+  /** Revalidate after asynchronous work, ordered with binding and closure. */
+  isCurrent(client: { id: string; url: string }, expected: ContextIdentity) {
+    return this.mutate(
+      async () =>
+        sameAuthority(await this.resolve(client), expected) &&
+        sameAuthority(await this.resolve(client), expected),
+    );
   }
 
-  transition(client: { id: string; url: string }, state: ContextState): Promise<void> {
+  isCapabilityCurrent(
+    context: string,
+    caller: string,
+    expected: { client: string; identity: ContextIdentity },
+  ) {
     return this.mutate(async () => {
-      const identity = await this.resolve(client);
-      if (!identity) throw new Error('Browser context is not bound');
-      const allowed: Record<ContextState, ContextState[]> = internalRecord({
-        preparing: ['ready', 'closed'],
-        ready: ['running', 'closed'],
-        running: ['closed'],
-        closed: [],
-      });
-      if (!allowed[identity.state].includes(state))
-        throw new Error('Invalid browser context transition');
-      await this.storage.put(client.id, internalRecord({ ...identity, state }));
+      const current = await this.resourceCapability(context, caller);
+      if (
+        current?.client !== expected.client ||
+        !sameAuthority(current?.identity, expected.identity)
+      )
+        return false;
+      const latest = await this.resourceCapability(context, caller);
+      return (
+        latest?.client === expected.client &&
+        sameAuthority(latest?.identity, expected.identity)
+      );
     });
   }
 
