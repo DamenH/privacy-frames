@@ -52,7 +52,7 @@ const origin = `http://127.0.0.1:${address.port}`;
 const server = await servers({ receiver: false });
 const evidence = {
   scope:
-    'Native navigation preload header on a seeded publisher registration and virtual installed-window/publisher attempts. Different origins; not a test of app-triggered preload with pre-existing runtime-origin state.',
+    'Native preload delivery on a publisher origin and installed-window/publisher attempts after trusted test setup seeds runtime-origin preload state. Not a test of app-triggered navigation or every route to native registration authority.',
   provenance: await testProvenance(import.meta.url),
   browsers: [] as object[],
   completed: false,
@@ -120,6 +120,17 @@ try {
       const app = await opened;
       await app.waitForFunction(() => Reflect.get(window, 'publisherReady') === true);
       await app.evaluate(() => Reflect.get(window, 'startPublisher')());
+      const inspector = await context.newPage();
+      await inspector.goto('http://127.0.0.1:4211/runtime/report.html');
+      const seededHeader = 'trusted-seed-' + randomUUID();
+      const seededState = await inspector.evaluate(async (header) => {
+        const registration = await navigator.serviceWorker.getRegistration('/runtime/');
+        if (!registration) throw new Error('Runtime registration missing');
+        await registration.navigationPreload.enable();
+        await registration.navigationPreload.setHeaderValue(header);
+        return await registration.navigationPreload.getState();
+      }, seededHeader);
+      assert.deepEqual(seededState, { enabled: true, headerValue: seededHeader });
       const secret = 'private-' + randomUUID();
       const windowResult = await app.evaluate(
         (marker) => Reflect.get(window, 'probeWindow')(marker),
@@ -136,6 +147,15 @@ try {
       };
       assert.deepEqual(windowResult, expected);
       assert.deepEqual(workerResult, { ...expected, shared: true });
+      const retainedState = await inspector.evaluate(async () => {
+        const registration = await navigator.serviceWorker.getRegistration('/runtime/');
+        if (!registration) throw new Error('Runtime registration missing');
+        const state = await registration.navigationPreload.getState();
+        await registration.navigationPreload.disable();
+        await registration.navigationPreload.setHeaderValue('true');
+        return state;
+      });
+      assert.deepEqual(retainedState, seededState);
       console.log(
         engine.name(),
         JSON.stringify({ nativeState, windowResult, workerResult }),
@@ -146,6 +166,8 @@ try {
         before,
         nativeState,
         nativeRequests: received.filter((item) => item.preload === marker),
+        seededState,
+        retainedState,
         windowResult,
         workerResult,
       });

@@ -75,8 +75,8 @@ The [navigation preload algorithm](https://w3c.github.io/ServiceWorker/#dom-navi
 stores an application-supplied header value on an active registration. A
 subsequent enabled preload could carry that value. The
 [preload probe](../navigation-preload.md) calibrates native delivery and tests
-two virtual interfaces. Runtime-origin persistent state and app-triggered
-navigations remain open.
+two virtual interfaces against artificially seeded runtime-origin state.
+App-triggered navigations and other native acquisition paths remain open.
 
 [FedCM getUserInfo](https://w3c-fedid.github.io/FedCM/#dom-identityprovider-getuserinfo)
 has several prerequisites, including same-origin configuration, a non-top-level
