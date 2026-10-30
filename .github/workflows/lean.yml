@@ -2,9 +2,23 @@ name: Check authority-graph proofs
 on:
   push:
     branches: [main, confinement-model]
-    paths: ['formal/lean/**', 'formal/path-lean/**', '.github/workflows/lean.yml']
+    paths:
+      [
+        'formal/lean/**',
+        'formal/path-lean/**',
+        'formal/implementation-navigation/**',
+        'src/runtime/enforcement/navigation.ts',
+        '.github/workflows/lean.yml',
+      ]
   pull_request:
-    paths: ['formal/lean/**', 'formal/path-lean/**', '.github/workflows/lean.yml']
+    paths:
+      [
+        'formal/lean/**',
+        'formal/path-lean/**',
+        'formal/implementation-navigation/**',
+        'src/runtime/enforcement/navigation.ts',
+        '.github/workflows/lean.yml',
+      ]
   workflow_dispatch:
 permissions:
   contents: read
@@ -13,6 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
       - uses: actions/cache@v4
         with:
           path: .tools/lean-4.35.0-linux.tar.zst
@@ -27,3 +46,4 @@ jobs:
           tar --zstd -xf .tools/lean-4.35.0-linux.tar.zst -C .tools
       - run: python3 formal/lean/check.py
       - run: python3 formal/path-lean/check.py
+      - run: node formal/implementation-navigation/check.ts
