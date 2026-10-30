@@ -48,6 +48,8 @@ records the configurations and remaining gaps.
 The [background-agent probe](background-agents.md) also tests recovery of a
 pre-existing native service-worker registration, with working Chromium sync and
 background-fetch controls. Periodic sync remains uncalibrated.
+The [deferred-fetch probe](fetch-later.md) confirms a native page-close upload
+and tests the prepared runtime against that route in Chromium.
 
 ## What has been checked
 

@@ -1,0 +1,400 @@
+{
+  "revision": "d717d7a42bccdcb63c3efcb4baf334bb65aac96b",
+  "testedAt": "2026-10-30T16:08:38.109Z",
+  "origin": "http://127.0.0.1:34819",
+  "scope": "fetchLater native delivery, page-close flush, blocking-worker behavior and actual current prepareWindowRealm. Private markers are created after preparation; each native control requires independent HTTP delivery. Firefox absence is recorded without a containment claim.",
+  "runnerSHA256": "fb24900cd076feff2caa3738a219a3d11b42b706149344eb100143e568c699f9",
+  "fixtureSHA256": "ec1a7a8ddecae9a15e8be702cfe583aa495e0fd3b0747e778c835b482d075ab4",
+  "sourceHashes": {
+    "src/runtime/enforcement/effects.ts": "466c165e4ef9d82e2011c85cd2639e3f7e7152309c49fbb5c8962ed0fd1bb691",
+    "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d"
+  },
+  "rows": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "exposed": true,
+      "cases": [
+        {
+          "profile": "native-immediate",
+          "marker": "native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5",
+          "state": {
+            "call": {
+              "result": "scheduled",
+              "activated": false
+            },
+            "recovery": null,
+            "ordinaryFetch": null
+          },
+          "headers": {
+            "cache-control": "no-store",
+            "connection": "keep-alive",
+            "content-length": "53",
+            "content-type": "text/html",
+            "date": "Fri, 30 Oct 2026 16:08:38 GMT",
+            "keep-alive": "timeout=5"
+          },
+          "markerTraffic": [
+            {
+              "at": "2026-10-30T16:08:38.324Z",
+              "url": "/receiver?native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5",
+              "method": "POST",
+              "body": "native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5"
+            }
+          ]
+        },
+        {
+          "profile": "native-close",
+          "marker": "native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2",
+          "state": {
+            "call": {
+              "result": "scheduled",
+              "activated": false
+            },
+            "recovery": null,
+            "ordinaryFetch": null
+          },
+          "headers": {
+            "cache-control": "no-store",
+            "connection": "keep-alive",
+            "content-length": "53",
+            "content-type": "text/html",
+            "date": "Fri, 30 Oct 2026 16:08:38 GMT",
+            "keep-alive": "timeout=5"
+          },
+          "beforeCloseTraffic": [],
+          "markerTraffic": [
+            {
+              "at": "2026-10-30T16:08:38.570Z",
+              "url": "/receiver?native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2",
+              "method": "POST",
+              "body": "native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2"
+            }
+          ]
+        },
+        {
+          "profile": "native-worker-close",
+          "marker": "native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8",
+          "state": {
+            "call": {
+              "result": "scheduled",
+              "activated": false
+            },
+            "recovery": null,
+            "ordinaryFetch": null
+          },
+          "headers": {
+            "cache-control": "no-store",
+            "connection": "keep-alive",
+            "content-length": "53",
+            "content-type": "text/html",
+            "date": "Fri, 30 Oct 2026 16:08:38 GMT",
+            "keep-alive": "timeout=5"
+          },
+          "beforeCloseTraffic": [],
+          "markerTraffic": [
+            {
+              "at": "2026-10-30T16:08:38.913Z",
+              "url": "/receiver?native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8",
+              "method": "POST",
+              "body": "native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8"
+            }
+          ]
+        },
+        {
+          "profile": "prepared-immediate",
+          "marker": "prepared-immediate-69bea6af-da03-4bde-8650-6bf717827d0c",
+          "state": {
+            "mode": "network-isolated",
+            "call": {
+              "error": "SecurityError",
+              "message": "Operation fetchLater prohibited by application host"
+            },
+            "recovery": "SecurityError",
+            "ordinaryFetch": "SW blocked"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "70",
+            "date": "Fri, 30 Oct 2026 16:08:39 GMT",
+            "keep-alive": "timeout=5",
+            "cache-control": "no-store",
+            "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:34819/__contexts/ http://127.0.0.1:34819/app/sw.js; worker-src http://127.0.0.1:34819/__contexts/ http://127.0.0.1:34819/app/sw.js; form-action 'none'; base-uri 'none'",
+            "content-type": "text/html",
+            "cross-origin-opener-policy": "same-origin",
+            "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+            "referrer-policy": "no-referrer",
+            "x-content-type-options": "nosniff",
+            "x-dns-prefetch-control": "off",
+            "x-frame-options": "DENY"
+          },
+          "markerTraffic": []
+        },
+        {
+          "profile": "prepared-close",
+          "marker": "prepared-close-d2359ee9-9031-4ab5-b71e-a01c0558d6e1",
+          "state": {
+            "mode": "network-isolated",
+            "call": {
+              "error": "SecurityError",
+              "message": "Operation fetchLater prohibited by application host"
+            },
+            "recovery": "SecurityError",
+            "ordinaryFetch": "SW blocked"
+          },
+          "headers": {
+            "connection": "keep-alive",
+            "content-length": "70",
+            "date": "Fri, 30 Oct 2026 16:08:40 GMT",
+            "keep-alive": "timeout=5",
+            "cache-control": "no-store",
+            "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:34819/__contexts/ http://127.0.0.1:34819/app/sw.js; worker-src http://127.0.0.1:34819/__contexts/ http://127.0.0.1:34819/app/sw.js; form-action 'none'; base-uri 'none'",
+            "content-type": "text/html",
+            "cross-origin-opener-policy": "same-origin",
+            "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
+            "referrer-policy": "no-referrer",
+            "x-content-type-options": "nosniff",
+            "x-dns-prefetch-control": "off",
+            "x-frame-options": "DENY"
+          },
+          "beforeCloseTraffic": [],
+          "markerTraffic": []
+        }
+      ],
+      "actualArguments": [
+        "/home/damen/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
+        "--disable-field-trial-config",
+        "--disable-background-timer-throttling",
+        "--disable-backgrounding-occluded-windows",
+        "--disable-back-forward-cache",
+        "--disable-breakpad",
+        "--disable-client-side-phishing-detection",
+        "--disable-component-extensions-with-background-pages",
+        "--disable-component-update",
+        "--no-default-browser-check",
+        "--disable-default-apps",
+        "--disable-dev-shm-usage",
+        "--disable-edgeupdater",
+        "--disable-extensions",
+        "--disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion",
+        "--enable-features=CDPScreenshotNewSurface",
+        "--allow-pre-commit-input",
+        "--disable-hang-monitor",
+        "--disable-ipc-flooding-protection",
+        "--disable-popup-blocking",
+        "--disable-prompt-on-repost",
+        "--disable-renderer-backgrounding",
+        "--disable-updater-scheduler",
+        "--force-color-profile=srgb",
+        "--metrics-recording-only",
+        "--no-first-run",
+        "--password-store=basic",
+        "--use-mock-keychain",
+        "--no-service-autorun",
+        "--export-tagged-pdf",
+        "--disable-search-engine-choice-screen",
+        "--unsafely-disable-devtools-self-xss-warnings",
+        "--edge-skip-compat-layer-relaunch",
+        "--disable-infobars",
+        "--disable-search-engine-choice-screen",
+        "--disable-sync",
+        "--enable-unsafe-swiftshader",
+        "--headless",
+        "--hide-scrollbars",
+        "--mute-audio",
+        "--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4",
+        "--no-sandbox",
+        "--enable-automation",
+        "--user-data-dir=/tmp/playwright_chromiumdev_profile-SiZZS1",
+        "--remote-debugging-pipe",
+        "--no-startup-window",
+        "--noerrdialogs",
+        "--ozone-platform=headless",
+        "--ozone-override-screen-size=800,600",
+        "--use-angle=swiftshader-webgl",
+        "--flag-switches-begin",
+        "--flag-switches-end",
+        "--enable-unsafe-swiftshader"
+      ],
+      "finalControl": {
+        "marker": "native-after-cc7e1be1-dd6b-4fd1-9e9a-7b6ae80bfab9",
+        "delivered": true
+      },
+      "workerEvents": [
+        {
+          "url": "http://127.0.0.1:34819/app/native",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/favicon.ico",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/app/prepared/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/app/fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/favicon.ico",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/receiver?ordinary-prepared-immediate-69bea6af-da03-4bde-8650-6bf717827d0c",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/app/prepared/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/app/fixture.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/favicon.ico",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/receiver?ordinary-prepared-close-d2359ee9-9031-4ab5-b71e-a01c0558d6e1",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/app/native",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:34819/app/events",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "exposed": false,
+      "cases": []
+    }
+  ],
+  "traffic": [
+    {
+      "at": "2026-10-30T16:08:38.277Z",
+      "url": "/native",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:38.287Z",
+      "url": "/favicon.ico",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:38.311Z",
+      "url": "/native",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:38.319Z",
+      "url": "/favicon.ico",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:38.324Z",
+      "url": "/receiver?native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5",
+      "method": "POST",
+      "body": "native-immediate-cd1b9a12-6a2e-4123-b7e9-b97bc55ec4b5"
+    },
+    {
+      "at": "2026-10-30T16:08:38.350Z",
+      "url": "/native",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:38.360Z",
+      "url": "/favicon.ico",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:38.570Z",
+      "url": "/receiver?native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2",
+      "method": "POST",
+      "body": "native-close-aec69fe2-57b1-44c4-8b93-8d2ea8a3e5b2"
+    },
+    {
+      "at": "2026-10-30T16:08:38.674Z",
+      "url": "/app/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:38.696Z",
+      "url": "/app/native",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:38.913Z",
+      "url": "/receiver?native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8",
+      "method": "POST",
+      "body": "native-worker-close-aae99c8c-b6ae-4ecb-b656-83a6ee608eb8"
+    },
+    {
+      "at": "2026-10-30T16:08:39.028Z",
+      "url": "/app/prepared/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:39.038Z",
+      "url": "/app/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:40.783Z",
+      "url": "/app/prepared/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:40.793Z",
+      "url": "/app/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:42.726Z",
+      "url": "/receiver?native-after-cc7e1be1-dd6b-4fd1-9e9a-7b6ae80bfab9",
+      "method": "POST",
+      "body": "native-after-cc7e1be1-dd6b-4fd1-9e9a-7b6ae80bfab9"
+    },
+    {
+      "at": "2026-10-30T16:08:42.830Z",
+      "url": "/app/native",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:43.526Z",
+      "url": "/native",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "at": "2026-10-30T16:08:43.629Z",
+      "url": "/favicon.ico",
+      "method": "GET",
+      "body": ""
+    }
+  ],
+  "completed": true
+}

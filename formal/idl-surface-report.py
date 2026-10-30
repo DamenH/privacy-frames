@@ -22,7 +22,7 @@ SPECS = [
 REVIEW = {
     'Navigator.sendBeacon': ['source-and-receiver-tests', 'test/run.ts'],
     'WindowOrWorkerGlobalScope.fetch': ['source-and-receiver-tests', 'test/network.ts'],
-    'Window.fetchLater': ['source-denial-no-calibrated-control', 'src/runtime/enforcement/effects.ts'],
+    'Window.fetchLater': ['deferred-close-receiver-control', 'formal/fetch-later.md'],
     'WebSocket.constructor': ['source-and-receiver-tests', 'test/prototype-confinement.ts'],
     'WebTransport.constructor': ['independent-receiver', 'formal/webtransport/README.md'],
     'ServiceWorkerContainer.register': ['virtualized-registration', 'test/publisher-contexts.ts'],

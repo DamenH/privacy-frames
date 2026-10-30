@@ -3,7 +3,7 @@
   "webrefRevision": "6ac6259c96b11e0aea5c34a16822eb06add278c9",
   "snapshotRevision": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
   "snapshotSHA256": "7ed31f047c607772cfdaffed193310c9b14ee4f071dbb37412521ef4af7b443b",
-  "generatorSHA256": "8eeda8e366b11251745ad984e8eaf7e2fab6787a56f748a646ee1a4020c27ffc",
+  "generatorSHA256": "7896b23fb9e0971a73a89437cab88ff87b9a461f9c8d397c1392ca78af208bde",
   "browsers": [
     {
       "name": "chromium",
@@ -2426,8 +2426,8 @@
         }
       },
       "review": {
-        "status": "source-denial-no-calibrated-control",
-        "path": "src/runtime/enforcement/effects.ts"
+        "status": "deferred-close-receiver-control",
+        "path": "formal/fetch-later.md"
       }
     },
     {
