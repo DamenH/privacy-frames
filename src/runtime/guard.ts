@@ -14,6 +14,11 @@ try {
       report(error);
     });
 } catch (error) {
-  document.body.textContent = 'The browser could not establish runtime restrictions.';
+  const title = document.createElement('h1');
+  title.textContent = 'Application refused';
+  const description = document.createElement('p');
+  description.textContent =
+    'The browser could not establish the required runtime restrictions.';
+  document.body.replaceChildren(title, description);
   console.error(error);
 }

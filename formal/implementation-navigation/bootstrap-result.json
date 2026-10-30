@@ -4,9 +4,9 @@
   "results": [
     {
       "entry": "src/runtime/guard.ts",
-      "entrySHA256": "900b462d0fd3a6eab512ee2fd2b2fb96c15b570dd9c8cb30edfe255350c5613c",
+      "entrySHA256": "208c30e160e4f944a027d55ae69d9cd40c1c7e915b92e77b950023dd18b4120b",
       "output": "guard.js",
-      "outputSHA256": "bdf0570f3e798d86578cea7d49bea409fb51fb84603fca2fbddbdb1b6b545689",
+      "outputSHA256": "bf1b38dce44831e94f5de2969c7aba8d4dda65a1fa89497a486f4405e9ad13bf",
       "phase": {
         "eagerModuleInitializers": [
           "init_document_exit"
