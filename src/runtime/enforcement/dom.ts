@@ -110,7 +110,6 @@ export function installDOMPolicy(
   method(Document.prototype, 'createProcessingInstruction', deny);
   for (const key of ['parseHTML', 'parseHTMLUnsafe']) method(Document, key, deny);
   method(DOMImplementation.prototype, 'createDocumentType', deny);
-  method(Element.prototype, 'attachInternals', deny);
   // Autonomous elements execute application callbacks in this prepared realm.
   // Customized built-ins could replace native context/resource element classes.
   if (globalThis.CustomElementRegistry) {

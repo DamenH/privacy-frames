@@ -2,7 +2,13 @@
 
 The no-remote-effect policy does not require every current compatibility
 restriction. A candidate must still preserve the mediation on which that policy
-depends. The following has not yet been implemented or tested.
+depends.
+
+The former `Element.prototype.attachInternals` denial was removed because that
+method is owned by `HTMLElement.prototype` in the tested Chromium and Firefox;
+the policy helper silently ignored the nonexistent property. Removing the
+no-op does not change either browser's behavior or establish that every use of
+element internals is safe.
 
 `NamedNodeMap.removeNamedItem` and `removeNamedItemNS` are currently refused in
 [dom.ts](../src/runtime/enforcement/dom.ts). The native lookup methods can find
@@ -11,6 +17,7 @@ element. A guarded implementation could then use the existing
 `removeAttributeNode` path, rather than directly removing an attribute. That
 path matters for frames: removing a source may initiate navigation and needs
 the document factory's handling.
+This candidate has not yet been implemented or tested.
 
 The implementation would need to convert arguments once before resolving the
 owner, capture native methods before application code, preserve missing-attribute

@@ -13,7 +13,7 @@ runtime. `IdentityCredential.disconnect` sent an application-selected marker
 to the runtime-origin server outside the service worker. A local fix disables
 the identity permission and the relevant static methods. It passed a calibrated
 receiver test, the existing browser suite and the local application corpus. The
-fix is deployed from host revision `ebc6d0f784dd0943a8342879996e206eed86b271`;
+fix was first deployed from host revision `ebc6d0f784dd0943a8342879996e206eed86b271`;
 the [finding and reproduction](browser-surface-inventory.md#conditional-fedcm-receiver-finding-and-fix)
 describe the prerequisites and checks.
 
