@@ -261,3 +261,11 @@ requires existing connection state and a connect-src check before requesting the
 IdP. The native result is conditional on that state, not an unrestricted-origin or
 fresh-profile installed-application escape. It demonstrates why browser-owned
 persistent authority must be accounted for alongside our context registry.
+
+On October 30, 2026 the runtime deployed host revision
+`ebc6d0f784dd0943a8342879996e206eed86b271`. The live `sw.js`, `guard.js`,
+`document-guard.js` and `worker-guard.js` matched the locally built bytes. A
+fresh Chromium installation of the notes example received the identity policy
+and its static disconnect call raised `SecurityError`. Repeat with
+`node formal/live-identity-check.ts`. This deployment check does not seed FedCM
+state or replace the local receiver test.
