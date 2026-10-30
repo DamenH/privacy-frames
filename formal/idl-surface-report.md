@@ -27,6 +27,11 @@ candidate effect entry points. They are absent from this small ledger, not
 necessarily from all existing tests. No keyword filter decides which operations
 are effects.
 
+The [route review queue](route-review/README.md) retains every row and tracks
+manual classifications separately. It links selected, pinned Web Platform Tests
+as leads for investigation; it does not run them or treat them as evidence that
+this runtime mediates an effect.
+
 ## Useful next targets
 
 | Member or acquisition route                                                    | Snapshot observation                                        | Next evidence needed                                                                                                                                                                                                                                          |

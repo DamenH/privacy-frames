@@ -1,0 +1,31 @@
+{
+  "wptRevision": "7e1243dd51da4162ea4a0b0e539b40db0144b22c",
+  "wpt": {
+    "beacon": {
+      "path": "beacon/beacon-basic.https.window.js",
+      "sha256": "31205047dcf12a21a4b815e96eb32018498c6c702bf82125ce990a30880b9cc0",
+      "why": "Native sendBeacon behavior and server receipt; adapt as a control rather than treating it as a runtime test."
+    },
+    "fetch-later": {
+      "path": "fetch/fetch-later/basic.https.window.js",
+      "sha256": "c590b5dd4933f7d10e547248c95bc2292d02364071b55add8e19de043ea3c68e",
+      "why": "Examples of deferred request behavior; existing project probe separately measures page-close delivery."
+    },
+    "navigation-preload": {
+      "path": "service-workers/service-worker/navigation-preload/navigationPreload.https.html",
+      "sha256": "6dce66874224a51988ef9fb62610a3208a7329bdadf3d52ccb2f4dc1c42352e8",
+      "why": "Exercises the native navigation-preload API; application access and browser state still need separate analysis."
+    },
+    "fedcm": {
+      "path": "fedcm/fedcm-not-observed-by-service-worker.https.html",
+      "sha256": "21f3e51bdfe38c36c3517dbbcc67f401719c4c743e6ff14e9f45787078ef0f24",
+      "why": "Example of FedCM requests that the service worker does not observe; it does not establish publisher access to a seeded runtime identity."
+    }
+  },
+  "reviews": [
+    {"key": "beacon|Navigator|sendBeacon|operation", "class": "network-entry", "wpt": ["beacon"], "next": "Calibrate native receipt and prepared-context denial across the relevant browsers and contexts."},
+    {"key": "fetch|Window|fetchLater|operation", "class": "network-entry", "wpt": ["fetch-later"], "next": "Extend the calibrated probe to remaining contexts and delayed-delivery lifecycles."},
+    {"key": "service-workers|ServiceWorkerRegistration|navigationPreload|attribute", "class": "authority-acquisition", "wpt": ["navigation-preload"], "next": "Test whether application code can acquire native control and affect a preload request or headers after confinement."},
+    {"key": "credential-management-1|CredentialsContainer|get|operation", "class": "network-entry-conditional", "wpt": ["fedcm"], "next": "Separate synthetic seeded FedCM state from any demonstrated route to that state on the deployed runtime."}
+  ]
+}

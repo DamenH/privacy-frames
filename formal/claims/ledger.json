@@ -6,6 +6,7 @@
     "formal/admission/implementation-results.json": "f7e5fe3d9703e0b5c1f8f45b61774f8f24efb767969b2d67bb178b4634c9f66b",
     "formal/admission/model-results.json": "2084e90a886edaebc03c6cce164fcfd9b458a4d9c5f2e57a2126cdc70436734a",
     "formal/browser-features.json": "7ed31f047c607772cfdaffed193310c9b14ee4f071dbb37412521ef4af7b443b",
+    "formal/browser-surface-inventory.md": "fb21718dd5eb7065e8e45285d902a46f271d95261f9b73b4d861957bcbd09650",
     "formal/confinement/generation-implementation-traces.json": "2a247110329dc6b5c809ef36874f32e565bbd6ab3192b788f00a3f8a706ed618",
     "formal/confinement/generation-read-traces.json": "d4e0da312d365953a9d0187fc8e830f22fe6c4afb4be4352d8f0dd8ebc065f55",
     "formal/confinement/traces.json": "0b6ac66c20d708836c50b6a6454cfe51afbe6cef558fdc98653d59bf96983e29",
@@ -16,20 +17,28 @@
     "formal/evidence/fetch-later.json": "e0dd9907ac7c33b5f9aac19a06fe0cdb50f5643c56ddc1c90adad24597a52364",
     "formal/evidence/generation-overlaps.json": "4aa7a3b7632cf06fa1e2b4f8424d2f791e14aa652a741322f3a6226ee99524bb",
     "formal/evidence/hyperlink-auditing.json": "4deb55ac64e514eb55b7b00233c4281db617a2b0802ff48f0a2317761111b766",
-    "formal/evidence/idl-surface-report.json": "0376965efa390c48340d65ec0b71b54e770b9023c55828d25bc6a4b59e34898c",
+    "formal/evidence/idl-surface-report.json": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
     "formal/evidence/modern-reporting.json": "c8f4038654445ca9da6c98a50244bafe8b6bd0fec6012eef62070319c4acd7b1",
     "formal/evidence/reporting.json": "e556ea9e7749c6f6ebd958cad2b8bacffd33d79420192bf35225b093afbb895d",
     "formal/evidence/results-network-firefox.json": "3fd2c99728bd4ee6e5a2ad247bc1ed356f6978889e4ab5eb4a3d93c1a16a8ba0",
     "formal/evidence/results-network.json": "6b9020478274beef2da8fe24cac3e7c8814acda40d4fcdb06f2a761b8ef2c69a",
     "formal/evidence/trusted-runtime-boundary.json": "5b57b011535414e76dd3355f7a77a75aacc45898d86e212f7262012c89e8dd8e",
+    "formal/evidence/web-install-sandbox-fault.json": "4baad0e1dad85ff153c57c82dcd0ce2e507d89c3ecb0b4c94ece65ea76e9f56c",
     "formal/evidence/web-install.json": "12461246de1a2fec9ae0e7774c18d97a088fc890bd350cd1bfc77b5c163afcc6",
-    "formal/idl-surface-report.md": "bf90c2868aea5af9e0e9c53bac6066e48a3390d1fdfedef1db3da89a828ac3fe",
+    "formal/evidence/websocket-fault.json": "a873c228713a89508fc82cd56fa29f8ec535549919f0daaad1b2464ac421e876",
+    "formal/idl-surface-report.md": "e78ca56cb8a7093ec49a0cb23eff21443eb76529492911adc2dbd7a8959973e3",
     "formal/lean/CapabilityBoundary.lean": "5cf557978cf54255fded00ba991b90db7e54056e39f81a769f016c32ace7cf23",
     "formal/lean/README.md": "e0f71cc0ca90052045d6b1611bb33bf6f4d62732031f66099052ab4c46935d01",
     "formal/lean/Reachability.lean": "b643cfdbf2042d135ce5bb94204dcbd9921e5f898b1ee44baed24c4e4a49d0ab",
     "formal/startup/lifecycle-comparison.json": "b71354b1facad0ba503250f93157a603481e6df90039d4f2107f6f2269a66200",
+    "formal/web-install-sandbox-fault.md": "dc874f193288fa6f0cbc393d607a49c55e416b1c203267051c0484a3e5a4e3bc",
+    "formal/web-install-sandbox-fault.ts": "fb0b0483480215ae9ec55dd8da10b57c2db855e4375c0c7c45a1f07dfed9232b",
+    "formal/websocket-fault-probe.ts": "2b550d353a680a12e9121209abfa974fbb8b4ad4a0841f0c019ada4a11e401ed",
+    "formal/websocket-fault.md": "b3775d8b8dc4506a1e71a675ab48c7920dfc4e14164dea6873a27440a65adba1",
     "formal/webtransport/results.json": "b97fb9a79cd59263d75f7e1a0a0d1d9269b92af7a9f4b797a9a00f6efdc227e5",
+    "src/bridge/connect.ts": "bd35b868143935b8cfa4f7ce3227644c516b01f5ef82eea2b196e3183f17833b",
     "src/installation/session.ts": "0381b435c49234134d1cb0f20d4e86503fd64ae4e416a5823e26f61e7aaf3f20",
+    "src/manager/services/bootstrap.ts": "17176349ebf2d4f1f2fe9662e0e737b5da3f50a52eef7f84b21102158ab16427",
     "src/runtime/admission.ts": "0c19206a5b9bb34fa04b80bfd3db39dbd9efdd2c6a3579795afc576916603dff",
     "src/runtime/contexts/document-content.ts": "f606b94f249c44ad2e09880a56bb87d4556d571108799b2ac4647d5496031034",
     "src/runtime/contexts/document-controller.ts": "ca269260ec3cb34cd963bf59d3ba6596554ddecb646013aea8ecd73e35e03812",
@@ -53,6 +62,7 @@
     "src/runtime/enforcement/navigation.ts": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd",
     "src/runtime/enforcement/resource-elements.ts": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234",
     "src/runtime/enforcement/scripts.ts": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb",
+    "src/runtime/modules.ts": "45062e9a74b48da2b74086a7f247f86e0202cd43f166c8084cbaf5fd5377c675",
     "src/runtime/publisher/client.ts": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf",
     "src/runtime/publisher/controller.ts": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff",
     "src/runtime/publisher/guard.ts": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49",
@@ -76,6 +86,8 @@
     "test/shared-connections.ts": "7865484cd0ac7c55cc20a2fe70d9e10b1d42a690388232dcae4dc5149c82a56f",
     "test/shared-worker-contexts.ts": "599a1a789c92740a16e089cb109379264e7ca422ec6a5f965eb2f7430c59576b",
     "test/storage-proxy-receiver.ts": "9799b444c603c66cb414ae7efc226a3438ffd4b6f17c74082523904b17b91640",
+    "test/wasm.ts": "388d3c553d7cfb12f81f9c54e24a34545cb193f2f05c969143fdb0b15c989fcb",
+    "test/website-installation.ts": "39ceb09d40115851c42f3535e421f091be1d986096bc9cb47381e3139b7cfad2",
     "test/worker-contexts.ts": "2741da3fc3087a3f382eeec81b5cf48426a0bdb951928e98d94feb713e258447",
     "test/worklet-contexts.ts": "4535bc5c707138db48764a1ddbeba086fa1950785a5a11cd0d1cfada24bcdd1e",
     "test/worklet-guard.ts": "6e66d8e41f3a2a8d34ecff988f932a36b598c9f1e7ca144cd0149c1bd1e8fb0c",
@@ -187,17 +199,26 @@
             "formal/evidence/results-network.json",
             "formal/evidence/results-network-firefox.json"
           ]
+        },
+        {
+          "kind": "fault_control",
+          "description": "Actual prepared-window test removes only the WebSocket denial; the same-origin receiver then observes the marker-bearing upgrade in Chromium and Firefox.",
+          "paths": [
+            "formal/websocket-fault.md",
+            "formal/websocket-fault-probe.ts",
+            "formal/evidence/websocket-fault.json"
+          ]
         }
       ],
       "open_obligations": [
         "Receipts use an earlier source revision.",
         "WebSocketStream and every constructor-recovery route lack independent native calibration.",
-        "No live mitigation-removal mutation is recorded for the aggregate claim."
+        "The new mutation is limited to prepared windows; installed-app lifecycle and worker variants remain separate obligations."
       ],
       "control_status": {
         "native_control": "recorded",
         "confined_test": "recorded",
-        "fault_control": "not-recorded"
+        "fault_control": "recorded"
       }
     },
     {
@@ -544,16 +565,25 @@
           "paths": [
             "formal/evidence/web-install.json"
           ]
+        },
+        {
+          "kind": "fault_control",
+          "description": "Experimental Chromium: removing only the response CSP sandbox makes both tested prepared Web Install entry points deliver marker-bearing manifest requests bypassing the blocking worker.",
+          "paths": [
+            "formal/web-install-sandbox-fault.md",
+            "formal/web-install-sandbox-fault.ts",
+            "formal/evidence/web-install-sandbox-fault.json"
+          ]
         }
       ],
       "open_obligations": [
         "APIs absent in the unflagged tested build; only experimental flags and selected overloads tested.",
-        "No removal of the sandbox as an isolated mutation is recorded."
+        "The sandbox mutation covers the selected prepared-window fixture, not every installed-app startup path or browser."
       ],
       "control_status": {
         "native_control": "recorded",
         "confined_test": "recorded",
-        "fault_control": "not-recorded"
+        "fault_control": "recorded"
       }
     },
     {
@@ -1083,6 +1113,127 @@
         "All accessible authorities, graph transitions and browser-created effects must be represented and shown to meet the closure premises before applying the theorem.",
         "The proofs do not model installation, browser state, revocation or concurrent callbacks."
       ],
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "not-recorded",
+        "fault_control": "not-recorded"
+      }
+    },
+    {
+      "id": "eventsource_beacon",
+      "title": "EventSource and sendBeacon",
+      "preconditions": "Application code accesses these APIs or recovers their native implementations.",
+      "enforcement": "Deny the EventSource constructor and navigator.sendBeacon in prepared contexts.",
+      "source_paths": [
+        "src/runtime/enforcement/effects.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "discovery",
+          "description": "The browser-surface inventory identifies the deny paths and explicitly notes missing API-specific active controls.",
+          "paths": [
+            "formal/browser-surface-inventory.md"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "Calibrate each native API against an independent receiver, then exercise prepared contexts and recovered references.",
+        "Check relevant browser versions, lifecycle states and delayed delivery."
+      ],
+      "disposition": "unverified",
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "not-recorded",
+        "fault_control": "not-recorded"
+      }
+    },
+    {
+      "id": "direct_sockets",
+      "title": "Direct TCP/UDP and WebSocketStream",
+      "preconditions": "A supported browser exposes a direct socket or WebSocketStream API to application code.",
+      "enforcement": "Deny the named constructors in prepared contexts.",
+      "source_paths": [
+        "src/runtime/enforcement/effects.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "discovery",
+          "description": "The browser-surface inventory lists the named denial and distinguishes socket-specific controls from the separate WebTransport and WebSocket tests.",
+          "paths": [
+            "formal/browser-surface-inventory.md"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "Establish feature exposure and native receiver controls under the required browser permissions or flags.",
+        "Test each exposed API and constructor-recovery routes in every supported execution context.",
+        "The existing WebSocket and WebTransport controls do not establish the behavior of these separate interfaces."
+      ],
+      "disposition": "unverified",
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "not-recorded",
+        "fault_control": "not-recorded"
+      }
+    },
+    {
+      "id": "native_worker_housekeeping",
+      "title": "Native worker updates and navigation preload",
+      "preconditions": "The browser updates the host service worker or initiates navigation preload; a publisher may try to affect the request or its headers.",
+      "enforcement": "Trusted setup disables navigation preload, and the application-facing service-worker interface is virtualized and native registration methods are denied.",
+      "source_paths": [
+        "src/bridge/connect.ts",
+        "src/manager/services/bootstrap.ts",
+        "src/runtime/enforcement/effects.ts",
+        "src/runtime/publisher/client.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "discovery",
+          "description": "The installation fixture contains checks for virtual registration, update and preload methods; the inventory identifies browser updater behavior as a separate platform obligation.",
+          "paths": [
+            "test/website-installation.ts",
+            "formal/browser-surface-inventory.md"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "Determine whether publisher-controlled input or secrets can affect browser-owned worker update requests, preload URLs or headers after confinement begins.",
+        "Test persistent registration state, update races and startup failure with independent network observations.",
+        "A browser request for trusted host maintenance is not by itself evidence of an app-controlled disclosure."
+      ],
+      "disposition": "unverified",
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "not-recorded",
+        "fault_control": "not-recorded"
+      }
+    },
+    {
+      "id": "wasm_execution",
+      "title": "WebAssembly and imported capabilities",
+      "preconditions": "An application executes native WebAssembly and supplies or obtains JavaScript imports with browser authority.",
+      "enforcement": "Application Wasm executes in the prepared context; accessible imported browser effects must obey the same boundary as other application code.",
+      "source_paths": [
+        "src/runtime/modules.ts",
+        "src/runtime/contexts/worker-realm.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "discovery",
+          "description": "The Wasm fixture exercises a module worker, Wasm computation and a separate JavaScript fetch attempt with receiver checks; the fixture source is not a saved current execution receipt.",
+          "paths": [
+            "test/wasm.ts",
+            "formal/browser-surface-inventory.md"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "Run and record receiver-calibrated tests for network-capable imports actually invoked by Wasm, including relevant workers and recovered references.",
+        "Establish that all browser-accessible capabilities imported into Wasm are subject to the boundary; the current fixture does not establish this.",
+        "Browser and Wasm engine correctness remain assumptions."
+      ],
+      "disposition": "unverified",
       "control_status": {
         "native_control": "not-recorded",
         "confined_test": "not-recorded",

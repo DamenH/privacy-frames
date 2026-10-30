@@ -1,0 +1,5380 @@
+{
+  "scope": "All rows in the bounded saved IDL join; unreviewed includes absent and unobserved names. Classifications and WPT links are manually selected review leads, not mediation tests or safety judgments.",
+  "idlReportSHA256": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
+  "triageSHA256": "c37e456592b88146dba02f1cfe7e59031dff650c406b03a8815124a0f72df185",
+  "generatorSHA256": "dbe6390c3eba2ee44c7d8e1ba2d1b7f6b3eb3a21498c1ad4975c770918864863",
+  "webrefRevision": "6ac6259c96b11e0aea5c34a16822eb06add278c9",
+  "snapshotRevision": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "name": "firefox",
+      "version": "155.0"
+    }
+  ],
+  "wptRevision": "7e1243dd51da4162ea4a0b0e539b40db0144b22c",
+  "wpt": {
+    "beacon": {
+      "path": "beacon/beacon-basic.https.window.js",
+      "sha256": "31205047dcf12a21a4b815e96eb32018498c6c702bf82125ce990a30880b9cc0",
+      "why": "Native sendBeacon behavior and server receipt; adapt as a control rather than treating it as a runtime test."
+    },
+    "fetch-later": {
+      "path": "fetch/fetch-later/basic.https.window.js",
+      "sha256": "c590b5dd4933f7d10e547248c95bc2292d02364071b55add8e19de043ea3c68e",
+      "why": "Examples of deferred request behavior; existing project probe separately measures page-close delivery."
+    },
+    "navigation-preload": {
+      "path": "service-workers/service-worker/navigation-preload/navigationPreload.https.html",
+      "sha256": "6dce66874224a51988ef9fb62610a3208a7329bdadf3d52ccb2f4dc1c42352e8",
+      "why": "Exercises the native navigation-preload API; application access and browser state still need separate analysis."
+    },
+    "fedcm": {
+      "path": "fedcm/fedcm-not-observed-by-service-worker.https.html",
+      "sha256": "21f3e51bdfe38c36c3517dbbcc67f401719c4c743e6ff14e9f45787078ef0f24",
+      "why": "Example of FedCM requests that the service worker does not observe; it does not establish publisher access to a seeded runtime identity."
+    }
+  },
+  "summary": {
+    "rows": 263,
+    "manualRows": 4,
+    "unreviewedRows": 259,
+    "observedUnreviewedRows": 183
+  },
+  "rows": [
+    {
+      "id": "background-fetch|BackgroundFetchEvent|constructor|constructor|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchevent-backgroundfetchevent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchEvent|registration|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchevent-registration",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchManager|fetch|operation|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchmanager-fetch",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "seeded-native-acquisition-control",
+        "path": "formal/background-agents.md"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchManager|get|operation|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchmanager-get",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchManager|getIds|operation|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchmanager-getids",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRecord|request|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchrecord-request",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRecord|responseReady|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchrecord-responseready",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|abort|operation|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-abort",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|downloadTotal|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-downloadtotal",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|downloaded|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-downloaded",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|failureReason|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-failurereason",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|id|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-id",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|match|operation|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-match",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|matchAll|operation|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-matchall",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|onprogress|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-onprogress",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|recordsAvailable|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-recordsavailable",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|result|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-result",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|uploadTotal|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-uploadtotal",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchRegistration|uploaded|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchregistration-uploaded",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchUpdateUIEvent|constructor|constructor|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchupdateuievent-backgroundfetchupdateuievent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|BackgroundFetchUpdateUIEvent|updateUI|operation|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-backgroundfetchupdateuievent-updateui",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|ServiceWorkerGlobalScope|onbackgroundfetchabort|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerglobalscope-onbackgroundfetchabort",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|ServiceWorkerGlobalScope|onbackgroundfetchclick|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerglobalscope-onbackgroundfetchclick",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|ServiceWorkerGlobalScope|onbackgroundfetchfail|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerglobalscope-onbackgroundfetchfail",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|ServiceWorkerGlobalScope|onbackgroundfetchsuccess|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerglobalscope-onbackgroundfetchsuccess",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-fetch|ServiceWorkerRegistration|backgroundFetch|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-fetch/#dom-serviceworkerregistration-backgroundfetch",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "seeded-native-acquisition-control",
+        "path": "formal/background-agents.md"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-sync|ServiceWorkerGlobalScope|onsync|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-serviceworkerglobalscope-onsync",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-sync|ServiceWorkerRegistration|sync|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-serviceworkerregistration-sync",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "seeded-native-acquisition-control",
+        "path": "formal/background-agents.md"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-sync|SyncEvent|constructor|constructor|1",
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncevent-syncevent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-sync|SyncEvent|lastChance|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncevent-lastchance",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-sync|SyncEvent|tag|attribute|1",
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncevent-tag",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-sync|SyncManager|getTags|operation|1",
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncmanager-gettags",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "background-sync|SyncManager|register|operation|1",
+      "specificationURL": "https://wicg.github.io/background-sync/spec/#dom-syncmanager-register",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "seeded-native-acquisition-control",
+        "path": "formal/background-agents.md"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "beacon|Navigator|sendBeacon|operation|1",
+      "specificationURL": "https://w3c.github.io/beacon/#dom-navigator-sendbeacon",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "aggregate-network-tests-only",
+        "path": "test/run.ts"
+      },
+      "classification": "network-entry",
+      "selectedWpt": [
+        "beacon"
+      ],
+      "next": "Calibrate native receipt and prepared-context denial across the relevant browsers and contexts."
+    },
+    {
+      "id": "credential-management-1|Credential|id|attribute|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credential-id",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|Credential|isConditionalMediationAvailable|operation|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credential-isconditionalmediationavailable",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|Credential|type|attribute|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credential-type",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|CredentialUserData|iconURL|attribute|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialuserdata-iconurl",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|CredentialUserData|name|attribute|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialuserdata-name",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|CredentialsContainer|create|operation|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-create",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "source-denial-unverified-receiver",
+        "path": "src/runtime/enforcement/effects.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|CredentialsContainer|get|operation|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-get",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "conditional-fedcm-control",
+        "path": "formal/fedcm-conditional-probe.ts"
+      },
+      "classification": "network-entry-conditional",
+      "selectedWpt": [
+        "fedcm"
+      ],
+      "next": "Separate synthetic seeded FedCM state from any demonstrated route to that state on the deployed runtime."
+    },
+    {
+      "id": "credential-management-1|CredentialsContainer|preventSilentAccess|operation|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-preventsilentaccess",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "source-denial-unverified-receiver",
+        "path": "src/runtime/enforcement/effects.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|CredentialsContainer|store|operation|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-store",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "source-denial-unverified-receiver",
+        "path": "src/runtime/enforcement/effects.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|FederatedCredential|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-federatedcredential-federatedcredential",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|FederatedCredential|protocol|attribute|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-federatedcredential-protocol",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|FederatedCredential|provider|attribute|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-federatedcredential-provider",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|Navigator|credentials|attribute|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-navigator-credentials",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|PasswordCredential|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-passwordcredential-passwordcredential",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|PasswordCredential|constructor|constructor|2",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-passwordcredential-passwordcredential-data",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "credential-management-1|PasswordCredential|password|attribute|1",
+      "specificationURL": "https://w3c.github.io/webappsec-credential-management/#dom-passwordcredential-password",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityCredential|configURL|attribute|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredential-configurl",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityCredential|disconnect|operation|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredential-disconnect",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "conditional-receiver-escape-fixed",
+        "path": "formal/fedcm-conditional-probe.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityCredential|isAutoSelected|attribute|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredential-isautoselected",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityCredential|token|attribute|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredential-token",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityCredentialError|constructor|constructor|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredentialerror-identitycredentialerror",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityCredentialError|error|attribute|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredentialerror-error",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityCredentialError|url|attribute|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identitycredentialerror-url",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityProvider|close|operation|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identityprovider-close",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityProvider|getUserInfo|operation|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identityprovider-getuserinfo",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "source-denial-unverified-receiver",
+        "path": "src/runtime/enforcement/effects.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fedcm-1|IdentityProvider|resolve|operation|1",
+      "specificationURL": "https://w3c-fedid.github.io/FedCM/#dom-identityprovider-resolve",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|arrayBuffer|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-arraybuffer",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|blob|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-blob",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|body|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-body",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|bodyUsed|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-bodyused",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|bytes|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-bytes",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|formData|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-formdata",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|json|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-json",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|text|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-text",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Body|textStream|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-body-textstream",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|FetchLaterResult|activated|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-fetchlaterresult-activated",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Headers|append|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-append",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Headers|constructor|constructor|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Headers|delete|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-delete",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Headers|get|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-get",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Headers|getSetCookie|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-getsetcookie",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Headers|has|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-has",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Headers|set|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-headers-set",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|cache|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-cache",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|clone|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-clone",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|constructor|constructor|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|credentials|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-credentials",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|destination|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-destination",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|duplex|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-duplex",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|headers|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-headers",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|integrity|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-integrity",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|isHistoryNavigation|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-ishistorynavigation",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|isReloadNavigation|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-isreloadnavigation",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|keepalive|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-keepalive",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|method|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-method",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|mode|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-mode",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|redirect|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-redirect",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|referrer|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-referrer",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|referrerPolicy|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-referrerpolicy",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|signal|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-signal",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Request|url|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-request-url",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|clone|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-clone",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|constructor|constructor|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|error|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-error",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|headers|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-headers",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|json|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-json",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|ok|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-ok",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|redirect|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-redirect",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|redirected|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-redirected",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|status|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-status",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|statusText|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-statustext",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|type|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-type",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Response|url|attribute|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-response-url",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "fetch|Window|fetchLater|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-window-fetchlater",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "context-not-applicable"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "context-not-applicable"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "deferred-close-receiver-control",
+        "path": "formal/fetch-later.md"
+      },
+      "classification": "network-entry",
+      "selectedWpt": [
+        "fetch-later"
+      ],
+      "next": "Extend the calibrated probe to remaining contexts and delayed-delivery lifecycles."
+    },
+    {
+      "id": "fetch|WindowOrWorkerGlobalScope|fetch|operation|1",
+      "specificationURL": "https://fetch.spec.whatwg.org/#dom-global-fetch",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "source-and-receiver-tests",
+        "path": "test/network.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "periodic-background-sync|PeriodicSyncEvent|constructor|constructor|1",
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncevent-periodicsyncevent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "periodic-background-sync|PeriodicSyncEvent|tag|attribute|1",
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncevent-tag",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "periodic-background-sync|PeriodicSyncManager|getTags|operation|1",
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncmanager-gettags",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "periodic-background-sync|PeriodicSyncManager|register|operation|1",
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncmanager-register",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "permission-control-unavailable",
+        "path": "formal/background-agents.md"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "periodic-background-sync|PeriodicSyncManager|unregister|operation|1",
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-periodicsyncmanager-unregister",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "periodic-background-sync|ServiceWorkerGlobalScope|onperiodicsync|attribute|1",
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-serviceworkerglobalscope-onperiodicsync",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "periodic-background-sync|ServiceWorkerRegistration|periodicSync|attribute|1",
+      "specificationURL": "https://wicg.github.io/periodic-background-sync/#dom-serviceworkerregistration-periodicsync",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "permission-control-unavailable",
+        "path": "formal/background-agents.md"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "reporting-1|ReportingObserver|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/reporting/#dom-reportingobserver-reportingobserver",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "observer-is-not-upload-entry-point",
+        "path": "formal/modern-reporting-probe.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "reporting-1|ReportingObserver|disconnect|operation|1",
+      "specificationURL": "https://w3c.github.io/reporting/#dom-reportingobserver-disconnect",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "reporting-1|ReportingObserver|observe|operation|1",
+      "specificationURL": "https://w3c.github.io/reporting/#dom-reportingobserver-observe",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "reporting-1|ReportingObserver|takeRecords|operation|1",
+      "specificationURL": "https://w3c.github.io/reporting/#dom-reportingobserver-takerecords",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Cache|add|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-add",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Cache|addAll|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-addall",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Cache|delete|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-delete",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Cache|keys|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-keys",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Cache|match|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-match",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Cache|matchAll|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-matchall",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Cache|put|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cache-put",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|CacheStorage|delete|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-delete",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|CacheStorage|has|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-has",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|CacheStorage|keys|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-keys",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|CacheStorage|match|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-match",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|CacheStorage|open|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-cachestorage-open",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Client|frameType|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-frametype",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Client|id|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-id",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Client|postMessage|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-postmessage",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Client|postMessage|operation|2",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-postmessage-message-options",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Client|type|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-type",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Client|url|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-client-url",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Clients|claim|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-clients-claim",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Clients|get|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-clients-get",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Clients|matchAll|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-clients-matchall",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Clients|openWindow|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-clients-openwindow",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ExtendableEvent|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendableevent-extendableevent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ExtendableEvent|waitUntil|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendableevent-waituntil",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ExtendableMessageEvent|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-extendablemessageevent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ExtendableMessageEvent|data|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-data",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ExtendableMessageEvent|lastEventId|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-lasteventid",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ExtendableMessageEvent|origin|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-origin",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ExtendableMessageEvent|ports|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-ports",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ExtendableMessageEvent|source|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-extendablemessageevent-source",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|FetchEvent|clientId|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-clientid",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|FetchEvent|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-fetchevent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|FetchEvent|handled|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-handled",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|FetchEvent|preloadResponse|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-preloadresponse",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|FetchEvent|replacesClientId|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-replacesclientid",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|FetchEvent|request|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-request",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|FetchEvent|respondWith|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-respondwith",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|FetchEvent|resultingClientId|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-fetchevent-resultingclientid",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|InstallEvent|addRoutes|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-installevent-addroutes",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|InstallEvent|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-installevent-installevent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|NavigationPreloadManager|disable|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-disable",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|NavigationPreloadManager|enable|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-enable",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|NavigationPreloadManager|getState|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-getstate",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|NavigationPreloadManager|setHeaderValue|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-navigationpreloadmanager-setheadervalue",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|Navigator|serviceWorker|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#navigator-service-worker-attribute",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorker|onstatechange|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-onstatechange",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorker|postMessage|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-postmessage",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorker|postMessage|operation|2",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-postmessage-message-options",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorker|scriptURL|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-scripturl",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorker|state|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworker-state",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|controller|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-controller",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|getRegistration|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-getregistration",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|getRegistrations|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-getregistrations",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|oncontrollerchange|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-oncontrollerchange",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|onmessage|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-onmessage",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|onmessageerror|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-onmessageerror",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|ready|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-ready",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|register|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-register",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "virtualized-registration",
+        "path": "test/publisher-contexts.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerContainer|startMessages|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkercontainer-startmessages",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|clients|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-clients",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|onactivate|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-onactivate",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|onfetch|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-onfetch",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|oninstall|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-oninstall",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|onmessage|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-onmessage",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|onmessageerror|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-onmessageerror",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|registration|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-registration",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|serviceWorker|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-serviceworker",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerGlobalScope|skipWaiting|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerglobalscope-skipwaiting",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|active|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-active",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|installing|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-installing",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|navigationPreload|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-navigationpreload",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "authority-acquisition",
+      "selectedWpt": [
+        "navigation-preload"
+      ],
+      "next": "Test whether application code can acquire native control and affect a preload request or headers after confinement."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|onupdatefound|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-onupdatefound",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|scope|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-scope",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|unregister|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-unregister",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "virtualized-registration",
+        "path": "test/website-installation.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|update|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-update",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "denial-and-lifecycle-tests",
+        "path": "test/website-installation.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|updateViaCache|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-updateviacache",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|ServiceWorkerRegistration|waiting|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-serviceworkerregistration-waiting",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|WindowClient|ancestorOrigins|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-ancestororigins",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|WindowClient|focus|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-focus",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|WindowClient|focused|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-focused",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|WindowClient|navigate|operation|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-navigate",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|WindowClient|visibilityState|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#dom-windowclient-visibilitystate",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|WindowOrWorkerGlobalScope|caches|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#global-caches-attribute",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "service-workers|WorkerNavigator|serviceWorker|attribute|1",
+      "specificationURL": "https://w3c.github.io/ServiceWorker/#navigator-service-worker-attribute",
+      "static": false,
+      "partial": true,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|CloseEvent|code|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-closeevent-code",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|CloseEvent|constructor|constructor|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-closeevent-closeevent",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|CloseEvent|reason|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-closeevent-reason",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|CloseEvent|wasClean|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-closeevent-wasclean",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|binaryType|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-binarytype",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|bufferedAmount|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-bufferedamount",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|close|operation|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-close",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|constructor|constructor|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-websocket",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "source-and-receiver-tests",
+        "path": "test/prototype-confinement.ts"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|extensions|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-extensions",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|onclose|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-onclose",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|onerror|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-onerror",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|onmessage|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-onmessage",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|onopen|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-onopen",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|protocol|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-protocol",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|readyState|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-readystate",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|send|operation|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-send",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "websockets|WebSocket|url|attribute|1",
+      "specificationURL": "https://websockets.spec.whatwg.org/#dom-websocket-url",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|anticipatedConcurrentIncomingBidirectionalStreams|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-anticipatedconcurrentincomingbidirectionalstreams",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|anticipatedConcurrentIncomingUnidirectionalStreams|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-anticipatedconcurrentincomingunidirectionalstreams",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|close|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-close",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|closed|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-closed",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|congestionControl|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-congestioncontrol",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-webtransport",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": {
+        "status": "independent-receiver",
+        "path": "formal/webtransport/README.md"
+      },
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|createBidirectionalStream|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-createbidirectionalstream",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|createSendGroup|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-createsendgroup",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|createUnidirectionalStream|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-createunidirectionalstream",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|datagrams|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-datagrams",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|draining|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-draining",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|exportKeyingMaterial|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-exportkeyingmaterial",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|getStats|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-getstats",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|incomingBidirectionalStreams|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-incomingbidirectionalstreams",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|incomingUnidirectionalStreams|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-incomingunidirectionalstreams",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|protocol|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-protocol",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|ready|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-ready",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|reliability|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-reliability",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|responseHeaders|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-responseheaders",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransport|supportsReliableOnly|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransport-supportsreliableonly",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportBidirectionalStream|readable|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportbidirectionalstream-readable",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportBidirectionalStream|writable|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportbidirectionalstream-writable",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramDuplexStream|createWritable|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-createwritable",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramDuplexStream|incomingMaxAge|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-incomingmaxage",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramDuplexStream|incomingMaxBufferedDatagrams|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-incomingmaxbuffereddatagrams",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramDuplexStream|maxDatagramSize|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-maxdatagramsize",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramDuplexStream|outgoingMaxAge|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-outgoingmaxage",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramDuplexStream|outgoingMaxBufferedDatagrams|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-outgoingmaxbuffereddatagrams",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramDuplexStream|readable|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramduplexstream-readable",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramsWritable|sendGroup|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramswritable-sendgroup",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportDatagramsWritable|sendOrder|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportdatagramswritable-sendorder",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportError|constructor|constructor|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransporterror-webtransporterror",
+      "static": true,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportError|source|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransporterror-source",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportError|streamErrorCode|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransporterror-streamerrorcode",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportReceiveStream|getStats|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportreceivestream-getstats",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportSendGroup|getStats|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendgroup-getstats",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportSendStream|getStats|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendstream-getstats",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportSendStream|getWriter|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendstream-getwriter",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "not-observed",
+          "dedicated-worker": "not-observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportSendStream|sendGroup|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendstream-sendgroup",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportSendStream|sendOrder|attribute|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportsendstream-sendorder",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "observed",
+          "dedicated-worker": "observed"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportWriter|atomicWrite|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportwriter-atomicwrite",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    },
+    {
+      "id": "webtransport|WebTransportWriter|commit|operation|1",
+      "specificationURL": "https://w3c.github.io/webtransport/#dom-webtransportwriter-commit",
+      "static": false,
+      "partial": false,
+      "observations": {
+        "chromium": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        },
+        "firefox": {
+          "window": "no-constructor-prototype-observation",
+          "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "priorReviewPointer": null,
+      "classification": "unreviewed",
+      "selectedWpt": [],
+      "next": "Review the standard algorithm, reachable contexts and potential effects."
+    }
+  ]
+}

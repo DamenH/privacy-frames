@@ -3,7 +3,7 @@
   "webrefRevision": "6ac6259c96b11e0aea5c34a16822eb06add278c9",
   "snapshotRevision": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
   "snapshotSHA256": "7ed31f047c607772cfdaffed193310c9b14ee4f071dbb37412521ef4af7b443b",
-  "generatorSHA256": "7896b23fb9e0971a73a89437cab88ff87b9a461f9c8d397c1392ca78af208bde",
+  "generatorSHA256": "f668330c999f8e5e552862692d7621eccf464183f2e64bdca0dbf10b7532d26d",
   "browsers": [
     {
       "name": "chromium",
@@ -925,7 +925,7 @@
         }
       },
       "review": {
-        "status": "source-and-receiver-tests",
+        "status": "aggregate-network-tests-only",
         "path": "test/run.ts"
       }
     },

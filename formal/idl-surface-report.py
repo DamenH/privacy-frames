@@ -20,7 +20,7 @@ SPECS = [
 # Exact reviewed entry points, with the scope of their existing evidence.
 # Deliberately not a classifier inferred from substrings or source-code matches.
 REVIEW = {
-    'Navigator.sendBeacon': ['source-and-receiver-tests', 'test/run.ts'],
+    'Navigator.sendBeacon': ['aggregate-network-tests-only', 'test/run.ts'],
     'WindowOrWorkerGlobalScope.fetch': ['source-and-receiver-tests', 'test/network.ts'],
     'Window.fetchLater': ['deferred-close-receiver-control', 'formal/fetch-later.md'],
     'WebSocket.constructor': ['source-and-receiver-tests', 'test/prototype-confinement.ts'],

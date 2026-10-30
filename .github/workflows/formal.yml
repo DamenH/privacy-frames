@@ -27,6 +27,7 @@ jobs:
         run: |
           python3 formal/idl-surface-report.py
           git diff --exit-code -- formal/evidence/idl-surface-report.json
+          python3 formal/route-review/generate.py --check --verify-wpt
       - name: Type-check and compare registry traces
         run: |
           npx tsc --ignoreConfig --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --types node --lib ES2023,DOM,DOM.Iterable,WebWorker formal/confinement/registry-trace-test.ts
@@ -58,7 +59,9 @@ jobs:
       - run: node formal/modern-reporting-probe.ts
       - run: node formal/background-agents-probe.ts
       - run: node formal/fetch-later-probe.ts
+      - run: node formal/websocket-fault-probe.ts
       - run: node formal/web-install-probe.ts
+      - run: node formal/web-install-sandbox-fault.ts
       - uses: actions/upload-artifact@v4
         with:
           name: browser-effect-evidence
@@ -69,7 +72,9 @@ jobs:
             formal/evidence/modern-reporting.json
             formal/evidence/background-agents.json
             formal/evidence/fetch-later.json
+            formal/evidence/websocket-fault.json
             formal/evidence/web-install.json
+            formal/evidence/web-install-sandbox-fault.json
   webtransport:
     runs-on: ubuntu-latest
     steps:
