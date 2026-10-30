@@ -70,7 +70,8 @@ define(Array.prototype, '0', { configurable: true, get() { return undefined; }, 
   define(this, '0', { value, writable: true, configurable: true, enumerable: true });
 } });
 const frame = document.createElement('iframe');
-frame.srcdoc = '<!doctype html><p id="child">child document</p>';
+// Keep the native initial document alive while its socket controls connect.
+// A srcdoc commit can destroy that document before a constructed socket sends.
 document.body.append(frame);
 const pending = frame.contentWindow;
 const indexed = window.frames[0];
@@ -229,15 +230,28 @@ try {
           assert.equal(field('functionDiagnostic'), 'application diagnostic hook');
           const marker = field('socketMarker');
           assert.equal(typeof marker, 'string');
+          const socketContexts = [
+            'main',
+            'prepared-child',
+            'pending',
+            'indexed',
+            'record-immediate',
+            'record-microtask',
+          ];
           if (confined) await delay(250);
           else {
             const deadline = Date.now() + 5000;
             while (
               Date.now() < deadline &&
               (!requests.slice(before).some((entry) => entry.upgrade) ||
-                hostServer.upgrades.filter(
-                  (entry) => entry.port === 4211 && entry.path.includes(String(marker)),
-                ).length < 6)
+                !socketContexts.every((name) =>
+                  hostServer.upgrades.some(
+                    (entry) =>
+                      entry.port === 4211 &&
+                      entry.path.includes(String(marker)) &&
+                      entry.path.includes('&context=' + name),
+                  ),
+                ))
             )
               await delay(25);
           }
@@ -306,16 +320,10 @@ try {
               record: 'constructed',
               recordMicrotask: 'constructed',
             });
-            for (const name of [
-              'main',
-              'prepared-child',
-              'pending',
-              'indexed',
-              'record-immediate',
-              'record-microtask',
-            ])
+            for (const name of socketContexts)
               assert(
                 runtimeUpgrades.some((entry) => entry.path.includes('&context=' + name)),
+                `${browserName}: native socket receiver missing context ${name}`,
               );
           }
         } finally {

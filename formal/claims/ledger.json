@@ -24,7 +24,7 @@
     "formal/evidence/context-features.json": "7042ec4a2043c6e36e0371ac8b3d99989a12bfaa4f5d0132cdb290b6a49ac87d",
     "formal/evidence/context-idl-join.json": "261b385435b68be0daae0111c7705824766cea47cb30271b19264a62dd46e4af",
     "formal/evidence/contexts-document-contexts.json": "92351579f6812f49be82f317fb5fbf49850be64019bd1e7a1be31c4edd2f81b7",
-    "formal/evidence/contexts-prototype-confinement.json": "2036fd1e0cc6ac47fc1e8042a5f9c65861efc5788bab1062b2185af0054cc8e0",
+    "formal/evidence/contexts-prototype-confinement.json": "b76ddfd0f71ff886720faa3304cf86020e1b4a485c9fb624e2e11afdacc22819",
     "formal/evidence/document-consumption-fault.json": "ac89b66f67e8b5fc2114f0b0c2ca17108cb69e194b3ad4e4d905f7cb5d6982ac",
     "formal/evidence/eventsource-beacon.json": "74fd54e3323a3e81b511ad8cd78931c0514147a34def38c65b0a8fd07d7325fa",
     "formal/evidence/fedcm-conditional.json": "67a51d93242a3e007dd08f723931e01504f6c21426dd3e21a3f87de6c36d9b4b",
@@ -87,6 +87,7 @@
     "formal/web-install-sandbox-fault.ts": "fb0b0483480215ae9ec55dd8da10b57c2db855e4375c0c7c45a1f07dfed9232b",
     "formal/websocket-fault-probe.ts": "2b550d353a680a12e9121209abfa974fbb8b4ad4a0841f0c019ada4a11e401ed",
     "formal/websocket-fault.md": "b3775d8b8dc4506a1e71a675ab48c7920dfc4e14164dea6873a27440a65adba1",
+    "formal/websocket-native-control.md": "5f4e93c748d853a109a35ea249758b17c613ad5ff87a08d0e3e5c6bd9bde558c",
     "formal/webtransport/results.json": "b97fb9a79cd59263d75f7e1a0a0d1d9269b92af7a9f4b797a9a00f6efdc227e5",
     "formal/worker-registration-probe.ts": "6bcad99b4fe18781e077fc7f45406b8eb5d3b52c18bc2ab57383d7e2c138cb50",
     "formal/worker-registration.md": "c17ec13229015956a09b7bdfa7feaf9433dd2d7f9f991da89bc8fffd6d605445",
@@ -136,6 +137,7 @@
     "test/installation-session.test.ts": "8225fda24d345cca301fe36a631c6841d9f7a5a9accff36a656e2f3f1fd51cd0",
     "test/native-markup.ts": "c7f2e8da0108ef2fae10eba4441dbfe7e4a7494ffd8631fe0a9b3b014b8f46e1",
     "test/navigation-targets.ts": "2d8e66174eadfe8690251bb0eaf6e01b836d71cf175106ba3048ffe60b4671f0",
+    "test/prototype-confinement.ts": "c67de905336cad05930150533413114d087ae5669119c5d532fbeeff5cb62af0",
     "test/publisher-contexts.ts": "8f66e97fda6b329d12ca9eb8e144ea4d4c7e0e6b257401ec197bd59c46bf83f3",
     "test/publisher-events.test.ts": "f6235008bcdce5550b875f3293926037182b604c9c177abe6a7b0cf435981bce",
     "test/publisher-store.ts": "e7a7e7220d56a9a2cf083f8ea5212e6701f7fdd69e4609740284705b1b8481b6",
@@ -246,9 +248,11 @@
       "evidence": [
         {
           "kind": "native_control",
-          "description": "Independent same-origin WebSocket upgrade control in the prototype fixture.",
+          "description": "Independent same-origin WebSocket upgrade controls through six named stable-blank Window reference paths, with every native handshake required before checking confined cases.",
           "paths": [
-            "formal/evidence/contexts-prototype-confinement.json"
+            "formal/evidence/contexts-prototype-confinement.json",
+            "test/prototype-confinement.ts",
+            "formal/websocket-native-control.md"
           ]
         },
         {
@@ -271,7 +275,7 @@
         }
       ],
       "open_obligations": [
-        "Receipts use an earlier source revision.",
+        "External-network and denial-fault receipts use earlier source revisions; the prototype fixture receipt records the revised stable native control.",
         "WebSocketStream and every constructor-recovery route lack independent native calibration.",
         "The new mutation is limited to prepared windows; installed-app lifecycle and worker variants remain separate obligations."
       ],
