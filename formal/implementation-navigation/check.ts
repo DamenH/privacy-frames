@@ -133,6 +133,20 @@ rejected(
   /Kernel statement count changed/,
 );
 rejected('  installed = true;', '  installed = false;', /Installation flag changed/);
+rejected('if (installed) return;', 'if (false) return;', /Kernel prelude changed/);
+assert.throws(
+  () =>
+    extract(
+      text
+        .replace('  installed = true;', '')
+        .replace(
+          '  apply(nativeAdd, nav, [',
+          '  installed = true;\n  apply(nativeAdd, nav, [',
+        ),
+    ),
+  /Installation flag changed/,
+);
+
 rejected(
   'export function installDocumentExitGuard()',
   'export function* installDocumentExitGuard()',
@@ -160,6 +174,11 @@ open NavigationSource
   action actualDecision (.error ()) sameDocument = .throwException := by rfl
  theorem sameDocument_getter_exception :
   action actualDecision (.ok ()) (.error ()) = .throwException := by rfl
+ #print axioms NavigationSource.install_preserves_valid
+ #print axioms NavigationSource.returned_normally_is_ready
+ #print axioms NavigationSource.failure_is_unready
+ #print axioms NavigationSource.normal_return_has_one_registration
+ #print axioms NavigationSource.arbitrarily_many_attempts_register_at_most_once
  #print axioms cancellation_exact
  #print axioms crossDocument_requests_cancellation
  #print axioms sameDocument_returns_normally
@@ -183,6 +202,11 @@ assert.equal(verified.stderr, '');
 assert.equal(
   verified.stdout.trim(),
   [
+    'NavigationSource.install_preserves_valid',
+    'NavigationSource.returned_normally_is_ready',
+    'NavigationSource.failure_is_unready',
+    'NavigationSource.normal_return_has_one_registration',
+    'NavigationSource.arbitrarily_many_attempts_register_at_most_once',
     'cancellation_exact',
     'crossDocument_requests_cancellation',
     'sameDocument_returns_normally',
@@ -208,7 +232,7 @@ await writeFile(
   JSON.stringify(
     {
       scope:
-        'Restricted source correspondence for an import-free kernel and callback, with kernel-checked primitive-Boolean/exception semantics. Native operations, module privacy, compiler and browser effects remain contracts.',
+        'Restricted source correspondence for an import-free kernel and callback, with kernel-checked installation-state, primitive-Boolean and exception semantics. Native operations, module privacy, compiler and browser effects remain contracts.',
       source: sourceName,
       sourceSHA256: hash(text),
       checkerSHA256: hash(await readFile(import.meta.filename, 'utf8')),
@@ -223,6 +247,8 @@ await writeFile(
         missingAction: 'source-rejected',
         unknownPreludeCall: 'source-rejected',
         wrongInstallationFlag: 'source-rejected',
+        missingIdempotenceGuard: 'source-rejected',
+        prematureInstallationFlag: 'source-rejected',
         generatorInstaller: 'source-rejected',
         asynchronousInstaller: 'source-rejected',
         reversedCondition: 'proof-rejected',

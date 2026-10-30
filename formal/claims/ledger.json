@@ -46,12 +46,12 @@
     "formal/evidence/websocket-fault.json": "a873c228713a89508fc82cd56fa29f8ec535549919f0daaad1b2464ac421e876",
     "formal/evidence/worker-registration.json": "c81c512d2bc4cacca244e30e9f8c215e8288bf676ee64ba9e994d09ff5fb0da5",
     "formal/idl-surface-report.md": "e78ca56cb8a7093ec49a0cb23eff21443eb76529492911adc2dbd7a8959973e3",
-    "formal/implementation-navigation/Expression.lean": "8728086c2968c244d0263168b47b4d4481a8da3778ec500a98d26d17134ae39b",
-    "formal/implementation-navigation/README.md": "a3292069c8050ddd3af5416a272b0d9431593655e7fdb0b2f7b0648256bd4320",
+    "formal/implementation-navigation/Expression.lean": "6d55a6033138edfc9de4242d93db6cd2568d3948764f0b2f0c37d747cdafa975",
+    "formal/implementation-navigation/README.md": "c037d6ce8545c9a3f15cd6f14788927113a6bef1fd7e94e90217eab908ca81fc",
     "formal/implementation-navigation/bootstrap-check.ts": "f2c5ddde708c7c98c33a2acc8592e1ab36e871f5b9e81daf16c1ea4fc540a8f9",
     "formal/implementation-navigation/bootstrap-result.json": "dd2a5327964c9fcf777eaba7329f0d5a907c03412575b374d1d738842d633df0",
     "formal/implementation-navigation/browser-contract.md": "12e81c6a01063ce8805d4cdd4969cd200b81375608ba3b825c03c81dc28bb546",
-    "formal/implementation-navigation/check.ts": "051e05c40346be61bf8f4448615c28be496a0e97d63aff45a7d51bb5b25e783a",
+    "formal/implementation-navigation/check.ts": "b0f014a61421b9c3f3b2694683a33144afed8f1adee7c0cbfe40f0f171bec484",
     "formal/implementation-navigation/compatibility-early-kernel.json": "17d8381c4c6dde32bf48b8319d94f4d48a15168de3bac1fb352e8bce578b6821",
     "formal/implementation-navigation/compatibility-native-capture.json": "76715722227a714210a4bb4c71ba46126d0617b00c28a946df8c980786ad6200",
     "formal/implementation-navigation/deployment-native-capture.json": "afd8aa03c57d7b71212ef9129fa4011cfeb35291d11c3014da4da1499aac5d80",
@@ -64,7 +64,7 @@
     "formal/implementation-navigation/installed-result.json": "ef353071b3634a5e51d8abd18b7b7a6f3d9b6a4ea9489308065da043f2dcaf17",
     "formal/implementation-navigation/installed-run.ts": "294237749edf1c560386f1a9f34bb885644b89d858d4424297ba07704e3135b6",
     "formal/implementation-navigation/installed.md": "c9be2329ed3e1ac7c7a4d3458589af05711e4844a1214d0dbd81abd274922b1b",
-    "formal/implementation-navigation/result.json": "4685bcd6c90543eefc629c16bacda6a3beb2b2162c4f5819b326e7e8d465489f",
+    "formal/implementation-navigation/result.json": "7814173867a53760484b6d0583eefaeb8034b3ca410f538ffd65701c03708bd2",
     "formal/implementation-navigation/setup-check.ts": "26138d96ea24ea5b6f07e06f6af4fc6d2f2d321ef40d50a131d69a8f44871570",
     "formal/implementation-navigation/setup-result.json": "57a86d8a4c482421cddef60ee0374725b381062f1eb2ed63d79bb4c16cce0cb3",
     "formal/lean/CapabilityBoundary.lean": "5cf557978cf54255fded00ba991b90db7e54056e39f81a769f016c32ace7cf23",
@@ -1614,7 +1614,7 @@
       "evidence": [
         {
           "kind": "formal_theorem",
-          "description": "The actual import-free kernel is source-shape checked; its extracted cancellation condition and getter exception behavior have kernel-checked Lean theorems. Parser, extractor, compiler, native contracts and browser effects remain trusted.",
+          "description": "The actual import-free kernel is source-shape checked. Lean checks its extracted cancellation condition and getter exceptions, plus installation completion and at-most-once registration for arbitrary finite attempt sequences under explicit native contracts. Parser, extractor, compiler and browser effects remain trusted.",
           "paths": [
             "formal/implementation-navigation/README.md",
             "formal/implementation-navigation/check.ts",

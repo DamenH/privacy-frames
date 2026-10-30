@@ -26,6 +26,16 @@ report. Wrong native calls, registration, installation flag and condition are
 negative controls. Generator and async installers are rejected because installation
 must complete synchronously when called.
 
+The restricted installation semantics also track the private flag and a ghost
+count of successful listener registrations. Induction establishes that any finite
+sequence of installation attempts registers at most once. Normal completion
+implies that the flag is set and exactly one registration has succeeded. The
+source checker requires the early return and the flag assignment after native
+registration; removing the return or setting the flag prematurely is rejected.
+The native contract assumes that setup either registers the listener and returns,
+or throws without registering. This proof does not verify the browser's native
+registration algorithm.
+
 This is restricted source correspondence under a trusted TypeScript parser and
 extractor. It assumes the recognized native bindings have their browser meaning.
 A requested cancellation is distinct from an externally suppressed request.
