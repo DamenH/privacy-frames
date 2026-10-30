@@ -11,9 +11,10 @@ import { provideResourceList } from '../test/resource-list-input.ts';
 const received: { path: string; preload: string | undefined }[] = [];
 const publisher = http.createServer((request, reply) => {
   const path = request.url || '/';
+  const preloadHeader = request.headers['service-worker-navigation-preload'];
   received.push({
     path,
-    preload: request.headers['service-worker-navigation-preload'] as string | undefined,
+    preload: typeof preloadHeader === 'string' ? preloadHeader : undefined,
   });
   reply.setHeader('Access-Control-Allow-Origin', '*');
   reply.setHeader('Cache-Control', 'no-store');
