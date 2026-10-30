@@ -27,6 +27,29 @@ on:
 permissions:
   contents: read
 jobs:
+  javascript:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Type-check symbolic-analysis runner
+        run: npx tsc --ignoreConfig --noEmit --strict --types node --target ES2022 --module NodeNext --moduleResolution NodeNext --skipLibCheck formal/implementation-navigation/gillian-check.ts
+      - name: Analyze actual navigation callback and assertion-failure controls
+        run: node formal/implementation-navigation/gillian-check.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: navigation-javascript-analysis
+          path: |
+            formal/implementation-navigation/gillian-result.json
+            .tools/gillian-navigation/*.js
+            .tools/gillian-navigation/*.log
+          include-hidden-files: true
   proof:
     runs-on: ubuntu-latest
     steps:

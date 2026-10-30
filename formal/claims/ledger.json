@@ -47,9 +47,12 @@
     "formal/evidence/worker-registration.json": "c81c512d2bc4cacca244e30e9f8c215e8288bf676ee64ba9e994d09ff5fb0da5",
     "formal/idl-surface-report.md": "e78ca56cb8a7093ec49a0cb23eff21443eb76529492911adc2dbd7a8959973e3",
     "formal/implementation-navigation/Expression.lean": "45e39bd82a01a24e8cfce5b5a53bd6be43522e1193b85f9aaecc23ac6caa9907",
-    "formal/implementation-navigation/README.md": "41640f9bb6b149a525cc091f1daad87d04e20739f91d88c2288560e913cff819",
+    "formal/implementation-navigation/README.md": "6d61b59368c3e324034f94d748d9f62690a22c6363fd0d259ef9f5e34c472892",
     "formal/implementation-navigation/browser-contract.md": "4c9bf61b23d77296f41f2a5d68c3195bfa7b22609ab70e8ac4024a924ed0b5d8",
     "formal/implementation-navigation/check.ts": "25b76a42199601c8ce3b7db50bddbd93d6918ab121e94ec4997a6d69392b8983",
+    "formal/implementation-navigation/gillian-check.ts": "3fe55b28e050ab03cfc27c5aa5b3ad0bcd984712da2541fae35e08ebe02709b0",
+    "formal/implementation-navigation/gillian-result.json": "849ba39592171cc8d09e2a1c9a5a8e46523a116cbd70f88c742f485aa73d9a74",
+    "formal/implementation-navigation/gillian.md": "d31e0676b8069e98d2ab30622de4075188da986fdbf330d35c9565ed8993af3a",
     "formal/implementation-navigation/helper-review.md": "af406d73675e58790e98984579bdf6b6b20a2b7a79ce755077c7a96b684373ee",
     "formal/implementation-navigation/result.json": "00e26e59d80532c98f35f2c131ef3abaea48d3032e2334c61e8cbae8a86890af",
     "formal/implementation-navigation/setup-check.ts": "a5349887acc7b025b5a983d319bee82e2b785a13599f3901e8f65014f0e94256",
@@ -1606,12 +1609,22 @@
             "formal/navigation-preload-fault.ts",
             "formal/evidence/navigation-preload-fault.json"
           ]
+        },
+        {
+          "kind": "discovery",
+          "description": "Digest-pinned Gillian-JS whole-program symbolic testing analyzes the actual callback after ES5 compilation under explicit native-operation contracts. Cancellation, exceptions, read counts and native-call receivers pass; false assertions, removed cancellation and weakened conditions fail by assertion. This is bounded symbolic analysis, not a proof certificate or browser-completeness proof.",
+          "paths": [
+            "formal/implementation-navigation/gillian.md",
+            "formal/implementation-navigation/gillian-check.ts",
+            "formal/implementation-navigation/gillian-result.json"
+          ]
         }
       ],
       "open_obligations": [
         "The extractor and restricted semantics are not a machine-checked JavaScript translation.",
         "Source-order checks do not prove arbitrary helper effects, import initialization, all call reachability or child-context startup.",
-        "Browser event delivery, native getter validity, effective cancellation and fetch ordering remain explicit contracts supported only by selected tests."
+        "Browser event delivery, native getter validity, effective cancellation and fetch ordering remain explicit contracts supported only by selected tests.",
+        "The Gillian experiment trusts callback extraction, TypeScript ES5 compilation, Gillian semantics and solver, and native-operation contracts; it does not discharge complete mediation or browser behavior."
       ],
       "control_status": {
         "native_control": "not-recorded",

@@ -110,3 +110,10 @@ The two-stage initialization was deployed from host revision
 checked guards matched the locally tested build. A fresh Chromium installation
 passed the identity and sampled reporting-header checks. These live checks do
 not replace the local fault controls or prove every browser path.
+
+The [Gillian-JS experiment](gillian.md) analyzes the extracted callback as ES5
+JavaScript under explicit native-operation contracts. It checks cancellation,
+exceptions, evaluation order and call receivers without using the restricted
+Lean expression translation. The actual callback passes; removing cancellation
+or weakening the condition causes assertion failures. This is whole-program
+symbolic testing, not a proof certificate or a complete browser model.
