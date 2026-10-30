@@ -1,0 +1,307 @@
+{
+  "date": "2026-10-30T15:14:03.542Z",
+  "provenance": {
+    "capturedAt": "2026-10-30T15:14:03.567Z",
+    "revision": "8955d3fd87f0e37bbb28d1b0d52836da5921b1b7",
+    "dirty": true,
+    "sourceSHA256": "d9a2637a58ac14639414d9410cd62f748b5b267d5e93996215b8692edb57536f",
+    "runner": "formal/startup/run.ts",
+    "runnerSHA256": "f199305cafabd1f876c5c9ad44d998e61d129de9008430c9191a56a10e286bbf",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-manager/sw.js": "59c6ea8cfc027e9edc09f0b749db95da7d973e738e79ed6777524e487646b011",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "2a7cc135e164621f75a40d1088fb49dfe516e6ef31d348ab9d71c73b76bb506d",
+      "dist-runtime/guard.js": "d45c7178a6c125635f55be17a17ff8f5a7f78e65a60537b61eb0273239162f01",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "dist-runtime/sw.js": "5b5329562c7b81cbe31c4d40459b7a857d8e2f7ce19d9c7a2eaaf5150f33227e",
+      "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "dee2c1e7be73e58a6c30a4c12a9e38ffce4b2221bd8a5c3a2f50923e22da18e6"
+    }
+  },
+  "scope": "Test-only observer around real native FetchEvents and production registry binding; same-URL controller upgrades overlap paused child-guard script delivery. Application witnesses test prepared features/publication, not every guard postcondition.",
+  "instrumentedSourceSHA256": "61e93e12290ae32646047528813d4c2b2192fa7dce3b7cb4c4d074bdfd7eace9",
+  "observerSHA256": "3937832ef67dbe6edbe681a332cd88e12da79b3c4668cbc4b9008b2dcc024962",
+  "bundles": {
+    "A": "2131c3f0a9ab4107764ba5dc450e17f44fa1180810958ba88161a0bcd73590e5",
+    "B": "5dc2e13dd184a118db5fdfec4ae9d840248805d23ddf11504b48ca1e1526b32f",
+    "C": "1d094951499b6de3246b8e9129adbb3df5ca4eedd57d9f83aaec6c19d5a638e8"
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "failure": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.",
+      "logs": [],
+      "trace": [
+        {
+          "kind": "controller-activate",
+          "build": "correspondence-A",
+          "time": 1793373244034
+        },
+        {
+          "kind": "native-fetch",
+          "trusted": true,
+          "client": "57d46acc-f4c8-4082-ac93-4809ef0787c9",
+          "resulting": "32e6e2c5-2836-4fbb-9522-ccc84e36ce7b",
+          "url": "http://127.0.0.1:4211/runtime/connect.html",
+          "destination": "iframe",
+          "mode": "navigate",
+          "build": "correspondence-A",
+          "time": 1793373244035
+        },
+        {
+          "kind": "native-fetch",
+          "trusted": true,
+          "client": "",
+          "resulting": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/",
+          "destination": "document",
+          "mode": "navigate",
+          "build": "correspondence-A",
+          "time": 1793373244806
+        },
+        {
+          "kind": "bind-start",
+          "client": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "context": "2e2ac096-1e8c-45bc-a51a-c8112b455ac8",
+          "parent": null,
+          "application": "startup-lab-72ed2d2a9e9f56e1a6219eb6f390eb0c2680d533396e1a7cf2b39a8518c47ce3",
+          "generation": "df253731-7a82-4edd-9c47-da5af59c2cf5",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/",
+          "build": "correspondence-A",
+          "time": 1793373244807
+        },
+        {
+          "kind": "bind-success",
+          "client": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "context": "2e2ac096-1e8c-45bc-a51a-c8112b455ac8",
+          "parent": null,
+          "application": "startup-lab-72ed2d2a9e9f56e1a6219eb6f390eb0c2680d533396e1a7cf2b39a8518c47ce3",
+          "generation": "df253731-7a82-4edd-9c47-da5af59c2cf5",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/",
+          "build": "correspondence-A",
+          "time": 1793373244810
+        },
+        {
+          "kind": "document-response",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__document-intents",
+          "client": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "resulting": "",
+          "status": 200,
+          "build": "correspondence-A",
+          "time": 1793373245073
+        },
+        {
+          "kind": "native-fetch",
+          "trusted": true,
+          "client": "",
+          "resulting": "09aa045f-2810-4365-a5b8-fd2e8c92a037",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/29699462-61b2-4c12-bf55-dfb4f99c406b/document.html",
+          "destination": "iframe",
+          "mode": "navigate",
+          "build": "correspondence-A",
+          "time": 1793373245075
+        },
+        {
+          "kind": "bind-start",
+          "client": "09aa045f-2810-4365-a5b8-fd2e8c92a037",
+          "context": "29699462-61b2-4c12-bf55-dfb4f99c406b",
+          "parent": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "application": "startup-lab-72ed2d2a9e9f56e1a6219eb6f390eb0c2680d533396e1a7cf2b39a8518c47ce3",
+          "generation": "df253731-7a82-4edd-9c47-da5af59c2cf5",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/29699462-61b2-4c12-bf55-dfb4f99c406b/document.html",
+          "build": "correspondence-A",
+          "time": 1793373245077
+        },
+        {
+          "kind": "bind-success",
+          "client": "09aa045f-2810-4365-a5b8-fd2e8c92a037",
+          "context": "29699462-61b2-4c12-bf55-dfb4f99c406b",
+          "parent": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "application": "startup-lab-72ed2d2a9e9f56e1a6219eb6f390eb0c2680d533396e1a7cf2b39a8518c47ce3",
+          "generation": "df253731-7a82-4edd-9c47-da5af59c2cf5",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/29699462-61b2-4c12-bf55-dfb4f99c406b/document.html",
+          "build": "correspondence-A",
+          "time": 1793373245079
+        },
+        {
+          "kind": "document-response",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/29699462-61b2-4c12-bf55-dfb4f99c406b/document.html",
+          "client": "",
+          "resulting": "09aa045f-2810-4365-a5b8-fd2e8c92a037",
+          "status": 200,
+          "build": "correspondence-A",
+          "time": 1793373245079
+        },
+        {
+          "kind": "native-fetch",
+          "trusted": true,
+          "client": "09aa045f-2810-4365-a5b8-fd2e8c92a037",
+          "resulting": "",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=29699462-61b2-4c12-bf55-dfb4f99c406b",
+          "destination": "script",
+          "mode": "no-cors",
+          "build": "correspondence-A",
+          "time": 1793373245082
+        },
+        {
+          "kind": "document-response",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=29699462-61b2-4c12-bf55-dfb4f99c406b",
+          "client": "09aa045f-2810-4365-a5b8-fd2e8c92a037",
+          "resulting": "",
+          "status": 200,
+          "build": "correspondence-A",
+          "time": 1793373245084
+        },
+        {
+          "kind": "document-response",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/29699462-61b2-4c12-bf55-dfb4f99c406b/configuration",
+          "client": "09aa045f-2810-4365-a5b8-fd2e8c92a037",
+          "resulting": "",
+          "status": 200,
+          "build": "correspondence-A",
+          "time": 1793373245108
+        },
+        {
+          "kind": "document-response",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/29699462-61b2-4c12-bf55-dfb4f99c406b/content",
+          "client": "09aa045f-2810-4365-a5b8-fd2e8c92a037",
+          "resulting": "",
+          "status": 200,
+          "build": "correspondence-A",
+          "time": 1793373245294
+        },
+        {
+          "kind": "document-response",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__document-intents",
+          "client": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "resulting": "",
+          "status": 200,
+          "build": "correspondence-A",
+          "time": 1793373245324
+        },
+        {
+          "kind": "native-fetch",
+          "trusted": true,
+          "client": "",
+          "resulting": "919e682c-309a-4713-a35f-ea0e758f88d3",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/672c069a-fe37-431c-b3a2-3b76d0de198c/document.html",
+          "destination": "iframe",
+          "mode": "navigate",
+          "build": "correspondence-A",
+          "time": 1793373245327
+        },
+        {
+          "kind": "bind-start",
+          "client": "919e682c-309a-4713-a35f-ea0e758f88d3",
+          "context": "672c069a-fe37-431c-b3a2-3b76d0de198c",
+          "parent": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "application": "startup-lab-72ed2d2a9e9f56e1a6219eb6f390eb0c2680d533396e1a7cf2b39a8518c47ce3",
+          "generation": "df253731-7a82-4edd-9c47-da5af59c2cf5",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/672c069a-fe37-431c-b3a2-3b76d0de198c/document.html",
+          "build": "correspondence-A",
+          "time": 1793373245329
+        },
+        {
+          "kind": "bind-success",
+          "client": "919e682c-309a-4713-a35f-ea0e758f88d3",
+          "context": "672c069a-fe37-431c-b3a2-3b76d0de198c",
+          "parent": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "application": "startup-lab-72ed2d2a9e9f56e1a6219eb6f390eb0c2680d533396e1a7cf2b39a8518c47ce3",
+          "generation": "df253731-7a82-4edd-9c47-da5af59c2cf5",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/672c069a-fe37-431c-b3a2-3b76d0de198c/document.html",
+          "build": "correspondence-A",
+          "time": 1793373245331
+        },
+        {
+          "kind": "document-response",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/672c069a-fe37-431c-b3a2-3b76d0de198c/document.html",
+          "client": "",
+          "resulting": "919e682c-309a-4713-a35f-ea0e758f88d3",
+          "status": 200,
+          "build": "correspondence-A",
+          "time": 1793373245331
+        },
+        {
+          "kind": "native-fetch",
+          "trusted": true,
+          "client": "919e682c-309a-4713-a35f-ea0e758f88d3",
+          "resulting": "",
+          "url": "http://127.0.0.1:4211/runtime/document-guard.js?context=672c069a-fe37-431c-b3a2-3b76d0de198c",
+          "destination": "script",
+          "mode": "no-cors",
+          "build": "correspondence-A",
+          "time": 1793373245334
+        },
+        {
+          "kind": "guard-paused",
+          "context": "672c069a-fe37-431c-b3a2-3b76d0de198c",
+          "client": "919e682c-309a-4713-a35f-ea0e758f88d3",
+          "resulting": "",
+          "trusted": true,
+          "build": "correspondence-A",
+          "time": 1793373245335
+        },
+        {
+          "kind": "guard-timeout",
+          "context": "672c069a-fe37-431c-b3a2-3b76d0de198c",
+          "client": "919e682c-309a-4713-a35f-ea0e758f88d3",
+          "build": "correspondence-A",
+          "time": 1793373253050
+        },
+        {
+          "kind": "controller-activate",
+          "build": "correspondence-B",
+          "time": 1793373254057
+        },
+        {
+          "kind": "document-response",
+          "url": "http://127.0.0.1:4211/runtime/cu0tKp6fVuE/startup-lab/__contexts/672c069a-fe37-431c-b3a2-3b76d0de198c/close",
+          "client": "5c5c6543-ca23-4c49-ac65-2ba1580fb912",
+          "resulting": "",
+          "status": 200,
+          "build": "correspondence-B",
+          "time": 1793373260334
+        }
+      ],
+      "application": {
+        "markers": [
+          {
+            "type": "startup-marker",
+            "label": "baseline",
+            "published": true,
+            "prepared": true,
+            "hiddenAuthority": false
+          }
+        ],
+        "frames": [
+          {
+            "id": "baseline",
+            "accessible": true
+          }
+        ]
+      }
+    }
+  ]
+}

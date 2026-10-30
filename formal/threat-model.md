@@ -23,6 +23,11 @@ Applications may share runtime-origin storage and browser permissions. Their
 namespace separation is a compatibility feature, not an assumption of confidentiality
 between applications.
 
+Sharing application data does not grant applications authority over the host's
+admission records, management roles, context bindings or other enforcement state.
+The integrity of that state is part of the confinement argument and requires
+separate verification.
+
 The policy covers application-caused explicit network effects, including ordinary
 HTTP, resource loads, navigation, DNS names influenced by the application,
 WebSockets, WebTransport and WebRTC. It does not claim protection against physical

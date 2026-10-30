@@ -23,6 +23,12 @@ stale resource capability is refused. Browser reachability and other possible
 consequences remain open. The [implementation mapping](implementation-mapping.md#duplicate-binding-dispatcher-reachability-and-consequences)
 describes the actual dispatcher checks.
 
+An [exploratory controller-update fixture](startup/README.md) observed a child
+remaining unpublished while its guard response was held. One run recorded the
+response timing out before the replacement controller activated; a later run did
+not capture the expected activation trace. The fixture is not a passing check of
+upgrade before publication and is not part of CI.
+
 The receiver tests now include a working HTTP/3 WebTransport endpoint and
 native hyperlink-auditing and legacy CSP-reporting controls. In the tested
 configurations, the prepared environment blocked WebTransport and hyperlink
