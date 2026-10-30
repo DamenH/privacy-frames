@@ -47,7 +47,7 @@
     "formal/evidence/worker-registration.json": "c81c512d2bc4cacca244e30e9f8c215e8288bf676ee64ba9e994d09ff5fb0da5",
     "formal/idl-surface-report.md": "e78ca56cb8a7093ec49a0cb23eff21443eb76529492911adc2dbd7a8959973e3",
     "formal/implementation-navigation/Expression.lean": "45e39bd82a01a24e8cfce5b5a53bd6be43522e1193b85f9aaecc23ac6caa9907",
-    "formal/implementation-navigation/README.md": "1aca3df158c165bfb01430b5265d7aaaffbee405d50c94a6faa68db8579aa43e",
+    "formal/implementation-navigation/README.md": "41640f9bb6b149a525cc091f1daad87d04e20739f91d88c2288560e913cff819",
     "formal/implementation-navigation/browser-contract.md": "4c9bf61b23d77296f41f2a5d68c3195bfa7b22609ab70e8ac4024a924ed0b5d8",
     "formal/implementation-navigation/check.ts": "25b76a42199601c8ce3b7db50bddbd93d6918ab121e94ec4997a6d69392b8983",
     "formal/implementation-navigation/helper-review.md": "af406d73675e58790e98984579bdf6b6b20a2b7a79ce755077c7a96b684373ee",

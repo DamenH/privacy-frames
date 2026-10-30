@@ -104,3 +104,9 @@ Firefox after the initialization change. Its checkout revision predates the
 source commit because the change was being tested uncommitted; source and build
 hashes identify the tested inputs, and the build remained stable throughout.
 This is compatibility evidence, separate from receiver tests and proofs.
+
+The two-stage initialization was deployed from host revision
+`772480e600d2d60e3b691caba0c59c790e9e5612`. The live service worker and four
+checked guards matched the locally tested build. A fresh Chromium installation
+passed the identity and sampled reporting-header checks. These live checks do
+not replace the local fault controls or prove every browser path.
