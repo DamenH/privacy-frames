@@ -63,3 +63,13 @@ for pair in IgnoreClosure:NoBoundAfterCloseRequest ReviveClosed:NoRevival WrongO
   echo "Registry $name: $invariant counterexample found"
 done
 printf 'Registry Safe: three invariants passed for one context and two owners\n'
+run_registry_race() {
+  docker run --rm --network none -v "$root:/work:ro" -w /tmp "$image" \
+    java -cp /work/.tools/tla2tools.jar tlc2.TLC -workers 1 -metadir /tmp/tlcstates -noGenerateSpecTE \
+    -config "/work/formal/confinement/RegistryRace$1.cfg" /work/formal/confinement/RegistryRace.tla > "$out/RegistryRace$1.log" 2>&1
+}
+run_registry_race Safe || { cat "$out/RegistryRaceSafe.log"; exit 1; }
+grep -q 'Model checking completed. No error has been found' "$out/RegistryRaceSafe.log"
+if run_registry_race Unique; then echo 'Expected duplicate-binding counterexample missing' >&2; exit 1; fi
+grep -q 'Invariant UniqueSuccessfulBinding is violated' "$out/RegistryRaceUnique.log" || { cat "$out/RegistryRaceUnique.log"; exit 1; }
+printf 'RegistryRace: duplicate successful binding counterexample found\n'

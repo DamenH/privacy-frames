@@ -6,7 +6,7 @@ to simplify restrictions that do not support the agreed network property.
 1. Specify the threat model, trusted browser assumptions, local and remote effects,
    installation boundary, and storage sharing across installations.
 2. Model the lifecycle and all five invariants. Include child/worker ownership,
-   admission, controller generations, revocation, message authority and durable
+   admission, installation generations, controller replacement, revocation, message authority and durable
    state. Add fault-injection configurations with observable counterexamples.
 3. Map model actions to implementation entry points and browser obligations.
    Verify small pure authorization/admission decisions against their specifications

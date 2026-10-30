@@ -181,3 +181,53 @@ revocation; collect browser/controller traces with generation and owner fields;
 and check them against the model's allowed transitions. The current single
 network flag is a safety abstraction, not a two-run noninterference property or
 a complete account of browser communication.
+
+## Deterministic operations across two registries
+
+Run the separate implementation characterization tests with:
+
+```sh
+node --test formal/confinement/registry-concurrency-test.ts
+```
+
+The tests use actual ContextRegistry and controller-store code with shared
+in-memory CacheStorage responses. Promise gates select the write interleaving;
+timeouts only detect a schedule that is no longer reachable. Both tests restore
+the global CacheStorage binding and release pending operations on failure.
+
+One schedule pauses a ready write in the old registry, completes owner closure
+through another registry, then releases the old write. The old promise fulfills
+and the raw record becomes ready. Effective storage reads remain closed, and
+both registry resolution and resource-capability lookup refuse the identity.
+Closure correctness therefore depends on the separate tombstones, not on the
+raw record state or the old operation's acknowledgement.
+
+The second schedule makes both registries validate the same absent browser
+client with different context identifiers before either writes. Both binds
+fulfill; the later context wins the client record and both context indexes point
+to that client. The superseded context's capability is refused because the
+indexed identity no longer matches. This demonstrates that the registry queues
+do not provide cross-instance binding uniqueness. It does not establish that a
+browser or the trusted bootstrap dispatcher produces those two bindings. The
+test characterizes a current limitation; a later atomic-binding improvement
+would require changing the characterization.
+
+A concurrency model needs two operation program counters, their read snapshots,
+raw records/indexes and monotonic closure markers. Its authorization projection
+should use effective storage reads. Treating every late raw write as revival
+would reject the first schedule even though the tombstone prevents authority
+from returning. A binding-uniqueness invariant additionally needs either an
+atomic reservation mechanism or an explicit, separately justified browser
+reservation assumption.
+
+Normal service-worker replacement is also distinct from installation replacement.
+The host activates with `skipWaiting` and `clients.claim`
+([worker.ts:136](../src/runtime/worker.ts#L136)); its context store remains in the
+same cache, and compatible policy-version bindings survive
+([controller-store.ts:77](../src/runtime/contexts/controller-store.ts#L77),
+[model.ts:85](../src/runtime/contexts/model.ts#L85)). It resets a controller's
+in-memory queues rather than atomically changing every installation generation.
+Lifecycle's atomic `Replace` should describe effective revocation of old-epoch
+resource authority, not physical termination of all old JavaScript. Pending
+requests that validated before replacement need an explicit linearization rule;
+the current model does not establish one for every browser callback.

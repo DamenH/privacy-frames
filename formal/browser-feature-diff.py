@@ -15,10 +15,14 @@ def names(browser):
             result.update(f'{kind}.{name}' for name in level)
     for constructor, members in surface['windowConstructors'].items():
         result.update(f'window:{constructor}.prototype.{member}' for member in members)
+    for constructor, members in surface.get('windowConstructorStatics', {}).items():
+        result.update(f'window:{constructor}.{member}' for member in members)
     for level in surface['worker']['chain']:
         result.update(f'worker.{name}' for name in level)
     for constructor, members in surface['worker']['constructors'].items():
         result.update(f'worker:{constructor}.prototype.{member}' for member in members)
+    for constructor, members in surface['worker'].get('constructorStatics', {}).items():
+        result.update(f'worker:{constructor}.{member}' for member in members)
     return result
 
 before = {item['name']: item for item in json.loads(Path(sys.argv[1]).read_text())['browsers']}

@@ -1,0 +1,291 @@
+{
+  "origin": "http://127.0.0.1:44977",
+  "version": "153.0.8010.12",
+  "historicalRevision": "2449929b26adc7dad41b54c9d4de2c4b3bdb0a69",
+  "fixedHEAD": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
+  "runnerSHA256": "70ae598af0912604514139b7e7e6930a2a8126507797d87a50a4a859fbd47a6b",
+  "fixtureHashes": {
+    "historical": "19ae20b979d987df13105cad48678819ed01479bd5f360322fc7c04da2e43911",
+    "fixed": "f50cd3bebb8e4dec9e2685877d04e796c6eafc9d72875043071ddfc280aebffb"
+  },
+  "testedAt": "2026-10-30T14:40:09.557Z",
+  "sourceHashes": {
+    "src/runtime/response-policy.ts": "f21946f76dd37233ea7e48dd969a59e09343315f3a044e4be66ae4324fb9efb2",
+    "src/runtime/enforcement/effects.ts": "466c165e4ef9d82e2011c85cd2639e3f7e7152309c49fbb5c8962ed0fd1bb691",
+    "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d",
+    "scripts/trusted-policy.ts": "93cc9dffdee1683b74faa06251b4f8ab16eaf5294047b5783f156cb6417a5e36"
+  },
+  "installedLockSHA256": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed",
+  "rows": [
+    {
+      "kind": "self",
+      "phase": "fresh-disconnect",
+      "value": "NetworkError:Error disconnecting account.",
+      "observed": []
+    },
+    {
+      "kind": "self",
+      "phase": "prepared-seeded-disconnect",
+      "source": "2449929b26adc7dad41b54c9d4de2c4b3bdb0a69",
+      "seed": "test-token",
+      "outcome": {
+        "mode": "network-isolated",
+        "getDenied": true,
+        "ordinaryFetch": "SW blocked",
+        "disconnect": "resolved"
+      },
+      "observed": [
+        {
+          "url": "/.well-known/web-identity",
+          "method": "GET",
+          "body": ""
+        },
+        {
+          "url": "/config.json",
+          "method": "GET",
+          "body": ""
+        },
+        {
+          "url": "/disconnect",
+          "method": "POST",
+          "body": "client_id=private-marker-44977&account_hint=account"
+        }
+      ]
+    },
+    {
+      "kind": "none",
+      "phase": "fresh-disconnect",
+      "value": "NetworkError:Error disconnecting account.",
+      "observed": []
+    },
+    {
+      "kind": "none",
+      "phase": "prepared-seeded-disconnect",
+      "source": "2449929b26adc7dad41b54c9d4de2c4b3bdb0a69",
+      "seed": "test-token",
+      "outcome": {
+        "mode": "network-isolated",
+        "getDenied": true,
+        "ordinaryFetch": "TypeError",
+        "disconnect": "NetworkError:Refused to connect to 'http://127.0.0.1:44977/config.json' because it violates the document's Content Security Policy."
+      },
+      "observed": []
+    },
+    {
+      "kind": "permission-denied",
+      "phase": "fresh-disconnect",
+      "value": "NetworkError:Error disconnecting account.",
+      "observed": []
+    },
+    {
+      "kind": "permission-denied",
+      "phase": "prepared-seeded-disconnect",
+      "source": "2449929b26adc7dad41b54c9d4de2c4b3bdb0a69",
+      "seed": "test-token",
+      "outcome": {
+        "mode": "network-isolated",
+        "getDenied": true,
+        "ordinaryFetch": "SW blocked",
+        "disconnect": "NotAllowedError:The 'identity-credentials-get' feature is not enabled in this document."
+      },
+      "observed": []
+    },
+    {
+      "kind": "fixed",
+      "phase": "fresh-disconnect",
+      "value": "NetworkError:Error disconnecting account.",
+      "observed": []
+    },
+    {
+      "kind": "fixed",
+      "phase": "prepared-seeded-disconnect",
+      "source": "current-working-source",
+      "seed": "test-token",
+      "outcome": {
+        "mode": "network-isolated",
+        "getDenied": true,
+        "ordinaryFetch": "SW blocked",
+        "disconnect": "SecurityError:Operation disconnect prohibited by application host"
+      },
+      "observed": []
+    }
+  ],
+  "traffic": [
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/.well-known/web-identity",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/config.json",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/accounts",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/token",
+      "method": "POST",
+      "body": "client_id=1&account_id=account&disclosure_text_shown=false&is_auto_selected=false&mode=passive&fields=name,email,picture"
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/app/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/.well-known/web-identity",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/config.json",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/disconnect",
+      "method": "POST",
+      "body": "client_id=private-marker-44977&account_hint=account"
+    },
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/.well-known/web-identity",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/config.json",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/accounts",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/token",
+      "method": "POST",
+      "body": "client_id=1&account_id=account&disclosure_text_shown=false&is_auto_selected=false&mode=passive&fields=name,email,picture"
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/app/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/.well-known/web-identity",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/config.json",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/accounts",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/token",
+      "method": "POST",
+      "body": "client_id=1&account_id=account&disclosure_text_shown=false&is_auto_selected=false&mode=passive&fields=name,email,picture"
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/app/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/.well-known/web-identity",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/config.json",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/accounts",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/token",
+      "method": "POST",
+      "body": "client_id=1&account_id=account&disclosure_text_shown=false&is_auto_selected=false&mode=passive&fields=name,email,picture"
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/app/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    }
+  ],
+  "scope": "Conditional seeded-browser FedCM state; native CDP account selection establishes the prerequisite, then actual prepareWindowRealm and actual generated headers run under an independently observed request-blocking service worker. This is not a fresh-profile installed-app reproduction."
+}

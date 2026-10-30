@@ -29,12 +29,14 @@ expected = {
     'RegistryIgnoreClosure': 'NoBoundAfterCloseRequest',
     'RegistryReviveClosed': 'NoRevival',
     'RegistryWrongOwner': 'NoWrongOwnerClose',
+    'RegistryRaceSafe': None,
+    'RegistryRaceUnique': 'UniqueSuccessfulBinding',
 }
 jar = root / '.tools/tla2tools.jar'
 assert hashlib.sha256(jar.read_bytes()).hexdigest() == 'fc6878c603f0fdc18b9fe3e5bf51860cb90ab5b1154e3c371660c036d6bdd63e'
 results = []
 for config, invariant in expected.items():
-    module = next(name for name in ('Lifecycle', 'Admission', 'Registry') if config.startswith(name))
+    module = next(name for name in ('Lifecycle', 'Admission', 'RegistryRace', 'Registry') if config.startswith(name))
     cmd = ['docker', 'run', '--rm', '--network', 'none', '-v', f'{root}:/work:ro',
            '-w', '/tmp', image, 'java', '-cp', '/work/.tools/tla2tools.jar', 'tlc2.TLC',
            '-workers', '1', '-metadir', '/tmp/tlcstates', '-noGenerateSpecTE', '-config',

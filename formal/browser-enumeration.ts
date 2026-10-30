@@ -47,7 +47,17 @@ try {
           }
           return output;
         }
-        const workerCode = `const names=o=>Object.getOwnPropertyNames(o).sort();const constructors=o=>{const out={};for(const [key,descriptor] of Object.entries(Object.getOwnPropertyDescriptors(o))){const value=descriptor.value;if(typeof value!=='function')continue;const prototype=Object.getOwnPropertyDescriptor(value,'prototype')?.value;if(prototype&&typeof prototype==='object')out[key]=names(prototype)}return out};const chain=[];for(let p=self;p;p=Object.getPrototypeOf(p))chain.push(names(p));postMessage({chain,constructors:constructors(self)});`;
+        function constructorStatics(value: object): Record<string, string[]> {
+          const output: Record<string, string[]> = {};
+          for (const [key, descriptor] of Object.entries(
+            Object.getOwnPropertyDescriptors(value),
+          )) {
+            const candidate = descriptor.value;
+            if (typeof candidate === 'function') output[key] = ownNames(candidate);
+          }
+          return output;
+        }
+        const workerCode = `const names=o=>Object.getOwnPropertyNames(o).sort();const constructors=o=>{const out={};for(const [key,descriptor] of Object.entries(Object.getOwnPropertyDescriptors(o))){const value=descriptor.value;if(typeof value!=='function')continue;const prototype=Object.getOwnPropertyDescriptor(value,'prototype')?.value;if(prototype&&typeof prototype==='object')out[key]=names(prototype)}return out};const statics=o=>{const out={};for(const [key,descriptor] of Object.entries(Object.getOwnPropertyDescriptors(o))){if(typeof descriptor.value==='function')out[key]=names(descriptor.value)}return out};const chain=[];for(let p=self;p;p=Object.getPrototypeOf(p))chain.push(names(p));postMessage({chain,constructors:constructors(self),constructorStatics:statics(self)});`;
         const workerURL = URL.createObjectURL(
           new Blob([workerCode], { type: 'text/javascript' }),
         );
@@ -73,6 +83,7 @@ try {
             navigator: chain(navigator),
             document: chain(document),
             windowConstructors: constructors(window),
+            windowConstructorStatics: constructorStatics(window),
             worker: workerSurface,
           };
         } finally {
@@ -96,7 +107,7 @@ await writeFile(
   JSON.stringify(
     {
       scope:
-        'Unrestricted localhost Window, Navigator, Document and dedicated Worker property names and constructor prototype names. Getters are not invoked; this does not establish reachability, behavior, security policy, or completeness of other contexts.',
+        'Unrestricted localhost Window, Navigator, Document and dedicated Worker property names and constructor static and prototype names. Getters are not invoked; this does not establish reachability, behavior, security policy, or completeness of other contexts.',
       revision: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
       runnerSHA256: createHash('sha256').update(source).digest('hex'),
       browsers,

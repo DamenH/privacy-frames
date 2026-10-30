@@ -148,6 +148,10 @@ protects the selected existing values; protecting an unknown native constructor
 from replacement does not remove its authority. The worklet platform fixture
 enumerates a fixed candidate list, not all present/future globals.
 
+The review found a conditional FedCM request that bypassed the service worker
+in the earlier runtime. The [receiver finding below](#conditional-fedcm-receiver-finding-and-fix)
+describes the browser state required to reproduce it and the current source fix.
+
 This inventory has not compared every interface against Web Platform Tests or a
 versioned complete Web IDL/global-feature enumeration. That part of
 [the verification plan](PLAN.md) remains open. Missing route-specific controls
@@ -160,7 +164,7 @@ verified by the named desktop fixtures.
 
 `node formal/browser-enumeration.ts` records an unrestricted localhost Window,
 Navigator, Document and dedicated Worker in `browser-features.json`. It captures
-property names and native constructor prototype names without invoking getters.
+property names and native constructor static and prototype names without invoking getters.
 The October 2026 snapshot records Chromium 153 and Firefox 155. Compare two saved
 snapshots with `python3 formal/browser-feature-diff.py OLD.json NEW.json`; added
 and removed names require review against this inventory.
@@ -168,3 +172,92 @@ and removed names require review against this inventory.
 This is a discovery aid. It does not classify a name as a network capability,
 execute each API, inspect every object returned by a getter, or enumerate every
 context type. An unchanged snapshot is not proof of complete mediation.
+
+## Standards and WPT follow-up
+
+Sources were inspected on 30 October 2026. WPT paths below are pinned to
+[`7e1243dd51da4162ea4a0b0e539b40db0144b22c`](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c).
+Their existence supplies test designs, not passing results for our runtime.
+
+A systematic enumeration needs three inputs, rather than only a list of global
+constructors:
+
+1. The [Fetch request taxonomy](https://fetch.spec.whatwg.org/#concept-request-destination)
+   covers destinations, initiators and modes. It explicitly excludes `serviceworker`
+   and `webidentity` from JavaScript's observable destination enum because those
+   requests skip service workers. Browser-internal reporting is another separate
+   route. A service-worker fetch log cannot enumerate all outbound communication.
+2. [Webref's curated IDL](https://github.com/w3c/webref/tree/6ac6259c96b11e0aea5c34a16822eb06add278c9/ed/idl)
+   supplies interfaces, exposure sets, mixins, static operations and navigator
+   members. Record those alongside actual browser/version feature enumeration;
+   a draft interface is not evidence of shipping support. Static operations matter:
+   protecting a constructor binding does not deny its own network-capable methods.
+3. Normative algorithms and WPT supply the missing behavior: request attribution,
+   service-worker bypass, permissions, preconditions, deferred delivery and native
+   controls. IDL alone does not identify every effect. HTML attributes, CSS URLs,
+   response headers and browser agents must be included alongside script APIs.
+
+The comparison identified these concrete follow-ups:
+
+| Route                                  | Primary source / WPT starting point                                                                                                                                                                                                                                                                 | Current evidence or missing check                                                                                                                                                                                                                                          |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| FedCM static operations                | [FedCM IDL](https://github.com/web-platform-tests/wpt/blob/7e1243dd51da4162ea4a0b0e539b40db0144b22c/interfaces/fedcm.idl), [SW non-observation test](https://github.com/web-platform-tests/wpt/blob/7e1243dd51da4162ea4a0b0e539b40db0144b22c/fedcm/fedcm-not-observed-by-service-worker.https.html) | Conditional same-origin request reproduced below; current source blocks the static entry points and disables the policy feature.                                                                                                                                           |
+| Browser-generated reports              | [Reporting delivery](https://www.w3.org/TR/reporting-1/#attempt-delivery), [WPT reporting](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/reporting)                                                                                                       | Delivery uses `client=null` and skips SW. Runtime-generated responses omit reporting endpoints and publisher response-header forwarding is limited. Persisted endpoints, NEL and delayed report traffic still need attribution; no active reporting receiver control here. |
+| Anchor/area auditing                   | [HTML hyperlink auditing](https://html.spec.whatwg.org/multipage/links.html#hyperlink-auditing), [WPT auditing](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/html/semantics/links/hyperlink-auditing)                                                    | Add native-calibrated `ping` probes separately from navigation. Navigation cancellation alone is not its receiver oracle; CSP/controller restrictions must cover the resulting requests.                                                                                   |
+| Deferred requests                      | [WPT fetch-later](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/fetch/fetch-later)                                                                                                                                                                        | Source denies fetchLater, but keepalive, deactivation, discard and background delivery require lifetime-aware controls. A zero receiver count before page closure is insufficient.                                                                                         |
+| Browser installation                   | [Web Install draft](https://wicg.github.io/install-element/)                                                                                                                                                                                                                                        | Draft manifest retrieval skips SW. Its active-sandbox rejection and manifest-src check are candidate controls for this runtime, not independently verified behavior here. `navigator.install` and declarative install elements need feature enumeration if present.        |
+| Header-driven and alternate networking | [Connection Allowlist WPT](https://github.com/web-platform-tests/wpt/tree/7e1243dd51da4162ea4a0b0e539b40db0144b22c/connection-allowlist/tentative)                                                                                                                                                  | Contains early-hints/link-header, worker/SW, WebRTC, WebSocket, WebTransport and payment-manifest cases. Import relevant cases with working receivers; our existing header fixture does not cover every one of them.                                                       |
+
+This identifies gaps in the earlier source inventory. It is not a completed
+Webref/WPT cross-product audit, nor a claim that every listed candidate is an
+escape. Permission and sandbox preconditions must be tested before assigning a
+new browser route to a reachable model action.
+
+## Conditional FedCM receiver finding and fix
+
+[The reproducer](fedcm-conditional-probe.ts) builds actual historical source
+`2449929b26adc7dad41b54c9d4de2c4b3bdb0a69` and current source without touching
+shared deployment builds. Run it after `npm ci` and installing Playwright Chromium:
+
+```sh
+git cat-file -e 2449929b26adc7dad41b54c9d4de2c4b3bdb0a69^{commit}
+node formal/fedcm-conditional-probe.ts
+```
+
+The historical commit must be available locally; a shallow CI checkout must fetch
+it or use full history. Both versions use the measuring checkout's pinned
+installed dependencies. The receipt records the lock hash, relevant current
+source hashes, runner hash and both emitted fixture hashes.
+
+The [receiver receipt](evidence/fedcm-conditional.json) uses ordinary Chromium
+153.0.8010.12 with an ephemeral same-origin IdP/RP server. Every profile starts
+fresh: disconnect first rejects without network traffic. A native FedCM request
+then presents the account chooser; CDP selects its synthetic account. This seeds
+browser-owned connected-account state before preparing the application. It is a
+controlled prerequisite, not proof that a fresh confined app can create it.
+
+After actual `prepareWindowRealm`/`admitContent`, `privacyHost.mode` is
+`network-isolated` and `navigator.credentials.get` is denied. An independent
+service worker returns 403 for ordinary unknown fetches. Historical static
+`IdentityCredential.disconnect` nevertheless sends a same-origin POST containing
+`client_id=private-marker-...`, observed by the HTTP server. That request skips the
+service-worker gate and is permitted by the original same-origin CSP/allowlist.
+
+Four seeded profiles distinguish the controls:
+
+| Profile                                                   | Asserted outcome                                                      | Receiver traffic after preparation                             |
+| --------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Historical source, original connect-src self              | Disconnect resolves; ordinary fetch returns SW blocked                | Config/well-known GETs and disconnect POST carrying the marker |
+| Historical source, connect-src none                       | Disconnect NetworkError; ordinary fetch TypeError                     | None                                                           |
+| Historical source, only identity-credentials-get disabled | Disconnect NotAllowedError; ordinary fetch SW blocked                 | None                                                           |
+| Fixed current source and generated policy                 | Disconnect SecurityError from runtime hook; ordinary fetch SW blocked | None                                                           |
+
+Current source disables `identity-credentials-get` in Permissions Policy and
+denies `IdentityCredential.disconnect` and `IdentityProvider.getUserInfo` where
+exposed. The latter static method's full connected-iframe receiver path remains
+unverified; its source denial must not be presented as that missing native test.
+The [FedCM disconnect algorithm](https://w3c-fedid.github.io/FedCM/#dom-identitycredential-disconnect)
+requires existing connection state and a connect-src check before requesting the
+IdP. The native result is conditional on that state, not an unrestricted-origin or
+fresh-profile installed-application escape. It demonstrates why browser-owned
+persistent authority must be accounted for alongside our context registry.
