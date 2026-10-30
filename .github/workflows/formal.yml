@@ -110,6 +110,10 @@ jobs:
         run: |
           npx tsc --ignoreConfig --noEmit --strict --types node --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --lib ES2023,DOM,DOM.Iterable,WebWorker formal/implementation-navigation/installed-run.ts
           node formal/implementation-navigation/installed-run.ts
+      - name: Check navigation cancellation during module initialization
+        run: |
+          npx tsc --ignoreConfig --noEmit --strict --types node --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --lib ES2023,DOM,DOM.Iterable,WebWorker formal/implementation-navigation/initialization-run.ts
+          node formal/implementation-navigation/initialization-run.ts
       - run: node test/document-consumption-race.ts
       - run: node formal/document-consumption-fault.ts
       - run: node test/context-generation.ts
@@ -131,6 +135,7 @@ jobs:
           name: webtransport-evidence
           path: |
             formal/implementation-navigation/installed-result.json
+            formal/implementation-navigation/initialization-result.json
             formal/webtransport/results.json
             formal/startup/local-results.json
             formal/startup/lifecycle-comparison.json

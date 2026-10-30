@@ -1,11 +1,12 @@
 {
   "scope": "Prepared window and generated response policy with a fixture service worker and deliberately pre-enabled navigation preload. A test-only source mutation removes the navigate-event cancellation. Not a production escape or installed-app lifecycle proof.",
-  "revision": "5b5126d7c34f579deae867e2f6dad521515dc2db",
-  "runnerSHA256": "7c28c22ec047dfa7f6aee479c29df0ea37169ed38c27d5c5c20cfe22f8ec9c63",
-  "normalBundleSHA256": "8fd092678b33b2f830cd0174d19c48e9238286bc04b99d339c0ce6705d0cd5fa",
-  "faultBundleSHA256": "8c0f5189cb9d759348c922ee251f25ef6d9cd2c8ef936fa22b4972e4149d5675",
+  "revision": "c15226ca8f0c8e6d8718564b80c6987d06ab5d1c",
+  "runnerSHA256": "b9b9a0711ee9bf603b0fe576e98b778738e9b252ef85585b070f4d38734b1977",
+  "normalBundleSHA256": "36dd7fedb8211b1ee1e4c90723583aca47b0e3718c6f44c94c55c3185007b7b7",
+  "faultBundleSHA256": "6aaf3077af1ce79f83fc0e0e152d1364b0dfc406dfde690f5b4c2f54cd8d44d5",
   "sourceHashes": {
-    "src/runtime/enforcement/navigation.ts": "e60f90df91431d3b5616482af935442ca1a41bbe86bc9d5998a98373ae166e8c",
+    "src/runtime/enforcement/navigation.ts": "a94d9eec146ab69bb0696d0a35d0469ccfdcdb6ec8e487e6e2798e71bfbc69d1",
+    "src/runtime/enforcement/document-exit.ts": "c39a159e4f82701b64826ac025048904b5414215c2f40c27d46ef62dabc6e8af",
     "src/runtime/contexts/window-realm.ts": "a418021b38989b9ed360190958a4873ab2606eafb6ff84a54d759d2deecf6356",
     "src/runtime/response-policy.ts": "f21946f76dd37233ea7e48dd969a59e09343315f3a044e4be66ae4324fb9efb2",
     "scripts/trusted-policy.ts": "93cc9dffdee1683b74faa06251b4f8ab16eaf5294047b5783f156cb6417a5e36",
@@ -16,17 +17,17 @@
     {
       "name": "chromium",
       "version": "153.0.8010.12",
-      "seeded": "seed-9dfb49de-f0db-4972-9d50-150839a8a099",
+      "seeded": "seed-43d0b8a6-44be-4278-a84c-fb9b37c5e8f5",
       "cases": [
         {
           "kind": "native",
-          "marker": "native-21da42d5-81c4-4d88-8ecd-80f671042e53",
-          "before": "http://127.0.0.1:37689/native/",
-          "after": "http://127.0.0.1:37689/target?native-21da42d5-81c4-4d88-8ecd-80f671042e53",
+          "marker": "native-696b3e89-9f4a-41af-ae77-e1b2d1b2ddf6",
+          "before": "http://127.0.0.1:35065/native/",
+          "after": "http://127.0.0.1:35065/target?native-696b3e89-9f4a-41af-ae77-e1b2d1b2ddf6",
           "received": [
             {
-              "url": "/target?native-21da42d5-81c4-4d88-8ecd-80f671042e53",
-              "preload": "seed-9dfb49de-f0db-4972-9d50-150839a8a099"
+              "url": "/target?native-696b3e89-9f4a-41af-ae77-e1b2d1b2ddf6",
+              "preload": "seed-43d0b8a6-44be-4278-a84c-fb9b37c5e8f5"
             }
           ],
           "workerObserved": true,
@@ -42,9 +43,9 @@
         },
         {
           "kind": "normal",
-          "marker": "normal-c4c8ea06-92a5-4308-b91b-4035f537ae58",
-          "before": "http://127.0.0.1:37689/app/normal/",
-          "after": "http://127.0.0.1:37689/app/normal/",
+          "marker": "normal-4792ea95-c452-4b4d-9768-105d680a3a2b",
+          "before": "http://127.0.0.1:35065/app/normal/",
+          "after": "http://127.0.0.1:35065/app/normal/",
           "received": [],
           "workerObserved": false,
           "eventObservations": [
@@ -59,11 +60,11 @@
           "headers": {
             "connection": "keep-alive",
             "content-length": "65",
-            "date": "Fri, 30 Oct 2026 21:10:49 GMT",
+            "date": "Fri, 30 Oct 2026 22:08:54 GMT",
             "keep-alive": "timeout=5",
             "cache-control": "no-store",
             "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
-            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:37689/__contexts/ http://127.0.0.1:37689/sw.js; worker-src http://127.0.0.1:37689/__contexts/ http://127.0.0.1:37689/sw.js; form-action 'none'; base-uri 'none'",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:35065/__contexts/ http://127.0.0.1:35065/sw.js; worker-src http://127.0.0.1:35065/__contexts/ http://127.0.0.1:35065/sw.js; form-action 'none'; base-uri 'none'",
             "content-type": "text/html",
             "cross-origin-opener-policy": "same-origin",
             "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
@@ -75,13 +76,13 @@
         },
         {
           "kind": "fault",
-          "marker": "fault-7696995b-2381-491b-9f87-8bd449bc1220",
-          "before": "http://127.0.0.1:37689/app/fault/",
-          "after": "http://127.0.0.1:37689/target?fault-7696995b-2381-491b-9f87-8bd449bc1220",
+          "marker": "fault-662774cc-c0ae-4f79-8f34-a06a6626c0c3",
+          "before": "http://127.0.0.1:35065/app/fault/",
+          "after": "http://127.0.0.1:35065/target?fault-662774cc-c0ae-4f79-8f34-a06a6626c0c3",
           "received": [
             {
-              "url": "/target?fault-7696995b-2381-491b-9f87-8bd449bc1220",
-              "preload": "seed-9dfb49de-f0db-4972-9d50-150839a8a099"
+              "url": "/target?fault-662774cc-c0ae-4f79-8f34-a06a6626c0c3",
+              "preload": "seed-43d0b8a6-44be-4278-a84c-fb9b37c5e8f5"
             }
           ],
           "workerObserved": true,
@@ -97,11 +98,11 @@
           "headers": {
             "connection": "keep-alive",
             "content-length": "64",
-            "date": "Fri, 30 Oct 2026 21:10:50 GMT",
+            "date": "Fri, 30 Oct 2026 22:08:55 GMT",
             "keep-alive": "timeout=5",
             "cache-control": "no-store",
             "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
-            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:37689/__contexts/ http://127.0.0.1:37689/sw.js; worker-src http://127.0.0.1:37689/__contexts/ http://127.0.0.1:37689/sw.js; form-action 'none'; base-uri 'none'",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:35065/__contexts/ http://127.0.0.1:35065/sw.js; worker-src http://127.0.0.1:35065/__contexts/ http://127.0.0.1:35065/sw.js; form-action 'none'; base-uri 'none'",
             "content-type": "text/html",
             "cross-origin-opener-policy": "same-origin",
             "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
@@ -116,17 +117,17 @@
     {
       "name": "firefox",
       "version": "155.0",
-      "seeded": "seed-6bf1791d-4730-4f5a-a5e7-a8e4796722db",
+      "seeded": "seed-e69642fd-c70b-4a5f-ae26-5b6cc58c7dfe",
       "cases": [
         {
           "kind": "native",
-          "marker": "native-f8d56d48-aa3e-46ae-99fa-c5561fc96299",
-          "before": "http://127.0.0.1:37689/native/",
-          "after": "http://127.0.0.1:37689/target?native-f8d56d48-aa3e-46ae-99fa-c5561fc96299",
+          "marker": "native-499be6bb-0054-4ccb-a229-f819b63b5aea",
+          "before": "http://127.0.0.1:35065/native/",
+          "after": "http://127.0.0.1:35065/target?native-499be6bb-0054-4ccb-a229-f819b63b5aea",
           "received": [
             {
-              "url": "/target?native-f8d56d48-aa3e-46ae-99fa-c5561fc96299",
-              "preload": "seed-6bf1791d-4730-4f5a-a5e7-a8e4796722db"
+              "url": "/target?native-499be6bb-0054-4ccb-a229-f819b63b5aea",
+              "preload": "seed-e69642fd-c70b-4a5f-ae26-5b6cc58c7dfe"
             }
           ],
           "workerObserved": true,
@@ -142,9 +143,9 @@
         },
         {
           "kind": "normal",
-          "marker": "normal-221a40fc-c3fb-43fc-92ea-1e1c05e64056",
-          "before": "http://127.0.0.1:37689/app/normal/",
-          "after": "http://127.0.0.1:37689/app/normal/",
+          "marker": "normal-508b0e6f-1b62-447c-937a-e4ffb97442ed",
+          "before": "http://127.0.0.1:35065/app/normal/",
+          "after": "http://127.0.0.1:35065/app/normal/",
           "received": [],
           "workerObserved": false,
           "eventObservations": [
@@ -159,7 +160,7 @@
           "headers": {
             "cache-control": "no-store",
             "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
-            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:37689/__contexts/ http://127.0.0.1:37689/sw.js; worker-src http://127.0.0.1:37689/__contexts/ http://127.0.0.1:37689/sw.js; form-action 'none'; base-uri 'none'",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:35065/__contexts/ http://127.0.0.1:35065/sw.js; worker-src http://127.0.0.1:35065/__contexts/ http://127.0.0.1:35065/sw.js; form-action 'none'; base-uri 'none'",
             "content-type": "text/html",
             "cross-origin-opener-policy": "same-origin",
             "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
@@ -167,7 +168,7 @@
             "x-content-type-options": "nosniff",
             "x-dns-prefetch-control": "off",
             "x-frame-options": "DENY",
-            "date": "Fri, 30 Oct 2026 21:10:53 GMT",
+            "date": "Fri, 30 Oct 2026 22:08:58 GMT",
             "connection": "keep-alive",
             "keep-alive": "timeout=5",
             "content-length": "65"
@@ -175,13 +176,13 @@
         },
         {
           "kind": "fault",
-          "marker": "fault-1d64a67c-5d8c-4baa-8ea9-7354bd68cce1",
-          "before": "http://127.0.0.1:37689/app/fault/",
-          "after": "http://127.0.0.1:37689/target?fault-1d64a67c-5d8c-4baa-8ea9-7354bd68cce1",
+          "marker": "fault-10086f1b-e719-42b6-a49c-635e4ece83be",
+          "before": "http://127.0.0.1:35065/app/fault/",
+          "after": "http://127.0.0.1:35065/target?fault-10086f1b-e719-42b6-a49c-635e4ece83be",
           "received": [
             {
-              "url": "/target?fault-1d64a67c-5d8c-4baa-8ea9-7354bd68cce1",
-              "preload": "seed-6bf1791d-4730-4f5a-a5e7-a8e4796722db"
+              "url": "/target?fault-10086f1b-e719-42b6-a49c-635e4ece83be",
+              "preload": "seed-e69642fd-c70b-4a5f-ae26-5b6cc58c7dfe"
             }
           ],
           "workerObserved": true,
@@ -197,7 +198,7 @@
           "headers": {
             "cache-control": "no-store",
             "connection-allowlist": "(response-origin); redirects=block; webrtc=block",
-            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:37689/__contexts/ http://127.0.0.1:37689/sw.js; worker-src http://127.0.0.1:37689/__contexts/ http://127.0.0.1:37689/sw.js; form-action 'none'; base-uri 'none'",
+            "content-security-policy": "sandbox allow-scripts allow-same-origin allow-forms; frame-ancestors 'none'; default-src 'none'; manifest-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'nonce-fixture'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob: data:; media-src 'self' blob: data:; object-src 'none'; frame-src http://127.0.0.1:35065/__contexts/ http://127.0.0.1:35065/sw.js; worker-src http://127.0.0.1:35065/__contexts/ http://127.0.0.1:35065/sw.js; form-action 'none'; base-uri 'none'",
             "content-type": "text/html",
             "cross-origin-opener-policy": "same-origin",
             "permissions-policy": "camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()",
@@ -205,7 +206,7 @@
             "x-content-type-options": "nosniff",
             "x-dns-prefetch-control": "off",
             "x-frame-options": "DENY",
-            "date": "Fri, 30 Oct 2026 21:10:54 GMT",
+            "date": "Fri, 30 Oct 2026 22:08:59 GMT",
             "connection": "keep-alive",
             "keep-alive": "timeout=5",
             "content-length": "64"

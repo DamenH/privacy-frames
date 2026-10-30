@@ -22,11 +22,10 @@ async function fixture(mutate: boolean) {
     name: 'remove-navigation-cancellation',
     setup(builder) {
       builder.onLoad(
-        { filter: /[/\\]enforcement[/\\]navigation\.ts$/ },
+        { filter: /[/\\]enforcement[/\\]document-exit\.ts$/ },
         async ({ path }) => {
           const original = await readFile(path, 'utf8');
-          const needle =
-            '        apply(prevent, event, []);\n    },\n    internalRecord({ capture: true }),';
+          const needle = 'apply(prevent, event, []);';
           assert.equal(
             original.split(needle).length,
             2,
@@ -34,10 +33,7 @@ async function fixture(mutate: boolean) {
           );
           mutations++;
           return {
-            contents: original.replace(
-              needle,
-              '        void event;\n    },\n    internalRecord({ capture: true }),',
-            ),
+            contents: original.replace(needle, 'void event;'),
             loader: 'ts',
           };
         },
@@ -127,6 +123,7 @@ const receipt = {
     await Promise.all(
       [
         'src/runtime/enforcement/navigation.ts',
+        'src/runtime/enforcement/document-exit.ts',
         'src/runtime/contexts/window-realm.ts',
         'src/runtime/response-policy.ts',
         'scripts/trusted-policy.ts',

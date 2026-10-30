@@ -15,11 +15,10 @@ const receiptPath = resolve(import.meta.dirname, 'installed-result.json');
 await rm(receiptPath, { force: true });
 const hash = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
 const navigation = await readFile(
-  resolve(root, 'src/runtime/enforcement/navigation.ts'),
+  resolve(root, 'src/runtime/enforcement/document-exit.ts'),
   'utf8',
 );
-const needle =
-  '        apply(prevent, event, []);\n    },\n    internalRecord({ capture: true }),';
+const needle = 'apply(prevent, event, []);';
 assert.equal(navigation.split(needle).length, 2, 'Cancellation anchor changed');
 async function guard(mutate: boolean) {
   let mutations = 0;
@@ -39,16 +38,13 @@ async function guard(mutate: boolean) {
               name: 'test-only-remove-root-navigation-cancellation',
               setup(builder: PluginBuild) {
                 builder.onLoad(
-                  { filter: /[/\\]enforcement[/\\]navigation\.ts$/ },
+                  { filter: /[/\\]enforcement[/\\]document-exit\.ts$/ },
                   async ({ path }) => {
                     const source = await readFile(path, 'utf8');
                     assert.equal(source, navigation);
                     mutations++;
                     return {
-                      contents: source.replace(
-                        needle,
-                        '        void event;\n    },\n    internalRecord({ capture: true }),',
-                      ),
+                      contents: source.replace(needle, 'void event;'),
                       loader: 'ts',
                     };
                   },

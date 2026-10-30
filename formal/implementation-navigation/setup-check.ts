@@ -5,7 +5,7 @@ import { resolve } from 'node:path';
 import ts from 'typescript';
 
 const root = resolve(import.meta.dirname, '../..');
-const guardPath = 'src/runtime/guard.ts';
+const guardPath = 'src/runtime/root-guard.ts';
 const realmPath = 'src/runtime/contexts/window-realm.ts';
 const guard = await readFile(resolve(root, guardPath), 'utf8');
 const realm = await readFile(resolve(root, realmPath), 'utf8');
@@ -37,7 +37,17 @@ function calls(node: ts.Node, name: string): ts.CallExpression[] {
 function verify(guardSource: string, realmSource: string) {
   const guardFile = parse(guardPath, guardSource);
   const realmFile = parse(realmPath, realmSource);
-  const tries = guardFile.statements.filter(ts.isTryStatement);
+  const roots = guardFile.statements
+    .filter(ts.isFunctionDeclaration)
+    .filter((fn) => fn.name?.text === 'startRootGuard');
+  assert.equal(roots.length, 1, 'Root startup function changed');
+  assert(roots[0].body);
+  assert.equal(roots[0].parameters.length, 1);
+  assert(
+    ts.isIdentifier(roots[0].parameters[0].name) &&
+      roots[0].parameters[0].name.text === 'bootstrapScript',
+  );
+  const tries = roots[0].body.statements.filter(ts.isTryStatement);
   assert.equal(tries.length, 1, 'Root bootstrap try changed');
   const block = tries[0].tryBlock;
   const preparations = calls(block, 'prepareWindowRealm');

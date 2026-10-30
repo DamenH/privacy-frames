@@ -1,4 +1,5 @@
 import type { PolicyTools } from './native.ts';
+import { installDocumentExitGuard } from './document-exit.ts';
 import {
   internalArray,
   internalRecord,
@@ -17,6 +18,7 @@ interface NavigationOptions {
 
 /** Cancel document exits before application handlers can observe the event. */
 export function prepareNavigationPolicy(options: NavigationOptions = internalRecord({})) {
+  installDocumentExitGuard();
   const apply = Reflect.apply;
   const descriptor = ownDescriptor;
   const prevent = Event.prototype.preventDefault;
@@ -58,7 +60,7 @@ export function prepareNavigationPolicy(options: NavigationOptions = internalRec
     (event: NavigateEvent) => {
       const destination = apply(nativeDestination, event, []);
       if (
-        !apply(nativeSameDocument, destination, []) ||
+        apply(nativeSameDocument, destination, []) &&
         !inDocument(apply(nativeDestinationURL, destination, []))
       )
         apply(prevent, event, []);

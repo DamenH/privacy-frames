@@ -33,7 +33,7 @@
     "formal/evidence/hyperlink-auditing.json": "4deb55ac64e514eb55b7b00233c4281db617a2b0802ff48f0a2317761111b766",
     "formal/evidence/idl-surface-report.json": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
     "formal/evidence/modern-reporting.json": "c8f4038654445ca9da6c98a50244bafe8b6bd0fec6012eef62070319c4acd7b1",
-    "formal/evidence/navigation-preload-fault.json": "77227565fa948178217fc586e7aae0f4692c2bb3fb1b37e2f38a187107d44fd6",
+    "formal/evidence/navigation-preload-fault.json": "28a5ace1340bf669ec8742cd1dfb055129b4cbcc3500f4b794553defd1cfbeec",
     "formal/evidence/navigation-preload.json": "1b7c08eaa071ad147712de20f02abd134149435d0fd70950e48bf67b54296162",
     "formal/evidence/publisher-navigate.json": "c6577e96384b8316e4f3841bb0dce562b1eb791a4ca7b31d9ffc2cabcc9d53fb",
     "formal/evidence/publisher-routes.json": "0d18dbd4f211c056f77e2ff7c9e513c65414d17df627902fc5fa3573a50fcccd",
@@ -46,28 +46,33 @@
     "formal/evidence/websocket-fault.json": "a873c228713a89508fc82cd56fa29f8ec535549919f0daaad1b2464ac421e876",
     "formal/evidence/worker-registration.json": "c81c512d2bc4cacca244e30e9f8c215e8288bf676ee64ba9e994d09ff5fb0da5",
     "formal/idl-surface-report.md": "e78ca56cb8a7093ec49a0cb23eff21443eb76529492911adc2dbd7a8959973e3",
-    "formal/implementation-navigation/Expression.lean": "45e39bd82a01a24e8cfce5b5a53bd6be43522e1193b85f9aaecc23ac6caa9907",
-    "formal/implementation-navigation/README.md": "22c367fa529865234faaf1ccc585cc8eaf8fa67e922336f81ca4d36f56b5bcd5",
-    "formal/implementation-navigation/browser-contract.md": "528c14befe4e40280d7167908ec227083b6ccf797d99c0db4ddf13c4ceb9033c",
-    "formal/implementation-navigation/check.ts": "58c1b0bb8204483fa81fcd51060940796b39c922b55d825dd86999b5deb5c712",
+    "formal/implementation-navigation/Expression.lean": "8728086c2968c244d0263168b47b4d4481a8da3778ec500a98d26d17134ae39b",
+    "formal/implementation-navigation/README.md": "a3292069c8050ddd3af5416a272b0d9431593655e7fdb0b2f7b0648256bd4320",
+    "formal/implementation-navigation/bootstrap-check.ts": "f2c5ddde708c7c98c33a2acc8592e1ab36e871f5b9e81daf16c1ea4fc540a8f9",
+    "formal/implementation-navigation/bootstrap-result.json": "e12cde4f6cc0c84ce1f60c8c45b5e84fe07a629a2e3af49d3ef30b80edf004ca",
+    "formal/implementation-navigation/browser-contract.md": "12e81c6a01063ce8805d4cdd4969cd200b81375608ba3b825c03c81dc28bb546",
+    "formal/implementation-navigation/check.ts": "051e05c40346be61bf8f4448615c28be496a0e97d63aff45a7d51bb5b25e783a",
+    "formal/implementation-navigation/compatibility-early-kernel.json": "17d8381c4c6dde32bf48b8319d94f4d48a15168de3bac1fb352e8bce578b6821",
     "formal/implementation-navigation/compatibility-native-capture.json": "76715722227a714210a4bb4c71ba46126d0617b00c28a946df8c980786ad6200",
     "formal/implementation-navigation/deployment-native-capture.json": "afd8aa03c57d7b71212ef9129fa4011cfeb35291d11c3014da4da1499aac5d80",
-    "formal/implementation-navigation/gillian-check.ts": "3fe55b28e050ab03cfc27c5aa5b3ad0bcd984712da2541fae35e08ebe02709b0",
-    "formal/implementation-navigation/gillian-result.json": "0eb634a27a01c70f92c9e2fcab7f0b27649ce81749683128e58d5aa8570157d9",
-    "formal/implementation-navigation/gillian.md": "d31e0676b8069e98d2ab30622de4075188da986fdbf330d35c9565ed8993af3a",
-    "formal/implementation-navigation/helper-review.md": "c29f143ae9277f7850d02fc2c58753ac5cffca51803128723d3cc880b920ee3b",
-    "formal/implementation-navigation/installed-result.json": "217024e3de433ec910fe5f13f2a952f05b5dcb3ee2f7eaa7143e55a76945e881",
-    "formal/implementation-navigation/installed-run.ts": "4c96614a645a78f114625c28a58f78b51a4a17e0235286df9c65a9595d4e9316",
+    "formal/implementation-navigation/gillian-check.ts": "416739b8525dcc001e199119633c1becb7541ab43c38d8390239d53ec06ce823",
+    "formal/implementation-navigation/gillian-result.json": "68ea4686b9096e66cbae4419cf36280bb5d9b3e8ed5c52569d9ab6c1e7a50100",
+    "formal/implementation-navigation/gillian.md": "b2f4727e3b43f19302661be20728c956e604dfb460baa69efab83320a21b8967",
+    "formal/implementation-navigation/helper-review.md": "1a0b2f896a729627db91a2edaae441e4fccda69c91d1e69428f60930d91347a7",
+    "formal/implementation-navigation/initialization-result.json": "88eb880671393a9fc573b8fe5c92702e8b5d5de45c617b50220f3bcae7589bdc",
+    "formal/implementation-navigation/initialization-run.ts": "eb6bc886cca856cfebe72cc636a4dcbf433a6a96640df995d3cee0eea7491711",
+    "formal/implementation-navigation/installed-result.json": "8682a641c6e6daecafb131a1a556052568e10ac3dc391a042df4e5e66f0b4c7e",
+    "formal/implementation-navigation/installed-run.ts": "294237749edf1c560386f1a9f34bb885644b89d858d4424297ba07704e3135b6",
     "formal/implementation-navigation/installed.md": "c9be2329ed3e1ac7c7a4d3458589af05711e4844a1214d0dbd81abd274922b1b",
-    "formal/implementation-navigation/result.json": "62c493428e25f39cc9b328ab2ace1ce2db38aa08e9fb3c64f55db4583b6c94a9",
-    "formal/implementation-navigation/setup-check.ts": "4e3066e80a9c583cf8715e400172ec1e5f1be65b6272bb2aa7dcd7abfe2b9064",
-    "formal/implementation-navigation/setup-result.json": "4b25789f067b56c1ff09430faac89ddf75bea9ccc60d4553371b30b310dbc5f7",
+    "formal/implementation-navigation/result.json": "4685bcd6c90543eefc629c16bacda6a3beb2b2162c4f5819b326e7e8d465489f",
+    "formal/implementation-navigation/setup-check.ts": "26138d96ea24ea5b6f07e06f6af4fc6d2f2d321ef40d50a131d69a8f44871570",
+    "formal/implementation-navigation/setup-result.json": "57a86d8a4c482421cddef60ee0374725b381062f1eb2ed63d79bb4c16cce0cb3",
     "formal/lean/CapabilityBoundary.lean": "5cf557978cf54255fded00ba991b90db7e54056e39f81a769f016c32ace7cf23",
     "formal/lean/README.md": "e0f71cc0ca90052045d6b1611bb33bf6f4d62732031f66099052ab4c46935d01",
     "formal/lean/Reachability.lean": "b643cfdbf2042d135ce5bb94204dcbd9921e5f898b1ee44baed24c4e4a49d0ab",
     "formal/live-identity-check.ts": "61d983fcecc0f91b22d1bd1bf8156d932ce7591dde90ea5a6c9941e96ad418ea",
     "formal/navigation-preload-fault.md": "3d618f15ee6a02631543f46817f4bb848218832134ffab16455e8c94c67c559d",
-    "formal/navigation-preload-fault.ts": "7c28c22ec047dfa7f6aee479c29df0ea37169ed38c27d5c5c20cfe22f8ec9c63",
+    "formal/navigation-preload-fault.ts": "b9b9a0711ee9bf603b0fe576e98b778738e9b252ef85585b070f4d38734b1977",
     "formal/navigation-preload-probe.ts": "3dc4b881d114035db87de556354dce9a5a5cac60e2c5fa3d115ae92500470803",
     "formal/navigation-preload.md": "c01f884802d23dae9bfc59fe70d0ecc90683422045c3d9d61246fb0190b9a862",
     "formal/path-audit/README.md": "5b5631af02f28dc1eac8b03eb1f7e7f5d955af5124baa186f92257509834355c",
@@ -82,7 +87,7 @@
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
     "formal/route-review/README.md": "def9f578cf05dbd6ded8f518833ba924d81acfce8a9d43fbd003679987cf77bd",
     "formal/route-review/triage.json": "3e5ab07e2747d1d329f13be013bc5268671c054ee8c5470e9e952b8a72a7e855",
-    "formal/startup/lifecycle-comparison.json": "b71354b1facad0ba503250f93157a603481e6df90039d4f2107f6f2269a66200",
+    "formal/startup/lifecycle-comparison.json": "ae701c96933d7e9e20ba64587d35ea230b65afc4560c74a2a26d3baccc86ca73",
     "formal/web-install-sandbox-fault.md": "dc874f193288fa6f0cbc393d607a49c55e416b1c203267051c0484a3e5a4e3bc",
     "formal/web-install-sandbox-fault.ts": "fb0b0483480215ae9ec55dd8da10b57c2db855e4375c0c7c45a1f07dfed9232b",
     "formal/websocket-fault-probe.ts": "2b550d353a680a12e9121209abfa974fbb8b4ad4a0841f0c019ada4a11e401ed",
@@ -98,7 +103,8 @@
     "src/runtime/contexts/document-content.ts": "f606b94f249c44ad2e09880a56bb87d4556d571108799b2ac4647d5496031034",
     "src/runtime/contexts/document-controller.ts": "ca269260ec3cb34cd963bf59d3ba6596554ddecb646013aea8ecd73e35e03812",
     "src/runtime/contexts/document-factory.ts": "84b805def5952bcaa319aa34495320c56d0faa76bd869d2b6d5dd78e5e8a4e4f",
-    "src/runtime/contexts/document-guard.ts": "584112c5379a3adf6caaed9be9c26cfdd55ce1d1c75d0637f50110e2b741ad93",
+    "src/runtime/contexts/document-guard.ts": "9a9522966ba6b1660f828c2903e60de81028a3a35b11a18a38194756bd5d75a7",
+    "src/runtime/contexts/document-main.ts": "bb0d09eae0d12245beeb5ed4cea5fd769bb3d34ad59918a9f8b1309193c51f45",
     "src/runtime/contexts/resources.ts": "4dc6b1028c8b0683dccd72591f29115dae342e66658f70c8d635e61aeea6cd01",
     "src/runtime/contexts/shared-connections.ts": "1e94a740b899b9f1600a3868391e62a58b24e7b2098d524ae2d3c550645194b1",
     "src/runtime/contexts/shared-controller.ts": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174",
@@ -111,13 +117,14 @@
     "src/runtime/contexts/worklet-controller.ts": "268da6b2d90a980e34a5731450e2dd347fa44d68e44d9c142dd5468ac81b4ef3",
     "src/runtime/contexts/worklet-factory.ts": "612e22f99c30773826a6cae7ff05555edf5acd36353cc7e0e5972761228fa5bc",
     "src/runtime/contexts/worklet-guard.ts": "a26c494bba38ab190640551b59bff4c946edc3e6ebc03bba6167f0de4d48e9fb",
+    "src/runtime/enforcement/document-exit.ts": "c39a159e4f82701b64826ac025048904b5414215c2f40c27d46ef62dabc6e8af",
     "src/runtime/enforcement/effects.ts": "466c165e4ef9d82e2011c85cd2639e3f7e7152309c49fbb5c8962ed0fd1bb691",
     "src/runtime/enforcement/native-markup.ts": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105",
     "src/runtime/enforcement/navigation-targets.ts": "f7b5265d3d971c39d888abb99f837204e94d727d5df493ba38d54cc5bb6efd0b",
-    "src/runtime/enforcement/navigation.ts": "e60f90df91431d3b5616482af935442ca1a41bbe86bc9d5998a98373ae166e8c",
+    "src/runtime/enforcement/navigation.ts": "a94d9eec146ab69bb0696d0a35d0469ccfdcdb6ec8e487e6e2798e71bfbc69d1",
     "src/runtime/enforcement/resource-elements.ts": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234",
     "src/runtime/enforcement/scripts.ts": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb",
-    "src/runtime/guard.ts": "9809dc1ea180de3f3906825bc36ef66cdd9e8e51c33a44e1e5a3f217cc76af8f",
+    "src/runtime/guard.ts": "900b462d0fd3a6eab512ee2fd2b2fb96c15b570dd9c8cb30edfe255350c5613c",
     "src/runtime/modules.ts": "45062e9a74b48da2b74086a7f247f86e0202cd43f166c8084cbaf5fd5377c675",
     "src/runtime/publisher/client.ts": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf",
     "src/runtime/publisher/controller.ts": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff",
@@ -125,6 +132,7 @@
     "src/runtime/publisher/guard.ts": "d2c6203190c4ce32fbd9bbcab4d1f304a12982a037275e41a9193971c06afb49",
     "src/runtime/resource-aliases.ts": "c8dd9460b82fbf5a15df598f27b4978a90751ce8fd59d16978c6a41b6e0ca342",
     "src/runtime/response-policy.ts": "f21946f76dd37233ea7e48dd969a59e09343315f3a044e4be66ae4324fb9efb2",
+    "src/runtime/root-guard.ts": "55204242a95dded90dc1f269af10adb20d830210b90a65185a77e91c812b1437",
     "src/runtime/storage.ts": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d",
     "src/runtime/worker.ts": "7fba94edacc170650ff8445a0220eb9e365df7590b5d8625d632315251811046",
     "src/shared/application-navigation.ts": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
@@ -908,7 +916,8 @@
       "source_paths": [
         "src/runtime/enforcement/navigation.ts",
         "src/runtime/enforcement/navigation-targets.ts",
-        "src/shared/application-navigation.ts"
+        "src/shared/application-navigation.ts",
+        "src/runtime/enforcement/document-exit.ts"
       ],
       "evidence": [
         {
@@ -1592,16 +1601,20 @@
       "title": "Source-derived root navigation cancellation path",
       "disposition": "reviewed-scoped",
       "preconditions": "A root window executes uncontaminated trusted setup and receives the selected genuine cancelable cross-document push event before its fetch.",
-      "enforcement": "Install navigation cancellation before intrinsic preparation, policy-tool construction, private parser evaluation and context factories; finalize remaining hooks with the tools after native popup capture.",
+      "enforcement": "Install the import-free document-exit kernel before heavy root and child module initialization; prepare remaining realm restrictions before rendering application content.",
       "source_paths": [
         "src/runtime/enforcement/navigation.ts",
         "src/runtime/contexts/window-realm.ts",
-        "src/runtime/guard.ts"
+        "src/runtime/guard.ts",
+        "src/runtime/enforcement/document-exit.ts",
+        "src/runtime/root-guard.ts",
+        "src/runtime/contexts/document-guard.ts",
+        "src/runtime/contexts/document-main.ts"
       ],
       "evidence": [
         {
           "kind": "formal_theorem",
-          "description": "A restricted expression extracted from actual TypeScript is kernel-checked for Boolean decisions and abrupt-completion short-circuit behavior; parser, extractor, native binding interpretation and browser contracts remain trusted.",
+          "description": "The actual import-free kernel is source-shape checked; its extracted cancellation condition and getter exception behavior have kernel-checked Lean theorems. Parser, extractor, compiler, native contracts and browser effects remain trusted.",
           "paths": [
             "formal/implementation-navigation/README.md",
             "formal/implementation-navigation/check.ts",
@@ -1624,7 +1637,7 @@
         },
         {
           "kind": "discovery",
-          "description": "Digest-pinned Gillian-JS whole-program symbolic testing analyzes the actual callback after ES5 compilation under explicit native-operation contracts. Cancellation, exceptions, read counts and native-call receivers pass; false assertions, removed cancellation and weakened conditions fail by assertion. This is bounded symbolic analysis, not a proof certificate or browser-completeness proof.",
+          "description": "Digest-pinned Gillian-JS symbolically tests the actual callback and whole kernel after ES5 compilation under explicit native contracts, including getter exceptions, registration failure and repeated installation. Defective conditions, cancellation and installation flags fail assertions. This is bounded symbolic testing, not a proof certificate.",
           "paths": [
             "formal/implementation-navigation/gillian.md",
             "formal/implementation-navigation/gillian-check.ts",
@@ -1678,11 +1691,34 @@
             "formal/implementation-navigation/deployment-native-capture.json",
             "formal/live-identity-check.ts"
           ]
+        },
+        {
+          "kind": "discovery",
+          "description": "Source and exact rebuilt-output gates place document-exit installation before heavy root and child module initialization. Compiler-helper and native semantics remain trusted; eager-initializer and unknown-prefix controls are rejected.",
+          "paths": [
+            "formal/implementation-navigation/bootstrap-check.ts",
+            "formal/implementation-navigation/bootstrap-result.json"
+          ]
+        },
+        {
+          "kind": "fault_control",
+          "description": "A test-only heavy root module body clicks a same-window link before root startup. Normal cancellation prevents delivery; native and cancellation-removed controls reach the independent HTTP receiver in both browsers. This probes the initialization boundary, not every module behavior.",
+          "paths": [
+            "formal/implementation-navigation/initialization-run.ts",
+            "formal/implementation-navigation/initialization-result.json"
+          ]
+        },
+        {
+          "kind": "discovery",
+          "description": "All eight applications pass their selected native and confined tasks in Chromium and Firefox after introducing the early kernel and deferred root/child module initialization. Build hashes remain stable across the run; compatibility evidence does not prove confinement.",
+          "paths": [
+            "formal/implementation-navigation/compatibility-early-kernel.json"
+          ]
         }
       ],
       "open_obligations": [
         "The extractor and restricted semantics are not a machine-checked JavaScript translation.",
-        "Source-order checks do not prove arbitrary helper effects, import initialization, all call reachability or child-context startup.",
+        "Source/build shape checks do not prove arbitrary helper effects, compiler semantics, all call reachability or the full child-context publication protocol.",
         "Browser event delivery, native getter validity, effective cancellation and fetch ordering remain explicit contracts supported only by selected tests.",
         "The Gillian experiment trusts callback extraction, TypeScript ES5 compilation, Gillian semantics and solver, and native-operation contracts; it does not discharge complete mediation or browser behavior."
       ],

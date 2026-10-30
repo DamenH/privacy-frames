@@ -1,133 +1,83 @@
-# Source-derived navigation decision
+# Implementation-connected navigation verification
 
-Run `node formal/implementation-navigation/check.ts` with npm dependencies and
-the pinned Lean 4.35.0 installation described in `formal/lean/README.md`.
-The checker reads the actual TypeScript navigation handler. It recognizes the
-listener registration, its capture flag, destination lookup, conditional and
-cancellation action. It accepts only a small Boolean-expression language over
-the two recognized predicates. Extra handler statements and unknown expressions
-are rejected. It generates the Lean expression from that source condition and
-checks the theorem for every pair of Boolean inputs with `--trust=0`.
-It also checks eight constant capture expressions, including `Reflect.apply`,
-the imported descriptor helper, listener, navigation object, cancellation method
-and destination getters. A changed native action
-or event name fails extraction. Token normalization preserves string contents.
+The selected property is that the runtime requests cancellation of a
+cross-document navigation before the heavy runtime modules initialize. The
+browser must deliver the event before initiating the request and honor its
+cancellation. This directory separates the implementation checks from that
+[browser contract](browser-contract.md).
 
-The result establishes that the extracted condition cancels exactly when the
-destination is not both same-document and an allowed route. The proof is derived
-from the implementation expression, rather than a separately maintained copy.
-Removing the cancellation action fails extraction; weakening OR to AND fails
-the proof. `result.json` saves source/checker hashes, the generated proof and its
-axiom report. The production initialization was subsequently split into the two
-stages described below to reduce the pre-cancellation helper assumptions.
+The import-free `src/runtime/enforcement/document-exit.ts` captures native
+navigation getters, event registration and cancellation. Its private flag makes
+successful installation idempotent. The root and child-document entries install
+this guard synchronously, capture their script element, then defer their heavy
+modules through a bundled dynamic import. The build produces one script for each
+entry; deferral introduces no additional module download.
 
-`Expression.lean` adds restricted left-to-right, short-circuit semantics with
-explicit abrupt completion. The checker generates a second expression tree
-from the same TypeScript condition. The kernel checks that a cross-document
-event requests cancellation regardless of whether the unevaluated route
-predicate would return or throw. It also checks the actual failure behavior:
-a throwing native same-document getter propagates an exception, as does a
-throwing route predicate for a same-document event. Cancellation here means
-the recognized call is requested, not that the browser has performed it.
-An eager-evaluation mutation preserves the Boolean result on successful inputs
-but invalidates the exception-sensitive theorem and is rejected.
+## Source and build checks
 
-This is a restricted source correspondence check, not a formal JavaScript
-semantics. The TypeScript parser, extractor and expression translation are trusted.
-The Boolean theorem assumes primitive-Boolean inputs without exceptions. The
-second theorem accounts for predicate exceptions, but both still assume
-that the checked capture expressions resolve to their intended native operations
-in an uncontaminated setup environment. It does
-not establish that the handler is installed before application code, that it
-executes on every relevant navigation, or that `preventDefault` prevents every
-external effect. These are separate implementation and browser obligations.
+Run `node formal/implementation-navigation/check.ts` with the pinned Lean
+installation from `formal/lean/README.md`. The checker recognizes the entire
+small kernel, including its native captures, registration, callback and flag
+assignment. Unknown statements are rejected. It generates Lean obligations from
+the actual callback condition. Lean checks cancellation for a successful
+cross-document lookup, normal return for a same-document lookup, and propagation
+of either getter exception. The receipt includes the generated proof and axiom
+report. Wrong native calls, registration, installation flag and condition are
+negative controls. Generator and async installers are rejected because installation
+must complete synchronously when called.
 
-The existing `formal/navigation-preload-fault.ts` connects the same cancellation
-action to an independently observed browser effect in selected Chromium and
-Firefox executions. It removes only that action in a test bundle and observes a
-local marker request with deliberately enabled preload. This empirical evidence
-supports the selected browser contract; it is not a proof over all executions.
+This is restricted source correspondence under a trusted TypeScript parser and
+extractor. It assumes the recognized native bindings have their browser meaning.
+A requested cancellation is distinct from an externally suppressed request.
 
-Remaining work for the complete path is to check the captured native bindings,
-setup ordering and callback reachability, establish valid native getter behavior
-for genuine events, and specify the browser rule that
-relates cancellation to navigation/preload delivery. A stronger translation
-argument must also replace trust in this small extractor if the intended result
-requires a machine-checked JavaScript-to-proof connection.
+After `HOST_ROLE=runtime npm run build`, run
+`node formal/implementation-navigation/bootstrap-check.ts`. It compares rebuilt
+entry bytes with the runtime artifacts and checks the emitted initialization
+prefix. Only the small kernel's module initializer may execute before the entry
+calls its installer; heavy module initializers remain deferred. Compiler helper
+shapes are checked, with compiler and native-operation semantics still trusted.
+Eager heavy initialization and an unknown entry prefix are rejected.
 
-The [browser contract](browser-contract.md) connects the selected root link path
-to the relevant HTML and DOM algorithms and the receiver fixture's genuine-event
-observations. It records which premises are source-checked, empirically tested,
-or still assumed, and identifies navigation routes outside this argument.
+`node formal/implementation-navigation/setup-check.ts` checks the subsequent
+root startup and realm preparation order. Application rendering remains after
+realm preparation. The later navigation-policy finalizer receives policy tools
+and the captured popup factory. These checks recognize specified source shapes;
+they do not interpret arbitrary helpers or prove compiler correctness.
 
-`node formal/implementation-navigation/setup-check.ts` checks direct source order
-in the actual root guard and realm preparation function. It requires preparation
-before the unique deferred `start` call, locates the root rendering call inside
-that start closure, and requires navigation installation before the realm's only
-direct return. Both installers must remain synchronous. Early-start and early-return
-mutations are rejected. `setup-result.json` pins the inspected sources and checker.
-These checks do not prove arbitrary helper semantics, aliasing, import side effects,
-all control flow, or browser parser ordering. In particular, trusted preparation
-helpers must not execute publisher code. The result covers the root entry path;
-child document startup has separate preparation and publication obligations.
+The [helper review](helper-review.md) and the trusted-source/build-source checks
+trace the private parser's executable source back to the trusted build. They
+retain explicit obligations about the behavior of that parser and its callers.
 
-The [helper review](helper-review.md) records the private parser's known execution
-operation and its source-origin check. It also explains why moving the complete
-navigation installer earlier would change a native popup capture. This check
-narrows one helper assumption; it does not prove every preparation helper safe.
+## Symbolic analysis and browser evidence
 
-`node formal/implementation-navigation/build-source-check.ts` builds a fixture
-through the real virtual-import plugin and decodes its generated data export
-without evaluating it. The exported string must exactly match an independently
-built trusted entry and wrapper. The receipt records every trusted-entry input
-hash, the plugin, lockfile, compiler version and output hashes. Executable export
-initialization, cyclic aliases and a substituted source are negative controls.
-This checks provenance and byte correspondence, not esbuild correctness or the
-behavior of the resulting program. TypeScript's parsing of literal values is
-also trusted. Source/build/dependency changes trigger the proof workflow.
+The [Gillian analysis](gillian.md) exercises the actual callback and whole small
+kernel under explicit native contracts. It includes registration failure,
+repeated installation and getter exceptions. Its symbolic-testing mode does not
+produce a kernel-checked proof certificate.
 
-The production initialization is now split: `prepareNavigationPolicy` installs
-cancellation early and returns a finalizer for the remaining navigation hooks.
-The realm calls the finalizer after native popup capture. The source-order check
-requires cancellation before intrinsic preparation, policy-tool construction,
-the private parser and all context factories. It rejects moving either
-initialization routine or parser evaluation earlier. The early stage captures
-its native calls directly; the finalizer receives tools only after their
-construction and native popup capture. The whole sandbox still requires all effects
-and publication policies to finish before application execution.
-The two-stage source check also requires a synchronous returned finalizer and
-its exact connection to the popup factory. An async-finalizer mutation and a
-missing popup argument are rejected. This checks the recognized connection;
-it does not prove arbitrary finalizer effects or aliased control flow.
+`node formal/implementation-navigation/initialization-run.ts` inserts a test
+probe into the heavy root module body. A native link reaches an independent
+receiver. The normal entry cancels the same operation; removing only the kernel's
+cancellation action lets the request reach the receiver again. The probe stops
+before root startup, so this checks the module-initialization boundary rather
+than ordinary installed-app execution. Source and bundle hashes are saved in
+`initialization-result.json`.
 
-The [compatibility receipt](compatibility-early-cancellation.json) records all
-eight applications passing selected native and confined tasks in Chromium and
-Firefox after the initialization change. Its checkout revision predates the
-source commit because the change was being tested uncommitted; source and build
-hashes identify the tested inputs, and the build remained stable throughout.
-This is compatibility evidence, separate from receiver tests and proofs.
+The [installed-app test](installed.md) exercises ordinary installation, service
+worker delivery and root startup before attempting the selected navigation.
+It checks actual guard bytes and compares normal cancellation with an altered
+test bundle under deliberately enabled navigation preload.
 
-The [native-capture deployment receipt](deployment-native-capture.json) records
-runtime publication from host revision
-`0d6a8dbec8623d985540b679a22e9d03f2ff2d8a`. All eight checked public scripts,
-including the service worker and window/context guards, matched the stable
-tested build. A fresh Chromium profile installed the public Notes app and passed
-the live identity and sampled reporting-header checks.
+These arguments cover the selected navigation path. They do not establish that
+all browser communication mechanisms have been enumerated or that the complete
+runtime enforces confinement. Traversals, other windows, downloads and other
+context types require their own coverage and enforcement arguments.
 
-The [Gillian-JS experiment](gillian.md) analyzes the extracted callback as ES5
-JavaScript under explicit native-operation contracts. It checks cancellation,
-exceptions, evaluation order and call receivers without using the restricted
-Lean expression translation. The actual callback passes; removing cancellation
-or weakening the condition causes assertion failures. This is whole-program
-symbolic testing, not a proof certificate or a complete browser model.
+Earlier compatibility and deployment receipts in this directory identify their
+own source revisions and artifact hashes. They remain historical evidence;
+they do not verify this changed bootstrap architecture.
 
-The [installed-app test](installed.md) adds ordinary installation and root startup
-to the receiver experiment, using the actual root guard and service worker.
-It checks the served guard bytes and records the intentionally enabled preload
-state separately from the runtime's ordinary disabled state.
-
-The [native-capture compatibility receipt](compatibility-native-capture.json)
-records all eight applications passing native and confined tasks in both
-browsers after moving cancellation before intrinsic and tool preparation.
-The tested build remained stable. As with the earlier compatibility receipt,
-source and artifact hashes identify the uncommitted inputs used by the run.
+The [early-kernel compatibility receipt](compatibility-early-kernel.json) records
+all eight applications passing their selected native and confined tasks in
+Chromium and Firefox. The build artifacts remained stable throughout the run.
+Source and artifact hashes identify the tested uncommitted inputs.

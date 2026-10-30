@@ -1,23 +1,22 @@
 {
-  "scope": "Restricted source-derived boolean decision and exact cancellation action, not a JavaScript semantics or browser proof.",
-  "source": "src/runtime/enforcement/navigation.ts",
-  "sourceSHA256": "e60f90df91431d3b5616482af935442ca1a41bbe86bc9d5998a98373ae166e8c",
-  "checkerSHA256": "58c1b0bb8204483fa81fcd51060940796b39c922b55d825dd86999b5deb5c712",
-  "generatedLean": "def actualDecision (sameDocument allowedRoute : Bool) : Bool := ((Bool.not sameDocument) || (Bool.not allowedRoute))\n\ntheorem cancellation_exact (sameDocument allowedRoute : Bool) :\n actualDecision sameDocument allowedRoute = !(sameDocument && allowedRoute) := by\n cases sameDocument <;> cases allowedRoute <;> decide\n\n#print axioms cancellation_exact\n",
-  "generatedLeanSHA256": "afee15bb1cc26c236433baf51ded30993b863a6cb4d8f809c5cc5fe5e54e6378",
-  "semanticDefinitionSHA256": "45e39bd82a01a24e8cfce5b5a53bd6be43522e1193b85f9aaecc23ac6caa9907",
-  "generatedSemanticProof": "namespace NavigationSource\n\ninductive Expr where\n  | sameDocument\n  | allowedRoute\n  | neg (operand : Expr)\n  | disjunction (left right : Expr)\n  | conjunction (left right : Expr)\n\nabbrev Result := Except Unit Bool\n\n/-- Restricted primitive-Boolean expression semantics, including abrupt\ncompletion and left-to-right short-circuit evaluation. -/\ndef eval (sameDocument allowedRoute : Result) : Expr → Result\n  | .sameDocument => sameDocument\n  | .allowedRoute => allowedRoute\n  | .neg operand => do return !(← eval sameDocument allowedRoute operand)\n  | .disjunction left right => do\n      if ← eval sameDocument allowedRoute left then return true\n      else eval sameDocument allowedRoute right\n  | .conjunction left right => do\n      if ← eval sameDocument allowedRoute left then eval sameDocument allowedRoute right\n      else return false\n\ninductive Action where\n  | requestCancellation\n  | returnNormally\n  | throwException\n  deriving DecidableEq, Repr\n\ndef action : Result → Action\n  | .ok true => .requestCancellation\n  | .ok false => .returnNormally\n  | .error _ => .throwException\n\nend NavigationSource\n\nopen NavigationSource\ndef actualTree : Expr := (Expr.disjunction (Expr.neg Expr.sameDocument) (Expr.neg Expr.allowedRoute))\n\ntheorem crossDocument_requests_cancellation (route : Result) :\n action (eval (.ok false) route actualTree) = .requestCancellation := by\n cases route with\n | error e => cases e; rfl\n | ok b => cases b <;> rfl\n\ntheorem sameDocument_route_exception :\n action (eval (.ok true) (.error ()) actualTree) = .throwException := by rfl\n\ntheorem native_getter_exception (route : Result) :\n action (eval (.error ()) route actualTree) = .throwException := by rfl\n\n#print axioms crossDocument_requests_cancellation\n#print axioms sameDocument_route_exception\n#print axioms native_getter_exception\n",
-  "semanticProofOutput": "'crossDocument_requests_cancellation' does not depend on any axioms\n'sameDocument_route_exception' does not depend on any axioms\n'native_getter_exception' does not depend on any axioms",
-  "proofOutput": "'cancellation_exact' does not depend on any axioms",
+  "scope": "Restricted source correspondence for an import-free kernel and callback, with kernel-checked primitive-Boolean/exception semantics. Native operations, module privacy, compiler and browser effects remain contracts.",
+  "source": "src/runtime/enforcement/document-exit.ts",
+  "sourceSHA256": "c39a159e4f82701b64826ac025048904b5414215c2f40c27d46ef62dabc6e8af",
+  "checkerSHA256": "051e05c40346be61bf8f4448615c28be496a0e97d63aff45a7d51bb5b25e783a",
+  "generatedLean": "namespace NavigationSource\n\nabbrev Result (α : Type) := Except Unit α\n\ninductive Action where\n  | requestCancellation\n  | returnNormally\n  | throwException\n  deriving DecidableEq, Repr\n\n/-- The recognized handler reads the native destination, then sameDocument,\nand requests cancellation when the extracted decision returns true. -/\ndef action (decision : Bool → Bool) (destination : Result Unit)\n    (sameDocument : Result Bool) : Action :=\n  match destination with\n  | .error _ => .throwException\n  | .ok _ => match sameDocument with\n    | .error _ => .throwException\n    | .ok value => if decision value then .requestCancellation else .returnNormally\n\nend NavigationSource\n\nopen NavigationSource\n def actualDecision (sameDocument : Bool) : Bool := (!sameDocument)\n theorem cancellation_exact (sameDocument : Bool) :\n  actualDecision sameDocument = !sameDocument := by\n  cases sameDocument <;> decide\n theorem crossDocument_requests_cancellation :\n  action actualDecision (.ok ()) (.ok false) = .requestCancellation := by rfl\n theorem sameDocument_returns_normally :\n  action actualDecision (.ok ()) (.ok true) = .returnNormally := by rfl\n theorem destination_getter_exception (sameDocument : Result Bool) :\n  action actualDecision (.error ()) sameDocument = .throwException := by rfl\n theorem sameDocument_getter_exception :\n  action actualDecision (.ok ()) (.error ()) = .throwException := by rfl\n #print axioms cancellation_exact\n #print axioms crossDocument_requests_cancellation\n #print axioms sameDocument_returns_normally\n #print axioms destination_getter_exception\n #print axioms sameDocument_getter_exception\n",
+  "generatedLeanSHA256": "e5f2502945f2aafcbefc93010fefa73b77a81b26ee0ca2e36dc23c82c1769f77",
+  "semanticDefinitionSHA256": "8728086c2968c244d0263168b47b4d4481a8da3778ec500a98d26d17134ae39b",
+  "proofOutput": "'cancellation_exact' does not depend on any axioms\n'crossDocument_requests_cancellation' does not depend on any axioms\n'sameDocument_returns_normally' does not depend on any axioms\n'destination_getter_exception' does not depend on any axioms\n'sameDocument_getter_exception' does not depend on any axioms",
   "faultControls": {
-    "wrongNativeAction": "source-rejected",
     "wrongNativeApply": "source-rejected",
-    "wrongDescriptorImport": "source-rejected",
+    "wrongNativeAction": "source-rejected",
     "wrongEventName": "source-rejected",
     "missingAction": "source-rejected",
-    "weakenedCondition": "proof-rejected",
-    "eagerEvaluation": "semantic-proof-rejected",
-    "asynchronousFinalizer": "source-rejected"
+    "unknownPreludeCall": "source-rejected",
+    "wrongInstallationFlag": "source-rejected",
+    "generatorInstaller": "source-rejected",
+    "asynchronousInstaller": "source-rejected",
+    "reversedCondition": "proof-rejected"
   },
   "completed": true
 }

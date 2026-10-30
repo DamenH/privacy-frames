@@ -14,14 +14,14 @@ make prevention effective only for a cancelable event outside a passive listener
 These living specifications were read on 30 October 2026; this document is an
 inspected argument, not a machine-checked translation of their algorithms.
 
-| Obligation                                                                            | Current connection                                                                                                                                                                                                                                      |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Genuine event reaches this window's listener before its navigation fetch              | Assumed browser ordering; selected event and receiver test supports it.                                                                                                                                                                                 |
-| Captured native destination getters return a valid destination and primitive Boolean  | Source capture expressions are checked. Selected genuine events expose the expected values without throwing.                                                                                                                                            |
-| Listener runs synchronously, with effective cancellation                              | Source checker rejects an async callback, checks capture registration and exact action. Browser fixture observes cancelable events and prevention in the normal case.                                                                                   |
-| Cross-document condition requests cancellation without evaluating the route predicate | Source-derived short-circuit theorem covers arbitrary route return or exception.                                                                                                                                                                        |
-| Cancellation stops the request and its preload                                        | Browser contract supported by zero marker requests in normal cases and actual marker delivery when the action is removed in test bundles.                                                                                                               |
-| Listener and captured natives are established before application execution            | Source-order checker puts listener installation before intrinsic/tool preparation, private parser evaluation, context factories and realm return. Early native operations, import initialization and browser shell parsing remain explicit assumptions. |
+| Obligation                                                                           | Current connection                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Genuine event reaches this window's listener before its navigation fetch             | Assumed browser ordering; selected event and receiver test supports it.                                                                                                                                          |
+| Captured native destination getters return a valid destination and primitive Boolean | Source capture expressions are checked. Selected genuine events expose the expected values without throwing.                                                                                                     |
+| Listener runs synchronously, with effective cancellation                             | Source checker rejects an async callback, checks capture registration and exact action. Browser fixture observes cancelable events and prevention in the normal case.                                            |
+| Cross-document condition requests cancellation after successful native getters       | Source-derived theorem covers the actual kernel condition and getter exceptions; it has no route predicate.                                                                                                      |
+| Cancellation stops the request and its preload                                       | Browser contract supported by zero marker requests in normal cases and actual marker delivery when the action is removed in test bundles.                                                                        |
+| Listener and captured natives are established before application execution           | Source/build prefix checks put the kernel before heavy module initialization; later source-order checks put preparation before rendering. Native/compiler-helper semantics and shell parsing remain assumptions. |
 
 The browser fixture adds a later observer to record trusted status, cancelability,
 default prevention, same-document status and navigation type. It observes a
@@ -51,3 +51,9 @@ test setup enables native preload after the bridge has disabled it; cancellation
 removal then produces a seeded receiver request in both browsers. This adds
 installed-path evidence under that explicit preload condition without extending
 the argument to other navigation routes.
+
+The initialization probe additionally attempts the selected link operation in the
+heavy root module body. Native and altered-kernel controls reach an independent
+receiver; the normal kernel prevents the event and produces no receiver request
+during the observation interval. This tests the earlier startup boundary without
+running the installed application or proving every module's behavior.

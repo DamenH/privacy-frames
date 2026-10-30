@@ -31,41 +31,30 @@ effects, or that frame construction obeys the expected browser behavior. Those
 remain proof obligations. The parser, extractor and uncontaminated initial native
 bindings are trusted for the source check.
 
-Navigation preparation now has two stages. `prepareNavigationPolicy` captures
-navigation state and installs the listener, then returns a finalizer for the
-remaining hooks. `prepareWindowRealm` calls that finalizer with the policy tools
-and popup function after the popup factory captures native window.open. The
-early stage uses captured `Reflect.apply` and the imported `ownDescriptor`,
-without constructing the broader tool object. The checker enforces both native
-capture expressions, the helper import and the two stages' argument boundary.
+The root and child entries now statically import only the small document-exit
+kernel. They install cancellation before deferring their heavy module graphs.
+Each captures its script element before deferral and passes that reference to
+the exported startup function. The child keeps its configuration lookup and
+parent publication protocol in the later module.
 
-Before listener installation, the early stage constructs metadata records,
-reads native descriptors and location state, and invokes captured URL operations.
-`ownDescriptor` uses captured `Object.getOwnPropertyDescriptor` and detaches the
-result through `internalRecord`; `internalRecord` uses captured
-`Object.setPrototypeOf`. These operations require genuine native objects and
-plain host metadata in an uncontaminated realm. Module initialization also
-precedes entry to the realm function. The source checks do not prove those
-native-operation contracts or all import-time effects.
+The bootstrap checker checks source entry shapes and the actual bundled prefix.
+Before cancellation, emitted code contains compiler aliases, deferred factories,
+export getters and the kernel initializer. The checker rejects an eager heavy
+initializer or an unknown prefix. Compiler-helper and native-operation semantics
+remain trusted. The initialization receiver test separately confirms that the
+selected navigation is cancelled by the time the heavy root module body runs.
 
-The built root guard still initializes Acorn and the module parser's extensions
-before reaching its entry function. For example,
-`src/runtime/modules.ts` constructs `Parser.extend(importPhases())` at module
-scope. Moving a call earlier inside `prepareWindowRealm` does not move it ahead
-of this work.
+Later navigation preparation installs routing and history restrictions and returns
+a finalizer. Realm preparation calls it after the popup factory captures native
+window.open. The early kernel's private installation flag makes the later call
+idempotent. The setup checker still checks this finalizer's argument boundary.
 
-A local build-only experiment put an import-free navigation guard before a
-dynamic import of the actual root guard. Esbuild 0.28.2 produced one script,
-with the early guard call before
-`Promise.resolve().then(() => (init_guard(), guard_exports))`; code splitting
-was disabled. This demonstrates a possible initialization boundary, not a
-working replacement. The root guard currently reads `document.currentScript`
-during module initialization, so its script reference would need to be captured
-before deferral and passed explicitly. The child guard's configuration and
-publication protocol would also need verification under that ordering.
+The kernel performs descriptor lookup, native listener registration and a private
+flag assignment before deferral. These require genuine native objects in an
+uncontaminated shell. Its callback uses native getters and cancellation directly;
+it does not call the private parser, policy tools or route predicate.
 
-Helpers after listener installation still need transitive summaries covering
-constructor callbacks, returned closures, delayed initialization and the point
-publisher-controlled bytes first become executable. The intrinsic and policy-tool
-routines are now in this later group; their bodies no longer precede navigation
-cancellation.
+Helpers after installation still need summaries covering callbacks, returned
+closures and the point publisher-controlled bytes first become executable. The
+kernel blocks the selected navigation during those helpers; their other effects
+and the full confinement policy remain separate obligations.

@@ -5,19 +5,12 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import ts from 'typescript';
 
-// Fail closed on source outside this tiny, explicitly recognized language.
 const root = resolve(import.meta.dirname, '../..');
-const sourcePath = resolve(root, 'src/runtime/enforcement/navigation.ts');
-const text = await readFile(sourcePath, 'utf8');
-function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): string {
-  const file = ts.createSourceFile(
-    sourcePath,
-    input,
-    ts.ScriptTarget.Latest,
-    true,
-    ts.ScriptKind.TS,
-  );
-  const normalized = (node: ts.Node): string => {
+const sourceName = 'src/runtime/enforcement/document-exit.ts';
+const text = await readFile(resolve(root, sourceName), 'utf8');
+function extract(input: string) {
+  const file = ts.createSourceFile(sourceName, input, ts.ScriptTarget.Latest, true);
+  const normalize = (node: ts.Node) => {
     const printed = ts
       .createPrinter({ removeComments: true })
       .printNode(ts.EmitHint.Unspecified, node, file);
@@ -32,205 +25,149 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
       result += scanner.getTokenText();
     return result;
   };
-  const nativeHelpers = file.statements.filter(
-    (statement) =>
-      ts.isImportDeclaration(statement) &&
-      ts.isStringLiteral(statement.moduleSpecifier) &&
-      statement.moduleSpecifier.text === '../../shared/primordials.ts',
-  );
-  assert.equal(nativeHelpers.length, 1, 'Native helper import changed');
-  const helperImport = nativeHelpers[0];
-  assert(ts.isImportDeclaration(helperImport));
-  const helperNames = helperImport.importClause?.namedBindings;
-  assert(helperNames && ts.isNamedImports(helperNames));
-  assert(
-    helperNames.elements.some(
-      (element) =>
-        element.name.text === 'ownDescriptor' &&
-        !element.propertyName &&
-        !element.isTypeOnly,
-    ),
-    'Descriptor helper binding changed',
-  );
-  const captures = new Map<string, string>([
-    ['apply', 'Reflect.apply'],
-    ['descriptor', 'ownDescriptor'],
-    ['prevent', 'Event.prototype.preventDefault'],
-    ['nativeAdd', 'EventTarget.prototype.addEventListener'],
-    ['nav', 'window.navigation'],
-    ['nativeDestination', "descriptor(NavigateEvent.prototype,'destination')!.get!"],
-    [
-      'nativeSameDocument',
-      "descriptor(NavigationDestination.prototype,'sameDocument')!.get!",
-    ],
-    ['nativeDestinationURL', "descriptor(NavigationDestination.prototype,'url')!.get!"],
-  ]);
-  const policyFunctions = file.statements
-    .filter(ts.isFunctionDeclaration)
-    .filter((node) => node.name?.text === 'prepareNavigationPolicy');
-  assert.equal(policyFunctions.length, 1, 'Navigation installer changed');
-  assert(policyFunctions[0].body, 'Navigation installer body missing');
+  assert.equal(file.statements.length, 2, 'Kernel gained module initialization');
   assert.equal(
-    policyFunctions[0].parameters.length,
-    1,
-    'Navigation preparation received external tools',
+    normalize(file.statements[0]),
+    'letinstalled=false;',
+    'Private state initialization changed',
+  );
+  const fn = file.statements[1];
+  assert(
+    ts.isFunctionDeclaration(fn) &&
+      fn.name?.text === 'installDocumentExitGuard' &&
+      fn.body,
+  );
+  assert.equal(fn.parameters.length, 0, 'Kernel must not accept application values');
+  assert(!fn.asteriskToken, 'Kernel must execute when called');
+  assert.deepEqual(
+    fn.modifiers?.map((modifier) => modifier.kind),
+    [ts.SyntaxKind.ExportKeyword],
+    'Kernel function modifiers changed',
+  );
+  const prefix = [
+    'if(installed)return;',
+    'constapply=Reflect.apply;',
+    'constdescriptor=Object.getOwnPropertyDescriptor;',
+    'constprevent=Event.prototype.preventDefault;',
+    'constnativeAdd=EventTarget.prototype.addEventListener;',
+    'constnav=window.navigation;',
+    "if(!nav||typeofNavigateEvent!=='function')thrownewError('Navigation API required');",
+    "constnativeDestination=descriptor(NavigateEvent.prototype,'destination')!.get!;",
+    "constnativeSameDocument=descriptor(NavigationDestination.prototype,'sameDocument')!.get!;",
+  ];
+  const statements = fn.body.statements;
+  assert.equal(statements.length, prefix.length + 2, 'Kernel statement count changed');
+  assert.deepEqual(
+    statements.slice(0, prefix.length).map(normalize),
+    prefix,
+    'Kernel prelude changed',
   );
   assert.equal(
-    normalized(policyFunctions[0].parameters[0]),
-    'options:NavigationOptions=internalRecord({})',
+    normalize(statements.at(-1)!),
+    'installed=true;',
+    'Installation flag changed',
   );
-  const lastStatement = policyFunctions[0].body.statements.at(-1);
+  const registration = statements[prefix.length];
   assert(
-    lastStatement &&
-      ts.isReturnStatement(lastStatement) &&
-      lastStatement.expression &&
-      ts.isArrowFunction(lastStatement.expression),
-    'Navigation finalizer shape changed',
+    ts.isExpressionStatement(registration) &&
+      ts.isCallExpression(registration.expression),
   );
-  assert(
-    !lastStatement.expression.modifiers?.some(
-      (modifier) => modifier.kind === ts.SyntaxKind.AsyncKeyword,
-    ),
-    'Navigation finalizer became asynchronous',
-  );
-  assert.equal(
-    lastStatement.expression.parameters.length,
-    2,
-    'Finalizer tool boundary changed',
-  );
-  assert.equal(normalized(lastStatement.expression.parameters[0]), 'tools:PolicyTools');
-  assert(
-    !policyFunctions[0].modifiers?.some(
-      (modifier) => modifier.kind === ts.SyntaxKind.AsyncKeyword,
-    ),
-    'Navigation installer became asynchronous',
-  );
-  const seen = new Set<string>();
-  const matches: ts.ArrowFunction[] = [];
-  function visit(node: ts.Node) {
-    if (
-      ts.isVariableDeclaration(node) &&
-      ts.isIdentifier(node.name) &&
-      captures.has(node.name.text)
-    ) {
-      assert(!seen.has(node.name.text), 'Duplicate captured binding');
-      assert(
-        node.initializer &&
-          ts.isVariableDeclarationList(node.parent) &&
-          node.parent.flags & ts.NodeFlags.Const,
-        'Captured binding must be const',
-      );
-      assert.equal(
-        normalized(node.initializer),
-        captures.get(node.name.text),
-        'Captured binding changed',
-      );
-      seen.add(node.name.text);
-    }
-    if (
-      ts.isCallExpression(node) &&
-      normalized(node.expression) === 'apply' &&
-      node.arguments.length === 3 &&
-      normalized(node.arguments[0]) === 'nativeAdd' &&
-      normalized(node.arguments[1]) === 'nav'
-    ) {
-      const args = node.arguments[2];
-      assert(
-        ts.isArrayLiteralExpression(args) && args.elements.length === 3,
-        'Listener arguments changed',
-      );
-      assert(
-        ts.isStringLiteral(args.elements[0]) && args.elements[0].text === 'navigate',
-        'Listener event changed',
-      );
-      assert(ts.isArrowFunction(args.elements[1]), 'Listener is not inline');
-      assert.equal(normalized(args.elements[2]), 'internalRecord({capture:true})');
-      matches.push(args.elements[1]);
-    }
-    ts.forEachChild(node, visit);
-  }
-  visit(file);
-  assert.equal(seen.size, captures.size, 'Missing captured bindings');
-  assert.equal(matches.length, 1, 'Expected exactly one native navigation listener');
-  const callback = matches[0];
+  const call = registration.expression;
+  assert.equal(normalize(call.expression), 'apply');
+  assert.equal(call.arguments.length, 3);
+  assert.equal(normalize(call.arguments[0]), 'nativeAdd');
+  assert.equal(normalize(call.arguments[1]), 'nav');
+  const args = call.arguments[2];
+  assert(ts.isArrayLiteralExpression(args) && args.elements.length === 3);
+  assert.equal(normalize(args.elements[0]), "'navigate'", 'Listener event changed');
+  assert.equal(normalize(args.elements[2]), '{capture:true}', 'Listener capture changed');
+  const callback = args.elements[1];
+  assert(ts.isArrowFunction(callback) && ts.isBlock(callback.body));
   assert.equal(callback.parameters.length, 1);
-  assert.equal(normalized(callback.parameters[0].name), 'event');
+  assert.equal(normalize(callback.parameters[0]), 'event:NavigateEvent');
   assert(
-    !callback.modifiers?.some((m) => m.kind === ts.SyntaxKind.AsyncKeyword),
-    'Async callback forbidden',
+    !callback.modifiers?.some((modifier) => modifier.kind === ts.SyntaxKind.AsyncKeyword),
   );
-  assert(ts.isBlock(callback.body));
-  const statements = callback.body.statements;
-  assert.equal(statements.length, 2, 'Navigation handler gained unverified statements');
+  const body = callback.body.statements;
+  assert.equal(body.length, 2, 'Handler statement count changed');
+  assert.equal(normalize(body[0]), 'constdestination=apply(nativeDestination,event,[]);');
+  assert(ts.isIfStatement(body[1]) && !body[1].elseStatement);
   assert.equal(
-    normalized(statements[0]),
-    'constdestination=apply(nativeDestination,event,[]);',
-  );
-  assert(ts.isIfStatement(statements[1]) && !statements[1].elseStatement);
-  assert.equal(
-    normalized(statements[1].thenStatement),
+    normalize(body[1].thenStatement),
     'apply(prevent,event,[]);',
     'Cancellation action changed',
   );
   function expression(node: ts.Expression): string {
     if (ts.isParenthesizedExpression(node)) return expression(node.expression);
-    const atom = normalized(node);
-    if (atom === 'apply(nativeSameDocument,destination,[])')
-      return mode === 'boolean' ? 'sameDocument' : 'Expr.sameDocument';
-    if (atom === 'inDocument(apply(nativeDestinationURL,destination,[]))')
-      return mode === 'boolean' ? 'allowedRoute' : 'Expr.allowedRoute';
+    if (normalize(node) === 'apply(nativeSameDocument,destination,[])')
+      return 'sameDocument';
     if (
       ts.isPrefixUnaryExpression(node) &&
       node.operator === ts.SyntaxKind.ExclamationToken
     )
-      return `(${mode === 'boolean' ? 'Bool.not' : 'Expr.neg'} ${expression(node.operand)})`;
-    if (ts.isBinaryExpression(node)) {
-      const op = node.operatorToken.kind;
-      assert(
-        op === ts.SyntaxKind.BarBarToken || op === ts.SyntaxKind.AmpersandAmpersandToken,
-        'Unsupported boolean operator',
-      );
-      if (mode === 'semantics')
-        return `(Expr.${op === ts.SyntaxKind.BarBarToken ? 'disjunction' : 'conjunction'} ${expression(node.left)} ${expression(node.right)})`;
-      return `(${expression(node.left)} ${op === ts.SyntaxKind.BarBarToken ? '||' : '&&'} ${expression(node.right)})`;
-    }
-    throw new Error('Unsupported condition: ' + atom);
+      return `(!${expression(node.operand)})`;
+    throw new Error('Unknown decision expression');
   }
-  return expression(statements[1].expression);
+  return expression(body[1].expression);
 }
 const expression = extract(text);
-const finalizerAnchor = '  return (\n    tools: PolicyTools,';
-assert.equal(text.split(finalizerAnchor).length, 2);
-assert.throws(
-  () =>
-    extract(text.replace(finalizerAnchor, '  return async (\n    tools: PolicyTools,')),
-  /Navigation finalizer became asynchronous/,
+const rejected = (from: string, to: string, pattern: RegExp) => {
+  assert.equal(text.split(from).length, 2, 'Fault anchor changed');
+  assert.throws(() => extract(text.replace(from, to)), pattern);
+};
+rejected(
+  'const apply = Reflect.apply;',
+  'const apply = Reflect.get;',
+  /Kernel prelude changed/,
 );
-assert.throws(
-  () =>
-    extract(
-      text.replace('Event.prototype.preventDefault', 'Event.prototype.stopPropagation'),
-    ),
-  /Captured binding changed/,
+rejected(
+  'Event.prototype.preventDefault',
+  'Event.prototype.stopPropagation',
+  /Kernel prelude changed/,
 );
-assert.throws(
-  () =>
-    extract(text.replace('const apply = Reflect.apply;', 'const apply = Reflect.get;')),
-  /Captured binding changed/,
+rejected("'navigate'", "'navi gate'", /Listener event changed/);
+rejected('apply(prevent, event, []);', 'void event;', /Cancellation action changed/);
+rejected(
+  '  if (installed) return;',
+  '  unreviewedSetup();\n  if (installed) return;',
+  /Kernel statement count changed/,
 );
-assert.throws(
-  () => extract(text.replace('../../shared/primordials.ts', './native.ts')),
-  /Native helper import changed/,
+rejected('  installed = true;', '  installed = false;', /Installation flag changed/);
+rejected(
+  'export function installDocumentExitGuard()',
+  'export function* installDocumentExitGuard()',
+  /Kernel must execute when called/,
 );
-assert.throws(
-  () => extract(text.replace("'navigate',", "'navi gate',")),
-  /Listener event changed/,
+rejected(
+  'export function installDocumentExitGuard()',
+  'export async function installDocumentExitGuard()',
+  /Kernel function modifiers changed/,
 );
-const lean = `def actualDecision (sameDocument allowedRoute : Bool) : Bool := ${expression}\n\ntheorem cancellation_exact (sameDocument allowedRoute : Bool) :\n actualDecision sameDocument allowedRoute = !(sameDocument && allowedRoute) := by\n cases sameDocument <;> cases allowedRoute <;> decide\n\n#print axioms cancellation_exact\n`;
+const semantics = await readFile(resolve(import.meta.dirname, 'Expression.lean'), 'utf8');
+const lean =
+  semantics +
+  `
+open NavigationSource
+ def actualDecision (sameDocument : Bool) : Bool := ${expression}
+ theorem cancellation_exact (sameDocument : Bool) :
+  actualDecision sameDocument = !sameDocument := by
+  cases sameDocument <;> decide
+ theorem crossDocument_requests_cancellation :
+  action actualDecision (.ok ()) (.ok false) = .requestCancellation := by rfl
+ theorem sameDocument_returns_normally :
+  action actualDecision (.ok ()) (.ok true) = .returnNormally := by rfl
+ theorem destination_getter_exception (sameDocument : Result Bool) :
+  action actualDecision (.error ()) sameDocument = .throwException := by rfl
+ theorem sameDocument_getter_exception :
+  action actualDecision (.ok ()) (.error ()) = .throwException := by rfl
+ #print axioms cancellation_exact
+ #print axioms crossDocument_requests_cancellation
+ #print axioms sameDocument_returns_normally
+ #print axioms destination_getter_exception
+ #print axioms sameDocument_getter_exception
+`;
 const directory = resolve(root, '.tools/implementation-navigation');
 await mkdir(directory, { recursive: true });
-const proof = resolve(directory, 'ActualDecision.lean');
-await writeFile(proof, lean);
 const executable =
   process.env.PF_LEAN || resolve(root, '.tools/lean-4.35.0-linux/bin/lean');
 assert(
@@ -238,99 +175,64 @@ assert(
     'version 4.35.0,',
   ),
 );
+const proof = resolve(directory, 'ActualHandler.lean');
+await writeFile(proof, lean);
 const verified = spawnSync(executable, ['--trust=0', proof], { encoding: 'utf8' });
 assert.equal(verified.status, 0, verified.stdout + verified.stderr);
+assert.equal(verified.stderr, '');
 assert.equal(
   verified.stdout.trim(),
-  "'cancellation_exact' does not depend on any axioms",
-);
-assert.equal(verified.stderr, '');
-const semantics = await readFile(
-  resolve(root, 'formal/implementation-navigation/Expression.lean'),
-  'utf8',
-);
-const tree = extract(text, 'semantics');
-const semanticProof =
-  semantics +
-  `\nopen NavigationSource\ndef actualTree : Expr := ${tree}\n\ntheorem crossDocument_requests_cancellation (route : Result) :\n action (eval (.ok false) route actualTree) = .requestCancellation := by\n cases route with\n | error e => cases e; rfl\n | ok b => cases b <;> rfl\n\ntheorem sameDocument_route_exception :\n action (eval (.ok true) (.error ()) actualTree) = .throwException := by rfl\n\ntheorem native_getter_exception (route : Result) :\n action (eval (.error ()) route actualTree) = .throwException := by rfl\n\n#print axioms crossDocument_requests_cancellation\n#print axioms sameDocument_route_exception\n#print axioms native_getter_exception\n`;
-const semanticPath = resolve(directory, 'ActualSemantics.lean');
-await writeFile(semanticPath, semanticProof);
-const semanticResult = spawnSync(executable, ['--trust=0', semanticPath], {
-  encoding: 'utf8',
-});
-assert.equal(semanticResult.status, 0, semanticResult.stdout + semanticResult.stderr);
-assert.equal(semanticResult.stderr, '');
-assert.equal(
-  semanticResult.stdout.trim(),
   [
-    "'crossDocument_requests_cancellation' does not depend on any axioms",
-    "'sameDocument_route_exception' does not depend on any axioms",
-    "'native_getter_exception' does not depend on any axioms",
-  ].join('\n'),
+    'cancellation_exact',
+    'crossDocument_requests_cancellation',
+    'sameDocument_returns_normally',
+    'destination_getter_exception',
+    'sameDocument_getter_exception',
+  ]
+    .map((name) => `'${name}' does not depend on any axioms`)
+    .join('\n'),
 );
-const lazyBranch = 'if ← eval sameDocument allowedRoute left then return true';
-assert.equal(semanticProof.split(lazyBranch).length, 2);
-const eagerProof = semanticProof.replace(
-  lazyBranch,
-  'if ← eval sameDocument allowedRoute left then do\n        let _ ← eval sameDocument allowedRoute right\n        return true',
+const condition = '!apply(nativeSameDocument, destination, [])';
+assert.equal(text.split(condition).length, 2);
+const wrong = extract(
+  text.replace(condition, 'apply(nativeSameDocument, destination, [])'),
 );
-const eagerPath = resolve(directory, 'EagerFault.lean');
-await writeFile(eagerPath, eagerProof);
-const eagerResult = spawnSync(executable, ['--trust=0', eagerPath], { encoding: 'utf8' });
-assert.notEqual(eagerResult.status, 0, 'Eager evaluation fault incorrectly proved');
-assert(
-  eagerResult.stdout.includes('rfl') &&
-    eagerResult.stdout.includes('requestCancellation'),
-  eagerResult.stdout + eagerResult.stderr,
-);
-// A missing action must fail source extraction. A weakened condition must fail proof checking.
-assert.equal(text.split('apply(prevent, event, []);').length, 3, 'Action anchor changed');
-assert.throws(
-  () => extract(text.replace('apply(prevent, event, []);', 'void event;')),
-  /Cancellation action changed/,
-);
-const condition = '!apply(nativeSameDocument, destination, []) ||';
-assert.equal(text.split(condition).length, 2, 'Condition anchor changed');
-const altered = extract(
-  text.replace(condition, '!apply(nativeSameDocument, destination, []) &&'),
-);
-const badProof = resolve(directory, 'WeakenedDecision.lean');
-await writeFile(badProof, lean.replace(expression, altered));
+const badProof = resolve(directory, 'ReversedHandler.lean');
+await writeFile(badProof, lean.replace(`:= ${expression}`, `:= ${wrong}`));
 const bad = spawnSync(executable, ['--trust=0', badProof], { encoding: 'utf8' });
-assert.notEqual(bad.status, 0, 'Weakened condition incorrectly proved');
-assert(
-  bad.stdout.includes('decide') && bad.stdout.includes('false'),
-  'Unexpected proof failure: ' + bad.stdout + bad.stderr,
-);
-const sha = (s: string) => createHash('sha256').update(s).digest('hex');
-const receipt = {
-  scope:
-    'Restricted source-derived boolean decision and exact cancellation action, not a JavaScript semantics or browser proof.',
-  source: 'src/runtime/enforcement/navigation.ts',
-  sourceSHA256: sha(text),
-  checkerSHA256: sha(await readFile(import.meta.filename, 'utf8')),
-  generatedLean: lean,
-  generatedLeanSHA256: sha(lean),
-  semanticDefinitionSHA256: sha(semantics),
-  generatedSemanticProof: semanticProof,
-  semanticProofOutput: semanticResult.stdout.trim(),
-  proofOutput: verified.stdout.trim(),
-  faultControls: {
-    wrongNativeAction: 'source-rejected',
-    wrongNativeApply: 'source-rejected',
-    wrongDescriptorImport: 'source-rejected',
-    wrongEventName: 'source-rejected',
-    missingAction: 'source-rejected',
-    weakenedCondition: 'proof-rejected',
-    eagerEvaluation: 'semantic-proof-rejected',
-    asynchronousFinalizer: 'source-rejected',
-  },
-  completed: true,
-};
+assert.notEqual(bad.status, 0, 'Reversed decision incorrectly proved');
+assert(bad.stdout.includes('decide'), bad.stdout + bad.stderr);
+const hash = (value: string) => createHash('sha256').update(value).digest('hex');
 await writeFile(
-  resolve(root, 'formal/implementation-navigation/result.json'),
-  JSON.stringify(receipt, null, 2) + '\n',
+  resolve(import.meta.dirname, 'result.json'),
+  JSON.stringify(
+    {
+      scope:
+        'Restricted source correspondence for an import-free kernel and callback, with kernel-checked primitive-Boolean/exception semantics. Native operations, module privacy, compiler and browser effects remain contracts.',
+      source: sourceName,
+      sourceSHA256: hash(text),
+      checkerSHA256: hash(await readFile(import.meta.filename, 'utf8')),
+      generatedLean: lean,
+      generatedLeanSHA256: hash(lean),
+      semanticDefinitionSHA256: hash(semantics),
+      proofOutput: verified.stdout.trim(),
+      faultControls: {
+        wrongNativeApply: 'source-rejected',
+        wrongNativeAction: 'source-rejected',
+        wrongEventName: 'source-rejected',
+        missingAction: 'source-rejected',
+        unknownPreludeCall: 'source-rejected',
+        wrongInstallationFlag: 'source-rejected',
+        generatorInstaller: 'source-rejected',
+        asynchronousInstaller: 'source-rejected',
+        reversedCondition: 'proof-rejected',
+      },
+      completed: true,
+    },
+    null,
+    2,
+  ) + '\n',
 );
 console.log(
-  'Actual navigation condition: all Boolean inputs verified; missing action and weakened-condition controls rejected',
+  'Import-free kernel and handler checked; cancellation/exception theorems verified; faults rejected',
 );

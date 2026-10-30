@@ -1,0 +1,48 @@
+{
+  "scope": "Source and built-prefix gates under trusted TypeScript/esbuild and native/compiler-helper contracts; not a verified JavaScript interpreter or browser proof.",
+  "checkerSHA256": "f2c5ddde708c7c98c33a2acc8592e1ab36e871f5b9e81daf16c1ea4fc540a8f9",
+  "results": [
+    {
+      "entry": "src/runtime/guard.ts",
+      "entrySHA256": "900b462d0fd3a6eab512ee2fd2b2fb96c15b570dd9c8cb30edfe255350c5613c",
+      "output": "guard.js",
+      "outputSHA256": "bdf0570f3e798d86578cea7d49bea409fb51fb84603fca2fbddbdb1b6b545689",
+      "phase": {
+        "eagerModuleInitializers": [
+          "init_document_exit"
+        ],
+        "moduleFactories": [
+          "__esm",
+          "__commonJS"
+        ],
+        "exportCalls": 1,
+        "entryStatement": 224,
+        "deferredInitializer": "init_root_guard"
+      }
+    },
+    {
+      "entry": "src/runtime/contexts/document-guard.ts",
+      "entrySHA256": "9a9522966ba6b1660f828c2903e60de81028a3a35b11a18a38194756bd5d75a7",
+      "output": "document-guard.js",
+      "outputSHA256": "8c9059f6352d56359e2a246fcd666e99b41bd460513d2c5efb80cfc54c4786b4",
+      "phase": {
+        "eagerModuleInitializers": [
+          "init_document_exit"
+        ],
+        "moduleFactories": [
+          "__esm",
+          "__commonJS"
+        ],
+        "exportCalls": 1,
+        "entryStatement": 224,
+        "deferredInitializer": "init_document_main"
+      }
+    }
+  ],
+  "faults": {
+    "earlyHeavyInitializer": "rejected",
+    "unknownEntryPrefix": "rejected",
+    "externalModuleImport": "rejected"
+  },
+  "completed": true
+}

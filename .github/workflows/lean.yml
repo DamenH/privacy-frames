@@ -75,5 +75,9 @@ jobs:
       - run: python3 formal/path-lean/check.py
       - run: node formal/implementation-navigation/check.ts
       - run: node formal/implementation-navigation/setup-check.ts
+      - run: npm run build
+        env:
+          HOST_ROLE: runtime
+      - run: node formal/implementation-navigation/bootstrap-check.ts
       - run: node formal/implementation-navigation/trusted-source-check.ts
       - run: node formal/implementation-navigation/build-source-check.ts

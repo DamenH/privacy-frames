@@ -1,0 +1,128 @@
+{
+  "scope": "Actual root entry with a test-only heavy-module initialization probe and an independent HTTP receiver. The probe stops before root startup; this is not installed-app or all-module-behavior coverage.",
+  "runnerSHA256": "eb6bc886cca856cfebe72cc636a4dcbf433a6a96640df995d3cee0eea7491711",
+  "sourceHashes": {
+    "src/runtime/root-guard.ts": "55204242a95dded90dc1f269af10adb20d830210b90a65185a77e91c812b1437",
+    "src/runtime/guard.ts": "900b462d0fd3a6eab512ee2fd2b2fb96c15b570dd9c8cb30edfe255350c5613c",
+    "src/runtime/enforcement/document-exit.ts": "c39a159e4f82701b64826ac025048904b5414215c2f40c27d46ef62dabc6e8af",
+    "package-lock.json": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed"
+  },
+  "bundles": {
+    "/native.js": "2d9ce347977a7f1d5f250f3c91ea65d2d83e1bae17e7b76df9f8950795f2b148",
+    "/normal.js": "583fa846e5ef33c9cc20a2bcadb03d9f5d50f1c137d504a01f517ef1caa83b28",
+    "/altered.js": "0fa56ce86dbabbaf1d436b49793a8d687511fd5549fe6d6d9e01d52db1387774"
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "cases": [
+        {
+          "profile": "native",
+          "token": "b803e30d-b450-4eca-827f-4a8fc82b9eec",
+          "requests": [
+            "/receive?token=b803e30d-b450-4eca-827f-4a8fc82b9eec"
+          ],
+          "events": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": false,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ],
+          "after": "http://127.0.0.1:33813/receive?token=b803e30d-b450-4eca-827f-4a8fc82b9eec"
+        },
+        {
+          "profile": "normal",
+          "token": "3d78b642-858b-45ed-8cb0-53362100b0b0",
+          "requests": [],
+          "events": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": true,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ],
+          "after": "http://127.0.0.1:33813/normal/"
+        },
+        {
+          "profile": "altered",
+          "token": "009ac5e1-ae6f-4433-8f3d-610f4cc8e278",
+          "requests": [
+            "/receive?token=009ac5e1-ae6f-4433-8f3d-610f4cc8e278"
+          ],
+          "events": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": false,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ],
+          "after": "http://127.0.0.1:33813/receive?token=009ac5e1-ae6f-4433-8f3d-610f4cc8e278"
+        }
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "cases": [
+        {
+          "profile": "native",
+          "token": "58378ea3-c07c-40f6-ba4e-510ce909e799",
+          "requests": [
+            "/receive?token=58378ea3-c07c-40f6-ba4e-510ce909e799"
+          ],
+          "events": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": false,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ],
+          "after": "http://127.0.0.1:33813/receive?token=58378ea3-c07c-40f6-ba4e-510ce909e799"
+        },
+        {
+          "profile": "normal",
+          "token": "eb440a6d-8aa1-498e-83f4-4b9541d0d469",
+          "requests": [],
+          "events": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": true,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ],
+          "after": "http://127.0.0.1:33813/normal/"
+        },
+        {
+          "profile": "altered",
+          "token": "0a2d545d-bed0-4344-9eb1-553e0647ba29",
+          "requests": [
+            "/receive?token=0a2d545d-bed0-4344-9eb1-553e0647ba29"
+          ],
+          "events": [
+            {
+              "trusted": true,
+              "cancelable": true,
+              "prevented": false,
+              "sameDocument": false,
+              "navigationType": "push"
+            }
+          ],
+          "after": "http://127.0.0.1:33813/receive?token=0a2d545d-bed0-4344-9eb1-553e0647ba29"
+        }
+      ]
+    }
+  ],
+  "completed": true
+}

@@ -12,7 +12,7 @@ const receiptPath = resolve(import.meta.dirname, 'gillian-result.json');
 await rm(receiptPath, { force: true });
 const image =
   'ghcr.io/gillianplatform/gillian@sha256:ce41de968aba0964774e1929416ce60b9c3b770d2e58f96e63990b629cfe2ed6';
-const sourcePath = 'src/runtime/enforcement/navigation.ts';
+const sourcePath = 'src/runtime/enforcement/document-exit.ts';
 const source = await readFile(resolve(root, sourcePath), 'utf8');
 const checker = await readFile(import.meta.filename, 'utf8');
 const file = ts.createSourceFile(sourcePath, source, ts.ScriptTarget.Latest, true);
@@ -39,7 +39,8 @@ function visit(node: ts.Node) {
 visit(file);
 assert.equal(handlers.length, 1);
 const handler = handlers[0].getText(file);
-assert.equal(handler.split('||').length, 2, 'Mutation target changed');
+const condition = '!apply(nativeSameDocument, destination, [])';
+assert.equal(handler.split(condition).length, 2, 'Mutation target changed');
 assert.equal(handler.split('apply(prevent, event, []);').length, 2);
 
 // Native-operation contracts, not implementations of browser algorithms.
@@ -47,13 +48,10 @@ assert.equal(handler.split('apply(prevent, event, []);').length, 2);
 const before = `
 'use strict';
 var sameDocument = symb_bool();
-var allowedRoute = symb_bool();
 var destinationThrows = symb_bool();
 var sameDocumentThrows = symb_bool();
-var urlThrows = symb_bool();
-var routeThrows = symb_bool();
 var event = {}, destination = {};
-var cancelled = false, caught = false, urlReads = 0, routeReads = 0;
+var cancelled = false, caught = false;
 function apply(fn, receiver, args) { return fn.apply(receiver, args); }
 function nativeDestination() {
   var correct = this === event && arguments.length === 0;
@@ -67,20 +65,6 @@ function nativeSameDocument() {
   if (sameDocumentThrows) throw 'sameDocument';
   return sameDocument;
 }
-function nativeDestinationURL() {
-  var correct = this === destination && arguments.length === 0;
-  Assert(correct);
-  urlReads = urlReads + 1;
-  if (urlThrows) throw 'url';
-  return 'https://example.invalid/';
-}
-function inDocument(url) {
-  var correct = url === 'https://example.invalid/';
-  Assert(correct);
-  routeReads = routeReads + 1;
-  if (routeThrows) throw 'route';
-  return allowedRoute;
-}
 function prevent() {
   var correct = this === event && arguments.length === 0;
   Assert(correct);
@@ -89,21 +73,13 @@ function prevent() {
 `;
 const after = `
 try { handler(event); } catch (error) { caught = true; }
-var predicatesReached = !destinationThrows && !sameDocumentThrows;
-var expectedURLRead = predicatesReached && sameDocument;
-var expectedRouteRead = expectedURLRead && !urlThrows;
-var expectedThrow = destinationThrows || sameDocumentThrows ||
-  (sameDocument && (urlThrows || routeThrows));
-var expectedCancel = predicatesReached &&
-  (!sameDocument || (!urlThrows && !routeThrows && !allowedRoute));
+var expectedThrow = destinationThrows || sameDocumentThrows;
+var expectedCancel = !destinationThrows && !sameDocumentThrows && !sameDocument;
 var outcomeCorrect = caught === expectedThrow && cancelled === expectedCancel;
-var readsCorrect = urlReads === (expectedURLRead ? 1 : 0) &&
-  routeReads === (expectedRouteRead ? 1 : 0);
 Assert(outcomeCorrect);
-Assert(readsCorrect);
 `;
-function harness(callback: string) {
-  const compiled = ts.transpileModule(`var handler = ${callback};`, {
+function compile(code: string) {
+  const compiled = ts.transpileModule(code, {
     compilerOptions: {
       target: ts.ScriptTarget.ES5,
       module: ts.ModuleKind.CommonJS,
@@ -113,8 +89,54 @@ function harness(callback: string) {
     reportDiagnostics: true,
   });
   assert.equal(compiled.diagnostics?.length, 0);
-  return before + compiled.outputText + after;
+  return compiled.outputText;
 }
+function harness(callback: string) {
+  return before + compile(`var handler = ${callback};`) + after;
+}
+const nativeModel = `
+var registrationThrows = symb_bool();
+var registered, registrations = 0, installationErrors = 0;
+var nav = {}, window = {navigation: nav};
+var Reflect = {apply: apply};
+function Event() {}
+Event.prototype.preventDefault = prevent;
+function EventTarget() {}
+EventTarget.prototype.addEventListener = function(name, callback, options) {
+  var correct = this === nav && name === 'navigate' && options.capture === true;
+  Assert(correct);
+  if (registrationThrows) throw 'registration';
+  registrations = registrations + 1;
+  registered = callback;
+};
+function NavigateEvent() {}
+function NavigationDestination() {}
+Object.getOwnPropertyDescriptor = function(owner, key) {
+  var eventProperty = owner === NavigateEvent.prototype && key === 'destination';
+  var destinationProperty = owner === NavigationDestination.prototype && key === 'sameDocument';
+  var recognized = eventProperty || destinationProperty;
+  Assert(recognized);
+  return {get: eventProperty ? nativeDestination : nativeSameDocument};
+};
+`;
+assert.equal(source.split('export function ').length, 2);
+const wholeKernel =
+  before +
+  nativeModel +
+  compile(source.replace('export function ', 'function ')) +
+  `
+try { installDocumentExitGuard(); } catch (error) { installationErrors = installationErrors + 1; }
+try { installDocumentExitGuard(); } catch (error) { installationErrors = installationErrors + 1; }
+if (registrationThrows) {
+  var refused = registrations === 0 && installed === false && installationErrors === 2;
+  Assert(refused);
+} else {
+  var once = registrations === 1 && installed === true && installationErrors === 0;
+  Assert(once);
+  var handler = registered;
+` +
+  after +
+  '\n}\n';
 const fixtures = [
   {
     name: 'positive-control',
@@ -127,14 +149,22 @@ const fixtures = [
     passes: false,
   },
   { name: 'actual-handler', code: harness(handler), passes: true },
+  { name: 'whole-kernel', code: wholeKernel, passes: true },
+  {
+    name: 'missing-installation-flag',
+    code: wholeKernel.replace('installed = true;', 'installed = false;'),
+    passes: false,
+  },
   {
     name: 'missing-cancellation',
     code: harness(handler.replace('apply(prevent, event, []);', 'void 0;')),
     passes: false,
   },
   {
-    name: 'weakened-condition',
-    code: harness(handler.replace('||', '&&')),
+    name: 'reversed-condition',
+    code: harness(
+      handler.replace(condition, 'apply(nativeSameDocument, destination, [])'),
+    ),
     passes: false,
   },
 ];
@@ -211,7 +241,8 @@ await writeFile(
       handlerSHA256: hash(handler),
       typescriptVersion: ts.version,
       mode: 'whole-program symbolic testing',
-      symbolicBooleans: 6,
+      symbolicBooleans: 3,
+      wholeKernelSymbolicBooleans: 4,
       defaultUnrollBound: 100,
       results,
     },

@@ -61,7 +61,7 @@ for (const version of ['A', 'B']) {
   });
   bundles[version] = result.outputFiles[0].text;
 }
-const guardPath = resolve(root, 'src/runtime/contexts/document-guard.ts');
+const guardPath = resolve(root, 'src/runtime/contexts/document-main.ts');
 const guardOriginal = await readFile(guardPath, 'utf8');
 const guardInstrumented =
   `import {pauseBeforePublication} from ${JSON.stringify(resolve(import.meta.dirname, 'local-guard.ts'))};\n` +
@@ -71,7 +71,7 @@ const guardInstrumented =
     '  await waitForShell();\n  await pauseBeforePublication(id);',
   );
 const guardBundle = await build({
-  entryPoints: [guardPath],
+  entryPoints: [resolve(root, 'src/runtime/contexts/document-guard.ts')],
   bundle: true,
   write: false,
   format: 'iife',
@@ -82,7 +82,7 @@ const guardBundle = await build({
       name: 'local-guard-only',
       setup(builder) {
         builder.onLoad(
-          { filter: /\/src\/runtime\/contexts\/document-guard\.ts$/ },
+          { filter: /\/src\/runtime\/contexts\/document-main\.ts$/ },
           () => ({
             contents: guardInstrumented,
             loader: 'ts',
