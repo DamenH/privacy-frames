@@ -205,6 +205,7 @@ try {
         seededState,
         retainedState,
         runtimeReceiverControl: controlPath,
+        privateMarker: secret,
         navigationAttempt,
         privateRequests,
         windowResult,

@@ -1,12 +1,12 @@
 {
   "scope": "Native preload delivery on a publisher origin and installed-window/publisher attempts after trusted test setup seeds runtime-origin preload state. Includes selected synthetic same-origin navigation attempts, not all navigation or native registration acquisition routes.",
   "provenance": {
-    "capturedAt": "2026-10-30T19:30:00.454Z",
-    "revision": "f6677da39a7555e7d84c2e245511eab0588ca6ec",
+    "capturedAt": "2026-10-30T19:32:13.420Z",
+    "revision": "f474b6b08f87f2d252edd8c457f353c2ef89eeb1",
     "dirty": true,
     "sourceSHA256": "05331956de4dc8e219a375fd9d6f7363f8e93bd22a16cd3cc881a9078069ace9",
     "runner": "formal/navigation-preload-probe.ts",
-    "runnerSHA256": "50a417cefc7c6dfd70991b2041b58073174756813cab038cac7a4e9dddfa845a",
+    "runnerSHA256": "3dc4b881d114035db87de556354dce9a5a5cac60e2c5fa3d115ae92500470803",
     "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
     "artifacts": {
       "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -50,25 +50,26 @@
       },
       "nativeState": {
         "enabled": true,
-        "headerValue": "native-cebd9168-b6fe-4055-bd7e-97f859a7065e"
+        "headerValue": "native-abfa9ece-ac49-4e58-b481-f6c76d1e1e9b"
       },
       "nativeRequests": [
         {
           "path": "/preload",
-          "preload": "native-cebd9168-b6fe-4055-bd7e-97f859a7065e"
+          "preload": "native-abfa9ece-ac49-4e58-b481-f6c76d1e1e9b"
         }
       ],
       "seededState": {
         "enabled": true,
-        "headerValue": "trusted-seed-079cfb55-9e29-42b8-b234-4114bc8b2811"
+        "headerValue": "trusted-seed-56f125f3-8d82-492b-a6b7-6d35b66c6ff0"
       },
       "retainedState": {
         "enabled": true,
-        "headerValue": "trusted-seed-079cfb55-9e29-42b8-b234-4114bc8b2811"
+        "headerValue": "trusted-seed-56f125f3-8d82-492b-a6b7-6d35b66c6ff0"
       },
-      "runtimeReceiverControl": "/runtime/collect?control=receiver-09d0d6e9-9511-4ea4-a0de-165c10a308a8",
+      "runtimeReceiverControl": "/runtime/collect?control=receiver-0720df35-60fb-48f9-9824-d6a253a7e320",
+      "privateMarker": "private-5f39fa9d-abe0-4b5f-9058-36baa1c338a1",
       "navigationAttempt": {
-        "before": "http://127.0.0.1:4211/runtime/bTtC8nSX-SY/preload-app/",
+        "before": "http://127.0.0.1:4211/runtime/MihZjB5Rn1k/preload-app/",
         "anchorResult": "clicked",
         "assignResult": "called"
       },
@@ -100,25 +101,26 @@
       },
       "nativeState": {
         "enabled": true,
-        "headerValue": "native-69172904-e526-4829-9f50-dc91c79c2a5f"
+        "headerValue": "native-ae23c37d-6090-4e71-a152-0158001aa2f0"
       },
       "nativeRequests": [
         {
           "path": "/preload",
-          "preload": "native-69172904-e526-4829-9f50-dc91c79c2a5f"
+          "preload": "native-ae23c37d-6090-4e71-a152-0158001aa2f0"
         }
       ],
       "seededState": {
         "enabled": true,
-        "headerValue": "trusted-seed-234c5fb5-b207-452b-8f8d-f7aa3bdbbbc6"
+        "headerValue": "trusted-seed-97dc0acd-fae0-4bb2-a62d-a72a8b53b06d"
       },
       "retainedState": {
         "enabled": true,
-        "headerValue": "trusted-seed-234c5fb5-b207-452b-8f8d-f7aa3bdbbbc6"
+        "headerValue": "trusted-seed-97dc0acd-fae0-4bb2-a62d-a72a8b53b06d"
       },
-      "runtimeReceiverControl": "/runtime/collect?control=receiver-fe7320a5-d8a9-4309-a1f9-722ad076c5dd",
+      "runtimeReceiverControl": "/runtime/collect?control=receiver-e4a69b8c-31f4-4741-930e-54ca4699401c",
+      "privateMarker": "private-5a720480-d3c1-4768-b785-2025bda33894",
       "navigationAttempt": {
-        "before": "http://127.0.0.1:4211/runtime/bTtC8nSX-SY/preload-app/",
+        "before": "http://127.0.0.1:4211/runtime/MihZjB5Rn1k/preload-app/",
         "anchorResult": "clicked",
         "assignResult": "called"
       },
