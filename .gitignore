@@ -15,3 +15,4 @@ publisher-source/
 
 .tools/
 formal/confinement/states/
+__pycache__/

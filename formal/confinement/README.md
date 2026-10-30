@@ -24,6 +24,10 @@ A passing safe check cannot prove that the actual implementation satisfies them.
   empty client before either writes. TLC finds a counterexample to unique
   successful binding. Browser reachability and the security consequences require
   separate analysis; this model deliberately abstracts cache writes and callers.
+- `GenerationRead.tla` separates the transaction snapshot, generation check and
+  later delivery across an installation replacement. See
+  [generation-reads.md](generation-reads.md) for the bounds, fault controls and
+  corresponding browser IndexedDB observations.
 - `Admission.tla` models two resources, trusted verification and commit, requests,
   a private-data bit that survives closing and reinstalling, and fault controls.
   It assumes verification is correct, admitted resources cannot change, and the
@@ -42,6 +46,7 @@ To reproduce the checks, install Docker and fetch the pinned TLA+ tool jar:
 mkdir -p .tools
 curl -fsSL https://github.com/tlaplus/tlaplus/releases/download/v1.8.0/tla2tools.jar -o .tools/tla2tools.jar
 formal/confinement/check.sh
+python3 formal/confinement/check-generation-reads.py
 python3 formal/confinement/capture.py
 node formal/confinement/registry-trace-test.ts
 node --test formal/confinement/registry-concurrency-test.ts

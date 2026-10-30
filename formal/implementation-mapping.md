@@ -121,6 +121,10 @@ queued callbacks or native termination. `closeChild` itself does not recursively
 traverse descendants. Worker descendant termination and orphan Window behavior
 must be stated per browser/context profile rather than inferred from that method.
 
+The separate [generation read model](confinement/generation-reads.md) models an
+IndexedDB snapshot and delivery after replacement, and links it to observed
+browser overlap tests. It does not yet compose with Lifecycle's revocation rule.
+
 ## Browser obligations and evidence
 
 The source relies on browser-assigned client IDs, request destinations and
