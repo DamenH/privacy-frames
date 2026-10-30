@@ -8,6 +8,9 @@ cancellation action. It accepts only a small Boolean-expression language over
 the two recognized predicates. Extra handler statements and unknown expressions
 are rejected. It generates the Lean expression from that source condition and
 checks the theorem for every pair of Boolean inputs with `--trust=0`.
+It also checks the six constant capture expressions for the listener, navigation
+object, cancellation method and destination getters. A changed native action
+or event name fails extraction. Token normalization preserves string contents.
 
 The result establishes that the extracted condition cancels exactly when the
 destination is not both same-document and an allowed route. The proof is derived
@@ -19,7 +22,8 @@ axiom report. No production source changes are required by this experiment.
 This is a restricted source correspondence check, not a formal JavaScript
 semantics. The TypeScript parser, extractor and expression translation are trusted.
 It assumes the two predicates produce primitive Booleans without exceptions and
-that the captured functions resolve to their intended native operations. It does
+that the checked capture expressions resolve to their intended native operations
+in an uncontaminated setup environment. It does
 not establish that the handler is installed before application code, that it
 executes on every relevant navigation, or that `preventDefault` prevents every
 external effect. These are separate implementation and browser obligations.

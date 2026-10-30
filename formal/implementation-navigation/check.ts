@@ -17,13 +17,54 @@ function extract(input: string): string {
     true,
     ts.ScriptKind.TS,
   );
-  const normalized = (node: ts.Node): string =>
-    ts
+  const normalized = (node: ts.Node): string => {
+    const printed = ts
       .createPrinter({ removeComments: true })
-      .printNode(ts.EmitHint.Unspecified, node, file)
-      .replace(/\s+/g, '');
+      .printNode(ts.EmitHint.Unspecified, node, file);
+    const scanner = ts.createScanner(
+      ts.ScriptTarget.Latest,
+      true,
+      ts.LanguageVariant.Standard,
+      printed,
+    );
+    let result = '';
+    while (scanner.scan() !== ts.SyntaxKind.EndOfFileToken)
+      result += scanner.getTokenText();
+    return result;
+  };
+  const captures = new Map<string, string>([
+    ['prevent', 'Event.prototype.preventDefault'],
+    ['nativeAdd', 'EventTarget.prototype.addEventListener'],
+    ['nav', 'window.navigation'],
+    ['nativeDestination', "descriptor(NavigateEvent.prototype,'destination')!.get!"],
+    [
+      'nativeSameDocument',
+      "descriptor(NavigationDestination.prototype,'sameDocument')!.get!",
+    ],
+    ['nativeDestinationURL', "descriptor(NavigationDestination.prototype,'url')!.get!"],
+  ]);
+  const seen = new Set<string>();
   const matches: ts.ArrowFunction[] = [];
   function visit(node: ts.Node) {
+    if (
+      ts.isVariableDeclaration(node) &&
+      ts.isIdentifier(node.name) &&
+      captures.has(node.name.text)
+    ) {
+      assert(!seen.has(node.name.text), 'Duplicate captured binding');
+      assert(
+        node.initializer &&
+          ts.isVariableDeclarationList(node.parent) &&
+          node.parent.flags & ts.NodeFlags.Const,
+        'Captured binding must be const',
+      );
+      assert.equal(
+        normalized(node.initializer),
+        captures.get(node.name.text),
+        'Captured binding changed',
+      );
+      seen.add(node.name.text);
+    }
     if (
       ts.isCallExpression(node) &&
       normalized(node.expression) === 'apply' &&
@@ -47,6 +88,7 @@ function extract(input: string): string {
     ts.forEachChild(node, visit);
   }
   visit(file);
+  assert.equal(seen.size, captures.size, 'Missing captured bindings');
   assert.equal(matches.length, 1, 'Expected exactly one native navigation listener');
   const callback = matches[0];
   assert.equal(callback.parameters.length, 1);
@@ -92,6 +134,17 @@ function extract(input: string): string {
   return expression(statements[1].expression);
 }
 const expression = extract(text);
+assert.throws(
+  () =>
+    extract(
+      text.replace('Event.prototype.preventDefault', 'Event.prototype.stopPropagation'),
+    ),
+  /Captured binding changed/,
+);
+assert.throws(
+  () => extract(text.replace("'navigate',", "'navi gate',")),
+  /Listener event changed/,
+);
 const lean = `def actualDecision (sameDocument allowedRoute : Bool) : Bool := ${expression}\n\ntheorem cancellation_exact (sameDocument allowedRoute : Bool) :\n actualDecision sameDocument allowedRoute = !(sameDocument && allowedRoute) := by\n cases sameDocument <;> cases allowedRoute <;> decide\n\n#print axioms cancellation_exact\n`;
 const directory = resolve(root, '.tools/implementation-navigation');
 await mkdir(directory, { recursive: true });
@@ -141,6 +194,8 @@ const receipt = {
   generatedLeanSHA256: sha(lean),
   proofOutput: verified.stdout.trim(),
   faultControls: {
+    wrongNativeAction: 'source-rejected',
+    wrongEventName: 'source-rejected',
     missingAction: 'source-rejected',
     weakenedCondition: 'proof-rejected',
   },
