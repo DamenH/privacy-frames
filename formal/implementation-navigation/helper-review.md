@@ -48,6 +48,22 @@ plain host metadata in an uncontaminated realm. Module initialization also
 precedes entry to the realm function. The source checks do not prove those
 native-operation contracts or all import-time effects.
 
+The built root guard still initializes Acorn and the module parser's extensions
+before reaching its entry function. For example,
+`src/runtime/modules.ts` constructs `Parser.extend(importPhases())` at module
+scope. Moving a call earlier inside `prepareWindowRealm` does not move it ahead
+of this work.
+
+A local build-only experiment put an import-free navigation guard before a
+dynamic import of the actual root guard. Esbuild 0.28.2 produced one script,
+with the early guard call before
+`Promise.resolve().then(() => (init_guard(), guard_exports))`; code splitting
+was disabled. This demonstrates a possible initialization boundary, not a
+working replacement. The root guard currently reads `document.currentScript`
+during module initialization, so its script reference would need to be captured
+before deferral and passed explicitly. The child guard's configuration and
+publication protocol would also need verification under that ordering.
+
 Helpers after listener installation still need transitive summaries covering
 constructor callbacks, returned closures, delayed initialization and the point
 publisher-controlled bytes first become executable. The intrinsic and policy-tool

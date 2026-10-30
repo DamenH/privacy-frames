@@ -21,7 +21,9 @@ failures identify the missing name. All confined assertions still require denied
 constructors, hidden pending references and zero receiver upgrades.
 
 The revised test passed three consecutive local executions in Chromium and
-Firefox. The [latest full receipt](evidence/contexts-prototype-confinement.json)
+Firefox, followed by the full host publication
+[run 41132188326](https://github.com/privacy-frames/host/actions/runs/41132188326).
+The [latest full receipt](evidence/contexts-prototype-confinement.json)
 records each native handshake and the confined results. These checks cover a
 stable blank child's references; document-navigation transitions have separate
 fixtures, including [context-navigation.ts](../test/context-navigation.ts) and
