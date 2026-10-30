@@ -52,7 +52,7 @@ const origin = `http://127.0.0.1:${address.port}`;
 const server = await servers({ receiver: false });
 const evidence = {
   scope:
-    'Native preload delivery on a publisher origin and installed-window/publisher attempts after trusted test setup seeds runtime-origin preload state. Not a test of app-triggered navigation or every route to native registration authority.',
+    'Native preload delivery on a publisher origin and installed-window/publisher attempts after trusted test setup seeds runtime-origin preload state. Includes selected synthetic same-origin navigation attempts, not all navigation or native registration acquisition routes.',
   provenance: await testProvenance(import.meta.url),
   browsers: [] as object[],
   completed: false,
@@ -147,6 +147,41 @@ try {
       };
       assert.deepEqual(windowResult, expected);
       assert.deepEqual(workerResult, { ...expected, shared: true });
+      const controlMarker = 'receiver-' + randomUUID();
+      const controlPath = '/runtime/collect?control=' + controlMarker;
+      await context.request.get('http://127.0.0.1:4211' + controlPath);
+      assert(
+        server.traffic.some((entry) => entry.port === 4211 && entry.path === controlPath),
+        'Runtime receiver control failed',
+      );
+      const trafficStart = server.traffic.length;
+      const navigationAttempt = await app.evaluate((marker) => {
+        const before = location.href;
+        const target = new URL(before);
+        target.searchParams.set('private', marker);
+        const anchor = document.createElement('a');
+        anchor.href = target.href;
+        document.body.append(anchor);
+        let anchorResult = 'clicked';
+        try {
+          anchor.click();
+        } catch (error) {
+          anchorResult = error instanceof Error ? error.name : 'unknown';
+        }
+        let assignResult = 'called';
+        try {
+          location.assign(target.href);
+        } catch (error) {
+          assignResult = error instanceof Error ? error.name : 'unknown';
+        }
+        return { before, anchorResult, assignResult };
+      }, secret);
+      await app.waitForTimeout(500);
+      const privateRequests = server.traffic
+        .slice(trafficStart)
+        .filter((entry) => entry.path.includes(secret));
+      assert.deepEqual(privateRequests, [], 'App navigation reached runtime server');
+      assert.equal(app.url(), navigationAttempt.before, 'App left its original document');
       const retainedState = await inspector.evaluate(async () => {
         const registration = await navigator.serviceWorker.getRegistration('/runtime/');
         if (!registration) throw new Error('Runtime registration missing');
@@ -168,6 +203,9 @@ try {
         nativeRequests: received.filter((item) => item.preload === marker),
         seededState,
         retainedState,
+        runtimeReceiverControl: controlPath,
+        navigationAttempt,
+        privateRequests,
         windowResult,
         workerResult,
       });

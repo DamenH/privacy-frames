@@ -1,12 +1,12 @@
 {
-  "scope": "Native preload delivery on a publisher origin and installed-window/publisher attempts after trusted test setup seeds runtime-origin preload state. Not a test of app-triggered navigation or every route to native registration authority.",
+  "scope": "Native preload delivery on a publisher origin and installed-window/publisher attempts after trusted test setup seeds runtime-origin preload state. Includes selected synthetic same-origin navigation attempts, not all navigation or native registration acquisition routes.",
   "provenance": {
-    "capturedAt": "2026-10-30T19:26:31.225Z",
-    "revision": "60757bcd9814b668f4db4a0fe546cba8bfbaa12b",
+    "capturedAt": "2026-10-30T19:28:17.771Z",
+    "revision": "4731b08cd50460e38128e46a841d9e9d0872cf23",
     "dirty": true,
     "sourceSHA256": "05331956de4dc8e219a375fd9d6f7363f8e93bd22a16cd3cc881a9078069ace9",
     "runner": "formal/navigation-preload-probe.ts",
-    "runnerSHA256": "001607ef593ff4c57bb04ecb7b7f04f026f3b6dbd03d7b1aeb19a9a85c55c320",
+    "runnerSHA256": "66f6f4119e00d12ab9fba51aee1eefb26f1ed615c7b2269e2df1d0b24d5008a3",
     "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
     "artifacts": {
       "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -50,22 +50,29 @@
       },
       "nativeState": {
         "enabled": true,
-        "headerValue": "native-5fe83df4-82e4-465a-b5ae-b18a68886e3a"
+        "headerValue": "native-2181e405-7cf4-4012-85cf-322355e4e8e2"
       },
       "nativeRequests": [
         {
           "path": "/preload",
-          "preload": "native-5fe83df4-82e4-465a-b5ae-b18a68886e3a"
+          "preload": "native-2181e405-7cf4-4012-85cf-322355e4e8e2"
         }
       ],
       "seededState": {
         "enabled": true,
-        "headerValue": "trusted-seed-f0a2bdd8-a5fa-4d5f-85c0-5745733ac6f7"
+        "headerValue": "trusted-seed-2587750b-1603-49be-9bd6-1eeeb906d9dd"
       },
       "retainedState": {
         "enabled": true,
-        "headerValue": "trusted-seed-f0a2bdd8-a5fa-4d5f-85c0-5745733ac6f7"
+        "headerValue": "trusted-seed-2587750b-1603-49be-9bd6-1eeeb906d9dd"
       },
+      "runtimeReceiverControl": "/runtime/collect?control=receiver-ee50c877-9388-4ebe-a533-eaeb8cb7a094",
+      "navigationAttempt": {
+        "before": "http://127.0.0.1:4211/runtime/uOs97Jv4bqo/preload-app/",
+        "anchorResult": "clicked",
+        "assignResult": "called"
+      },
+      "privateRequests": [],
       "windowResult": {
         "state": {
           "enabled": false,
@@ -93,22 +100,29 @@
       },
       "nativeState": {
         "enabled": true,
-        "headerValue": "native-113806a5-da26-470d-b471-7fb073496bfc"
+        "headerValue": "native-4068b913-b72e-430a-b019-3b880290ab8b"
       },
       "nativeRequests": [
         {
           "path": "/preload",
-          "preload": "native-113806a5-da26-470d-b471-7fb073496bfc"
+          "preload": "native-4068b913-b72e-430a-b019-3b880290ab8b"
         }
       ],
       "seededState": {
         "enabled": true,
-        "headerValue": "trusted-seed-62d09900-dacc-449d-8cfd-66ce7418d55d"
+        "headerValue": "trusted-seed-803fdfcf-c75a-46b2-8350-301267073f67"
       },
       "retainedState": {
         "enabled": true,
-        "headerValue": "trusted-seed-62d09900-dacc-449d-8cfd-66ce7418d55d"
+        "headerValue": "trusted-seed-803fdfcf-c75a-46b2-8350-301267073f67"
       },
+      "runtimeReceiverControl": "/runtime/collect?control=receiver-a6cecf8e-237c-4f59-861c-18ea4fff9845",
+      "navigationAttempt": {
+        "before": "http://127.0.0.1:4211/runtime/uOs97Jv4bqo/preload-app/",
+        "anchorResult": "clicked",
+        "assignResult": "called"
+      },
+      "privateRequests": [],
       "windowResult": {
         "state": {
           "enabled": false,

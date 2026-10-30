@@ -21,9 +21,14 @@ still report preload disabled. Attempts to enable it or set a header raise
 remain unchanged. The publisher runs in a shared worker. The test resets the
 native state afterward.
 
+With preload still enabled, the app makes a programmatic link click and calls
+`location.assign` with a marker in a same-origin query. Neither changes the
+app URL or produces a marker-bearing runtime-server request during the 500 ms
+observation in either browser. An out-of-page request separately confirms that
+the runtime server's recorder can receive a marker. These are selected
+synthetic attempts, not tests of physical user actions or every navigation path.
+
 The native receiver control uses the publisher origin. Runtime-origin preload
 state is seeded artificially after startup; this is not evidence that a publisher
-can create that state. The test does not exercise an app-triggered navigation
-while preload is enabled or prove that every route to a native registration is
-closed. The selected virtual calls are not a receiver test of all
-browser-generated navigation requests.
+can create that state. The test does not prove that every route to a native
+registration is closed or cover all browser-generated navigation requests.
