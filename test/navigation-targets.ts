@@ -12,9 +12,9 @@ const bundle = await build({
   stdin: {
     contents: `import {createPolicyTools} from './src/runtime/enforcement/native.ts';import {createTrustedPolicy} from './src/runtime/trusted/client.ts';
 import {installDOMPolicy,installResourceAttributePolicy} from './src/runtime/enforcement/dom.ts';
-import {installNavigationPolicy} from './src/runtime/enforcement/navigation.ts';
+import {prepareNavigationPolicy} from './src/runtime/enforcement/navigation.ts';
 const tools=createPolicyTools();const get=Element.prototype.getAttribute;
-installDOMPolicy(tools,get,createTrustedPolicy(location.href));installResourceAttributePolicy(tools,String);installNavigationPolicy(tools);window.ready=true;`,
+installDOMPolicy(tools,get,createTrustedPolicy(location.href));installResourceAttributePolicy(tools,String);prepareNavigationPolicy(tools)();window.ready=true;`,
     resolveDir: process.cwd(),
   },
   bundle: true,

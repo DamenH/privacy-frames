@@ -122,6 +122,13 @@ obligations separately, with a check for changes to the cited artifacts.
 The [Lean authority-graph proofs](lean/README.md) establish a conditional result
 for arbitrary finite reference chains and checked edge additions. They do not
 prove that the browser or runtime satisfies their premises.
+The [implementation navigation experiment](implementation-navigation/README.md)
+extracts the actual cancellation condition, checks source order and connects its
+restricted semantics to genuine-event receiver tests. Navigation setup now
+installs cancellation before private parser evaluation and context factories,
+then finalizes the remaining hooks after native popup capture. This reduces the
+pre-cancellation helper assumptions; it does not verify the entire JavaScript
+runtime or browser.
 The [canonical path loop proof](path-lean/README.md) checks an abstract
 version of the admission rule for arbitrary finite inputs. Its correspondence
 to TypeScript and browser URL behavior is not machine-verified.

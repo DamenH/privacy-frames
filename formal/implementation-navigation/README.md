@@ -83,3 +83,12 @@ initialization, cyclic aliases and a substituted source are negative controls.
 This checks provenance and byte correspondence, not esbuild correctness or the
 behavior of the resulting program. TypeScript's parsing of literal values is
 also trusted. Source/build/dependency changes trigger the proof workflow.
+
+The production initialization is now split: `prepareNavigationPolicy` installs
+cancellation early and returns a finalizer for the remaining navigation hooks.
+The realm calls the finalizer after native popup capture. The source-order check
+requires cancellation before the private parser and all context factories, and
+rejects moving parser evaluation earlier. This reduces the helper behavior that
+must be trusted before cancellation; intrinsic preparation and policy-tool
+construction remain before it. The whole sandbox still requires all effects
+and publication policies to finish before application execution.

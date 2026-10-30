@@ -1,12 +1,13 @@
 # Preparation helper obligations
 
 The selected root path begins in a trusted shell before publisher markup is
-rendered. That is a browser/controller assumption, not a consequence of the
-navigation condition theorem. `prepareWindowRealm` constructs the private parser
-context, policy tools, resource aliases, publisher facade and context factories
-before installing navigation policy. Its direct order is source-checked.
+rendered. The navigation listener now installs immediately after intrinsic and
+policy-tool preparation, before the private parser and all application context
+factories. The source-order checker rejects moving these helpers before it.
+The listener's inputs are initial root metadata and native event operations;
+no publisher markup is required to install it.
 
-The known execution operation during that preparation is private-frame eval in
+The private parser still uses private-frame eval in
 `src/runtime/trusted/context.ts`. The helper creates an empty iframe, reads its
 eval, applies it to the `source` parameter and removes the frame. Its caller,
 `src/runtime/trusted/client.ts`, supplies a default import from
@@ -28,13 +29,15 @@ effects, or that frame construction obeys the expected browser behavior. Those
 remain proof obligations. The parser, extractor and uncontaminated initial native
 bindings are trusted for the source check.
 
-Moving the entire navigation installer earlier is not a mechanical simplification.
-It replaces window.open, while createPopupFactory captures window.open during its
-construction. Reordering these operations would change the capture. Isolating an
-earlier cancellation kernel would require an explicit design and compatibility
-checks; this experiment has not changed that production order.
+Navigation preparation now has two stages. `prepareNavigationPolicy` captures
+navigation state and installs the listener, then returns a finalizer for the
+remaining hooks. `prepareWindowRealm` calls that finalizer after the popup
+factory captures native window.open. This preserves that native capture while
+moving cancellation ahead of private parser evaluation. The checker enforces
+the order relative to the parser, context factories and popup capture.
 
-The other preparation helpers still need transitive effect summaries covering
+The intrinsic and policy-tool preparation before the listener still need effect
+summaries. Helpers after listener installation also need transitive summaries covering
 constructor callbacks, returned closures, delayed initialization and the exact
 point publisher-controlled bytes first become executable. A list of top-level
 calls or passing browser examples does not prove these summaries.

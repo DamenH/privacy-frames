@@ -121,7 +121,10 @@ function verify(guardSource: string, realmSource: string) {
   const statements = prepare.body.statements;
   const navigationCalls = statements.filter(
     (s) =>
-      ts.isExpressionStatement(s) && callNamed(s.expression, 'installNavigationPolicy'),
+      ts.isVariableStatement(s) &&
+      s.declarationList.declarations.length === 1 &&
+      !!s.declarationList.declarations[0].initializer &&
+      callNamed(s.declarationList.declarations[0].initializer, 'prepareNavigationPolicy'),
   );
   assert.equal(
     navigationCalls.length,
@@ -129,6 +132,44 @@ function verify(guardSource: string, realmSource: string) {
     'Navigation installation is not a direct statement',
   );
   const navIndex = statements.indexOf(navigationCalls[0]);
+  for (const helper of [
+    'createTrustedPolicy',
+    'resourceAliases',
+    'createPublisherContainer',
+    'createWorkerFactory',
+    'createSharedWorkerFactory',
+    'createWorkletFactory',
+    'installScriptPolicy',
+    'createDocumentFactory',
+    'createPopupFactory',
+  ]) {
+    const invocations = calls(prepare.body, helper);
+    assert.equal(invocations.length, 1, 'Preparation helper shape changed: ' + helper);
+    const statementIndex = statements.findIndex(
+      (s) => s.pos <= invocations[0].pos && s.end >= invocations[0].end,
+    );
+    assert(
+      statementIndex > navIndex,
+      'Helper precedes navigation cancellation: ' + helper,
+    );
+  }
+  const finalizers = statements.filter(
+    (s) =>
+      ts.isExpressionStatement(s) && callNamed(s.expression, 'finishNavigationPolicy'),
+  );
+  assert.equal(finalizers.length, 1, 'Missing navigation finalization');
+  const popup = calls(prepare.body, 'createPopupFactory')[0];
+  const popupIndex = statements.findIndex(
+    (s) => s.pos <= popup.pos && s.end >= popup.end,
+  );
+  assert(
+    statements.indexOf(finalizers[0]) > popupIndex,
+    'Navigation hooks finalized before native popup capture',
+  );
+  assert(
+    statements.indexOf(finalizers[0]) > navIndex,
+    'Navigation finalization precedes preparation',
+  );
   const returns = statements
     .map((s, i) => (ts.isReturnStatement(s) ? i : -1))
     .filter((i) => i >= 0);
@@ -147,6 +188,18 @@ function verify(guardSource: string, realmSource: string) {
   };
 }
 const result = verify(guard, realm);
+const parserLine = '  const policy = createTrustedPolicy(applicationURL);\n';
+assert.equal(realm.split(parserLine).length, 2);
+const parserEarly = realm
+  .replace(parserLine, '')
+  .replace(
+    '  const finishNavigationPolicy = prepareNavigationPolicy(',
+    parserLine + '  const finishNavigationPolicy = prepareNavigationPolicy(',
+  );
+assert.throws(
+  () => verify(guard, parserEarly),
+  /Helper precedes navigation cancellation/,
+);
 const preparation = 'const realm = prepareWindowRealm(';
 assert.equal(guard.split(preparation).length, 2, 'Preparation anchor changed');
 assert.throws(
@@ -157,10 +210,17 @@ assert.throws(
     ),
   /Expected one content start/,
 );
-const install = '  installNavigationPolicy(';
+const install = '  const finishNavigationPolicy = prepareNavigationPolicy(';
 assert.equal(realm.split(install).length, 2, 'Installation anchor changed');
 assert.throws(
-  () => verify(guard, realm.replace(install, '  return;\n  installNavigationPolicy(')),
+  () =>
+    verify(
+      guard,
+      realm.replace(
+        install,
+        '  return;\n  const finishNavigationPolicy = prepareNavigationPolicy(',
+      ),
+    ),
   /early or missing direct return/,
 );
 const hash = (s: string) => createHash('sha256').update(s).digest('hex');
@@ -173,7 +233,11 @@ await writeFile(
       sourceHashes: { [guardPath]: hash(guard), [realmPath]: hash(realm) },
       checkerSHA256: hash(await readFile(import.meta.filename, 'utf8')),
       result,
-      faultControls: { earlyStart: 'rejected', earlyReturn: 'rejected' },
+      faultControls: {
+        earlyStart: 'rejected',
+        earlyReturn: 'rejected',
+        parserBeforeCancellation: 'rejected',
+      },
       completed: true,
     },
     null,

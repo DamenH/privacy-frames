@@ -11,7 +11,7 @@ import { installScriptPolicy } from '../enforcement/scripts.ts';
 import { createPublisherContainer } from '../publisher/client.ts';
 import { resourceAliases } from '../resource-aliases.ts';
 import { createPolicyTools } from '../enforcement/native.ts';
-import { installNavigationPolicy } from '../enforcement/navigation.ts';
+import { prepareNavigationPolicy } from '../enforcement/navigation.ts';
 import { installDOMPolicy, installResourceAttributePolicy } from '../enforcement/dom.ts';
 import { installEffectPolicy } from '../enforcement/effects.ts';
 import { scopeWebStorage } from '../enforcement/web-storage.ts';
@@ -43,7 +43,6 @@ export function prepareWindowRealm({
 }: WindowRealmOptions) {
   const rawGetAttribute = Element.prototype.getAttribute;
   const NativeURL = URL;
-  const policy = createTrustedPolicy(applicationURL);
   prepareRuntimeIntrinsics();
   const tools = createPolicyTools();
   const { method, accessor, descriptor, apply, fail, define } = tools;
@@ -51,6 +50,16 @@ export function prepareWindowRealm({
   let resourceBase = applicationURL;
   let sourceURL = applicationURL;
   let sharedIdentity: SharedWorkerIdentity | undefined;
+  const finishNavigationPolicy = prepareNavigationPolicy(
+    tools,
+    internalRecord({
+      documentURL: documentURL || applicationURL,
+      ...(!documentURL
+        ? internalRecord({ applicationURL, sourceURL: () => sourceURL })
+        : internalRecord({})),
+    }),
+  );
+  const policy = createTrustedPolicy(applicationURL);
   const resources = resourceAliases(
     internalRecord({
       method,
@@ -117,16 +126,7 @@ export function prepareWindowRealm({
         }),
       )
     : undefined;
-  installNavigationPolicy(
-    tools,
-    internalRecord({
-      documentURL: documentURL || applicationURL,
-      ...(!documentURL
-        ? internalRecord({ applicationURL, sourceURL: () => sourceURL })
-        : internalRecord({})),
-      open: openPopup,
-    }),
-  );
+  finishNavigationPolicy(openPopup);
   installDOMPolicy(tools, rawGetAttribute, policy, scripts, documents, resources.mapURL);
   installEffectPolicy(
     tools,

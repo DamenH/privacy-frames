@@ -13,9 +13,9 @@ const fixture = await build({
     sourcefile: 'context-navigation-fixture.js',
     contents: `
 import { createPolicyTools } from './src/runtime/enforcement/native.ts';
-import { installNavigationPolicy } from './src/runtime/enforcement/navigation.ts';
+import { prepareNavigationPolicy } from './src/runtime/enforcement/navigation.ts';
 globalThis.installTestNavigation = documentURL => {
-  installNavigationPolicy(createPolicyTools(), { documentURL });
+  prepareNavigationPolicy(createPolicyTools(), { documentURL })();
   globalThis.navigationPrepared = true;
 };`,
   },

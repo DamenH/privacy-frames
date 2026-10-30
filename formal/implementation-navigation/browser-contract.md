@@ -21,7 +21,7 @@ inspected argument, not a machine-checked translation of their algorithms.
 | Listener runs synchronously, with effective cancellation | Source checker rejects an async callback, checks capture registration and exact action. Browser fixture observes cancelable events and prevention in the normal case. |
 | Cross-document condition requests cancellation without evaluating the route predicate | Source-derived short-circuit theorem covers arbitrary route return or exception. |
 | Cancellation stops the request and its preload | Browser contract supported by zero marker requests in normal cases and actual marker delivery when the action is removed in test bundles. |
-| Listener and captured natives are established before application execution | Source-order checker establishes the selected direct call/return order. No-publisher-execution contracts for trusted helpers, imports and browser shell parsing remain assumptions. |
+| Listener and captured natives are established before application execution | Source-order checker puts listener installation before private parser evaluation and context factories, and before realm return. Intrinsic/tool preparation, imports and browser shell parsing remain assumed safe before the listener. |
 
 The browser fixture adds a later observer to record trusted status, cancelability,
 default prevention, same-document status and navigation type. It observes a

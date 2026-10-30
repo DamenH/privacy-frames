@@ -45,7 +45,7 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
   ]);
   const policyFunctions = file.statements
     .filter(ts.isFunctionDeclaration)
-    .filter((node) => node.name?.text === 'installNavigationPolicy');
+    .filter((node) => node.name?.text === 'prepareNavigationPolicy');
   assert.equal(policyFunctions.length, 1, 'Navigation installer changed');
   assert(
     !policyFunctions[0].modifiers?.some(

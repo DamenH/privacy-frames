@@ -33,8 +33,8 @@
     "formal/evidence/hyperlink-auditing.json": "4deb55ac64e514eb55b7b00233c4281db617a2b0802ff48f0a2317761111b766",
     "formal/evidence/idl-surface-report.json": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
     "formal/evidence/modern-reporting.json": "c8f4038654445ca9da6c98a50244bafe8b6bd0fec6012eef62070319c4acd7b1",
-    "formal/evidence/navigation-preload-fault.json": "5b560ee72ec374acada6366a30cba799aea1e4f69213b7393919a18874afc8bc",
-    "formal/evidence/navigation-preload.json": "fa33250529cffbfce5dfe791ec228356b40d2e6162b7a2765787458c00a70df4",
+    "formal/evidence/navigation-preload-fault.json": "411aa9366bbc3238571e431a9993930b6a0a17aa1b62669f90459ee36d74f0a3",
+    "formal/evidence/navigation-preload.json": "986c37d9ca1d45c81507598ec9da08e9d256f7d28fc394f15987ac1daa9807b7",
     "formal/evidence/publisher-navigate.json": "c6577e96384b8316e4f3841bb0dce562b1eb791a4ca7b31d9ffc2cabcc9d53fb",
     "formal/evidence/publisher-routes.json": "0d18dbd4f211c056f77e2ff7c9e513c65414d17df627902fc5fa3573a50fcccd",
     "formal/evidence/reporting.json": "e556ea9e7749c6f6ebd958cad2b8bacffd33d79420192bf35225b093afbb895d",
@@ -46,6 +46,14 @@
     "formal/evidence/websocket-fault.json": "a873c228713a89508fc82cd56fa29f8ec535549919f0daaad1b2464ac421e876",
     "formal/evidence/worker-registration.json": "c81c512d2bc4cacca244e30e9f8c215e8288bf676ee64ba9e994d09ff5fb0da5",
     "formal/idl-surface-report.md": "e78ca56cb8a7093ec49a0cb23eff21443eb76529492911adc2dbd7a8959973e3",
+    "formal/implementation-navigation/Expression.lean": "45e39bd82a01a24e8cfce5b5a53bd6be43522e1193b85f9aaecc23ac6caa9907",
+    "formal/implementation-navigation/README.md": "da8037477180e26880671fd3c2f7057bc9cbb8f6288c7339f390dd3583ea06f8",
+    "formal/implementation-navigation/browser-contract.md": "4c9bf61b23d77296f41f2a5d68c3195bfa7b22609ab70e8ac4024a924ed0b5d8",
+    "formal/implementation-navigation/check.ts": "47ec0fc087043769f2daa62a7eaee6f09455372685d9f5324964ea27a5d6b980",
+    "formal/implementation-navigation/helper-review.md": "af406d73675e58790e98984579bdf6b6b20a2b7a79ce755077c7a96b684373ee",
+    "formal/implementation-navigation/result.json": "24d62057473d88c154e23fca44c297264683d8bb868e9f8caa61f4e0d59b33e1",
+    "formal/implementation-navigation/setup-check.ts": "b834a2035e5f33465cf4ab5547b29bd9308122c67c2343327e63c213bcf92b8f",
+    "formal/implementation-navigation/setup-result.json": "24c7f7ec44d1dc8ed5daea62ff09e33cf2b2604c84b31da063d4b61571b2ef58",
     "formal/lean/CapabilityBoundary.lean": "5cf557978cf54255fded00ba991b90db7e54056e39f81a769f016c32ace7cf23",
     "formal/lean/README.md": "e0f71cc0ca90052045d6b1611bb33bf6f4d62732031f66099052ab4c46935d01",
     "formal/lean/Reachability.lean": "b643cfdbf2042d135ce5bb94204dcbd9921e5f898b1ee44baed24c4e4a49d0ab",
@@ -86,7 +94,7 @@
     "src/runtime/contexts/shared-controller.ts": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174",
     "src/runtime/contexts/shared-worker-factory.ts": "24e9cbffafcdf036811fe91177aa63bf2a122b303c4be829d2d79e7b8e94eb2a",
     "src/runtime/contexts/storage.ts": "35dba5f75e80958cb3f4e965e7fb4a69125bc13cfc61b7753a7a795f0b3fb23a",
-    "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d",
+    "src/runtime/contexts/window-realm.ts": "2cbc11f9e1420e45e060a8e89201f80b7417482b5ec6827e5461176260f70f4b",
     "src/runtime/contexts/worker-factory.ts": "a91ac1819cea5a4611f8f0c63fbd4232f3764aa95dac6188b39909ad9045f4f2",
     "src/runtime/contexts/worker-guard.ts": "1cb3e8709dad51a8aecb291a508cf05c15e35e37d06342c0ca90421c4b362ae1",
     "src/runtime/contexts/worker-realm.ts": "edce33feb3f62d3d6295da029d71993526541ea71d34a5fdd7e196024bdcb2e2",
@@ -96,9 +104,10 @@
     "src/runtime/enforcement/effects.ts": "466c165e4ef9d82e2011c85cd2639e3f7e7152309c49fbb5c8962ed0fd1bb691",
     "src/runtime/enforcement/native-markup.ts": "75a02db4213b2f1a87404fca2bfb29fd60623599c92625dfc803b0b24ab9d105",
     "src/runtime/enforcement/navigation-targets.ts": "f7b5265d3d971c39d888abb99f837204e94d727d5df493ba38d54cc5bb6efd0b",
-    "src/runtime/enforcement/navigation.ts": "7f7a604d0ba4dacfa2905738d8c2f6599a9ae4239d45e67e3bd62ab69e8dc8fd",
+    "src/runtime/enforcement/navigation.ts": "9bb56df013fd1e139dd1385b0aa55e67386926ca97ab7f58181820374b50fa63",
     "src/runtime/enforcement/resource-elements.ts": "cd5a8c4109e93471ec2cc9d3dad1060c34ae2bb66b2f4ae9d547279d6ca8c234",
     "src/runtime/enforcement/scripts.ts": "11c120d0aaea8159f2b8c75a59e9c6fab064935889c909526e21b76facf77ddb",
+    "src/runtime/guard.ts": "9809dc1ea180de3f3906825bc36ef66cdd9e8e51c33a44e1e5a3f217cc76af8f",
     "src/runtime/modules.ts": "45062e9a74b48da2b74086a7f247f86e0202cd43f166c8084cbaf5fd5377c675",
     "src/runtime/publisher/client.ts": "e9eb2dfc4cab4e0e577f7ab2fbee8e310e1ebbdc042ea4c95ba954cef264b9cf",
     "src/runtime/publisher/controller.ts": "18acc8f5ecdaa75a275cac65bd0ff9cc4e5139a39f2d875bc7eb7754b48f1dff",
@@ -111,12 +120,12 @@
     "src/shared/application-navigation.ts": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
     "src/shared/runtime-url.ts": "26503f8994b0307030dddb9f843f6bd438573869b7ab01226565c865c9e3c24f",
     "test/application-history.ts": "44707c8287539c836044bc77b75df4edabfc1cd5ad509803766c31d4962f3a79",
-    "test/context-navigation.ts": "b646e2913b5db49f76685326b9e357196e09f837a5a45f17a9bfaaa8c22ae62b",
+    "test/context-navigation.ts": "43096a006aef95ced97fa7818eb332edebbc1dea2ae94ffd002de68cbcea217b",
     "test/dynamic-scripts.ts": "5c960cd9340eac2b6423ed7009e39e074aaad40832ee1d446aa77cb5db7226ca",
     "test/installation-origin.ts": "6e8325505153a757266dc0f5a8b9e1ddc174493edc259d4212f4d26946d541ce",
     "test/installation-session.test.ts": "8225fda24d345cca301fe36a631c6841d9f7a5a9accff36a656e2f3f1fd51cd0",
     "test/native-markup.ts": "c7f2e8da0108ef2fae10eba4441dbfe7e4a7494ffd8631fe0a9b3b014b8f46e1",
-    "test/navigation-targets.ts": "d7aa5fe4179dfcc6ae52871424e213eff69f67f6f35a40dff317067a6a1e9030",
+    "test/navigation-targets.ts": "0440a9463c01e536b98d4f4296a30f1e32a17efc011ca60cf32c065544c3e22e",
     "test/publisher-contexts.ts": "8f66e97fda6b329d12ca9eb8e144ea4d4c7e0e6b257401ec197bd59c46bf83f3",
     "test/publisher-events.test.ts": "f6235008bcdce5550b875f3293926037182b604c9c177abe6a7b0cf435981bce",
     "test/publisher-store.ts": "e7a7e7220d56a9a2cf083f8ea5212e6701f7fdd69e4609740284705b1b8481b6",
@@ -1561,6 +1570,53 @@
         "native_control": "recorded",
         "confined_test": "recorded",
         "fault_control": "not-recorded"
+      }
+    },
+    {
+      "id": "source_navigation_path",
+      "title": "Source-derived root navigation cancellation path",
+      "disposition": "reviewed-scoped",
+      "preconditions": "A root window executes uncontaminated trusted setup and receives the selected genuine cancelable cross-document push event before its fetch.",
+      "enforcement": "Install navigation cancellation before private parser evaluation and context factories; finalize other navigation hooks after native popup capture.",
+      "source_paths": [
+        "src/runtime/enforcement/navigation.ts",
+        "src/runtime/contexts/window-realm.ts",
+        "src/runtime/guard.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "formal_theorem",
+          "description": "A restricted expression extracted from actual TypeScript is kernel-checked for Boolean decisions and abrupt-completion short-circuit behavior; parser, extractor, native binding interpretation and browser contracts remain trusted.",
+          "paths": [
+            "formal/implementation-navigation/README.md",
+            "formal/implementation-navigation/check.ts",
+            "formal/implementation-navigation/Expression.lean",
+            "formal/implementation-navigation/result.json",
+            "formal/implementation-navigation/setup-check.ts",
+            "formal/implementation-navigation/setup-result.json",
+            "formal/implementation-navigation/browser-contract.md",
+            "formal/implementation-navigation/helper-review.md"
+          ]
+        },
+        {
+          "kind": "fault_control",
+          "description": "Actual-source test mutation of the cancellation action permits marker delivery under deliberately enabled preload; normal prepared windows prevent it in the selected Chromium/Firefox cases.",
+          "paths": [
+            "formal/navigation-preload-fault.md",
+            "formal/navigation-preload-fault.ts",
+            "formal/evidence/navigation-preload-fault.json"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "The extractor and restricted semantics are not a machine-checked JavaScript translation.",
+        "Source-order checks do not prove arbitrary helper effects, import initialization, all call reachability or child-context startup.",
+        "Browser event delivery, native getter validity, effective cancellation and fetch ordering remain explicit contracts supported only by selected tests."
+      ],
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "not-recorded",
+        "fault_control": "recorded"
       }
     }
   ]

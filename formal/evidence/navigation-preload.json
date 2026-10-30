@@ -1,10 +1,10 @@
 {
   "scope": "Native preload delivery on a publisher origin and installed-window/publisher attempts after trusted test setup seeds runtime-origin preload state. Includes selected synthetic same-origin navigation attempts, not all navigation or native registration acquisition routes.",
   "provenance": {
-    "capturedAt": "2026-10-30T19:32:13.420Z",
-    "revision": "f474b6b08f87f2d252edd8c457f353c2ef89eeb1",
+    "capturedAt": "2026-10-30T20:26:13.020Z",
+    "revision": "fa1bffe0a8b71521752a8a9fa13fa5ff4e0dc9c9",
     "dirty": true,
-    "sourceSHA256": "05331956de4dc8e219a375fd9d6f7363f8e93bd22a16cd3cc881a9078069ace9",
+    "sourceSHA256": "25195737b9001582bfc600f8f1f8a3a0785eff527aadc5ed5c78ec3038c75719",
     "runner": "formal/navigation-preload-probe.ts",
     "runnerSHA256": "3dc4b881d114035db87de556354dce9a5a5cac60e2c5fa3d115ae92500470803",
     "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
@@ -17,13 +17,13 @@
       "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
       "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
       "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
-      "dist-manager/sw.js": "47683c5a69dd3eb9c2ef3b383f04598b3262e8191dd38c9ab80217afce791c6f",
+      "dist-manager/sw.js": "55ed1b655ef6d8f3b329e0ad98c8eb3380265587e72fa01b1bb171a318827c65",
       "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
       "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
       "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
-      "dist-runtime/document-guard.js": "117d37a809d044b70d56927dbf2aa798250cb6e5ff7fe8b2913de91842425c62",
-      "dist-runtime/guard.js": "5e4961bb6eb78775af658b1c949cded25c70bb78b717ea0098df4da25c9260d4",
+      "dist-runtime/document-guard.js": "ac25b68c541a0a779335f10212d795d6b00abb9b76bc70a8f0b6303b3119c9cd",
+      "dist-runtime/guard.js": "1e17de49bfe7c93babde7c0117f6ecc488df1bc5fdab066424fa989136290ffb",
       "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
       "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
       "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
@@ -31,7 +31,7 @@
       "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
       "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
       "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
-      "dist-runtime/sw.js": "60a83e8bc57b7e6543f030291f62bc797834cd5848a9e7f759782c428e40cc45",
+      "dist-runtime/sw.js": "07721e1669365a3b6530fa921a0b699bd7761b1cbdc7d517330207bb03ed7f7c",
       "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
       "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
       "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -50,26 +50,26 @@
       },
       "nativeState": {
         "enabled": true,
-        "headerValue": "native-abfa9ece-ac49-4e58-b481-f6c76d1e1e9b"
+        "headerValue": "native-dc0e0095-2152-4eae-b16f-547f3a85901f"
       },
       "nativeRequests": [
         {
           "path": "/preload",
-          "preload": "native-abfa9ece-ac49-4e58-b481-f6c76d1e1e9b"
+          "preload": "native-dc0e0095-2152-4eae-b16f-547f3a85901f"
         }
       ],
       "seededState": {
         "enabled": true,
-        "headerValue": "trusted-seed-56f125f3-8d82-492b-a6b7-6d35b66c6ff0"
+        "headerValue": "trusted-seed-5fae154d-a87d-4c79-a830-529a3df6f06b"
       },
       "retainedState": {
         "enabled": true,
-        "headerValue": "trusted-seed-56f125f3-8d82-492b-a6b7-6d35b66c6ff0"
+        "headerValue": "trusted-seed-5fae154d-a87d-4c79-a830-529a3df6f06b"
       },
-      "runtimeReceiverControl": "/runtime/collect?control=receiver-0720df35-60fb-48f9-9824-d6a253a7e320",
-      "privateMarker": "private-5f39fa9d-abe0-4b5f-9058-36baa1c338a1",
+      "runtimeReceiverControl": "/runtime/collect?control=receiver-ef2e5689-8377-466a-b68e-739929607a7c",
+      "privateMarker": "private-40660d65-2ede-4bf5-a131-59ab054613ff",
       "navigationAttempt": {
-        "before": "http://127.0.0.1:4211/runtime/MihZjB5Rn1k/preload-app/",
+        "before": "http://127.0.0.1:4211/runtime/1d_bLQ2q7cs/preload-app/",
         "anchorResult": "clicked",
         "assignResult": "called"
       },
@@ -101,26 +101,26 @@
       },
       "nativeState": {
         "enabled": true,
-        "headerValue": "native-ae23c37d-6090-4e71-a152-0158001aa2f0"
+        "headerValue": "native-c7836682-6da9-407a-a5bc-501ea05b2124"
       },
       "nativeRequests": [
         {
           "path": "/preload",
-          "preload": "native-ae23c37d-6090-4e71-a152-0158001aa2f0"
+          "preload": "native-c7836682-6da9-407a-a5bc-501ea05b2124"
         }
       ],
       "seededState": {
         "enabled": true,
-        "headerValue": "trusted-seed-97dc0acd-fae0-4bb2-a62d-a72a8b53b06d"
+        "headerValue": "trusted-seed-b4daa74e-3ba7-4aec-b119-791e4f11c73d"
       },
       "retainedState": {
         "enabled": true,
-        "headerValue": "trusted-seed-97dc0acd-fae0-4bb2-a62d-a72a8b53b06d"
+        "headerValue": "trusted-seed-b4daa74e-3ba7-4aec-b119-791e4f11c73d"
       },
-      "runtimeReceiverControl": "/runtime/collect?control=receiver-e4a69b8c-31f4-4741-930e-54ca4699401c",
-      "privateMarker": "private-5a720480-d3c1-4768-b785-2025bda33894",
+      "runtimeReceiverControl": "/runtime/collect?control=receiver-9c5b33fc-a5d4-4b6f-ad35-accf17afb0fb",
+      "privateMarker": "private-05279112-7844-40cb-9f21-a09257379807",
       "navigationAttempt": {
-        "before": "http://127.0.0.1:4211/runtime/MihZjB5Rn1k/preload-app/",
+        "before": "http://127.0.0.1:4211/runtime/1d_bLQ2q7cs/preload-app/",
         "anchorResult": "clicked",
         "assignResult": "called"
       },
