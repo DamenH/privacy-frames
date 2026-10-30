@@ -31,6 +31,9 @@ upgrade before publication and is not part of CI.
 A separate [test-only guard pause](startup/LOCAL-GUARD.md) passed the intended
 upgrade-before-publication schedule in Chromium and Firefox, with an early-release
 ordering control. It covers those instrumented schedules, not every interleaving.
+The [partial trace comparison](startup/LIFECYCLE-PROJECTION.md) maps these four
+observed schedules to the TLC lifecycle graph, with root startup and child
+publication explicitly inferred. It rejects 30 deliberately faulty projections.
 
 The receiver tests now include a working HTTP/3 WebTransport endpoint and
 native hyperlink-auditing and legacy CSP-reporting controls. In the tested

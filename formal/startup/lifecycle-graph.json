@@ -1,0 +1,3708 @@
+{
+  "scope": "TLC LifecycleSafe finite graph; not a graph derived from TypeScript",
+  "image": "eclipse-temurin:21-jre@sha256:0b99b3376fbb50dbf9c0af8535fdd5b8eb0d3fdfc8b1e4967f383b6919f6901a",
+  "jarSHA256": "fc6878c603f0fdc18b9fe3e5bf51860cb90ab5b1154e3c371660c036d6bdd63e",
+  "inputs": {
+    "Lifecycle.tla": "2d039454e4827e027b2b82a95ca1ad70b440d96e21e217e5b7e8681122407800",
+    "LifecycleSafe.cfg": "60036b24f016af88b68d44c981c938c9c2907432be7bd9fa3b4c25bb01e3311f"
+  },
+  "initial": "950806059909039291",
+  "nodes": {
+    "950806059909039291": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "absent",
+        "child": "absent"
+      }
+    },
+    "-2378239071810432803": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "preparing",
+        "child": "absent"
+      }
+    },
+    "-6413501699671758876": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "absent",
+        "child": "absent"
+      }
+    },
+    "-4470637944049716491": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "absent",
+        "child": "absent"
+      }
+    },
+    "2114338916651864594": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "revoked",
+        "child": "absent"
+      }
+    },
+    "717661614236084234": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "preparing",
+        "child": "absent"
+      }
+    },
+    "-2371577578347737867": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "prepared",
+        "child": "absent"
+      }
+    },
+    "-2335797734994262061": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "preparing",
+        "child": "absent"
+      }
+    },
+    "-7405369515588445988": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "absent",
+        "child": "absent"
+      }
+    },
+    "7654502277688922538": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "absent",
+        "child": "absent"
+      }
+    },
+    "3763664002698929235": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "revoked",
+        "child": "absent"
+      }
+    },
+    "6188639656629346481": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "revoked",
+        "child": "absent"
+      }
+    },
+    "2447737403489651822": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "prepared",
+        "child": "absent"
+      }
+    },
+    "8852646364853558772": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "absent"
+      }
+    },
+    "-7762077963032296587": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "preparing",
+        "child": "absent"
+      }
+    },
+    "-4829818759947838306": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "prepared",
+        "child": "absent"
+      }
+    },
+    "621212045365231364": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "preparing",
+        "child": "absent"
+      }
+    },
+    "-5921807231811148509": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "absent"
+      }
+    },
+    "7872015648939584485": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "absent"
+      }
+    },
+    "9018697646616013259": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "preparing"
+      }
+    },
+    "1021596710141398381": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "prepared",
+        "child": "absent"
+      }
+    },
+    "8913101438561176314": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "absent"
+      }
+    },
+    "4762384668487572485": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "prepared",
+        "child": "absent"
+      }
+    },
+    "2705210329033611590": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "absent"
+      }
+    },
+    "-739907066154879129": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "preparing"
+      }
+    },
+    "6340144678040000746": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "absent"
+      }
+    },
+    "5699947815860596377": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "preparing"
+      }
+    },
+    "-8713776653276546515": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "revoked",
+        "child": "revoked"
+      }
+    },
+    "-8072748748100514585": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "prepared"
+      }
+    },
+    "3486817362364436060": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "published",
+        "child": "absent"
+      }
+    },
+    "-5088860197428914363": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "absent"
+      }
+    },
+    "-3261762000387737353": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "preparing"
+      }
+    },
+    "-6000241878647754195": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "absent"
+      }
+    },
+    "4131903317173513719": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "preparing"
+      }
+    },
+    "8789927785539222198": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "revoked",
+        "child": "revoked"
+      }
+    },
+    "2348678637291134867": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "prepared"
+      }
+    },
+    "-3315805679531086311": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "revoked",
+        "child": "absent"
+      }
+    },
+    "-5035400327324324569": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "preparing"
+      }
+    },
+    "4120565042479191946": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "prepared"
+      }
+    },
+    "-5659294692548620600": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "preparing",
+        "child": "revoked"
+      }
+    },
+    "3874797636988890078": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "revoked",
+        "child": "revoked"
+      }
+    },
+    "-1471734109684850002": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "published"
+      }
+    },
+    "-8067036625286536956": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "absent"
+      }
+    },
+    "-5741323153224953271": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "published",
+        "child": "preparing"
+      }
+    },
+    "-5331521707537875983": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "absent"
+      }
+    },
+    "-1609530042614676677": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "preparing"
+      }
+    },
+    "395450901654914953": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "prepared"
+      }
+    },
+    "-1020788328226085402": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "absent"
+      }
+    },
+    "6496565016978712155": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "preparing"
+      }
+    },
+    "-1286805364491407523": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "prepared"
+      }
+    },
+    "-4090652695191220826": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "preparing",
+        "child": "revoked"
+      }
+    },
+    "7133933083078900738": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "published"
+      }
+    },
+    "1068906921439140102": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "preparing",
+        "child": "absent"
+      }
+    },
+    "-6358932034465008894": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "revoked",
+        "child": "revoked"
+      }
+    },
+    "-4074823130509356596": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "prepared"
+      }
+    },
+    "-2764708309411289604": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "published"
+      }
+    },
+    "-2194896292532599092": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "preparing",
+        "child": "revoked"
+      }
+    },
+    "7273771639575667000": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "prepared",
+        "child": "revoked"
+      }
+    },
+    "8488193840972395343": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "running"
+      }
+    },
+    "-5091951660792214721": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "preparing"
+      }
+    },
+    "-2326596985791319998": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "published",
+        "child": "prepared"
+      }
+    },
+    "-2067437837997809201": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "preparing"
+      }
+    },
+    "-2444698326835826729": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "prepared"
+      }
+    },
+    "4900026998818026386": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "published"
+      }
+    },
+    "-6925132639462309803": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "preparing"
+      }
+    },
+    "-6191579285383555843": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "prepared"
+      }
+    },
+    "-5769964297157810542": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "published"
+      }
+    },
+    "-5477844440476902929": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "prepared",
+        "child": "revoked"
+      }
+    },
+    "252534909045944353": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "running"
+      }
+    },
+    "4241647643894422399": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "prepared",
+        "child": "absent"
+      }
+    },
+    "3327021387212573908": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "preparing",
+        "child": "revoked"
+      }
+    },
+    "3217023906093786690": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "published"
+      }
+    },
+    "8277897298722316962": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "running"
+      }
+    },
+    "3396764867991184798": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "prepared",
+        "child": "revoked"
+      }
+    },
+    "-6937130714925377824": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "revoked"
+      }
+    },
+    "-9166798791880101647": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "running"
+      }
+    },
+    "-7655920693524649103": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "prepared"
+      }
+    },
+    "2803835073019205932": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "published",
+        "child": "published"
+      }
+    },
+    "7923069030421812313": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "prepared"
+      }
+    },
+    "9156465458264164446": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "published"
+      }
+    },
+    "-3206672948063559955": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "published",
+        "child": "running"
+      }
+    },
+    "655773571280541440": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "prepared"
+      }
+    },
+    "-3705354939398836930": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "published"
+      }
+    },
+    "-8354576092278873543": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "running"
+      }
+    },
+    "-1587681439323056754": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "revoked"
+      }
+    },
+    "-6128937351509896145": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "absent"
+      }
+    },
+    "-5354303044599103507": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "prepared",
+        "child": "revoked"
+      }
+    },
+    "-8620383165680415487": {
+      "network": false,
+      "epoch": 0,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 0,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "running"
+      }
+    },
+    "-3511030503827513628": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "published",
+        "child": "revoked"
+      }
+    },
+    "8464513811951294091": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "revoked"
+      }
+    },
+    "3453769257783869530": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "published"
+      }
+    },
+    "-8970158954596919575": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "published",
+        "child": "running"
+      }
+    },
+    "8499836329178835626": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "published"
+      }
+    },
+    "3449505340376833410": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "none",
+      "pendingGeneration": 2,
+      "phase": {
+        "root": "running",
+        "child": "running"
+      }
+    },
+    "-2767273710665368551": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "published",
+        "child": "running"
+      }
+    },
+    "675395530749676336": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "published"
+      }
+    },
+    "-6542978692525466237": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "running"
+      }
+    },
+    "-8387509528316094960": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "revoked"
+      }
+    },
+    "-2892454712518803693": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "absent"
+      }
+    },
+    "2306853789738977127": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "preparing"
+      }
+    },
+    "65176281656317180": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "revoked"
+      }
+    },
+    "-4061253102981118088": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "revoked"
+      }
+    },
+    "-4653986149094703102": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "revoked"
+      }
+    },
+    "-7130496242129548175": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "running"
+      }
+    },
+    "4375173513306769576": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 1,
+      "phase": {
+        "root": "running",
+        "child": "running"
+      }
+    },
+    "-3372791335319495399": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "host",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "running"
+      }
+    },
+    "-4179410539449439579": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "preparing"
+      }
+    },
+    "8985873548813628638": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "prepared"
+      }
+    },
+    "-913198190683549334": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 0
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "revoked"
+      }
+    },
+    "-1068171794569861080": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "prepared"
+      }
+    },
+    "-5280444816348574718": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "published"
+      }
+    },
+    "5999991402053624256": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "published"
+      }
+    },
+    "-60350785826539661": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "published",
+        "child": "running"
+      }
+    },
+    "8110330321767061952": {
+      "network": false,
+      "epoch": 1,
+      "owner": {
+        "root": "root",
+        "child": "root"
+      },
+      "generation": {
+        "root": 1,
+        "child": 1
+      },
+      "leakedAuthority": false,
+      "staleAccepted": false,
+      "ranUnsafe": false,
+      "pendingRole": "application",
+      "pendingGeneration": 0,
+      "phase": {
+        "root": "running",
+        "child": "running"
+      }
+    }
+  },
+  "edges": [
+    {
+      "from": "950806059909039291",
+      "to": "-2378239071810432803",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "950806059909039291",
+      "to": "-6413501699671758876",
+      "action": "Replace"
+    },
+    {
+      "from": "950806059909039291",
+      "to": "-4470637944049716491",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-2378239071810432803",
+      "to": "2114338916651864594",
+      "action": "Replace"
+    },
+    {
+      "from": "-2378239071810432803",
+      "to": "717661614236084234",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-2378239071810432803",
+      "to": "-2371577578347737867",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "-6413501699671758876",
+      "to": "-2335797734994262061",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "-6413501699671758876",
+      "to": "-7405369515588445988",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-4470637944049716491",
+      "to": "717661614236084234",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "-4470637944049716491",
+      "to": "7654502277688922538",
+      "action": "Replace"
+    },
+    {
+      "from": "-4470637944049716491",
+      "to": "950806059909039291",
+      "action": "Accept"
+    },
+    {
+      "from": "2114338916651864594",
+      "to": "-2335797734994262061",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "2114338916651864594",
+      "to": "3763664002698929235",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "717661614236084234",
+      "to": "6188639656629346481",
+      "action": "Replace"
+    },
+    {
+      "from": "717661614236084234",
+      "to": "-2378239071810432803",
+      "action": "Accept"
+    },
+    {
+      "from": "717661614236084234",
+      "to": "2447737403489651822",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "-2371577578347737867",
+      "to": "2114338916651864594",
+      "action": "Replace"
+    },
+    {
+      "from": "-2371577578347737867",
+      "to": "2447737403489651822",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-2371577578347737867",
+      "to": "8852646364853558772",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "-2335797734994262061",
+      "to": "-7762077963032296587",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-2335797734994262061",
+      "to": "-4829818759947838306",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "-7405369515588445988",
+      "to": "-7762077963032296587",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "-7405369515588445988",
+      "to": "-6413501699671758876",
+      "action": "Accept"
+    },
+    {
+      "from": "7654502277688922538",
+      "to": "621212045365231364",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "3763664002698929235",
+      "to": "-7762077963032296587",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "3763664002698929235",
+      "to": "2114338916651864594",
+      "action": "Accept"
+    },
+    {
+      "from": "6188639656629346481",
+      "to": "621212045365231364",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "2447737403489651822",
+      "to": "6188639656629346481",
+      "action": "Replace"
+    },
+    {
+      "from": "2447737403489651822",
+      "to": "-2371577578347737867",
+      "action": "Accept"
+    },
+    {
+      "from": "2447737403489651822",
+      "to": "-5921807231811148509",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "8852646364853558772",
+      "to": "2114338916651864594",
+      "action": "Replace"
+    },
+    {
+      "from": "8852646364853558772",
+      "to": "-5921807231811148509",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8852646364853558772",
+      "to": "7872015648939584485",
+      "action": "Run(root)"
+    },
+    {
+      "from": "8852646364853558772",
+      "to": "9018697646616013259",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-7762077963032296587",
+      "to": "-2335797734994262061",
+      "action": "Accept"
+    },
+    {
+      "from": "-7762077963032296587",
+      "to": "1021596710141398381",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "-4829818759947838306",
+      "to": "1021596710141398381",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-4829818759947838306",
+      "to": "8913101438561176314",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "621212045365231364",
+      "to": "4762384668487572485",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "-5921807231811148509",
+      "to": "6188639656629346481",
+      "action": "Replace"
+    },
+    {
+      "from": "-5921807231811148509",
+      "to": "8852646364853558772",
+      "action": "Accept"
+    },
+    {
+      "from": "-5921807231811148509",
+      "to": "2705210329033611590",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-5921807231811148509",
+      "to": "-739907066154879129",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "7872015648939584485",
+      "to": "2114338916651864594",
+      "action": "Replace"
+    },
+    {
+      "from": "7872015648939584485",
+      "to": "2705210329033611590",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "7872015648939584485",
+      "to": "2705210329033611590",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "7872015648939584485",
+      "to": "6340144678040000746",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "7872015648939584485",
+      "to": "5699947815860596377",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "9018697646616013259",
+      "to": "-8713776653276546515",
+      "action": "Replace"
+    },
+    {
+      "from": "9018697646616013259",
+      "to": "-739907066154879129",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "9018697646616013259",
+      "to": "5699947815860596377",
+      "action": "Run(root)"
+    },
+    {
+      "from": "9018697646616013259",
+      "to": "-8072748748100514585",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "1021596710141398381",
+      "to": "-4829818759947838306",
+      "action": "Accept"
+    },
+    {
+      "from": "1021596710141398381",
+      "to": "3486817362364436060",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "8913101438561176314",
+      "to": "3486817362364436060",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8913101438561176314",
+      "to": "-5088860197428914363",
+      "action": "Run(root)"
+    },
+    {
+      "from": "8913101438561176314",
+      "to": "-3261762000387737353",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "4762384668487572485",
+      "to": "-6000241878647754195",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "2705210329033611590",
+      "to": "6188639656629346481",
+      "action": "Replace"
+    },
+    {
+      "from": "2705210329033611590",
+      "to": "7872015648939584485",
+      "action": "Accept"
+    },
+    {
+      "from": "2705210329033611590",
+      "to": "4131903317173513719",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-739907066154879129",
+      "to": "8789927785539222198",
+      "action": "Replace"
+    },
+    {
+      "from": "-739907066154879129",
+      "to": "9018697646616013259",
+      "action": "Accept"
+    },
+    {
+      "from": "-739907066154879129",
+      "to": "4131903317173513719",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-739907066154879129",
+      "to": "2348678637291134867",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "6340144678040000746",
+      "to": "-3315805679531086311",
+      "action": "Replace"
+    },
+    {
+      "from": "6340144678040000746",
+      "to": "-5035400327324324569",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "5699947815860596377",
+      "to": "-8713776653276546515",
+      "action": "Replace"
+    },
+    {
+      "from": "5699947815860596377",
+      "to": "4131903317173513719",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "5699947815860596377",
+      "to": "4131903317173513719",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "5699947815860596377",
+      "to": "-5035400327324324569",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "5699947815860596377",
+      "to": "4120565042479191946",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "-8713776653276546515",
+      "to": "-5659294692548620600",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "-8713776653276546515",
+      "to": "3874797636988890078",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-8072748748100514585",
+      "to": "-8713776653276546515",
+      "action": "Replace"
+    },
+    {
+      "from": "-8072748748100514585",
+      "to": "2348678637291134867",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-8072748748100514585",
+      "to": "4120565042479191946",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-8072748748100514585",
+      "to": "-1471734109684850002",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "3486817362364436060",
+      "to": "8913101438561176314",
+      "action": "Accept"
+    },
+    {
+      "from": "3486817362364436060",
+      "to": "-8067036625286536956",
+      "action": "Run(root)"
+    },
+    {
+      "from": "3486817362364436060",
+      "to": "-5741323153224953271",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-5088860197428914363",
+      "to": "-8067036625286536956",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-5088860197428914363",
+      "to": "-8067036625286536956",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-5088860197428914363",
+      "to": "-5331521707537875983",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "-5088860197428914363",
+      "to": "-1609530042614676677",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-3261762000387737353",
+      "to": "-5741323153224953271",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-3261762000387737353",
+      "to": "-1609530042614676677",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-3261762000387737353",
+      "to": "395450901654914953",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "-6000241878647754195",
+      "to": "-1020788328226085402",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-6000241878647754195",
+      "to": "6496565016978712155",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "4131903317173513719",
+      "to": "8789927785539222198",
+      "action": "Replace"
+    },
+    {
+      "from": "4131903317173513719",
+      "to": "5699947815860596377",
+      "action": "Accept"
+    },
+    {
+      "from": "4131903317173513719",
+      "to": "-1286805364491407523",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "8789927785539222198",
+      "to": "-4090652695191220826",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "2348678637291134867",
+      "to": "8789927785539222198",
+      "action": "Replace"
+    },
+    {
+      "from": "2348678637291134867",
+      "to": "-8072748748100514585",
+      "action": "Accept"
+    },
+    {
+      "from": "2348678637291134867",
+      "to": "-1286805364491407523",
+      "action": "Run(root)"
+    },
+    {
+      "from": "2348678637291134867",
+      "to": "7133933083078900738",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-3315805679531086311",
+      "to": "1068906921439140102",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "-5035400327324324569",
+      "to": "-6358932034465008894",
+      "action": "Replace"
+    },
+    {
+      "from": "-5035400327324324569",
+      "to": "-4074823130509356596",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "4120565042479191946",
+      "to": "-8713776653276546515",
+      "action": "Replace"
+    },
+    {
+      "from": "4120565042479191946",
+      "to": "-1286805364491407523",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "4120565042479191946",
+      "to": "-1286805364491407523",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "4120565042479191946",
+      "to": "-4074823130509356596",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "4120565042479191946",
+      "to": "-2764708309411289604",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-5659294692548620600",
+      "to": "-2194896292532599092",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-5659294692548620600",
+      "to": "7273771639575667000",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "3874797636988890078",
+      "to": "-2194896292532599092",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "3874797636988890078",
+      "to": "-8713776653276546515",
+      "action": "Accept"
+    },
+    {
+      "from": "-1471734109684850002",
+      "to": "-8713776653276546515",
+      "action": "Replace"
+    },
+    {
+      "from": "-1471734109684850002",
+      "to": "7133933083078900738",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-1471734109684850002",
+      "to": "-2764708309411289604",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-1471734109684850002",
+      "to": "8488193840972395343",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-8067036625286536956",
+      "to": "-5088860197428914363",
+      "action": "Accept"
+    },
+    {
+      "from": "-8067036625286536956",
+      "to": "-5091951660792214721",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-5741323153224953271",
+      "to": "-3261762000387737353",
+      "action": "Accept"
+    },
+    {
+      "from": "-5741323153224953271",
+      "to": "-5091951660792214721",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-5741323153224953271",
+      "to": "-2326596985791319998",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "-5331521707537875983",
+      "to": "-2067437837997809201",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-1609530042614676677",
+      "to": "-5091951660792214721",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-1609530042614676677",
+      "to": "-5091951660792214721",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-1609530042614676677",
+      "to": "-2067437837997809201",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "-1609530042614676677",
+      "to": "-2444698326835826729",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "395450901654914953",
+      "to": "-2326596985791319998",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "395450901654914953",
+      "to": "-2444698326835826729",
+      "action": "Run(root)"
+    },
+    {
+      "from": "395450901654914953",
+      "to": "4900026998818026386",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-1020788328226085402",
+      "to": "-6925132639462309803",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "6496565016978712155",
+      "to": "-6925132639462309803",
+      "action": "Run(root)"
+    },
+    {
+      "from": "6496565016978712155",
+      "to": "-6191579285383555843",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "-1286805364491407523",
+      "to": "8789927785539222198",
+      "action": "Replace"
+    },
+    {
+      "from": "-1286805364491407523",
+      "to": "4120565042479191946",
+      "action": "Accept"
+    },
+    {
+      "from": "-1286805364491407523",
+      "to": "-5769964297157810542",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-4090652695191220826",
+      "to": "-5477844440476902929",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "7133933083078900738",
+      "to": "8789927785539222198",
+      "action": "Replace"
+    },
+    {
+      "from": "7133933083078900738",
+      "to": "-1471734109684850002",
+      "action": "Accept"
+    },
+    {
+      "from": "7133933083078900738",
+      "to": "-5769964297157810542",
+      "action": "Run(root)"
+    },
+    {
+      "from": "7133933083078900738",
+      "to": "252534909045944353",
+      "action": "Run(child)"
+    },
+    {
+      "from": "1068906921439140102",
+      "to": "4241647643894422399",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "-6358932034465008894",
+      "to": "3327021387212573908",
+      "action": "CreateRoot"
+    },
+    {
+      "from": "-4074823130509356596",
+      "to": "-6358932034465008894",
+      "action": "Replace"
+    },
+    {
+      "from": "-4074823130509356596",
+      "to": "3217023906093786690",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-2764708309411289604",
+      "to": "-8713776653276546515",
+      "action": "Replace"
+    },
+    {
+      "from": "-2764708309411289604",
+      "to": "-5769964297157810542",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-2764708309411289604",
+      "to": "-5769964297157810542",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-2764708309411289604",
+      "to": "3217023906093786690",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "-2764708309411289604",
+      "to": "8277897298722316962",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-2194896292532599092",
+      "to": "-5659294692548620600",
+      "action": "Accept"
+    },
+    {
+      "from": "-2194896292532599092",
+      "to": "3396764867991184798",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "7273771639575667000",
+      "to": "3396764867991184798",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "7273771639575667000",
+      "to": "-6937130714925377824",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "8488193840972395343",
+      "to": "-8713776653276546515",
+      "action": "Replace"
+    },
+    {
+      "from": "8488193840972395343",
+      "to": "252534909045944353",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8488193840972395343",
+      "to": "252534909045944353",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8488193840972395343",
+      "to": "-9166798791880101647",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "8488193840972395343",
+      "to": "8277897298722316962",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-5091951660792214721",
+      "to": "-1609530042614676677",
+      "action": "Accept"
+    },
+    {
+      "from": "-5091951660792214721",
+      "to": "-7655920693524649103",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "-2326596985791319998",
+      "to": "395450901654914953",
+      "action": "Accept"
+    },
+    {
+      "from": "-2326596985791319998",
+      "to": "-7655920693524649103",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-2326596985791319998",
+      "to": "2803835073019205932",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-2067437837997809201",
+      "to": "7923069030421812313",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "-2444698326835826729",
+      "to": "-7655920693524649103",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-2444698326835826729",
+      "to": "-7655920693524649103",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-2444698326835826729",
+      "to": "7923069030421812313",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "-2444698326835826729",
+      "to": "9156465458264164446",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "4900026998818026386",
+      "to": "2803835073019205932",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "4900026998818026386",
+      "to": "9156465458264164446",
+      "action": "Run(root)"
+    },
+    {
+      "from": "4900026998818026386",
+      "to": "-3206672948063559955",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-6925132639462309803",
+      "to": "655773571280541440",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "-6191579285383555843",
+      "to": "655773571280541440",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-6191579285383555843",
+      "to": "-3705354939398836930",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-5769964297157810542",
+      "to": "8789927785539222198",
+      "action": "Replace"
+    },
+    {
+      "from": "-5769964297157810542",
+      "to": "-2764708309411289604",
+      "action": "Accept"
+    },
+    {
+      "from": "-5769964297157810542",
+      "to": "-8354576092278873543",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-5477844440476902929",
+      "to": "-1587681439323056754",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "252534909045944353",
+      "to": "8789927785539222198",
+      "action": "Replace"
+    },
+    {
+      "from": "252534909045944353",
+      "to": "8488193840972395343",
+      "action": "Accept"
+    },
+    {
+      "from": "252534909045944353",
+      "to": "-8354576092278873543",
+      "action": "Run(root)"
+    },
+    {
+      "from": "4241647643894422399",
+      "to": "-6128937351509896145",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "3327021387212573908",
+      "to": "-5354303044599103507",
+      "action": "Prepare(root)"
+    },
+    {
+      "from": "3217023906093786690",
+      "to": "-6358932034465008894",
+      "action": "Replace"
+    },
+    {
+      "from": "3217023906093786690",
+      "to": "-8620383165680415487",
+      "action": "Run(child)"
+    },
+    {
+      "from": "8277897298722316962",
+      "to": "-8713776653276546515",
+      "action": "Replace"
+    },
+    {
+      "from": "8277897298722316962",
+      "to": "-8354576092278873543",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8277897298722316962",
+      "to": "-8354576092278873543",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8277897298722316962",
+      "to": "-8354576092278873543",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8277897298722316962",
+      "to": "-8620383165680415487",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "8277897298722316962",
+      "to": "-8620383165680415487",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "3396764867991184798",
+      "to": "7273771639575667000",
+      "action": "Accept"
+    },
+    {
+      "from": "3396764867991184798",
+      "to": "-3511030503827513628",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "-6937130714925377824",
+      "to": "-3511030503827513628",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-6937130714925377824",
+      "to": "8464513811951294091",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-6937130714925377824",
+      "to": "-3261762000387737353",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-9166798791880101647",
+      "to": "-6358932034465008894",
+      "action": "Replace"
+    },
+    {
+      "from": "-9166798791880101647",
+      "to": "-8620383165680415487",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-7655920693524649103",
+      "to": "-2444698326835826729",
+      "action": "Accept"
+    },
+    {
+      "from": "-7655920693524649103",
+      "to": "3453769257783869530",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "2803835073019205932",
+      "to": "4900026998818026386",
+      "action": "Accept"
+    },
+    {
+      "from": "2803835073019205932",
+      "to": "3453769257783869530",
+      "action": "Run(root)"
+    },
+    {
+      "from": "2803835073019205932",
+      "to": "-8970158954596919575",
+      "action": "Run(child)"
+    },
+    {
+      "from": "7923069030421812313",
+      "to": "8499836329178835626",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "9156465458264164446",
+      "to": "3453769257783869530",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "9156465458264164446",
+      "to": "3453769257783869530",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "9156465458264164446",
+      "to": "8499836329178835626",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "9156465458264164446",
+      "to": "3449505340376833410",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-3206672948063559955",
+      "to": "-8970158954596919575",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-3206672948063559955",
+      "to": "-8970158954596919575",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "-3206672948063559955",
+      "to": "-2767273710665368551",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "-3206672948063559955",
+      "to": "3449505340376833410",
+      "action": "Run(root)"
+    },
+    {
+      "from": "655773571280541440",
+      "to": "675395530749676336",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-3705354939398836930",
+      "to": "675395530749676336",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-3705354939398836930",
+      "to": "-6542978692525466237",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-8354576092278873543",
+      "to": "8789927785539222198",
+      "action": "Replace"
+    },
+    {
+      "from": "-8354576092278873543",
+      "to": "8277897298722316962",
+      "action": "Accept"
+    },
+    {
+      "from": "-1587681439323056754",
+      "to": "-8387509528316094960",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-1587681439323056754",
+      "to": "6496565016978712155",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-6128937351509896145",
+      "to": "-2892454712518803693",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-6128937351509896145",
+      "to": "2306853789738977127",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-5354303044599103507",
+      "to": "65176281656317180",
+      "action": "Publish(root)"
+    },
+    {
+      "from": "-8620383165680415487",
+      "to": "-6358932034465008894",
+      "action": "Replace"
+    },
+    {
+      "from": "-3511030503827513628",
+      "to": "-6937130714925377824",
+      "action": "Accept"
+    },
+    {
+      "from": "-3511030503827513628",
+      "to": "-4061253102981118088",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-3511030503827513628",
+      "to": "-5741323153224953271",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "8464513811951294091",
+      "to": "-4061253102981118088",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8464513811951294091",
+      "to": "-4061253102981118088",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "8464513811951294091",
+      "to": "-4653986149094703102",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "8464513811951294091",
+      "to": "-1609530042614676677",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "3453769257783869530",
+      "to": "9156465458264164446",
+      "action": "Accept"
+    },
+    {
+      "from": "3453769257783869530",
+      "to": "-7130496242129548175",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-8970158954596919575",
+      "to": "-3206672948063559955",
+      "action": "Accept"
+    },
+    {
+      "from": "-8970158954596919575",
+      "to": "-7130496242129548175",
+      "action": "Run(root)"
+    },
+    {
+      "from": "8499836329178835626",
+      "to": "4375173513306769576",
+      "action": "Run(child)"
+    },
+    {
+      "from": "3449505340376833410",
+      "to": "-7130496242129548175",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "3449505340376833410",
+      "to": "-7130496242129548175",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "3449505340376833410",
+      "to": "-7130496242129548175",
+      "action": "Send(\"host\")"
+    },
+    {
+      "from": "3449505340376833410",
+      "to": "4375173513306769576",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "3449505340376833410",
+      "to": "4375173513306769576",
+      "action": "Send(\"application\")"
+    },
+    {
+      "from": "-2767273710665368551",
+      "to": "4375173513306769576",
+      "action": "Run(root)"
+    },
+    {
+      "from": "675395530749676336",
+      "to": "-3372791335319495399",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-6542978692525466237",
+      "to": "-3372791335319495399",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-8387509528316094960",
+      "to": "-6925132639462309803",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-2892454712518803693",
+      "to": "-4179410539449439579",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "2306853789738977127",
+      "to": "-4179410539449439579",
+      "action": "Run(root)"
+    },
+    {
+      "from": "2306853789738977127",
+      "to": "8985873548813628638",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "65176281656317180",
+      "to": "-913198190683549334",
+      "action": "Run(root)"
+    },
+    {
+      "from": "65176281656317180",
+      "to": "2306853789738977127",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-4061253102981118088",
+      "to": "8464513811951294091",
+      "action": "Accept"
+    },
+    {
+      "from": "-4061253102981118088",
+      "to": "-5091951660792214721",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-4653986149094703102",
+      "to": "-2067437837997809201",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-7130496242129548175",
+      "to": "3449505340376833410",
+      "action": "Accept"
+    },
+    {
+      "from": "-4179410539449439579",
+      "to": "-1068171794569861080",
+      "action": "Prepare(child)"
+    },
+    {
+      "from": "8985873548813628638",
+      "to": "-1068171794569861080",
+      "action": "Run(root)"
+    },
+    {
+      "from": "8985873548813628638",
+      "to": "-5280444816348574718",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-913198190683549334",
+      "to": "-4179410539449439579",
+      "action": "CreateChild(child,root)"
+    },
+    {
+      "from": "-1068171794569861080",
+      "to": "5999991402053624256",
+      "action": "Publish(child)"
+    },
+    {
+      "from": "-5280444816348574718",
+      "to": "5999991402053624256",
+      "action": "Run(root)"
+    },
+    {
+      "from": "-5280444816348574718",
+      "to": "-60350785826539661",
+      "action": "Run(child)"
+    },
+    {
+      "from": "5999991402053624256",
+      "to": "8110330321767061952",
+      "action": "Run(child)"
+    },
+    {
+      "from": "-60350785826539661",
+      "to": "8110330321767061952",
+      "action": "Run(root)"
+    }
+  ]
+}

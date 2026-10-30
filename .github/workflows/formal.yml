@@ -79,9 +79,16 @@ jobs:
         env:
           PF_WEBTRANSPORT_PYTHON: python
       - run: node formal/startup/local-run.ts
+      - name: Compare observed startup events with the lifecycle model
+        run: |
+          mkdir -p .tools
+          curl -fsSL https://github.com/tlaplus/tlaplus/releases/download/v1.8.0/tla2tools.jar -o .tools/tla2tools.jar
+          npx tsc --ignoreConfig --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --types node --lib ES2023,DOM,DOM.Iterable,WebWorker formal/startup/lifecycle-trace-test.ts
+          node formal/startup/lifecycle-trace-test.ts
       - uses: actions/upload-artifact@v4
         with:
           name: webtransport-evidence
           path: |
             formal/webtransport/results.json
             formal/startup/local-results.json
+            formal/startup/lifecycle-comparison.json

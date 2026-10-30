@@ -81,3 +81,7 @@ The runner closes its browsers and HTTP servers on success or failure. It uses
 ports 4210, 4211 and 4219 plus random publisher/receiver ports. Trace caches exist
 only in fresh test browser contexts. Neither the event listener nor its DOM marker
 survives into the application's execution.
+
+The [partial Lifecycle comparison](LIFECYCLE-PROJECTION.md) checks a constrained
+abstract completion of this receipt against a TLC-generated graph. Its inferred
+publication event and unobserved root prefix are explicit assumptions.

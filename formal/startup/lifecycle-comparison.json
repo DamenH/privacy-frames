@@ -1,0 +1,1347 @@
+{
+  "scope": "Partial-observation completion against the unchanged TLC LifecycleSafe graph. Root startup is assumed; child Publish is inferred. This is not whole-runtime refinement or proof of all model invariants.",
+  "generatedAt": "2026-10-30T15:48:05.106Z",
+  "inputs": {
+    "browserReceiptSHA256": "805b0f8cc5501f25dd2af03ef4121b83252d383f58f700beb91ac326f90df7b4",
+    "graphSHA256": "e8d7efe8600c54315de25440f9e606d8c8706a52375e35fd9ee783e1b8b0e2a4",
+    "checkerSHA256": "a0c556ff05fb05abad0975348e1f0ed3b322e74d19fc4cb0fefb270eca55dff7",
+    "generatorSHA256": "9e1be0702d0d74241c62be2d0b1d44c382e91c96c169cccb31835b9bc47d8748"
+  },
+  "assumptions": [
+    "The root has completed Prepare/Publish/Run before the fixture invokes child creation; these transitions were not separately observed.",
+    "The trusted local pause point denotes completion of the reviewed guard preparation sequence; selected app probes do not prove every postcondition.",
+    "One child Publish occurred after release and no later than the application probe. Exact publication time and transient earlier exposure are not observed.",
+    "A native controller change preserves the installation generation and stutters in Lifecycle; it is not Lifecycle.Replace.",
+    "No authority-message acceptance, installation replacement, revocation or full browser-effect trace is projected."
+  ],
+  "compared": [
+    {
+      "identity": "chromium:upgrade-before-release",
+      "binding": {
+        "rootClient": "b706857c-b2b3-46a8-8ff4-fb08a07b1c3e",
+        "childClient": "c42c757d-5fef-46c9-af50-8ccbf8ea8156",
+        "installationGeneration": "8f71990e-3dc4-429e-bc4b-48014c6cf7a3"
+      },
+      "projection": [
+        {
+          "action": "CreateRoot",
+          "origin": "native root binding",
+          "time": 1793374301683
+        },
+        {
+          "action": "Prepare(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "Publish(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "Run(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "CreateChild(child,root)",
+          "origin": "native child binding with actual owner",
+          "time": 1793374301953
+        },
+        {
+          "action": "Prepare(child)",
+          "origin": "trusted local-guard pause point",
+          "time": 1793374302159
+        },
+        {
+          "action": null,
+          "origin": "native controller upgrade; NOT installation Replace",
+          "time": 1793374302299
+        },
+        {
+          "action": null,
+          "origin": "test pause release; original handshake still required",
+          "time": 1793374302307
+        },
+        {
+          "action": "Publish(child)",
+          "origin": "INFERRED between release and application probe",
+          "time": 1793374302309
+        },
+        {
+          "action": "Run(child)",
+          "origin": "fixed application probe",
+          "time": 1793374302309
+        }
+      ],
+      "witness": [
+        {
+          "action": "CreateRoot",
+          "origin": "native root binding",
+          "time": 1793374301683,
+          "from": "950806059909039291",
+          "to": "-2378239071810432803",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "preparing",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Prepare(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "-2378239071810432803",
+          "to": "-2371577578347737867",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "prepared",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Publish(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "-2371577578347737867",
+          "to": "8852646364853558772",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "published",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Run(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "8852646364853558772",
+          "to": "7872015648939584485",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "CreateChild(child,root)",
+          "origin": "native child binding with actual owner",
+          "time": 1793374301953,
+          "from": "7872015648939584485",
+          "to": "5699947815860596377",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "preparing"
+            }
+          }
+        },
+        {
+          "action": "Prepare(child)",
+          "origin": "trusted local-guard pause point",
+          "time": 1793374302159,
+          "from": "5699947815860596377",
+          "to": "4120565042479191946",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "prepared"
+            }
+          }
+        },
+        {
+          "action": null,
+          "origin": "native controller upgrade; NOT installation Replace",
+          "time": 1793374302299,
+          "from": "4120565042479191946",
+          "to": "4120565042479191946"
+        },
+        {
+          "action": null,
+          "origin": "test pause release; original handshake still required",
+          "time": 1793374302307,
+          "from": "4120565042479191946",
+          "to": "4120565042479191946"
+        },
+        {
+          "action": "Publish(child)",
+          "origin": "INFERRED between release and application probe",
+          "time": 1793374302309,
+          "from": "4120565042479191946",
+          "to": "-2764708309411289604",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "published"
+            }
+          }
+        },
+        {
+          "action": "Run(child)",
+          "origin": "fixed application probe",
+          "time": 1793374302309,
+          "from": "-2764708309411289604",
+          "to": "8277897298722316962",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "running"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "identity": "chromium:early-release-control",
+      "binding": {
+        "rootClient": "f53be8a5-cda4-4dc0-bae7-b894f23d0b46",
+        "childClient": "d5a026f1-6739-420f-8d17-92b0ea91860e",
+        "installationGeneration": "fc5a6ab4-418d-4cb2-ad2b-0bae9c0fa2b7"
+      },
+      "projection": [
+        {
+          "action": "CreateRoot",
+          "origin": "native root binding",
+          "time": 1793374303416
+        },
+        {
+          "action": "Prepare(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "Publish(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "Run(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "CreateChild(child,root)",
+          "origin": "native child binding with actual owner",
+          "time": 1793374303686
+        },
+        {
+          "action": "Prepare(child)",
+          "origin": "trusted local-guard pause point",
+          "time": 1793374303887
+        },
+        {
+          "action": null,
+          "origin": "test pause release; original handshake still required",
+          "time": 1793374303903
+        },
+        {
+          "action": "Publish(child)",
+          "origin": "INFERRED between release and application probe",
+          "time": 1793374303908
+        },
+        {
+          "action": "Run(child)",
+          "origin": "fixed application probe",
+          "time": 1793374303908
+        },
+        {
+          "action": null,
+          "origin": "native controller upgrade; NOT installation Replace",
+          "time": 1793374304047
+        }
+      ],
+      "witness": [
+        {
+          "action": "CreateRoot",
+          "origin": "native root binding",
+          "time": 1793374303416,
+          "from": "950806059909039291",
+          "to": "-2378239071810432803",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "preparing",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Prepare(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "-2378239071810432803",
+          "to": "-2371577578347737867",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "prepared",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Publish(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "-2371577578347737867",
+          "to": "8852646364853558772",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "published",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Run(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "8852646364853558772",
+          "to": "7872015648939584485",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "CreateChild(child,root)",
+          "origin": "native child binding with actual owner",
+          "time": 1793374303686,
+          "from": "7872015648939584485",
+          "to": "5699947815860596377",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "preparing"
+            }
+          }
+        },
+        {
+          "action": "Prepare(child)",
+          "origin": "trusted local-guard pause point",
+          "time": 1793374303887,
+          "from": "5699947815860596377",
+          "to": "4120565042479191946",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "prepared"
+            }
+          }
+        },
+        {
+          "action": null,
+          "origin": "test pause release; original handshake still required",
+          "time": 1793374303903,
+          "from": "4120565042479191946",
+          "to": "4120565042479191946"
+        },
+        {
+          "action": "Publish(child)",
+          "origin": "INFERRED between release and application probe",
+          "time": 1793374303908,
+          "from": "4120565042479191946",
+          "to": "-2764708309411289604",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "published"
+            }
+          }
+        },
+        {
+          "action": "Run(child)",
+          "origin": "fixed application probe",
+          "time": 1793374303908,
+          "from": "-2764708309411289604",
+          "to": "8277897298722316962",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "running"
+            }
+          }
+        },
+        {
+          "action": null,
+          "origin": "native controller upgrade; NOT installation Replace",
+          "time": 1793374304047,
+          "from": "8277897298722316962",
+          "to": "8277897298722316962"
+        }
+      ]
+    },
+    {
+      "identity": "firefox:upgrade-before-release",
+      "binding": {
+        "rootClient": "2fb2015a-fa45-4eba-b390-1620af827f9f",
+        "childClient": "dc4d3f16-58f6-4d08-9906-3e80af3c7abb",
+        "installationGeneration": "3363fc71-e751-4e9e-9e28-61b368bbb868"
+      },
+      "projection": [
+        {
+          "action": "CreateRoot",
+          "origin": "native root binding",
+          "time": 1793374306283
+        },
+        {
+          "action": "Prepare(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "Publish(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "Run(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "CreateChild(child,root)",
+          "origin": "native child binding with actual owner",
+          "time": 1793374306537
+        },
+        {
+          "action": "Prepare(child)",
+          "origin": "trusted local-guard pause point",
+          "time": 1793374306722
+        },
+        {
+          "action": null,
+          "origin": "native controller upgrade; NOT installation Replace",
+          "time": 1793374307643
+        },
+        {
+          "action": null,
+          "origin": "test pause release; original handshake still required",
+          "time": 1793374307757
+        },
+        {
+          "action": "Publish(child)",
+          "origin": "INFERRED between release and application probe",
+          "time": 1793374307774
+        },
+        {
+          "action": "Run(child)",
+          "origin": "fixed application probe",
+          "time": 1793374307774
+        }
+      ],
+      "witness": [
+        {
+          "action": "CreateRoot",
+          "origin": "native root binding",
+          "time": 1793374306283,
+          "from": "950806059909039291",
+          "to": "-2378239071810432803",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "preparing",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Prepare(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "-2378239071810432803",
+          "to": "-2371577578347737867",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "prepared",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Publish(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "-2371577578347737867",
+          "to": "8852646364853558772",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "published",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Run(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "8852646364853558772",
+          "to": "7872015648939584485",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "CreateChild(child,root)",
+          "origin": "native child binding with actual owner",
+          "time": 1793374306537,
+          "from": "7872015648939584485",
+          "to": "5699947815860596377",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "preparing"
+            }
+          }
+        },
+        {
+          "action": "Prepare(child)",
+          "origin": "trusted local-guard pause point",
+          "time": 1793374306722,
+          "from": "5699947815860596377",
+          "to": "4120565042479191946",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "prepared"
+            }
+          }
+        },
+        {
+          "action": null,
+          "origin": "native controller upgrade; NOT installation Replace",
+          "time": 1793374307643,
+          "from": "4120565042479191946",
+          "to": "4120565042479191946"
+        },
+        {
+          "action": null,
+          "origin": "test pause release; original handshake still required",
+          "time": 1793374307757,
+          "from": "4120565042479191946",
+          "to": "4120565042479191946"
+        },
+        {
+          "action": "Publish(child)",
+          "origin": "INFERRED between release and application probe",
+          "time": 1793374307774,
+          "from": "4120565042479191946",
+          "to": "-2764708309411289604",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "published"
+            }
+          }
+        },
+        {
+          "action": "Run(child)",
+          "origin": "fixed application probe",
+          "time": 1793374307774,
+          "from": "-2764708309411289604",
+          "to": "8277897298722316962",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "running"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "identity": "firefox:early-release-control",
+      "binding": {
+        "rootClient": "b977bf8d-7e96-471a-bd18-80b2da55e0ec",
+        "childClient": "0af5fe09-118e-416b-9a47-9f2df8629458",
+        "installationGeneration": "e32ab4a9-6866-4942-9ae4-7bee48337fbb"
+      },
+      "projection": [
+        {
+          "action": "CreateRoot",
+          "origin": "native root binding",
+          "time": 1793374310120
+        },
+        {
+          "action": "Prepare(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "Publish(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "Run(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption"
+        },
+        {
+          "action": "CreateChild(child,root)",
+          "origin": "native child binding with actual owner",
+          "time": 1793374310387
+        },
+        {
+          "action": "Prepare(child)",
+          "origin": "trusted local-guard pause point",
+          "time": 1793374310574
+        },
+        {
+          "action": null,
+          "origin": "test pause release; original handshake still required",
+          "time": 1793374310590
+        },
+        {
+          "action": "Publish(child)",
+          "origin": "INFERRED between release and application probe",
+          "time": 1793374310604
+        },
+        {
+          "action": "Run(child)",
+          "origin": "fixed application probe",
+          "time": 1793374310604
+        },
+        {
+          "action": null,
+          "origin": "native controller upgrade; NOT installation Replace",
+          "time": 1793374311365
+        }
+      ],
+      "witness": [
+        {
+          "action": "CreateRoot",
+          "origin": "native root binding",
+          "time": 1793374310120,
+          "from": "950806059909039291",
+          "to": "-2378239071810432803",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "preparing",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Prepare(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "-2378239071810432803",
+          "to": "-2371577578347737867",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "prepared",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Publish(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "-2371577578347737867",
+          "to": "8852646364853558772",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "published",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "Run(root)",
+          "origin": "UNOBSERVED root-startup prefix assumption",
+          "from": "8852646364853558772",
+          "to": "7872015648939584485",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "absent"
+            }
+          }
+        },
+        {
+          "action": "CreateChild(child,root)",
+          "origin": "native child binding with actual owner",
+          "time": 1793374310387,
+          "from": "7872015648939584485",
+          "to": "5699947815860596377",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "preparing"
+            }
+          }
+        },
+        {
+          "action": "Prepare(child)",
+          "origin": "trusted local-guard pause point",
+          "time": 1793374310574,
+          "from": "5699947815860596377",
+          "to": "4120565042479191946",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "prepared"
+            }
+          }
+        },
+        {
+          "action": null,
+          "origin": "test pause release; original handshake still required",
+          "time": 1793374310590,
+          "from": "4120565042479191946",
+          "to": "4120565042479191946"
+        },
+        {
+          "action": "Publish(child)",
+          "origin": "INFERRED between release and application probe",
+          "time": 1793374310604,
+          "from": "4120565042479191946",
+          "to": "-2764708309411289604",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "published"
+            }
+          }
+        },
+        {
+          "action": "Run(child)",
+          "origin": "fixed application probe",
+          "time": 1793374310604,
+          "from": "-2764708309411289604",
+          "to": "8277897298722316962",
+          "state": {
+            "network": false,
+            "epoch": 0,
+            "owner": {
+              "root": "root",
+              "child": "root"
+            },
+            "generation": {
+              "root": 0,
+              "child": 0
+            },
+            "leakedAuthority": false,
+            "staleAccepted": false,
+            "ranUnsafe": false,
+            "pendingRole": "none",
+            "pendingGeneration": 2,
+            "phase": {
+              "root": "running",
+              "child": "running"
+            }
+          }
+        },
+        {
+          "action": null,
+          "origin": "native controller upgrade; NOT installation Replace",
+          "time": 1793374311365,
+          "from": "8277897298722316962",
+          "to": "8277897298722316962"
+        }
+      ]
+    }
+  ],
+  "calibrations": [
+    {
+      "name": "chromium:upgrade-before-release:missing-inferred-child-Publish",
+      "rejected": true,
+      "reason": "No unique TLC edge for Run(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"prepared\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:upgrade-before-release:forged-observed-parent",
+      "rejected": true,
+      "reason": "Projection rejected a child binding with a different actual browser parent"
+    },
+    {
+      "name": "chromium:upgrade-before-release:forged-observed-reserved-client",
+      "rejected": true,
+      "reason": "Projection rejected a bind without a matching native reserved-client event"
+    },
+    {
+      "name": "chromium:upgrade-before-release:missing-child-Prepare",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:upgrade-before-release:child-Prepare-after-Run",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:upgrade-before-release:Publish-before-Prepare",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:upgrade-before-release:wrong-model-parent",
+      "rejected": true,
+      "reason": "No unique TLC edge for CreateChild(child,child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"absent\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:upgrade-before-release:controller-upgrade-misclassified-as-Replace",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":1,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"revoked\",\"child\":\"revoked\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:early-release-control:missing-inferred-child-Publish",
+      "rejected": true,
+      "reason": "No unique TLC edge for Run(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"prepared\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:early-release-control:forged-observed-parent",
+      "rejected": true,
+      "reason": "Projection rejected a child binding with a different actual browser parent"
+    },
+    {
+      "name": "chromium:early-release-control:forged-observed-reserved-client",
+      "rejected": true,
+      "reason": "Projection rejected a bind without a matching native reserved-client event"
+    },
+    {
+      "name": "chromium:early-release-control:missing-child-Prepare",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:early-release-control:child-Prepare-after-Run",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:early-release-control:Publish-before-Prepare",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "chromium:early-release-control:wrong-model-parent",
+      "rejected": true,
+      "reason": "No unique TLC edge for CreateChild(child,child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"absent\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:upgrade-before-release:missing-inferred-child-Publish",
+      "rejected": true,
+      "reason": "No unique TLC edge for Run(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"prepared\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:upgrade-before-release:forged-observed-parent",
+      "rejected": true,
+      "reason": "Projection rejected a child binding with a different actual browser parent"
+    },
+    {
+      "name": "firefox:upgrade-before-release:forged-observed-reserved-client",
+      "rejected": true,
+      "reason": "Projection rejected a bind without a matching native reserved-client event"
+    },
+    {
+      "name": "firefox:upgrade-before-release:missing-child-Prepare",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:upgrade-before-release:child-Prepare-after-Run",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:upgrade-before-release:Publish-before-Prepare",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:upgrade-before-release:wrong-model-parent",
+      "rejected": true,
+      "reason": "No unique TLC edge for CreateChild(child,child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"absent\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:upgrade-before-release:controller-upgrade-misclassified-as-Replace",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":1,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"revoked\",\"child\":\"revoked\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:early-release-control:missing-inferred-child-Publish",
+      "rejected": true,
+      "reason": "No unique TLC edge for Run(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"prepared\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:early-release-control:forged-observed-parent",
+      "rejected": true,
+      "reason": "Projection rejected a child binding with a different actual browser parent"
+    },
+    {
+      "name": "firefox:early-release-control:forged-observed-reserved-client",
+      "rejected": true,
+      "reason": "Projection rejected a bind without a matching native reserved-client event"
+    },
+    {
+      "name": "firefox:early-release-control:missing-child-Prepare",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:early-release-control:child-Prepare-after-Run",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:early-release-control:Publish-before-Prepare",
+      "rejected": true,
+      "reason": "No unique TLC edge for Publish(child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"preparing\"}}\n\n0 !== 1\n"
+    },
+    {
+      "name": "firefox:early-release-control:wrong-model-parent",
+      "rejected": true,
+      "reason": "No unique TLC edge for CreateChild(child,child) from {\"network\":false,\"epoch\":0,\"owner\":{\"root\":\"root\",\"child\":\"root\"},\"generation\":{\"root\":0,\"child\":0},\"leakedAuthority\":false,\"staleAccepted\":false,\"ranUnsafe\":false,\"pendingRole\":\"none\",\"pendingGeneration\":2,\"phase\":{\"root\":\"running\",\"child\":\"absent\"}}\n\n0 !== 1\n"
+    }
+  ]
+}
