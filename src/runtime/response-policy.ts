@@ -75,7 +75,7 @@ const headers = {
   'Cross-Origin-Opener-Policy': 'same-origin',
   'Cache-Control': 'no-store',
   'Permissions-Policy':
-    'camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=()',
+    'camera=(), microphone=(self), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), payment=(), attribution-reporting=(), browsing-topics=(), interest-cohort=(), identity-credentials-get=()',
   'X-Content-Type-Options': 'nosniff',
 };
 

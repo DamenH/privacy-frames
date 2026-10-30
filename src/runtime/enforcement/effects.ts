@@ -153,6 +153,17 @@ export function installEffectPolicy(
   if (globalThis.CredentialsContainer)
     for (const key of ['get', 'create', 'store', 'preventSilentAccess'])
       method(CredentialsContainer.prototype, key, deny);
+  // FedCM can make browser-originated requests that skip the service worker.
+  // These static methods are separate from CredentialsContainer methods.
+  for (const [name, keys] of [
+    ['IdentityCredential', ['disconnect']],
+    ['IdentityProvider', ['getUserInfo']],
+  ] as const) {
+    const owner = propertyOwner(target, name);
+    const constructor = owner && descriptor(owner, name)?.value;
+    if (typeof constructor === 'function')
+      for (const key of keys) method(constructor, key, deny);
+  }
   if (globalThis.Clipboard)
     for (const key of ['write', 'writeText']) method(Clipboard.prototype, key, deny);
   for (const key of ['sharedStorage']) {

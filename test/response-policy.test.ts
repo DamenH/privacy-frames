@@ -2,6 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { response } from '../src/runtime/response-policy.ts';
 
+test('confined responses deny browser-mediated identity requests', () => {
+  assert.match(
+    response('shell').headers.get('Permissions-Policy')!,
+    /(?:^|,\s*)identity-credentials-get=\(\)(?:,|$)/,
+  );
+});
+
 test('worker startup defaults to refusal and accepts only an explicit HTTP bootstrap directory', () => {
   assert.match(
     response('default').headers.get('Content-Security-Policy')!,
