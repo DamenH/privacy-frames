@@ -63,8 +63,8 @@ records the configurations and remaining gaps.
 The [background-agent probe](background-agents.md) also tests recovery of a
 pre-existing native service-worker registration, with working Chromium sync and
 background-fetch controls. Periodic sync remains uncalibrated.
-The [dedicated-worker probe](worker-registration.md) tests two registration
-getter routes in an installed worker with a native Firefox acquisition control.
+The [worker-registration probe](worker-registration.md) tests two getter routes
+in installed dedicated and shared workers with native Firefox acquisition controls.
 The [deferred-fetch probe](fetch-later.md) confirms a native page-close upload
 and tests the prepared runtime against that route in Chromium. Removing its
 denial in a test build permits the upload.

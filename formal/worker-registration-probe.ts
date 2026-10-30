@@ -8,7 +8,7 @@ import { testProvenance } from '../test/provenance.ts';
 import { provideResourceList } from '../test/resource-list-input.ts';
 
 const workerCode = `
-self.onmessage = async () => {
+async function probe() {
   const answer = { hasMember: 'serviceWorker' in navigator };
   try {
     const container = navigator.serviceWorker;
@@ -24,8 +24,10 @@ self.onmessage = async () => {
     const container = descriptor?.get?.call(navigator);
     answer.prototypeResult = container ? 'available' : 'missing';
   } catch (error) { answer.prototypeError = error.name; }
-  postMessage(answer);
-};`;
+  return answer;
+}
+self.onmessage = async () => postMessage(await probe());
+self.onconnect = event => { const port=event.ports[0];port.onmessage=async()=>port.postMessage(await probe());port.start(); };`;
 const publisher = http.createServer((request, reply) => {
   reply.setHeader('Access-Control-Allow-Origin', '*');
   reply.setHeader('Cache-Control', 'no-store');
@@ -40,7 +42,7 @@ const publisher = http.createServer((request, reply) => {
   } else if (request.url === '/worker-app/' || request.url === '/worker-app/index.html') {
     reply.setHeader('Content-Type', 'text/html');
     reply.end(`<!doctype html><title>Worker registration probe</title><script>
-    globalThis.runWorker = () => new Promise((resolve,reject)=>{const worker=new Worker('./worker.js');const timer=setTimeout(()=>reject(new Error('worker timed out')),10000);worker.onmessage=e=>{clearTimeout(timer);worker.terminate();resolve(e.data)};worker.onerror=e=>{clearTimeout(timer);worker.terminate();reject(new Error(e.message))};worker.postMessage(null)});
+    globalThis.runWorker = shared => new Promise((resolve,reject)=>{const worker=shared?new SharedWorker('./worker.js'):new Worker('./worker.js');const endpoint=shared?worker.port:worker;const close=()=>shared?endpoint.close():worker.terminate();const timer=setTimeout(()=>reject(new Error('worker timed out')),10000);endpoint.onmessage=e=>{clearTimeout(timer);close();resolve(e.data)};worker.onerror=e=>{clearTimeout(timer);close();reject(new Error(e.message))};endpoint.start?.();endpoint.postMessage(null)});
     globalThis.probeReady=true;
     </script>`);
   } else {
@@ -55,7 +57,7 @@ const origin = `http://127.0.0.1:${address.port}`;
 const server = await servers({ receiver: false });
 const evidence = {
   scope:
-    'Native worker registration acquisition on a seeded publisher origin and actual installed dedicated-worker acquisition against the host runtime. API absence is not containment. No direct background request, all-context or universal authority claim.',
+    'Native dedicated and shared worker registration acquisition on a seeded publisher origin and actual installed worker acquisition against the host runtime. API absence is not containment. No direct background request, all-context or universal authority claim.',
   provenance: await testProvenance(import.meta.url),
   browsers: [] as object[],
   completed: false,
@@ -71,70 +73,87 @@ try {
         await navigator.serviceWorker.register('/native-sw.js');
         await navigator.serviceWorker.ready;
       });
-      const nativeResult = await native.evaluate(
-        async () =>
-          await new Promise((resolve, reject) => {
-            const worker = new Worker('/worker.js');
-            const timer = setTimeout(
-              () => reject(new Error('native worker timed out')),
-              10000,
-            );
-            worker.onmessage = (e) => {
-              clearTimeout(timer);
-              worker.terminate();
-              resolve(e.data);
-            };
-            worker.onerror = (e) => {
-              clearTimeout(timer);
-              worker.terminate();
-              reject(new Error(e.message));
-            };
-            worker.postMessage(null);
-          }),
-      );
-      const manager = await context.newPage();
-      await manager.goto('http://127.0.0.1:4210/privacy-frames/');
-      await manager.getByText('Ready to install.', { exact: true }).waitFor();
-      await manager.locator('#app-url').fill(origin + '/worker-app/');
-      await provideResourceList(manager, [origin + '/worker-app/worker.js']);
-      await manager.locator('#install button').click();
-      await manager.locator('[data-app="worker-app"]').waitFor();
-      const opened = context.waitForEvent('page');
-      await manager.locator('[data-app="worker-app"]').click();
-      const app = await opened;
-      await app.waitForFunction(() => Reflect.get(window, 'probeReady') === true);
-      const actual = await app.evaluate(() => Reflect.get(window, 'runWorker')());
-      if (engine.name() === 'firefox') {
-        assert.deepEqual(nativeResult, {
-          hasMember: true,
-          container: 'available',
-          registrations: 1,
-          prototypeGetter: 'function',
-          prototypeResult: 'available',
+      for (const shared of [false, true]) {
+        const nativeResult = await native.evaluate(
+          async (shared) =>
+            await new Promise((resolve, reject) => {
+              const worker = shared
+                ? new SharedWorker('/worker.js')
+                : new Worker('/worker.js');
+              const endpoint = shared
+                ? (worker as SharedWorker).port
+                : (worker as Worker);
+              const close = () =>
+                shared
+                  ? (endpoint as MessagePort).close()
+                  : (worker as Worker).terminate();
+              const timer = setTimeout(
+                () => reject(new Error('native worker timed out')),
+                10000,
+              );
+              endpoint.onmessage = (e) => {
+                clearTimeout(timer);
+                close();
+                resolve(e.data);
+              };
+              worker.onerror = (e) => {
+                clearTimeout(timer);
+                close();
+                reject(new Error(e.message));
+              };
+              if (shared) (endpoint as MessagePort).start();
+              endpoint.postMessage(null);
+            }),
+          shared,
+        );
+        const manager = await context.newPage();
+        await manager.goto('http://127.0.0.1:4210/privacy-frames/');
+        await manager.getByText('Ready to install.', { exact: true }).waitFor();
+        await manager.locator('#app-url').fill(origin + '/worker-app/');
+        await provideResourceList(manager, [origin + '/worker-app/worker.js']);
+        await manager.locator('#install button').click();
+        await manager.locator('[data-app="worker-app"]').waitFor();
+        const opened = context.waitForEvent('page');
+        await manager.locator('[data-app="worker-app"]').click();
+        const app = await opened;
+        await app.waitForFunction(() => Reflect.get(window, 'probeReady') === true);
+        const actual = await app.evaluate(
+          (shared) => Reflect.get(window, 'runWorker')(shared),
+          shared,
+        );
+        if (engine.name() === 'firefox') {
+          assert.deepEqual(nativeResult, {
+            hasMember: true,
+            container: 'available',
+            registrations: 1,
+            prototypeGetter: 'function',
+            prototypeResult: 'available',
+          });
+          assert.deepEqual(actual, {
+            hasMember: true,
+            getterError: 'SecurityError',
+            prototypeGetter: 'function',
+            prototypeError: 'SecurityError',
+          });
+        } else {
+          const absent = {
+            hasMember: false,
+            container: 'missing',
+            prototypeGetter: 'undefined',
+            prototypeResult: 'missing',
+          };
+          assert.deepEqual(nativeResult, absent);
+          assert.deepEqual(actual, absent);
+        }
+        console.log(engine.name(), JSON.stringify({ nativeResult, actual }));
+        evidence.browsers.push({
+          name: engine.name(),
+          version: browser.version(),
+          kind: shared ? 'shared' : 'dedicated',
+          nativeResult,
+          actual,
         });
-        assert.deepEqual(actual, {
-          hasMember: true,
-          getterError: 'SecurityError',
-          prototypeGetter: 'function',
-          prototypeError: 'SecurityError',
-        });
-      } else {
-        const absent = {
-          hasMember: false,
-          container: 'missing',
-          prototypeGetter: 'undefined',
-          prototypeResult: 'missing',
-        };
-        assert.deepEqual(nativeResult, absent);
-        assert.deepEqual(actual, absent);
       }
-      console.log(engine.name(), JSON.stringify({ nativeResult, actual }));
-      evidence.browsers.push({
-        name: engine.name(),
-        version: browser.version(),
-        nativeResult,
-        actual,
-      });
       await context.close();
     } finally {
       await browser.close();

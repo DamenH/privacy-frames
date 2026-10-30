@@ -1,12 +1,12 @@
 {
-  "scope": "Native worker registration acquisition on a seeded publisher origin and actual installed dedicated-worker acquisition against the host runtime. API absence is not containment. No direct background request, all-context or universal authority claim.",
+  "scope": "Native dedicated and shared worker registration acquisition on a seeded publisher origin and actual installed worker acquisition against the host runtime. API absence is not containment. No direct background request, all-context or universal authority claim.",
   "provenance": {
-    "capturedAt": "2026-10-30T19:18:23.334Z",
-    "revision": "2e057607d173db0993a6321bb15c37904dbd9244",
+    "capturedAt": "2026-10-30T19:19:32.422Z",
+    "revision": "98e971a44e30ec0610637bf47fb2346eca7f0e10",
     "dirty": true,
     "sourceSHA256": "05331956de4dc8e219a375fd9d6f7363f8e93bd22a16cd3cc881a9078069ace9",
     "runner": "formal/worker-registration-probe.ts",
-    "runnerSHA256": "21d006cf59339f8605c5635a8995b2cd7b006d4b7f8c7e95a089bf8bebc11f1a",
+    "runnerSHA256": "9bd4e4e4db64b49f9a35ad279336a5e7de362d2a85672cc5f4280e33b0fda84a",
     "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
     "artifacts": {
       "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -44,6 +44,24 @@
     {
       "name": "chromium",
       "version": "153.0.8010.12",
+      "kind": "dedicated",
+      "nativeResult": {
+        "hasMember": false,
+        "container": "missing",
+        "prototypeGetter": "undefined",
+        "prototypeResult": "missing"
+      },
+      "actual": {
+        "hasMember": false,
+        "container": "missing",
+        "prototypeGetter": "undefined",
+        "prototypeResult": "missing"
+      }
+    },
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "kind": "shared",
       "nativeResult": {
         "hasMember": false,
         "container": "missing",
@@ -60,6 +78,25 @@
     {
       "name": "firefox",
       "version": "155.0",
+      "kind": "dedicated",
+      "nativeResult": {
+        "hasMember": true,
+        "container": "available",
+        "registrations": 1,
+        "prototypeGetter": "function",
+        "prototypeResult": "available"
+      },
+      "actual": {
+        "hasMember": true,
+        "getterError": "SecurityError",
+        "prototypeGetter": "function",
+        "prototypeError": "SecurityError"
+      }
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "kind": "shared",
       "nativeResult": {
         "hasMember": true,
         "container": "available",
