@@ -34,7 +34,21 @@ async function compile(sourceRoot) {
     stdin: {
       resolveDir: sourceRoot,
       loader: 'ts',
-      contents: `import {prepareWindowRealm} from './src/runtime/contexts/window-realm.ts';const r=prepareWindowRealm({application:'fedcm-probe',applicationURL:location.origin+'/app/',scriptNonce:'fixture',enableDocumentContexts:true});r.admitContent({installationGeneration:'generation',aliases:[],source:location.origin+'/app/'});globalThis.prepared=true;`,
+      contents: `
+        import { prepareWindowRealm } from './src/runtime/contexts/window-realm.ts';
+        const realm = prepareWindowRealm({
+          application: 'fedcm-probe',
+          applicationURL: location.origin + '/app/',
+          scriptNonce: 'fixture',
+          enableDocumentContexts: true,
+        });
+        realm.admitContent({
+          installationGeneration: 'generation',
+          aliases: [],
+          source: location.origin + '/app/',
+        });
+        globalThis.prepared = true;
+      `,
     },
     bundle: true,
     write: false,
@@ -46,7 +60,23 @@ async function compile(sourceRoot) {
 const previous = await compile(historical),
   fixed = await compile(root);
 let fixture = previous;
-const sw = `self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));const log=[];self.addEventListener('message',e=>{if(e.data==='events')e.ports[0].postMessage(log)});self.addEventListener('fetch',e=>{log.push(e.request.url);const p=new URL(e.request.url).pathname;e.respondWith(p==='/app/'||p==='/fixture.js'?fetch(e.request):new Response('SW blocked',{status:403}));});`;
+const sw = `
+  self.addEventListener('install', () => self.skipWaiting());
+  self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
+  const log = [];
+  self.addEventListener('message', event => {
+    if (event.data === 'events') event.ports[0].postMessage(log);
+  });
+  self.addEventListener('fetch', event => {
+    log.push(event.request.url);
+    const path = new URL(event.request.url).pathname;
+    event.respondWith(
+      path === '/app/' || path === '/fixture.js'
+        ? fetch(event.request)
+        : new Response('SW blocked', { status: 403 })
+    );
+  });
+`;
 const server = http.createServer(async (req, res) => {
   let body = '';
   for await (const chunk of req) body += chunk;

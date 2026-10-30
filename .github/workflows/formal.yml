@@ -44,6 +44,36 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium firefox
         timeout-minutes: 10
       - run: node formal/fedcm-conditional-probe.ts
+      - run: node formal/hyperlink-auditing-probe.ts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: browser-effect-evidence
+          path: |
+            formal/evidence/fedcm-conditional.json
+            formal/evidence/hyperlink-auditing.json
+  webtransport:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - run: npm ci
+      - run: python -m pip install -r formal/webtransport/requirements.lock
+      - run: npx playwright install --with-deps chromium firefox
+        timeout-minutes: 10
+      - run: npm run build
+      - run: node formal/webtransport/run.ts
+        env:
+          PF_WEBTRANSPORT_PYTHON: python
+      - uses: actions/upload-artifact@v4
+        with:
+          name: webtransport-evidence
+          path: formal/webtransport/results.json

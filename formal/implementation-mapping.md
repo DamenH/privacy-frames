@@ -182,6 +182,12 @@ and check them against the model's allowed transitions. The current single
 network flag is a safety abstraction, not a two-run noninterference property or
 a complete account of browser communication.
 
+The FedCM finding illustrates this gap. `LifecycleUnmediatedEffect.cfg` produces
+a `NoRemoteTraffic` counterexample when the model permits a bypassing effect.
+The [browser receiver test](fedcm-conditional-probe.ts) found a concrete
+service-worker-bypassing request in the earlier implementation. The test then
+checks a source fix; it does not show that all other browser effects are modeled.
+
 ## Deterministic operations across two registries
 
 Run the separate implementation characterization tests with:
@@ -231,3 +237,52 @@ Lifecycle's atomic `Replace` should describe effective revocation of old-epoch
 resource authority, not physical termination of all old JavaScript. Pending
 requests that validated before replacement need an explicit linearization rule;
 the current model does not establish one for every browser callback.
+
+## Duplicate binding: dispatcher reachability and consequences
+
+There are four production calls to `contexts.bind`. All take the client key from
+`FetchEvent.resultingClientId`, not an application payload:
+
+- Root navigation: [worker.ts:480](../src/runtime/worker.ts#L480).
+- Dedicated-worker bootstrap: [worker.ts:419](../src/runtime/worker.ts#L419).
+- Child document or popup:
+  [document-controller.ts:177](../src/runtime/contexts/document-controller.ts#L177).
+- Shared-worker bootstrap:
+  [shared-controller.ts:92](../src/runtime/contexts/shared-controller.ts#L92).
+
+Each awaits binding before returning a trusted shell or bootstrap. Child
+documents additionally consume an issued intent through an IndexedDB
+transaction before binding
+([document-intents.ts:329](../src/runtime/contexts/document-intents.ts#L329)). The
+dedicated-worker factory creates a fresh bootstrap UUID per constructor call
+([worker-factory.ts:180](../src/runtime/contexts/worker-factory.ts#L180)). Ordinary
+resource, readiness and content requests do not create bindings.
+
+The [Service Worker Handle Fetch algorithm](https://w3c.github.io/ServiceWorker/#handle-fetch)
+selects an active worker for dispatch and derives the resulting client ID from
+the request's reserved client. These are browser-supplied values. This supports
+the intended dispatcher design, but the source audit has not established that
+two bind-capable events can never share a resulting client across controller
+replacement, retries or browser-specific behavior. The two-registry test
+therefore demonstrates a storage-level race, not a demonstrated application
+path to it.
+
+Binding success does not itself deliver publisher code or grant management.
+Subsequent root content validates its current application/generation binding
+([worker.ts:512](../src/runtime/worker.ts#L512)); child content also checks the
+intent's child client and context ID
+([document-controller.ts:252](../src/runtime/contexts/document-controller.ts#L252)).
+Worker capability lookup compares the indexed context with the current identity
+([model.ts:117](../src/runtime/contexts/model.ts#L117)), so the superseded index
+in the deterministic race cannot grant its old capability. Management separately
+requires its issued browser-client role
+([worker.ts:184](../src/runtime/worker.ts#L184)). A reachable overwrite could still
+misattribute or disrupt a client; these checks are not a general proof that all
+consequences are harmless. No network disclosure was demonstrated by that test.
+
+The remaining browser correspondence test should record bootstrap destination,
+resulting client ID, context ID, controller build and bind outcome while an
+actual controller upgrade overlaps root, document and worker startup. Grouping
+successful bindings by resulting client would test the assumed uniqueness under
+those observed schedules. Instrumentation must use real FetchEvents rather than
+supply client IDs through a test RPC.

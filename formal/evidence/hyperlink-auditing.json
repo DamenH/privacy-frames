@@ -1,0 +1,631 @@
+{
+  "origin": "http://127.0.0.1:45493",
+  "testedAt": "2026-10-30T14:55:01.300Z",
+  "revision": "5f3811dce632dd481657459fb18ed1b38689e0a7",
+  "runnerSHA256": "66a038862d4da284c00070e3c63460b521e4a2680f38744540d55cf10636760c",
+  "fixtureSHA256": "7044d5f2ea129752a30caaa17177ea35bc823208b5cc53fcf257e21660d3fa04",
+  "sourceHashes": {
+    "src/runtime/response-policy.ts": "f21946f76dd37233ea7e48dd969a59e09343315f3a044e4be66ae4324fb9efb2",
+    "src/runtime/enforcement/effects.ts": "466c165e4ef9d82e2011c85cd2639e3f7e7152309c49fbb5c8962ed0fd1bb691",
+    "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d",
+    "scripts/trusted-policy.ts": "93cc9dffdee1683b74faa06251b4f8ab16eaf5294047b5783f156cb6417a5e36"
+  },
+  "scope": "Same-origin programmatic a/area hyperlink auditing, actual prepareWindowRealm and generated policy plus independent fixture service worker that blocks unknown requests. Native controls calibrate HTTP POST PING; Firefox enabled profile explicitly changes browser preference. Not a complete installed-app controller/lifecycle or Reporting API test.",
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "phase": "native",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/#chromium-native-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=chromium-native-a"
+      },
+      "observed": [
+        {
+          "url": "/ping?marker=chromium-native-a",
+          "method": "POST",
+          "body": "PING",
+          "pingFrom": "http://127.0.0.1:45493/",
+          "pingTo": "http://127.0.0.1:45493/#chromium-native-a"
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "phase": "native",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/#chromium-native-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=chromium-native-area"
+      },
+      "observed": [
+        {
+          "url": "/ping?marker=chromium-native-area",
+          "method": "POST",
+          "body": "PING",
+          "pingFrom": "http://127.0.0.1:45493/#chromium-native-a",
+          "pingTo": "http://127.0.0.1:45493/#chromium-native-area"
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "phase": "SW",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/#chromium-SW-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=chromium-SW-a"
+      },
+      "observed": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "phase": "SW",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/#chromium-SW-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=chromium-SW-area"
+      },
+      "observed": []
+    },
+    {
+      "browser": "chromium",
+      "phase": "SW",
+      "events": [
+        {
+          "url": "http://127.0.0.1:45493/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=chromium-SW-a",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=chromium-SW-area",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "phase": "prepared",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/app/#chromium-prepared-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=chromium-prepared-a",
+        "mode": "network-isolated"
+      },
+      "observed": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "phase": "prepared",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/app/#chromium-prepared-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=chromium-prepared-area",
+        "mode": "network-isolated"
+      },
+      "observed": []
+    },
+    {
+      "browser": "chromium",
+      "phase": "prepared",
+      "events": [
+        {
+          "url": "http://127.0.0.1:45493/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=chromium-SW-a",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=chromium-SW-area",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/app/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/fixture.js",
+          "method": "GET",
+          "destination": "script"
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=chromium-prepared-a",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=chromium-prepared-area",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        }
+      ]
+    },
+    {
+      "browser": "firefox-default",
+      "version": "155.0",
+      "phase": "native",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/#firefox-default-native-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-default-native-a"
+      },
+      "observed": [
+        {
+          "url": "/favicon.ico",
+          "method": "GET",
+          "body": ""
+        }
+      ]
+    },
+    {
+      "browser": "firefox-default",
+      "version": "155.0",
+      "phase": "native",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/#firefox-default-native-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-default-native-area"
+      },
+      "observed": []
+    },
+    {
+      "browser": "firefox-default",
+      "version": "155.0",
+      "phase": "SW",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/#firefox-default-SW-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-default-SW-a"
+      },
+      "observed": []
+    },
+    {
+      "browser": "firefox-default",
+      "version": "155.0",
+      "phase": "SW",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/#firefox-default-SW-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-default-SW-area"
+      },
+      "observed": []
+    },
+    {
+      "browser": "firefox-default",
+      "phase": "SW",
+      "events": [
+        {
+          "url": "http://127.0.0.1:45493/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/favicon.ico",
+          "method": "GET",
+          "destination": "image"
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        }
+      ]
+    },
+    {
+      "browser": "firefox-default",
+      "version": "155.0",
+      "phase": "prepared",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/app/#firefox-default-prepared-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-default-prepared-a",
+        "mode": "network-isolated"
+      },
+      "observed": [
+        {
+          "url": "/sw.js",
+          "method": "GET",
+          "body": ""
+        }
+      ]
+    },
+    {
+      "browser": "firefox-default",
+      "version": "155.0",
+      "phase": "prepared",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/app/#firefox-default-prepared-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-default-prepared-area",
+        "mode": "network-isolated"
+      },
+      "observed": []
+    },
+    {
+      "browser": "firefox-default",
+      "phase": "prepared",
+      "events": [
+        {
+          "url": "http://127.0.0.1:45493/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/favicon.ico",
+          "method": "GET",
+          "destination": "image"
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/app/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/fixture.js",
+          "method": "GET",
+          "destination": "script"
+        },
+        {
+          "url": "http://127.0.0.1:45493/favicon.ico",
+          "method": "GET",
+          "destination": "image"
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        }
+      ]
+    },
+    {
+      "browser": "firefox-ping-enabled",
+      "version": "155.0",
+      "phase": "native",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/#firefox-ping-enabled-native-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-native-a"
+      },
+      "observed": [
+        {
+          "url": "/favicon.ico",
+          "method": "GET",
+          "body": ""
+        },
+        {
+          "url": "/ping?marker=firefox-ping-enabled-native-a",
+          "method": "POST",
+          "body": "PING",
+          "pingFrom": "http://127.0.0.1:45493/",
+          "pingTo": "http://127.0.0.1:45493/#firefox-ping-enabled-native-a"
+        }
+      ]
+    },
+    {
+      "browser": "firefox-ping-enabled",
+      "version": "155.0",
+      "phase": "native",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/#firefox-ping-enabled-native-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-native-area"
+      },
+      "observed": [
+        {
+          "url": "/ping?marker=firefox-ping-enabled-native-area",
+          "method": "POST",
+          "body": "PING",
+          "pingFrom": "http://127.0.0.1:45493/#firefox-ping-enabled-native-a",
+          "pingTo": "http://127.0.0.1:45493/#firefox-ping-enabled-native-area"
+        }
+      ]
+    },
+    {
+      "browser": "firefox-ping-enabled",
+      "version": "155.0",
+      "phase": "SW",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/#firefox-ping-enabled-SW-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-SW-a"
+      },
+      "observed": []
+    },
+    {
+      "browser": "firefox-ping-enabled",
+      "version": "155.0",
+      "phase": "SW",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/#firefox-ping-enabled-SW-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-SW-area"
+      },
+      "observed": []
+    },
+    {
+      "browser": "firefox-ping-enabled",
+      "phase": "SW",
+      "events": [
+        {
+          "url": "http://127.0.0.1:45493/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/favicon.ico",
+          "method": "GET",
+          "destination": "image"
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-SW-a",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-SW-area",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        }
+      ]
+    },
+    {
+      "browser": "firefox-ping-enabled",
+      "version": "155.0",
+      "phase": "prepared",
+      "tag": "a",
+      "result": {
+        "url": "http://127.0.0.1:45493/app/#firefox-ping-enabled-prepared-a",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-prepared-a",
+        "mode": "network-isolated"
+      },
+      "observed": [
+        {
+          "url": "/sw.js",
+          "method": "GET",
+          "body": ""
+        }
+      ]
+    },
+    {
+      "browser": "firefox-ping-enabled",
+      "version": "155.0",
+      "phase": "prepared",
+      "tag": "area",
+      "result": {
+        "url": "http://127.0.0.1:45493/app/#firefox-ping-enabled-prepared-area",
+        "ping": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-prepared-area",
+        "mode": "network-isolated"
+      },
+      "observed": []
+    },
+    {
+      "browser": "firefox-ping-enabled",
+      "phase": "prepared",
+      "events": [
+        {
+          "url": "http://127.0.0.1:45493/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/favicon.ico",
+          "method": "GET",
+          "destination": "image"
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-SW-a",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-SW-area",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/app/",
+          "method": "GET",
+          "destination": "document"
+        },
+        {
+          "url": "http://127.0.0.1:45493/fixture.js",
+          "method": "GET",
+          "destination": "script"
+        },
+        {
+          "url": "http://127.0.0.1:45493/favicon.ico",
+          "method": "GET",
+          "destination": "image"
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-prepared-a",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/ping?marker=firefox-ping-enabled-prepared-area",
+          "method": "POST",
+          "destination": ""
+        },
+        {
+          "url": "http://127.0.0.1:45493/events",
+          "method": "GET",
+          "destination": ""
+        }
+      ]
+    }
+  ],
+  "traffic": [
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/ping?marker=chromium-native-a",
+      "method": "POST",
+      "body": "PING",
+      "pingFrom": "http://127.0.0.1:45493/",
+      "pingTo": "http://127.0.0.1:45493/#chromium-native-a"
+    },
+    {
+      "url": "/ping?marker=chromium-native-area",
+      "method": "POST",
+      "body": "PING",
+      "pingFrom": "http://127.0.0.1:45493/#chromium-native-a",
+      "pingTo": "http://127.0.0.1:45493/#chromium-native-area"
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/app/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/favicon.ico",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/app/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/favicon.ico",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/ping?marker=firefox-ping-enabled-native-a",
+      "method": "POST",
+      "body": "PING",
+      "pingFrom": "http://127.0.0.1:45493/",
+      "pingTo": "http://127.0.0.1:45493/#firefox-ping-enabled-native-a"
+    },
+    {
+      "url": "/ping?marker=firefox-ping-enabled-native-area",
+      "method": "POST",
+      "body": "PING",
+      "pingFrom": "http://127.0.0.1:45493/#firefox-ping-enabled-native-a",
+      "pingTo": "http://127.0.0.1:45493/#firefox-ping-enabled-native-area"
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/app/",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/fixture.js",
+      "method": "GET",
+      "body": ""
+    },
+    {
+      "url": "/sw.js",
+      "method": "GET",
+      "body": ""
+    }
+  ]
+}

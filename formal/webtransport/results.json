@@ -1,0 +1,345 @@
+{
+  "date": "2026-10-30T14:53:11.239Z",
+  "scope": "Native HTTP/3 datagram and bidirectional-stream positive controls, followed by the identical attempt inside the installed production runtime; independent loopback UDP receiver. Fresh receiver/browser processes separate each phase.",
+  "provenance": {
+    "capturedAt": "2026-10-30T14:53:11.263Z",
+    "revision": "5f3811dce632dd481657459fb18ed1b38689e0a7",
+    "dirty": true,
+    "sourceSHA256": "d9a2637a58ac14639414d9410cd62f748b5b267d5e93996215b8692edb57536f",
+    "runner": "formal/webtransport/run.ts",
+    "runnerSHA256": "bcf93ba6c0695345fa8cc48e1033b7412df976fb12b2896e2c2f2c96de5c2c74",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-manager/sw.js": "59c6ea8cfc027e9edc09f0b749db95da7d973e738e79ed6777524e487646b011",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "2a7cc135e164621f75a40d1088fb49dfe516e6ef31d348ab9d71c73b76bb506d",
+      "dist-runtime/guard.js": "d45c7178a6c125635f55be17a17ff8f5a7f78e65a60537b61eb0273239162f01",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "dist-runtime/sw.js": "5b5329562c7b81cbe31c4d40459b7a857d8e2f7ce19d9c7a2eaaf5150f33227e",
+      "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "dee2c1e7be73e58a6c30a4c12a9e38ffce4b2221bd8a5c3a2f50923e22da18e6"
+    }
+  },
+  "inputs": {
+    "receiver.py": "e65dd530a2afe57492c87823641908e0f6171282b2f5f670ad955a8296fb23fb",
+    "requirements.lock": "cdfe657c1204927c8db0b0a39cc68425d67ab06296db29cd9d0960cf4fbfb748"
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "receiver": {
+        "kind": "ready",
+        "port": 36400,
+        "certificateSHA256": "15811d1dfb22bcba05ef724a242b1fa51ed5eb8820a48fbda771ec58dcd4c43a",
+        "aioquic": "1.7.0",
+        "python": "3.13.14"
+      },
+      "positive": {
+        "available": true,
+        "ready": true,
+        "datagram": "pf-webtransport-independent-control",
+        "stream": "pf-webtransport-independent-control-stream"
+      },
+      "isolated": {
+        "available": true,
+        "ready": false,
+        "error": "SecurityError: Operation WebTransport prohibited by application host"
+      },
+      "positiveEvents": [
+        {
+          "kind": "ready",
+          "port": 36400,
+          "certificateSHA256": "15811d1dfb22bcba05ef724a242b1fa51ed5eb8820a48fbda771ec58dcd4c43a",
+          "aioquic": "1.7.0",
+          "python": "3.13.14"
+        },
+        {
+          "kind": "udp",
+          "bytes": 1250,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 1250,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "negotiated",
+          "alpn": "h3"
+        },
+        {
+          "kind": "udp",
+          "bytes": 1250,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "handshake",
+          "alpn": "h3"
+        },
+        {
+          "kind": "udp",
+          "bytes": 152,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "headers",
+          "stream": 0,
+          "headers": {
+            ":scheme": "https",
+            ":method": "CONNECT",
+            ":authority": "127.0.0.1:36400",
+            ":path": "/wt-independent-marker",
+            ":protocol": "webtransport",
+            "sec-webtransport-http3-draft02": "1",
+            "origin": "http://127.0.0.1:38649"
+          }
+        },
+        {
+          "kind": "accepted",
+          "stream": 0
+        },
+        {
+          "kind": "udp",
+          "bytes": 31,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 68,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "application-datagram",
+          "stream": 0,
+          "data": "pf-webtransport-independent-control"
+        },
+        {
+          "kind": "udp",
+          "bytes": 36,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 71,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "application-stream",
+          "stream": 4,
+          "session": 0,
+          "data": "pf-webtransport-independent-control-stream"
+        },
+        {
+          "kind": "udp",
+          "bytes": 29,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "application-stream",
+          "stream": 4,
+          "session": 0,
+          "data": ""
+        },
+        {
+          "kind": "udp",
+          "bytes": 31,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 38,
+          "peer": "127.0.0.1"
+        }
+      ],
+      "isolatedEvents": [
+        {
+          "kind": "ready",
+          "port": 36400,
+          "certificateSHA256": "15811d1dfb22bcba05ef724a242b1fa51ed5eb8820a48fbda771ec58dcd4c43a",
+          "aioquic": "1.7.0",
+          "python": "3.13.14"
+        }
+      ],
+      "confinedUDPDatagrams": 0
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "receiver": {
+        "kind": "ready",
+        "port": 47388,
+        "certificateSHA256": "15811d1dfb22bcba05ef724a242b1fa51ed5eb8820a48fbda771ec58dcd4c43a",
+        "aioquic": "1.7.0",
+        "python": "3.13.14"
+      },
+      "positive": {
+        "available": true,
+        "ready": true,
+        "datagram": "pf-webtransport-independent-control",
+        "stream": "pf-webtransport-independent-control-stream"
+      },
+      "isolated": {
+        "available": true,
+        "ready": false,
+        "error": "SecurityError: Operation WebTransport prohibited by application host"
+      },
+      "positiveEvents": [
+        {
+          "kind": "ready",
+          "port": 47388,
+          "certificateSHA256": "15811d1dfb22bcba05ef724a242b1fa51ed5eb8820a48fbda771ec58dcd4c43a",
+          "aioquic": "1.7.0",
+          "python": "3.13.14"
+        },
+        {
+          "kind": "udp",
+          "bytes": 1252,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 1252,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "negotiated",
+          "alpn": "h3"
+        },
+        {
+          "kind": "udp",
+          "bytes": 1252,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "handshake",
+          "alpn": "h3"
+        },
+        {
+          "kind": "udp",
+          "bytes": 78,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 314,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "headers",
+          "stream": 0,
+          "headers": {
+            ":method": "CONNECT",
+            ":scheme": "https",
+            ":authority": "127.0.0.1:47388",
+            ":path": "/wt-independent-marker",
+            ":protocol": "webtransport",
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:155.0) Gecko/20100101 Firefox/155.0",
+            "accept": "*/*",
+            "accept-language": "en-US,en;q=0.9",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "sec-webtransport-http3-draft02": "1",
+            "origin": "http://127.0.0.1:38649",
+            "sec-fetch-dest": "webtransport",
+            "sec-fetch-mode": "no-cors",
+            "sec-fetch-site": "same-site",
+            "priority": "u=4",
+            "pragma": "no-cache",
+            "cache-control": "no-cache"
+          }
+        },
+        {
+          "kind": "accepted",
+          "stream": 0
+        },
+        {
+          "kind": "udp",
+          "bytes": 31,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 64,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "application-datagram",
+          "stream": 0,
+          "data": "pf-webtransport-independent-control"
+        },
+        {
+          "kind": "udp",
+          "bytes": 31,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 32,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 72,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "application-stream",
+          "stream": 4,
+          "session": 0,
+          "data": "pf-webtransport-independent-control-stream"
+        },
+        {
+          "kind": "udp",
+          "bytes": 40,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 35,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "udp",
+          "bytes": 35,
+          "peer": "127.0.0.1"
+        },
+        {
+          "kind": "terminated",
+          "error": 256,
+          "reason": ""
+        }
+      ],
+      "isolatedEvents": [
+        {
+          "kind": "ready",
+          "port": 47388,
+          "certificateSHA256": "15811d1dfb22bcba05ef724a242b1fa51ed5eb8820a48fbda771ec58dcd4c43a",
+          "aioquic": "1.7.0",
+          "python": "3.13.14"
+        }
+      ],
+      "confinedUDPDatagrams": 0
+    }
+  ]
+}
