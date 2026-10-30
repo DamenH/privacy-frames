@@ -91,3 +91,16 @@ The [early-kernel compatibility receipt](compatibility-early-kernel.json) record
 all eight applications passing their selected native and confined tasks in
 Chromium and Firefox. The build artifacts remained stable throughout the run.
 Source and artifact hashes identify the tested uncommitted inputs.
+
+The [early-kernel deployment receipt](deployment-early-kernel.json) pins the public
+runtime to `71bc625935bb0b4ddc97a7369a722cc608705da1`. Eight direct script responses
+match the artifacts used by the installed-app receiver test. A fresh Chromium
+profile installed public Notes and passed identity and sampled reporting-header
+checks. The controlled navigation receiver tests remain local.
+
+The reusable part of this experiment is isolating small guards with explicit
+native contracts and checked startup order. Their restricted source semantics
+can then be checked separately from browser effects. Extending this argument to
+the complete runtime requires implementation correspondence for its other
+authority and effect boundaries, plus a browser coverage argument beyond the
+selected navigation contract.

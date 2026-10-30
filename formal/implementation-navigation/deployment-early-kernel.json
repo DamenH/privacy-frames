@@ -1,0 +1,100 @@
+{
+  "sourceRevision": "71bc625935bb0b4ddc97a7369a722cc608705da1",
+  "previousSourceRevision": "0d6a8dbec8623d985540b679a22e9d03f2ff2d8a",
+  "runtimePointerCommit": "47e99c93ddd002bedb72e6448452f351a1e8204a",
+  "pagesRun": 41139381610,
+  "checkedAt": "2026-10-30T22:38:50.196637+00:00",
+  "method": "Direct HTTPS response SHA-256 compared with the exact local artifacts recorded by the installed-app receiver test; requests ask for cache revalidation.",
+  "testedSourceSHA256": "596ecaa0a3659687b05f8a6a8d3603ce83b067b81b0fb18706d62d932542286b",
+  "files": [
+    {
+      "path": "sw.js",
+      "status": 200,
+      "expectedSHA256": "0f400487104929591c73d793a707488a0902ee54cf6e4806763d66127e167c29",
+      "liveSHA256": "0f400487104929591c73d793a707488a0902ee54cf6e4806763d66127e167c29",
+      "matches": true
+    },
+    {
+      "path": "guard.js",
+      "status": 200,
+      "expectedSHA256": "bf1b38dce44831e94f5de2969c7aba8d4dda65a1fa89497a486f4405e9ad13bf",
+      "liveSHA256": "bf1b38dce44831e94f5de2969c7aba8d4dda65a1fa89497a486f4405e9ad13bf",
+      "matches": true
+    },
+    {
+      "path": "document-guard.js",
+      "status": 200,
+      "expectedSHA256": "8c9059f6352d56359e2a246fcd666e99b41bd460513d2c5efb80cfc54c4786b4",
+      "liveSHA256": "8c9059f6352d56359e2a246fcd666e99b41bd460513d2c5efb80cfc54c4786b4",
+      "matches": true
+    },
+    {
+      "path": "worker-guard.js",
+      "status": 200,
+      "expectedSHA256": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "liveSHA256": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "matches": true
+    },
+    {
+      "path": "shared-worker-guard.js",
+      "status": 200,
+      "expectedSHA256": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "liveSHA256": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "matches": true
+    },
+    {
+      "path": "worklet-guard.js",
+      "status": 200,
+      "expectedSHA256": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "liveSHA256": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "matches": true
+    },
+    {
+      "path": "publisher-worker-guard.js",
+      "status": 200,
+      "expectedSHA256": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "liveSHA256": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "matches": true
+    },
+    {
+      "path": "connect.js",
+      "status": 200,
+      "expectedSHA256": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "liveSHA256": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "matches": true
+    }
+  ],
+  "validationRuns": [
+    {
+      "kind": "proofs",
+      "run": 41138965557,
+      "conclusion": "success",
+      "headSha": "71bc625935bb0b4ddc97a7369a722cc608705da1",
+      "status": "completed",
+      "url": "https://github.com/privacy-frames/host/actions/runs/41138965557"
+    },
+    {
+      "kind": "models_and_browser_effects",
+      "run": 41138965653,
+      "conclusion": "success",
+      "headSha": "71bc625935bb0b4ddc97a7369a722cc608705da1",
+      "status": "completed",
+      "url": "https://github.com/privacy-frames/host/actions/runs/41138965653"
+    },
+    {
+      "kind": "full_host_suite",
+      "run": 41138458646,
+      "conclusion": "success",
+      "headSha": "5afe302fe26329614a005e052c5dd13c16c67ac0",
+      "status": "completed",
+      "url": "https://github.com/privacy-frames/host/actions/runs/41138458646"
+    }
+  ],
+  "runtimeInputsMatchHostSuiteRevision": true,
+  "liveCheck": {
+    "command": "node formal/live-identity-check.ts",
+    "output": "Live identity and sampled reporting-header checks passed in Chromium 153.0.8010.12",
+    "scope": "Fresh Chromium profile, public Notes installation, synchronous identity API restriction and sampled direct/application reporting headers. The controlled navigation receiver tests remain local."
+  },
+  "completedAt": "2026-10-30T22:39:38.546972+00:00"
+}
