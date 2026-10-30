@@ -366,3 +366,37 @@ other report types remain unverified. NEL's specification concerns actual
 [HTTP-network fetches](https://www.w3.org/TR/network-error-logging/#network-requests),
 which is distinct from an ordinary synthetic response; actual browser behavior
 still needs a calibrated receiver before that distinction closes a model route.
+
+## Optional background-networking reporting diagnostic
+
+[The native diagnostic](reporting-background-probe.ts) compares ordinary
+Playwright Chromium with a launch that removes only
+`--disable-background-networking`. It asserts the actual browser command line,
+not just the launch options. Run it manually after `npm ci`, installing
+Playwright Chromium and making `openssl` available:
+
+```sh
+node formal/reporting-background-probe.ts
+```
+
+It is not a default CI requirement. The
+[diagnostic receipt](evidence/reporting-background-networking.json) is explicitly
+**UNCALIBRATED** for modern Reporting API and NEL delivery. The three profiles are
+loopback HTTP with the default flag, loopback HTTP with that flag removed, and
+loopback HTTPS with it removed. Each has an active legacy CSP report receiver.
+The modern controls generate CSP reports and use CDP's privileged test-report
+command as an additional uploader diagnostic; that command is not an application
+capability.
+
+Restoring background networking did not produce an observed modern/NEL upload in
+these profiles. Modern reports remained queued; successful endpoint registration
+and NEL policy-cache population were not established. These results do not show
+that background networking is irrelevant in other profiles or that confinement
+blocks those channels.
+
+The HTTPS profile uses a temporary self-signed certificate and a recorded SPKI
+certificate-error exception. It does not install a trusted root certificate.
+Browser reporting/header processing can differ under that exception, so this is
+not a calibrated trusted-HTTPS reporting setup. Shortened reporting delays bound
+the experiment; absent delivery is still not containment evidence. No prepared
+modern/NEL negative test is promoted without an active native uploader control.
