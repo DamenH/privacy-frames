@@ -36,6 +36,14 @@ ordering. The source report does not preserve full overload signatures, so revie
 all overloads before relying on a classification. `--check` forces inspection
 when the input changes, and generation fails if a reviewed key disappears.
 
+Each row also has a separate `securityDisposition`. `enforced-scoped` points to
+a claim whose evidence covers a stated scenario; it does not cover every use of
+that member. `excluded-scoped` is reserved for a scoped exclusion supported by
+evidence. `unverified` means the queue has no established disposition for that
+row; it does not mean the member has a network effect. Claim links are manually
+selected, and the generator checks that they name existing claims. Unlinked rows
+remain `unverified`, even when their roles have been reviewed.
+
 This is a queue for 11 selected Webref specifications and two observed context
 classes. HTML and CSS algorithms, HTTP headers, browser UI, operating-system
 services, other specs, and additional execution contexts need separate inventories.

@@ -26,6 +26,16 @@ def main():
     raw, annotations = INPUT.read_bytes(), TRIAGE.read_bytes()
     report, triage = json.loads(raw), json.loads(annotations)
     wpt = triage['wpt']
+    ledger = json.loads((ROOT / 'formal/claims/ledger.json').read_bytes())
+    claims = {claim['id']: claim for claim in ledger['claims']}
+    links = triage.get('claimLinks', {})
+    for key, link in links.items():
+        if link['claim'] not in claims:
+            raise ValueError(f'unknown claim for {key}')
+        if link['disposition'] not in {'enforced-scoped', 'excluded-scoped', 'unverified'}:
+            raise ValueError(f'unknown security disposition for {key}')
+        if link['disposition'] != 'unverified' and claims[link['claim']]['disposition'] != 'reviewed-scoped':
+            raise ValueError(f'unreviewed claim cannot establish {key}')
     if args.verify_wpt:
         for item in wpt.values():
             url = f"https://raw.githubusercontent.com/web-platform-tests/wpt/{triage['wptRevision']}/{item['path']}"
@@ -55,6 +65,8 @@ def main():
             'observations': row['observations'],
             'priorReviewPointer': row['review'],
             'classification': review['class'] if review else 'unreviewed',
+            'securityDisposition': links.get(key, {}).get('disposition', 'unverified'),
+            'claimId': links.get(key, {}).get('claim'),
             'selectedWpt': review['wpt'] if review else [],
             'effect': review.get('effect') if review else None,
             'prerequisites': review.get('prerequisites') if review else None,
@@ -62,6 +74,8 @@ def main():
         })
     if set(reviews) != matched:
         raise ValueError(f"manual review keys not present: {sorted(set(reviews) - matched)}")
+    if not set(links).issubset(matched):
+        raise ValueError(f"claim links not present: {sorted(set(links) - matched)}")
     output = {
         'scope': 'All rows in the bounded saved IDL join; unreviewed includes absent and unobserved names. Classifications and WPT links are manually selected review leads, not mediation tests or safety judgments.',
         'idlReportSHA256': sha(raw),

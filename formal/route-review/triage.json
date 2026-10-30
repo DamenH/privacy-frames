@@ -2262,5 +2262,35 @@
       "prerequisites": "Requires an exposed native WebTransport constructor and implementation of the static property; the snapshot did not observe it.",
       "next": "Measure browser availability and any effects of feature detection; do not infer support or a network request from the pinned IDL declaration."
     }
-  ]
+  ],
+  "claimLinks": {
+    "beacon|Navigator|sendBeacon|operation": {
+      "claim": "eventsource_beacon",
+      "disposition": "enforced-scoped"
+    },
+    "fetch|Window|fetchLater|operation": {
+      "claim": "deferred_fetch",
+      "disposition": "enforced-scoped"
+    },
+    "service-workers|Cache|add|operation": {
+      "claim": "publisher_cache_download",
+      "disposition": "unverified"
+    },
+    "service-workers|Cache|addAll|operation": {
+      "claim": "publisher_cache_download",
+      "disposition": "enforced-scoped"
+    },
+    "websockets|WebSocket|constructor|constructor": {
+      "claim": "websocket",
+      "disposition": "enforced-scoped"
+    },
+    "webtransport|WebTransport|constructor|constructor": {
+      "claim": "webtransport",
+      "disposition": "enforced-scoped"
+    },
+    "service-workers|InstallEvent|addRoutes|operation": {
+      "claim": "native_worker_static_routes",
+      "disposition": "unverified"
+    }
+  }
 }
