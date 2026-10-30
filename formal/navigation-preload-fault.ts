@@ -157,6 +157,12 @@ try {
       const cases = [];
       for (const kind of ['native', 'normal', 'fault']) {
         const page = await context.newPage();
+        const eventObservations: unknown[] = [];
+        page.on('console', (message) => {
+          const prefix = 'navigation-contract:';
+          if (message.text().startsWith(prefix))
+            eventObservations.push(JSON.parse(message.text().slice(prefix.length)));
+        });
         const path = kind === 'native' ? '/native/' : `/app/${kind}/`;
         const navigation = await page.goto(origin + path);
         assert(navigation);
@@ -179,6 +185,20 @@ try {
         );
         const before = page.url();
         const marker = `${kind}-${randomUUID()}`;
+        await page.evaluate(() => {
+          window.navigation.addEventListener('navigate', (event) => {
+            console.log(
+              'navigation-contract:' +
+                JSON.stringify({
+                  trusted: event.isTrusted,
+                  cancelable: event.cancelable,
+                  prevented: event.defaultPrevented,
+                  sameDocument: event.destination.sameDocument,
+                  navigationType: event.navigationType,
+                }),
+            );
+          });
+        });
         await page.evaluate((marker) => {
           const a = document.createElement('a');
           a.href = '/target?' + marker;
@@ -191,6 +211,15 @@ try {
           async () => (await (await fetch('/events')).json()) as string[],
         );
         const workerObserved = laterEvents.some((value) => value.includes(marker));
+        assert.deepEqual(eventObservations, [
+          {
+            trusted: true,
+            cancelable: true,
+            prevented: kind === 'normal',
+            sameDocument: false,
+            navigationType: 'push',
+          },
+        ]);
         if (kind === 'normal') {
           assert.deepEqual(observed, []);
           assert.equal(page.url(), before);
@@ -207,6 +236,7 @@ try {
           after: page.url(),
           received: observed,
           workerObserved,
+          eventObservations,
           headers: kind === 'native' ? undefined : headers,
         });
         await page.close();

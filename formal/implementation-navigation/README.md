@@ -52,3 +52,8 @@ for genuine events, and specify the browser rule that
 relates cancellation to navigation/preload delivery. A stronger translation
 argument must also replace trust in this small extractor if the intended result
 requires a machine-checked JavaScript-to-proof connection.
+
+The [browser contract](browser-contract.md) connects the selected root link path
+to the relevant HTML and DOM algorithms and the receiver fixture's genuine-event
+observations. It records which premises are source-checked, empirically tested,
+or still assumed, and identifies navigation routes outside this argument.
