@@ -14,14 +14,14 @@
     "formal/confinement/traces.json": "0b6ac66c20d708836c50b6a6454cfe51afbe6cef558fdc98653d59bf96983e29",
     "formal/document-consumption-fault.md": "d7d72f130cc6e78ed38e230a0f585f303a3b6f7451016d78bfc6d5bebcdbff8e",
     "formal/document-consumption-fault.ts": "33f222968437c3646eba8e4267b5bca67d65fabcc253bf0be788665793b67ec1",
-    "formal/eventsource-beacon-probe.ts": "74c45c5962800e83d67da0994cb8f1681bccb448d3ae88b88b9fdc93c72f3a89",
-    "formal/eventsource-beacon.md": "7596fe237886d8fc5bf0b433dd56159aa0475a7bb90557cbf0ed21a54f9fbc69",
+    "formal/eventsource-beacon-probe.ts": "b7164ccf1e2c1cf99cabc49d9033f1ac3b17118283c44c41f24e79b14f50ade6",
+    "formal/eventsource-beacon.md": "cdead9518ca893630e34b6d8f8e138983b7907daa55303345d1c3d22311816b3",
     "formal/evidence/background-agents.json": "dc81ab722d2e40d58de06faab78a32aeda2cfdd3b8b04e4a66ceb9fc1ff9af39",
     "formal/evidence/cache-publisher.json": "676b5354c06595a86475b50941ee5cb270c68cbd63a3999910639440f72755c7",
     "formal/evidence/contexts-document-contexts.json": "92351579f6812f49be82f317fb5fbf49850be64019bd1e7a1be31c4edd2f81b7",
     "formal/evidence/contexts-prototype-confinement.json": "2036fd1e0cc6ac47fc1e8042a5f9c65861efc5788bab1062b2185af0054cc8e0",
     "formal/evidence/document-consumption-fault.json": "ac89b66f67e8b5fc2114f0b0c2ca17108cb69e194b3ad4e4d905f7cb5d6982ac",
-    "formal/evidence/eventsource-beacon.json": "0f2ff063942093bfffe26fe4bc4cbb28493eae86d15296d3fac0fb36e8850d21",
+    "formal/evidence/eventsource-beacon.json": "74fd54e3323a3e81b511ad8cd78931c0514147a34def38c65b0a8fd07d7325fa",
     "formal/evidence/fedcm-conditional.json": "67a51d93242a3e007dd08f723931e01504f6c21426dd3e21a3f87de6c36d9b4b",
     "formal/evidence/fetch-later.json": "e0dd9907ac7c33b5f9aac19a06fe0cdb50f5643c56ddc1c90adad24597a52364",
     "formal/evidence/generation-overlaps.json": "4aa7a3b7632cf06fa1e2b4f8424d2f791e14aa652a741322f3a6226ee99524bb",
@@ -1270,17 +1270,35 @@
             "test/wasm.ts",
             "formal/browser-surface-inventory.md"
           ]
+        },
+        {
+          "kind": "native_control",
+          "description": "Wasm invokes an imported JavaScript POST function, sending a marker to the independent native receiver in both browsers.",
+          "paths": [
+            "formal/eventsource-beacon.md",
+            "formal/eventsource-beacon-probe.ts",
+            "formal/evidence/eventsource-beacon.json"
+          ]
+        },
+        {
+          "kind": "confined_test",
+          "description": "The Wasm import actually executes in a prepared window; the fixture worker observes and blocks the marker POST in both browsers.",
+          "paths": [
+            "formal/eventsource-beacon.md",
+            "formal/eventsource-beacon-probe.ts",
+            "formal/evidence/eventsource-beacon.json"
+          ]
         }
       ],
       "open_obligations": [
-        "Run and record receiver-calibrated tests for network-capable imports actually invoked by Wasm, including relevant workers and recovered references.",
-        "Establish that all browser-accessible capabilities imported into Wasm are subject to the boundary; the current fixture does not establish this.",
+        "Test imports and recovered references in installed apps, dedicated and shared workers, and other supported contexts.",
+        "The one imported fetch does not establish mediation of every browser capability supplied to Wasm.",
         "Browser and Wasm engine correctness remain assumptions."
       ],
-      "disposition": "unverified",
+      "disposition": "reviewed-scoped",
       "control_status": {
-        "native_control": "not-recorded",
-        "confined_test": "not-recorded",
+        "native_control": "recorded",
+        "confined_test": "recorded",
         "fault_control": "not-recorded"
       }
     },

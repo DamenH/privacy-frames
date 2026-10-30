@@ -15,7 +15,13 @@ intercepted the prepared document request. The [receipt](evidence/eventsource-be
 records browser versions, source and fixture hashes, outcomes and receiver
 observations.
 
-This tests selected same-origin calls in a prepared window. It does not cover
+The same fixture also instantiates a small WebAssembly module whose exported
+function calls an imported JavaScript function. That function makes a
+marker-bearing POST with `fetch`. The test checks that the Wasm import actually
+ran: the native POST reaches the receiver, while the fixture service worker
+observes and blocks it in both worker-controlled and prepared windows.
+
+This tests selected same-origin calls and one Wasm import in a prepared window. It does not cover
 installed-app startup, workers, recovered references, all destinations, or the
 effect of removing either denial. The service-worker control does not establish
 that every browser-generated request reaches a service worker.

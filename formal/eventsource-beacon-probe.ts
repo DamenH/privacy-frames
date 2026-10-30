@@ -89,7 +89,7 @@ origin = `http://127.0.0.1:${address.port}`;
 const sha = (value: Uint8Array) => createHash('sha256').update(value).digest('hex');
 const receipt = {
   scope:
-    'Same-origin EventSource and sendBeacon in a prepared Window, with an independent receiver and a fixture service worker. Not installed-app lifecycle or worker coverage.',
+    'Same-origin EventSource, sendBeacon and a Wasm-invoked JavaScript fetch in a prepared Window, with an independent receiver and a fixture service worker. Not installed-app lifecycle or worker coverage.',
   revision: execFileSync('git', ['rev-parse', 'HEAD'], {
     cwd: root,
     encoding: 'utf8',
@@ -140,11 +140,48 @@ try {
           );
           assert(events.some((item) => item.url.endsWith('/app/')));
         }
-        for (const kind of ['eventsource', 'beacon']) {
+        for (const kind of ['eventsource', 'beacon', 'wasm']) {
           const marker = `${phase}-${kind}-${randomUUID()}`;
           const result = await page.evaluate(
             async ({ kind, marker }) => {
               try {
+                if (kind === 'wasm') {
+                  const bytes = new Uint8Array([
+                    0, 97, 115, 109, 1, 0, 0, 0, 1, 4, 1, 96, 0, 0, 2, 12, 1, 3, 101, 110,
+                    118, 4, 115, 101, 110, 100, 0, 0, 3, 2, 1, 0, 7, 7, 1, 3, 114, 117,
+                    110, 0, 1, 10, 6, 1, 4, 0, 16, 0, 11,
+                  ]);
+                  let request: Promise<Response> | undefined;
+                  let invoked = false;
+                  let synchronousError = '';
+                  const module = await WebAssembly.instantiate(bytes, {
+                    env: {
+                      send: () => {
+                        invoked = true;
+                        try {
+                          request = fetch('/beacon?' + marker, {
+                            method: 'POST',
+                            body: marker,
+                          });
+                        } catch (error) {
+                          synchronousError =
+                            error instanceof Error ? error.name : 'unknown';
+                        }
+                      },
+                    },
+                  });
+                  (module.instance.exports.run as () => void)();
+                  if (!invoked) throw new Error('Wasm import was not called');
+                  if (!request) return { result: synchronousError, invoked };
+                  try {
+                    return { result: 'http-' + (await request).status, invoked };
+                  } catch (error) {
+                    return {
+                      result: error instanceof Error ? error.name : 'unknown',
+                      invoked,
+                    };
+                  }
+                }
                 if (kind === 'beacon')
                   return {
                     result: String(navigator.sendBeacon('/beacon?' + marker, marker)),
@@ -172,13 +209,15 @@ try {
             },
             { kind, marker },
           );
+          if (kind === 'wasm') assert('invoked' in result && result.invoked === true);
           if (phase === 'native') {
             if (kind === 'beacon') assert.equal(result.result, 'true');
+            else if (kind === 'wasm') assert.equal(result.result, 'http-200');
             else assert.equal(result.result, 'message');
             await page.waitForTimeout(300);
             const received = traffic.filter((item) => item.url.includes(marker));
             assert.equal(received.length, 1, `${engine.name()} native ${kind}`);
-            if (kind === 'beacon') {
+            if (kind === 'beacon' || kind === 'wasm') {
               assert.equal(received[0].method, 'POST');
               assert.equal(received[0].body, marker);
             }
@@ -189,7 +228,10 @@ try {
               0,
               `${engine.name()} ${phase} ${kind}`,
             );
-            if (phase === 'prepared') assert.equal(result.result, 'SecurityError');
+            if (phase === 'prepared' && kind !== 'wasm')
+              assert.equal(result.result, 'SecurityError');
+            if (phase !== 'native' && kind === 'wasm')
+              assert.notEqual(result.result, 'http-200');
             if (phase === 'worker') {
               const events = await page.evaluate(
                 async () => (await (await fetch('/events')).json()) as { url: string }[],
@@ -198,6 +240,12 @@ try {
                 events.some((item) => item.url.includes(marker)),
                 `${engine.name()} worker did not observe ${kind}`,
               );
+            }
+            if (phase === 'prepared' && kind === 'wasm') {
+              const events = await observer.evaluate(
+                async () => (await (await fetch('/events')).json()) as { url: string }[],
+              );
+              assert(events.some((item) => item.url.includes(marker)));
             }
           }
           observations.push({
@@ -225,7 +273,7 @@ try {
     JSON.stringify(receipt, null, 2) + '\n',
   );
   console.log(
-    'EventSource and sendBeacon: native controls, service-worker controls, and prepared windows passed in Chromium and Firefox',
+    'EventSource, sendBeacon and Wasm-invoked fetch controls passed in Chromium and Firefox',
   );
 } finally {
   server.closeAllConnections();
