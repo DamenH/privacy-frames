@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import dgram from 'node:dgram';
 import http from 'node:http';
+import type { Duplex } from 'node:stream';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { chromium, firefox } from 'playwright';
 import { response } from '../src/runtime/response-policy.ts';
@@ -19,6 +20,7 @@ const observations = {
   localHTTP: [] as string[],
   localUpgrades: [] as string[],
   stun: [] as number[],
+  receiverCloseErrors: [] as string[],
 };
 const receiver = http.createServer((request, reply) => {
   observations.externalHTTP.push(request.url || '/');
@@ -27,8 +29,15 @@ const receiver = http.createServer((request, reply) => {
   reply.end('external response');
 });
 receiver.on('connection', () => observations.externalTCP.push(Date.now()));
-receiver.on('upgrade', (request, socket) => {
-  observations.externalUpgrades.push(request.url || '/');
+function acceptSocket(request: http.IncomingMessage, socket: Duplex, paths: string[]) {
+  paths.push(request.url || '/');
+  // Browsers may reset an upgraded connection while a probe/context closes.
+  // Keep these expected fixture shutdown errors distinct from traffic checks.
+  socket.on('error', (error) => {
+    const code = 'code' in error ? String(error.code) : '';
+    if (code !== 'ECONNRESET' && code !== 'EPIPE') throw error;
+    observations.receiverCloseErrors.push(code);
+  });
   const accept = createHash('sha1')
     .update(
       String(request.headers['sec-websocket-key']) +
@@ -41,7 +50,10 @@ receiver.on('upgrade', (request, socket) => {
       '\r\n\r\n',
   );
   socket.once('data', () => socket.end(Buffer.from([0x88, 0x00])));
-});
+}
+receiver.on('upgrade', (request, socket) =>
+  acceptSocket(request, socket, observations.externalUpgrades),
+);
 const udp = dgram.createSocket('udp4');
 udp.on('message', (bytes) => {
   if (bytes.length >= 20 && bytes.readUInt32BE(4) === 0x2112a442)
@@ -108,21 +120,9 @@ const server = http.createServer((request, reply) => {
     );
   }
 });
-server.on('upgrade', (request, socket) => {
-  observations.localUpgrades.push(request.url || '/');
-  const accept = createHash('sha1')
-    .update(
-      String(request.headers['sec-websocket-key']) +
-        '258EAFA5-E914-47DA-95CA-C5AB0DC85B11',
-    )
-    .digest('base64');
-  socket.write(
-    'HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: ' +
-      accept +
-      '\r\n\r\n',
-  );
-  socket.once('data', () => socket.end(Buffer.from([0x88, 0x00])));
-});
+server.on('upgrade', (request, socket) =>
+  acceptSocket(request, socket, observations.localUpgrades),
+);
 await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
 const address = server.address();
 assert(address && typeof address !== 'string');

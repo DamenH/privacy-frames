@@ -1,8 +1,8 @@
 {
   "provenance": {
-    "capturedAt": "2026-10-30T09:16:52.747Z",
-    "revision": "eb80a0a0ef04fce24b48608f4cfd57da5fb059f8",
-    "runnerSHA256": "efb65d5c1efd62bc8f7e459c76e648b1cb5c957350ff13e52a6294ce436c6070",
+    "capturedAt": "2026-10-30T09:26:20.607Z",
+    "revision": "d941bc02dc12d7245d221e322f9db3e198f469e2",
+    "runnerSHA256": "8c380a9fd307019d45fd5a3a9debb169bba73fa5ec07da8346de28fcdf31d366",
     "policySourceSHA256": "7f6dc41e25507576ee004a7eeba44d31ccfd28aa1a9d0e7ee69c9568c996e010",
     "scope": "Header-only native browser controls; actual service-worker-generated document/worker responses. Existing CSP and runtime API blockers are deliberately absent from this fixture. Publisher executor means native SharedWorker execution class, not the full publisher RPC protocol."
   },
@@ -374,191 +374,191 @@
       "result": "external response",
       "events": [
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/",
+          "url": "http://127.0.0.1:41921/synthetic/control/",
           "destination": "document"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=chromium-synthetic-control-document",
+          "url": "http://127.0.0.1:41377/fetch?marker=chromium-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=chromium-synthetic-control-document",
+          "url": "http://127.0.0.1:41921/local?marker=chromium-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=chromium-synthetic-control-document",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=chromium-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=chromium-synthetic-control-document",
+          "url": "http://127.0.0.1:41921/redirect?marker=chromium-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=chromium-synthetic-control-document",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=chromium-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/",
+          "url": "http://127.0.0.1:41921/synthetic/policy/",
           "destination": "document"
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=chromium-synthetic-policy-document",
+          "url": "http://127.0.0.1:41921/local?marker=chromium-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=chromium-synthetic-policy-document",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=chromium-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=chromium-synthetic-policy-document",
+          "url": "http://127.0.0.1:41921/redirect?marker=chromium-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=chromium-synthetic-policy-document",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=chromium-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/",
+          "url": "http://127.0.0.1:41921/synthetic/control/",
           "destination": "document"
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/worker.js",
+          "url": "http://127.0.0.1:41921/synthetic/control/worker.js",
           "destination": "worker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=chromium-synthetic-control-worker",
+          "url": "http://127.0.0.1:41377/fetch?marker=chromium-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=chromium-synthetic-control-worker",
+          "url": "http://127.0.0.1:41921/local?marker=chromium-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=chromium-synthetic-control-worker",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=chromium-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=chromium-synthetic-control-worker",
+          "url": "http://127.0.0.1:41921/redirect?marker=chromium-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=chromium-synthetic-control-worker",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=chromium-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/worker.js",
+          "url": "http://127.0.0.1:41921/synthetic/policy/worker.js",
           "destination": "worker"
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=chromium-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41921/local?marker=chromium-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=chromium-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=chromium-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=chromium-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41921/redirect?marker=chromium-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=chromium-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=chromium-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/shared.js",
+          "url": "http://127.0.0.1:41921/synthetic/control/shared.js",
           "destination": "sharedworker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=chromium-synthetic-control-shared",
+          "url": "http://127.0.0.1:41377/fetch?marker=chromium-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=chromium-synthetic-control-shared",
+          "url": "http://127.0.0.1:41921/local?marker=chromium-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=chromium-synthetic-control-shared",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=chromium-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=chromium-synthetic-control-shared",
+          "url": "http://127.0.0.1:41921/redirect?marker=chromium-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=chromium-synthetic-control-shared",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=chromium-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/shared.js",
+          "url": "http://127.0.0.1:41921/synthetic/policy/shared.js",
           "destination": "sharedworker"
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=chromium-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41921/local?marker=chromium-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=chromium-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=chromium-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=chromium-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41921/redirect?marker=chromium-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=chromium-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=chromium-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/publisher.js",
+          "url": "http://127.0.0.1:41921/synthetic/control/publisher.js",
           "destination": "sharedworker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=chromium-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41377/fetch?marker=chromium-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=chromium-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41921/local?marker=chromium-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=chromium-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=chromium-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=chromium-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41921/redirect?marker=chromium-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=chromium-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=chromium-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/publisher.js",
+          "url": "http://127.0.0.1:41921/synthetic/policy/publisher.js",
           "destination": "sharedworker"
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=chromium-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41921/local?marker=chromium-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=chromium-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=chromium-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=chromium-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41921/redirect?marker=chromium-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=chromium-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=chromium-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/",
+          "url": "http://127.0.0.1:41921/synthetic/policy/",
           "destination": "document"
         },
         {
-          "url": "http://127.0.0.1:42739/__events",
+          "url": "http://127.0.0.1:41921/__events",
           "destination": ""
         }
       ]
@@ -961,223 +961,223 @@
       "result": "external response",
       "events": [
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/",
+          "url": "http://127.0.0.1:41921/synthetic/control/",
           "destination": "document"
         },
         {
-          "url": "http://127.0.0.1:42739/favicon.ico",
+          "url": "http://127.0.0.1:41921/favicon.ico",
           "destination": "image"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=firefox-synthetic-control-document",
+          "url": "http://127.0.0.1:41377/fetch?marker=firefox-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=firefox-synthetic-control-document",
+          "url": "http://127.0.0.1:41921/local?marker=firefox-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=firefox-synthetic-control-document",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=firefox-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=firefox-synthetic-control-document",
+          "url": "http://127.0.0.1:41921/redirect?marker=firefox-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=firefox-synthetic-control-document",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=firefox-synthetic-control-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/",
+          "url": "http://127.0.0.1:41921/synthetic/policy/",
           "destination": "document"
         },
         {
-          "url": "http://127.0.0.1:42739/favicon.ico",
+          "url": "http://127.0.0.1:41921/favicon.ico",
           "destination": "image"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=firefox-synthetic-policy-document",
+          "url": "http://127.0.0.1:41377/fetch?marker=firefox-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=firefox-synthetic-policy-document",
+          "url": "http://127.0.0.1:41921/local?marker=firefox-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=firefox-synthetic-policy-document",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=firefox-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=firefox-synthetic-policy-document",
+          "url": "http://127.0.0.1:41921/redirect?marker=firefox-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=firefox-synthetic-policy-document",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=firefox-synthetic-policy-document",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/",
+          "url": "http://127.0.0.1:41921/synthetic/control/",
           "destination": "document"
         },
         {
-          "url": "http://127.0.0.1:42739/favicon.ico",
+          "url": "http://127.0.0.1:41921/favicon.ico",
           "destination": "image"
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/worker.js",
+          "url": "http://127.0.0.1:41921/synthetic/control/worker.js",
           "destination": "worker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=firefox-synthetic-control-worker",
+          "url": "http://127.0.0.1:41377/fetch?marker=firefox-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=firefox-synthetic-control-worker",
+          "url": "http://127.0.0.1:41921/local?marker=firefox-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=firefox-synthetic-control-worker",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=firefox-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=firefox-synthetic-control-worker",
+          "url": "http://127.0.0.1:41921/redirect?marker=firefox-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=firefox-synthetic-control-worker",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=firefox-synthetic-control-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/worker.js",
+          "url": "http://127.0.0.1:41921/synthetic/policy/worker.js",
           "destination": "worker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=firefox-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41377/fetch?marker=firefox-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=firefox-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41921/local?marker=firefox-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=firefox-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=firefox-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=firefox-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41921/redirect?marker=firefox-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=firefox-synthetic-policy-worker",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=firefox-synthetic-policy-worker",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/shared.js",
+          "url": "http://127.0.0.1:41921/synthetic/control/shared.js",
           "destination": "sharedworker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=firefox-synthetic-control-shared",
+          "url": "http://127.0.0.1:41377/fetch?marker=firefox-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=firefox-synthetic-control-shared",
+          "url": "http://127.0.0.1:41921/local?marker=firefox-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=firefox-synthetic-control-shared",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=firefox-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=firefox-synthetic-control-shared",
+          "url": "http://127.0.0.1:41921/redirect?marker=firefox-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=firefox-synthetic-control-shared",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=firefox-synthetic-control-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/shared.js",
+          "url": "http://127.0.0.1:41921/synthetic/policy/shared.js",
           "destination": "sharedworker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=firefox-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41377/fetch?marker=firefox-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=firefox-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41921/local?marker=firefox-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=firefox-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=firefox-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=firefox-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41921/redirect?marker=firefox-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=firefox-synthetic-policy-shared",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=firefox-synthetic-policy-shared",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/control/publisher.js",
+          "url": "http://127.0.0.1:41921/synthetic/control/publisher.js",
           "destination": "sharedworker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=firefox-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41377/fetch?marker=firefox-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=firefox-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41921/local?marker=firefox-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=firefox-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=firefox-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=firefox-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41921/redirect?marker=firefox-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=firefox-synthetic-control-publisher",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=firefox-synthetic-control-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/publisher.js",
+          "url": "http://127.0.0.1:41921/synthetic/policy/publisher.js",
           "destination": "sharedworker"
         },
         {
-          "url": "http://127.0.0.1:45961/fetch?marker=firefox-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41377/fetch?marker=firefox-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/local?marker=firefox-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41921/local?marker=firefox-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/same-origin-egress?marker=firefox-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41921/same-origin-egress?marker=firefox-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect?marker=firefox-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41921/redirect?marker=firefox-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/redirect-target?marker=firefox-synthetic-policy-publisher",
+          "url": "http://127.0.0.1:41921/redirect-target?marker=firefox-synthetic-policy-publisher",
           "destination": ""
         },
         {
-          "url": "http://127.0.0.1:42739/synthetic/policy/",
+          "url": "http://127.0.0.1:41921/synthetic/policy/",
           "destination": "document"
         },
         {
-          "url": "http://127.0.0.1:42739/favicon.ico",
+          "url": "http://127.0.0.1:41921/favicon.ico",
           "destination": "image"
         },
         {
-          "url": "http://127.0.0.1:42739/__events",
+          "url": "http://127.0.0.1:41921/__events",
           "destination": ""
         }
       ]
@@ -1239,56 +1239,56 @@
       "/socket?marker=firefox-synthetic-policy-publisher"
     ],
     "externalTCP": [
-      1793351812946,
-      1793351812952,
-      1793351816045,
-      1793351816050,
-      1793351816067,
-      1793351816071,
-      1793351816089,
-      1793351816093,
-      1793351816127,
-      1793351816132,
-      1793351819162,
-      1793351819166,
-      1793351819182,
-      1793351819186,
-      1793351819204,
-      1793351819208,
-      1793351819230,
-      1793351820023,
-      1793351820086,
-      1793351821825,
-      1793351821831,
-      1793351823362,
-      1793351823369,
-      1793351823381,
-      1793351823386,
-      1793351823394,
-      1793351823399,
-      1793351823406,
-      1793351823411,
-      1793351823419,
-      1793351823424,
-      1793351823433,
-      1793351823438,
-      1793351823480,
-      1793351823490,
-      1793351825016,
-      1793351825024,
-      1793351826552,
-      1793351826559,
-      1793351826571,
-      1793351826578,
-      1793351826586,
-      1793351826593,
-      1793351826601,
-      1793351826607,
-      1793351826615,
-      1793351826622,
-      1793351826631,
-      1793351826637,
-      1793351826656
+      1793352380823,
+      1793352380829,
+      1793352383937,
+      1793352383942,
+      1793352383959,
+      1793352383963,
+      1793352383981,
+      1793352383985,
+      1793352384021,
+      1793352384026,
+      1793352387054,
+      1793352387058,
+      1793352387075,
+      1793352387078,
+      1793352387097,
+      1793352387101,
+      1793352387123,
+      1793352387918,
+      1793352388004,
+      1793352389710,
+      1793352389716,
+      1793352391248,
+      1793352391254,
+      1793352391266,
+      1793352391271,
+      1793352391279,
+      1793352391284,
+      1793352391291,
+      1793352391296,
+      1793352391303,
+      1793352391308,
+      1793352391316,
+      1793352391320,
+      1793352391362,
+      1793352391370,
+      1793352392897,
+      1793352392906,
+      1793352394436,
+      1793352394444,
+      1793352394458,
+      1793352394468,
+      1793352394478,
+      1793352394486,
+      1793352394496,
+      1793352394503,
+      1793352394512,
+      1793352394521,
+      1793352394531,
+      1793352394540,
+      1793352394559
     ],
     "localHTTP": [
       "/direct/control/",
@@ -1445,32 +1445,33 @@
       "/socket?marker=firefox-synthetic-policy-publisher"
     ],
     "stun": [
-      1793351813016,
-      1793351813272,
-      1793351813788,
-      1793351816134,
-      1793351816397,
-      1793351816913,
-      1793351820123,
-      1793351820223,
-      1793351820423,
-      1793351820823,
-      1793351821624,
-      1793351821834,
-      1793351821935,
-      1793351822135,
-      1793351822535,
-      1793351823335,
-      1793351823493,
-      1793351823594,
-      1793351823794,
-      1793351824194,
-      1793351824994,
-      1793351825028,
-      1793351825128,
-      1793351825328,
-      1793351825728,
-      1793351826529
-    ]
+      1793352380904,
+      1793352381163,
+      1793352381679,
+      1793352384028,
+      1793352384288,
+      1793352384804,
+      1793352388020,
+      1793352388121,
+      1793352388321,
+      1793352388721,
+      1793352389521,
+      1793352389720,
+      1793352389821,
+      1793352390021,
+      1793352390421,
+      1793352391221,
+      1793352391374,
+      1793352391474,
+      1793352391674,
+      1793352392074,
+      1793352392874,
+      1793352392910,
+      1793352393010,
+      1793352393210,
+      1793352393610,
+      1793352394411
+    ],
+    "receiverCloseErrors": []
   }
 }

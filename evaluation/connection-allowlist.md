@@ -69,7 +69,7 @@ redirect blocking for service-worker-mediated fetches.
 The Chromium [design description](https://chromium.googlesource.com/chromium/src/+/HEAD/docs/connection_allowlist_design.md)
 places intercepted client-request checks in Blink and outbound service-worker
 requests under the worker's own network restrictions. The WICG
-[proposal](https://wicg.github.io/connection-allowlists/) defines the header and
+[proposal](https://github.com/WICG/connection-allowlists/blob/main/index.bs) defines the header and
 the independent context policies. Those documents describe the intended scope;
 the receipt identifies the behavior tested here.
 
