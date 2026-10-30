@@ -1,0 +1,20 @@
+{
+  "scope": "Source-order and syntactic-shape checks for the root entry path. Does not prove helper semantics, import side effects or browser execution order.",
+  "sourceHashes": {
+    "src/runtime/guard.ts": "9809dc1ea180de3f3906825bc36ef66cdd9e8e51c33a44e1e5a3f217cc76af8f",
+    "src/runtime/contexts/window-realm.ts": "06cae24e208c2471a511ef718037bbb82ae8000a18069d7b50ecd1a956da649d"
+  },
+  "checkerSHA256": "603dfb100180b51cc549569b1d146d44e716a8cd8332fbde16bcd3044413315d",
+  "result": {
+    "rootPreparationStatement": 10,
+    "rootContentStartStatement": 15,
+    "realmNavigationStatement": 19,
+    "realmReturnStatement": 27,
+    "rootRenderInsideStart": true
+  },
+  "faultControls": {
+    "earlyStart": "rejected",
+    "earlyReturn": "rejected"
+  },
+  "completed": true
+}

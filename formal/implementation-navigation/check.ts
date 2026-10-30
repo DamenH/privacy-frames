@@ -43,6 +43,16 @@ function extract(input: string, mode: 'boolean' | 'semantics' = 'boolean'): stri
     ],
     ['nativeDestinationURL', "descriptor(NavigationDestination.prototype,'url')!.get!"],
   ]);
+  const policyFunctions = file.statements
+    .filter(ts.isFunctionDeclaration)
+    .filter((node) => node.name?.text === 'installNavigationPolicy');
+  assert.equal(policyFunctions.length, 1, 'Navigation installer changed');
+  assert(
+    !policyFunctions[0].modifiers?.some(
+      (modifier) => modifier.kind === ts.SyntaxKind.AsyncKeyword,
+    ),
+    'Navigation installer became asynchronous',
+  );
   const seen = new Set<string>();
   const matches: ts.ArrowFunction[] = [];
   function visit(node: ts.Node) {

@@ -57,3 +57,14 @@ The [browser contract](browser-contract.md) connects the selected root link path
 to the relevant HTML and DOM algorithms and the receiver fixture's genuine-event
 observations. It records which premises are source-checked, empirically tested,
 or still assumed, and identifies navigation routes outside this argument.
+
+`node formal/implementation-navigation/setup-check.ts` checks direct source order
+in the actual root guard and realm preparation function. It requires preparation
+before the unique deferred `start` call, locates the root rendering call inside
+that start closure, and requires navigation installation before the realm's only
+direct return. Both installers must remain synchronous. Early-start and early-return
+mutations are rejected. `setup-result.json` pins the inspected sources and checker.
+These checks do not prove arbitrary helper semantics, aliasing, import side effects,
+all control flow, or browser parser ordering. In particular, trusted preparation
+helpers must not execute publisher code. The result covers the root entry path;
+child document startup has separate preparation and publication obligations.
