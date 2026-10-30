@@ -1,8 +1,9 @@
 {
   "scope": "All rows in the bounded saved IDL join; unreviewed includes absent and unobserved names. Classifications and WPT links are manually selected review leads, not mediation tests or safety judgments.",
   "idlReportSHA256": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
+  "contextJoinSHA256": "261b385435b68be0daae0111c7705824766cea47cb30271b19264a62dd46e4af",
   "triageSHA256": "bf1018892ccc0563242cfaf589f8d3872cd2b672728499edfc83fd945a10c535",
-  "generatorSHA256": "85b99e7e5d0a079789077002530e5a68adf19860d337c65334ef967ef6ef2df6",
+  "generatorSHA256": "ffc4eca41627fb38bda6d1fdb74debef9769b90c80cd4acc4701e2b1ff1a5fa9",
   "webrefRevision": "6ac6259c96b11e0aea5c34a16822eb06add278c9",
   "snapshotRevision": "301e1b358b3e2e1924b0fbfdccdc0c45fce21581",
   "browsers": [
@@ -100,6 +101,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-construction",
       "securityDisposition": "unverified",
@@ -124,6 +137,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -146,6 +171,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": {
@@ -177,6 +214,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -201,6 +250,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -229,6 +290,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -253,6 +326,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -281,6 +366,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "background-agent-control",
       "securityDisposition": "unverified",
@@ -305,6 +402,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -333,6 +442,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -357,6 +478,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -385,6 +518,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -409,6 +554,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -437,6 +594,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -461,6 +630,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -489,6 +670,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -513,6 +706,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -541,6 +746,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -565,6 +782,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -593,6 +822,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-construction",
       "securityDisposition": "unverified",
@@ -615,6 +856,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -641,6 +894,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -663,6 +928,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
         }
       },
       "priorReviewPointer": null,
@@ -689,6 +966,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -713,6 +1002,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -735,6 +1036,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "not-observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
         }
       },
       "priorReviewPointer": {
@@ -766,6 +1079,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -788,6 +1113,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "not-observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
         }
       },
       "priorReviewPointer": {
@@ -817,6 +1154,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-construction",
       "securityDisposition": "unverified",
@@ -839,6 +1188,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -865,6 +1226,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -889,6 +1262,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -911,6 +1296,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": {
@@ -938,6 +1335,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
         }
       },
       "priorReviewPointer": {
@@ -969,6 +1378,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-state",
       "securityDisposition": "unverified",
@@ -991,6 +1412,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1017,6 +1450,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-state",
       "securityDisposition": "unverified",
@@ -1039,6 +1484,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1065,6 +1522,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-state",
       "securityDisposition": "unverified",
@@ -1087,6 +1556,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": {
@@ -1114,6 +1595,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": {
@@ -1145,6 +1638,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": {
         "status": "source-denial-unverified-receiver",
         "path": "src/runtime/enforcement/effects.ts"
@@ -1170,6 +1675,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": {
@@ -1199,6 +1716,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-construction",
       "securityDisposition": "unverified",
@@ -1221,6 +1750,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1247,6 +1788,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-state",
       "securityDisposition": "unverified",
@@ -1269,6 +1822,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
         }
       },
       "priorReviewPointer": null,
@@ -1295,6 +1860,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-construction",
       "securityDisposition": "unverified",
@@ -1317,6 +1894,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1343,6 +1932,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-state",
       "securityDisposition": "unverified",
@@ -1365,6 +1966,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1391,6 +2004,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": {
@@ -1422,6 +2047,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-state",
       "securityDisposition": "unverified",
@@ -1446,6 +2083,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1474,6 +2123,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-construction",
       "securityDisposition": "unverified",
@@ -1496,6 +2157,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1522,6 +2195,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "credential-state",
       "securityDisposition": "unverified",
@@ -1544,6 +2229,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1570,6 +2267,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": {
@@ -1601,6 +2310,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "identity-dialog-effect",
       "securityDisposition": "unverified",
@@ -1627,6 +2348,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "body-consumption",
       "securityDisposition": "unverified",
@@ -1649,6 +2382,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1675,6 +2420,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "body-state",
       "securityDisposition": "unverified",
@@ -1697,6 +2454,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1723,6 +2492,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "body-consumption",
       "securityDisposition": "unverified",
@@ -1745,6 +2526,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1771,6 +2564,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "body-consumption",
       "securityDisposition": "unverified",
@@ -1793,6 +2598,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1819,6 +2636,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "body-consumption",
       "securityDisposition": "unverified",
@@ -1841,6 +2670,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -1869,6 +2710,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-construction",
       "securityDisposition": "unverified",
@@ -1891,6 +2744,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -1917,6 +2782,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-construction",
       "securityDisposition": "unverified",
@@ -1939,6 +2816,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -1965,6 +2854,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -1987,6 +2888,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2013,6 +2926,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-construction",
       "securityDisposition": "unverified",
@@ -2035,6 +2960,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2061,6 +2998,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-construction",
       "securityDisposition": "unverified",
@@ -2083,6 +3032,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2109,6 +3070,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-state",
       "securityDisposition": "unverified",
@@ -2131,6 +3104,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2157,6 +3142,18 @@
           "dedicated-worker": "not-observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-state",
       "securityDisposition": "unverified",
@@ -2179,6 +3176,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2205,6 +3214,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-state",
       "securityDisposition": "unverified",
@@ -2227,6 +3248,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "not-observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
         }
       },
       "priorReviewPointer": null,
@@ -2253,6 +3286,18 @@
           "dedicated-worker": "not-observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-state",
       "securityDisposition": "unverified",
@@ -2275,6 +3320,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2301,6 +3358,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-state",
       "securityDisposition": "unverified",
@@ -2323,6 +3392,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2349,6 +3430,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-state",
       "securityDisposition": "unverified",
@@ -2371,6 +3464,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2397,6 +3502,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-state",
       "securityDisposition": "unverified",
@@ -2419,6 +3536,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2445,6 +3574,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "request-state",
       "securityDisposition": "unverified",
@@ -2467,6 +3608,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2493,6 +3646,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "response-construction",
       "securityDisposition": "unverified",
@@ -2515,6 +3680,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2541,6 +3718,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -2563,6 +3752,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2589,6 +3790,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -2611,6 +3824,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2637,6 +3862,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -2659,6 +3896,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2685,6 +3934,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -2707,6 +3968,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -2733,6 +4006,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -2755,6 +4040,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "context-not-applicable"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
         }
       },
       "priorReviewPointer": {
@@ -2786,6 +4083,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": {
         "status": "source-and-receiver-tests",
         "path": "test/network.ts"
@@ -2813,6 +4122,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-construction",
       "securityDisposition": "unverified",
@@ -2835,6 +4156,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -2861,6 +4194,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -2883,6 +4228,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": {
@@ -2912,6 +4269,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "background-agent-control",
       "securityDisposition": "unverified",
@@ -2936,6 +4305,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -2958,6 +4339,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "not-observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
         }
       },
       "priorReviewPointer": {
@@ -2987,6 +4380,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": {
         "status": "observer-is-not-upload-entry-point",
         "path": "formal/modern-reporting-probe.ts"
@@ -3014,6 +4419,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "local-observer",
       "securityDisposition": "unverified",
@@ -3036,6 +4453,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3062,6 +4491,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "local-observer",
       "securityDisposition": "unverified",
@@ -3084,6 +4525,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3112,6 +4565,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "network-entry",
       "securityDisposition": "enforced-scoped",
@@ -3136,6 +4601,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3164,6 +4641,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "storage-read",
       "securityDisposition": "unverified",
@@ -3188,6 +4677,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3216,6 +4717,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "storage-read",
       "securityDisposition": "unverified",
@@ -3240,6 +4753,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3268,6 +4793,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "storage-write",
       "securityDisposition": "unverified",
@@ -3292,6 +4829,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3320,6 +4869,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "storage-read",
       "securityDisposition": "unverified",
@@ -3344,6 +4905,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3372,6 +4945,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -3398,6 +4983,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -3420,6 +5017,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3446,6 +5055,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-relay",
       "securityDisposition": "unverified",
@@ -3468,6 +5089,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3494,6 +5127,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -3516,6 +5161,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3542,6 +5199,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "browser-agent-control",
       "securityDisposition": "unverified",
@@ -3564,6 +5233,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3590,6 +5271,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -3612,6 +5305,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3638,6 +5343,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-construction",
       "securityDisposition": "unverified",
@@ -3660,6 +5377,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3686,6 +5415,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-construction",
       "securityDisposition": "unverified",
@@ -3708,6 +5449,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3734,6 +5487,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -3756,6 +5521,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3782,6 +5559,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -3804,6 +5593,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3830,6 +5631,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -3852,6 +5665,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3878,6 +5703,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -3900,6 +5737,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3926,6 +5775,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -3948,6 +5809,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -3974,6 +5847,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "response-routing",
       "securityDisposition": "unverified",
@@ -3996,6 +5881,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4022,6 +5919,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "browser-route-configuration",
       "securityDisposition": "unverified",
@@ -4044,6 +5953,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,
@@ -4070,6 +5991,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "browser-agent-control",
       "securityDisposition": "unverified",
@@ -4094,6 +6027,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4123,6 +6068,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -4147,6 +6104,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4175,6 +6144,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -4201,6 +6182,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -4223,6 +6216,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4249,6 +6254,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-relay",
       "securityDisposition": "unverified",
@@ -4271,6 +6288,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4297,6 +6326,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -4319,6 +6360,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4345,6 +6398,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -4367,6 +6432,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4393,6 +6470,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -4415,6 +6504,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4441,6 +6542,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -4465,6 +6578,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -4487,6 +6612,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": {
@@ -4518,6 +6655,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "local-message-control",
       "securityDisposition": "unverified",
@@ -4540,6 +6689,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4566,6 +6727,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -4588,6 +6761,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4614,6 +6799,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -4636,6 +6833,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4662,6 +6871,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -4684,6 +6905,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4710,6 +6943,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -4732,6 +6977,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "snapshot-does-not-capture-this-object"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4758,6 +7015,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -4782,6 +7051,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -4804,6 +7085,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4832,6 +7125,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -4856,6 +7161,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -4878,6 +7195,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": {
@@ -4909,6 +7238,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": {
         "status": "denial-and-lifecycle-tests",
         "path": "test/website-installation.ts"
@@ -4936,6 +7277,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -4958,6 +7311,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -4984,6 +7349,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5006,6 +7383,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5032,6 +7421,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5054,6 +7455,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5080,6 +7493,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5102,6 +7527,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5130,6 +7567,18 @@
           "dedicated-worker": "snapshot-does-not-capture-this-object"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -5152,6 +7601,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5180,6 +7641,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-construction",
       "securityDisposition": "unverified",
@@ -5202,6 +7675,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5230,6 +7715,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5256,6 +7753,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "socket-configuration",
       "securityDisposition": "unverified",
@@ -5278,6 +7787,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5304,6 +7825,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "network-entry-conditional",
       "securityDisposition": "unverified",
@@ -5328,6 +7861,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": {
@@ -5359,6 +7904,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5381,6 +7938,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5407,6 +7976,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -5429,6 +8010,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5455,6 +8048,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-observation",
       "securityDisposition": "unverified",
@@ -5477,6 +8082,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5503,6 +8120,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5525,6 +8154,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5553,6 +8194,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5575,6 +8228,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "not-observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
         }
       },
       "priorReviewPointer": null,
@@ -5601,6 +8266,18 @@
           "dedicated-worker": "not-observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "transport-configuration",
       "securityDisposition": "unverified",
@@ -5623,6 +8300,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5651,6 +8340,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5675,6 +8376,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5697,6 +8410,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": {
@@ -5728,6 +8453,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -5754,6 +8491,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -5776,6 +8525,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5804,6 +8565,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -5830,6 +8603,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5852,6 +8637,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5878,6 +8675,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5900,6 +8709,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5928,6 +8749,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -5950,6 +8783,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -5976,6 +8821,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -5998,6 +8855,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6024,6 +8893,18 @@
           "dedicated-worker": "not-observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -6046,6 +8927,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "not-observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
         }
       },
       "priorReviewPointer": null,
@@ -6072,6 +8965,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -6096,6 +9001,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -6118,6 +9035,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6146,6 +9075,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "transport-configuration",
       "securityDisposition": "unverified",
@@ -6168,6 +9109,18 @@
         "firefox": {
           "window": "not-observed",
           "dedicated-worker": "not-observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
         }
       },
       "priorReviewPointer": null,
@@ -6194,6 +9147,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -6216,6 +9181,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6242,6 +9219,18 @@
           "dedicated-worker": "not-observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "transport-configuration",
       "securityDisposition": "unverified",
@@ -6264,6 +9253,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6290,6 +9291,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "transport-configuration",
       "securityDisposition": "unverified",
@@ -6312,6 +9325,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6338,6 +9363,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "event-construction",
       "securityDisposition": "unverified",
@@ -6360,6 +9397,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6386,6 +9435,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -6408,6 +9469,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6434,6 +9507,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "state-observation",
       "securityDisposition": "unverified",
@@ -6456,6 +9541,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6482,6 +9579,18 @@
           "dedicated-worker": "not-observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "authority-acquisition",
       "securityDisposition": "unverified",
@@ -6504,6 +9613,18 @@
         "firefox": {
           "window": "observed",
           "dedicated-worker": "observed"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
         }
       },
       "priorReviewPointer": null,
@@ -6530,6 +9651,18 @@
           "dedicated-worker": "observed"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "transport-configuration",
       "securityDisposition": "unverified",
@@ -6554,6 +9687,18 @@
           "dedicated-worker": "no-constructor-prototype-observation"
         }
       },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      },
       "priorReviewPointer": null,
       "classification": "network-entry-conditional",
       "securityDisposition": "unverified",
@@ -6576,6 +9721,18 @@
         "firefox": {
           "window": "no-constructor-prototype-observation",
           "dedicated-worker": "no-constructor-prototype-observation"
+        }
+      },
+      "additionalContextObservations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
         }
       },
       "priorReviewPointer": null,

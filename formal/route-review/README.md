@@ -5,6 +5,9 @@ row at a time. It carries all 263 rows, including unobserved members and earlier
 review pointers. It does not classify unreviewed members as safe. The observation
 is only a property-name observation in the saved Chromium and Firefox profiles;
 it is not evidence of callability, reachability, or a network effect.
+`additionalContextObservations` comes from the separate
+[native worker-context snapshot](../context-inventory.md). It adds dedicated,
+shared and service worker names, not observations from confined applications.
 
 ```sh
 python3 formal/route-review/generate.py

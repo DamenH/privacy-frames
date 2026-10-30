@@ -12,12 +12,17 @@
     "formal/confinement/generation-implementation-traces.json": "2a247110329dc6b5c809ef36874f32e565bbd6ab3192b788f00a3f8a706ed618",
     "formal/confinement/generation-read-traces.json": "d4e0da312d365953a9d0187fc8e830f22fe6c4afb4be4352d8f0dd8ebc065f55",
     "formal/confinement/traces.json": "0b6ac66c20d708836c50b6a6454cfe51afbe6cef558fdc98653d59bf96983e29",
+    "formal/context-inventory.md": "d42964edf4d0a141628fafd716a82bf1a727261ecad84e9705169b7fd671b1f3",
+    "formal/context-inventory.ts": "4ae50ad8053b3dfac43029287fc209fe29253e7a4b1f72227df974cb254468fa",
+    "formal/context-join.py": "7dd89c8fa880ca3bfd482e2dc159d945ba65320d644ac1e50095d65f1ecec0d4",
     "formal/document-consumption-fault.md": "d7d72f130cc6e78ed38e230a0f585f303a3b6f7451016d78bfc6d5bebcdbff8e",
     "formal/document-consumption-fault.ts": "33f222968437c3646eba8e4267b5bca67d65fabcc253bf0be788665793b67ec1",
     "formal/eventsource-beacon-probe.ts": "b7164ccf1e2c1cf99cabc49d9033f1ac3b17118283c44c41f24e79b14f50ade6",
     "formal/eventsource-beacon.md": "cdead9518ca893630e34b6d8f8e138983b7907daa55303345d1c3d22311816b3",
     "formal/evidence/background-agents.json": "dc81ab722d2e40d58de06faab78a32aeda2cfdd3b8b04e4a66ceb9fc1ff9af39",
     "formal/evidence/cache-publisher.json": "676b5354c06595a86475b50941ee5cb270c68cbd63a3999910639440f72755c7",
+    "formal/evidence/context-features.json": "7042ec4a2043c6e36e0371ac8b3d99989a12bfaa4f5d0132cdb290b6a49ac87d",
+    "formal/evidence/context-idl-join.json": "261b385435b68be0daae0111c7705824766cea47cb30271b19264a62dd46e4af",
     "formal/evidence/contexts-document-contexts.json": "92351579f6812f49be82f317fb5fbf49850be64019bd1e7a1be31c4edd2f81b7",
     "formal/evidence/contexts-prototype-confinement.json": "2036fd1e0cc6ac47fc1e8042a5f9c65861efc5788bab1062b2185af0054cc8e0",
     "formal/evidence/document-consumption-fault.json": "ac89b66f67e8b5fc2114f0b0c2ca17108cb69e194b3ad4e4d905f7cb5d6982ac",
@@ -51,7 +56,7 @@
     "formal/publisher-open-window-limitation.md": "2650ca4cb3cdbfddd02b4b02191cf59354c020b540355950130c7670db47a283",
     "formal/publisher-routes-probe.ts": "50aeef31a5dc7c92f1b7351869f6927fc0df90dfaf81318ade5e0112520ed4f8",
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
-    "formal/route-review/README.md": "397b85acb7a47fae59a1b319cc0634ea3e1fcd41b68bf12828fd1f2811b14224",
+    "formal/route-review/README.md": "7c85c73769bd5aa9adb46d29bec63b5f0f07269f737a1e928721bef727d61a9e",
     "formal/route-review/triage.json": "bf1018892ccc0563242cfaf589f8d3872cd2b672728499edfc83fd945a10c535",
     "formal/startup/lifecycle-comparison.json": "b71354b1facad0ba503250f93157a603481e6df90039d4f2107f6f2269a66200",
     "formal/web-install-sandbox-fault.md": "dc874f193288fa6f0cbc393d607a49c55e416b1c203267051c0484a3e5a4e3bc",
@@ -828,6 +833,17 @@
           "description": "Native Window/Navigator/Document and dedicated-worker snapshot covers property names, not all reachable browser objects.",
           "paths": [
             "formal/browser-features.json"
+          ]
+        },
+        {
+          "kind": "discovery",
+          "description": "A separate native snapshot captures dedicated, shared and service worker globals and WorkerNavigator names and joins them to the bounded IDL report; it is not confined-context behavior or complete browser enumeration.",
+          "paths": [
+            "formal/context-inventory.md",
+            "formal/context-inventory.ts",
+            "formal/evidence/context-features.json",
+            "formal/context-join.py",
+            "formal/evidence/context-idl-join.json"
           ]
         }
       ],

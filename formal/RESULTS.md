@@ -106,6 +106,8 @@ The [model-to-implementation mapping](implementation-mapping.md) identifies whic
 code paths correspond to model actions and where that correspondence is missing.
 The [Web IDL report](idl-surface-report.md) joins selected standards to observed
 browser interface names and highlights members that still need review.
+The [worker-context inventory](context-inventory.md) adds native dedicated,
+shared and service worker observations to that bounded report.
 Its [review queue](route-review/README.md) tracks individual rows and selected
 Web Platform Test leads without treating those leads as passing runtime tests.
 The [claim ledger](claims/README.md) records enforcement, controls and open

@@ -28,6 +28,7 @@ jobs:
           python3 formal/idl-surface-report.py
           git diff --exit-code -- formal/evidence/idl-surface-report.json
           python3 formal/route-review/generate.py --check --verify-wpt
+          python3 formal/context-join.py --check
       - name: Type-check and compare registry traces
         run: |
           npx tsc --ignoreConfig --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --types node --lib ES2023,DOM,DOM.Iterable,WebWorker formal/confinement/registry-trace-test.ts
@@ -53,6 +54,8 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium firefox
         timeout-minutes: 10
+      - run: node formal/context-inventory.ts
+      - run: python3 formal/context-join.py
       - run: node formal/fedcm-conditional-probe.ts
       - run: node formal/hyperlink-auditing-probe.ts
       - run: node formal/eventsource-beacon-probe.ts
@@ -77,6 +80,8 @@ jobs:
             formal/evidence/websocket-fault.json
             formal/evidence/web-install.json
             formal/evidence/web-install-sandbox-fault.json
+            formal/evidence/context-features.json
+            formal/evidence/context-idl-join.json
   webtransport:
     runs-on: ubuntu-latest
     steps:

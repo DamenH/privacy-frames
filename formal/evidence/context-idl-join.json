@@ -1,0 +1,4752 @@
+{
+  "scope": "Names only, in unrestricted loopback contexts. A matching name does not prove a member is reachable, callable, a network effect, or permitted in a confined context. IDL exposure, inherited mixins, browser state and other contexts require separate review.",
+  "snapshotSHA256": "7042ec4a2043c6e36e0371ac8b3d99989a12bfaa4f5d0132cdb290b6a49ac87d",
+  "idlReportSHA256": "aa7854deed2186b34db65159f2ace9f6c8750c27d04ae8b8959a120208f21351",
+  "generatorSHA256": "7dd89c8fa880ca3bfd482e2dc159d945ba65320d644ac1e50095d65f1ecec0d4",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12"
+    },
+    {
+      "name": "firefox",
+      "version": "155.0"
+    }
+  ],
+  "rows": [
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchEvent",
+      "member": "registration",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchManager",
+      "member": "fetch",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchManager",
+      "member": "get",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchManager",
+      "member": "getIds",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRecord",
+      "member": "request",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRecord",
+      "member": "responseReady",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "abort",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "downloadTotal",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "downloaded",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "failureReason",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "id",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "match",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "matchAll",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "onprogress",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "recordsAvailable",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "result",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "uploadTotal",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchRegistration",
+      "member": "uploaded",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchUpdateUIEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "BackgroundFetchUpdateUIEvent",
+      "member": "updateUI",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onbackgroundfetchabort",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onbackgroundfetchclick",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onbackgroundfetchfail",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onbackgroundfetchsuccess",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "background-fetch",
+      "interface": "ServiceWorkerRegistration",
+      "member": "backgroundFetch",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onsync",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "ServiceWorkerRegistration",
+      "member": "sync",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncEvent",
+      "member": "lastChance",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncEvent",
+      "member": "tag",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncManager",
+      "member": "getTags",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "background-sync",
+      "interface": "SyncManager",
+      "member": "register",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "beacon",
+      "interface": "Navigator",
+      "member": "sendBeacon",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "Credential",
+      "member": "id",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "Credential",
+      "member": "isConditionalMediationAvailable",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "Credential",
+      "member": "type",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialUserData",
+      "member": "iconURL",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialUserData",
+      "member": "name",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialsContainer",
+      "member": "create",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialsContainer",
+      "member": "get",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialsContainer",
+      "member": "preventSilentAccess",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "CredentialsContainer",
+      "member": "store",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "FederatedCredential",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "FederatedCredential",
+      "member": "protocol",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "FederatedCredential",
+      "member": "provider",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "Navigator",
+      "member": "credentials",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "PasswordCredential",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "PasswordCredential",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "credential-management-1",
+      "interface": "PasswordCredential",
+      "member": "password",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredential",
+      "member": "configURL",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredential",
+      "member": "disconnect",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredential",
+      "member": "isAutoSelected",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredential",
+      "member": "token",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredentialError",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredentialError",
+      "member": "error",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityCredentialError",
+      "member": "url",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityProvider",
+      "member": "close",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityProvider",
+      "member": "getUserInfo",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fedcm-1",
+      "interface": "IdentityProvider",
+      "member": "resolve",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "arrayBuffer",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "blob",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "body",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "bodyUsed",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "bytes",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "formData",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "json",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "text",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Body",
+      "member": "textStream",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "FetchLaterResult",
+      "member": "activated",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "append",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "delete",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "get",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "getSetCookie",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "has",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Headers",
+      "member": "set",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "cache",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "clone",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "credentials",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "destination",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "duplex",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "headers",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "integrity",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "isHistoryNavigation",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "isReloadNavigation",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "keepalive",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "method",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "mode",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "redirect",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "referrer",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "referrerPolicy",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "signal",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Request",
+      "member": "url",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "clone",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "error",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "headers",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "json",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "ok",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "redirect",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "redirected",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "status",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "statusText",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "type",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Response",
+      "member": "url",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "Window",
+      "member": "fetchLater",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        }
+      }
+    },
+    {
+      "spec": "fetch",
+      "interface": "WindowOrWorkerGlobalScope",
+      "member": "fetch",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncEvent",
+      "member": "tag",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncManager",
+      "member": "getTags",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncManager",
+      "member": "register",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "PeriodicSyncManager",
+      "member": "unregister",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onperiodicsync",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "periodic-background-sync",
+      "interface": "ServiceWorkerRegistration",
+      "member": "periodicSync",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "reporting-1",
+      "interface": "ReportingObserver",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "reporting-1",
+      "interface": "ReportingObserver",
+      "member": "disconnect",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "reporting-1",
+      "interface": "ReportingObserver",
+      "member": "observe",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "reporting-1",
+      "interface": "ReportingObserver",
+      "member": "takeRecords",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "add",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "addAll",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "delete",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "keys",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "match",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "matchAll",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Cache",
+      "member": "put",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "delete",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "has",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "keys",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "match",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "CacheStorage",
+      "member": "open",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "frameType",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "id",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "postMessage",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "postMessage",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "type",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Client",
+      "member": "url",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Clients",
+      "member": "claim",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Clients",
+      "member": "get",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Clients",
+      "member": "matchAll",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Clients",
+      "member": "openWindow",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableEvent",
+      "member": "waitUntil",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "data",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "lastEventId",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "origin",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "ports",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ExtendableMessageEvent",
+      "member": "source",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "clientId",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "handled",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "preloadResponse",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "replacesClientId",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "request",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "respondWith",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "FetchEvent",
+      "member": "resultingClientId",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "InstallEvent",
+      "member": "addRoutes",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "InstallEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "NavigationPreloadManager",
+      "member": "disable",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "NavigationPreloadManager",
+      "member": "enable",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "NavigationPreloadManager",
+      "member": "getState",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "NavigationPreloadManager",
+      "member": "setHeaderValue",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "Navigator",
+      "member": "serviceWorker",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-applicable"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "onstatechange",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "postMessage",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "postMessage",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "scriptURL",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorker",
+      "member": "state",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "controller",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "getRegistration",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "getRegistrations",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "oncontrollerchange",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "onmessage",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "onmessageerror",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "ready",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "register",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerContainer",
+      "member": "startMessages",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "clients",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onactivate",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onfetch",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "oninstall",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onmessage",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "onmessageerror",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "registration",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "serviceWorker",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerGlobalScope",
+      "member": "skipWaiting",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-applicable",
+          "shared": "not-applicable",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "active",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "installing",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "navigationPreload",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "onupdatefound",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "scope",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "unregister",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "update",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "updateViaCache",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "ServiceWorkerRegistration",
+      "member": "waiting",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "ancestorOrigins",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "focus",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "focused",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "navigate",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowClient",
+      "member": "visibilityState",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WindowOrWorkerGlobalScope",
+      "member": "caches",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "service-workers",
+      "interface": "WorkerNavigator",
+      "member": "serviceWorker",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "CloseEvent",
+      "member": "code",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "CloseEvent",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "CloseEvent",
+      "member": "reason",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "CloseEvent",
+      "member": "wasClean",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "binaryType",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "bufferedAmount",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "close",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "extensions",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "onclose",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "onerror",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "onmessage",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "onopen",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "protocol",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "readyState",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "send",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "websockets",
+      "interface": "WebSocket",
+      "member": "url",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "anticipatedConcurrentIncomingBidirectionalStreams",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "anticipatedConcurrentIncomingUnidirectionalStreams",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "close",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "closed",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "congestionControl",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "createBidirectionalStream",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "createSendGroup",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "createUnidirectionalStream",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "datagrams",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "draining",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "exportKeyingMaterial",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "getStats",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "incomingBidirectionalStreams",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "incomingUnidirectionalStreams",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "protocol",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "ready",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "reliability",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "responseHeaders",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransport",
+      "member": "supportsReliableOnly",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportBidirectionalStream",
+      "member": "readable",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportBidirectionalStream",
+      "member": "writable",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "createWritable",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "incomingMaxAge",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "incomingMaxBufferedDatagrams",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "maxDatagramSize",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "outgoingMaxAge",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "outgoingMaxBufferedDatagrams",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramDuplexStream",
+      "member": "readable",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramsWritable",
+      "member": "sendGroup",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportDatagramsWritable",
+      "member": "sendOrder",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportError",
+      "member": "constructor",
+      "kind": "constructor",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportError",
+      "member": "source",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportError",
+      "member": "streamErrorCode",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportReceiveStream",
+      "member": "getStats",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendGroup",
+      "member": "getStats",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendStream",
+      "member": "getStats",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendStream",
+      "member": "getWriter",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "not-observed",
+          "shared": "not-observed",
+          "service": "not-observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendStream",
+      "member": "sendGroup",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportSendStream",
+      "member": "sendOrder",
+      "kind": "attribute",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "observed",
+          "shared": "observed",
+          "service": "observed"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportWriter",
+      "member": "atomicWrite",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    },
+    {
+      "spec": "webtransport",
+      "interface": "WebTransportWriter",
+      "member": "commit",
+      "kind": "operation",
+      "observations": {
+        "chromium": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        },
+        "firefox": {
+          "dedicated": "no-constructor-observation",
+          "shared": "no-constructor-observation",
+          "service": "no-constructor-observation"
+        }
+      }
+    }
+  ]
+}

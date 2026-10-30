@@ -25,6 +25,10 @@ def main():
     args = parser.parse_args()
     raw, annotations = INPUT.read_bytes(), TRIAGE.read_bytes()
     report, triage = json.loads(raw), json.loads(annotations)
+    context_raw = (ROOT / 'formal/evidence/context-idl-join.json').read_bytes()
+    context_rows = json.loads(context_raw)['rows']
+    if len(context_rows) != len(report['rows']):
+        raise ValueError('context join row count differs from IDL report')
     wpt = triage['wpt']
     ledger = json.loads((ROOT / 'formal/claims/ledger.json').read_bytes())
     claims = {claim['id']: claim for claim in ledger['claims']}
@@ -49,7 +53,9 @@ def main():
     counts = collections.Counter()
     matched = set()
     rows = []
-    for row in report['rows']:
+    for row, context_row in zip(report['rows'], context_rows):
+        if any(row[field] != context_row[field] for field in ('spec', 'interface', 'member', 'kind')):
+            raise ValueError('context join rows differ from IDL report')
         key = '|'.join([row['spec'], row['interface'], row['member'], row['kind']])
         counts[key] += 1
         review = reviews.get(key)
@@ -63,6 +69,7 @@ def main():
             'static': row['static'],
             'partial': row['partial'],
             'observations': row['observations'],
+            'additionalContextObservations': context_row['observations'],
             'priorReviewPointer': row['review'],
             'classification': review['class'] if review else 'unreviewed',
             'securityDisposition': links.get(key, {}).get('disposition', 'unverified'),
@@ -79,6 +86,7 @@ def main():
     output = {
         'scope': 'All rows in the bounded saved IDL join; unreviewed includes absent and unobserved names. Classifications and WPT links are manually selected review leads, not mediation tests or safety judgments.',
         'idlReportSHA256': sha(raw),
+        'contextJoinSHA256': sha(context_raw),
         'triageSHA256': sha(annotations),
         'generatorSHA256': sha(Path(__file__).read_bytes()),
         'webrefRevision': report['webrefRevision'],
