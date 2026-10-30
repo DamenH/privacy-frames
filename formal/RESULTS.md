@@ -30,7 +30,9 @@ outside its application directory. Both tested browsers refused to start the
 app before its code ran; no request to the receiver was observed. Resource
 paths now resolve as relative paths, and admission checks their canonical
 location and uniqueness. The [path audit](path-audit/README.md) records the
-original reproduction and the tests for the correction.
+original reproduction and the tests for the correction. The [eight-app corpus](evidence/compatibility-after-canonical-paths.json)
+passed in both browsers against the fixed build; its receipt records the build
+hashes because the source change was uncommitted when the run started.
 
 An [exploratory controller-update fixture](startup/README.md) observed a child
 remaining unpublished while its guard response was held. One run recorded the
