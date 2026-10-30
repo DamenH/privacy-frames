@@ -6,7 +6,7 @@ import { buildSync } from 'esbuild';
 function fixture(source: string) {
   const code = buildSync({
     stdin: {
-      contents: `import { internalArray, internalRecord, internalData, ownDescriptor, ownDescriptors, strings, math } from './src/shared/primordials.ts';\n${source}`,
+      contents: `import { internalArray, internalRecord, internalData, ownDescriptor, strings } from './src/shared/primordials.ts';\n${source}`,
       resolveDir: process.cwd(),
       loader: 'ts',
     },
@@ -45,13 +45,6 @@ test('explicit internal arrays protect receivers, species outputs and iteration'
   assert.equal(result.value, 71);
   assert.equal(result.found, 71);
   assert.equal(vm.runInContext('observed', context), 0);
-});
-
-test('captured math protects bounds while application math remains ordinary', () => {
-  const context = fixture('globalThis.bound = () => math.min(3, 7);');
-  vm.runInContext('Math.min = () => 999;', context);
-  assert.equal(vm.runInContext('Math.min(3, 7)', context), 999);
-  assert.equal(vm.runInContext('bound()', context), 3);
 });
 
 test('explicit string operations survive application polyfills', () => {
@@ -146,7 +139,6 @@ test('private descriptor records and Proxy handlers exclude inherited get/set tr
       const nativeAccessorValue = nativeDescriptor(source, 'accessor').value;
       const detachedAccessor = ownDescriptor(source, 'accessor');
       const detachedData = ownDescriptor(source, 'field');
-      const all = ownDescriptors(source);
       let nativeRejected = false;
       try { Object.defineProperty({}, 'field', {value: 101}); }
       catch { nativeRejected = true; }
@@ -154,7 +146,6 @@ test('private descriptor records and Proxy handlers exclude inherited get/set tr
       Object.defineProperty(privateOutput, 'field', internalRecord({value: 103}));
       return internalRecord({nativeProxyValue, privateProxyValue, nativeAccessorValue,
         privateAccessorValue: detachedAccessor.value, privateData: detachedData.value,
-        privateMapMissing: all.missing, privateMapAccessorValue: all.accessor.value,
         nativeRejected, privateOutput: privateOutput.field,
         descriptorRoot: Object.getPrototypeOf(Object.getPrototypeOf(detachedAccessor)) === null});
     };
@@ -175,8 +166,6 @@ test('private descriptor records and Proxy handlers exclude inherited get/set tr
   assert.equal(result.nativeAccessorValue, 'native descriptor control');
   assert.equal(result.privateAccessorValue, undefined);
   assert.equal(result.privateData, 89);
-  assert.equal(result.privateMapMissing, undefined);
-  assert.equal(result.privateMapAccessorValue, undefined);
   assert.equal(result.nativeRejected, true);
   assert.equal(result.privateOutput, 103);
   assert.equal(result.descriptorRoot, true);

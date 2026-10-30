@@ -1,0 +1,1172 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-30T09:18:02.510Z",
+    "revision": "eb80a0a0ef04fce24b48608f4cfd57da5fb059f8",
+    "dirty": true,
+    "sourceSHA256": "97138c26a88449e78ada670df0f47dd0af84c4a00ba7612ac91aa98503b02888",
+    "runner": "test/markup-dependency.ts",
+    "runnerSHA256": "06a4fc2cc3bc186440dd2412a5cb50a1cd63aa5c6a06cfe5247b64b83a5f2f6d",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "e623333e57ba30b0359bd8548e97efc428534541ccad53316ac07656e7f8d015",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "f8ae7bd8e4c781dee2a6ad135bd1fcc38186b7b2c1f54b9bb53a5bb0ac3ba654",
+      "dist-manager/sw.js": "2ce7bac755ef032491a1bc48908d0c3e61790d4d1149301172f5e7ae174af93f",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "c7bb92138af58d4327c5953166f8a88df4e2a2721c83f0c93708f1862e70335d",
+      "dist-runtime/guard.js": "e2bb36f422da6e8fe73ac34ebef1cfcf39c0fa023b34b540fd9896b39a8fb71d",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "8a2a2f552231bb1f3c1ed728be176c7010684c86ffd1f21bccdc0f25a5dcd174",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "f8ae7bd8e4c781dee2a6ad135bd1fcc38186b7b2c1f54b9bb53a5bb0ac3ba654",
+      "dist-runtime/shared-worker-guard.js": "1e6582d76235779e346c3df316821e4ea24a18f95b0bc43a8e09d2ab8f6cdfce",
+      "dist-runtime/sw.js": "762cf63690ca062c8a6dd3c311919397dc49d44e5f306d7de7c4df38f9771d62",
+      "dist-runtime/worker-guard.js": "308abcdb6883fbcfcc46373079f70bac641119a06639b043f8957e382421a209",
+      "dist-runtime/worklet-guard.js": "547b60f4d568b619fafb7dbd4b4e5f065761d8ed46b888c6d33128f7ea74ba2c",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "af0760b4a4824d6cfbf88cefb15927ca03675f376f24eef88df060f893d4fded"
+    }
+  },
+  "dependency": "dompurify@3.4.17",
+  "scope": "Candidate sanitized output in the actual detached private context; default vs host-specific adapter. Removed entries are diagnostics only. Old acceptance describes only the shared parse5 gate, not the complete current runtime. No adoption or network confinement claim.",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "poisonUnaffected": true,
+      "rows": [
+        {
+          "name": "ordinary HTML",
+          "text": "<p class=\"message\"><b>hello</b></p>",
+          "oldAccepted": true,
+          "original": "<p class=\"message\"><b>hello</b></p>",
+          "defaults": {
+            "html": "<p class=\"message\"><b>hello</b></p>",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "<p class=\"message\"><b>hello</b></p>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<p class=\"message\"><b>hello</b></p>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": true,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "inline CSS",
+          "text": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+          "oldAccepted": true,
+          "original": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+          "defaults": {
+            "html": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": true,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "template",
+          "text": "<template><span data-id=\"x\">hello</span></template>",
+          "oldAccepted": true,
+          "original": "<template><span data-id=\"x\">hello</span></template>",
+          "defaults": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<template><span data-id=\"x\">hello</span></template>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "custom element",
+          "text": "<custom-editor data-model=\"one\" mode=\"edit\"></custom-editor>",
+          "oldAccepted": true,
+          "original": "<custom-editor data-model=\"one\" mode=\"edit\"></custom-editor>",
+          "defaults": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<custom-editor data-model=\"one\" mode=\"edit\"></custom-editor>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<custom-editor data-model=\"one\" mode=\"edit\"></custom-editor>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": false,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "self target",
+          "text": "<a href=\"#local\" target=\"_self\">hello</a>",
+          "oldAccepted": true,
+          "original": "<a href=\"#local\" target=\"_self\">hello</a>",
+          "defaults": {
+            "html": "<a href=\"#local\">hello</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<a href=\"#local\" target=\"_self\">hello</a>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<a href=\"#local\" target=\"_self\">hello</a>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": false,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "blob image",
+          "text": "<img src=\"blob:https://runtime.example/fixture\">",
+          "oldAccepted": true,
+          "original": "<img src=\"blob:https://runtime.example/fixture\">",
+          "defaults": {
+            "html": "<img>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<img>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<img>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "blob audio",
+          "text": "<audio src=\"blob:https://runtime.example/fixture\" controls></audio>",
+          "oldAccepted": true,
+          "original": "<audio src=\"blob:https://runtime.example/fixture\" controls=\"\"></audio>",
+          "defaults": {
+            "html": "<audio controls=\"\"></audio>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<audio controls=\"\"></audio>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<audio controls=\"\"></audio>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "SVG geometry",
+          "text": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"/></svg>",
+          "oldAccepted": true,
+          "original": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"></rect></svg>",
+          "defaults": {
+            "html": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"></rect></svg>",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"></rect></svg>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"></rect></svg>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": true,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "SVG foreign content",
+          "text": "<svg><foreignObject width=\"10\" height=\"20\"><p>text</p></foreignObject></svg>",
+          "oldAccepted": true,
+          "original": "<svg><foreignObject width=\"10\" height=\"20\"><p>text</p></foreignObject></svg>",
+          "defaults": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "SVG animation",
+          "text": "<svg><rect width=\"10\"><animate attributeName=\"width\" from=\"10\" to=\"20\" dur=\"1s\"/></rect></svg>",
+          "oldAccepted": true,
+          "original": "<svg><rect width=\"10\"><animate attributeName=\"width\" from=\"10\" to=\"20\" dur=\"1s\"></animate></rect></svg>",
+          "defaults": {
+            "html": "<svg><rect width=\"10\"></rect></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<svg><rect width=\"10\"></rect></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<svg><rect width=\"10\"></rect></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "table fragment",
+          "context": "tbody",
+          "text": "<tr><td>cell</td></tr>",
+          "oldAccepted": true,
+          "original": "<tr><td>cell</td></tr>",
+          "defaults": {
+            "html": "cell",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "cell",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<tr><td>cell</td></tr>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "select fragment",
+          "context": "select",
+          "text": "<option value=\"one\">One</option>",
+          "oldAccepted": true,
+          "original": "<option value=\"one\">One</option>",
+          "defaults": {
+            "html": "<option value=\"one\">One</option>",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "<option value=\"one\">One</option>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<option value=\"one\">One</option>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": true,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "event attribute",
+          "unsafe": true,
+          "text": "<img src=\"x\" onerror=\"globalThis.executed=true\">",
+          "oldAccepted": false,
+          "oldError": "Attribute not admitted: onerror",
+          "original": "<img src=\"x\" onerror=\"globalThis.executed=true\">",
+          "defaults": {
+            "html": "<img src=\"x\">",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<img src=\"x\">",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<img src=\"x\">",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "executable URL",
+          "unsafe": true,
+          "text": "<a href=\"javascript:alert(1)\">bad</a>",
+          "oldAccepted": true,
+          "original": "<a href=\"javascript:alert(1)\">bad</a>",
+          "defaults": {
+            "html": "<a>bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<a>bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<a>bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "popup target",
+          "unsafe": true,
+          "text": "<a href=\"https://receiver.example/\" target=\"_blank\">bad</a>",
+          "oldAccepted": false,
+          "oldError": "Native browsing targets must remain in the prepared context",
+          "original": "<a href=\"https://receiver.example/\" target=\"_blank\">bad</a>",
+          "defaults": {
+            "html": "<a href=\"https://receiver.example/\">bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<a href=\"https://receiver.example/\">bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<a href=\"https://receiver.example/\">bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "declarative target",
+          "unsafe": true,
+          "text": "<svg><set attributeName=\"target\" to=\"_blank\"/></svg>",
+          "oldAccepted": false,
+          "oldError": "Native browsing targets must remain in the prepared context",
+          "original": "<svg><set attributeName=\"target\" to=\"_blank\"></set></svg>",
+          "defaults": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "nested context",
+          "unsafe": true,
+          "text": "<iframe srcdoc=\"<script>bad()</script>\"></iframe>",
+          "oldAccepted": false,
+          "oldError": "Context-producing markup is not admitted",
+          "original": "<iframe srcdoc=\"&lt;script&gt;bad()&lt;/script&gt;\"></iframe>",
+          "defaults": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "resource hint",
+          "unsafe": true,
+          "text": "<link rel=\"dns-prefetch\" href=\"https://receiver.example/\">",
+          "oldAccepted": false,
+          "oldError": "Dynamic policy/resource markup is not admitted",
+          "original": "<link rel=\"dns-prefetch\" href=\"https://receiver.example/\">",
+          "defaults": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "policy metadata",
+          "unsafe": true,
+          "text": "<meta http-equiv=\"refresh\" content=\"0;url=https://receiver.example/\">",
+          "oldAccepted": false,
+          "oldError": "Dynamic policy/resource markup is not admitted",
+          "original": "<meta http-equiv=\"refresh\" content=\"0;url=https://receiver.example/\">",
+          "defaults": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "namespace mutation",
+          "unsafe": true,
+          "text": "<math><mtext><table><mglyph><style><!--</style><img title=\"--><img src=x onerror=alert(1)>\">",
+          "oldAccepted": true,
+          "original": "<math><mtext><mglyph><style><!--</style><img title=\"--&gt;&lt;img src=x onerror=alert(1)&gt;\"></mglyph><table></table></mtext></math>",
+          "defaults": {
+            "html": "<math><mtext><table></table></mtext></math>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<math><mtext><table></table></mtext></math>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<math><mtext><table></table></mtext></math>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        }
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "poisonUnaffected": true,
+      "rows": [
+        {
+          "name": "ordinary HTML",
+          "text": "<p class=\"message\"><b>hello</b></p>",
+          "oldAccepted": true,
+          "original": "<p class=\"message\"><b>hello</b></p>",
+          "defaults": {
+            "html": "<p class=\"message\"><b>hello</b></p>",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "<p class=\"message\"><b>hello</b></p>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<p class=\"message\"><b>hello</b></p>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": true,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "inline CSS",
+          "text": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+          "oldAccepted": true,
+          "original": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+          "defaults": {
+            "html": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<p style=\"color:red\">hello</p><style>p{color:red}</style>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": true,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "template",
+          "text": "<template><span data-id=\"x\">hello</span></template>",
+          "oldAccepted": true,
+          "original": "<template><span data-id=\"x\">hello</span></template>",
+          "defaults": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<template><span data-id=\"x\">hello</span></template>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "custom element",
+          "text": "<custom-editor data-model=\"one\" mode=\"edit\"></custom-editor>",
+          "oldAccepted": true,
+          "original": "<custom-editor data-model=\"one\" mode=\"edit\"></custom-editor>",
+          "defaults": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<custom-editor data-model=\"one\" mode=\"edit\"></custom-editor>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<custom-editor data-model=\"one\" mode=\"edit\"></custom-editor>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": false,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "self target",
+          "text": "<a href=\"#local\" target=\"_self\">hello</a>",
+          "oldAccepted": true,
+          "original": "<a href=\"#local\" target=\"_self\">hello</a>",
+          "defaults": {
+            "html": "<a href=\"#local\">hello</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<a href=\"#local\" target=\"_self\">hello</a>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<a href=\"#local\" target=\"_self\">hello</a>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": false,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "blob image",
+          "text": "<img src=\"blob:https://runtime.example/fixture\">",
+          "oldAccepted": true,
+          "original": "<img src=\"blob:https://runtime.example/fixture\">",
+          "defaults": {
+            "html": "<img>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<img>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<img>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "blob audio",
+          "text": "<audio src=\"blob:https://runtime.example/fixture\" controls></audio>",
+          "oldAccepted": true,
+          "original": "<audio src=\"blob:https://runtime.example/fixture\" controls=\"\"></audio>",
+          "defaults": {
+            "html": "<audio controls=\"\"></audio>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<audio controls=\"\"></audio>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<audio controls=\"\"></audio>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "SVG geometry",
+          "text": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"/></svg>",
+          "oldAccepted": true,
+          "original": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"></rect></svg>",
+          "defaults": {
+            "html": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"></rect></svg>",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"></rect></svg>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<svg><rect width=\"10\" height=\"20\" fill=\"red\"></rect></svg>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": true,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "SVG foreign content",
+          "text": "<svg><foreignObject width=\"10\" height=\"20\"><p>text</p></foreignObject></svg>",
+          "oldAccepted": true,
+          "original": "<svg><foreignObject width=\"10\" height=\"20\"><p>text</p></foreignObject></svg>",
+          "defaults": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "SVG animation",
+          "text": "<svg><rect width=\"10\"><animate attributeName=\"width\" from=\"10\" to=\"20\" dur=\"1s\"/></rect></svg>",
+          "oldAccepted": true,
+          "original": "<svg><rect width=\"10\"><animate attributeName=\"width\" from=\"10\" to=\"20\" dur=\"1s\"></animate></rect></svg>",
+          "defaults": {
+            "html": "<svg><rect width=\"10\"></rect></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<svg><rect width=\"10\"></rect></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<svg><rect width=\"10\"></rect></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "table fragment",
+          "context": "tbody",
+          "text": "<tr><td>cell</td></tr>",
+          "oldAccepted": true,
+          "original": "<tr><td>cell</td></tr>",
+          "defaults": {
+            "html": "cell",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "cell",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<tr><td>cell</td></tr>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "select fragment",
+          "context": "select",
+          "text": "<option value=\"one\">One</option>",
+          "oldAccepted": true,
+          "original": "<option value=\"one\">One</option>",
+          "defaults": {
+            "html": "<option value=\"one\">One</option>",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "<option value=\"one\">One</option>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<option value=\"one\">One</option>",
+            "removed": 0,
+            "supported": true
+          },
+          "contextualPreserves": true,
+          "defaultPreserves": true,
+          "hostPreserves": true,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "event attribute",
+          "unsafe": true,
+          "text": "<img src=\"x\" onerror=\"globalThis.executed=true\">",
+          "oldAccepted": false,
+          "oldError": "Attribute not admitted: onerror",
+          "original": "<img src=\"x\" onerror=\"globalThis.executed=true\">",
+          "defaults": {
+            "html": "<img src=\"x\">",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<img src=\"x\">",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<img src=\"x\">",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "executable URL",
+          "unsafe": true,
+          "text": "<a href=\"javascript:alert(1)\">bad</a>",
+          "oldAccepted": true,
+          "original": "<a href=\"javascript:alert(1)\">bad</a>",
+          "defaults": {
+            "html": "<a>bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<a>bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<a>bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "popup target",
+          "unsafe": true,
+          "text": "<a href=\"https://receiver.example/\" target=\"_blank\">bad</a>",
+          "oldAccepted": false,
+          "oldError": "Native browsing targets must remain in the prepared context",
+          "original": "<a href=\"https://receiver.example/\" target=\"_blank\">bad</a>",
+          "defaults": {
+            "html": "<a href=\"https://receiver.example/\">bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<a href=\"https://receiver.example/\">bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<a href=\"https://receiver.example/\">bad</a>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "declarative target",
+          "unsafe": true,
+          "text": "<svg><set attributeName=\"target\" to=\"_blank\"/></svg>",
+          "oldAccepted": false,
+          "oldError": "Native browsing targets must remain in the prepared context",
+          "original": "<svg><set attributeName=\"target\" to=\"_blank\"></set></svg>",
+          "defaults": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<svg></svg>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "nested context",
+          "unsafe": true,
+          "text": "<iframe srcdoc=\"<script>bad()</script>\"></iframe>",
+          "oldAccepted": false,
+          "oldError": "Context-producing markup is not admitted",
+          "original": "<iframe srcdoc=\"&lt;script&gt;bad()&lt;/script&gt;\"></iframe>",
+          "defaults": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "resource hint",
+          "unsafe": true,
+          "text": "<link rel=\"dns-prefetch\" href=\"https://receiver.example/\">",
+          "oldAccepted": false,
+          "oldError": "Dynamic policy/resource markup is not admitted",
+          "original": "<link rel=\"dns-prefetch\" href=\"https://receiver.example/\">",
+          "defaults": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "policy metadata",
+          "unsafe": true,
+          "text": "<meta http-equiv=\"refresh\" content=\"0;url=https://receiver.example/\">",
+          "oldAccepted": false,
+          "oldError": "Dynamic policy/resource markup is not admitted",
+          "original": "<meta http-equiv=\"refresh\" content=\"0;url=https://receiver.example/\">",
+          "defaults": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "host": {
+            "html": "",
+            "removed": 0,
+            "supported": true
+          },
+          "contextual": {
+            "html": "",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        },
+        {
+          "name": "namespace mutation",
+          "unsafe": true,
+          "text": "<math><mtext><table><mglyph><style><!--</style><img title=\"--><img src=x onerror=alert(1)>\">",
+          "oldAccepted": true,
+          "original": "<math><mtext><mglyph><style><!--</style><img title=\"--&gt;&lt;img src=x onerror=alert(1)&gt;\"></mglyph><table></table></mtext></math>",
+          "defaults": {
+            "html": "<math><mtext><table></table></mtext></math>",
+            "removed": 1,
+            "supported": true
+          },
+          "host": {
+            "html": "<math><mtext><table></table></mtext></math>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextual": {
+            "html": "<math><mtext><table></table></mtext></math>",
+            "removed": 1,
+            "supported": true
+          },
+          "contextualPreserves": false,
+          "defaultPreserves": false,
+          "hostPreserves": false,
+          "candidatePassive": true,
+          "contextualPassive": true,
+          "frameRemoved": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 import {
   strings,
   internalArray,
-  math,
   internalRecord,
   internalMap,
   internalSet,
@@ -812,7 +811,7 @@ export function createDocumentFactory(
     }
     const before = children(source),
       after = children(clone);
-    for (let index = 0; index < math.min(before.length, after.length); index++)
+    for (let index = 0; index < before.length && index < after.length; index++)
       cloned(before[index], after[index]);
   }
   function prepareContext(

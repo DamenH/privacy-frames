@@ -6,7 +6,6 @@ import {
   internalArray,
   internalRecord,
   ownDescriptor,
-  ownDescriptors,
   internalData,
   internalMap,
   internalSet,
@@ -1079,13 +1078,10 @@ window.runIntrinsicsProbe = async () => {
       'Private Proxy target exposed to inherited trap',
     );
     const descriptor = ownDescriptor(privateAuthority, 'application')!;
-    const descriptorMap = ownDescriptors(privateAuthority);
     check(
       descriptor.value === 'expected' &&
         descriptor.get === undefined &&
-        descriptor.set === undefined &&
-        descriptorMap.application.value === 'expected' &&
-        Reflect.get(descriptorMap, 'get') === undefined,
+        descriptor.set === undefined,
       'Private native descriptor records inherited application fields',
     );
     const shadow = new Map<string, number>();

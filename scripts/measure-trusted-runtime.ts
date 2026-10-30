@@ -17,7 +17,8 @@ import { gzipSync } from 'node:zlib';
 import { trustedPolicyPlugin } from './trusted-policy.ts';
 
 const root = resolve(import.meta.dirname, '..');
-const baselineRevision = '97f2b835609eedc95c9f52a470c7c32046f1b5fb';
+const baselineRevision =
+  process.env.MEASUREMENT_BASELINE || '97f2b835609eedc95c9f52a470c7c32046f1b5fb';
 const temporary = await mkdtemp(join(tmpdir(), 'pf-trusted-size-'));
 const output = process.argv[2] || 'results/trusted-runtime/size-snapshot.json';
 const entries = {
@@ -235,7 +236,10 @@ try {
   ]);
   const copied = await inventory(current);
   const [oldMeasurement, newMeasurement] = await Promise.all([
-    measure(baseline, false),
+    measure(
+      baseline,
+      Object.hasOwn(await inventory(baseline), 'src/runtime/trusted/entry.ts'),
+    ),
     measure(current, true),
   ]);
   const after = await inventory(root);

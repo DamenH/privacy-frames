@@ -1,7 +1,7 @@
 name: Test and publish host
 on:
   push:
-    branches: [main, realm-runtime]
+    branches: [main, realm-runtime, dependency-reduction]
   workflow_dispatch:
 permissions:
   contents: read
@@ -28,6 +28,7 @@ jobs:
       - run: npx playwright install --with-deps chromium firefox
         timeout-minutes: 10
       - run: npm run test:trusted-runtime
+      - run: npm run test:dependencies
       - run: npm test
       - run: npm run test:lifecycle
       - run: npm run test:review

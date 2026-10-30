@@ -163,6 +163,7 @@ try {
     try {
       const page = await browser.newPage();
       await page.goto(origin + '/parent/');
+      const previousInputs = inputs.length;
       const result = await page.evaluate(async () => {
         const wait = (node: Element) =>
           new Promise<void>((resolve, reject) => {
@@ -247,6 +248,22 @@ try {
         const cloneGuarded =
           Reflect.get(clone.contentWindow!, 'documentGuardFixture') === true;
         const cloneDistinct = clone.contentDocument !== frame.contentDocument;
+        const deepContainer = document.createElement('section');
+        const deepFrame = document.createElement('iframe');
+        deepFrame.srcdoc = '<p>Deep clone source</p>';
+        deepContainer.appendChild(deepFrame);
+        const nativeMinimum = Math.min;
+        let deepClone: Node;
+        let applicationMathControl = false;
+        try {
+          Math.min = () => 0;
+          applicationMathControl = Math.min(1, 2) === 0;
+          deepClone = deepContainer.cloneNode(true);
+        } finally {
+          Math.min = nativeMinimum;
+        }
+        document.body.appendChild(deepClone);
+        await Reflect.get(window, 'waitForOwnedDocuments')();
         const pending = document.createElement('iframe');
         pending.srcdoc = '<p>Other source</p>';
         const pendingLoaded = wait(pending);
@@ -341,6 +358,7 @@ try {
           rejectedInitialSandbox,
           cloneGuarded,
           cloneDistinct,
+          applicationMathControl,
           crossRealmReference,
           nativeSVG,
           parsedGuarded,
@@ -366,6 +384,14 @@ try {
       ] as const)
         assert.equal(result[key], null, key);
       assert.equal(result.pendingFrames, 0);
+      assert.equal(result.applicationMathControl, true);
+      assert.equal(
+        inputs
+          .slice(previousInputs)
+          .filter((input) => JSON.stringify(input).includes('Deep clone source')).length,
+        1,
+        'Deep clone lost its nested prepared source after application Math replacement',
+      );
       assert.equal(result.ready, 'true');
       assert.equal(result.physicalSandbox, 'allow-scripts allow-same-origin');
       assert.equal(result.rejectedSandbox, true);

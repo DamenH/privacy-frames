@@ -67,6 +67,8 @@ function policy(
 }
 
 const headers = {
+  // Supporting browsers enforce this on document/worker context responses.
+  'Connection-Allowlist': '(response-origin); redirects=block; webrtc=block',
   'X-Frame-Options': 'DENY',
   'X-DNS-Prefetch-Control': 'off',
   'Referrer-Policy': 'no-referrer',

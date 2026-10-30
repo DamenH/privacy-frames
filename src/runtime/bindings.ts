@@ -12,9 +12,6 @@ const nativeGlobal = globalThis;
 // These namespaces and host aliases supplement the protected language globals.
 // Their values are read only after the environment's policies are installed.
 const ambientNames = [
-  'WebAssembly',
-  'Intl',
-  'Atomics',
   'globalThis',
   'self',
   'window',

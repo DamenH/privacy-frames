@@ -28,6 +28,8 @@ An application opens at `/<ALIAS>/<NAME>/`. The host service worker supplies an 
 
 The runtime’s Content Security Policy (CSP) restricts HTTP requests to its own origin. Firefox experiments showed DNS resolution before service-worker rejection of external requests. CSP prevents those external requests; the service worker applies the cache-or-block rule within the allowed origin. Publisher resource URLs are mapped locally to admitted copies.
 
+Generated document and worker responses also carry a same-origin Connection Allowlist, with WebRTC and redirects blocked. Independent tests show enforcement in Chromium 153 and no enforcement in Firefox 155. Same-origin network traffic remains possible under that header, so the runtime retains its transport blockers and resource gate.
+
 Runtime guards mediate context creation, navigation, script loading and browser services outside ordinary HTTP interception. WebSocket and WebRTC remain restricted. Same-application history paths, queries and fragments are supported. DOM construction and resource loading retain their checks when invoked from custom elements or dynamically evaluated code. The checked surfaces are recorded in [SURFACE_INVENTORY.md](https://github.com/privacy-frames/host/blob/main/SURFACE_INVENTORY.md).
 
 Application JavaScript runs in its native browser context. Document parsing and markup validation run in a private detached iframe with independent intrinsics, exchanging serialized text with local guards. Native DOM and event hooks remain beside the application and use captured operations and protected records. Selected prototype extensions, polyfills and dynamic evaluation remain supported under the communication policy.

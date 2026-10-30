@@ -2,7 +2,6 @@
 const apply = Reflect.apply;
 const define = Object.defineProperty;
 const descriptor = Object.getOwnPropertyDescriptor;
-const descriptors = Object.getOwnPropertyDescriptors;
 const ownKeys = Reflect.ownKeys;
 const hasOwn = Object.hasOwn;
 const getPrototype = Object.getPrototypeOf;
@@ -30,15 +29,6 @@ export function ownDescriptor(
 ): PropertyDescriptor | undefined {
   const result = descriptor(object, key);
   return result === undefined ? undefined : internalRecord(result);
-}
-
-export function ownDescriptors<T extends object>(object: T) {
-  const result = descriptors(object);
-  for (const key of ownKeys(result)) {
-    const property: unknown = descriptor(result, key)!.value;
-    if (property !== null && typeof property === 'object') internalRecord(property);
-  }
-  return internalRecord(result);
 }
 
 /** Normalize trusted JSON/structured-clone records without evaluating accessors. */
@@ -163,8 +153,3 @@ export const strings = freeze({
     return apply(nativeReplace, value, [pattern, replacement]);
   },
 });
-
-/** Only this immutable copy is used for trusted numeric bounds. */
-export const math: Math = freeze(
-  Object.defineProperties(create(null), Object.getOwnPropertyDescriptors(Math)),
-);

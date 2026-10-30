@@ -1,0 +1,386 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-30T09:14:19.479Z",
+    "revision": "eb80a0a0ef04fce24b48608f4cfd57da5fb059f8",
+    "runnerSHA256": "48875000fdfa8db6333d7634b4b5a4a1c960171accc6df1d920fd0e83cc62865",
+    "policySourceSHA256": "7f6dc41e25507576ee004a7eeba44d31ccfd28aa1a9d0e7ee69c9568c996e010",
+    "scope": "Header-only native browser controls; actual service-worker-generated document/worker responses. Existing CSP and runtime API blockers are deliberately absent from this fixture. Publisher executor means native SharedWorker execution class, not the full publisher RPC protocol."
+  },
+  "policy": "(response-origin); redirects=block; webrtc=block",
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": false,
+      "policy": false,
+      "kind": "document",
+      "outcome": {
+        "external": "external response",
+        "local": "network local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "redirect followed",
+        "externalSocket": "error",
+        "sameOriginSocket": "error",
+        "rtc": "gathered"
+      },
+      "observed": {
+        "http": [
+          "/fetch?marker=chromium-direct-control-document"
+        ],
+        "upgrades": [
+          "/socket?marker=chromium-direct-control-document"
+        ],
+        "tcp": 2,
+        "stun": 3
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": false,
+      "policy": true,
+      "kind": "document",
+      "outcome": {
+        "external": "TypeError",
+        "local": "network local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "TypeError",
+        "externalSocket": "error",
+        "sameOriginSocket": "error",
+        "rtc": "gathered"
+      },
+      "observed": {
+        "http": [],
+        "upgrades": [],
+        "tcp": 0,
+        "stun": 0
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": false,
+      "policy": false,
+      "kind": "worker",
+      "outcome": {
+        "external": "external response",
+        "local": "network local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "redirect followed",
+        "externalSocket": "error",
+        "sameOriginSocket": "error"
+      },
+      "observed": {
+        "http": [
+          "/fetch?marker=chromium-direct-control-worker"
+        ],
+        "upgrades": [
+          "/socket?marker=chromium-direct-control-worker"
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": false,
+      "policy": true,
+      "kind": "worker",
+      "outcome": {
+        "external": "TypeError",
+        "local": "network local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "TypeError",
+        "externalSocket": "error",
+        "sameOriginSocket": "error"
+      },
+      "observed": {
+        "http": [],
+        "upgrades": []
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": false,
+      "policy": false,
+      "kind": "shared",
+      "outcome": {
+        "external": "external response",
+        "local": "network local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "redirect followed",
+        "externalSocket": "error",
+        "sameOriginSocket": "error"
+      },
+      "observed": {
+        "http": [
+          "/fetch?marker=chromium-direct-control-shared"
+        ],
+        "upgrades": [
+          "/socket?marker=chromium-direct-control-shared"
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": false,
+      "policy": true,
+      "kind": "shared",
+      "outcome": {
+        "external": "TypeError",
+        "local": "network local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "TypeError",
+        "externalSocket": "error",
+        "sameOriginSocket": "error"
+      },
+      "observed": {
+        "http": [],
+        "upgrades": []
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": false,
+      "policy": false,
+      "kind": "publisher-shared-executor",
+      "outcome": {
+        "external": "external response",
+        "local": "network local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "redirect followed",
+        "externalSocket": "error",
+        "sameOriginSocket": "error"
+      },
+      "observed": {
+        "http": [
+          "/fetch?marker=chromium-direct-control-publisher"
+        ],
+        "upgrades": [
+          "/socket?marker=chromium-direct-control-publisher"
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": false,
+      "policy": true,
+      "kind": "publisher-shared-executor",
+      "outcome": {
+        "external": "TypeError",
+        "local": "network local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "TypeError",
+        "externalSocket": "error",
+        "sameOriginSocket": "error"
+      },
+      "observed": {
+        "http": [],
+        "upgrades": []
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": true,
+      "policy": false,
+      "kind": "document",
+      "outcome": {
+        "external": "external response",
+        "local": "synthetic local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "redirect followed",
+        "externalSocket": "error",
+        "sameOriginSocket": "error",
+        "rtc": "gathered"
+      },
+      "observed": {
+        "http": [
+          "/fetch?marker=chromium-synthetic-control-document"
+        ],
+        "upgrades": [
+          "/socket?marker=chromium-synthetic-control-document"
+        ],
+        "tcp": 2,
+        "stun": 3
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": true,
+      "policy": true,
+      "kind": "document",
+      "outcome": {
+        "external": "TypeError",
+        "local": "synthetic local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "redirect followed",
+        "externalSocket": "error",
+        "sameOriginSocket": "error",
+        "rtc": "gathered"
+      },
+      "observed": {
+        "http": [],
+        "upgrades": [],
+        "tcp": 0,
+        "stun": 0
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": true,
+      "policy": false,
+      "kind": "worker",
+      "outcome": {
+        "external": "external response",
+        "local": "synthetic local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "redirect followed",
+        "externalSocket": "error",
+        "sameOriginSocket": "timeout"
+      },
+      "observed": {
+        "http": [
+          "/fetch?marker=chromium-synthetic-control-worker"
+        ],
+        "upgrades": [
+          "/socket?marker=chromium-synthetic-control-worker"
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "synthetic": true,
+      "policy": true,
+      "kind": "worker",
+      "outcome": {
+        "external": "TypeError",
+        "local": "synthetic local resource",
+        "sameOriginEgress": "same-origin network reached",
+        "redirect": "redirect followed",
+        "externalSocket": "error",
+        "sameOriginSocket": "timeout"
+      },
+      "observed": {
+        "http": [],
+        "upgrades": []
+      }
+    }
+  ],
+  "observations": {
+    "externalHTTP": [
+      "/fetch?marker=chromium-direct-control-document",
+      "/fetch?marker=chromium-direct-control-worker",
+      "/fetch?marker=chromium-direct-control-shared",
+      "/fetch?marker=chromium-direct-control-publisher",
+      "/fetch?marker=chromium-synthetic-control-document",
+      "/fetch?marker=chromium-synthetic-control-worker",
+      "/fetch?marker=chromium-synthetic-control-shared"
+    ],
+    "externalUpgrades": [
+      "/socket?marker=chromium-direct-control-document",
+      "/socket?marker=chromium-direct-control-worker",
+      "/socket?marker=chromium-direct-control-shared",
+      "/socket?marker=chromium-direct-control-publisher",
+      "/socket?marker=chromium-synthetic-control-document",
+      "/socket?marker=chromium-synthetic-control-worker"
+    ],
+    "externalTCP": [
+      1793351660009,
+      1793351660015,
+      1793351663121,
+      1793351663126,
+      1793351663147,
+      1793351663154,
+      1793351663217,
+      1793351663286,
+      1793351663502,
+      1793351663864,
+      1793351668251,
+      1793351669580,
+      1793351672597
+    ],
+    "localHTTP": [
+      "/direct/control/",
+      "/local?marker=chromium-direct-control-document",
+      "/same-origin-egress?marker=chromium-direct-control-document",
+      "/redirect?marker=chromium-direct-control-document",
+      "/redirect-target?marker=chromium-direct-control-document",
+      "/direct/policy/",
+      "/local?marker=chromium-direct-policy-document",
+      "/same-origin-egress?marker=chromium-direct-policy-document",
+      "/redirect?marker=chromium-direct-policy-document",
+      "/direct/control/",
+      "/direct/control/worker.js",
+      "/local?marker=chromium-direct-control-worker",
+      "/same-origin-egress?marker=chromium-direct-control-worker",
+      "/redirect?marker=chromium-direct-control-worker",
+      "/redirect-target?marker=chromium-direct-control-worker",
+      "/direct/policy/worker.js",
+      "/local?marker=chromium-direct-policy-worker",
+      "/same-origin-egress?marker=chromium-direct-policy-worker",
+      "/redirect?marker=chromium-direct-policy-worker",
+      "/direct/control/shared.js",
+      "/local?marker=chromium-direct-control-shared",
+      "/same-origin-egress?marker=chromium-direct-control-shared",
+      "/redirect?marker=chromium-direct-control-shared",
+      "/redirect-target?marker=chromium-direct-control-shared",
+      "/direct/policy/shared.js",
+      "/local?marker=chromium-direct-policy-shared",
+      "/same-origin-egress?marker=chromium-direct-policy-shared",
+      "/redirect?marker=chromium-direct-policy-shared",
+      "/direct/control/publisher.js",
+      "/local?marker=chromium-direct-control-publisher",
+      "/same-origin-egress?marker=chromium-direct-control-publisher",
+      "/redirect?marker=chromium-direct-control-publisher",
+      "/redirect-target?marker=chromium-direct-control-publisher",
+      "/direct/policy/publisher.js",
+      "/local?marker=chromium-direct-policy-publisher",
+      "/same-origin-egress?marker=chromium-direct-policy-publisher",
+      "/redirect?marker=chromium-direct-policy-publisher",
+      "/",
+      "/sw.js",
+      "/same-origin-egress?marker=chromium-synthetic-control-document",
+      "/redirect-target?marker=chromium-synthetic-control-document",
+      "/sw.js",
+      "/same-origin-egress?marker=chromium-synthetic-policy-document",
+      "/redirect-target?marker=chromium-synthetic-policy-document",
+      "/sw.js",
+      "/same-origin-egress?marker=chromium-synthetic-control-worker",
+      "/redirect-target?marker=chromium-synthetic-control-worker",
+      "/sw.js",
+      "/same-origin-egress?marker=chromium-synthetic-policy-worker",
+      "/redirect-target?marker=chromium-synthetic-policy-worker",
+      "/sw.js",
+      "/same-origin-egress?marker=chromium-synthetic-control-shared",
+      "/redirect-target?marker=chromium-synthetic-control-shared",
+      "/sw.js"
+    ],
+    "localUpgrades": [
+      "/socket?marker=chromium-direct-control-document",
+      "/socket?marker=chromium-direct-policy-document",
+      "/socket?marker=chromium-direct-control-worker",
+      "/socket?marker=chromium-direct-policy-worker",
+      "/socket?marker=chromium-direct-control-shared",
+      "/socket?marker=chromium-direct-policy-shared",
+      "/socket?marker=chromium-direct-control-publisher",
+      "/socket?marker=chromium-direct-policy-publisher",
+      "/socket?marker=chromium-synthetic-control-document",
+      "/socket?marker=chromium-synthetic-policy-document"
+    ],
+    "stun": [
+      1793351660087,
+      1793351660350,
+      1793351660866,
+      1793351664136,
+      1793351664397,
+      1793351664913
+    ]
+  }
+}
