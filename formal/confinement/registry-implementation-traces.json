@@ -1,0 +1,343 @@
+{
+  "scope": "10000 length-four sequential operation traces against the actual ContextRegistry, using an in-memory ContextStorage. No browser guard, native client identity or concurrent storage interleaving is verified.",
+  "modelInputs": {
+    "Registry.tla": "e6826dad4a079ed08507242d654fdc21701b6889756135bde0f41e7a66e6ee20",
+    "RegistrySafe.cfg": "b57ee34f56fb880aef4df07b8d4c552ab6fd166b1c9bbb9e445960c77a7eb9ae"
+  },
+  "runnerSHA256": "eaa48f8a6d9bee38bd4f58b3ca351f1bcab47fc94d0b6df2f4ef37d84208e55a",
+  "sourceSHA256": "c50ebfc5efb0d96c7dd4484e2a270b5aa642c1342e6e5bf528cb2864631277c8",
+  "sequences": 10000,
+  "transitions": 40000,
+  "samples": [
+    {
+      "sequence": [
+        "Bind",
+        "Ready",
+        "CloseOwner",
+        "Ready"
+      ],
+      "trace": [
+        {
+          "action": "Bind",
+          "before": {
+            "state": "absent",
+            "closedByOwner": false,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": "bound",
+          "after": {
+            "state": "preparing",
+            "closedByOwner": false,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": true,
+            "bearer": true,
+            "stranger": false
+          }
+        },
+        {
+          "action": "Ready",
+          "before": {
+            "state": "preparing",
+            "closedByOwner": false,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": true,
+          "after": {
+            "state": "running",
+            "closedByOwner": false,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": true,
+            "bearer": true,
+            "stranger": false
+          }
+        },
+        {
+          "action": "CloseOwner",
+          "before": {
+            "state": "running",
+            "closedByOwner": false,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": true,
+          "after": {
+            "state": "closed",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": false,
+            "bearer": false,
+            "stranger": false
+          }
+        },
+        {
+          "action": "Ready",
+          "before": {
+            "state": "closed",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": false,
+          "after": {
+            "state": "closed",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": false,
+            "bearer": false,
+            "stranger": false
+          }
+        }
+      ]
+    },
+    {
+      "sequence": [
+        "CloseOwner",
+        "Replace",
+        "Bind",
+        "Ready"
+      ],
+      "trace": [
+        {
+          "action": "CloseOwner",
+          "before": {
+            "state": "absent",
+            "closedByOwner": false,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": true,
+          "after": {
+            "state": "absent",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": false,
+            "bearer": false,
+            "stranger": false
+          }
+        },
+        {
+          "action": "Replace",
+          "before": {
+            "state": "absent",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": "replaced",
+          "after": {
+            "state": "absent",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": false,
+            "bearer": false,
+            "stranger": false
+          }
+        },
+        {
+          "action": "Bind",
+          "before": {
+            "state": "absent",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": "rejected: Browser context closed before startup",
+          "after": {
+            "state": "absent",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": false,
+            "bearer": false,
+            "stranger": false
+          }
+        },
+        {
+          "action": "Ready",
+          "before": {
+            "state": "absent",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": false,
+          "after": {
+            "state": "absent",
+            "closedByOwner": true,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": false,
+            "bearer": false,
+            "stranger": false
+          }
+        }
+      ]
+    },
+    {
+      "sequence": [
+        "CloseOther",
+        "Bind",
+        "Ready",
+        "CloseOwner"
+      ],
+      "trace": [
+        {
+          "action": "CloseOther",
+          "before": {
+            "state": "absent",
+            "closedByOwner": false,
+            "closedByOther": false,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": true,
+          "after": {
+            "state": "absent",
+            "closedByOwner": false,
+            "closedByOther": true,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": false,
+            "bearer": false,
+            "stranger": false
+          }
+        },
+        {
+          "action": "Bind",
+          "before": {
+            "state": "absent",
+            "closedByOwner": false,
+            "closedByOther": true,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": "bound",
+          "after": {
+            "state": "preparing",
+            "closedByOwner": false,
+            "closedByOther": true,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": true,
+            "bearer": true,
+            "stranger": false
+          }
+        },
+        {
+          "action": "Ready",
+          "before": {
+            "state": "preparing",
+            "closedByOwner": false,
+            "closedByOther": true,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": true,
+          "after": {
+            "state": "running",
+            "closedByOwner": false,
+            "closedByOther": true,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": true,
+            "bearer": true,
+            "stranger": false
+          }
+        },
+        {
+          "action": "CloseOwner",
+          "before": {
+            "state": "running",
+            "closedByOwner": false,
+            "closedByOther": true,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "outcome": true,
+          "after": {
+            "state": "closed",
+            "closedByOwner": true,
+            "closedByOther": true,
+            "badBind": false,
+            "badRevive": false,
+            "badClose": false
+          },
+          "capabilities": {
+            "direct": false,
+            "bearer": false,
+            "stranger": false
+          }
+        }
+      ]
+    }
+  ]
+}

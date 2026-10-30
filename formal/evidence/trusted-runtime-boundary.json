@@ -1,0 +1,108 @@
+{
+  "revision": "2449929b26adc7dad41b54c9d4de2c4b3bdb0a69",
+  "testedAt": "2026-10-30T14:23:54.480Z",
+  "hashes": {
+    "test/trusted-boundary.ts": "0d43dd3b1a49b551267d3cab43b57ee9bc2a879d442950962edf74e6da92d7f3",
+    "src/runtime/trusted/context.ts": "425bf7232a2ef83aba94d185f9b3d00c9da00ec450399fddeef10b43b2069ac7",
+    "src/runtime/trusted/client.ts": "a374280b5b69e02480e6267a15354c41e1acb446844304d6e21c3f4687be0dc4",
+    "src/runtime/trusted/entry.ts": "106e8205a7091272c6f023b426afbf71eb30bfbffecbf5094c3a2340b2e4e824",
+    "src/runtime/trusted/fragment.ts": "3dbc7e1ebc8cc3eab9422f22cbce64470e0aceda13ed6fae88dd2bd62fb5b3da"
+  },
+  "scope": "Actual prepareWindowRealm with detached-frame private computation and separately served native application script. Tests callbacks, coercion, local/foreign errors, prototype hooks and frame visibility. No receiver or network-confinement claim; native ShadowRealm backend tested separately by computation fixture.",
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "passed": true,
+      "native": {
+        "frameVisible": true,
+        "foreignArray": true,
+        "foreignError": true,
+        "foreignFunction": true,
+        "recoveredWindow": true
+      },
+      "transport": {
+        "primitive": true,
+        "foreignErrorLocal": true,
+        "objectRejected": true,
+        "functionRejected": true,
+        "nontextRejected": true,
+        "noCoercion": true
+      },
+      "result": {
+        "nativeLexical": true,
+        "windowIdentity": true,
+        "coercions": 1,
+        "callbackArguments": 0,
+        "foreignObjects": 0,
+        "foreignCallables": 0,
+        "callbackWindows": 0,
+        "denied": 3,
+        "errorsLocal": true,
+        "stackHooksProtected": true,
+        "inspectedObjects": 110,
+        "arrayHookHits": 1,
+        "localArrayControl": true,
+        "noPrivateFrames": true,
+        "unexpectedFrameInsertions": 0,
+        "rangeBlocked": true,
+        "inertNative": true,
+        "ordinaryMarkup": true,
+        "nativeWasm": true,
+        "nativePrototypeExtension": true,
+        "eventThis": true,
+        "eventTarget": true,
+        "eventNative": true,
+        "cancelledSynchronously": true
+      },
+      "errors": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "passed": true,
+      "native": {
+        "frameVisible": true,
+        "foreignArray": true,
+        "foreignError": true,
+        "foreignFunction": true,
+        "recoveredWindow": true
+      },
+      "transport": {
+        "primitive": true,
+        "foreignErrorLocal": true,
+        "objectRejected": true,
+        "functionRejected": true,
+        "nontextRejected": true,
+        "noCoercion": true
+      },
+      "result": {
+        "nativeLexical": true,
+        "windowIdentity": true,
+        "coercions": 1,
+        "callbackArguments": 0,
+        "foreignObjects": 0,
+        "foreignCallables": 0,
+        "callbackWindows": 0,
+        "denied": 3,
+        "errorsLocal": true,
+        "stackHooksProtected": true,
+        "inspectedObjects": 95,
+        "arrayHookHits": 1,
+        "localArrayControl": true,
+        "noPrivateFrames": true,
+        "unexpectedFrameInsertions": 0,
+        "rangeBlocked": true,
+        "inertNative": true,
+        "ordinaryMarkup": true,
+        "nativeWasm": true,
+        "nativePrototypeExtension": true,
+        "eventThis": true,
+        "eventTarget": true,
+        "eventNative": true,
+        "cancelledSynchronously": true
+      },
+      "errors": []
+    }
+  ]
+}

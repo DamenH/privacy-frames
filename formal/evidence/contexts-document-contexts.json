@@ -1,0 +1,3579 @@
+{
+  "provenance": {
+    "capturedAt": "2026-10-30T14:23:37.793Z",
+    "revision": "2449929b26adc7dad41b54c9d4de2c4b3bdb0a69",
+    "dirty": true,
+    "sourceSHA256": "a2ec95a29a290481e1089a23d778de21cb61f94fd91aff6e9835edb85080c455",
+    "runner": "test/document-contexts.ts",
+    "runnerSHA256": "d6c490bc29184c8d47d6824fa666aefa40353e191a1d63415c1066c6fd0509b1",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-manager/sw.js": "efacd37b78b7429372118f8b8c81cf930e403e5f735b0a97051c20464c136b90",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "f9c52e931657f32a3a869a0aee642c22fe0180d9645498431eebb7da6f6b48d0",
+      "dist-runtime/guard.js": "7978e5f0a862754a447eb4c80001f215d706727d06a6cff941690c7f3f02e856",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "cf3f0d5a2bbc330108ca22de8007f468976675f03a3a95f6b8ff0cba9ded9a10",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-runtime/shared-worker-guard.js": "7b516fd22ae0741bb0e55e016efee2a5b4a51a7be89f1c581faa1eca5bdeefdb",
+      "dist-runtime/sw.js": "af34e72a9f5a815e9891153d3f05fea995ab466366cb8d950b54e9cf23a77aeb",
+      "dist-runtime/worker-guard.js": "bb8b8d07577c7765e97ec874fdfd3b3e98e92bc19e33e9e21f73778ace2ccff0",
+      "dist-runtime/worklet-guard.js": "00d9fb417775e7a38d58a1f0a0164bddc5270e13a998b125e1c5cdd3dc926cd4",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "dee2c1e7be73e58a6c30a4c12a9e38ffce4b2221bd8a5c3a2f50923e22da18e6"
+    }
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "checks": [
+        {
+          "kind": "native-binding-control",
+          "value": {
+            "assignmentAccepted": true,
+            "retained": true,
+            "roundTrip": true,
+            "calls": 1
+          }
+        },
+        {
+          "kind": "installed",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "installed",
+              "contentType": "text/html",
+              "locationHash": "#initial-section",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "installed",
+                "contentType": "text/html",
+                "locationHash": "#initial-section",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "srcdoc",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "srcdoc",
+              "module": "module-done",
+              "contentType": "text/html",
+              "locationHash": "",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "srcdoc",
+                "module": "module-done",
+                "contentType": "text/html",
+                "locationHash": "",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "data-svg",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "svg",
+              "contentType": "image/svg+xml",
+              "locationHash": "",
+              "svgDocument": true,
+              "bbox": {
+                "width": 10,
+                "height": 12
+              },
+              "transform": "translate(3 4)",
+              "setupTarget": "svg",
+              "setupBBox": {
+                "width": 10,
+                "height": 12
+              },
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "svg",
+                "contentType": "image/svg+xml",
+                "locationHash": "",
+                "svgDocument": true,
+                "bbox": {
+                  "width": 10,
+                  "height": 12
+                },
+                "transform": null,
+                "setupTarget": "svg",
+                "setupBBox": {
+                  "width": 10,
+                  "height": 12
+                }
+              }
+            }
+          }
+        },
+        {
+          "kind": "blob-html",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "blob",
+              "contentType": "text/html",
+              "locationHash": "",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "blob",
+                "contentType": "text/html",
+                "locationHash": "",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "object-svg",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "svg",
+              "contentType": "image/svg+xml",
+              "locationHash": "",
+              "svgDocument": true,
+              "bbox": {
+                "width": 10,
+                "height": 12
+              },
+              "transform": "translate(3 4)",
+              "setupTarget": "svg",
+              "setupBBox": {
+                "width": 10,
+                "height": 12
+              },
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "svg",
+                "contentType": "image/svg+xml",
+                "locationHash": "",
+                "svgDocument": true,
+                "bbox": {
+                  "width": 10,
+                  "height": 12
+                },
+                "transform": null,
+                "setupTarget": "svg",
+                "setupBBox": {
+                  "width": 10,
+                  "height": 12
+                }
+              }
+            }
+          }
+        },
+        {
+          "kind": "nested",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "nested-parent",
+              "contentType": "text/html",
+              "locationHash": "",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "nestedReady": true,
+              "nestedHost": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "nested-parent",
+                "contentType": "text/html",
+                "locationHash": "",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null,
+                "nestedReady": true,
+                "nestedHost": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                }
+              }
+            }
+          }
+        },
+        {
+          "kind": "nested-ready",
+          "value": {
+            "document": true,
+            "window": true,
+            "host": {
+              "version": 1,
+              "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+              "publisher": "http://127.0.0.1:4350",
+              "mode": "network-isolated"
+            },
+            "shared": "same-app-value",
+            "kind": "nested-parent",
+            "contentType": "text/html",
+            "locationHash": "",
+            "svgDocument": null,
+            "bbox": null,
+            "transform": null,
+            "nestedReady": true,
+            "nestedHost": {
+              "version": 1,
+              "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+              "publisher": "http://127.0.0.1:4350",
+              "mode": "network-isolated"
+            }
+          }
+        },
+        {
+          "kind": "network",
+          "value": {
+            "fetchDenied": true,
+            "websocketDenied": true,
+            "children": [
+              {
+                "label": "installed",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "srcdoc",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "data-svg",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "blob-html",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "object-svg",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "nested",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "nested-nested",
+                "fetchDenied": true,
+                "websocketDenied": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "missing-document-refused",
+          "value": {
+            "refused": true
+          }
+        },
+        {
+          "kind": "replacement",
+          "value": {
+            "document": true,
+            "window": true,
+            "host": {
+              "version": 1,
+              "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+              "publisher": "http://127.0.0.1:4350",
+              "mode": "network-isolated"
+            },
+            "shared": "same-app-value",
+            "kind": "replacement",
+            "contentType": "text/html",
+            "locationHash": "",
+            "svgDocument": null,
+            "bbox": null,
+            "transform": null
+          }
+        },
+        {
+          "kind": "close",
+          "value": {
+            "disconnected": true,
+            "windowNull": true,
+            "documentNull": true,
+            "svgDocumentNull": true
+          }
+        },
+        {
+          "kind": "offline-srcdoc",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "srcdoc",
+              "module": "module-done",
+              "contentType": "text/html",
+              "locationHash": "",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "srcdoc",
+                "module": "module-done",
+                "contentType": "text/html",
+                "locationHash": "",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "offline-installed",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "installed",
+              "contentType": "text/html",
+              "locationHash": "#initial-section",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "installed",
+                "contentType": "text/html",
+                "locationHash": "#initial-section",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "manifest",
+          "value": {
+            "seen": true,
+            "removed": 0,
+            "connected": true
+          }
+        },
+        {
+          "kind": "static-contexts",
+          "value": {
+            "events": [
+              {
+                "id": "static-svg",
+                "host": {
+                  "version": 1,
+                  "application": "static-documents-c0c802e3746c807150ff74a949d6cf00ccdb7520ba1433ad97548088e12cb4df",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "contentType": "image/svg+xml",
+                "svg": true
+              },
+              {
+                "id": "static-inline",
+                "host": {
+                  "version": 1,
+                  "application": "static-documents-c0c802e3746c807150ff74a949d6cf00ccdb7520ba1433ad97548088e12cb4df",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "contentType": "text/html",
+                "svg": null,
+                "kind": "static-srcdoc"
+              },
+              {
+                "id": "static-installed",
+                "host": {
+                  "version": 1,
+                  "application": "static-documents-c0c802e3746c807150ff74a949d6cf00ccdb7520ba1433ad97548088e12cb4df",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "contentType": "text/html",
+                "svg": null,
+                "kind": "installed"
+              }
+            ],
+            "windowLoadCount": 3,
+            "manifest": {
+              "seen": true,
+              "removed": 0,
+              "connected": true
+            }
+          }
+        }
+      ],
+      "logs": [
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "requestfailed http://127.0.0.1:4350/documents/nested-parent.html net::ERR_ABORTED",
+        "requestfailed http://127.0.0.1:4350/documents/nested.html net::ERR_ABORTED",
+        "requestfailed http://127.0.0.1:4350/documents/main.js net::ERR_ABORTED",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/child.html#initial-section\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/b6dd5c34-ae18-4b42-90f8-9ef5205e3063/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/b6dd5c34-ae18-4b42-90f8-9ef5205e3063/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=b6dd5c34-ae18-4b42-90f8-9ef5205e3063",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=b6dd5c34-ae18-4b42-90f8-9ef5205e3063",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/b6dd5c34-ae18-4b42-90f8-9ef5205e3063/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/b6dd5c34-ae18-4b42-90f8-9ef5205e3063/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/b6dd5c34-ae18-4b42-90f8-9ef5205e3063/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/b6dd5c34-ae18-4b42-90f8-9ef5205e3063/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<p>Srcdoc</p><script>globalThis.fixtureKind=\\\"srcdoc\\\"</script><script type=\\\"module\\\">await Promise.resolve();globalThis.fixtureModule=\\\"module-done\\\"</script>\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/8240d8c4-1f93-4866-a191-1f47e2a47090/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/8240d8c4-1f93-4866-a191-1f47e2a47090/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=8240d8c4-1f93-4866-a191-1f47e2a47090",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=8240d8c4-1f93-4866-a191-1f47e2a47090",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/8240d8c4-1f93-4866-a191-1f47e2a47090/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/8240d8c4-1f93-4866-a191-1f47e2a47090/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/8240d8c4-1f93-4866-a191-1f47e2a47090/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/8240d8c4-1f93-4866-a191-1f47e2a47090/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"data\",\"url\":\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2260%22%20onload%3D%22setup(evt)%22%3E%3Cscript%3Efunction%20setup(evt)%7BglobalThis.fixtureKind%3D%22svg%22%3BglobalThis.setupTarget%3Devt.currentTarget.localName%3Bconst%20box%3Devt.currentTarget.querySelector(%22rect%22).getBBox()%3BglobalThis.setupBBox%3D%7Bwidth%3Abox.width%2Cheight%3Abox.height%7D%3BsetTimeout(()%3D%3Edocument.querySelector(%22rect%22).setAttribute(%22transform%22%2C%22translate(3%204)%22)%2C20)%7D%3C%2Fscript%3E%3Crect%20width%3D%2210%22%20height%3D%2212%22%2F%3E%3C%2Fsvg%3E\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/6724b862-4710-43b7-8020-b14e7b6e4107/document.svg",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/6724b862-4710-43b7-8020-b14e7b6e4107/document.svg",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=6724b862-4710-43b7-8020-b14e7b6e4107",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=6724b862-4710-43b7-8020-b14e7b6e4107",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/6724b862-4710-43b7-8020-b14e7b6e4107/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/6724b862-4710-43b7-8020-b14e7b6e4107/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/6724b862-4710-43b7-8020-b14e7b6e4107/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/6724b862-4710-43b7-8020-b14e7b6e4107/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"blob\",\"url\":\"blob:http://127.0.0.1:4211/36230638-4e0c-4c94-b1e6-9ebffdc6e596\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\",\"blobContent\":{\"text\":\"<p>Blob HTML</p><script>globalThis.fixtureKind=\\\"blob\\\"</script>\",\"contentType\":\"text/html\"}}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/348a3d58-4adc-4fdf-a81e-91e77be573fd/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/348a3d58-4adc-4fdf-a81e-91e77be573fd/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=348a3d58-4adc-4fdf-a81e-91e77be573fd",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=348a3d58-4adc-4fdf-a81e-91e77be573fd",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/348a3d58-4adc-4fdf-a81e-91e77be573fd/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/348a3d58-4adc-4fdf-a81e-91e77be573fd/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/348a3d58-4adc-4fdf-a81e-91e77be573fd/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/348a3d58-4adc-4fdf-a81e-91e77be573fd/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"data\",\"url\":\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2260%22%20onload%3D%22setup(evt)%22%3E%3Cscript%3Efunction%20setup(evt)%7BglobalThis.fixtureKind%3D%22svg%22%3BglobalThis.setupTarget%3Devt.currentTarget.localName%3Bconst%20box%3Devt.currentTarget.querySelector(%22rect%22).getBBox()%3BglobalThis.setupBBox%3D%7Bwidth%3Abox.width%2Cheight%3Abox.height%7D%3BsetTimeout(()%3D%3Edocument.querySelector(%22rect%22).setAttribute(%22transform%22%2C%22translate(3%204)%22)%2C20)%7D%3C%2Fscript%3E%3Crect%20width%3D%2210%22%20height%3D%2212%22%2F%3E%3C%2Fsvg%3E\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/724b711c-b4b2-4df1-994d-a3e1c8d686ca/document.svg",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/724b711c-b4b2-4df1-994d-a3e1c8d686ca/document.svg",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=724b711c-b4b2-4df1-994d-a3e1c8d686ca",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=724b711c-b4b2-4df1-994d-a3e1c8d686ca",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/724b711c-b4b2-4df1-994d-a3e1c8d686ca/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/724b711c-b4b2-4df1-994d-a3e1c8d686ca/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/724b711c-b4b2-4df1-994d-a3e1c8d686ca/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/724b711c-b4b2-4df1-994d-a3e1c8d686ca/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/nested-parent.html\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3a74d8b9-8dd8-42d3-b890-9706aa20de7d/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3a74d8b9-8dd8-42d3-b890-9706aa20de7d/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=3a74d8b9-8dd8-42d3-b890-9706aa20de7d",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=3a74d8b9-8dd8-42d3-b890-9706aa20de7d",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3a74d8b9-8dd8-42d3-b890-9706aa20de7d/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3a74d8b9-8dd8-42d3-b890-9706aa20de7d/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3a74d8b9-8dd8-42d3-b890-9706aa20de7d/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3a74d8b9-8dd8-42d3-b890-9706aa20de7d/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/nested.html\"},\"baseURL\":\"http://127.0.0.1:4350/documents/nested-parent.html\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/27162510-ef50-47dc-8959-2a81e93eab5f/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/27162510-ef50-47dc-8959-2a81e93eab5f/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=27162510-ef50-47dc-8959-2a81e93eab5f",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=27162510-ef50-47dc-8959-2a81e93eab5f",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/27162510-ef50-47dc-8959-2a81e93eab5f/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/27162510-ef50-47dc-8959-2a81e93eab5f/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/27162510-ef50-47dc-8959-2a81e93eab5f/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/27162510-ef50-47dc-8959-2a81e93eab5f/content",
+        "CONSOLE error Connecting to 'http://127.0.0.1:4351/dummy-app-e7dc3775-42db-48ea-ba03-6bed7e874891' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "CONSOLE error Fetch API cannot load http://127.0.0.1:4351/dummy-app-e7dc3775-42db-48ea-ba03-6bed7e874891. Refused to connect because it violates the document's Content Security Policy.",
+        "CONSOLE error Connecting to 'http://127.0.0.1:4351/dummy-child-installed-e7dc3775-42db-48ea-ba03-6bed7e874891' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "CONSOLE error Fetch API cannot load http://127.0.0.1:4351/dummy-child-installed-e7dc3775-42db-48ea-ba03-6bed7e874891. Refused to connect because it violates the document's Content Security Policy.",
+        "CONSOLE error Connecting to 'http://127.0.0.1:4351/dummy-child-srcdoc-e7dc3775-42db-48ea-ba03-6bed7e874891' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "CONSOLE error Fetch API cannot load http://127.0.0.1:4351/dummy-child-srcdoc-e7dc3775-42db-48ea-ba03-6bed7e874891. Refused to connect because it violates the document's Content Security Policy.",
+        "CONSOLE error Connecting to 'http://127.0.0.1:4351/dummy-child-data-svg-e7dc3775-42db-48ea-ba03-6bed7e874891' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "CONSOLE error Fetch API cannot load http://127.0.0.1:4351/dummy-child-data-svg-e7dc3775-42db-48ea-ba03-6bed7e874891. Refused to connect because it violates the document's Content Security Policy.",
+        "CONSOLE error Connecting to 'http://127.0.0.1:4351/dummy-child-blob-html-e7dc3775-42db-48ea-ba03-6bed7e874891' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "CONSOLE error Fetch API cannot load http://127.0.0.1:4351/dummy-child-blob-html-e7dc3775-42db-48ea-ba03-6bed7e874891. Refused to connect because it violates the document's Content Security Policy.",
+        "CONSOLE error Connecting to 'http://127.0.0.1:4351/dummy-child-object-svg-e7dc3775-42db-48ea-ba03-6bed7e874891' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "CONSOLE error Fetch API cannot load http://127.0.0.1:4351/dummy-child-object-svg-e7dc3775-42db-48ea-ba03-6bed7e874891. Refused to connect because it violates the document's Content Security Policy.",
+        "CONSOLE error Connecting to 'http://127.0.0.1:4351/dummy-child-nested-e7dc3775-42db-48ea-ba03-6bed7e874891' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "CONSOLE error Fetch API cannot load http://127.0.0.1:4351/dummy-child-nested-e7dc3775-42db-48ea-ba03-6bed7e874891. Refused to connect because it violates the document's Content Security Policy.",
+        "CONSOLE error Connecting to 'http://127.0.0.1:4351/dummy-child-nested-nested-e7dc3775-42db-48ea-ba03-6bed7e874891' violates the following Content Security Policy directive: \"connect-src 'self' blob: data:\". The action has been blocked.",
+        "CONSOLE error Fetch API cannot load http://127.0.0.1:4351/dummy-child-nested-nested-e7dc3775-42db-48ea-ba03-6bed7e874891. Refused to connect because it violates the document's Content Security Policy.",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/missing-document.html\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 400 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "CONSOLE error Failed to load resource: the server responded with a status of 400 ()",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/b6dd5c34-ae18-4b42-90f8-9ef5205e3063/close",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<p>Replacement</p><script>globalThis.fixtureKind=\\\"replacement\\\"</script>\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/9cc02481-f7d8-41c2-90c0-37b1b99a07e5/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/b6dd5c34-ae18-4b42-90f8-9ef5205e3063/close",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/9cc02481-f7d8-41c2-90c0-37b1b99a07e5/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=9cc02481-f7d8-41c2-90c0-37b1b99a07e5",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=9cc02481-f7d8-41c2-90c0-37b1b99a07e5",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/9cc02481-f7d8-41c2-90c0-37b1b99a07e5/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/9cc02481-f7d8-41c2-90c0-37b1b99a07e5/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/9cc02481-f7d8-41c2-90c0-37b1b99a07e5/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/9cc02481-f7d8-41c2-90c0-37b1b99a07e5/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<p>Unused document</p>\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/e268927a-2255-45a0-b03f-de937b6903f0/close",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/e268927a-2255-45a0-b03f-de937b6903f0/close",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<p>Srcdoc</p><script>globalThis.fixtureKind=\\\"srcdoc\\\"</script><script type=\\\"module\\\">await Promise.resolve();globalThis.fixtureModule=\\\"module-done\\\"</script>\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/30ac621d-0bad-4732-a117-90da57f19d3c/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/30ac621d-0bad-4732-a117-90da57f19d3c/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=30ac621d-0bad-4732-a117-90da57f19d3c",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=30ac621d-0bad-4732-a117-90da57f19d3c",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/30ac621d-0bad-4732-a117-90da57f19d3c/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/30ac621d-0bad-4732-a117-90da57f19d3c/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/30ac621d-0bad-4732-a117-90da57f19d3c/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/30ac621d-0bad-4732-a117-90da57f19d3c/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/child.html#initial-section\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/70c1fe92-9a5d-49e6-a689-9119c04c2bf2/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/70c1fe92-9a5d-49e6-a689-9119c04c2bf2/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=70c1fe92-9a5d-49e6-a689-9119c04c2bf2",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=70c1fe92-9a5d-49e6-a689-9119c04c2bf2",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/70c1fe92-9a5d-49e6-a689-9119c04c2bf2/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/70c1fe92-9a5d-49e6-a689-9119c04c2bf2/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/70c1fe92-9a5d-49e6-a689-9119c04c2bf2/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/70c1fe92-9a5d-49e6-a689-9119c04c2bf2/content",
+        "requestfailed http://127.0.0.1:4350/static-documents/child.js net::ERR_ABORTED",
+        "requestfailed http://127.0.0.1:4350/static-documents/main.js net::ERR_ABORTED",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST POST http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<html><head></head><body><p>Static inline document</p><script src=\\\"http://127.0.0.1:4350/static-documents/__pf_inline_b786c246-149d-40cf-8bac-07355fc58c4f.js\\\"></script></body></html>\",\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"},\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"}",
+        "REQUEST POST http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/static-documents/child.html\",\"installedURL\":\"http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/child.html\"},\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"}",
+        "REQUEST POST http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"data\",\"url\":\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2260%22%3E%3Crect%20width%3D%2210%22%20height%3D%2212%22%3E%3C%2Frect%3E%3C%2Fsvg%3E\",\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"},\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/198a1236-a931-4233-bb72-03cd5dfdad47/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/a1fcfeb4-30f9-4618-95fe-6c40db469427/document.svg",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/4309c6a5-2485-403d-ad37-5ecb6d4604a1/document.html",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/198a1236-a931-4233-bb72-03cd5dfdad47/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=198a1236-a931-4233-bb72-03cd5dfdad47",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/a1fcfeb4-30f9-4618-95fe-6c40db469427/document.svg",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=a1fcfeb4-30f9-4618-95fe-6c40db469427",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/4309c6a5-2485-403d-ad37-5ecb6d4604a1/document.html",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'.",
+        "CONSOLE warning Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'.",
+        "CONSOLE warning An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js?context=4309c6a5-2485-403d-ad37-5ecb6d4604a1",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=198a1236-a931-4233-bb72-03cd5dfdad47",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/198a1236-a931-4233-bb72-03cd5dfdad47/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=a1fcfeb4-30f9-4618-95fe-6c40db469427",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/a1fcfeb4-30f9-4618-95fe-6c40db469427/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js?context=4309c6a5-2485-403d-ad37-5ecb6d4604a1",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/4309c6a5-2485-403d-ad37-5ecb6d4604a1/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/198a1236-a931-4233-bb72-03cd5dfdad47/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/a1fcfeb4-30f9-4618-95fe-6c40db469427/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/198a1236-a931-4233-bb72-03cd5dfdad47/content",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/a1fcfeb4-30f9-4618-95fe-6c40db469427/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/4309c6a5-2485-403d-ad37-5ecb6d4604a1/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/198a1236-a931-4233-bb72-03cd5dfdad47/content",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/4309c6a5-2485-403d-ad37-5ecb6d4604a1/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/a1fcfeb4-30f9-4618-95fe-6c40db469427/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/4309c6a5-2485-403d-ad37-5ecb6d4604a1/content"
+      ],
+      "requests": [],
+      "connections": [],
+      "publisherTraffic": [
+        "/documents/",
+        "/documents/child.html",
+        "/documents/child.js",
+        "/documents/nested-parent.html",
+        "/documents/nested.html",
+        "/documents/main.js",
+        "/static-documents/",
+        "/documents/child.html",
+        "/documents/child.js",
+        "/documents/main.js"
+      ]
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "checks": [
+        {
+          "kind": "native-binding-control",
+          "value": {
+            "assignmentAccepted": true,
+            "retained": true,
+            "roundTrip": true,
+            "calls": 1
+          }
+        },
+        {
+          "kind": "installed",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "installed",
+              "contentType": "text/html",
+              "locationHash": "#initial-section",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "installed",
+                "contentType": "text/html",
+                "locationHash": "#initial-section",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "srcdoc",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "srcdoc",
+              "module": "module-done",
+              "contentType": "text/html",
+              "locationHash": "",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "srcdoc",
+                "module": "module-done",
+                "contentType": "text/html",
+                "locationHash": "",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "data-svg",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "svg",
+              "contentType": "image/svg+xml",
+              "locationHash": "",
+              "svgDocument": true,
+              "bbox": {
+                "width": 10,
+                "height": 12
+              },
+              "transform": "translate(3 4)",
+              "setupTarget": "svg",
+              "setupBBox": {
+                "width": 10,
+                "height": 12
+              },
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "svg",
+                "contentType": "image/svg+xml",
+                "locationHash": "",
+                "svgDocument": true,
+                "bbox": {
+                  "width": 10,
+                  "height": 12
+                },
+                "transform": null,
+                "setupTarget": "svg",
+                "setupBBox": {
+                  "width": 10,
+                  "height": 12
+                }
+              }
+            }
+          }
+        },
+        {
+          "kind": "blob-html",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "blob",
+              "contentType": "text/html",
+              "locationHash": "",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "blob",
+                "contentType": "text/html",
+                "locationHash": "",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "object-svg",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "svg",
+              "contentType": "image/svg+xml",
+              "locationHash": "",
+              "svgDocument": true,
+              "bbox": {
+                "width": 10,
+                "height": 12
+              },
+              "transform": "translate(3 4)",
+              "setupTarget": "svg",
+              "setupBBox": {
+                "width": 10,
+                "height": 12
+              },
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "svg",
+                "contentType": "image/svg+xml",
+                "locationHash": "",
+                "svgDocument": true,
+                "bbox": {
+                  "width": 10,
+                  "height": 12
+                },
+                "transform": null,
+                "setupTarget": "svg",
+                "setupBBox": {
+                  "width": 10,
+                  "height": 12
+                }
+              }
+            }
+          }
+        },
+        {
+          "kind": "nested",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "nested-parent",
+              "contentType": "text/html",
+              "locationHash": "",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "nestedReady": true,
+              "nestedHost": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "nested-parent",
+                "contentType": "text/html",
+                "locationHash": "",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null,
+                "nestedReady": true,
+                "nestedHost": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                }
+              }
+            }
+          }
+        },
+        {
+          "kind": "nested-ready",
+          "value": {
+            "document": true,
+            "window": true,
+            "host": {
+              "version": 1,
+              "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+              "publisher": "http://127.0.0.1:4350",
+              "mode": "network-isolated"
+            },
+            "shared": "same-app-value",
+            "kind": "nested-parent",
+            "contentType": "text/html",
+            "locationHash": "",
+            "svgDocument": null,
+            "bbox": null,
+            "transform": null,
+            "nestedReady": true,
+            "nestedHost": {
+              "version": 1,
+              "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+              "publisher": "http://127.0.0.1:4350",
+              "mode": "network-isolated"
+            }
+          }
+        },
+        {
+          "kind": "network",
+          "value": {
+            "fetchDenied": true,
+            "websocketDenied": true,
+            "children": [
+              {
+                "label": "installed",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "srcdoc",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "data-svg",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "blob-html",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "object-svg",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "nested",
+                "fetchDenied": true,
+                "websocketDenied": true
+              },
+              {
+                "label": "nested-nested",
+                "fetchDenied": true,
+                "websocketDenied": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "missing-document-refused",
+          "value": {
+            "refused": true
+          }
+        },
+        {
+          "kind": "replacement",
+          "value": {
+            "document": true,
+            "window": true,
+            "host": {
+              "version": 1,
+              "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+              "publisher": "http://127.0.0.1:4350",
+              "mode": "network-isolated"
+            },
+            "shared": "same-app-value",
+            "kind": "replacement",
+            "contentType": "text/html",
+            "locationHash": "",
+            "svgDocument": null,
+            "bbox": null,
+            "transform": null
+          }
+        },
+        {
+          "kind": "close",
+          "value": {
+            "disconnected": true,
+            "windowNull": true,
+            "documentNull": true,
+            "svgDocumentNull": true
+          }
+        },
+        {
+          "kind": "offline-srcdoc",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "srcdoc",
+              "module": "module-done",
+              "contentType": "text/html",
+              "locationHash": "",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "srcdoc",
+                "module": "module-done",
+                "contentType": "text/html",
+                "locationHash": "",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "offline-installed",
+          "value": {
+            "pending": {
+              "documentNull": true,
+              "svgDocumentNull": true,
+              "windowNull": true,
+              "rootWindowHidden": true
+            },
+            "pendingStates": [
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": false,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              },
+              {
+                "privateRoot": true,
+                "documentNull": true,
+                "windowNull": true,
+                "svgDocumentNull": true,
+                "rootWindowHidden": true
+              }
+            ],
+            "result": {
+              "document": true,
+              "window": true,
+              "host": {
+                "version": 1,
+                "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                "publisher": "http://127.0.0.1:4350",
+                "mode": "network-isolated"
+              },
+              "shared": "same-app-value",
+              "kind": "installed",
+              "contentType": "text/html",
+              "locationHash": "#initial-section",
+              "svgDocument": null,
+              "bbox": null,
+              "transform": null,
+              "atLoad": {
+                "document": true,
+                "window": true,
+                "host": {
+                  "version": 1,
+                  "application": "documents-6fb4cba22820a46f31b1f6f02b4e97e17f5be7c45da9f5e39ab173b22d234b06",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "kind": "installed",
+                "contentType": "text/html",
+                "locationHash": "#initial-section",
+                "svgDocument": null,
+                "bbox": null,
+                "transform": null
+              }
+            }
+          }
+        },
+        {
+          "kind": "manifest",
+          "value": {
+            "seen": true,
+            "removed": 0,
+            "connected": true
+          }
+        },
+        {
+          "kind": "static-contexts",
+          "value": {
+            "events": [
+              {
+                "id": "static-svg",
+                "host": {
+                  "version": 1,
+                  "application": "static-documents-c0c802e3746c807150ff74a949d6cf00ccdb7520ba1433ad97548088e12cb4df",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "contentType": "image/svg+xml",
+                "svg": true
+              },
+              {
+                "id": "static-inline",
+                "host": {
+                  "version": 1,
+                  "application": "static-documents-c0c802e3746c807150ff74a949d6cf00ccdb7520ba1433ad97548088e12cb4df",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "contentType": "text/html",
+                "svg": null,
+                "kind": "static-srcdoc"
+              },
+              {
+                "id": "static-installed",
+                "host": {
+                  "version": 1,
+                  "application": "static-documents-c0c802e3746c807150ff74a949d6cf00ccdb7520ba1433ad97548088e12cb4df",
+                  "publisher": "http://127.0.0.1:4350",
+                  "mode": "network-isolated"
+                },
+                "shared": "same-app-value",
+                "contentType": "text/html",
+                "svg": null,
+                "kind": "installed"
+              }
+            ],
+            "windowLoadCount": 3,
+            "manifest": {
+              "seen": true,
+              "removed": 0,
+              "connected": true
+            }
+          }
+        }
+      ],
+      "logs": [
+        "CONSOLE error [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 17924}]",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/child.html#initial-section\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<p>Srcdoc</p><script>globalThis.fixtureKind=\\\"srcdoc\\\"</script><script type=\\\"module\\\">await Promise.resolve();globalThis.fixtureModule=\\\"module-done\\\"</script>\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c944ac0a-55ef-44ee-ab93-09e0024c0020/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c944ac0a-55ef-44ee-ab93-09e0024c0020/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c944ac0a-55ef-44ee-ab93-09e0024c0020/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c944ac0a-55ef-44ee-ab93-09e0024c0020/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c944ac0a-55ef-44ee-ab93-09e0024c0020/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c944ac0a-55ef-44ee-ab93-09e0024c0020/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"data\",\"url\":\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2260%22%20onload%3D%22setup(evt)%22%3E%3Cscript%3Efunction%20setup(evt)%7BglobalThis.fixtureKind%3D%22svg%22%3BglobalThis.setupTarget%3Devt.currentTarget.localName%3Bconst%20box%3Devt.currentTarget.querySelector(%22rect%22).getBBox()%3BglobalThis.setupBBox%3D%7Bwidth%3Abox.width%2Cheight%3Abox.height%7D%3BsetTimeout(()%3D%3Edocument.querySelector(%22rect%22).setAttribute(%22transform%22%2C%22translate(3%204)%22)%2C20)%7D%3C%2Fscript%3E%3Crect%20width%3D%2210%22%20height%3D%2212%22%2F%3E%3C%2Fsvg%3E\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3992951a-bc54-430a-a6a3-d55497b2fb5c/document.svg",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3992951a-bc54-430a-a6a3-d55497b2fb5c/document.svg",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3992951a-bc54-430a-a6a3-d55497b2fb5c/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3992951a-bc54-430a-a6a3-d55497b2fb5c/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3992951a-bc54-430a-a6a3-d55497b2fb5c/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/3992951a-bc54-430a-a6a3-d55497b2fb5c/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"blob\",\"url\":\"blob:http://127.0.0.1:4211/5cf47419-4523-4534-8090-221d154f0df1\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\",\"blobContent\":{\"text\":\"<p>Blob HTML</p><script>globalThis.fixtureKind=\\\"blob\\\"</script>\",\"contentType\":\"text/html\"}}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/eee466d2-e76a-4199-a1d2-2721f4945a33/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/eee466d2-e76a-4199-a1d2-2721f4945a33/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/eee466d2-e76a-4199-a1d2-2721f4945a33/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/eee466d2-e76a-4199-a1d2-2721f4945a33/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/eee466d2-e76a-4199-a1d2-2721f4945a33/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/eee466d2-e76a-4199-a1d2-2721f4945a33/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"data\",\"url\":\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2260%22%20onload%3D%22setup(evt)%22%3E%3Cscript%3Efunction%20setup(evt)%7BglobalThis.fixtureKind%3D%22svg%22%3BglobalThis.setupTarget%3Devt.currentTarget.localName%3Bconst%20box%3Devt.currentTarget.querySelector(%22rect%22).getBBox()%3BglobalThis.setupBBox%3D%7Bwidth%3Abox.width%2Cheight%3Abox.height%7D%3BsetTimeout(()%3D%3Edocument.querySelector(%22rect%22).setAttribute(%22transform%22%2C%22translate(3%204)%22)%2C20)%7D%3C%2Fscript%3E%3Crect%20width%3D%2210%22%20height%3D%2212%22%2F%3E%3C%2Fsvg%3E\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/07703980-8894-4f45-a9be-303caece893e/document.svg",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/07703980-8894-4f45-a9be-303caece893e/document.svg",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/07703980-8894-4f45-a9be-303caece893e/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/07703980-8894-4f45-a9be-303caece893e/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/07703980-8894-4f45-a9be-303caece893e/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/07703980-8894-4f45-a9be-303caece893e/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/nested-parent.html\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/680d8e0b-7140-4237-ba56-bba14f0222a0/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/680d8e0b-7140-4237-ba56-bba14f0222a0/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/680d8e0b-7140-4237-ba56-bba14f0222a0/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/680d8e0b-7140-4237-ba56-bba14f0222a0/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/680d8e0b-7140-4237-ba56-bba14f0222a0/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/680d8e0b-7140-4237-ba56-bba14f0222a0/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/nested.html\"},\"baseURL\":\"http://127.0.0.1:4350/documents/nested-parent.html\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/f88fceba-013c-4f07-b572-b05792269842/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/f88fceba-013c-4f07-b572-b05792269842/document.html",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/f88fceba-013c-4f07-b572-b05792269842/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/f88fceba-013c-4f07-b572-b05792269842/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/f88fceba-013c-4f07-b572-b05792269842/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/f88fceba-013c-4f07-b572-b05792269842/content",
+        "CONSOLE error [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4351/dummy-app-4853c4ce-931d-4351-bc2c-f1447f412033 because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/guard.js\" line: 9468}]",
+        "CONSOLE error [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4351/dummy-child-installed-4853c4ce-931d-4351-bc2c-f1447f412033 because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/document-guard.js?context=1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c\" line: 9444}]",
+        "CONSOLE error [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4351/dummy-child-srcdoc-4853c4ce-931d-4351-bc2c-f1447f412033 because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/document-guard.js?context=c944ac0a-55ef-44ee-ab93-09e0024c0020\" line: 9444}]",
+        "CONSOLE error [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4351/dummy-child-data-svg-4853c4ce-931d-4351-bc2c-f1447f412033 because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/document-guard.js?context=3992951a-bc54-430a-a6a3-d55497b2fb5c\" line: 9444}]",
+        "CONSOLE error [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4351/dummy-child-blob-html-4853c4ce-931d-4351-bc2c-f1447f412033 because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/document-guard.js?context=eee466d2-e76a-4199-a1d2-2721f4945a33\" line: 9444}]",
+        "CONSOLE error [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4351/dummy-child-object-svg-4853c4ce-931d-4351-bc2c-f1447f412033 because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/document-guard.js?context=07703980-8894-4f45-a9be-303caece893e\" line: 9444}]",
+        "CONSOLE error [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4351/dummy-child-nested-4853c4ce-931d-4351-bc2c-f1447f412033 because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/document-guard.js?context=680d8e0b-7140-4237-ba56-bba14f0222a0\" line: 9444}]",
+        "CONSOLE error [JavaScript Error: \"Content-Security-Policy: The page’s settings blocked the loading of a resource (connect-src) at http://127.0.0.1:4351/dummy-child-nested-nested-4853c4ce-931d-4351-bc2c-f1447f412033 because it violates the following directive: “connect-src 'self' blob: data:”\" {file: \"http://127.0.0.1:4211/runtime/document-guard.js?context=f88fceba-013c-4f07-b572-b05792269842\" line: 9444}]",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/missing-document.html\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 400 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "ERROR BODY {\"error\":\"Document source was not installed\"}",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<p>Replacement</p><script>globalThis.fixtureKind=\\\"replacement\\\"</script>\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c/close",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/1ac7de4e-73b9-4e84-a7f8-8c1c47d0596c/close",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c6047ce5-1b4e-4bd9-ba69-b860acd9f9dd/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c6047ce5-1b4e-4bd9-ba69-b860acd9f9dd/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c6047ce5-1b4e-4bd9-ba69-b860acd9f9dd/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c6047ce5-1b4e-4bd9-ba69-b860acd9f9dd/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c6047ce5-1b4e-4bd9-ba69-b860acd9f9dd/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/c6047ce5-1b4e-4bd9-ba69-b860acd9f9dd/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<p>Unused document</p>\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/e5237cc2-5d44-4570-a8bb-b1eb4ced5c9f/close",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/e5237cc2-5d44-4570-a8bb-b1eb4ced5c9f/close",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<p>Srcdoc</p><script>globalThis.fixtureKind=\\\"srcdoc\\\"</script><script type=\\\"module\\\">await Promise.resolve();globalThis.fixtureModule=\\\"module-done\\\"</script>\",\"baseURL\":\"http://127.0.0.1:4350/documents/\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/21b1f6d6-7d39-4843-b142-1808f94c345f/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/21b1f6d6-7d39-4843-b142-1808f94c345f/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/21b1f6d6-7d39-4843-b142-1808f94c345f/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/21b1f6d6-7d39-4843-b142-1808f94c345f/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/21b1f6d6-7d39-4843-b142-1808f94c345f/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/21b1f6d6-7d39-4843-b142-1808f94c345f/content",
+        "REQUEST POST http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/documents/child.html#initial-section\"},\"baseURL\":\"http://127.0.0.1:4350/documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/445a6def-3b9e-418c-a602-e54aae4d903f/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/445a6def-3b9e-418c-a602-e54aae4d903f/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/445a6def-3b9e-418c-a602-e54aae4d903f/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/445a6def-3b9e-418c-a602-e54aae4d903f/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/445a6def-3b9e-418c-a602-e54aae4d903f/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/b7TLoiggpG8/documents/__contexts/445a6def-3b9e-418c-a602-e54aae4d903f/content",
+        "CONSOLE error [JavaScript Error: \"Failed to load ‘http://127.0.0.1:4211/favicon.ico’. A ServiceWorker passed an Error Response to FetchEvent.respondWith(). This typically means the ServiceWorker performed an invalid fetch() call.\" {file: \"http://127.0.0.1:4211/runtime/sw.js\" line: 17924}]",
+        "REQUEST POST http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"srcdoc\",\"text\":\"<html><head></head><body><p>Static inline document</p><script src=\\\"http://127.0.0.1:4350/static-documents/__pf_inline_8e5d057d-8222-432e-81d8-a47bae66da43.js\\\"></script></body></html>\",\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"},\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "REQUEST POST http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"data\",\"url\":\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2260%22%3E%3Crect%20width%3D%2210%22%20height%3D%2212%22%3E%3C%2Frect%3E%3C%2Fsvg%3E\",\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"},\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "REQUEST POST http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "SYNTHETIC INTENT {\"source\":{\"kind\":\"url\",\"url\":\"http://127.0.0.1:4350/static-documents/child.html\",\"installedURL\":\"http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/child.html\"},\"baseURL\":\"http://127.0.0.1:4350/static-documents/\"}",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__document-intents",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/fb0fc0b8-0e98-4266-86ae-b9bb78081f4b/document.html",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/31376100-1b84-4691-9cba-8e68fc7caa94/document.svg",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/fb0fc0b8-0e98-4266-86ae-b9bb78081f4b/document.html",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/2db61b5c-25fc-4e5b-bf72-ccb43c117c40/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/\" line: 0}]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/31376100-1b84-4691-9cba-8e68fc7caa94/document.svg",
+        "CONSOLE warning [JavaScript Warning: \"Content-Security-Policy: Ignoring ‘x-frame-options’ because of ‘frame-ancestors’ directive.\"]",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/\" line: 0}]",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/2db61b5c-25fc-4e5b-bf72-ccb43c117c40/document.html",
+        "CONSOLE warning [JavaScript Warning: \"An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can remove its sandboxing.\" {file: \"http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/\" line: 0}]",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/document-guard.js",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/document-guard.js",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/31376100-1b84-4691-9cba-8e68fc7caa94/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/31376100-1b84-4691-9cba-8e68fc7caa94/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/fb0fc0b8-0e98-4266-86ae-b9bb78081f4b/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/fb0fc0b8-0e98-4266-86ae-b9bb78081f4b/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/2db61b5c-25fc-4e5b-bf72-ccb43c117c40/configuration",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/2db61b5c-25fc-4e5b-bf72-ccb43c117c40/configuration",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/31376100-1b84-4691-9cba-8e68fc7caa94/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/31376100-1b84-4691-9cba-8e68fc7caa94/content",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/fb0fc0b8-0e98-4266-86ae-b9bb78081f4b/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/fb0fc0b8-0e98-4266-86ae-b9bb78081f4b/content",
+        "REQUEST GET http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/2db61b5c-25fc-4e5b-bf72-ccb43c117c40/content",
+        "RESPONSE 200 http://127.0.0.1:4211/runtime/wMgC43RsgHE/static-documents/__contexts/2db61b5c-25fc-4e5b-bf72-ccb43c117c40/content"
+      ],
+      "requests": [],
+      "connections": [],
+      "publisherTraffic": [
+        "/documents/",
+        "/documents/child.html",
+        "/documents/child.js",
+        "/documents/nested-parent.html",
+        "/documents/nested.html",
+        "/documents/main.js",
+        "/static-documents/",
+        "/documents/child.html",
+        "/documents/child.js",
+        "/documents/main.js",
+        "/documents/",
+        "/documents/child.html",
+        "/documents/child.js",
+        "/documents/nested-parent.html",
+        "/documents/nested.html",
+        "/documents/main.js",
+        "/static-documents/",
+        "/documents/child.html",
+        "/documents/child.js",
+        "/documents/main.js"
+      ]
+    }
+  ]
+}

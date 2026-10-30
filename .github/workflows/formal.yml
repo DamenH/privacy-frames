@@ -1,0 +1,35 @@
+name: Check confinement models
+on:
+  push:
+    branches: [main, confinement-model]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Download the pinned TLC release
+        run: |
+          mkdir -p .tools
+          curl -fsSL https://github.com/tlaplus/tlaplus/releases/download/v1.8.0/tla2tools.jar -o .tools/tla2tools.jar
+      - run: formal/confinement/check.sh
+      - run: python3 formal/confinement/generate-registry.py
+      - name: Type-check and compare registry traces
+        run: |
+          npx tsc --ignoreConfig --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --types node --lib ES2023,DOM,DOM.Iterable,WebWorker formal/confinement/registry-trace-test.ts
+          node formal/confinement/registry-trace-test.ts
+      - name: Check that a wrong-owner mutation is detected
+        run: |
+          if REGISTRY_FAULT=wrong-owner node formal/confinement/registry-trace-test.ts > /tmp/registry-fault.log 2>&1; then
+            echo 'Expected wrong-owner mutation to fail' >&2
+            exit 1
+          fi
+          grep -q 'registry model mismatch' /tmp/registry-fault.log

@@ -24,6 +24,5 @@ to simplify restrictions that do not support the agreed network property.
    gaps, browser assumptions, retained restrictions and measured changes. Passing
    finite checks must not be presented as full implementation verification.
 
-The initial `confinement/` model is a preliminary design sketch. It does not yet
-cover the lifecycle, trace correspondence, browser inventory or simplification
-needed for this plan.
+The models and evidence under `formal/` are work in progress. Their documented
+bounds and correspondence gaps remain part of the work described above.

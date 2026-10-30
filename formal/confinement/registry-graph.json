@@ -1,0 +1,343 @@
+{
+  "scope": "TLC finite registry graph; atomic storage and single identity abstraction",
+  "inputs": {
+    "Registry.tla": "e6826dad4a079ed08507242d654fdc21701b6889756135bde0f41e7a66e6ee20",
+    "RegistrySafe.cfg": "b57ee34f56fb880aef4df07b8d4c552ab6fd166b1c9bbb9e445960c77a7eb9ae"
+  },
+  "nodes": {
+    "-4054833504776838355": {
+      "state": "absent",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": false,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "-7535926546992414777": {
+      "state": "preparing",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": false,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "-6348748456735340393": {
+      "state": "absent",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": false,
+      "closedByOwner": true,
+      "badRevive": false
+    },
+    "4209608196329270704": {
+      "state": "absent",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": true,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "-6883021900138698948": {
+      "state": "running",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": false,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "-6814673077860172384": {
+      "state": "closed",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": false,
+      "closedByOwner": true,
+      "badRevive": false
+    },
+    "-8807305298247787379": {
+      "state": "ready",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": false,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "-4525120970927745510": {
+      "state": "closed",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": false,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "6500216925481649674": {
+      "state": "absent",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": true,
+      "closedByOwner": true,
+      "badRevive": false
+    },
+    "7690701804400505178": {
+      "state": "preparing",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": true,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "6749565692092377505": {
+      "state": "running",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": true,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "6682414684644193085": {
+      "state": "closed",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": true,
+      "closedByOwner": true,
+      "badRevive": false
+    },
+    "8653653825937052176": {
+      "state": "ready",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": true,
+      "closedByOwner": false,
+      "badRevive": false
+    },
+    "4387161635757070471": {
+      "state": "closed",
+      "badBind": false,
+      "badClose": false,
+      "closedByOther": true,
+      "closedByOwner": false,
+      "badRevive": false
+    }
+  },
+  "edges": [
+    {
+      "from": "-4054833504776838355",
+      "to": "-7535926546992414777",
+      "action": "Bind"
+    },
+    {
+      "from": "-4054833504776838355",
+      "to": "-6348748456735340393",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "-4054833504776838355",
+      "to": "4209608196329270704",
+      "action": "CloseOther"
+    },
+    {
+      "from": "-7535926546992414777",
+      "to": "-6883021900138698948",
+      "action": "Ready"
+    },
+    {
+      "from": "-7535926546992414777",
+      "to": "-6814673077860172384",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "-7535926546992414777",
+      "to": "-7535926546992414777",
+      "action": "CloseOther"
+    },
+    {
+      "from": "-7535926546992414777",
+      "to": "-8807305298247787379",
+      "action": "TransitionReady"
+    },
+    {
+      "from": "-7535926546992414777",
+      "to": "-4525120970927745510",
+      "action": "TransitionClosed"
+    },
+    {
+      "from": "-6348748456735340393",
+      "to": "-6348748456735340393",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "-6348748456735340393",
+      "to": "6500216925481649674",
+      "action": "CloseOther"
+    },
+    {
+      "from": "4209608196329270704",
+      "to": "7690701804400505178",
+      "action": "Bind"
+    },
+    {
+      "from": "4209608196329270704",
+      "to": "6500216925481649674",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "4209608196329270704",
+      "to": "4209608196329270704",
+      "action": "CloseOther"
+    },
+    {
+      "from": "-6883021900138698948",
+      "to": "-6814673077860172384",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "-6883021900138698948",
+      "to": "-6883021900138698948",
+      "action": "CloseOther"
+    },
+    {
+      "from": "-6883021900138698948",
+      "to": "-4525120970927745510",
+      "action": "TransitionClosed"
+    },
+    {
+      "from": "-6814673077860172384",
+      "to": "-6814673077860172384",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "-6814673077860172384",
+      "to": "-6814673077860172384",
+      "action": "CloseOther"
+    },
+    {
+      "from": "-8807305298247787379",
+      "to": "-6883021900138698948",
+      "action": "Ready"
+    },
+    {
+      "from": "-8807305298247787379",
+      "to": "-6814673077860172384",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "-8807305298247787379",
+      "to": "-8807305298247787379",
+      "action": "CloseOther"
+    },
+    {
+      "from": "-8807305298247787379",
+      "to": "-6883021900138698948",
+      "action": "TransitionRunning"
+    },
+    {
+      "from": "-8807305298247787379",
+      "to": "-4525120970927745510",
+      "action": "TransitionClosed"
+    },
+    {
+      "from": "-4525120970927745510",
+      "to": "-6814673077860172384",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "-4525120970927745510",
+      "to": "-4525120970927745510",
+      "action": "CloseOther"
+    },
+    {
+      "from": "6500216925481649674",
+      "to": "6500216925481649674",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "6500216925481649674",
+      "to": "6500216925481649674",
+      "action": "CloseOther"
+    },
+    {
+      "from": "7690701804400505178",
+      "to": "6749565692092377505",
+      "action": "Ready"
+    },
+    {
+      "from": "7690701804400505178",
+      "to": "6682414684644193085",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "7690701804400505178",
+      "to": "7690701804400505178",
+      "action": "CloseOther"
+    },
+    {
+      "from": "7690701804400505178",
+      "to": "8653653825937052176",
+      "action": "TransitionReady"
+    },
+    {
+      "from": "7690701804400505178",
+      "to": "4387161635757070471",
+      "action": "TransitionClosed"
+    },
+    {
+      "from": "6749565692092377505",
+      "to": "6682414684644193085",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "6749565692092377505",
+      "to": "6749565692092377505",
+      "action": "CloseOther"
+    },
+    {
+      "from": "6749565692092377505",
+      "to": "4387161635757070471",
+      "action": "TransitionClosed"
+    },
+    {
+      "from": "6682414684644193085",
+      "to": "6682414684644193085",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "6682414684644193085",
+      "to": "6682414684644193085",
+      "action": "CloseOther"
+    },
+    {
+      "from": "8653653825937052176",
+      "to": "6749565692092377505",
+      "action": "Ready"
+    },
+    {
+      "from": "8653653825937052176",
+      "to": "6682414684644193085",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "8653653825937052176",
+      "to": "8653653825937052176",
+      "action": "CloseOther"
+    },
+    {
+      "from": "8653653825937052176",
+      "to": "6749565692092377505",
+      "action": "TransitionRunning"
+    },
+    {
+      "from": "8653653825937052176",
+      "to": "4387161635757070471",
+      "action": "TransitionClosed"
+    },
+    {
+      "from": "4387161635757070471",
+      "to": "6682414684644193085",
+      "action": "CloseOwner"
+    },
+    {
+      "from": "4387161635757070471",
+      "to": "4387161635757070471",
+      "action": "CloseOther"
+    }
+  ]
+}
