@@ -4,6 +4,11 @@ Install a web application from its URL, then run a local copy with private input
 Installation can download public resources. During execution, requests receive
 installed resources or fail.
 
+Complete network confinement remains unestablished. A
+[known worker-update counterexample](formal/runtime-verification/service-worker-maintenance.md)
+lets private application input determine whether the browser requests the trusted
+service-worker script, even when the worker loads locally.
+
 The app manager is at **https://pf.damenh.com/**. Installed applications
 run at **https://apps.pf.damenh.com/** using `/<short-source-id>/<app-name>/` URLs.
 Installation uses a third origin, **https://install.pf.damenh.com/**. All three

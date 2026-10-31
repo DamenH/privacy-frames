@@ -50,4 +50,6 @@ Targeted local Squoosh tests encode a synthetic PNG into a smaller, decodable JP
 
 Hostile fixtures attempt communication from ordinary code, prototype hooks, custom-element callbacks and evaluated code, including newly created contexts. Independent HTTP, TCP, DNS and STUN observations accompany working unrestricted controls. Functional checks read saved data, inspect rendered output or decode generated files. Browser versions and revision evidence accompany receipts in `results/`.
 
+A [worker-update counterexample](formal/runtime-verification/service-worker-maintenance.md) remains unresolved. In Chromium and Firefox, an installed application can make private input determine whether worker creation triggers a request for the trusted service-worker script. Serving the worker locally does not prevent that separate browser request. This violates the current no-application-caused-network contract.
+
 These experiments cover a documented browser surface; they are not a machine-checked confinement proof. General updates, interactive preparation, per-application origins, WebKit and real-device mobile installation remain future work. IFC and selective release of private information are separate research questions.

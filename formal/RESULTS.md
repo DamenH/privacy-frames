@@ -8,6 +8,16 @@ are in [the threat model](threat-model.md).
 
 ## What this work found
 
+A [worker-maintenance experiment](runtime-verification/service-worker-maintenance.md)
+reproduces a violation of the current no-application-caused-network contract.
+After confinement, an application creates a worker only when a private input bit
+is `1`. The runtime supplies its bootstrap locally, but the browser requests the
+trusted service-worker script separately. Chromium and Firefox reproduce this
+behavior in both input orders, with quiet idle and bit-0 controls. No publisher
+request occurs. This finding concerns the occurrence of a fixed-URL request;
+preventing payload-bearing application requests does not prevent it. A repair
+and its coverage argument remain open.
+
 A synthetic test with a seeded FedCM connection exposed a conditional escape in
 the earlier runtime: `IdentityCredential.disconnect` sent an application-selected
 marker to the runtime-origin server outside the service worker. The test did not

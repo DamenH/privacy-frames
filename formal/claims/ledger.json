@@ -88,7 +88,7 @@
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
     "formal/route-review/README.md": "def9f578cf05dbd6ded8f518833ba924d81acfce8a9d43fbd003679987cf77bd",
     "formal/route-review/triage.json": "3e5ab07e2747d1d329f13be013bc5268671c054ee8c5470e9e952b8a72a7e855",
-    "formal/runtime-verification/README.md": "a4498b00c24a8c17096e6a64ff9fe8eb3c05928b3213692a2bda5cafd65b31e8",
+    "formal/runtime-verification/README.md": "9ddda122a41a68083656c9690474be0301050942f64d78e507d64ec003a163fe",
     "formal/runtime-verification/document-publication-check.ts": "53860e7c9687d3c59499d9effbd30afc9b569144c174a786600af2935e65ef7f",
     "formal/runtime-verification/document-publication-compatibility.json": "1088389b2b01cb451f58858438a5b06127813c31733b91a93b35450fb67fe90c",
     "formal/runtime-verification/document-publication-result.json": "afaa391664ee5d718f562750736f45995ba6f4dde68fa392d114208d3d493d72",
@@ -179,7 +179,10 @@
     "test/worklet-platform.ts": "1872fe7f40011ec8ce0ef26ef7de59f27720a175de4983755205d608d6c8b7da",
     "formal/runtime-verification/PublicationModel.lean": "73e252a862122b493d8a0e45a1834a0ead1ecdaebf44ceee41cb542b19ac544b",
     "formal/runtime-verification/generation-comparison.ts": "61bc8ca641e2e603b55ce3956e66c4b60e621fd455b09afd54cabf377f566a7a",
-    "formal/runtime-verification/generation-comparison.json": "32522347bebe1d5649d45f02148609449a37525259c93f03fd22f53c9d4a7369"
+    "formal/runtime-verification/generation-comparison.json": "32522347bebe1d5649d45f02148609449a37525259c93f03fd22f53c9d4a7369",
+    "formal/runtime-verification/service-worker-maintenance.ts": "60461903341d3e340cb36c0cf6f1c2ee344c73ba39b4c1d56001d30c44ac81f2",
+    "formal/runtime-verification/service-worker-maintenance.json": "a73f1bdcf4fad29ee7511c3cf4cd9fca530ae7a4c7842841503cf0f53c0418c5",
+    "formal/runtime-verification/service-worker-maintenance.md": "cab58c2d38283f8dda84864ab8780e81dfb861601850d91188e883fa7ce6d5b5"
   },
   "claims": [
     {
@@ -1212,12 +1215,14 @@
       "id": "native_worker_housekeeping",
       "title": "Native worker updates and navigation preload",
       "preconditions": "The browser updates the host service worker or initiates navigation preload; a publisher may try to affect the request or its headers.",
-      "enforcement": "Trusted setup disables navigation preload, and the application-facing service-worker interface is virtualized and native registration methods are denied.",
+      "enforcement": "Trusted setup disables navigation preload, and the application-facing service-worker interface is virtualized and native registration methods are denied. These controls do not prevent the demonstrated application-dependent native update request when creating a worker.",
       "source_paths": [
         "src/bridge/connect.ts",
         "src/manager/services/bootstrap.ts",
         "src/runtime/enforcement/effects.ts",
-        "src/runtime/publisher/client.ts"
+        "src/runtime/publisher/client.ts",
+        "src/runtime/contexts/worker-factory.ts",
+        "src/runtime/worker.ts"
       ],
       "evidence": [
         {
@@ -1251,12 +1256,22 @@
             "formal/navigation-preload-fault.ts",
             "formal/evidence/navigation-preload-fault.json"
           ]
+        },
+        {
+          "kind": "discovery",
+          "description": "Sixteen native/confined cases in Chromium and Firefox use fresh browser contexts, measured quiet setup, idle controls and reversed private-bit order. Every worker-creating bit-1 case emits a fixed service-worker script request; every bit-0 case emits none. Confined cases contact no publisher. This is a counterexample to C4, not evidence of an enforced update boundary.",
+          "paths": [
+            "formal/runtime-verification/service-worker-maintenance.ts",
+            "formal/runtime-verification/service-worker-maintenance.json",
+            "formal/runtime-verification/service-worker-maintenance.md"
+          ]
         }
       ],
       "open_obligations": [
-        "Determine whether publisher-controlled input or secrets can affect browser-owned worker update requests, preload URLs or headers after confinement begins.",
-        "Test persistent registration state, update races and startup failure with independent network observations.",
-        "A browser request for trusted host maintenance is not by itself evidence of an app-controlled disclosure."
+        "Repair the demonstrated worker-creation update trigger without weakening the no-application-caused-network contract. Local Blob bootstraps are a candidate, not an established complete repair.",
+        "Cover shared workers, document creation, later resource fetches, stale registrations and browser update scheduling in the full confinement argument.",
+        "Preserve the independently tested navigation-preload defense; it does not mitigate the demonstrated update request.",
+        "Repeat on deployed HTTPS and establish the scope of any repair; the current counterexample is local HTTP with exact build provenance."
       ],
       "disposition": "unverified",
       "control_status": {

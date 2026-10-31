@@ -1,0 +1,359 @@
+{
+  "scope": "Native and actual confined worker creation, chosen by a private input bit, compared with no-worker and idle controls. Fixed-URL service-worker maintenance is observed at independent HTTP servers. Bounded observations do not establish exhaustive browser behavior or channel capacity.",
+  "provenance": {
+    "capturedAt": "2026-10-31T11:56:06.321Z",
+    "revision": "c7d1afbdce6b6c3c39f08376c2ba1b09f7f1df47",
+    "dirty": true,
+    "sourceSHA256": "087db714a335054b5b0b94dc7451d30fe63d6de5a406ba0f24164999550236e4",
+    "runner": "formal/runtime-verification/service-worker-maintenance.ts",
+    "runnerSHA256": "60461903341d3e340cb36c0cf6f1c2ee344c73ba39b4c1d56001d30c44ac81f2",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
+    "artifacts": {
+      "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
+      "dist-manager/manager.js": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730",
+      "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-manager/sw.js": "ebfd7d97b5050c612506b4e81c0746f900e6d570933d62adbc743c7e825020f0",
+      "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
+      "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
+      "dist-runtime/document-guard.js": "2c34d03286a09be0a3a66ecfa86e294e58bfd708fc823512221d27a715dbf9dc",
+      "dist-runtime/guard.js": "5be7808e2acbdc4a063d713f95a6526c8db7ec3c55f4f311b579b4587a59714a",
+      "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
+      "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
+      "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
+      "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
+      "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
+      "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "dist-runtime/sw.js": "8f39346a45d255e6a351904b1bbab44ec8811c81cb777abccd823c50f9780774",
+      "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
+      "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
+      "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
+      "dist-installation/installation.js": "6cd0a3f3f4494dee2db059f3b1a5feb62017a39399a22e2d3774d0319fa1e3f3"
+    }
+  },
+  "samples": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "sample": 0,
+      "actionStarted": 1793447771107,
+      "observationEnded": 1793447774147,
+      "confined": false,
+      "bit": "0",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [],
+      "updateRequests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "sample": 1,
+      "actionStarted": 1793447778719,
+      "observationEnded": 1793447781782,
+      "confined": false,
+      "bit": "1",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [
+        {
+          "path": "/sw.js",
+          "time": 1793447779771
+        }
+      ],
+      "updateRequests": [
+        {
+          "path": "/sw.js",
+          "time": 1793447779771
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "sample": 2,
+      "actionStarted": 1793447786381,
+      "observationEnded": 1793447789434,
+      "confined": false,
+      "bit": "1",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [
+        {
+          "path": "/sw.js",
+          "time": 1793447787420
+        }
+      ],
+      "updateRequests": [
+        {
+          "path": "/sw.js",
+          "time": 1793447787420
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "sample": 3,
+      "actionStarted": 1793447793996,
+      "observationEnded": 1793447797025,
+      "confined": false,
+      "bit": "0",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [],
+      "updateRequests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "sample": 0,
+      "actionStarted": 1793447805985,
+      "observationEnded": 1793447809025,
+      "confined": true,
+      "bit": "0",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [],
+      "updateRequests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "sample": 1,
+      "actionStarted": 1793447817995,
+      "observationEnded": 1793447821296,
+      "confined": true,
+      "bit": "1",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [
+        {
+          "port": 4211,
+          "path": "/runtime/sw.js",
+          "method": "GET"
+        }
+      ],
+      "publisherTraffic": [],
+      "updateRequests": [
+        {
+          "port": 4211,
+          "path": "/runtime/sw.js",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "sample": 2,
+      "actionStarted": 1793447830274,
+      "observationEnded": 1793447833582,
+      "confined": true,
+      "bit": "1",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [
+        {
+          "port": 4211,
+          "path": "/runtime/sw.js",
+          "method": "GET"
+        }
+      ],
+      "publisherTraffic": [],
+      "updateRequests": [
+        {
+          "port": 4211,
+          "path": "/runtime/sw.js",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "sample": 3,
+      "actionStarted": 1793447842525,
+      "observationEnded": 1793447845554,
+      "confined": true,
+      "bit": "0",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [],
+      "updateRequests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "sample": 0,
+      "actionStarted": 1793447851119,
+      "observationEnded": 1793447854178,
+      "confined": false,
+      "bit": "0",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [],
+      "updateRequests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "sample": 1,
+      "actionStarted": 1793447858893,
+      "observationEnded": 1793447861956,
+      "confined": false,
+      "bit": "1",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [
+        {
+          "path": "/sw.js",
+          "time": 1793447859938
+        }
+      ],
+      "updateRequests": [
+        {
+          "path": "/sw.js",
+          "time": 1793447859938
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "sample": 2,
+      "actionStarted": 1793447866674,
+      "observationEnded": 1793447869754,
+      "confined": false,
+      "bit": "1",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [
+        {
+          "path": "/sw.js",
+          "time": 1793447867735
+        }
+      ],
+      "updateRequests": [
+        {
+          "path": "/sw.js",
+          "time": 1793447867735
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "sample": 3,
+      "actionStarted": 1793447874448,
+      "observationEnded": 1793447877505,
+      "confined": false,
+      "bit": "0",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [],
+      "updateRequests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "sample": 0,
+      "actionStarted": 1793447884604,
+      "observationEnded": 1793447887661,
+      "confined": true,
+      "bit": "0",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [],
+      "updateRequests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "sample": 1,
+      "actionStarted": 1793447894749,
+      "observationEnded": 1793447897988,
+      "confined": true,
+      "bit": "1",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [
+        {
+          "port": 4211,
+          "path": "/runtime/sw.js",
+          "method": "GET"
+        }
+      ],
+      "publisherTraffic": [],
+      "updateRequests": [
+        {
+          "port": 4211,
+          "path": "/runtime/sw.js",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "sample": 2,
+      "actionStarted": 1793447904998,
+      "observationEnded": 1793447908239,
+      "confined": true,
+      "bit": "1",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [
+        {
+          "port": 4211,
+          "path": "/runtime/sw.js",
+          "method": "GET"
+        }
+      ],
+      "publisherTraffic": [],
+      "updateRequests": [
+        {
+          "port": 4211,
+          "path": "/runtime/sw.js",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "sample": 3,
+      "actionStarted": 1793447915269,
+      "observationEnded": 1793447918329,
+      "confined": true,
+      "bit": "0",
+      "idleRuntime": [],
+      "idlePublisher": [],
+      "runtime": [],
+      "publisherTraffic": [],
+      "updateRequests": []
+    }
+  ],
+  "observationMilliseconds": 3000,
+  "completedAt": "2026-10-31T11:58:38.583Z"
+}

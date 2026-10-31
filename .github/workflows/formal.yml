@@ -116,6 +116,10 @@ jobs:
       - run: node formal/worker-registration-probe.ts
       - run: node formal/navigation-preload-probe.ts
       - run: node formal/navigation-preload-fault.ts
+      - name: Reproduce the known worker-maintenance confinement counterexample
+        run: |
+          npx tsc --ignoreConfig --noEmit --strict --noUnusedLocals --noUnusedParameters --types node --target ES2022 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --lib ES2022,DOM --skipLibCheck formal/runtime-verification/service-worker-maintenance.ts
+          node formal/runtime-verification/service-worker-maintenance.ts
       - name: Check installed-app navigation and actual guarded bundle
         run: |
           npx tsc --ignoreConfig --noEmit --strict --types node --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --lib ES2023,DOM,DOM.Iterable,WebWorker formal/implementation-navigation/installed-run.ts
@@ -159,5 +163,6 @@ jobs:
             formal/evidence/worker-registration.json
             formal/evidence/navigation-preload.json
             formal/evidence/navigation-preload-fault.json
+            formal/runtime-verification/service-worker-maintenance.json
             formal/admission/model-results.json
             formal/admission/implementation-results.json

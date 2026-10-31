@@ -90,8 +90,11 @@ arguments even where the abstract publication contract is shared.
   begin/cancel state functions pass. The generated-specification comparison also
   passes; direct JavaScript verification is selected for this component. Applying
   the method to complete protocols and their callers remains open.
-- Stages 5–8: pending. Earlier component evidence remains available, with its
-  original assumptions and source hashes.
+- Stage 6: a worker-creation experiment reproduces application-dependent update
+  requests in both browsers. See the [maintenance finding](service-worker-maintenance.md).
+  Browser coverage and a repair remain open.
+- Stages 5, 7 and 8: pending. Earlier component evidence remains available, with
+  its original assumptions and source hashes.
 
 The complete runtime claim remains unestablished.
 
