@@ -13,6 +13,7 @@ KINDS = {
     'confined_test',
     'fault_control',
     'formal_theorem',
+    'deductive_verification',
     'historical_control',
     'model_fault',
     'trace_comparison',

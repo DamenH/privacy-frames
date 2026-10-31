@@ -83,9 +83,12 @@ arguments even where the abstract publication contract is shared.
 
 - Stage 1: contract being specified and reviewed against current behavior.
 - Stage 2: entry-point review started; complete authority mapping remains open.
-- Stage 3: pending; the existing concurrency schedules have been reproduced.
-- Stage 4: deductive-mode calibration passes; comparison on an actual stateful
-  publication component and production-method selection remain pending.
+- Stage 3: document generation invalidation now uses private object identities;
+  factory and installed-document integration tests pass in both browsers. The
+  complete publication and lifecycle argument remains open.
+- Stage 4: deductive-mode calibration and verification of the production document
+  begin/cancel state functions pass. The generated-specification comparison and
+  production-method selection remain pending.
 - Stages 5–8: pending. Earlier component evidence remains available, with its
   original assumptions and source hashes.
 
@@ -95,8 +98,8 @@ The complete runtime claim remains unestablished.
 
 Run `node formal/runtime-verification/inventory.ts` to generate
 `implementation-inventory.json`, then rerun with `--check` to detect drift. The
-typed definitions in `boundaries.ts` identify 13 review boundaries across 50
-source files and connect them to C1–C8.
+typed definitions in `boundaries.ts` connect each selected review boundary to
+C1–C8. The snapshot records the exact source set.
 
 The tracked snapshot records source and site-report hashes. The command writes
 the full locations to `.tools/runtime-verification/implementation-sites.json`,
@@ -104,8 +107,8 @@ also uploaded by CI. This report locates calls, constructors, asynchronous
 suspensions, returns and selected reference bindings, with enclosing function
 scopes. It does not resolve aliases, follow dependencies or establish authority
 closure. Display snippets are truncated; review the hashed source at the recorded
-location. The 6,102 recorded syntax sites are review inputs rather than a
-security-coverage measure.
+location. Recorded syntax sites are review inputs rather than a security-coverage
+measure.
 
 ## Deductive-mode calibration
 
@@ -123,3 +126,43 @@ pinned tool performs deductive checking on that stateful fixture. It does not
 verify our publication code. The JavaScript compiler, verifier and solver remain
 trusted; the container image does not identify its source revision. The next
 comparison must exercise actual publication state and its adapter contracts.
+
+## Production document state
+
+`src/runtime/contexts/document-publication.ts` contains the state updates called
+by the actual document factory's begin and cancel paths. A generation is a fresh
+private object identity, compared by strict equality. The former numeric counter
+could stop changing once integer increments ceased to be representable. That
+breaks an unbounded freshness argument; no network escape was demonstrated from
+that counter. Object identity avoids a numeric lifetime bound while an old
+asynchronous callback retains its token.
+
+Run `node formal/runtime-verification/document-publication-check.ts`. The runner
+extracts and erases the actual two TypeScript functions and verifies their
+JavaScript bodies with separation-logic contracts. Cancellation installs a new
+identity and clears all four flags. Beginning installs and returns a new identity,
+sets `started`, clears `loaded`, and preserves `ready` and `published`. Both
+contracts preserve the state's prototype and the retained old identity. Other
+owned heap resources remain framed.
+
+The record must own writable data properties for these fields, its flags must be
+Booleans, and its old generation must be an ordinary object distinct from the
+record. The record prototype is arbitrary, matching the factory's private record
+prototype. Establishing caller ownership and continued secrecy of that record
+is a separate obligation. Beginning is not itself proof of authenticated or
+prepared execution.
+
+Five state-update faults fail postcondition checking. A sixth control displaces
+the annotations so the tool checks zero procedure contracts. The runner rejects
+that otherwise-successful invocation and requires the exact named contracts in
+every run. The receipt records source, factory, compiler, runner and driver hashes.
+The TypeScript erasure, extraction, JavaScript semantics, verifier and solver
+remain trusted. This result covers these state functions rather than the complete
+factory or the browser's publication behavior.
+
+The [document-state compatibility receipt](document-publication-compatibility.json)
+records all eight applications passing their selected native and confined tasks
+in Chromium and Firefox after the state change. Source and artifact hashes bind
+the run to its uncommitted inputs, and build artifacts stayed stable throughout.
+The network receiver groups and prototype-confinement regression fixtures also
+pass. Those tests do not discharge the remaining ownership or publication proof.

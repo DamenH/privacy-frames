@@ -7,24 +7,26 @@
   "upstreamPath": "Gillian-JS/Examples/JaVerT/IDGen.js",
   "sourceURL": "https://raw.githubusercontent.com/GillianPlatform/Gillian/469aa5c134ba7790c40669bd4bc50483aff36d7b/Gillian-JS/Examples/JaVerT/IDGen.js",
   "sourceSHA256": "32b1829ee190fbf535ab2d4748f1567e039e796fa18e9effeafc2c17651cf308",
-  "runnerSHA256": "2861f1ff498bceb6ff66a17f9572381ef972ccb5e4a0bc5f1b25e5ff76438894",
+  "runnerSHA256": "e741e2ca7aab84b5aef5d88f2220807cb4409a6cb3548eae74c7886d045ce73b",
   "results": [
     {
       "name": "stateful-closure",
       "expectedSuccess": true,
       "exitCode": 0,
       "inputSHA256": "32b1829ee190fbf535ab2d4748f1567e039e796fa18e9effeafc2c17651cf308",
-      "outputSHA256": "cdb00ab528e05464d99feb8bb7cb1ac37838c066b3fdab3714463e34153f259e",
-      "outputSummary": "Parsing and compiling...\nSorting:\n\tmakeIdGen : 2\n\tgetId : 3\n\treset : 3Adjusted:\n\tmakeIdGen : 2\n\tgetId : 2\n\treset : 2Preprocessing...\nObtaining specs to verify...\nObtaining lemmas to verify...\nObtained 3 symbolic tests in total\nRunning symbolic tests: 0.071029\nVerifying one spec of procedure getId... s Success\nVerifying one spec of procedure reset... s Success\nVerifying one spec of procedure makeIdGen... s Success\nAll specs succeeded: 0.266909"
+      "driverSHA256": "063007959d3583ef19e0c8365d0f65c6e753517c21769ee776e6c050a39d4c7d",
+      "outputSHA256": "9b561eb50ab5d3b2db379bb0471d21a961deab85f2f08a718366315f823932c3",
+      "outputSummary": "Parsing and compiling...\nSorting:\n\tmakeIdGen : 2\n\tgetId : 3\n\treset : 3Adjusted:\n\tmakeIdGen : 2\n\tgetId : 2\n\treset : 2Preprocessing...\nObtaining specs to verify...\nObtaining lemmas to verify...\nObtained 3 symbolic tests in total\nRunning symbolic tests: 0.072947\nVerifying one spec of procedure getId... s Success\nVerifying one spec of procedure reset... s Success\nVerifying one spec of procedure makeIdGen... s Success\nAll specs succeeded: 0.255186"
     },
     {
       "name": "missing-state-update",
       "expectedSuccess": false,
       "exitCode": 1,
       "inputSHA256": "d2b825e94997099c291c5bdcf9291ff4d124ad1833e9574af3742d3f82ed11cd",
-      "outputSHA256": "1f0cebeebcdc5aa822e0649344d625a73e4bf4eef8ec071becc1547674ea0bfe",
-      "outputSummary": "Parsing and compiling...\nSorting:\n\tmakeIdGen : 2\n\tgetId : 3\n\treset : 3Adjusted:\n\tmakeIdGen : 2\n\tgetId : 2\n\treset : 2Preprocessing...\nObtaining specs to verify...\nObtaining lemmas to verify...\nObtained 3 symbolic tests in total\nRunning symbolic tests: 0.067783\nVerifying one spec of procedure getId... f Failure\nVerifying one spec of procedure reset... s Success\nVerifying one spec of procedure makeIdGen... s Success\nThere were failures: 0.229937\nAnalysis failures!\n1. Couldn't satisfy postcondition"
+      "driverSHA256": "063007959d3583ef19e0c8365d0f65c6e753517c21769ee776e6c050a39d4c7d",
+      "outputSHA256": "3663669675f5371579e940bb1d2c6be507cd8e08c20e9836fe69f6e0d9e5a9fd",
+      "outputSummary": "Parsing and compiling...\nSorting:\n\tmakeIdGen : 2\n\tgetId : 3\n\treset : 3Adjusted:\n\tmakeIdGen : 2\n\tgetId : 2\n\treset : 2Preprocessing...\nObtaining specs to verify...\nObtaining lemmas to verify...\nObtained 3 symbolic tests in total\nRunning symbolic tests: 0.074309\nVerifying one spec of procedure getId... f Failure\nVerifying one spec of procedure reset... s Success\nVerifying one spec of procedure makeIdGen... s Success\nThere were failures: 0.257093\nAnalysis failures!\n1. Couldn't satisfy postcondition"
     }
   ],
-  "completedAt": "2026-10-31T10:45:38.964Z"
+  "completedAt": "2026-10-31T11:08:40.557Z"
 }

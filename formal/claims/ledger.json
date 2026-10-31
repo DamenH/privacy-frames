@@ -49,7 +49,7 @@
     "formal/implementation-navigation/Expression.lean": "6d55a6033138edfc9de4242d93db6cd2568d3948764f0b2f0c37d747cdafa975",
     "formal/implementation-navigation/README.md": "18955e2dfffe1d521e9306060ff494d5fa31fc2eaaa1cc148a6db1c000eec308",
     "formal/implementation-navigation/bootstrap-check.ts": "f2c5ddde708c7c98c33a2acc8592e1ab36e871f5b9e81daf16c1ea4fc540a8f9",
-    "formal/implementation-navigation/bootstrap-result.json": "dd2a5327964c9fcf777eaba7329f0d5a907c03412575b374d1d738842d633df0",
+    "formal/implementation-navigation/bootstrap-result.json": "170d8315df5d4ca159a16a6301e82baa87d1331c79bd76969ac5fda8ba875d3b",
     "formal/implementation-navigation/browser-contract.md": "12e81c6a01063ce8805d4cdd4969cd200b81375608ba3b825c03c81dc28bb546",
     "formal/implementation-navigation/check.ts": "b0f014a61421b9c3f3b2694683a33144afed8f1adee7c0cbfe40f0f171bec484",
     "formal/implementation-navigation/compatibility-early-kernel.json": "17d8381c4c6dde32bf48b8319d94f4d48a15168de3bac1fb352e8bce578b6821",
@@ -88,6 +88,11 @@
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
     "formal/route-review/README.md": "def9f578cf05dbd6ded8f518833ba924d81acfce8a9d43fbd003679987cf77bd",
     "formal/route-review/triage.json": "3e5ab07e2747d1d329f13be013bc5268671c054ee8c5470e9e952b8a72a7e855",
+    "formal/runtime-verification/README.md": "eb579dd363a8e02715121200eee6392c25085a7389b1082b7032c1bb0b539d13",
+    "formal/runtime-verification/document-publication-check.ts": "53860e7c9687d3c59499d9effbd30afc9b569144c174a786600af2935e65ef7f",
+    "formal/runtime-verification/document-publication-compatibility.json": "1088389b2b01cb451f58858438a5b06127813c31733b91a93b35450fb67fe90c",
+    "formal/runtime-verification/document-publication-result.json": "afaa391664ee5d718f562750736f45995ba6f4dde68fa392d114208d3d493d72",
+    "formal/runtime-verification/gillian.ts": "063007959d3583ef19e0c8365d0f65c6e753517c21769ee776e6c050a39d4c7d",
     "formal/startup/lifecycle-comparison.json": "ae701c96933d7e9e20ba64587d35ea230b65afc4560c74a2a26d3baccc86ca73",
     "formal/web-install-sandbox-fault.md": "dc874f193288fa6f0cbc393d607a49c55e416b1c203267051c0484a3e5a4e3bc",
     "formal/web-install-sandbox-fault.ts": "fb0b0483480215ae9ec55dd8da10b57c2db855e4375c0c7c45a1f07dfed9232b",
@@ -97,15 +102,21 @@
     "formal/webtransport/results.json": "b97fb9a79cd59263d75f7e1a0a0d1d9269b92af7a9f4b797a9a00f6efdc227e5",
     "formal/worker-registration-probe.ts": "6bcad99b4fe18781e077fc7f45406b8eb5d3b52c18bc2ab57383d7e2c138cb50",
     "formal/worker-registration.md": "c17ec13229015956a09b7bdfa7feaf9433dd2d7f9f991da89bc8fffd6d605445",
+    "results/contexts/document-contexts.json": "a5ebf3ce0af5a0a20bfa93b2cf1968fcf882066e6881fae111c4e29373fc45b9",
+    "results/contexts/document-factory.json": "e3830efdabc56c677d653168969bb98fa0a7f52dd5e1f30249b8103012d1533f",
+    "results/contexts/prototype-confinement.json": "0e182041b49cc0cd7205a56f81b0788949026b9efadd7cb706f6d9010cb55eb7",
+    "results/network-firefox.json": "78b8eef76a2bfe31e16dcb05134237f3b5281b27020ba006c8f85329808a30dd",
+    "results/network.json": "e0063a165b05e5972a99a45e792b2274dc88f1f8b49106a65b8c821ca676375f",
     "src/bridge/connect.ts": "bd35b868143935b8cfa4f7ce3227644c516b01f5ef82eea2b196e3183f17833b",
     "src/installation/session.ts": "0381b435c49234134d1cb0f20d4e86503fd64ae4e416a5823e26f61e7aaf3f20",
     "src/manager/services/bootstrap.ts": "17176349ebf2d4f1f2fe9662e0e737b5da3f50a52eef7f84b21102158ab16427",
     "src/runtime/admission.ts": "91adf341c8cb8da8341c13d3718f11fb60f431000186c74635a8f7f5d910f124",
     "src/runtime/contexts/document-content.ts": "f606b94f249c44ad2e09880a56bb87d4556d571108799b2ac4647d5496031034",
     "src/runtime/contexts/document-controller.ts": "ca269260ec3cb34cd963bf59d3ba6596554ddecb646013aea8ecd73e35e03812",
-    "src/runtime/contexts/document-factory.ts": "84b805def5952bcaa319aa34495320c56d0faa76bd869d2b6d5dd78e5e8a4e4f",
+    "src/runtime/contexts/document-factory.ts": "df2a8f020cfa3e82827516ca2a0925eeeda6c2865b9a5e2ab153fdf9ce47985e",
     "src/runtime/contexts/document-guard.ts": "9a9522966ba6b1660f828c2903e60de81028a3a35b11a18a38194756bd5d75a7",
     "src/runtime/contexts/document-main.ts": "bb0d09eae0d12245beeb5ed4cea5fd769bb3d34ad59918a9f8b1309193c51f45",
+    "src/runtime/contexts/document-publication.ts": "bbcd7e92f84434270b5a6b6b6ba6ea67dd48f1f530848f9d4a3a811d8595079b",
     "src/runtime/contexts/resources.ts": "4dc6b1028c8b0683dccd72591f29115dae342e66658f70c8d635e61aeea6cd01",
     "src/runtime/contexts/shared-connections.ts": "1e94a740b899b9f1600a3868391e62a58b24e7b2098d524ae2d3c550645194b1",
     "src/runtime/contexts/shared-controller.ts": "be8c05b64121e72b12619d324455c9ad695dc1d8d011af4f7da31bda21adf174",
@@ -137,10 +148,13 @@
     "src/runtime/storage.ts": "3f25382228184cf46609e26562fd815c1701f88d8fc4af19d9a61ff79e949c5d",
     "src/runtime/worker.ts": "7fba94edacc170650ff8445a0220eb9e365df7590b5d8625d632315251811046",
     "src/shared/application-navigation.ts": "45dadfe85f4bb3e3464b6b1801294d3a1f673b7cf665906e4e0348c5de3cf0c8",
+    "src/shared/primordials.ts": "8e80d12807448d56af43f63fcfc4e93a3af53380cf458d5c44183bc1439548d5",
     "src/shared/runtime-url.ts": "26503f8994b0307030dddb9f843f6bd438573869b7ab01226565c865c9e3c24f",
     "test/application-history.ts": "44707c8287539c836044bc77b75df4edabfc1cd5ad509803766c31d4962f3a79",
     "test/browser-profile.ts": "c161489dfce9c3124474d1416440c9876b0a8fce329d2f09fa16f99af744e3a0",
     "test/context-navigation.ts": "9bdc9e286d15ba07708aae81d84c44d5d8962d946bf344d08d775927645d11ef",
+    "test/document-contexts.ts": "d6c490bc29184c8d47d6824fa666aefa40353e191a1d63415c1066c6fd0509b1",
+    "test/document-factory.ts": "e90505774c1e2a9155c7c636f1eaef3714e7f0bace7ae5a9be16190f06ecada7",
     "test/dynamic-scripts.ts": "5c960cd9340eac2b6423ed7009e39e074aaad40832ee1d446aa77cb5db7226ca",
     "test/installation-origin.ts": "6e8325505153a757266dc0f5a8b9e1ddc174493edc259d4212f4d26946d541ce",
     "test/installation-session.test.ts": "8225fda24d345cca301fe36a631c6841d9f7a5a9accff36a656e2f3f1fd51cd0",
@@ -713,7 +727,8 @@
       "source_paths": [
         "src/runtime/contexts/document-controller.ts",
         "src/runtime/contexts/document-factory.ts",
-        "src/runtime/contexts/document-guard.ts"
+        "src/runtime/contexts/document-guard.ts",
+        "src/runtime/contexts/document-publication.ts"
       ],
       "evidence": [
         {
@@ -1735,6 +1750,61 @@
         "native_control": "recorded",
         "confined_test": "recorded",
         "fault_control": "recorded"
+      }
+    },
+    {
+      "id": "document_publication_state",
+      "title": "Private document generation and publication-state updates",
+      "disposition": "reviewed-scoped",
+      "preconditions": "The caller owns the private ordinary record with writable data properties and Boolean flags; the retained generation is an ordinary object distinct from that record. The record prototype may be arbitrary. Caller ownership is a separate obligation.",
+      "enforcement": "The actual document factory calls begin/cancel helpers that allocate fresh object identities. Strict identity checks invalidate retained asynchronous work without numeric-counter saturation. Cancellation clears publication flags before later cleanup or callbacks.",
+      "source_paths": [
+        "src/runtime/contexts/document-publication.ts",
+        "src/runtime/contexts/document-factory.ts",
+        "src/shared/primordials.ts"
+      ],
+      "evidence": [
+        {
+          "kind": "deductive_verification",
+          "description": "Gillian verify mode checks both production state functions after TypeScript erasure under explicit owned-data-property and generation-object preconditions. Five state-update mutations fail their named postconditions; a successful zero-contract invocation is rejected by the runner. The result is not a whole-factory or browser proof.",
+          "paths": [
+            "formal/runtime-verification/document-publication-check.ts",
+            "formal/runtime-verification/document-publication-result.json",
+            "formal/runtime-verification/gillian.ts",
+            "formal/runtime-verification/README.md"
+          ]
+        },
+        {
+          "kind": "confined_test",
+          "description": "The real document factory passes native protocol/reference tests and actual installed child-document cases in Chromium and Firefox, including pending-source replacement. Receipts pin the changed source and build. These fixtures do not prove browser-wide mediation.",
+          "paths": [
+            "test/document-factory.ts",
+            "test/document-contexts.ts",
+            "results/contexts/document-factory.json",
+            "results/contexts/document-contexts.json"
+          ]
+        },
+        {
+          "kind": "discovery",
+          "description": "The changed runtime passes all eight selected native/confined application tasks in Chromium and Firefox with stable build artifacts. Independent network groups and prototype-confinement regression fixtures also pass. This validates selected compatibility and defense behavior; it does not prove the private-record ownership premise or complete mediation.",
+          "paths": [
+            "formal/runtime-verification/document-publication-compatibility.json",
+            "results/network.json",
+            "results/network-firefox.json",
+            "results/contexts/prototype-confinement.json"
+          ]
+        }
+      ],
+      "open_obligations": [
+        "Establish that every helper caller owns the required private ordinary record and preserves that ownership under application callbacks and prototype modification.",
+        "Complete the document publication/authentication/lifecycle argument and extend it to other context types, native termination and deferred effects.",
+        "TypeScript erasure, extraction, Gillian JavaScript semantics, verifier and solver remain trusted; no kernel-checked JavaScript translation is claimed.",
+        "No native network receiver or browser enforcement-removal control follows from these two state-function contracts."
+      ],
+      "control_status": {
+        "native_control": "not-recorded",
+        "confined_test": "recorded",
+        "fault_control": "not-recorded"
       }
     }
   ]

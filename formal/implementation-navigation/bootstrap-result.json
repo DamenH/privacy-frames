@@ -6,7 +6,7 @@
       "entry": "src/runtime/guard.ts",
       "entrySHA256": "208c30e160e4f944a027d55ae69d9cd40c1c7e915b92e77b950023dd18b4120b",
       "output": "guard.js",
-      "outputSHA256": "bf1b38dce44831e94f5de2969c7aba8d4dda65a1fa89497a486f4405e9ad13bf",
+      "outputSHA256": "5be7808e2acbdc4a063d713f95a6526c8db7ec3c55f4f311b579b4587a59714a",
       "phase": {
         "eagerModuleInitializers": [
           "init_document_exit"
@@ -16,7 +16,7 @@
           "__commonJS"
         ],
         "exportCalls": 1,
-        "entryStatement": 224,
+        "entryStatement": 227,
         "deferredInitializer": "init_root_guard"
       }
     },
@@ -24,7 +24,7 @@
       "entry": "src/runtime/contexts/document-guard.ts",
       "entrySHA256": "9a9522966ba6b1660f828c2903e60de81028a3a35b11a18a38194756bd5d75a7",
       "output": "document-guard.js",
-      "outputSHA256": "8c9059f6352d56359e2a246fcd666e99b41bd460513d2c5efb80cfc54c4786b4",
+      "outputSHA256": "2c34d03286a09be0a3a66ecfa86e294e58bfd708fc823512221d27a715dbf9dc",
       "phase": {
         "eagerModuleInitializers": [
           "init_document_exit"
@@ -34,7 +34,7 @@
           "__commonJS"
         ],
         "exportCalls": 1,
-        "entryStatement": 224,
+        "entryStatement": 227,
         "deferredInitializer": "init_document_main"
       }
     }

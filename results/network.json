@@ -1,45 +1,45 @@
 {
   "provenance": {
-    "capturedAt": "2026-10-29T21:55:10.256Z",
-    "revision": "48ce8690f1ea3e2e0d63145072a3838b7722067a",
+    "capturedAt": "2026-10-31T11:19:54.208Z",
+    "revision": "9a688e9530600d2a9eff497b8046da9f20f76845",
     "dirty": true,
-    "sourceSHA256": "42837f9a32ecfe1d8d164bba8cef4ef59750fc90d4acf8ea4f2f959431fbcf98",
+    "sourceSHA256": "087db714a335054b5b0b94dc7451d30fe63d6de5a406ba0f24164999550236e4",
     "runner": "test/network.ts",
     "runnerSHA256": "8f0ecb32acf35593c17be437c84929041d2588af47ead6af8305cc53b77c8344",
-    "publisherRevision": "f5de28d798237921e7d83467e9fa399dbb141b25",
+    "publisherRevision": "b8637f0dc5b5e56ae0b6397fdae8501598b7d39e",
     "artifacts": {
       "dist-manager/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "dist-manager/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
       "dist-manager/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
       "dist-manager/index.html": "0ea2b29b0ef6946140c54c2dc2147bffe4de82b9ed13eb4fdcae97a81cfd56f7",
-      "dist-manager/manager.js": "e623333e57ba30b0359bd8548e97efc428534541ccad53316ac07656e7f8d015",
+      "dist-manager/manager.js": "e361950a8774ca901a2b669e55041e15931e079bcdf5cd66e2b95d3986ce0730",
       "dist-manager/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
       "dist-manager/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
-      "dist-manager/report.html": "f8ae7bd8e4c781dee2a6ad135bd1fcc38186b7b2c1f54b9bb53a5bb0ac3ba654",
-      "dist-manager/sw.js": "d0260a50ee4b566b01b494bf8f6be97310e32f5dffded8605e9e6883941d4cea",
+      "dist-manager/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-manager/sw.js": "ebfd7d97b5050c612506b4e81c0746f900e6d570933d62adbc743c7e825020f0",
       "dist-runtime/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "dist-runtime/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
       "dist-runtime/connect.html": "53fe49a35d07ee283a95f95e6de857bfea8f7f289fe535fe3bf8d60ff8ba479f",
       "dist-runtime/connect.js": "afdc49cca49dd8490f3d4b646c8460c2244b389275ad8c7fab6d77791684f2ce",
-      "dist-runtime/document-guard.js": "f100383579ef7e022f881731fd22a1e783116f8f956a3d351f27bff6aeb5ca63",
-      "dist-runtime/guard.js": "ed0fc364374d626deef0b459575bf94d1d46bc4d73d436f53f7f9d19e5746d6a",
+      "dist-runtime/document-guard.js": "2c34d03286a09be0a3a66ecfa86e294e58bfd708fc823512221d27a715dbf9dc",
+      "dist-runtime/guard.js": "5be7808e2acbdc4a063d713f95a6526c8db7ec3c55f4f311b579b4587a59714a",
       "dist-runtime/host.css": "25fc275593dd5e46aa4923807c5b23b36e5ae8b3412ddcbd9ba8004ca71dca92",
       "dist-runtime/index.html": "9c38d53b82a15ef794b7d8ee871954812880c69dc392287c8698ecd3c214d489",
-      "dist-runtime/publisher-worker-guard.js": "33645f9692b1dc220b61e25efcb74550b4518daa329d92b4ff8856d745179b95",
+      "dist-runtime/publisher-worker-guard.js": "67f366ee0a846554a57fc060269b907b0d6ea06d7e83131b768bd0401e646277",
       "dist-runtime/pwa-192.png": "12edb0db945f8517426cc9c2d5ef70f1499c782084fc87746f4ebb48946c36aa",
       "dist-runtime/pwa-512.png": "1af533c31c8d5b48449f4366e7cdc3fc464d63ce1a1be9631e02f24e77a6eb95",
-      "dist-runtime/report.html": "f8ae7bd8e4c781dee2a6ad135bd1fcc38186b7b2c1f54b9bb53a5bb0ac3ba654",
-      "dist-runtime/shared-worker-guard.js": "9a5ae6f6fd30e6f95878f6ebe8c3dc06446112a901f9de7f7762528e0ff6fbeb",
-      "dist-runtime/sw.js": "17f6f4d3d4869491bfe9f4b77ac6b37a98a7e0d65a7b4bef3503b2a6e25e6a28",
-      "dist-runtime/worker-guard.js": "c78d75e366b0e4bf91d724a3c0c7516ce511be09a19cc191f2eeee5fcae60c0e",
-      "dist-runtime/worklet-guard.js": "e35a63bd6e91cd979495882ef5683b144d76159b6dbad5003b710d7a1a15c6b6",
+      "dist-runtime/report.html": "557297770a4194c2d84c1d7f7b7aa273624e5f141e827d3adf64276e23b049c7",
+      "dist-runtime/shared-worker-guard.js": "2b12bf2973e24250617cdbea295e51dbcf70512d47b5f8dc4020f7400f212521",
+      "dist-runtime/sw.js": "8f39346a45d255e6a351904b1bbab44ec8811c81cb777abccd823c50f9780774",
+      "dist-runtime/worker-guard.js": "0a91b3ee322b84315d1461b91d72d010e87b11649b85627c2d00ab17c9dc54ac",
+      "dist-runtime/worklet-guard.js": "5573b79a90976ed5ffac02121e676d69c7f37bfd62b85512f8e38ced9c8461e6",
       "dist-installation/.nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "dist-installation/config.json": "0fc6df1519bd58f5c75a26c93e24aa4d9d4fa7fae57bde4d52e72aaf48706fb9",
       "dist-installation/index.html": "3ca67c9966dd6eaaddb08a331c4c422a70d79bed1acecddada56764ba4ac8e5f",
-      "dist-installation/installation.js": "546d1db9d8ff74cd2a7e98c72aa7d30117321dfeffa1109fe5fb259524a3f264"
+      "dist-installation/installation.js": "6cd0a3f3f4494dee2db059f3b1a5feb62017a39399a22e2d3774d0319fa1e3f3"
     }
   },
-  "date": "2026-10-29T21:55:10.263Z",
+  "date": "2026-10-31T11:19:54.215Z",
   "checks": [
     "Runtime network, cache fetch, speculative links/rules, sockets and RTC refused with zero receiver TCP or STUN UDP traffic",
     "Independent syscall tracing observes real DNS-query sends for the unrestricted control and none for the private marker",
@@ -50,7 +50,7 @@
     "workerHTTPRequests": 1,
     "udpDatagrams": 1,
     "stunDatagrams": 1,
-    "dnsSendCalls": 20
+    "dnsSendCalls": 12
   },
   "isolated": {
     "operations": [
@@ -182,125 +182,77 @@
   },
   "observation": {
     "method": "strace of fresh browser/children network send syscalls; independent HTTP/TCP and STUN UDP receivers",
-    "traceProcesses": 181,
+    "traceProcesses": 185,
     "queryRecords": [
       {
         "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
+        "label": "pfrt-control-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
+        "label": "pfrt-control-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
+        "label": "pfrt-control-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
+        "label": "pfrt-control-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
+        "label": "pfrt-control-worker-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
+        "label": "pfrt-control-worker-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-worker-mvu30i7r",
+        "label": "pfrt-control-worker-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-worker-mvu30i7r",
+        "label": "pfrt-control-worker-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-worker-mvu30i7r",
+        "label": "pfrt-control-module-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-worker-mvu30i7r",
+        "label": "pfrt-control-module-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
+        "label": "pfrt-control-module-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       },
       {
         "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
-        "syscall": "sendmmsg",
-        "sent": 2
-      },
-      {
-        "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
-        "syscall": "sendmmsg",
-        "sent": 2
-      },
-      {
-        "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
-        "syscall": "sendmmsg",
-        "sent": 2
-      },
-      {
-        "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
-        "syscall": "sendmmsg",
-        "sent": 2
-      },
-      {
-        "phase": "control",
-        "label": "pfrt-control-mvu30i7r",
-        "syscall": "sendmmsg",
-        "sent": 2
-      },
-      {
-        "phase": "control",
-        "label": "pfrt-control-module-mvu30i7r",
-        "syscall": "sendmmsg",
-        "sent": 2
-      },
-      {
-        "phase": "control",
-        "label": "pfrt-control-module-mvu30i7r",
-        "syscall": "sendmmsg",
-        "sent": 2
-      },
-      {
-        "phase": "control",
-        "label": "pfrt-control-module-mvu30i7r",
-        "syscall": "sendmmsg",
-        "sent": 2
-      },
-      {
-        "phase": "control",
-        "label": "pfrt-control-module-mvu30i7r",
+        "label": "pfrt-control-module-mvwb790n",
         "syscall": "sendmmsg",
         "sent": 2
       }

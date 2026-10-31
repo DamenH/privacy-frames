@@ -6,6 +6,10 @@ bear on each one. It records native controls, confined tests, actual fault
 controls, abstract model faults and trace comparisons as different evidence.
 An older vulnerable build is recorded separately from an isolated mutation of
 the current defense.
+`deductive_verification` records a program verifier's result under its supplied
+preconditions and toolchain assumptions. It does not imply an independently
+kernel-checked certificate. Read the source correspondence and heap assumptions
+before applying that result to a caller.
 `reviewed-scoped` means only that the recorded route and evidence have been
 reviewed; it is not a claim of complete mediation. `unverified` identifies a
 route for which the ledger records no established mitigation.

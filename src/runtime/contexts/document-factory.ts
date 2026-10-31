@@ -12,6 +12,12 @@ import {
   parseDocumentRegistration,
   type DocumentRegistration,
 } from './document-protocol.ts';
+import {
+  beginDocumentPublication,
+  cancelDocumentPublication,
+  type DocumentGeneration,
+  type DocumentPublicationState,
+} from './document-publication.ts';
 export interface DocumentContextPolicy {
   isContextElement(node: unknown): node is Element;
   created(node: Element): void;
@@ -45,7 +51,7 @@ interface DocumentFactoryOptions {
   baseURL(): string;
   policy: TrustedPolicy;
 }
-interface ManagedDocument {
+interface ManagedDocument extends DocumentPublicationState {
   element: Element;
   frame: HTMLIFrameElement;
   placeholder: HTMLTemplateElement;
@@ -57,11 +63,6 @@ interface ManagedDocument {
   window?: Window;
   document?: Document;
   port?: MessagePort;
-  generation: number;
-  started: boolean;
-  ready: boolean;
-  published: boolean;
-  loaded: boolean;
   sandboxTokens?: object;
   startupTimer?: number;
   completion?: Promise<void>;
@@ -71,7 +72,7 @@ interface ManagedDocument {
 }
 interface DeferredStartupAction {
   record: ManagedDocument;
-  generation: number;
+  generation: DocumentGeneration;
   run(): void;
 }
 const PLACEHOLDER = 'data-privacy-document';
@@ -259,11 +260,7 @@ export function createDocumentFactory(
     ).catch(() => {});
   }
   function cancel(record: ManagedDocument) {
-    record.generation++;
-    record.ready = false;
-    record.started = false;
-    record.published = false;
-    record.loaded = false;
+    cancelDocumentPublication(record);
     record.prepared?.();
     record.prepared = undefined;
     const complete = record.complete;
@@ -310,7 +307,7 @@ export function createDocumentFactory(
       frame,
       placeholder,
       attributes,
-      generation: 0,
+      generation: {},
       started: false,
       ready: false,
       published: false,
@@ -370,9 +367,7 @@ export function createDocumentFactory(
       fail('Credentialless document contexts are not supported');
   }
   async function begin(record: ManagedDocument) {
-    const generation = ++record.generation;
-    record.started = true;
-    record.loaded = false;
+    const generation = beginDocumentPublication(record);
     record.completion = new NativePromise<void>((resolve) => {
       record.complete = resolve;
     });

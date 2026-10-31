@@ -27,6 +27,7 @@ export const boundaries: readonly Boundary[] = [
     invariants: ['C1', 'C2', 'C3', 'C6', 'C7'],
     sources: [
       'src/runtime/contexts/document-factory.ts',
+      'src/runtime/contexts/document-publication.ts',
       'src/runtime/contexts/document-guard.ts',
       'src/runtime/contexts/document-main.ts',
       'src/runtime/contexts/document-controller.ts',
