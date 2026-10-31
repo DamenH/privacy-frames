@@ -88,7 +88,7 @@
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
     "formal/route-review/README.md": "def9f578cf05dbd6ded8f518833ba924d81acfce8a9d43fbd003679987cf77bd",
     "formal/route-review/triage.json": "3e5ab07e2747d1d329f13be013bc5268671c054ee8c5470e9e952b8a72a7e855",
-    "formal/runtime-verification/README.md": "75cda1230f94526773e6ec4f7bfdb93898c07cfd1d1632e3822db4acdf87d05e",
+    "formal/runtime-verification/README.md": "42ffccb02fc1021b7fa7d4165d89b13c38f3797a79c4a5747a9d7fd380d6b439",
     "formal/runtime-verification/document-publication-check.ts": "53860e7c9687d3c59499d9effbd30afc9b569144c174a786600af2935e65ef7f",
     "formal/runtime-verification/document-publication-compatibility.json": "1088389b2b01cb451f58858438a5b06127813c31733b91a93b35450fb67fe90c",
     "formal/runtime-verification/document-publication-result.json": "afaa391664ee5d718f562750736f45995ba6f4dde68fa392d114208d3d493d72",
@@ -190,7 +190,11 @@
     "package-lock.json": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed",
     "formal/runtime-verification/webspec-assessment.ts": "a1b1730235d0a1730e8eb6ca646dd4573f6550c3fec6cf92c375e29bcd9a509d",
     "formal/runtime-verification/webspec-assessment.json": "2afb6343fc9523bfcaaf2ce409ee16401dfc65ab9172e0d83549212491fd3ed8",
-    "formal/runtime-verification/webspec-assessment.md": "dec1fc859e4ab1eececb53a4d4e0250e1d641f4d155fe4bcc7380cd2d1118553"
+    "formal/runtime-verification/webspec-assessment.md": "dec1fc859e4ab1eececb53a4d4e0250e1d641f4d155fe4bcc7380cd2d1118553",
+    "formal/runtime-verification/message-resource-broker.ts": "82150dd2908fde943aa2502b26bcfb5e73499212f6927f85fb227bf0a016331a",
+    "formal/runtime-verification/message-resource-broker.json": "28c95a5b215b56c352cde22e2bd7b4b93acd3a014a563c480f99d4de5583bece",
+    "formal/runtime-verification/message-resource-broker-relaxed.json": "c8a0c5abc93d1e7169c9d9dc315bffbf75c4966e552ac9030c9e433112116a8b",
+    "formal/runtime-verification/message-resource-broker.md": "345bae8945881bf052e83f23cd209f7da19660a7286e450877f27112a63aae85"
   },
   "claims": [
     {
@@ -1294,13 +1298,24 @@
             "formal/runtime-verification/webspec-assessment.json",
             "formal/runtime-verification/webspec-assessment.md"
           ]
+        },
+        {
+          "kind": "discovery",
+          "description": "A message-resource transport prototype passes twelve strict/relaxed-policy configurations across Chromium, Firefox and an explicitly forced-stale Firefox profile, with registered and unregistered controllers. JSON, binary and Wasm reads work; missing/foreign resources and deleted admitted cache entries fail locally. Strict runs emit no HTTP in the observed windows; relaxing only the prototype connect policy restores native XHR delivery. Chromium restart evidence requires stopped/running states and a changed worker-global token. This is not production integration, a full Fetch facade, native-guard verification or Firefox restart evidence.",
+          "paths": [
+            "formal/runtime-verification/message-resource-broker.ts",
+            "formal/runtime-verification/message-resource-broker.json",
+            "formal/runtime-verification/message-resource-broker-relaxed.json",
+            "formal/runtime-verification/message-resource-broker.md"
+          ]
         }
       ],
       "open_obligations": [
         "Repair application-dependent update requests without weakening the no-application-caused-network contract. Blob-only bootstraps leave document/stale-fetch triggers; unregistration loses new-worker interception in Firefox.",
         "Cover shared workers, document creation, later resource fetches, stale registrations and browser update scheduling in the full confinement argument.",
         "Preserve the independently tested navigation-preload defense; it does not mitigate the demonstrated update request.",
-        "Repeat on deployed HTTPS and establish the scope of any repair; the current counterexample is local HTTP with exact build provenance."
+        "Repeat on deployed HTTPS and establish the scope of any repair; the current counterexample is local HTTP with exact build provenance.",
+        "Integrate and verify private broker grants, actual admission/generation checks and preparation across every supported context before relying on the message transport; the prototype uses a trusted harness and selected classic-worker operations."
       ],
       "disposition": "unverified",
       "control_status": {

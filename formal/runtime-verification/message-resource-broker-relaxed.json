@@ -1,0 +1,368 @@
+{
+  "scope": "Read-only message resource transport to classic Blob workers with registered and unregistered SW controllers. The strict policy forbids native HTTP; the relaxed-policy control permits same-origin native HTTP and requires receiver delivery. Independent mechanism experiment, not the production admission or context protocol. Chromium worker termination is a test-only lifecycle control.",
+  "runnerSHA256": "82150dd2908fde943aa2502b26bcfb5e73499212f6927f85fb227bf0a016331a",
+  "browserProfileSHA256": "c161489dfce9c3124474d1416440c9876b0a8fce329d2f09fa16f99af744e3a0",
+  "packageLockSHA256": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed",
+  "bootstrapSHA256": "800656cc42d3abcbb2a88e1b68365c62855141eff5191842349247a08a5b8b1d",
+  "serviceWorkerSHA256": "85d9d8c2c4a24f4a1d21b12311da0d189e40cbc1671be67b399d88b76250d1a7",
+  "observationMilliseconds": 3000,
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "relaxedPolicy": true,
+      "nativeControl": [
+        {
+          "path": "/native-control",
+          "time": 1793451087765
+        }
+      ],
+      "result": {
+        "value": 42,
+        "binary": [
+          0,
+          128,
+          255
+        ],
+        "wasm": true,
+        "missingRefused": true,
+        "foreignRefused": true,
+        "nativeRefused": false,
+        "input": "private-input"
+      },
+      "firstRequests": [
+        {
+          "path": "/native-attempt",
+          "time": 1793451090799
+        }
+      ],
+      "storageLoss": {
+        "result": {
+          "error": "Error: Resource refused"
+        },
+        "requests": []
+      },
+      "restart": {
+        "disposition": "terminated-and-awakened",
+        "result": {
+          "value": 42,
+          "binary": [
+            0,
+            128,
+            255
+          ],
+          "wasm": true,
+          "missingRefused": true,
+          "foreignRefused": true,
+          "nativeRefused": false,
+          "input": "after-restart"
+        },
+        "requests": [
+          {
+            "path": "/native-attempt",
+            "time": 1793451096921
+          }
+        ],
+        "beforeInstance": "91c563d8-50a8-41c7-a97e-becf7f34a91a",
+        "afterInstance": "8d0e17c9-d773-4133-9c15-d7c42a41d690",
+        "transitions": [
+          {
+            "id": "0",
+            "status": "running"
+          },
+          {
+            "id": "0",
+            "status": "stopping"
+          },
+          {
+            "id": "0",
+            "status": "stopped"
+          },
+          {
+            "id": "0",
+            "status": "starting"
+          },
+          {
+            "id": "0",
+            "status": "starting"
+          },
+          {
+            "id": "0",
+            "status": "starting"
+          },
+          {
+            "id": "0",
+            "status": "running"
+          }
+        ]
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "relaxedPolicy": true,
+      "nativeControl": [
+        {
+          "path": "/native-control",
+          "time": 1793451099963
+        }
+      ],
+      "result": {
+        "value": 42,
+        "binary": [
+          0,
+          128,
+          255
+        ],
+        "wasm": true,
+        "missingRefused": true,
+        "foreignRefused": true,
+        "nativeRefused": false,
+        "input": "private-input"
+      },
+      "firstRequests": [
+        {
+          "path": "/native-attempt",
+          "time": 1793451102991
+        }
+      ],
+      "storageLoss": {
+        "result": {
+          "error": "Error: Resource refused"
+        },
+        "requests": []
+      },
+      "restart": {
+        "disposition": "terminated-and-awakened",
+        "result": {
+          "value": 42,
+          "binary": [
+            0,
+            128,
+            255
+          ],
+          "wasm": true,
+          "missingRefused": true,
+          "foreignRefused": true,
+          "nativeRefused": false,
+          "input": "after-restart"
+        },
+        "requests": [
+          {
+            "path": "/native-attempt",
+            "time": 1793451109109
+          }
+        ],
+        "beforeInstance": "1e22a924-da70-406c-bbf6-6172b3216b41",
+        "afterInstance": "c9dbf37b-084e-4be2-9b41-6b6f7b28507f",
+        "transitions": [
+          {
+            "id": "0",
+            "status": "running"
+          },
+          {
+            "id": "0",
+            "status": "stopping"
+          },
+          {
+            "id": "0",
+            "status": "stopped"
+          },
+          {
+            "id": "0",
+            "status": "starting"
+          },
+          {
+            "id": "0",
+            "status": "starting"
+          },
+          {
+            "id": "0",
+            "status": "starting"
+          },
+          {
+            "id": "0",
+            "status": "running"
+          }
+        ]
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "relaxedPolicy": true,
+      "nativeControl": [
+        {
+          "path": "/native-control",
+          "time": 1793451113184
+        }
+      ],
+      "result": {
+        "value": 42,
+        "binary": [
+          0,
+          128,
+          255
+        ],
+        "wasm": true,
+        "missingRefused": true,
+        "foreignRefused": true,
+        "nativeRefused": false,
+        "input": "private-input"
+      },
+      "firstRequests": [
+        {
+          "path": "/native-attempt",
+          "time": 1793451116296
+        }
+      ],
+      "storageLoss": {
+        "result": {
+          "error": "Error: Resource refused"
+        },
+        "requests": []
+      },
+      "restart": {
+        "disposition": "not-run",
+        "reason": "No equivalent Firefox termination control established"
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "relaxedPolicy": true,
+      "nativeControl": [
+        {
+          "path": "/native-control",
+          "time": 1793451122491
+        }
+      ],
+      "result": {
+        "value": 42,
+        "binary": [
+          0,
+          128,
+          255
+        ],
+        "wasm": true,
+        "missingRefused": true,
+        "foreignRefused": true,
+        "nativeRefused": false,
+        "input": "private-input"
+      },
+      "firstRequests": [
+        {
+          "path": "/native-attempt",
+          "time": 1793451125529
+        }
+      ],
+      "storageLoss": {
+        "result": {
+          "error": "Error: Resource refused"
+        },
+        "requests": []
+      },
+      "restart": {
+        "disposition": "not-run",
+        "reason": "No equivalent Firefox termination control established"
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "relaxedPolicy": true,
+      "nativeControl": [
+        {
+          "path": "/native-control",
+          "time": 1793451132587
+        }
+      ],
+      "result": {
+        "value": 42,
+        "binary": [
+          0,
+          128,
+          255
+        ],
+        "wasm": true,
+        "missingRefused": true,
+        "foreignRefused": true,
+        "nativeRefused": false,
+        "input": "private-input"
+      },
+      "firstRequests": [
+        {
+          "path": "/native-attempt",
+          "time": 1793451135690
+        },
+        {
+          "path": "/sw.js",
+          "time": 1793451136691
+        }
+      ],
+      "storageLoss": {
+        "result": {
+          "error": "Error: Resource refused"
+        },
+        "requests": []
+      },
+      "restart": {
+        "disposition": "not-run",
+        "reason": "No equivalent Firefox termination control established"
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": true,
+      "relaxedPolicy": true,
+      "nativeControl": [
+        {
+          "path": "/native-control",
+          "time": 1793451141857
+        }
+      ],
+      "result": {
+        "value": 42,
+        "binary": [
+          0,
+          128,
+          255
+        ],
+        "wasm": true,
+        "missingRefused": true,
+        "foreignRefused": true,
+        "nativeRefused": false,
+        "input": "private-input"
+      },
+      "firstRequests": [
+        {
+          "path": "/native-attempt",
+          "time": 1793451144892
+        }
+      ],
+      "storageLoss": {
+        "result": {
+          "error": "Error: Resource refused"
+        },
+        "requests": []
+      },
+      "restart": {
+        "disposition": "not-run",
+        "reason": "No equivalent Firefox termination control established"
+      }
+    }
+  ],
+  "completedAt": "2026-10-31T12:52:31.100Z"
+}

@@ -96,6 +96,9 @@ arguments even where the abstract publication contract is shared.
   Blob bootstraps and unregistration. Browser coverage and a repair remain open.
   A [pinned WebSpec source assessment](webspec-assessment.md) identifies the
   missing registration/update lifecycle for this obligation.
+  A [message resource prototype](message-resource-broker.md) passes selected worker
+  reads and confirmed Chromium restarts without HTTP, with working receiver
+  controls. Production integration and document behavior remain open.
 - Stages 5, 7 and 8: pending. Earlier component evidence remains available, with
   its original assumptions and source hashes.
 
