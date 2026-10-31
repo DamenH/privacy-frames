@@ -204,6 +204,7 @@ worker.addEventListener('message', (event) => {
           source: a.source,
           installedAt: a.installedAt,
           size: a.size,
+          additionalResources: a.capture.additionalResources,
         }));
       else if (operation === 'remove') {
         if (typeof payload !== 'string') throw new Error('Invalid installation identity');

@@ -59,6 +59,45 @@ resources. It cannot replace the host controller or provide network fallback.
 Installations use one resource format; packages from the previous installer must
 be reinstalled. Private application storage is kept separately.
 
+## Share an installation
+
+Choose **Copy link** below the installation form to share its application URL and
+selected resource list. Pasted and uploaded lists are embedded in the link. A
+list selected by URL stays a URL in a form share. Each installed application also
+has **Copy link**; this embeds the resolved additional resource URLs recorded at
+installation, without requiring the original list file or list server.
+
+The recipient sees the application URL and chooses **Install & open**. Privacy
+Frames downloads the resources through its separate installer, admits the local
+copy and opens it in the same tab. A matching installation offers **Open** and
+**Reinstall & open**. Links referencing a remote list use the installation flow,
+since its current contents are unknown until the installer fetches it.
+
+Share links contain only fragment parameters, for example:
+
+```text
+https://pf.damenh.com/#v=1&url=https%3A%2F%2Fexample.com%2Fapp%2F&list-url=https%3A%2F%2Fexample.com%2Fresources.uris
+```
+
+Version 1 accepts `url` and at most one of `list-url`, `list` (an embedded URI list)
+or `list-gzip` (a gzip-compressed UTF-8 URI list encoded as unpadded base64url).
+Parameters use URL form encoding. Longer embedded lists are compressed when this
+shortens the link. Generated links are limited to 32,768 characters; decoded
+lists retain the installer's 256 KiB and 1,000-URL limits. Oversized recipes ask
+for a list URL instead. Unsupported versions, duplicate parameters and malformed
+lists are refused before installation.
+
+The fragment is not sent in the host's HTTP request. Installing still downloads
+from publishers, and publisher content can change after a link is created.
+Links carry an installation recipe, not application bytes or private application
+storage. Opening a link does not start publisher downloads automatically.
+
+Run `npm run build` followed by `npm run test:share` for codec tests and the local
+Chromium/Firefox recipient flows. `results/share-links.json` records browser
+versions, source revision, source and build hashes, and the checks completed.
+Screenshots include a narrow viewport; these are desktop browser tests, not
+real-device mobile or desktop PWA installation evidence.
+
 ## Examples and tests
 
 The visible examples emphasize note editing and installed resources, an editable
