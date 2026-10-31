@@ -1,14 +1,17 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { resolve, relative, isAbsolute } from 'node:path';
 import ts from 'typescript';
 import { boundaries } from './boundaries.ts';
 
 const root = resolve(import.meta.dirname, '../..');
 const output = resolve(import.meta.dirname, 'implementation-inventory.json');
+const detail = resolve(root, '.tools/runtime-verification/implementation-sites.json');
 const args = process.argv.slice(2);
 assert(args.length === 0 || (args.length === 1 && args[0] === '--check'));
+await mkdir(resolve(root, '.tools/runtime-verification'), { recursive: true });
+await rm(detail, { force: true });
 const hash = (source: string) => createHash('sha256').update(source).digest('hex');
 const contract = await readFile(resolve(root, 'formal/threat-model.md'), 'utf8');
 const invariantIDs = [...contract.matchAll(/^\|\s*(C\d+)\s*\|/gm)].map(
@@ -126,8 +129,14 @@ const snapshot = {
     await readFile(resolve(import.meta.dirname, 'boundaries.ts'), 'utf8'),
   ),
   boundaries,
-  sources,
+  siteReport: '.tools/runtime-verification/implementation-sites.json',
+  sources: sources.map(({ sites, ...source }) => ({
+    ...source,
+    siteCount: sites.length,
+    sitesSHA256: hash(JSON.stringify(sites)),
+  })),
 };
+await writeFile(detail, JSON.stringify({ ...snapshot, sources }, null, 2) + '\n');
 const serialized = JSON.stringify(snapshot, null, 2) + '\n';
 if (args[0] === '--check')
   assert.equal(

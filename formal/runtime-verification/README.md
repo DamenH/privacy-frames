@@ -98,12 +98,14 @@ Run `node formal/runtime-verification/inventory.ts` to generate
 typed definitions in `boundaries.ts` identify 13 review boundaries across 50
 source files and connect them to C1–C8.
 
-The generated inventory locates calls, constructors, asynchronous suspensions,
-returns and selected reference bindings, with enclosing function scopes and
-source hashes. It does not resolve aliases, follow dependencies or establish
-authority closure. Display snippets are truncated; review the hashed source at
-the recorded location. The 6,102 recorded syntax sites are review inputs rather
-than a security-coverage measure.
+The tracked snapshot records source and site-report hashes. The command writes
+the full locations to `.tools/runtime-verification/implementation-sites.json`,
+also uploaded by CI. This report locates calls, constructors, asynchronous
+suspensions, returns and selected reference bindings, with enclosing function
+scopes. It does not resolve aliases, follow dependencies or establish authority
+closure. Display snippets are truncated; review the hashed source at the recorded
+location. The 6,102 recorded syntax sites are review inputs rather than a
+security-coverage measure.
 
 ## Deductive-mode calibration
 
