@@ -91,6 +91,23 @@ jobs:
           tar --zstd -xf .tools/lean-4.35.0-linux.tar.zst -C .tools
       - run: python3 formal/lean/check.py
       - run: python3 formal/path-lean/check.py
+      - name: Type-check publication generation comparison
+        run: npx tsc --ignoreConfig --noEmit --strict --noUnusedLocals --noUnusedParameters --types node --target ES2022 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --skipLibCheck formal/runtime-verification/generation-comparison.ts
+      - name: Produce verified publication contracts for the backend comparison
+        run: node formal/runtime-verification/document-publication-check.ts
+      - name: Compare verified JavaScript with generated publication state
+        run: node formal/runtime-verification/generation-comparison.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: publication-generation-comparison
+          path: |
+            formal/runtime-verification/document-publication-result.json
+            formal/runtime-verification/generation-comparison.json
+            .tools/document-publication/*.js
+            .tools/document-publication/*.log
+            .tools/publication-generation/*
+          include-hidden-files: true
       - run: node formal/implementation-navigation/check.ts
       - run: node formal/implementation-navigation/setup-check.ts
       - run: npm run build

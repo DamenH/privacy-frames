@@ -88,7 +88,7 @@
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
     "formal/route-review/README.md": "def9f578cf05dbd6ded8f518833ba924d81acfce8a9d43fbd003679987cf77bd",
     "formal/route-review/triage.json": "3e5ab07e2747d1d329f13be013bc5268671c054ee8c5470e9e952b8a72a7e855",
-    "formal/runtime-verification/README.md": "eb579dd363a8e02715121200eee6392c25085a7389b1082b7032c1bb0b539d13",
+    "formal/runtime-verification/README.md": "a4498b00c24a8c17096e6a64ff9fe8eb3c05928b3213692a2bda5cafd65b31e8",
     "formal/runtime-verification/document-publication-check.ts": "53860e7c9687d3c59499d9effbd30afc9b569144c174a786600af2935e65ef7f",
     "formal/runtime-verification/document-publication-compatibility.json": "1088389b2b01cb451f58858438a5b06127813c31733b91a93b35450fb67fe90c",
     "formal/runtime-verification/document-publication-result.json": "afaa391664ee5d718f562750736f45995ba6f4dde68fa392d114208d3d493d72",
@@ -176,7 +176,10 @@
     "test/worker-contexts.ts": "2741da3fc3087a3f382eeec81b5cf48426a0bdb951928e98d94feb713e258447",
     "test/worklet-contexts.ts": "4535bc5c707138db48764a1ddbeba086fa1950785a5a11cd0d1cfada24bcdd1e",
     "test/worklet-guard.ts": "6e66d8e41f3a2a8d34ecff988f932a36b598c9f1e7ca144cd0149c1bd1e8fb0c",
-    "test/worklet-platform.ts": "1872fe7f40011ec8ce0ef26ef7de59f27720a175de4983755205d608d6c8b7da"
+    "test/worklet-platform.ts": "1872fe7f40011ec8ce0ef26ef7de59f27720a175de4983755205d608d6c8b7da",
+    "formal/runtime-verification/PublicationModel.lean": "73e252a862122b493d8a0e45a1834a0ead1ecdaebf44ceee41cb542b19ac544b",
+    "formal/runtime-verification/generation-comparison.ts": "61bc8ca641e2e603b55ce3956e66c4b60e621fd455b09afd54cabf377f566a7a",
+    "formal/runtime-verification/generation-comparison.json": "32522347bebe1d5649d45f02148609449a37525259c93f03fd22f53c9d4a7369"
   },
   "claims": [
     {
@@ -185,10 +188,7 @@
       "disposition": "reviewed-scoped",
       "preconditions": "Application is executing under a controlling host worker.",
       "enforcement": "Requests must resolve to an admitted immutable local resource or fail without network fallback.",
-      "source_paths": [
-        "src/runtime/worker.ts",
-        "src/runtime/resource-aliases.ts"
-      ],
+      "source_paths": ["src/runtime/worker.ts", "src/runtime/resource-aliases.ts"],
       "evidence": [
         {
           "kind": "native_control",
@@ -209,9 +209,7 @@
         {
           "kind": "model_fault",
           "description": "NetworkFallback and UnmediatedEffect have abstract TLC counterexamples.",
-          "paths": [
-            "formal/confinement/traces.json"
-          ]
+          "paths": ["formal/confinement/traces.json"]
         }
       ],
       "open_obligations": [
@@ -353,23 +351,17 @@
       "disposition": "reviewed-scoped",
       "preconditions": "The browser supports WebTransport and the target accepts HTTP/3.",
       "enforcement": "Deny the exposed native constructor before application execution.",
-      "source_paths": [
-        "src/runtime/enforcement/effects.ts"
-      ],
+      "source_paths": ["src/runtime/enforcement/effects.ts"],
       "evidence": [
         {
           "kind": "native_control",
           "description": "Both browsers exchanged a datagram and a bidirectional stream with an independent loopback HTTP/3 receiver.",
-          "paths": [
-            "formal/webtransport/results.json"
-          ]
+          "paths": ["formal/webtransport/results.json"]
         },
         {
           "kind": "confined_test",
           "description": "Installed app attempts in both browsers raised SecurityError and the receiver saw no UDP packets in the tested interval.",
-          "paths": [
-            "formal/webtransport/results.json"
-          ]
+          "paths": ["formal/webtransport/results.json"]
         }
       ],
       "open_obligations": [
@@ -388,30 +380,22 @@
       "disposition": "reviewed-scoped",
       "preconditions": "fetchLater is exposed and application causes deferred delivery, including page close.",
       "enforcement": "Deny fetchLater before publisher execution.",
-      "source_paths": [
-        "src/runtime/enforcement/effects.ts"
-      ],
+      "source_paths": ["src/runtime/enforcement/effects.ts"],
       "evidence": [
         {
           "kind": "native_control",
           "description": "Full Chromium delivered immediate and page-close POSTs; a controlled-worker close control bypassed its worker.",
-          "paths": [
-            "formal/evidence/fetch-later.json"
-          ]
+          "paths": ["formal/evidence/fetch-later.json"]
         },
         {
           "kind": "confined_test",
           "description": "Prepared calls and current-descriptor recovery were denied; receiver remained silent through page close and a final native control.",
-          "paths": [
-            "formal/evidence/fetch-later.json"
-          ]
+          "paths": ["formal/evidence/fetch-later.json"]
         },
         {
           "kind": "fault_control",
           "description": "A test-only bundle removes the fetchLater deny-list entry; the prepared page schedules a marker request that reaches the receiver after close.",
-          "paths": [
-            "formal/evidence/fetch-later.json"
-          ]
+          "paths": ["formal/evidence/fetch-later.json"]
         }
       ],
       "open_obligations": [
@@ -437,23 +421,17 @@
         {
           "kind": "native_control",
           "description": "A user-selected synthetic FedCM connection was seeded before preparation.",
-          "paths": [
-            "formal/evidence/fedcm-conditional.json"
-          ]
+          "paths": ["formal/evidence/fedcm-conditional.json"]
         },
         {
           "kind": "historical_control",
           "description": "The historical test build permitted a marker-bearing disconnect POST after a synthetic connection was seeded; this does not establish reachability against the deployed runtime. Configured CSP and permission controls independently refused it.",
-          "paths": [
-            "formal/evidence/fedcm-conditional.json"
-          ]
+          "paths": ["formal/evidence/fedcm-conditional.json"]
         },
         {
           "kind": "confined_test",
           "description": "Fixed test build denied the call and the independent local receiver observed no request.",
-          "paths": [
-            "formal/evidence/fedcm-conditional.json"
-          ]
+          "paths": ["formal/evidence/fedcm-conditional.json"]
         }
       ],
       "open_obligations": [
@@ -483,23 +461,17 @@
         {
           "kind": "native_control",
           "description": "Both tested browsers delivered marker-bearing native CSP reports to an independent receiver.",
-          "paths": [
-            "formal/evidence/reporting.json"
-          ]
+          "paths": ["formal/evidence/reporting.json"]
         },
         {
           "kind": "fault_control",
           "description": "A test-only reporting header produced a marker-bearing report outside the worker in Firefox; Chromium worker intercepted it.",
-          "paths": [
-            "formal/evidence/reporting.json"
-          ]
+          "paths": ["formal/evidence/reporting.json"]
         },
         {
           "kind": "confined_test",
           "description": "Prepared production-header cases saw no marker report; one metadata-injection route was denied.",
-          "paths": [
-            "formal/evidence/reporting.json"
-          ]
+          "paths": ["formal/evidence/reporting.json"]
         }
       ],
       "open_obligations": [
@@ -527,23 +499,17 @@
         {
           "kind": "native_control",
           "description": "Full Chromium delivered a modern CSP report to a separate HTTPS collector.",
-          "paths": [
-            "formal/evidence/modern-reporting.json"
-          ]
+          "paths": ["formal/evidence/modern-reporting.json"]
         },
         {
           "kind": "fault_control",
           "description": "Test-injected trusted reporting headers caused an application-selected marker to reach the collector despite connect-src and Connection Allowlist.",
-          "paths": [
-            "formal/evidence/modern-reporting.json"
-          ]
+          "paths": ["formal/evidence/modern-reporting.json"]
         },
         {
           "kind": "confined_test",
           "description": "Prepared production-header attempts produced no marker at the independent receiver in the tested profile.",
-          "paths": [
-            "formal/evidence/modern-reporting.json"
-          ]
+          "paths": ["formal/evidence/modern-reporting.json"]
         }
       ],
       "open_obligations": [
@@ -562,24 +528,17 @@
       "disposition": "reviewed-scoped",
       "preconditions": "A browser has an existing NEL policy and a network event can carry application-controlled data.",
       "enforcement": "Ordinary unknown requests must be intercepted and fail locally; unmediated browser requests need their own controls.",
-      "source_paths": [
-        "src/runtime/worker.ts",
-        "src/runtime/response-policy.ts"
-      ],
+      "source_paths": ["src/runtime/worker.ts", "src/runtime/response-policy.ts"],
       "evidence": [
         {
           "kind": "native_control",
           "description": "Full Chromium delivered NEL markers before and after the prepared scenario to a separate collector.",
-          "paths": [
-            "formal/evidence/modern-reporting.json"
-          ]
+          "paths": ["formal/evidence/modern-reporting.json"]
         },
         {
           "kind": "confined_test",
           "description": "Selected prepared GET, POST and image requests produced no marker with the native policy still active.",
-          "paths": [
-            "formal/evidence/modern-reporting.json"
-          ]
+          "paths": ["formal/evidence/modern-reporting.json"]
         }
       ],
       "open_obligations": [
@@ -607,16 +566,12 @@
         {
           "kind": "native_control",
           "description": "Chromium delivered a native background download and sync-handler fetch.",
-          "paths": [
-            "formal/evidence/background-agents.json"
-          ]
+          "paths": ["formal/evidence/background-agents.json"]
         },
         {
           "kind": "confined_test",
           "description": "With a seeded registration, selected Window getter, method, constructor and forged-receiver attempts could not recover it; no marker arrived.",
-          "paths": [
-            "formal/evidence/background-agents.json"
-          ]
+          "paths": ["formal/evidence/background-agents.json"]
         },
         {
           "kind": "confined_test",
@@ -644,23 +599,17 @@
       "disposition": "reviewed-scoped",
       "preconditions": "The browser exposes the experimental imperative or declarative installation API and receives activation.",
       "enforcement": "Sandbox response policy rejects tested operations before browser-managed manifest fetch.",
-      "source_paths": [
-        "src/runtime/response-policy.ts"
-      ],
+      "source_paths": ["src/runtime/response-policy.ts"],
       "evidence": [
         {
           "kind": "native_control",
           "description": "Flag-enabled full Chromium fetched invalid same-origin manifests via both entry points, with and without blocking worker.",
-          "paths": [
-            "formal/evidence/web-install.json"
-          ]
+          "paths": ["formal/evidence/web-install.json"]
         },
         {
           "kind": "confined_test",
           "description": "Prepared same-origin requests were rejected by sandbox; receiver saw no marker.",
-          "paths": [
-            "formal/evidence/web-install.json"
-          ]
+          "paths": ["formal/evidence/web-install.json"]
         },
         {
           "kind": "fault_control",
@@ -688,24 +637,17 @@
       "disposition": "reviewed-scoped",
       "preconditions": "A link or area click causes a ping request.",
       "enforcement": "Restrict navigation/default actions and intercept ordinary HTTP where the browser routes ping through its worker.",
-      "source_paths": [
-        "src/runtime/enforcement/navigation.ts",
-        "src/runtime/worker.ts"
-      ],
+      "source_paths": ["src/runtime/enforcement/navigation.ts", "src/runtime/worker.ts"],
       "evidence": [
         {
           "kind": "native_control",
           "description": "Chromium and explicitly ping-enabled Firefox sent native POST PING requests to independent receiver.",
-          "paths": [
-            "formal/evidence/hyperlink-auditing.json"
-          ]
+          "paths": ["formal/evidence/hyperlink-auditing.json"]
         },
         {
           "kind": "confined_test",
           "description": "Worker observed and refused selected native auditing requests after actual preparation.",
-          "paths": [
-            "formal/evidence/hyperlink-auditing.json"
-          ]
+          "paths": ["formal/evidence/hyperlink-auditing.json"]
         }
       ],
       "open_obligations": [
@@ -734,23 +676,17 @@
         {
           "kind": "confined_test",
           "description": "Selected HTML/SVG document scenarios and native references were exercised.",
-          "paths": [
-            "formal/evidence/contexts-document-contexts.json"
-          ]
+          "paths": ["formal/evidence/contexts-document-contexts.json"]
         },
         {
           "kind": "model_fault",
           "description": "Early publication and unsafe execution are checked as abstract Lifecycle faults.",
-          "paths": [
-            "formal/confinement/traces.json"
-          ]
+          "paths": ["formal/confinement/traces.json"]
         },
         {
           "kind": "trace_comparison",
           "description": "Test-only paused-guard upgrade scenarios have partial observed-trace completions and explicit inferred steps.",
-          "paths": [
-            "formal/startup/lifecycle-comparison.json"
-          ]
+          "paths": ["formal/startup/lifecycle-comparison.json"]
         }
       ],
       "open_obligations": [
@@ -819,9 +755,7 @@
         {
           "kind": "model_fault",
           "description": "Forged installation/management authority is represented as a bounded abstract fault.",
-          "paths": [
-            "formal/confinement/traces.json"
-          ]
+          "paths": ["formal/confinement/traces.json"]
         }
       ],
       "open_obligations": [
@@ -840,30 +774,22 @@
       "disposition": "reviewed-scoped",
       "preconditions": "A resource read overlaps or follows replacement of its installation.",
       "enforcement": "Read generation and resource bytes in one transaction and reject a different expected generation.",
-      "source_paths": [
-        "src/runtime/storage.ts"
-      ],
+      "source_paths": ["src/runtime/storage.ts"],
       "evidence": [
         {
           "kind": "confined_test",
           "description": "Chromium and Firefox exercised twelve actual IndexedDB overlap pairs per engine.",
-          "paths": [
-            "formal/evidence/generation-overlaps.json"
-          ]
+          "paths": ["formal/evidence/generation-overlaps.json"]
         },
         {
           "kind": "trace_comparison",
           "description": "Twenty-four observed pairs admit a bounded modeled completion; altered outcomes are refused.",
-          "paths": [
-            "formal/confinement/generation-implementation-traces.json"
-          ]
+          "paths": ["formal/confinement/generation-implementation-traces.json"]
         },
         {
           "kind": "model_fault",
           "description": "Split read, split write and omitted generation check yield model counterexamples.",
-          "paths": [
-            "formal/confinement/generation-read-traces.json"
-          ]
+          "paths": ["formal/confinement/generation-read-traces.json"]
         }
       ],
       "open_obligations": [
@@ -882,9 +808,7 @@
       "disposition": "unverified",
       "preconditions": "A browser feature, nested object, browser agent or implementation behavior has not been reviewed.",
       "enforcement": "None established; preserve as an explicit gap.",
-      "source_paths": [
-        "src/runtime/enforcement/effects.ts"
-      ],
+      "source_paths": ["src/runtime/enforcement/effects.ts"],
       "evidence": [
         {
           "kind": "discovery",
@@ -897,9 +821,7 @@
         {
           "kind": "discovery",
           "description": "Native Window/Navigator/Document and dedicated-worker snapshot covers property names, not all reachable browser objects.",
-          "paths": [
-            "formal/browser-features.json"
-          ]
+          "paths": ["formal/browser-features.json"]
         },
         {
           "kind": "discovery",
@@ -1010,10 +932,7 @@
         {
           "kind": "confined_test",
           "description": "Context and connection fixtures test selected startup and native port behavior.",
-          "paths": [
-            "test/shared-worker-contexts.ts",
-            "test/shared-connections.ts"
-          ]
+          "paths": ["test/shared-worker-contexts.ts", "test/shared-connections.ts"]
         }
       ],
       "open_obligations": [
@@ -1104,9 +1023,7 @@
         {
           "kind": "discovery",
           "description": "The bounded Web IDL review includes selected identity and network interfaces, not a complete device or OS inventory.",
-          "paths": [
-            "formal/evidence/idl-surface-report.json"
-          ]
+          "paths": ["formal/evidence/idl-surface-report.json"]
         }
       ],
       "open_obligations": [
@@ -1157,9 +1074,7 @@
       "disposition": "reviewed-scoped",
       "preconditions": "An authenticated installer submits a bundle with supplied paths, URLs, bytes, digests and entry metadata.",
       "enforcement": "Validate selected path, URL, digest and entry conditions before committing installation data.",
-      "source_paths": [
-        "src/runtime/admission.ts"
-      ],
+      "source_paths": ["src/runtime/admission.ts"],
       "evidence": [
         {
           "kind": "trace_comparison",
@@ -1172,9 +1087,7 @@
         {
           "kind": "fault_control",
           "description": "Isolated test-only mutations of digest, path and entry checks admit their relevant invalid fixtures; duplicate URL alone remains rejected by another check.",
-          "paths": [
-            "formal/admission/implementation-results.json"
-          ]
+          "paths": ["formal/admission/implementation-results.json"]
         }
       ],
       "open_obligations": [
@@ -1233,16 +1146,12 @@
       "title": "EventSource and sendBeacon",
       "preconditions": "Application code accesses these APIs or recovers their native implementations.",
       "enforcement": "Deny the EventSource constructor and navigator.sendBeacon in prepared contexts.",
-      "source_paths": [
-        "src/runtime/enforcement/effects.ts"
-      ],
+      "source_paths": ["src/runtime/enforcement/effects.ts"],
       "evidence": [
         {
           "kind": "discovery",
           "description": "The browser-surface inventory identifies the deny paths and explicitly notes missing API-specific active controls.",
-          "paths": [
-            "formal/browser-surface-inventory.md"
-          ]
+          "paths": ["formal/browser-surface-inventory.md"]
         },
         {
           "kind": "native_control",
@@ -1279,16 +1188,12 @@
       "title": "Direct TCP/UDP and WebSocketStream",
       "preconditions": "A supported browser exposes a direct socket or WebSocketStream API to application code.",
       "enforcement": "Deny the named constructors in prepared contexts.",
-      "source_paths": [
-        "src/runtime/enforcement/effects.ts"
-      ],
+      "source_paths": ["src/runtime/enforcement/effects.ts"],
       "evidence": [
         {
           "kind": "discovery",
           "description": "The browser-surface inventory lists the named denial and distinguishes socket-specific controls from the separate WebTransport and WebSocket tests.",
-          "paths": [
-            "formal/browser-surface-inventory.md"
-          ]
+          "paths": ["formal/browser-surface-inventory.md"]
         }
       ],
       "open_obligations": [
@@ -1318,10 +1223,7 @@
         {
           "kind": "discovery",
           "description": "The installation fixture contains checks for virtual registration, update and preload methods; the inventory identifies browser updater behavior as a separate platform obligation.",
-          "paths": [
-            "test/website-installation.ts",
-            "formal/browser-surface-inventory.md"
-          ]
+          "paths": ["test/website-installation.ts", "formal/browser-surface-inventory.md"]
         },
         {
           "kind": "native_control",
@@ -1368,18 +1270,12 @@
       "title": "WebAssembly and imported capabilities",
       "preconditions": "An application executes native WebAssembly and supplies or obtains JavaScript imports with browser authority.",
       "enforcement": "Application Wasm executes in the prepared context; accessible imported browser effects must obey the same boundary as other application code.",
-      "source_paths": [
-        "src/runtime/modules.ts",
-        "src/runtime/contexts/worker-realm.ts"
-      ],
+      "source_paths": ["src/runtime/modules.ts", "src/runtime/contexts/worker-realm.ts"],
       "evidence": [
         {
           "kind": "discovery",
           "description": "The Wasm fixture exercises a module worker, Wasm computation and a separate JavaScript fetch attempt with receiver checks; the fixture source is not a saved current execution receipt.",
-          "paths": [
-            "test/wasm.ts",
-            "formal/browser-surface-inventory.md"
-          ]
+          "paths": ["test/wasm.ts", "formal/browser-surface-inventory.md"]
         },
         {
           "kind": "native_control",
@@ -1418,9 +1314,7 @@
       "disposition": "reviewed-scoped",
       "preconditions": "A document intent is consumed and authority changes before the body is delivered.",
       "enforcement": "Revalidate the context identity after intent consumption and refuse content if it no longer matches.",
-      "source_paths": [
-        "src/runtime/contexts/document-controller.ts"
-      ],
+      "source_paths": ["src/runtime/contexts/document-controller.ts"],
       "evidence": [
         {
           "kind": "confined_test",
@@ -1457,10 +1351,7 @@
       "disposition": "reviewed-scoped",
       "preconditions": "An installation supplies resource paths resolved against its application address.",
       "enforcement": "Resolve each resource as relative to the application and reject paths escaping the application directory or colliding after URL normalization.",
-      "source_paths": [
-        "src/runtime/admission.ts",
-        "src/shared/runtime-url.ts"
-      ],
+      "source_paths": ["src/runtime/admission.ts", "src/shared/runtime-url.ts"],
       "evidence": [
         {
           "kind": "historical_control",
@@ -1474,10 +1365,7 @@
         {
           "kind": "confined_test",
           "description": "The runtime admission suite checks normal paths, scheme-like names and entries, normalization escapes and collisions in both browsers. The installer fixture checks colon-named and nested resource loading.",
-          "paths": [
-            "test/runtime-admission.test.ts",
-            "test/resource-paths.ts"
-          ]
+          "paths": ["test/runtime-admission.test.ts", "test/resource-paths.ts"]
         },
         {
           "kind": "formal_theorem",
@@ -1552,10 +1440,7 @@
         {
           "kind": "discovery",
           "description": "The standards review identifies static network routes and native worker client navigation as conditional effects. It does not establish application access to those native objects.",
-          "paths": [
-            "formal/route-review/README.md",
-            "formal/route-review/triage.json"
-          ]
+          "paths": ["formal/route-review/README.md", "formal/route-review/triage.json"]
         },
         {
           "kind": "native_control",
@@ -1596,9 +1481,7 @@
         {
           "kind": "discovery",
           "description": "A native Chromium openWindow calibration following a real click was rejected with InvalidAccessError; no native positive or paired confinement result is claimed.",
-          "paths": [
-            "formal/publisher-open-window-limitation.md"
-          ]
+          "paths": ["formal/publisher-open-window-limitation.md"]
         }
       ],
       "open_obligations": [
@@ -1696,9 +1579,7 @@
         {
           "kind": "discovery",
           "description": "The complete eight-app corpus passed native and confined tasks in Chromium and Firefox after moving native cancellation capture before intrinsic/tool preparation. Source and artifact hashes identify the tested uncommitted inputs; this is compatibility evidence, separate from receiver tests and proofs.",
-          "paths": [
-            "formal/implementation-navigation/compatibility-native-capture.json"
-          ]
+          "paths": ["formal/implementation-navigation/compatibility-native-capture.json"]
         },
         {
           "kind": "discovery",
@@ -1727,9 +1608,7 @@
         {
           "kind": "discovery",
           "description": "All eight applications pass their selected native and confined tasks in Chromium and Firefox after introducing the early kernel and deferred root/child module initialization. Build hashes remain stable across the run; compatibility evidence does not prove confinement.",
-          "paths": [
-            "formal/implementation-navigation/compatibility-early-kernel.json"
-          ]
+          "paths": ["formal/implementation-navigation/compatibility-early-kernel.json"]
         },
         {
           "kind": "discovery",
@@ -1792,6 +1671,15 @@
             "results/network.json",
             "results/network-firefox.json",
             "results/contexts/prototype-confinement.json"
+          ]
+        },
+        {
+          "kind": "discovery",
+          "description": "A backend comparison proves eight abstract publication-model theorems without axioms and independently verifies generated JavaScript with the production heap contracts. Incorrect model and emitter controls are rejected. Direct verification is selected for this component; no verified JavaScript compiler or browser refinement follows.",
+          "paths": [
+            "formal/runtime-verification/PublicationModel.lean",
+            "formal/runtime-verification/generation-comparison.ts",
+            "formal/runtime-verification/generation-comparison.json"
           ]
         }
       ],

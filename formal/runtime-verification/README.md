@@ -87,8 +87,9 @@ arguments even where the abstract publication contract is shared.
   factory and installed-document integration tests pass in both browsers. The
   complete publication and lifecycle argument remains open.
 - Stage 4: deductive-mode calibration and verification of the production document
-  begin/cancel state functions pass. The generated-specification comparison and
-  production-method selection remain pending.
+  begin/cancel state functions pass. The generated-specification comparison also
+  passes; direct JavaScript verification is selected for this component. Applying
+  the method to complete protocols and their callers remains open.
 - Stages 5–8: pending. Earlier component evidence remains available, with its
   original assumptions and source hashes.
 
@@ -166,3 +167,26 @@ in Chromium and Firefox after the state change. Source and artifact hashes bind
 the run to its uncommitted inputs, and build artifacts stayed stable throughout.
 The network receiver groups and prototype-confinement regression fixtures also
 pass. Those tests do not discharge the remaining ownership or publication proof.
+
+## Verification-method comparison
+
+After the document-state check, run
+`node formal/runtime-verification/generation-comparison.ts` with the pinned Lean 4.35.0
+release and Docker available. `PublicationModel.lean` defines begin and cancel as
+instruction sequences and emits JavaScript implementations. Eight axiom-free
+theorems establish their state updates, returned generation, and generation
+advancement over arbitrary finite begin/cancel sequences. Natural numbers name
+generations in the model; the emitted JavaScript allocates object identities.
+
+The generated functions pass the same heap contracts as the production functions.
+A wrong state update fails the Lean proof. A wrong emitted assignment fails the
+JavaScript postcondition even when the abstract model remains correct. The receipt
+records both controls, input sizes, tool versions and hashes. The emitter is not a
+verified JavaScript compiler; independent JavaScript verification checks its
+output for these contracts.
+
+Direct verification remains the production method for this component. Generation
+retains the JavaScript verifier and adds the model, instruction semantics and
+emitter. It removes no trusted boundary in this experiment. The generated
+candidate stays a comparison artifact rather than a second runtime path. Caller
+ownership, native context behavior and browser coverage remain separate work.
