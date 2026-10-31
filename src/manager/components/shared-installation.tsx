@@ -83,26 +83,26 @@ export function SharedInstallation({ state, dismiss, library }: Props) {
   return (
     <section
       aria-label="Opening shared app"
-      className="flex items-start gap-3 py-10 sm:py-16"
+      className="flex flex-1 flex-col items-center justify-center gap-8 pb-20 text-center sm:gap-10 sm:pb-28"
     >
       {!failure && (
         <span
           aria-hidden="true"
-          className="mt-1 size-4 shrink-0 animate-spin rounded-full border-2 border-slate-700 border-t-slate-300 motion-reduce:animate-none"
+          className="size-16 shrink-0 animate-spin rounded-full border-4 border-slate-700 border-t-slate-200 motion-reduce:animate-none sm:size-20"
         />
       )}
-      <div className="min-w-0">
+      <div className="w-full min-w-0 max-w-3xl">
         {failure ? (
           <>
             <p
               role="alert"
-              className="text-sm leading-relaxed wrap-anywhere text-red-300"
+              className="text-xl leading-relaxed wrap-anywhere text-red-300 sm:text-2xl"
             >
               {failure}
             </p>
             <a
               href="./"
-              className="mt-4 inline-block text-xs text-slate-400"
+              className="mt-6 inline-block text-base text-slate-400"
               onClick={(event) => {
                 event.preventDefault();
                 dismiss();
@@ -113,11 +113,20 @@ export function SharedInstallation({ state, dismiss, library }: Props) {
           </>
         ) : (
           <div role="status" aria-live="polite">
-            <p className="text-sm leading-relaxed wrap-anywhere text-slate-200">
+            <p className="text-3xl leading-tight font-medium tracking-tight text-slate-100 sm:text-4xl">
               {installing ? 'Installing' : 'Opening'}
-              {request ? ' ' + request.url : ' app…'}
+              {request ? (
+                <>
+                  {' '}
+                  <span className="mt-4 block text-lg leading-relaxed font-normal tracking-normal wrap-anywhere text-slate-300 sm:text-2xl">
+                    {request.url}
+                  </span>
+                </>
+              ) : (
+                ' app…'
+              )}
             </p>
-            <p className="mt-2 text-xs leading-relaxed wrap-anywhere text-slate-400">
+            <p className="mt-4 text-base leading-relaxed wrap-anywhere text-slate-400 sm:text-lg">
               {progress}
             </p>
           </div>

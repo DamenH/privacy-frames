@@ -52,10 +52,33 @@ export function App() {
   }
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-7 sm:px-6 sm:py-12">
-      <header className="mb-8 flex items-center justify-between gap-4 sm:mb-10">
-        <h1 className="text-xl font-semibold tracking-tight">Privacy Frames</h1>
-        <nav className="header-links flex gap-4 text-xs text-slate-400">
+    <main
+      className={
+        share.state.kind !== 'none'
+          ? 'flex min-h-svh flex-col px-6 py-7 sm:px-10 sm:py-10'
+          : 'mx-auto max-w-3xl px-4 py-7 sm:px-6 sm:py-12'
+      }
+    >
+      <header
+        className={
+          'flex items-center justify-between gap-4 ' +
+          (share.state.kind !== 'none' ? '' : 'mb-8 sm:mb-10')
+        }
+      >
+        <h1
+          className={
+            'font-semibold tracking-tight ' +
+            (share.state.kind !== 'none' ? 'text-2xl sm:text-3xl' : 'text-xl')
+          }
+        >
+          Privacy Frames
+        </h1>
+        <nav
+          className={
+            'header-links flex gap-4 text-slate-400 ' +
+            (share.state.kind !== 'none' ? 'text-base' : 'text-xs')
+          }
+        >
           {share.state.kind === 'none' && <a href="./report.html">Report</a>}
           <a
             href="https://github.com/privacy-frames/host"
