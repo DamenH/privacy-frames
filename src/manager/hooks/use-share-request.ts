@@ -31,10 +31,15 @@ export function useShareRequest() {
       }
     }
     void read();
+    const restore = (event: PageTransitionEvent) => {
+      if (event.persisted) void read();
+    };
     window.addEventListener('hashchange', read);
+    window.addEventListener('pageshow', restore);
     return () => {
       revision++;
       window.removeEventListener('hashchange', read);
+      window.removeEventListener('pageshow', restore);
     };
   }, []);
 

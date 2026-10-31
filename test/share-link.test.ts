@@ -114,7 +114,7 @@ test('unshareably large recipes produce an actionable error', async () => {
   );
 });
 
-test('library shares include resolved resources and only exact recipes open existing apps', async () => {
+test('library shares include resolved resources and source URLs select existing local copies', async () => {
   const app: AppSummary = {
     id: 'example-' + 'a'.repeat(64),
     manifest: { id: 'example', name: 'Example', entry: 'index.html' },
@@ -139,7 +139,7 @@ test('library shares include resolved resources and only exact recipes open exis
     ),
     app,
   );
-  assert.equal(matchingInstallation({ url: source }, [app]), undefined);
+  assert.equal(matchingInstallation({ url: source }, [app]), app);
   assert.equal(
     matchingInstallation({ ...recipe, url: source + '&other=1' }, [app]),
     undefined,
@@ -149,7 +149,7 @@ test('library shares include resolved resources and only exact recipes open exis
       { url: source, resourceList: { kind: 'url', url: 'https://assets.test/list' } },
       [app],
     ),
-    undefined,
+    app,
   );
   const withoutList = { ...app, additionalResources: [] };
   assert.deepEqual(applicationRecipe(withoutList), { url: source });

@@ -56,7 +56,7 @@ export function App() {
       <header className="mb-8 flex items-center justify-between gap-4 sm:mb-10">
         <h1 className="text-xl font-semibold tracking-tight">Privacy Frames</h1>
         <nav className="header-links flex gap-4 text-xs text-slate-400">
-          <a href="./report.html">Report</a>
+          {share.state.kind === 'none' && <a href="./report.html">Report</a>}
           <a
             href="https://github.com/privacy-frames/host"
             target="_blank"

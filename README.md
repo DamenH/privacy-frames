@@ -67,11 +67,17 @@ list selected by URL stays a URL in a form share. Each installed application als
 has **Copy link**; this embeds the resolved additional resource URLs recorded at
 installation, without requiring the original list file or list server.
 
-The recipient sees the application URL and chooses **Install & open**. Privacy
-Frames downloads the resources through its separate installer, admits the local
-copy and opens it in the same tab. A matching installation offers **Open** and
-**Reinstall & open**. Links referencing a remote list use the installation flow,
-since its current contents are unknown until the installer fetches it.
+Opening a share link automatically opens an installed copy with the same source
+URL. If it is not installed, Privacy Frames downloads the resources through its
+separate installer, admits the local copy and opens it in the same tab. A spinner,
+the application URL and progress text appear while this happens. Errors show an
+explanation and a link back to the library.
+
+The resource list is used for the first installation. An existing copy opens
+without fetching the list or publisher resources, even if the link specifies a
+different list. Following a share link does not replace an existing installation
+or its private storage. The share screen is replaced in browser history so Back
+does not immediately reopen the application.
 
 Share links contain only fragment parameters, for example:
 
@@ -90,7 +96,7 @@ lists are refused before installation.
 The fragment is not sent in the host's HTTP request. Installing still downloads
 from publishers, and publisher content can change after a link is created.
 Links carry an installation recipe, not application bytes or private application
-storage. Opening a link does not start publisher downloads automatically.
+storage. Opening a link starts publisher downloads only when the app is not installed.
 
 Run `npm run build` followed by `npm run test:share` for codec tests and the local
 Chromium/Firefox recipient flows. `results/share-links.json` records browser

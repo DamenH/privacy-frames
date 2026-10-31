@@ -19,30 +19,9 @@ const receipt = {
   browsers: [] as object[],
 };
 
-async function ready(page: Page) {
-  try {
-    await page.getByRole('status').filter({ hasText: 'Ready to install.' }).waitFor();
-  } catch (error) {
-    console.error(
-      'Manager not ready',
-      page.url(),
-      await page.locator('body').innerText(),
-    );
-    console.error(
-      'Worker state',
-      await page.evaluate(async () => ({
-        controller: navigator.serviceWorker.controller?.state,
-        registrations: (await navigator.serviceWorker.getRegistrations()).map((r) => ({
-          scope: r.scope,
-          active: r.active?.state,
-          waiting: r.waiting?.state,
-          installing: r.installing?.state,
-        })),
-        caches: await caches.keys(),
-      })),
-    );
-    throw error;
-  }
+async function library(page: Page) {
+  await page.goto(managerURL);
+  await page.getByText('Ready to install.', { exact: true }).waitFor();
 }
 
 async function fallbackClipboard(page: Page) {
@@ -86,10 +65,8 @@ try {
           .getByRole('alert')
           .filter({ hasText: 'Could not read this share link.' })
           .waitFor();
-        assert.equal(
-          await page.getByRole('button', { name: 'Install & open', exact: true }).count(),
-          0,
-        );
+        assert.equal(await page.getByRole('button').count(), 0);
+        await page.getByRole('link', { name: 'Back to library', exact: true }).waitFor();
       }
       assert.deepEqual(
         server.traffic
@@ -98,37 +75,50 @@ try {
         [],
       );
       checks.push(
-        'Malformed, authority-spoofing and decompression-bomb links reject without publisher or receiver requests',
+        'Malformed, authority-spoofing and decompression-bomb links reject before publisher or receiver requests',
       );
 
+      let release = () => {};
+      const downloading = new Promise<void>((resolve) => {
+        release = resolve;
+      });
+      const holdDownload = async (route: import('playwright').Route) => {
+        await downloading;
+        await route.continue();
+      };
+      await page.route('http://127.0.0.1:4218/**', holdDownload);
       const shareURL = await createShareURL(recipe, managerURL);
       await page.goto(shareURL);
-      await ready(page);
-      assert.equal(await page.locator('#install').count(), 0);
-      assert.deepEqual(
-        server.traffic
-          .slice(start)
-          .filter((request) => ![4210, 4211, 4219].includes(request.port)),
-        [],
+      const status = page.getByRole('status');
+      await status.filter({ hasText: 'Installing ' + source }).waitFor();
+      assert.equal(await page.getByRole('button').count(), 0);
+      assert.equal(await page.getByRole('link').count(), 1);
+      assert.equal(await page.locator('nav a').textContent(), 'GitHub');
+      assert.equal(await page.locator('details, .app-card, #install').count(), 0);
+      assert.equal(
+        await page.locator('[aria-label="Opening shared app"] .animate-spin').count(),
+        1,
       );
-      await page
-        .getByText('Includes 1 additional resource URL', { exact: true })
-        .waitFor();
+      assert(
+        !/Ready to install|Includes a resource list|Install & open/.test(
+          await page.locator('body').innerText(),
+        ),
+      );
       await mkdir('results/screenshots/share-links', { recursive: true });
       await page.screenshot({
-        path: `results/screenshots/share-links/${name}-landing.png`,
+        path: `results/screenshots/share-links/${name}-automatic.png`,
       });
       await page.setViewportSize({ width: 390, height: 844 });
       assert(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
       );
       await page.screenshot({
-        path: `results/screenshots/share-links/${name}-narrow.png`,
+        path: `results/screenshots/share-links/${name}-automatic-narrow.png`,
       });
       await page.setViewportSize({ width: 1280, height: 720 });
-      await page.getByRole('button', { name: 'Install & open', exact: true }).click();
-      await page.waitForURL('http://127.0.0.1:4211/runtime/**', { waitUntil: 'commit' });
+      release();
       await page.getByText('Data document', { exact: true }).waitFor();
+      await page.unroute('http://127.0.0.1:4218/**', holdDownload);
       assert.equal(context.pages().length, 1);
       assert.equal(new URL(page.url()).search, '?language=no&mode=edit');
       assert.equal(
@@ -139,8 +129,17 @@ try {
         await page.evaluate(async () => (await fetch('sw.js')).text()),
         /Unreferenced publisher code must not execute/,
       );
+      assert.equal(
+        server.traffic
+          .slice(start)
+          .filter(
+            (request) =>
+              request.port === 4218 && request.path === '/review/?language=no&mode=edit',
+          ).length,
+        1,
+      );
       checks.push(
-        'One click installs the explicit resource list and opens a working local document in the same tab, preserving launch queries',
+        'A minimal spinner and progress text automatically install once and open in the same tab, preserving launch queries',
       );
 
       const blockedStart = server.traffic.length;
@@ -176,41 +175,47 @@ try {
       );
       await control.close();
       checks.push(
-        'Installed application cannot send a receiver request; server traffic and a working unrestricted control confirm confinement',
+        'Server traffic and a working unrestricted control confirm that the automatically opened application remains confined',
       );
-
-      await page.goto(shareURL);
-      await ready(page);
-      const beforeOpen = server.traffic.length;
-      await page.getByRole('link', { name: 'Open', exact: true }).click();
-      await page.getByText('Data document', { exact: true }).waitFor();
-      assert.deepEqual(
-        server.traffic.slice(beforeOpen).filter((request) => request.port === 4218),
-        [],
-      );
-      checks.push('An existing installation opens without publisher downloads');
 
       await page.evaluate(() =>
         localStorage.setItem('share-private-marker', 'kept locally'),
       );
-      await page.goto(shareURL);
-      await ready(page);
-      const reinstallStart = server.traffic.length;
-      await page.getByRole('button', { name: 'Reinstall & open', exact: true }).click();
-      await page.getByText('Data document', { exact: true }).waitFor();
-      assert(
-        server.traffic.slice(reinstallStart).some((request) => request.port === 4218),
-      );
-      assert.equal(
-        await page.evaluate(() => localStorage.getItem('share-private-marker')),
-        'kept locally',
-      );
+      for (const input of [
+        recipe,
+        {
+          url: source,
+          resourceList: {
+            kind: 'url',
+            url: 'http://127.0.0.1:4218/unavailable-list.uris',
+          },
+        } as const,
+        {
+          url: source,
+          resourceList: {
+            kind: 'text',
+            text: 'http://127.0.0.1:4218/other-list-resource.js',
+          },
+        } as const,
+        { url: source },
+      ]) {
+        const beforeOpen = server.traffic.length;
+        await page.goto(await createShareURL(input, managerURL));
+        await page.getByText('Data document', { exact: true }).waitFor();
+        assert.deepEqual(
+          server.traffic.slice(beforeOpen).filter((request) => request.port === 4218),
+          [],
+        );
+        assert.equal(
+          await page.evaluate(() => localStorage.getItem('share-private-marker')),
+          'kept locally',
+        );
+      }
       checks.push(
-        'Explicit reinstall downloads again, opens the app and preserves its private storage',
+        'An existing source opens immediately without fetching even a missing remote list or a changed embedded list, preserving private storage',
       );
 
-      await page.goto(managerURL);
-      await ready(page);
+      await library(page);
       await fallbackClipboard(page);
       const card = page.locator('.app-card');
       await card.getByRole('button', { name: 'Copy link', exact: true }).click();
@@ -218,14 +223,6 @@ try {
         .getByRole('textbox', { name: 'Share link', exact: true })
         .inputValue();
       assert.deepEqual(await readShareHash(new URL(copied).hash), recipe);
-      await page.setViewportSize({ width: 390, height: 844 });
-      assert(
-        await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
-      );
-      await page.screenshot({
-        path: `results/screenshots/share-links/${name}-library-narrow.png`,
-      });
-      await page.setViewportSize({ width: 1280, height: 720 });
       await page.evaluate(() =>
         Object.defineProperty(navigator, 'clipboard', {
           configurable: true,
@@ -238,18 +235,15 @@ try {
       );
       await card.getByRole('button', { name: 'Copy link', exact: true }).click();
       await card.getByRole('status').filter({ hasText: 'Link copied.' }).waitFor();
-      const clipboard = await page.evaluate(() => Reflect.get(window, 'copiedLink'));
-      assert.equal(clipboard, copied);
+      assert.equal(await page.evaluate(() => Reflect.get(window, 'copiedLink')), copied);
       checks.push(
-        'Library link copying includes the installed resolved resource list, with successful clipboard feedback and a selectable fallback',
+        'Library sharing preserves resolved resource lists with clipboard feedback and a selectable fallback',
       );
 
       const recipient = await browser.newContext();
       try {
         const fresh = await recipient.newPage();
         await fresh.goto(copied);
-        await ready(fresh);
-        await fresh.getByRole('button', { name: 'Install & open', exact: true }).click();
         await fresh.getByText('Data document', { exact: true }).waitFor();
         assert.equal(
           await fresh.evaluate(() => localStorage.getItem('share-private-marker')),
@@ -262,18 +256,21 @@ try {
       } finally {
         await recipient.close();
       }
-      checks.push('A library link installs and opens in a fresh browser storage context');
+      checks.push(
+        'A library link automatically installs and opens in fresh browser storage without transferring private data',
+      );
 
-      // Changing a hash in an already-open manager must parse the new recipe.
       await page.evaluate((hash) => {
         location.hash = hash;
       }, new URL(copied).hash);
-      await page.getByRole('link', { name: 'Open', exact: true }).waitFor();
-      await page.getByRole('button', { name: 'Back to library', exact: true }).click();
+      await page.getByText('Data document', { exact: true }).waitFor();
+      await page.goBack({ waitUntil: 'commit' });
       await page.locator('#app-url').waitFor();
       assert.equal(new URL(page.url()).hash, '');
+      checks.push(
+        'Hash navigation opens automatically and Back returns to the library without a redirect loop',
+      );
 
-      // Form sharing includes an uploaded list rather than the catalog default.
       await page.locator('#app-url').fill(source);
       await page.locator('#resource-list-options summary').click();
       await page.getByLabel('Resource list', { exact: true }).selectOption('text');
@@ -290,14 +287,16 @@ try {
       );
       await fallbackClipboard(page);
       await page.getByRole('button', { name: 'Copy link', exact: true }).first().click();
-      const uploadedLink = await page
-        .getByRole('textbox', { name: 'Share link', exact: true })
-        .inputValue();
-      assert.deepEqual(await readShareHash(new URL(uploadedLink).hash), recipe);
-      checks.push(
-        'Hash navigation and return to library work; a form share embeds uploaded list contents',
+      assert.deepEqual(
+        await readShareHash(
+          new URL(
+            await page
+              .getByRole('textbox', { name: 'Share link', exact: true })
+              .inputValue(),
+          ).hash,
+        ),
+        recipe,
       );
-
       const longList = Array.from(
         { length: 300 },
         (_, index) => `https://assets.test/application/resources/module-${index}.js`,
@@ -312,31 +311,23 @@ try {
         url: source,
         resourceList: { kind: 'text', text: longList },
       });
+      const beforeCompressed = server.traffic.length;
       await page.goto(compressedLink);
-      await ready(page);
-      await page
-        .getByText('Includes 300 additional resource URLs', { exact: true })
-        .waitFor();
-      checks.push(
-        'Browser-generated compressed lists decode into the complete recipient recipe',
-      );
-
-      await page.goto(
-        await createShareURL({ url: 'http://127.0.0.1:4212/' }, managerURL),
-      );
-      await ready(page);
-      assert.equal(await page.locator('details').count(), 0);
-      checks.push('A URL-only shared recipe does not inherit a catalog resource list');
-
-      // A URL without a list remains a URL-only recipe.
-      const noListLink = await createShareURL({ url: source + '&list=none' }, managerURL);
-      await page.goto(noListLink);
-      await ready(page);
-      await page.getByRole('button', { name: 'Install & open', exact: true }).click();
       await page.getByText('Data document', { exact: true }).waitFor();
-      checks.push('An application URL without a resource list installs and opens');
+      assert.deepEqual(
+        server.traffic.slice(beforeCompressed).filter((request) => request.port === 4218),
+        [],
+      );
+      checks.push(
+        'Form sharing embeds uploaded lists; compressed browser-generated links decode and automatically open the installed copy',
+      );
 
-      // URL lists are fetched only after the recipient chooses to install.
+      await page.goto(await createShareURL({ url: source + '&list=none' }, managerURL));
+      await page.getByText('Data document', { exact: true }).waitFor();
+      checks.push(
+        'A new application URL without a resource list automatically installs and opens',
+      );
+
       const urlListLink = await createShareURL(
         {
           url: 'http://127.0.0.1:4212/',
@@ -346,13 +337,6 @@ try {
       );
       const listStart = server.traffic.length;
       await page.goto(urlListLink);
-      await ready(page);
-      assert.deepEqual(
-        server.traffic.slice(listStart).filter((request) => request.port === 4212),
-        [],
-      );
-      await page.getByRole('button', { name: 'Install & open', exact: true }).click();
-      await page.waitForURL('http://127.0.0.1:4211/runtime/**', { waitUntil: 'commit' });
       await page.locator('#note').waitFor();
       assert(
         server.traffic
@@ -362,13 +346,12 @@ try {
           ),
       );
       checks.push(
-        'A remote resource list downloads through the installer after the click and opens the Notes application',
+        'A remote resource list is automatically installed and the Notes application opens',
       );
 
-      // Download failures stay on the landing page and expose a retry action.
       const missingLink = await createShareURL(
         {
-          url: source,
+          url: source + '&missing=1',
           resourceList: {
             kind: 'text',
             text: 'http://127.0.0.1:4218/missing-share-resource.js',
@@ -376,21 +359,53 @@ try {
         },
         managerURL,
       );
+      const failureStart = server.traffic.length;
       await page.goto(missingLink);
-      await ready(page);
-      await page.getByRole('button', { name: 'Install & open', exact: true }).click();
       await page
-        .getByRole('status')
+        .getByRole('alert')
         .filter({ hasText: 'Installation refused:' })
         .waitFor();
       assert.equal(page.url(), missingLink);
-      assert(
-        await page
-          .getByRole('button', { name: 'Install & open', exact: true })
-          .isEnabled(),
+      assert.equal(await page.getByRole('button').count(), 0);
+      assert.equal(await page.locator('.animate-spin').count(), 0);
+      await page.evaluate(() => new Promise(requestAnimationFrame));
+      assert.equal(
+        server.traffic
+          .slice(failureStart)
+          .filter((request) => request.path === '/missing-share-resource.js').length,
+        1,
       );
+      await page.getByRole('link', { name: 'Back to library', exact: true }).click();
+      await page.locator('#app-url').waitFor();
+      assert.equal(new URL(page.url()).hash, '');
       checks.push(
-        'A missing explicit resource refuses installation and leaves the recipe available for retry',
+        'An unavailable required resource stops automatic installation once and shows an error with only a library link',
+      );
+      let resume = () => {};
+      const pending = new Promise<void>((resolve) => {
+        resume = resolve;
+      });
+      const holdChangedLink = async (route: import('playwright').Route) => {
+        await pending;
+        await route.continue();
+      };
+      await page.route('http://127.0.0.1:4218/**', holdChangedLink);
+      await page.evaluate(
+        (hash) => {
+          location.hash = hash;
+        },
+        new URL(await createShareURL({ url: source + '&changed=1' }, managerURL)).hash,
+      );
+      await page.getByRole('status').filter({ hasText: 'Installing ' }).waitFor();
+      await page.evaluate((hash) => {
+        location.hash = hash;
+      }, new URL(shareURL).hash);
+      resume();
+      await page.getByText('Data document', { exact: true }).waitFor();
+      assert.equal(new URL(page.url()).search, '?language=no&mode=edit');
+      await page.unroute('http://127.0.0.1:4218/**', holdChangedLink);
+      checks.push(
+        'Changing links during installation cannot redirect to the previous link’s app',
       );
       assert.deepEqual(errors, []);
       receipt.browsers.push({ name, version: browser.version(), checks });

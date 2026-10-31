@@ -136,16 +136,7 @@ export function matchingInstallation(
   request: InstallationRequest,
   apps: AppSummary[],
 ): AppSummary | undefined {
-  // A remote list must be fetched by the installer; its current contents are unknown.
-  if (request.resourceList?.kind === 'url') return;
-  const expected = request.resourceList
-    ? parseResourceList(request.resourceList.text)
-    : [];
-  const sorted = [...expected].sort();
-  return apps.find(
-    (app) =>
-      app.source === request.url &&
-      app.additionalResources.length === sorted.length &&
-      [...app.additionalResources].sort().every((url, index) => url === sorted[index]),
-  );
+  // A share link launches an existing local copy. Its recipe is only needed for
+  // the first installation; opening must not download or replace publisher content.
+  return apps.find((app) => app.source === request.url);
 }
