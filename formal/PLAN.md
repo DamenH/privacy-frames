@@ -1,5 +1,9 @@
 # Confinement verification work
 
+The current eight-stage implementation plan is in
+[runtime-verification/README.md](runtime-verification/README.md). The work below
+records the earlier modeling and evidence programme on which it builds.
+
 The goal is an explicit security argument for the deployed host and opportunities
 to simplify restrictions that do not support the agreed network property.
 

@@ -1,12 +1,13 @@
 name: Check authority-graph proofs
 on:
   push:
-    branches: [main, confinement-model]
+    branches: [main, confinement-model, runtime-confinement-proof]
     paths:
       [
         'formal/lean/**',
         'formal/path-lean/**',
         'formal/implementation-navigation/**',
+        'formal/runtime-verification/**',
         'src/**',
         'scripts/**',
         'package-lock.json',
@@ -18,6 +19,7 @@ on:
         'formal/lean/**',
         'formal/path-lean/**',
         'formal/implementation-navigation/**',
+        'formal/runtime-verification/**',
         'src/**',
         'scripts/**',
         'package-lock.json',
@@ -41,6 +43,18 @@ jobs:
         run: npx tsc --ignoreConfig --noEmit --strict --types node --target ES2022 --module NodeNext --moduleResolution NodeNext --skipLibCheck formal/implementation-navigation/gillian-check.ts
       - name: Analyze actual navigation callback and assertion-failure controls
         run: node formal/implementation-navigation/gillian-check.ts
+      - name: Type-check deductive-mode calibration
+        run: npx tsc --ignoreConfig --noEmit --strict --noUnusedLocals --noUnusedParameters --types node --target ES2022 --module NodeNext --moduleResolution NodeNext --skipLibCheck formal/runtime-verification/method-calibration.ts
+      - name: Verify the stateful closure and reject its state-update fault
+        run: node formal/runtime-verification/method-calibration.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: runtime-deductive-calibration
+          path: |
+            formal/runtime-verification/method-calibration.json
+            .tools/gillian-comparison/*.log
+          include-hidden-files: true
       - uses: actions/upload-artifact@v4
         if: always()
         with:

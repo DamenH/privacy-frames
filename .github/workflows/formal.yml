@@ -1,7 +1,7 @@
 name: Check confinement models
 on:
   push:
-    branches: [main, confinement-model]
+    branches: [main, confinement-model, runtime-confinement-proof]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -17,6 +17,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: python3 formal/claims/check.py
+      - name: Check the runtime implementation review inventory
+        run: |
+          npx tsc --ignoreConfig --noEmit --strict --noUnusedLocals --noUnusedParameters --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --types node --lib ES2023,DOM,DOM.Iterable,WebWorker formal/runtime-verification/inventory.ts formal/runtime-verification/boundaries.ts
+          node formal/runtime-verification/inventory.ts --check
       - name: Download the pinned TLC release
         run: |
           mkdir -p .tools

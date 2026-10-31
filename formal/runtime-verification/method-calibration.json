@@ -1,0 +1,30 @@
+{
+  "scope": "Deductive-mode calibration on an upstream stateful closure and a state-update fault. This verifies tool operation on this fixture; it does not verify a runtime component or select the production method.",
+  "mode": "verify",
+  "image": "ghcr.io/gillianplatform/gillian@sha256:ce41de968aba0964774e1929416ce60b9c3b770d2e58f96e63990b629cfe2ed6",
+  "imageSourceRevision": "not-identified",
+  "upstreamRevision": "469aa5c134ba7790c40669bd4bc50483aff36d7b",
+  "upstreamPath": "Gillian-JS/Examples/JaVerT/IDGen.js",
+  "sourceURL": "https://raw.githubusercontent.com/GillianPlatform/Gillian/469aa5c134ba7790c40669bd4bc50483aff36d7b/Gillian-JS/Examples/JaVerT/IDGen.js",
+  "sourceSHA256": "32b1829ee190fbf535ab2d4748f1567e039e796fa18e9effeafc2c17651cf308",
+  "runnerSHA256": "2861f1ff498bceb6ff66a17f9572381ef972ccb5e4a0bc5f1b25e5ff76438894",
+  "results": [
+    {
+      "name": "stateful-closure",
+      "expectedSuccess": true,
+      "exitCode": 0,
+      "inputSHA256": "32b1829ee190fbf535ab2d4748f1567e039e796fa18e9effeafc2c17651cf308",
+      "outputSHA256": "cdb00ab528e05464d99feb8bb7cb1ac37838c066b3fdab3714463e34153f259e",
+      "outputSummary": "Parsing and compiling...\nSorting:\n\tmakeIdGen : 2\n\tgetId : 3\n\treset : 3Adjusted:\n\tmakeIdGen : 2\n\tgetId : 2\n\treset : 2Preprocessing...\nObtaining specs to verify...\nObtaining lemmas to verify...\nObtained 3 symbolic tests in total\nRunning symbolic tests: 0.071029\nVerifying one spec of procedure getId... s Success\nVerifying one spec of procedure reset... s Success\nVerifying one spec of procedure makeIdGen... s Success\nAll specs succeeded: 0.266909"
+    },
+    {
+      "name": "missing-state-update",
+      "expectedSuccess": false,
+      "exitCode": 1,
+      "inputSHA256": "d2b825e94997099c291c5bdcf9291ff4d124ad1833e9574af3742d3f82ed11cd",
+      "outputSHA256": "1f0cebeebcdc5aa822e0649344d625a73e4bf4eef8ec071becc1547674ea0bfe",
+      "outputSummary": "Parsing and compiling...\nSorting:\n\tmakeIdGen : 2\n\tgetId : 3\n\treset : 3Adjusted:\n\tmakeIdGen : 2\n\tgetId : 2\n\treset : 2Preprocessing...\nObtaining specs to verify...\nObtaining lemmas to verify...\nObtained 3 symbolic tests in total\nRunning symbolic tests: 0.067783\nVerifying one spec of procedure getId... f Failure\nVerifying one spec of procedure reset... s Success\nVerifying one spec of procedure makeIdGen... s Success\nThere were failures: 0.229937\nAnalysis failures!\n1. Couldn't satisfy postcondition"
+    }
+  ],
+  "completedAt": "2026-10-31T10:45:38.964Z"
+}
