@@ -21,12 +21,21 @@ jobs:
         run: |
           npx tsc --ignoreConfig --noEmit --strict --noUnusedLocals --noUnusedParameters --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --skipLibCheck --types node --lib ES2023,DOM,DOM.Iterable,WebWorker formal/runtime-verification/inventory.ts formal/runtime-verification/boundaries.ts
           node formal/runtime-verification/inventory.ts --check
+      - name: Check pinned WebSpec coverage assessment
+        run: |
+          npx tsc --ignoreConfig --noEmit --strict --noUnusedLocals --noUnusedParameters --types node --target ES2022 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --skipLibCheck formal/runtime-verification/webspec-assessment.ts
+          node formal/runtime-verification/webspec-assessment.ts
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: runtime-implementation-review
           path: .tools/runtime-verification/implementation-sites.json
           include-hidden-files: true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: webspec-coverage-assessment
+          path: formal/runtime-verification/webspec-assessment.json
       - name: Download the pinned TLC release
         run: |
           mkdir -p .tools
@@ -51,6 +60,33 @@ jobs:
             exit 1
           fi
           grep -q 'registry model mismatch' /tmp/registry-fault.log
+  maintenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium firefox
+        timeout-minutes: 10
+      - name: Type-check native maintenance comparisons
+        run: npx tsc --ignoreConfig --noEmit --strict --noUnusedLocals --noUnusedParameters --types node --target ES2022 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --lib ES2022,DOM --skipLibCheck formal/runtime-verification/maintenance-backends.ts
+      - name: Compare local bootstraps, cached resources and messages
+        run: node formal/runtime-verification/maintenance-backends.ts
+      - name: Check retained delivery and new contexts after unregistration
+        run: node formal/runtime-verification/maintenance-backends.ts
+        env:
+          PF_MAINTENANCE_UNREGISTER: '1'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-maintenance-comparisons
+          path: |
+            formal/runtime-verification/maintenance-backends.json
+            formal/runtime-verification/maintenance-unregistered.json
   fedcm:
     runs-on: ubuntu-latest
     steps:

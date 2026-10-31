@@ -88,7 +88,7 @@
     "formal/publisher-routes.md": "54b1b7cedf2260ff34e264c8827753b1caea113b533c7473926f428111ef6022",
     "formal/route-review/README.md": "def9f578cf05dbd6ded8f518833ba924d81acfce8a9d43fbd003679987cf77bd",
     "formal/route-review/triage.json": "3e5ab07e2747d1d329f13be013bc5268671c054ee8c5470e9e952b8a72a7e855",
-    "formal/runtime-verification/README.md": "9ddda122a41a68083656c9690474be0301050942f64d78e507d64ec003a163fe",
+    "formal/runtime-verification/README.md": "75cda1230f94526773e6ec4f7bfdb93898c07cfd1d1632e3822db4acdf87d05e",
     "formal/runtime-verification/document-publication-check.ts": "53860e7c9687d3c59499d9effbd30afc9b569144c174a786600af2935e65ef7f",
     "formal/runtime-verification/document-publication-compatibility.json": "1088389b2b01cb451f58858438a5b06127813c31733b91a93b35450fb67fe90c",
     "formal/runtime-verification/document-publication-result.json": "afaa391664ee5d718f562750736f45995ba6f4dde68fa392d114208d3d493d72",
@@ -182,7 +182,15 @@
     "formal/runtime-verification/generation-comparison.json": "32522347bebe1d5649d45f02148609449a37525259c93f03fd22f53c9d4a7369",
     "formal/runtime-verification/service-worker-maintenance.ts": "60461903341d3e340cb36c0cf6f1c2ee344c73ba39b4c1d56001d30c44ac81f2",
     "formal/runtime-verification/service-worker-maintenance.json": "a73f1bdcf4fad29ee7511c3cf4cd9fca530ae7a4c7842841503cf0f53c0418c5",
-    "formal/runtime-verification/service-worker-maintenance.md": "cab58c2d38283f8dda84864ab8780e81dfb861601850d91188e883fa7ce6d5b5"
+    "formal/runtime-verification/service-worker-maintenance.md": "c84ace6021a2e07ed3bdb3ad45b500e29446bf62dcbfb0260a2a1831b9808f9a",
+    "formal/runtime-verification/maintenance-backends.ts": "1814fb79794b1c7b06becb2ddd4362ddbbdf2eec0e05cb5ae19b3ba8bb3dbd3e",
+    "formal/runtime-verification/maintenance-backends.json": "c38d0ff9b008f51d278fd745eb1595b75c802a3c8acc31c82b37e49b80598b26",
+    "formal/runtime-verification/maintenance-unregistered.json": "69bfdbcceffb336f59c1dbb5478aaa2dad2716ff5c30bc211b6ded18f0b3d38c",
+    "formal/runtime-verification/maintenance-backends.md": "23ff1133b97f909459e3225a5c4d9cc6b6ad42e9f7bb65784e30c17f27cb5027",
+    "package-lock.json": "4e8c7b0964047f1c9fd3f82956b08d381817fa86fb2f7d47d4a10458dc5e62ed",
+    "formal/runtime-verification/webspec-assessment.ts": "a1b1730235d0a1730e8eb6ca646dd4573f6550c3fec6cf92c375e29bcd9a509d",
+    "formal/runtime-verification/webspec-assessment.json": "2afb6343fc9523bfcaaf2ce409ee16401dfc65ab9172e0d83549212491fd3ed8",
+    "formal/runtime-verification/webspec-assessment.md": "dec1fc859e4ab1eececb53a4d4e0250e1d641f4d155fe4bcc7380cd2d1118553"
   },
   "claims": [
     {
@@ -1265,10 +1273,31 @@
             "formal/runtime-verification/service-worker-maintenance.json",
             "formal/runtime-verification/service-worker-maintenance.md"
           ]
+        },
+        {
+          "kind": "discovery",
+          "description": "Fifty-one native backend comparisons distinguish HTTP/Blob bootstraps, local documents, cached fetches and message-only operations in Chromium and Firefox, including an explicitly forced stale check in Firefox. Blob workers avoid the initial update but not every later trigger. Unregistration loses new Blob-worker resource interception in Firefox. These fixtures reject both simple repair candidates; they do not verify a production broker or naturally aged registration. The launcher and dependency lock are included as reviewed inputs.",
+          "paths": [
+            "formal/runtime-verification/maintenance-backends.ts",
+            "formal/runtime-verification/maintenance-backends.json",
+            "formal/runtime-verification/maintenance-unregistered.json",
+            "formal/runtime-verification/maintenance-backends.md",
+            "test/browser-profile.ts",
+            "package-lock.json"
+          ]
+        },
+        {
+          "kind": "discovery",
+          "description": "A digest-pinned source audit of WebSpec identifies its service-worker state fields, thirteen reachable-event constructors and server-CSP-integrity invariant. Registration/update lifecycle semantics needed for this C4 obligation are outside that model. No Coq checker, solver query or WebSpec browser verifier was run by this audit.",
+          "paths": [
+            "formal/runtime-verification/webspec-assessment.ts",
+            "formal/runtime-verification/webspec-assessment.json",
+            "formal/runtime-verification/webspec-assessment.md"
+          ]
         }
       ],
       "open_obligations": [
-        "Repair the demonstrated worker-creation update trigger without weakening the no-application-caused-network contract. Local Blob bootstraps are a candidate, not an established complete repair.",
+        "Repair application-dependent update requests without weakening the no-application-caused-network contract. Blob-only bootstraps leave document/stale-fetch triggers; unregistration loses new-worker interception in Firefox.",
         "Cover shared workers, document creation, later resource fetches, stale registrations and browser update scheduling in the full confinement argument.",
         "Preserve the independently tested navigation-preload defense; it does not mitigate the demonstrated update request.",
         "Repeat on deployed HTTPS and establish the scope of any repair; the current counterexample is local HTTP with exact build provenance."

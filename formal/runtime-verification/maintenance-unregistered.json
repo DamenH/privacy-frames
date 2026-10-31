@@ -1,0 +1,216 @@
+{
+  "scope": "Native browser comparison of local context bootstraps, service-worker-mediated resources and message-only operations. The Firefox forced-stale profile uses an explicit testing preference, not natural 24-hour aging. The unregistered variant checks retained delivery and loss of interception. No production runtime repair is claimed.",
+  "runnerSHA256": "1814fb79794b1c7b06becb2ddd4362ddbbdf2eec0e05cb5ae19b3ba8bb3dbd3e",
+  "observationMilliseconds": 3000,
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "fetch",
+      "result": "cached",
+      "actionStarted": 1793448670894,
+      "observationEnded": 1793448673898,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "message",
+      "result": "ready",
+      "actionStarted": 1793448676949,
+      "observationEnded": 1793448679951,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "blob-worker",
+      "result": "ready",
+      "actionStarted": 1793448682995,
+      "observationEnded": 1793448686000,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "blob-worker-fetch",
+      "result": "cached",
+      "actionStarted": 1793448689050,
+      "observationEnded": 1793448692059,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "srcdoc",
+      "result": "Local frame",
+      "actionStarted": 1793448695106,
+      "observationEnded": 1793448698113,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "blob-frame",
+      "result": "Local frame",
+      "actionStarted": 1793448701157,
+      "observationEnded": 1793448704164,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "fetch",
+      "result": "cached",
+      "actionStarted": 1793448708154,
+      "observationEnded": 1793448711159,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "message",
+      "result": "ready",
+      "actionStarted": 1793448714326,
+      "observationEnded": 1793448717329,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "blob-worker",
+      "result": "ready",
+      "actionStarted": 1793448720553,
+      "observationEnded": 1793448723561,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "blob-worker-fetch",
+      "result": "network-cached",
+      "actionStarted": 1793448726744,
+      "observationEnded": 1793448729755,
+      "requests": [
+        {
+          "path": "/cached",
+          "time": 1793448726753
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "srcdoc",
+      "result": "Local frame",
+      "actionStarted": 1793448732919,
+      "observationEnded": 1793448735927,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": true,
+      "operation": "blob-frame",
+      "result": "Local frame",
+      "actionStarted": 1793448739085,
+      "observationEnded": 1793448742095,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": true,
+      "operation": "fetch",
+      "result": "cached",
+      "actionStarted": 1793448746275,
+      "observationEnded": 1793448749279,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": true,
+      "operation": "message",
+      "result": "ready",
+      "actionStarted": 1793448752441,
+      "observationEnded": 1793448755445,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": true,
+      "operation": "blob-worker",
+      "result": "ready",
+      "actionStarted": 1793448758609,
+      "observationEnded": 1793448761617,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": true,
+      "operation": "blob-worker-fetch",
+      "result": "network-cached",
+      "actionStarted": 1793448764776,
+      "observationEnded": 1793448767787,
+      "requests": [
+        {
+          "path": "/cached",
+          "time": 1793448764785
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": true,
+      "operation": "srcdoc",
+      "result": "Local frame",
+      "actionStarted": 1793448770969,
+      "observationEnded": 1793448773979,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": true,
+      "operation": "blob-frame",
+      "result": "Local frame",
+      "actionStarted": 1793448777144,
+      "observationEnded": 1793448780155,
+      "requests": []
+    }
+  ],
+  "completedAt": "2026-10-31T12:13:00.367Z"
+}

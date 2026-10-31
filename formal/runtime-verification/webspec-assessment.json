@@ -1,0 +1,33 @@
+{
+  "scope": "Pinned-source coverage assessment, not a Coq proof check, solver query or browser verification. The reviewed model does not provide the registration/update lifecycle needed to represent our concrete maintenance counterexample.",
+  "upstream": "https://github.com/SecPriv/webspec",
+  "revision": "b7ff6b714b3a4b572c108cc3136506da3d263eff",
+  "sourceSHA256": {
+    "model/Browser.v": "9e4f2a37d12b590e946a49c339f372586e9f14fb4ccecc30ec7c6e677703ebe0",
+    "model/SWInvariant.v": "8ad2b29f726f9c985fe0e0980ef61a33ec3e56c0ded530e121eb71acd72fa7aa",
+    "README.md": "9e239781cf48432e21bb44b2b9e6782f16ca0003120bec779188afd8fecc8c55"
+  },
+  "runnerSHA256": "a1b1730235d0a1730e8eb6ca646dd4573f6550c3fec6cf92c375e29bcd9a509d",
+  "serviceWorkerFields": [
+    "wk_version",
+    "wk_cache"
+  ],
+  "reachableEventConstructors": [
+    "Event_request",
+    "Event_response",
+    "Event_dom_update",
+    "Event_script_dom_update",
+    "Event_script_navigate_frame",
+    "Event_script_post_message",
+    "Event_script_domain_relaxation",
+    "Event_worker_cache_match",
+    "Event_worker_update_cache",
+    "Event_script_update_cache",
+    "Event_script_set_cookie",
+    "Event_script_create_blob_url",
+    "Event_script_storage_set_item"
+  ],
+  "assessedObligation": "C4: app-controlled context creation or cached-resource delivery must not trigger a separate browser-owned service-worker update request.",
+  "decision": "Do not use unmodified WebSpec to discharge this obligation. Its cache transitions and server-CSP-integrity invariant are different properties. Modeling registration, staleness, controller inheritance and update-script fetches, with browser correspondence, would be additional work.",
+  "completedAt": "2026-10-31T12:22:45.988Z"
+}

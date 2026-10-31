@@ -18,6 +18,13 @@ request occurs. This finding concerns the occurrence of a fixed-URL request;
 preventing payload-bearing application requests does not prevent it. A repair
 and its coverage argument remain open.
 
+The [native backend comparison](runtime-verification/maintenance-backends.md)
+tests possible repairs. Blob workers avoid their initial update request, but
+Firefox also updates after creating local document contexts. A forced-stale
+Firefox profile updates after a cached resource fetch. Unregistration preserves
+the existing page's local delivery but loses interception for a new Blob worker
+in Firefox. These results rule out either change as a complete repair on its own.
+
 A synthetic test with a seeded FedCM connection exposed a conditional escape in
 the earlier runtime: `IdentityCredential.disconnect` sent an application-selected
 marker to the runtime-origin server outside the service worker. The test did not

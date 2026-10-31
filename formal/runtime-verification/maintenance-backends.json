@@ -1,0 +1,446 @@
+{
+  "scope": "Native browser comparison of local context bootstraps, service-worker-mediated resources and message-only operations. The Firefox forced-stale profile uses an explicit testing preference, not natural 24-hour aging. The unregistered variant checks retained delivery and loss of interception. No production runtime repair is claimed.",
+  "runnerSHA256": "1814fb79794b1c7b06becb2ddd4362ddbbdf2eec0e05cb5ae19b3ba8bb3dbd3e",
+  "observationMilliseconds": 3000,
+  "rows": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "idle",
+      "result": "idle",
+      "actionStarted": 1793448670889,
+      "observationEnded": 1793448673891,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "fetch",
+      "result": "cached",
+      "actionStarted": 1793448676940,
+      "observationEnded": 1793448679943,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "message",
+      "result": "ready",
+      "actionStarted": 1793448682987,
+      "observationEnded": 1793448685990,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "worker",
+      "result": "ready",
+      "actionStarted": 1793448689044,
+      "observationEnded": 1793448692049,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448690051
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "module-worker",
+      "result": "ready",
+      "actionStarted": 1793448695093,
+      "observationEnded": 1793448698100,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448696100
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "blob-worker",
+      "result": "ready",
+      "actionStarted": 1793448701147,
+      "observationEnded": 1793448704153,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "blob-module-worker",
+      "result": "ready",
+      "actionStarted": 1793448707198,
+      "observationEnded": 1793448710203,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "blob-worker-fetch",
+      "result": "cached",
+      "actionStarted": 1793448713247,
+      "observationEnded": 1793448716254,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "srcdoc",
+      "result": "Local frame",
+      "actionStarted": 1793448719296,
+      "observationEnded": 1793448722302,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "blob-frame",
+      "result": "Local frame",
+      "actionStarted": 1793448725339,
+      "observationEnded": 1793448728347,
+      "requests": []
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "frame",
+      "result": "Local frame",
+      "actionStarted": 1793448731388,
+      "observationEnded": 1793448734396,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448732396
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "idle",
+      "result": "idle",
+      "actionStarted": 1793448738389,
+      "observationEnded": 1793448741391,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "fetch",
+      "result": "cached",
+      "actionStarted": 1793448744558,
+      "observationEnded": 1793448747563,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "message",
+      "result": "ready",
+      "actionStarted": 1793448750761,
+      "observationEnded": 1793448753764,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "worker",
+      "result": "ready",
+      "actionStarted": 1793448756925,
+      "observationEnded": 1793448759936,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448757940
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "module-worker",
+      "result": "ready",
+      "actionStarted": 1793448763115,
+      "observationEnded": 1793448766126,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448764193
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "blob-worker",
+      "result": "ready",
+      "actionStarted": 1793448769305,
+      "observationEnded": 1793448772312,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "blob-module-worker",
+      "result": "ready",
+      "actionStarted": 1793448775496,
+      "observationEnded": 1793448778503,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "blob-worker-fetch",
+      "result": "cached",
+      "actionStarted": 1793448781665,
+      "observationEnded": 1793448784682,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "srcdoc",
+      "result": "Local frame",
+      "actionStarted": 1793448787848,
+      "observationEnded": 1793448790858,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448788947
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "blob-frame",
+      "result": "Local frame",
+      "actionStarted": 1793448794042,
+      "observationEnded": 1793448797052,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448795171
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": false,
+      "unregistered": false,
+      "operation": "frame",
+      "result": "Local frame",
+      "actionStarted": 1793448800492,
+      "observationEnded": 1793448803502,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448801504
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "idle",
+      "result": "idle",
+      "actionStarted": 1793448807679,
+      "observationEnded": 1793448810681,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "fetch",
+      "result": "cached",
+      "actionStarted": 1793448813857,
+      "observationEnded": 1793448816862,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448814862
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "message",
+      "result": "ready",
+      "actionStarted": 1793448820061,
+      "observationEnded": 1793448823063,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "worker",
+      "result": "ready",
+      "actionStarted": 1793448826233,
+      "observationEnded": 1793448829243,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448827247
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "module-worker",
+      "result": "ready",
+      "actionStarted": 1793448832484,
+      "observationEnded": 1793448835495,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448833584
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "blob-worker",
+      "result": "ready",
+      "actionStarted": 1793448838674,
+      "observationEnded": 1793448841682,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "blob-module-worker",
+      "result": "ready",
+      "actionStarted": 1793448844864,
+      "observationEnded": 1793448847872,
+      "requests": []
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "blob-worker-fetch",
+      "result": "cached",
+      "actionStarted": 1793448851056,
+      "observationEnded": 1793448854067,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448852070
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "srcdoc",
+      "result": "Local frame",
+      "actionStarted": 1793448857251,
+      "observationEnded": 1793448860260,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448858326
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "blob-frame",
+      "result": "Local frame",
+      "actionStarted": 1793448863438,
+      "observationEnded": 1793448866447,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448864539
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "forcedStaleCheck": true,
+      "unregistered": false,
+      "operation": "frame",
+      "result": "Local frame",
+      "actionStarted": 1793448869920,
+      "observationEnded": 1793448872929,
+      "requests": [
+        {
+          "path": "/sw.js",
+          "time": 1793448870931
+        }
+      ]
+    }
+  ],
+  "completedAt": "2026-10-31T12:14:33.126Z"
+}

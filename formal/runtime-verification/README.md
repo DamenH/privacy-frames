@@ -92,7 +92,10 @@ arguments even where the abstract publication contract is shared.
   the method to complete protocols and their callers remains open.
 - Stage 6: a worker-creation experiment reproduces application-dependent update
   requests in both browsers. See the [maintenance finding](service-worker-maintenance.md).
-  Browser coverage and a repair remain open.
+  The [backend comparison](maintenance-backends.md) also finds limitations of
+  Blob bootstraps and unregistration. Browser coverage and a repair remain open.
+  A [pinned WebSpec source assessment](webspec-assessment.md) identifies the
+  missing registration/update lifecycle for this obligation.
 - Stages 5, 7 and 8: pending. Earlier component evidence remains available, with
   its original assumptions and source hashes.
 

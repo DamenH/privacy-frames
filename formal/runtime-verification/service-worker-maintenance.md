@@ -60,8 +60,10 @@ A candidate repair is to avoid native HTTP worker bootstrap loads by constructin
 prepared workers from local Blob resources. That would address this trigger only
 if the implementation preserves preparation and authority checks. A complete
 repair must also cover shared workers, document creation, later resource fetches
-and stale-registration behavior. We have not established that such a change
-eliminates all application-influenced update requests.
+and stale-registration behavior. The
+[backend comparison](maintenance-backends.md) finds document-update triggers in
+Firefox and cached-fetch updates with a forced stale check. It also shows loss of
+new-worker interception after unregistering. Neither candidate is a complete repair.
 
 Keep the complete confinement claim open. A change to caching headers, rate
 limits or a trusted server that discards requests would not establish the current
